@@ -1,39 +1,51 @@
 .mr-phone-container {
-  max-width: var(--phone-container, 75rem);
+  max-width: var(--container, 75rem);
   margin-left: auto;
   margin-right: auto;
-  padding-left: var(--phone-padding, 0.75rem);
-  padding-right: var(--phone-padding, 0.75rem);
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-left: var(--padding, 0.75rem);
+  padding-right: var(--padding, 0.75rem);
 }
 .mr-phone-margin {
-  margin: var(--phone-margin, 0.75rem);
+  margin: 0.75rem;
+  margin: var(--margin, 0.75rem);
 }
 .mr-phone-margintop {
-  margin-top: var(--phone-margin, 0.75rem);
+  margin-top: 0.75rem;
+  margin-top: var(--margin, 0.75rem);
 }
 .mr-phone-marginright {
-  margin-right: var(--phone-margin, 0.75rem);
+  margin-right: 0.75rem;
+  margin-right: var(--margin, 0.75rem);
 }
 .mr-phone-marginbottom {
-  margin-bottom: var(--phone-margin, 0.75rem);
+  margin-bottom: 0.75rem;
+  margin-bottom: var(--margin, 0.75rem);
 }
 .mr-phone-marginleft {
-  margin-left: var(--phone-margin, 0.75rem);
+  margin-left: 0.75rem;
+  margin-left: var(--margin, 0.75rem);
 }
 .mr-phone-padding {
-  padding: var(--phone-padding, 0.75rem);
+  padding: 0.75rem;
+  padding: var(--padding, 0.75rem);
 }
 .mr-phone-paddingtop {
-  padding-top: var(--phone-padding, 0.75rem);
+  padding-top: 0.75rem;
+  padding-top: var(--padding, 0.75rem);
 }
 .mr-phone-paddingright {
-  padding-right: var(--phone-padding, 0.75rem);
+  padding-right: 0.75rem;
+  padding-right: var(--padding, 0.75rem);
 }
 .mr-phone-paddingbottom {
-  padding-bottom: var(--phone-padding, 0.75rem);
+  padding-bottom: 0.75rem;
+  padding-bottom: var(--padding, 0.75rem);
 }
 .mr-phone-paddingleft {
-  padding-left: var(--phone-padding, 0.75rem);
+  padding-left: 0.75rem;
+  padding-left: var(--padding, 0.75rem);
 }
 .mr-phone-nomargin {
   margin: 0 !important;
@@ -101,67 +113,124 @@
   flex-wrap: wrap;
 }
 .mr-phone-section,
-.mr-phone-0perline > .mr-item:not([class*="mr-phone-size"]),
-.mr-phone-1perline > .mr-item:not([class*="mr-phone-size"]),
-.mr-phone-perline > .mr-item:not([class*="mr-phone-size"]),
-.mr-phone-size12,
+.mr-phone-0perline
+  > .mr-phone-item:not([class*="mr-phone-size"]):not([class*="mr-phone-width"]),
+.mr-phone-1perline
+  > .mr-phone-item:not([class*="mr-phone-size"]):not([class*="mr-phone-width"]),
+.mr-phone-perline
+  > .mr-phone-item:not([class*="mr-phone-size"]):not([class*="mr-phone-width"]),
+.mr-phone-size13,
 .mr-phone-width100 {
   width: 100%;
 }
-.mr-phone-2perline > .mr-item:not([class*="mr-phone-size"]),
+.mr-phone-size13 {
+  width: var(--size12, 100%);
+}
+.mr-phone-size12,
+.mr-phone-width75 {
+  width: 75%;
+}
+.mr-phone-size12 {
+  width: var(--size12, 75%);
+}
+.mr-phone-2perline
+  > .mr-phone-item:not([class*="mr-phone-size"]):not([class*="mr-phone-width"]),
 .mr-phone-size11,
 .mr-phone-width50 {
   width: 50%;
 }
-.mr-phone-3perline > .mr-item:not([class*="mr-phone-size"]),
+.mr-phone-size11 {
+  width: var(--size11, 50%);
+}
+.mr-phone-3perline
+  > .mr-phone-item:not([class*="mr-phone-size"]):not([class*="mr-phone-width"]),
 .mr-phone-size10,
 .mr-phone-width33 {
   width: 33.33333333333333%;
 }
-.mr-phone-4perline > .mr-item:not([class*="mr-phone-size"]),
+.mr-phone-size10 {
+  width: var(--size10, 33.33333333333333%);
+}
+.mr-phone-4perline
+  > .mr-phone-item:not([class*="mr-phone-size"]):not([class*="mr-phone-width"]),
 .mr-phone-size9,
 .mr-phone-width25 {
   width: 25%;
 }
-.mr-phone-5perline > .mr-item:not([class*="mr-phone-size"]),
+.mr-phone-size9 {
+  width: var(--size9, 25%);
+}
+.mr-phone-5perline
+  > .mr-phone-item:not([class*="mr-phone-size"]):not([class*="mr-phone-width"]),
 .mr-phone-size8,
 .mr-phone-width20 {
   width: 20%;
 }
-.mr-phone-6perline > .mr-item:not([class*="mr-phone-size"]),
+.mr-phone-size8 {
+  width: var(--size8, 20%);
+}
+.mr-phone-6perline
+  > .mr-phone-item:not([class*="mr-phone-size"]):not([class*="mr-phone-width"]),
 .mr-phone-size7,
 .mr-phone-width16 {
   width: 16.66666666666667%;
 }
-.mr-phone-7perline > .mr-item:not([class*="mr-phone-size"]),
+.mr-phone-size7 {
+  width: var(--size7, 16.66666666666667%);
+}
+.mr-phone-7perline
+  > .mr-phone-item:not([class*="mr-phone-size"]):not([class*="mr-phone-width"]),
 .mr-phone-size6,
 .mr-phone-width14 {
   width: 14.28571428571429%;
 }
-.mr-phone-8perline > .mr-item:not([class*="mr-phone-size"]),
+.mr-phone-size6 {
+  width: var(--size6, 14.28571428571429%);
+}
+.mr-phone-8perline
+  > .mr-phone-item:not([class*="mr-phone-size"]):not([class*="mr-phone-width"]),
 .mr-phone-size5,
 .mr-phone-width12 {
   width: 12.5%;
 }
-.mr-phone-9perline > .mr-item:not([class*="mr-phone-size"]),
+.mr-phone-size5 {
+  width: var(--size5, 12.5%);
+}
+.mr-phone-9perline
+  > .mr-phone-item:not([class*="mr-phone-size"]):not([class*="mr-phone-width"]),
 .mr-phone-size4,
 .mr-phone-width11 {
   width: 11.11111111111111%;
 }
-.mr-phone-10perline > .mr-item:not([class*="mr-phone-size"]),
+.mr-phone-size4 {
+  width: var(--size4, 11.11111111111111%);
+}
+.mr-phone-10perline
+  > .mr-phone-item:not([class*="mr-phone-size"]):not([class*="mr-phone-width"]),
 .mr-phone-size3,
 .mr-phone-width10 {
   width: 10%;
 }
-.mr-phone-11perline > .mr-item:not([class*="mr-phone-size"]),
+.mr-phone-size3 {
+  width: var(--size3, 10%);
+}
+.mr-phone-11perline
+  > .mr-phone-item:not([class*="mr-phone-size"]):not([class*="mr-phone-width"]),
 .mr-phone-size2,
 .mr-phone-width9 {
   width: 9.090909090909091%;
 }
-.mr-phone-12perline > .mr-item:not([class*="mr-phone-size"]),
+.mr-phone-size2 {
+  width: var(--size2, 9.090909090909091%);
+}
+.mr-phone-12perline
+  > .mr-phone-item:not([class*="mr-phone-size"]):not([class*="mr-phone-width"]),
 .mr-phone-size1,
 .mr-phone-width8 {
   width: 8.333333333333333%;
+}
+.mr-phone-size1 {
+  width: var(--size1, 8.333333333333333%);
 }
 .mr-phone-orderfirst,
 .mr-phone-order-1 {

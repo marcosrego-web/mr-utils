@@ -1,39 +1,51 @@
 .mr-portrait-container {
-  max-width: var(--portrait-container, 75rem);
+  max-width: var(--container, 75rem);
   margin-left: auto;
   margin-right: auto;
-  padding-left: var(--portrait-padding, 0.75rem);
-  padding-right: var(--portrait-padding, 0.75rem);
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-left: var(--padding, 0.75rem);
+  padding-right: var(--padding, 0.75rem);
 }
 .mr-portrait-margin {
-  margin: var(--portrait-margin, 0.75rem);
+  margin: 0.75rem;
+  margin: var(--margin, 0.75rem);
 }
 .mr-portrait-margintop {
-  margin-top: var(--portrait-margin, 0.75rem);
+  margin-top: 0.75rem;
+  margin-top: var(--margin, 0.75rem);
 }
 .mr-portrait-marginright {
-  margin-right: var(--portrait-margin, 0.75rem);
+  margin-right: 0.75rem;
+  margin-right: var(--margin, 0.75rem);
 }
 .mr-portrait-marginbottom {
-  margin-bottom: var(--portrait-margin, 0.75rem);
+  margin-bottom: 0.75rem;
+  margin-bottom: var(--margin, 0.75rem);
 }
 .mr-portrait-marginleft {
-  margin-left: var(--portrait-margin, 0.75rem);
+  margin-left: 0.75rem;
+  margin-left: var(--margin, 0.75rem);
 }
 .mr-portrait-padding {
-  padding: var(--portrait-padding, 0.75rem);
+  padding: 0.75rem;
+  padding: var(--padding, 0.75rem);
 }
 .mr-portrait-paddingtop {
-  padding-top: var(--portrait-padding, 0.75rem);
+  padding-top: 0.75rem;
+  padding-top: var(--padding, 0.75rem);
 }
 .mr-portrait-paddingright {
-  padding-right: var(--portrait-padding, 0.75rem);
+  padding-right: 0.75rem;
+  padding-right: var(--padding, 0.75rem);
 }
 .mr-portrait-paddingbottom {
-  padding-bottom: var(--portrait-padding, 0.75rem);
+  padding-bottom: 0.75rem;
+  padding-bottom: var(--padding, 0.75rem);
 }
 .mr-portrait-paddingleft {
-  padding-left: var(--portrait-padding, 0.75rem);
+  padding-left: 0.75rem;
+  padding-left: var(--padding, 0.75rem);
 }
 .mr-portrait-nomargin {
   margin: 0 !important;
@@ -101,67 +113,124 @@
   flex-wrap: wrap;
 }
 .mr-portrait-section,
-.mr-portrait-0perline > .mr-item:not([class*="mr-portrait-size"]),
-.mr-portrait-1perline > .mr-item:not([class*="mr-portrait-size"]),
-.mr-portrait-perline > .mr-item:not([class*="mr-portrait-size"]),
-.mr-portrait-size12,
+.mr-portrait-0perline
+  > .mr-portrait-item:not([class*="mr-portrait-size"]):not([class*="mr-portrait-width"]),
+.mr-portrait-1perline
+  > .mr-portrait-item:not([class*="mr-portrait-size"]):not([class*="mr-portrait-width"]),
+.mr-portrait-perline
+  > .mr-portrait-item:not([class*="mr-portrait-size"]):not([class*="mr-portrait-width"]),
+.mr-portrait-size13,
 .mr-portrait-width100 {
   width: 100%;
 }
-.mr-portrait-2perline > .mr-item:not([class*="mr-portrait-size"]),
+.mr-portrait-size13 {
+  width: var(--size12, 100%);
+}
+.mr-portrait-size12,
+.mr-portrait-width75 {
+  width: 75%;
+}
+.mr-portrait-size12 {
+  width: var(--size12, 75%);
+}
+.mr-portrait-2perline
+  > .mr-portrait-item:not([class*="mr-portrait-size"]):not([class*="mr-portrait-width"]),
 .mr-portrait-size11,
 .mr-portrait-width50 {
   width: 50%;
 }
-.mr-portrait-3perline > .mr-item:not([class*="mr-portrait-size"]),
+.mr-portrait-size11 {
+  width: var(--size11, 50%);
+}
+.mr-portrait-3perline
+  > .mr-portrait-item:not([class*="mr-portrait-size"]):not([class*="mr-portrait-width"]),
 .mr-portrait-size10,
 .mr-portrait-width33 {
   width: 33.33333333333333%;
 }
-.mr-portrait-4perline > .mr-item:not([class*="mr-portrait-size"]),
+.mr-portrait-size10 {
+  width: var(--size10, 33.33333333333333%);
+}
+.mr-portrait-4perline
+  > .mr-portrait-item:not([class*="mr-portrait-size"]):not([class*="mr-portrait-width"]),
 .mr-portrait-size9,
 .mr-portrait-width25 {
   width: 25%;
 }
-.mr-portrait-5perline > .mr-item:not([class*="mr-portrait-size"]),
+.mr-portrait-size9 {
+  width: var(--size9, 25%);
+}
+.mr-portrait-5perline
+  > .mr-portrait-item:not([class*="mr-portrait-size"]):not([class*="mr-portrait-width"]),
 .mr-portrait-size8,
 .mr-portrait-width20 {
   width: 20%;
 }
-.mr-portrait-6perline > .mr-item:not([class*="mr-portrait-size"]),
+.mr-portrait-size8 {
+  width: var(--size8, 20%);
+}
+.mr-portrait-6perline
+  > .mr-portrait-item:not([class*="mr-portrait-size"]):not([class*="mr-portrait-width"]),
 .mr-portrait-size7,
 .mr-portrait-width16 {
   width: 16.66666666666667%;
 }
-.mr-portrait-7perline > .mr-item:not([class*="mr-portrait-size"]),
+.mr-portrait-size7 {
+  width: var(--size7, 16.66666666666667%);
+}
+.mr-portrait-7perline
+  > .mr-portrait-item:not([class*="mr-portrait-size"]):not([class*="mr-portrait-width"]),
 .mr-portrait-size6,
 .mr-portrait-width14 {
   width: 14.28571428571429%;
 }
-.mr-portrait-8perline > .mr-item:not([class*="mr-portrait-size"]),
+.mr-portrait-size6 {
+  width: var(--size6, 14.28571428571429%);
+}
+.mr-portrait-8perline
+  > .mr-portrait-item:not([class*="mr-portrait-size"]):not([class*="mr-portrait-width"]),
 .mr-portrait-size5,
 .mr-portrait-width12 {
   width: 12.5%;
 }
-.mr-portrait-9perline > .mr-item:not([class*="mr-portrait-size"]),
+.mr-portrait-size5 {
+  width: var(--size5, 12.5%);
+}
+.mr-portrait-9perline
+  > .mr-portrait-item:not([class*="mr-portrait-size"]):not([class*="mr-portrait-width"]),
 .mr-portrait-size4,
 .mr-portrait-width11 {
   width: 11.11111111111111%;
 }
-.mr-portrait-10perline > .mr-item:not([class*="mr-portrait-size"]),
+.mr-portrait-size4 {
+  width: var(--size4, 11.11111111111111%);
+}
+.mr-portrait-10perline
+  > .mr-portrait-item:not([class*="mr-portrait-size"]):not([class*="mr-portrait-width"]),
 .mr-portrait-size3,
 .mr-portrait-width10 {
   width: 10%;
 }
-.mr-portrait-11perline > .mr-item:not([class*="mr-portrait-size"]),
+.mr-portrait-size3 {
+  width: var(--size3, 10%);
+}
+.mr-portrait-11perline
+  > .mr-portrait-item:not([class*="mr-portrait-size"]):not([class*="mr-portrait-width"]),
 .mr-portrait-size2,
 .mr-portrait-width9 {
   width: 9.090909090909091%;
 }
-.mr-portrait-12perline > .mr-item:not([class*="mr-portrait-size"]),
+.mr-portrait-size2 {
+  width: var(--size2, 9.090909090909091%);
+}
+.mr-portrait-12perline
+  > .mr-portrait-item:not([class*="mr-portrait-size"]):not([class*="mr-portrait-width"]),
 .mr-portrait-size1,
 .mr-portrait-width8 {
   width: 8.333333333333333%;
+}
+.mr-portrait-size1 {
+  width: var(--size1, 8.333333333333333%);
 }
 .mr-portrait-orderfirst,
 .mr-portrait-order-1 {
