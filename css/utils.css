@@ -4,6 +4,8 @@
   background-color: var(--offcanvas-background-color, #fff);
 }
 .mr-offcanvas-container,
+.mr-offcanvas-container p,
+.mr-offcanvas-container li,
 .mr-offcanvas-container a,
 .mr-offcanvas-container h1,
 .mr-offcanvas-container h2,
@@ -678,6 +680,7 @@
   position: fixed;
 }
 .mr-sticky {
+  position: -webkit-sticky;
   position: sticky;
 }
 .mr-alignleft {
