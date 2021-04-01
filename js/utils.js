@@ -49,7 +49,20 @@ function mrParallax(t) {
       e.style.backgroundPositionY = r + "px";
     }
 }
+function mrCopy(t) {
+  event.preventDefault();
+  t.classList.add("mr-copied");
+  t.select();
+  t.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  setTimeout(function () {
+    t.classList.remove("mr-copied");
+  }, 1000);
+}
 document.addEventListener("click", function (t) {
+  if (t.target.matches(".mr-copy")) {
+    mrCopy(t.target);
+  }
   t.target.matches(".mr-offcanvas-toggle") &&
     (document
       .querySelector(".mr-offcanvas-container")

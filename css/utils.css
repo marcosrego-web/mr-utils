@@ -727,8 +727,21 @@
 .mr-boxsize ::before {
   box-sizing: inherit;
 }
+.mr-unset {
+  all: unset;
+}
 .mr-nobullets {
   list-style-type: none;
   margin: 0;
   padding: 0;
+}
+.mr-copy {
+  cursor: copy;
+  transition: all 0.3s ease-in-out;
+}
+.mr-copied {
+  opacity: 0.5;
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
 }
