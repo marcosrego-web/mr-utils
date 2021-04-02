@@ -255,14 +255,20 @@
   }
 }
 .mr-fade {
+  -webkit-animation: fadeOut 0.5s;
+  animation: fadeOut 0.5s;
   -webkit-animation: fadeOut var(--transition-duration, 0.5s);
   animation: fadeOut var(--transition-duration, 0.5s);
 }
 .mr-fade.active:not(.inactive) {
+  -webkit-animation: fadeIn 0.5s;
+  animation: fadeIn 0.5s;
   -webkit-animation: fadeIn var(--transition-duration, 0.5s);
   animation: fadeIn var(--transition-duration, 0.5s);
 }
 .mr-slide {
+  -webkit-animation: slideOutBottom 0.5s;
+  animation: slideOutBottom 0.5s;
   -webkit-animation: slideOutBottom var(--transition-duration, 0.5s);
   animation: slideOutBottom var(--transition-duration, 0.5s);
   -webkit-transform: translateY(100%);
@@ -270,6 +276,8 @@
   transform: translateY(100%);
 }
 .mr-slide.active:not(.inactive) {
+  -webkit-animation: slideInBottom 0.5s;
+  animation: slideInBottom 0.5s;
   -webkit-animation: slideInBottom var(--transition-duration, 0.5s);
   animation: slideInBottom var(--transition-duration, 0.5s);
   -webkit-transform: translateY(0%);
@@ -277,6 +285,8 @@
   transform: translateY(0%);
 }
 .mr-transitiontop .mr-slide {
+  -webkit-animation: slideOutTop 0.5s;
+  animation: slideOutTop 0.5s;
   -webkit-animation: slideOutTop var(--transition-duration, 0.5s);
   animation: slideOutTop var(--transition-duration, 0.5s);
   -webkit-transform: translateY(100%);
@@ -284,6 +294,8 @@
   transform: translateY(100%);
 }
 .mr-transitiontop .mr-slide.active:not(.inactive) {
+  -webkit-animation: slideInTop 0.5s;
+  animation: slideInTop 0.5s;
   -webkit-animation: slideInTop var(--transition-duration, 0.5s);
   animation: slideInTop var(--transition-duration, 0.5s);
   -webkit-transform: translateY(0);
@@ -291,6 +303,8 @@
   transform: translateY(0);
 }
 .mr-transitionright .mr-slide {
+  -webkit-animation: slideOutRight 0.5s;
+  animation: slideOutRight 0.5s;
   -webkit-animation: slideOutRight var(--transition-duration, 0.5s);
   animation: slideOutRight var(--transition-duration, 0.5s);
   -webkit-transform: translateX(-100%);
@@ -298,6 +312,8 @@
   transform: translateX(-100%);
 }
 .mr-transitionright .mr-slide.active:not(.inactive) {
+  -webkit-animation: slideInRight 0.5s;
+  animation: slideInRight 0.5s;
   -webkit-animation: slideInRight var(--transition-duration, 0.5s);
   animation: slideInRight var(--transition-duration, 0.5s);
   -webkit-transform: translateX(0);
@@ -305,6 +321,8 @@
   transform: translateX(0);
 }
 .mr-transitionleft .mr-slide {
+  -webkit-animation: slideOutLeft 0.5s;
+  animation: slideOutLeft 0.5s;
   -webkit-animation: slideOutLeft var(--transition-duration, 0.5s);
   animation: slideOutLeft var(--transition-duration, 0.5s);
   -webkit-transform: translateX(100%);
@@ -312,6 +330,8 @@
   transform: translateX(100%);
 }
 .mr-transitionleft .mr-slide.active:not(.inactive) {
+  -webkit-animation: slideInLeft 0.5s;
+  animation: slideInLeft 0.5s;
   -webkit-animation: slideInLeft var(--transition-duration, 0.5s);
   animation: slideInLeft var(--transition-duration, 0.5s);
   -webkit-transform: translateX(0);
@@ -320,10 +340,14 @@
 }
 .mr-scale {
   transform-origin: center;
+  -webkit-animation: scaleOut 0.5s;
+  animation: scaleOut 0.5s;
   -webkit-animation: scaleOut var(--transition-duration, 0.5s);
   animation: scaleOut var(--transition-duration, 0.5s);
 }
 .mr-scale.active:not(.inactive) {
+  -webkit-animation: scaleIn 0.5s;
+  animation: scaleIn 0.5s;
   -webkit-animation: scaleIn var(--transition-duration, 0.5s);
   animation: scaleIn var(--transition-duration, 0.5s);
 }
@@ -337,10 +361,14 @@
 }
 .mr-zoom {
   transform-origin: center;
+  -webkit-animation: zoomOut 0.5s;
+  animation: zoomOut 0.5s;
   -webkit-animation: zoomOut var(--transition-duration, 0.5s);
   animation: zoomOut var(--transition-duration, 0.5s);
 }
 .mr-zoom.active:not(.inactive) {
+  -webkit-animation: zoomIn 0.5s;
+  animation: zoomIn 0.5s;
   -webkit-animation: zoomIn var(--transition-duration, 0.5s);
   animation: zoomIn var(--transition-duration, 0.5s);
 }
