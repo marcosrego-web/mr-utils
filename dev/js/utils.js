@@ -147,7 +147,7 @@ document.addEventListener("click", function (t) {
 });
 document.addEventListener("DOMContentLoaded", function () {
   const eles = document.querySelectorAll(
-    ".mr-grab,.mr-grabcontent > *, .mr-swipe, .mr-swipecontent > *"
+    "[class*='mr-'][class*='-grab'],[class*='mr-'][class*='-grabcontent'] > *, [class*='mr-'][class*='-swipe'],[class*='mr-'][class*='-swipecontent'] > *"
   );
   for (id = 0; id < eles.length; id++) {
     const ele = eles[id];
