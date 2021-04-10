@@ -309,10 +309,37 @@
 .mr-desktop-noscroll {
   overflow: hidden !important;
 }
+.mr-desktop-hidescroll::-webkit-scrollbar,
+.mr-desktop-swipe::-webkit-scrollbar {
+  width: 0;
+}
+.mr-desktop-horizontalscroll,
+.mr-desktop-swipe {
+  display: -webkit-inline-box;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.mr-desktop-swipe,
+.mr-desktop-grab {
+  cursor: grab;
+}
+.mr-desktop-grabbing {
+  cursor: grabbing;
+  user-select: none;
+}
 @supports (-webkit-overflow-scrolling: touch) {
   .mr-desktop-iosscroll,
   .mr-desktop-scroll {
     overflow-y: scroll !important;
+  }
+  .mr-desktop-horizontalscroll,
+  .mr-desktop-swipe {
+    overflow-x: scroll !important;
+  }
+  .mr-desktop-iosscroll,
+  .mr-desktop-scroll,
+  .mr-desktop-horizontalscroll,
+  .mr-desktop-swipe {
     -webkit-overflow-scrolling: touch !important;
   }
 }

@@ -309,10 +309,37 @@
 .mr-tablet-noscroll {
   overflow: hidden !important;
 }
+.mr-tablet-hidescroll::-webkit-scrollbar,
+.mr-tablet-swipe::-webkit-scrollbar {
+  width: 0;
+}
+.mr-tablet-horizontalscroll,
+.mr-tablet-swipe {
+  display: -webkit-inline-box;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.mr-tablet-swipe,
+.mr-tablet-grab {
+  cursor: grab;
+}
+.mr-tablet-grabbing {
+  cursor: grabbing;
+  user-select: none;
+}
 @supports (-webkit-overflow-scrolling: touch) {
   .mr-tablet-iosscroll,
   .mr-tablet-scroll {
     overflow-y: scroll !important;
+  }
+  .mr-tablet-horizontalscroll,
+  .mr-tablet-swipe {
+    overflow-x: scroll !important;
+  }
+  .mr-tablet-iosscroll,
+  .mr-tablet-scroll,
+  .mr-tablet-horizontalscroll,
+  .mr-tablet-swipe {
     -webkit-overflow-scrolling: touch !important;
   }
 }

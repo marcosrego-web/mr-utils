@@ -678,10 +678,37 @@
 .mr-noscroll {
   overflow: hidden !important;
 }
+.mr-hidescroll::-webkit-scrollbar,
+.mr-swipe::-webkit-scrollbar {
+  width: 0;
+}
+.mr-horizontalscroll,
+.mr-swipe {
+  display: -webkit-inline-box;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.mr-swipe,
+.mr-grab {
+  cursor: grab;
+}
+.mr-grabbing {
+  cursor: grabbing;
+  user-select: none;
+}
 @supports (-webkit-overflow-scrolling: touch) {
   .mr-iosscroll,
   .mr-scroll {
     overflow-y: scroll !important;
+  }
+  .mr-horizontalscroll,
+  .mr-swipe {
+    overflow-x: scroll !important;
+  }
+  .mr-iosscroll,
+  .mr-scroll,
+  .mr-horizontalscroll,
+  .mr-swipe {
     -webkit-overflow-scrolling: touch !important;
   }
 }

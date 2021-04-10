@@ -309,10 +309,37 @@
 .mr-portrait-noscroll {
   overflow: hidden !important;
 }
+.mr-portrait-hidescroll::-webkit-scrollbar,
+.mr-portrait-swipe::-webkit-scrollbar {
+  width: 0;
+}
+.mr-portrait-horizontalscroll,
+.mr-portrait-swipe {
+  display: -webkit-inline-box;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.mr-portrait-swipe,
+.mr-portrait-grab {
+  cursor: grab;
+}
+.mr-portrait-grabbing {
+  cursor: grabbing;
+  user-select: none;
+}
 @supports (-webkit-overflow-scrolling: touch) {
   .mr-portrait-iosscroll,
   .mr-portrait-scroll {
     overflow-y: scroll !important;
+  }
+  .mr-portrait-horizontalscroll,
+  .mr-portrait-swipe {
+    overflow-x: scroll !important;
+  }
+  .mr-portrait-iosscroll,
+  .mr-portrait-scroll,
+  .mr-portrait-horizontalscroll,
+  .mr-portrait-swipe {
     -webkit-overflow-scrolling: touch !important;
   }
 }

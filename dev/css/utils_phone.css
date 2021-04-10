@@ -309,10 +309,37 @@
 .mr-phone-noscroll {
   overflow: hidden !important;
 }
+.mr-phone-hidescroll::-webkit-scrollbar,
+.mr-phone-swipe::-webkit-scrollbar {
+  width: 0;
+}
+.mr-phone-horizontalscroll,
+.mr-phone-swipe {
+  display: -webkit-inline-box;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.mr-phone-swipe,
+.mr-phone-grab {
+  cursor: grab;
+}
+.mr-phone-grabbing {
+  cursor: grabbing;
+  user-select: none;
+}
 @supports (-webkit-overflow-scrolling: touch) {
   .mr-phone-iosscroll,
   .mr-phone-scroll {
     overflow-y: scroll !important;
+  }
+  .mr-phone-horizontalscroll,
+  .mr-phone-swipe {
+    overflow-x: scroll !important;
+  }
+  .mr-phone-iosscroll,
+  .mr-phone-scroll,
+  .mr-phone-horizontalscroll,
+  .mr-phone-swipe {
     -webkit-overflow-scrolling: touch !important;
   }
 }
