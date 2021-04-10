@@ -309,7 +309,7 @@
 .mr-desktop-noscroll {
   overflow: hidden !important;
 }
-.mr-desktop-hidescroll::-webkit-scrollbar {
+.mr-desktop-hidescroll:not(.mr-desktop-horizontalscroll)::-webkit-scrollbar {
   height: 0;
 }
 .mr-desktop-horizontalscroll.mr-desktop-hidescroll::-webkit-scrollbar,

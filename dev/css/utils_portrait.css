@@ -309,7 +309,7 @@
 .mr-portrait-noscroll {
   overflow: hidden !important;
 }
-.mr-portrait-hidescroll::-webkit-scrollbar {
+.mr-portrait-hidescroll:not(.mr-portrait-horizontalscroll)::-webkit-scrollbar {
   height: 0;
 }
 .mr-portrait-horizontalscroll.mr-portrait-hidescroll::-webkit-scrollbar,

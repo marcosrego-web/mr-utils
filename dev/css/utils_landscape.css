@@ -309,7 +309,7 @@
 .mr-landscape-noscroll {
   overflow: hidden !important;
 }
-.mr-landscape-hidescroll::-webkit-scrollbar {
+.mr-landscape-hidescroll:not(.mr-landscape-horizontalscroll)::-webkit-scrollbar {
   height: 0;
 }
 .mr-landscape-horizontalscroll.mr-landscape-hidescroll::-webkit-scrollbar,

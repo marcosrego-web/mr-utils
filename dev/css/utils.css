@@ -678,7 +678,7 @@
 .mr-noscroll {
   overflow: hidden !important;
 }
-.mr-hidescroll::-webkit-scrollbar {
+.mr-hidescroll:not(.mr-horizontalscroll)::-webkit-scrollbar {
   height: 0;
 }
 .mr-horizontalscroll.mr-hidescroll::-webkit-scrollbar,
