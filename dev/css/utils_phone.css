@@ -322,6 +322,20 @@
   overflow-x: auto;
   overflow-y: hidden;
 }
+.mr-phone-horizontalscroll img,
+.mr-phone-horizontalscrollcontent > * img,
+.mr-phone-swipe img,
+.mr-phone-swipecontent > * img,
+.mr-phone-horizontalscroll a,
+.mr-phone-horizontalscrollcontent > * a,
+.mr-phone-swipe a,
+.mr-phone-swipecontent > * a {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
 .mr-phone-swipe,
 .mr-phone-swipecontent > *,
 .mr-phone-grab,

@@ -146,7 +146,9 @@ document.addEventListener("click", function (t) {
           .classList.add("mr-transitionbottom")));
 });
 document.addEventListener("DOMContentLoaded", function () {
-  const eles = document.querySelectorAll(".mr-grab,.mr-swipe");
+  const eles = document.querySelectorAll(
+    ".mr-grab,.mr-grabcontent > *, .mr-swipe, .mr-swipecontent > *"
+  );
   for (id = 0; id < eles.length; id++) {
     const ele = eles[id];
     ele.classList.remove("mr-grabbing");

@@ -691,6 +691,20 @@
   overflow-x: auto;
   overflow-y: hidden;
 }
+.mr-horizontalscroll img,
+.mr-horizontalscrollcontent > * img,
+.mr-swipe img,
+.mr-swipecontent > * img,
+.mr-horizontalscroll a,
+.mr-horizontalscrollcontent > * a,
+.mr-swipe a,
+.mr-swipecontent > * a {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
 .mr-swipe,
 .mr-swipecontent > *,
 .mr-grab,

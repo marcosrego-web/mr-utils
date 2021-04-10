@@ -322,6 +322,20 @@
   overflow-x: auto;
   overflow-y: hidden;
 }
+.mr-portrait-horizontalscroll img,
+.mr-portrait-horizontalscrollcontent > * img,
+.mr-portrait-swipe img,
+.mr-portrait-swipecontent > * img,
+.mr-portrait-horizontalscroll a,
+.mr-portrait-horizontalscrollcontent > * a,
+.mr-portrait-swipe a,
+.mr-portrait-swipecontent > * a {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
 .mr-portrait-swipe,
 .mr-portrait-swipecontent > *,
 .mr-portrait-grab,
