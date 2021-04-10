@@ -309,7 +309,10 @@
 .mr-tablet-noscroll {
   overflow: hidden !important;
 }
-.mr-tablet-hidescroll::-webkit-scrollbar,
+.mr-tablet-hidescroll::-webkit-scrollbar {
+  height: 0;
+}
+.mr-tablet-horizontalscroll.mr-tablet-hidescroll::-webkit-scrollbar,
 .mr-tablet-swipe::-webkit-scrollbar,
 .mr-tablet-swipecontent > *::-webkit-scrollbar {
   width: 0;

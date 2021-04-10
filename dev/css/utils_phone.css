@@ -309,7 +309,10 @@
 .mr-phone-noscroll {
   overflow: hidden !important;
 }
-.mr-phone-hidescroll::-webkit-scrollbar,
+.mr-phone-hidescroll::-webkit-scrollbar {
+  height: 0;
+}
+.mr-phone-horizontalscroll.mr-phone-hidescroll::-webkit-scrollbar,
 .mr-phone-swipe::-webkit-scrollbar,
 .mr-phone-swipecontent > *::-webkit-scrollbar {
   width: 0;
