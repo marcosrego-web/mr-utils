@@ -310,20 +310,26 @@
   overflow: hidden !important;
 }
 .mr-laptop-hidescroll::-webkit-scrollbar,
-.mr-laptop-swipe::-webkit-scrollbar {
+.mr-laptop-swipe::-webkit-scrollbar,
+.mr-laptop-swipecontent > *::-webkit-scrollbar {
   width: 0;
 }
 .mr-laptop-horizontalscroll,
-.mr-laptop-swipe {
+.mr-laptop-horizontalscrollcontent > *,
+.mr-laptop-swipe,
+.mr-laptop-swipecontent > * {
   display: -webkit-inline-box;
   overflow-x: auto;
   overflow-y: hidden;
 }
 .mr-laptop-swipe,
-.mr-laptop-grab {
+.mr-laptop-swipecontent > *,
+.mr-laptop-grab,
+.mr-laptop-grabcontent > * {
   cursor: grab;
 }
-.mr-laptop-grabbing {
+.mr-laptop-grabbing,
+.mr-laptop-grabbingcontent > * {
   cursor: grabbing;
   user-select: none;
 }
@@ -333,13 +339,17 @@
     overflow-y: scroll !important;
   }
   .mr-laptop-horizontalscroll,
-  .mr-laptop-swipe {
+  .mr-laptop-horizontalscrollcontent > *,
+  .mr-laptop-swipe,
+  .mr-laptop-swipecontent > * {
     overflow-x: scroll !important;
   }
   .mr-laptop-iosscroll,
   .mr-laptop-scroll,
   .mr-laptop-horizontalscroll,
-  .mr-laptop-swipe {
+  .mr-laptop-horizontalscrollcontent > *,
+  .mr-laptop-swipe,
+  .mr-laptop-swipecontent > * {
     -webkit-overflow-scrolling: touch !important;
   }
 }

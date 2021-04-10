@@ -679,20 +679,26 @@
   overflow: hidden !important;
 }
 .mr-hidescroll::-webkit-scrollbar,
-.mr-swipe::-webkit-scrollbar {
+.mr-swipe::-webkit-scrollbar,
+.mr-swipecontent > *::-webkit-scrollbar {
   width: 0;
 }
 .mr-horizontalscroll,
-.mr-swipe {
+.mr-horizontalscrollcontent > *,
+.mr-swipe,
+.mr-swipecontent > * {
   display: -webkit-inline-box;
   overflow-x: auto;
   overflow-y: hidden;
 }
 .mr-swipe,
-.mr-grab {
+.mr-swipecontent > *,
+.mr-grab,
+.mr-grabcontent > * {
   cursor: grab;
 }
-.mr-grabbing {
+.mr-grabbing,
+.mr-grabbingcontent > * {
   cursor: grabbing;
   user-select: none;
 }
@@ -702,13 +708,17 @@
     overflow-y: scroll !important;
   }
   .mr-horizontalscroll,
-  .mr-swipe {
+  .mr-horizontalscrollcontent > *,
+  .mr-swipe,
+  .mr-swipecontent > * {
     overflow-x: scroll !important;
   }
   .mr-iosscroll,
   .mr-scroll,
   .mr-horizontalscroll,
-  .mr-swipe {
+  .mr-horizontalscrollcontent > *,
+  .mr-swipe,
+  .mr-swipecontent > * {
     -webkit-overflow-scrolling: touch !important;
   }
 }

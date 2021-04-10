@@ -310,20 +310,26 @@
   overflow: hidden !important;
 }
 .mr-phone-hidescroll::-webkit-scrollbar,
-.mr-phone-swipe::-webkit-scrollbar {
+.mr-phone-swipe::-webkit-scrollbar,
+.mr-phone-swipecontent > *::-webkit-scrollbar {
   width: 0;
 }
 .mr-phone-horizontalscroll,
-.mr-phone-swipe {
+.mr-phone-horizontalscrollcontent > *,
+.mr-phone-swipe,
+.mr-phone-swipecontent > * {
   display: -webkit-inline-box;
   overflow-x: auto;
   overflow-y: hidden;
 }
 .mr-phone-swipe,
-.mr-phone-grab {
+.mr-phone-swipecontent > *,
+.mr-phone-grab,
+.mr-phone-grabcontent > * {
   cursor: grab;
 }
-.mr-phone-grabbing {
+.mr-phone-grabbing,
+.mr-phone-grabbingcontent > * {
   cursor: grabbing;
   user-select: none;
 }
@@ -333,13 +339,17 @@
     overflow-y: scroll !important;
   }
   .mr-phone-horizontalscroll,
-  .mr-phone-swipe {
+  .mr-phone-horizontalscrollcontent > *,
+  .mr-phone-swipe,
+  .mr-phone-swipecontent > * {
     overflow-x: scroll !important;
   }
   .mr-phone-iosscroll,
   .mr-phone-scroll,
   .mr-phone-horizontalscroll,
-  .mr-phone-swipe {
+  .mr-phone-horizontalscrollcontent > *,
+  .mr-phone-swipe,
+  .mr-phone-swipecontent > * {
     -webkit-overflow-scrolling: touch !important;
   }
 }
