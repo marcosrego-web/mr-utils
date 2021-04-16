@@ -232,6 +232,10 @@
 .mr-portrait-size1 {
   width: var(--size1, 8.333333333333333%);
 }
+.mr-portrait-sizeauto,
+.mr-portrait-widthauto {
+  width: auto;
+}
 .mr-portrait-orderfirst,
 .mr-portrait-order-1 {
   -ms-flex-order: -1;

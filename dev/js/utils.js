@@ -18,9 +18,9 @@ function mrIsInView(t, e, o) {
     if (r < 0 && n > 0) return !0;
   }
 }
-function mrScrollTo(t, e) {
+function mrScrollTo(t, e, p) {
   t &&
-    ((element = document.scrollingElement || document.documentElement),
+    ((element = p || document.scrollingElement || document.documentElement),
     (start = element.scrollTop),
     (change = t - start),
     (startDate = +new Date()),
@@ -36,6 +36,36 @@ function mrScrollTo(t, e) {
     }),
     animateScroll());
 }
+/*function mrScrollTo(to, duration = 500) {
+  const easeOutQuad = function (t, b, c, d) {
+    t /= d;
+    return -c * t * (t - 2) + b;
+  };
+  return new Promise((resolve, reject) => {
+    const element = document.scrollingElement;
+    if (typeof to === "string") {
+      to = document.querySelector(to) || reject();
+    }
+    if (typeof to !== "number") {
+      to = to.getBoundingClientRect().top + element.scrollTop;
+    }
+    let start = element.scrollTop,
+      change = to - start,
+      currentTime = 0,
+      increment = 20;
+    const animateScroll = function () {
+      currentTime += increment;
+      let val = easeOutQuad(currentTime, start, change, duration);
+      element.scrollTop = val;
+      if (currentTime < duration) {
+        setTimeout(animateScroll, increment);
+      } else {
+        resolve();
+      }
+    };
+    animateScroll();
+  });
+}*/
 function mrParallax(t) {
   if (
     t &&
@@ -147,14 +177,14 @@ document.addEventListener("click", function (t) {
 });
 document.addEventListener("DOMContentLoaded", function () {
   const eles = document.querySelectorAll(
-    "[class*='-grab'],[class*='-grabcontent'] > *, [class*='-swipe'],[class*='-swipecontent'] > *"
+    "[class*='-drag'],[class*='-dragcontent'] > *, [class*='-swipe'],[class*='-swipecontent'] > *"
   );
   for (id = 0; id < eles.length; id++) {
     const ele = eles[id];
-    ele.classList.remove("mr-grabbing");
+    ele.classList.remove("mr-dragging");
     let pos = { top: 0, left: 0, x: 0, y: 0 };
     const mouseDownHandler = function (e) {
-      ele.classList.add("mr-grabbing");
+      ele.classList.add("mr-dragging");
       pos = {
         left: ele.scrollLeft,
         top: ele.scrollTop,
@@ -171,7 +201,7 @@ document.addEventListener("DOMContentLoaded", function () {
       ele.scrollLeft = pos.left - dx;
     };
     const mouseUpHandler = function () {
-      ele.classList.remove("mr-grabbing");
+      ele.classList.remove("mr-dragging");
       ele.style.removeProperty("user-select");
       document.removeEventListener("mousemove", mouseMoveHandler);
       document.removeEventListener("mouseup", mouseUpHandler);

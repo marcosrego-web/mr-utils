@@ -232,6 +232,10 @@
 .mr-landscape-size1 {
   width: var(--size1, 8.333333333333333%);
 }
+.mr-landscape-sizeauto,
+.mr-landscape-widthauto {
+  width: auto;
+}
 .mr-landscape-orderfirst,
 .mr-landscape-order-1 {
   -ms-flex-order: -1;

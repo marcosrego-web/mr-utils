@@ -232,6 +232,10 @@
 .mr-tablet-size1 {
   width: var(--size1, 8.333333333333333%);
 }
+.mr-tablet-sizeauto,
+.mr-tablet-widthauto {
+  width: auto;
+}
 .mr-tablet-orderfirst,
 .mr-tablet-order-1 {
   -ms-flex-order: -1;

@@ -232,6 +232,10 @@
 .mr-laptop-size1 {
   width: var(--size1, 8.333333333333333%);
 }
+.mr-laptop-sizeauto,
+.mr-laptop-widthauto {
+  width: auto;
+}
 .mr-laptop-orderfirst,
 .mr-laptop-order-1 {
   -ms-flex-order: -1;

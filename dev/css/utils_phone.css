@@ -232,6 +232,10 @@
 .mr-phone-size1 {
   width: var(--size1, 8.333333333333333%);
 }
+.mr-phone-sizeauto,
+.mr-phone-widthauto {
+  width: auto;
+}
 .mr-phone-orderfirst,
 .mr-phone-order-1 {
   -ms-flex-order: -1;
