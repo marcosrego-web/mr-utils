@@ -1,12 +1,3 @@
-.mr-laptop-container {
-  max-width: var(--container, 75rem);
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  padding-left: var(--padding, 0.75rem);
-  padding-right: var(--padding, 0.75rem);
-}
 .mr-laptop-margin {
   margin: 0.75rem;
   margin: var(--margin, 0.75rem);
@@ -124,7 +115,7 @@
   width: 100%;
 }
 .mr-laptop-size13 {
-  width: var(--size12, 100%);
+  width: var(--size13, 100%);
 }
 .mr-laptop-size12,
 .mr-laptop-width75 {
@@ -235,6 +226,45 @@
 .mr-laptop-sizeauto,
 .mr-laptop-widthauto {
   width: auto;
+}
+.mr-laptop-fontsize13 {
+  font-size: var(--fontsize13, 13rem);
+}
+.mr-laptop-fontsize12 {
+  font-size: var(--fontsize12, 12rem);
+}
+.mr-laptop-fontsize11 {
+  font-size: var(--fontsize11, 11rem);
+}
+.mr-laptop-fontsize10 {
+  font-size: var(--fontsize10, 10rem);
+}
+.mr-laptop-fontsize9 {
+  font-size: var(--fontsize9, 9rem);
+}
+.mr-laptop-fontsize8 {
+  font-size: var(--fontsize8, 8rem);
+}
+.mr-laptop-fontsize7 {
+  font-size: var(--fontsize7, 7rem);
+}
+.mr-laptop-fontsize6 {
+  font-size: var(--fontsize6, 6rem);
+}
+.mr-laptop-fontsize5 {
+  font-size: var(--fontsize5, 5rem);
+}
+.mr-laptop-fontsize4 {
+  font-size: var(--fontsize4, 4rem);
+}
+.mr-laptop-fontsize3 {
+  font-size: var(--fontsize3, 3rem);
+}
+.mr-laptop-fontsize2 {
+  font-size: var(--fontsize2, 2rem);
+}
+.mr-laptop-fontsize1 {
+  font-size: var(--fontsize1, 1rem);
 }
 .mr-laptop-orderfirst,
 .mr-laptop-order-1 {
@@ -419,7 +449,8 @@
   align-items: center;
   vertical-align: middle;
 }
-.mr-laptop-center {
+.mr-laptop-center,
+.mr-laptop-marginauto {
   margin-left: auto;
   margin-right: auto;
 }

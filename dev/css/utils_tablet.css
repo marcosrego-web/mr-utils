@@ -1,12 +1,3 @@
-.mr-tablet-container {
-  max-width: var(--container, 75rem);
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  padding-left: var(--padding, 0.75rem);
-  padding-right: var(--padding, 0.75rem);
-}
 .mr-tablet-margin {
   margin: 0.75rem;
   margin: var(--margin, 0.75rem);
@@ -124,7 +115,7 @@
   width: 100%;
 }
 .mr-tablet-size13 {
-  width: var(--size12, 100%);
+  width: var(--size13, 100%);
 }
 .mr-tablet-size12,
 .mr-tablet-width75 {
@@ -235,6 +226,45 @@
 .mr-tablet-sizeauto,
 .mr-tablet-widthauto {
   width: auto;
+}
+.mr-tablet-fontsize13 {
+  font-size: var(--fontsize13, 13rem);
+}
+.mr-tablet-fontsize12 {
+  font-size: var(--fontsize12, 12rem);
+}
+.mr-tablet-fontsize11 {
+  font-size: var(--fontsize11, 11rem);
+}
+.mr-tablet-fontsize10 {
+  font-size: var(--fontsize10, 10rem);
+}
+.mr-tablet-fontsize9 {
+  font-size: var(--fontsize9, 9rem);
+}
+.mr-tablet-fontsize8 {
+  font-size: var(--fontsize8, 8rem);
+}
+.mr-tablet-fontsize7 {
+  font-size: var(--fontsize7, 7rem);
+}
+.mr-tablet-fontsize6 {
+  font-size: var(--fontsize6, 6rem);
+}
+.mr-tablet-fontsize5 {
+  font-size: var(--fontsize5, 5rem);
+}
+.mr-tablet-fontsize4 {
+  font-size: var(--fontsize4, 4rem);
+}
+.mr-tablet-fontsize3 {
+  font-size: var(--fontsize3, 3rem);
+}
+.mr-tablet-fontsize2 {
+  font-size: var(--fontsize2, 2rem);
+}
+.mr-tablet-fontsize1 {
+  font-size: var(--fontsize1, 1rem);
 }
 .mr-tablet-orderfirst,
 .mr-tablet-order-1 {
@@ -419,7 +449,8 @@
   align-items: center;
   vertical-align: middle;
 }
-.mr-tablet-center {
+.mr-tablet-center,
+.mr-tablet-marginauto {
   margin-left: auto;
   margin-right: auto;
 }

@@ -101,6 +101,7 @@ document.addEventListener("click", function (t) {
       .querySelector(".mr-offcanvas-container")
       .classList.toggle("active"),
     document.querySelector(".mr-offcanvas-toggle").classList.toggle("active"),
+    document.querySelector("body").classList.toggle("mr-offcanvasopened"),
     document.querySelector("body").classList.toggle("mr-noscroll"),
     document.querySelector(
       ".mr-offcanvas.mr-transitionright .mr-offcanvas-container:not(.active)"
