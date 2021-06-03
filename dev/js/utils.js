@@ -37,34 +37,34 @@ function mrScrollTo(t, e, p) {
     animateScroll());
 }
 /*function mrScrollTo(to, duration = 500) {
-  const easeOutQuad = function (t, b, c, d) {
-    t /= d;
-    return -c * t * (t - 2) + b;
+const easeOutQuad = function (t, b, c, d) {
+  t /= d;
+  return -c * t * (t - 2) + b;
+};
+return new Promise((resolve, reject) => {
+  const element = document.scrollingElement;
+  if (typeof to === "string") {
+    to = document.querySelector(to) || reject();
+  }
+  if (typeof to !== "number") {
+    to = to.getBoundingClientRect().top + element.scrollTop;
+  }
+  let start = element.scrollTop,
+    change = to - start,
+    currentTime = 0,
+    increment = 20;
+  const animateScroll = function () {
+    currentTime += increment;
+    let val = easeOutQuad(currentTime, start, change, duration);
+    element.scrollTop = val;
+    if (currentTime < duration) {
+      setTimeout(animateScroll, increment);
+    } else {
+      resolve();
+    }
   };
-  return new Promise((resolve, reject) => {
-    const element = document.scrollingElement;
-    if (typeof to === "string") {
-      to = document.querySelector(to) || reject();
-    }
-    if (typeof to !== "number") {
-      to = to.getBoundingClientRect().top + element.scrollTop;
-    }
-    let start = element.scrollTop,
-      change = to - start,
-      currentTime = 0,
-      increment = 20;
-    const animateScroll = function () {
-      currentTime += increment;
-      let val = easeOutQuad(currentTime, start, change, duration);
-      element.scrollTop = val;
-      if (currentTime < duration) {
-        setTimeout(animateScroll, increment);
-      } else {
-        resolve();
-      }
-    };
-    animateScroll();
-  });
+  animateScroll();
+});
 }*/
 function mrParallax(t) {
   if (
@@ -89,14 +89,8 @@ function mrCopy(t) {
     t.classList.remove("mr-copied");
   }, 1000);
 }
-document.addEventListener("click", function (t) {
-  if (t.target.matches(".mr-copy")) {
-    mrCopy(t.target);
-  }
-  t.target.matches(".mr-offcanvas-toggle") &&
-    (document
-      .querySelector(".mr-offcanvas-container")
-      .classList.remove("mr-hide"),
+function mrToggleOffCanvas() {
+  document.querySelector(".mr-offcanvas-container").classList.remove("mr-hide"),
     document
       .querySelector(".mr-offcanvas-container")
       .classList.toggle("active"),
@@ -174,7 +168,15 @@ document.addEventListener("click", function (t) {
           .classList.remove("mr-transitiontop"),
         document
           .querySelector(".mr-offcanvas")
-          .classList.add("mr-transitionbottom")));
+          .classList.add("mr-transitionbottom"));
+}
+document.addEventListener("click", function (t) {
+  if (t.target.matches(".mr-copy")) {
+    mrCopy(t.target);
+  }
+  if (t.target.matches(".mr-offcanvas-toggle")) {
+    mrToggleOffCanvas();
+  }
 });
 document.addEventListener("DOMContentLoaded", function () {
   const eles = document.querySelectorAll(
