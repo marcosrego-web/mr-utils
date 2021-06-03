@@ -105,11 +105,11 @@
 }
 .mr-desktop-section,
 .mr-desktop-0perline
-  > .mr-desktop-item:not([class*="mr-desktop-size"]):not([class*="mr-desktop-width"]),
+  > *:not([class*="mr-desktop-size"]):not([class*="mr-desktop-width"]),
 .mr-desktop-1perline
-  > .mr-desktop-item:not([class*="mr-desktop-size"]):not([class*="mr-desktop-width"]),
+  > *:not([class*="mr-desktop-size"]):not([class*="mr-desktop-width"]),
 .mr-desktop-perline
-  > .mr-desktop-item:not([class*="mr-desktop-size"]):not([class*="mr-desktop-width"]),
+  > *:not([class*="mr-desktop-size"]):not([class*="mr-desktop-width"]),
 .mr-desktop-size13,
 .mr-desktop-width100 {
   width: 100%;
@@ -125,7 +125,7 @@
   width: var(--size12, 75%);
 }
 .mr-desktop-2perline
-  > .mr-desktop-item:not([class*="mr-desktop-size"]):not([class*="mr-desktop-width"]),
+  > *:not([class*="mr-desktop-size"]):not([class*="mr-desktop-width"]),
 .mr-desktop-size11,
 .mr-desktop-width50 {
   width: 50%;
@@ -134,7 +134,7 @@
   width: var(--size11, 50%);
 }
 .mr-desktop-3perline
-  > .mr-desktop-item:not([class*="mr-desktop-size"]):not([class*="mr-desktop-width"]),
+  > *:not([class*="mr-desktop-size"]):not([class*="mr-desktop-width"]),
 .mr-desktop-size10,
 .mr-desktop-width33 {
   width: 33.33333333333333%;
@@ -143,7 +143,7 @@
   width: var(--size10, 33.33333333333333%);
 }
 .mr-desktop-4perline
-  > .mr-desktop-item:not([class*="mr-desktop-size"]):not([class*="mr-desktop-width"]),
+  > *:not([class*="mr-desktop-size"]):not([class*="mr-desktop-width"]),
 .mr-desktop-size9,
 .mr-desktop-width25 {
   width: 25%;
@@ -152,7 +152,7 @@
   width: var(--size9, 25%);
 }
 .mr-desktop-5perline
-  > .mr-desktop-item:not([class*="mr-desktop-size"]):not([class*="mr-desktop-width"]),
+  > *:not([class*="mr-desktop-size"]):not([class*="mr-desktop-width"]),
 .mr-desktop-size8,
 .mr-desktop-width20 {
   width: 20%;
@@ -161,7 +161,7 @@
   width: var(--size8, 20%);
 }
 .mr-desktop-6perline
-  > .mr-desktop-item:not([class*="mr-desktop-size"]):not([class*="mr-desktop-width"]),
+  > *:not([class*="mr-desktop-size"]):not([class*="mr-desktop-width"]),
 .mr-desktop-size7,
 .mr-desktop-width16 {
   width: 16.66666666666667%;
@@ -170,7 +170,7 @@
   width: var(--size7, 16.66666666666667%);
 }
 .mr-desktop-7perline
-  > .mr-desktop-item:not([class*="mr-desktop-size"]):not([class*="mr-desktop-width"]),
+  > *:not([class*="mr-desktop-size"]):not([class*="mr-desktop-width"]),
 .mr-desktop-size6,
 .mr-desktop-width14 {
   width: 14.28571428571429%;
@@ -179,7 +179,7 @@
   width: var(--size6, 14.28571428571429%);
 }
 .mr-desktop-8perline
-  > .mr-desktop-item:not([class*="mr-desktop-size"]):not([class*="mr-desktop-width"]),
+  > *:not([class*="mr-desktop-size"]):not([class*="mr-desktop-width"]),
 .mr-desktop-size5,
 .mr-desktop-width12 {
   width: 12.5%;
@@ -188,7 +188,7 @@
   width: var(--size5, 12.5%);
 }
 .mr-desktop-9perline
-  > .mr-desktop-item:not([class*="mr-desktop-size"]):not([class*="mr-desktop-width"]),
+  > *:not([class*="mr-desktop-size"]):not([class*="mr-desktop-width"]),
 .mr-desktop-size4,
 .mr-desktop-width11 {
   width: 11.11111111111111%;
@@ -197,7 +197,7 @@
   width: var(--size4, 11.11111111111111%);
 }
 .mr-desktop-10perline
-  > .mr-desktop-item:not([class*="mr-desktop-size"]):not([class*="mr-desktop-width"]),
+  > *:not([class*="mr-desktop-size"]):not([class*="mr-desktop-width"]),
 .mr-desktop-size3,
 .mr-desktop-width10 {
   width: 10%;
@@ -206,7 +206,7 @@
   width: var(--size3, 10%);
 }
 .mr-desktop-11perline
-  > .mr-desktop-item:not([class*="mr-desktop-size"]):not([class*="mr-desktop-width"]),
+  > *:not([class*="mr-desktop-size"]):not([class*="mr-desktop-width"]),
 .mr-desktop-size2,
 .mr-desktop-width9 {
   width: 9.090909090909091%;
@@ -215,7 +215,7 @@
   width: var(--size2, 9.090909090909091%);
 }
 .mr-desktop-12perline
-  > .mr-desktop-item:not([class*="mr-desktop-size"]):not([class*="mr-desktop-width"]),
+  > *:not([class*="mr-desktop-size"]):not([class*="mr-desktop-width"]),
 .mr-desktop-size1,
 .mr-desktop-width8 {
   width: 8.333333333333333%;
