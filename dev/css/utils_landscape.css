@@ -105,11 +105,11 @@
 }
 .mr-landscape-section,
 .mr-landscape-0perline
-  > .mr-landscape-item:not([class*="mr-landscape-size"]):not([class*="mr-landscape-width"]),
+  > *:not([class*="mr-landscape-size"]):not([class*="mr-landscape-width"]),
 .mr-landscape-1perline
-  > .mr-landscape-item:not([class*="mr-landscape-size"]):not([class*="mr-landscape-width"]),
+  > *:not([class*="mr-landscape-size"]):not([class*="mr-landscape-width"]),
 .mr-landscape-perline
-  > .mr-landscape-item:not([class*="mr-landscape-size"]):not([class*="mr-landscape-width"]),
+  > *:not([class*="mr-landscape-size"]):not([class*="mr-landscape-width"]),
 .mr-landscape-size13,
 .mr-landscape-width100 {
   width: 100%;
@@ -125,7 +125,7 @@
   width: var(--size12, 75%);
 }
 .mr-landscape-2perline
-  > .mr-landscape-item:not([class*="mr-landscape-size"]):not([class*="mr-landscape-width"]),
+  > *:not([class*="mr-landscape-size"]):not([class*="mr-landscape-width"]),
 .mr-landscape-size11,
 .mr-landscape-width50 {
   width: 50%;
@@ -134,7 +134,7 @@
   width: var(--size11, 50%);
 }
 .mr-landscape-3perline
-  > .mr-landscape-item:not([class*="mr-landscape-size"]):not([class*="mr-landscape-width"]),
+  > *:not([class*="mr-landscape-size"]):not([class*="mr-landscape-width"]),
 .mr-landscape-size10,
 .mr-landscape-width33 {
   width: 33.33333333333333%;
@@ -143,7 +143,7 @@
   width: var(--size10, 33.33333333333333%);
 }
 .mr-landscape-4perline
-  > .mr-landscape-item:not([class*="mr-landscape-size"]):not([class*="mr-landscape-width"]),
+  > *:not([class*="mr-landscape-size"]):not([class*="mr-landscape-width"]),
 .mr-landscape-size9,
 .mr-landscape-width25 {
   width: 25%;
@@ -152,7 +152,7 @@
   width: var(--size9, 25%);
 }
 .mr-landscape-5perline
-  > .mr-landscape-item:not([class*="mr-landscape-size"]):not([class*="mr-landscape-width"]),
+  > *:not([class*="mr-landscape-size"]):not([class*="mr-landscape-width"]),
 .mr-landscape-size8,
 .mr-landscape-width20 {
   width: 20%;
@@ -161,7 +161,7 @@
   width: var(--size8, 20%);
 }
 .mr-landscape-6perline
-  > .mr-landscape-item:not([class*="mr-landscape-size"]):not([class*="mr-landscape-width"]),
+  > *:not([class*="mr-landscape-size"]):not([class*="mr-landscape-width"]),
 .mr-landscape-size7,
 .mr-landscape-width16 {
   width: 16.66666666666667%;
@@ -170,7 +170,7 @@
   width: var(--size7, 16.66666666666667%);
 }
 .mr-landscape-7perline
-  > .mr-landscape-item:not([class*="mr-landscape-size"]):not([class*="mr-landscape-width"]),
+  > *:not([class*="mr-landscape-size"]):not([class*="mr-landscape-width"]),
 .mr-landscape-size6,
 .mr-landscape-width14 {
   width: 14.28571428571429%;
@@ -179,7 +179,7 @@
   width: var(--size6, 14.28571428571429%);
 }
 .mr-landscape-8perline
-  > .mr-landscape-item:not([class*="mr-landscape-size"]):not([class*="mr-landscape-width"]),
+  > *:not([class*="mr-landscape-size"]):not([class*="mr-landscape-width"]),
 .mr-landscape-size5,
 .mr-landscape-width12 {
   width: 12.5%;
@@ -188,7 +188,7 @@
   width: var(--size5, 12.5%);
 }
 .mr-landscape-9perline
-  > .mr-landscape-item:not([class*="mr-landscape-size"]):not([class*="mr-landscape-width"]),
+  > *:not([class*="mr-landscape-size"]):not([class*="mr-landscape-width"]),
 .mr-landscape-size4,
 .mr-landscape-width11 {
   width: 11.11111111111111%;
@@ -197,7 +197,7 @@
   width: var(--size4, 11.11111111111111%);
 }
 .mr-landscape-10perline
-  > .mr-landscape-item:not([class*="mr-landscape-size"]):not([class*="mr-landscape-width"]),
+  > *:not([class*="mr-landscape-size"]):not([class*="mr-landscape-width"]),
 .mr-landscape-size3,
 .mr-landscape-width10 {
   width: 10%;
@@ -206,7 +206,7 @@
   width: var(--size3, 10%);
 }
 .mr-landscape-11perline
-  > .mr-landscape-item:not([class*="mr-landscape-size"]):not([class*="mr-landscape-width"]),
+  > *:not([class*="mr-landscape-size"]):not([class*="mr-landscape-width"]),
 .mr-landscape-size2,
 .mr-landscape-width9 {
   width: 9.090909090909091%;
@@ -215,7 +215,7 @@
   width: var(--size2, 9.090909090909091%);
 }
 .mr-landscape-12perline
-  > .mr-landscape-item:not([class*="mr-landscape-size"]):not([class*="mr-landscape-width"]),
+  > *:not([class*="mr-landscape-size"]):not([class*="mr-landscape-width"]),
 .mr-landscape-size1,
 .mr-landscape-width8 {
   width: 8.333333333333333%;
