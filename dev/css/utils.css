@@ -104,6 +104,9 @@
 .mr-perline {
   flex-wrap: wrap;
 }
+.mr-nowrap {
+  flex-wrap: nowrap !important;
+}
 .mr-section,
 .mr-0perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
 .mr-1perline > *:not([class*="mr-size"]):not([class*="mr-width"]),

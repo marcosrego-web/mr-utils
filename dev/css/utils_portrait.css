@@ -103,6 +103,9 @@
 .mr-portrait-perline {
   flex-wrap: wrap;
 }
+.mr-portrait-nowrap {
+  flex-wrap: nowrap !important;
+}
 .mr-portrait-section,
 .mr-portrait-0perline
   > *:not([class*="mr-portrait-size"]):not([class*="mr-portrait-width"]),

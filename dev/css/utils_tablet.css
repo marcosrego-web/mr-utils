@@ -103,6 +103,9 @@
 .mr-tablet-perline {
   flex-wrap: wrap;
 }
+.mr-tablet-nowrap {
+  flex-wrap: nowrap !important;
+}
 .mr-tablet-section,
 .mr-tablet-0perline
   > *:not([class*="mr-tablet-size"]):not([class*="mr-tablet-width"]),
