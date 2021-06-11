@@ -103,6 +103,9 @@
 .mr-landscape-perline {
   flex-wrap: wrap;
 }
+.mr-landscape-nowrap {
+  flex-wrap: nowrap !important;
+}
 .mr-landscape-section,
 .mr-landscape-0perline
   > *:not([class*="mr-landscape-size"]):not([class*="mr-landscape-width"]),

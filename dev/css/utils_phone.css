@@ -103,6 +103,9 @@
 .mr-phone-perline {
   flex-wrap: wrap;
 }
+.mr-phone-nowrap {
+  flex-wrap: nowrap !important;
+}
 .mr-phone-section,
 .mr-phone-0perline
   > *:not([class*="mr-phone-size"]):not([class*="mr-phone-width"]),

@@ -103,6 +103,9 @@
 .mr-laptop-perline {
   flex-wrap: wrap;
 }
+.mr-laptop-nowrap {
+  flex-wrap: nowrap !important;
+}
 .mr-laptop-section,
 .mr-laptop-0perline
   > *:not([class*="mr-laptop-size"]):not([class*="mr-laptop-width"]),

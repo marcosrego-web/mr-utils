@@ -103,6 +103,9 @@
 .mr-desktop-perline {
   flex-wrap: wrap;
 }
+.mr-desktop-nowrap {
+  flex-wrap: nowrap !important;
+}
 .mr-desktop-section,
 .mr-desktop-0perline
   > *:not([class*="mr-desktop-size"]):not([class*="mr-desktop-width"]),
