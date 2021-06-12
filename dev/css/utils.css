@@ -426,7 +426,7 @@
   top: 0;
   bottom: auto;
   margin-top: 0;
-  align-items: start;
+  align-items: flex-start;
   vertical-align: top;
 }
 .mr-middle {
@@ -442,7 +442,7 @@
   bottom: 0;
   top: auto;
   margin-bottom: 0;
-  align-items: end;
+  align-items: flex-end;
   vertical-align: bottom;
 }
 .mr-baseline {
