@@ -345,11 +345,11 @@
 .mr-horizontalscrollcontent > * a,
 .mr-swipe a,
 .mr-swipecontent > * a {
-  user-select: none;
   -moz-user-select: none;
   -webkit-user-drag: none;
   -webkit-user-select: none;
   -ms-user-select: none;
+  user-select: none;
 }
 .mr-swipe,
 .mr-swipecontent > *,
@@ -360,6 +360,10 @@
 .mr-dragging,
 .mr-draggingcontent > * {
   cursor: grabbing;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
   user-select: none;
 }
 @supports (-webkit-overflow-scrolling: touch) {

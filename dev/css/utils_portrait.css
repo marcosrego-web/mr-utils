@@ -370,11 +370,11 @@
 .mr-portrait-horizontalscrollcontent > * a,
 .mr-portrait-swipe a,
 .mr-portrait-swipecontent > * a {
-  user-select: none;
   -moz-user-select: none;
   -webkit-user-drag: none;
   -webkit-user-select: none;
   -ms-user-select: none;
+  user-select: none;
 }
 .mr-portrait-swipe,
 .mr-portrait-swipecontent > *,
@@ -385,6 +385,10 @@
 .mr-portrait-grabbing,
 .mr-portrait-grabbingcontent > * {
   cursor: grabbing;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
   user-select: none;
 }
 @supports (-webkit-overflow-scrolling: touch) {
@@ -430,6 +434,7 @@
   position: fixed;
 }
 .mr-portrait-sticky {
+  position: -webkit-sticky;
   position: sticky;
 }
 .mr-portrait-alignleft {

@@ -370,11 +370,11 @@
 .mr-laptop-horizontalscrollcontent > * a,
 .mr-laptop-swipe a,
 .mr-laptop-swipecontent > * a {
-  user-select: none;
   -moz-user-select: none;
   -webkit-user-drag: none;
   -webkit-user-select: none;
   -ms-user-select: none;
+  user-select: none;
 }
 .mr-laptop-swipe,
 .mr-laptop-swipecontent > *,
@@ -385,6 +385,10 @@
 .mr-laptop-grabbing,
 .mr-laptop-grabbingcontent > * {
   cursor: grabbing;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
   user-select: none;
 }
 @supports (-webkit-overflow-scrolling: touch) {
@@ -430,6 +434,7 @@
   position: fixed;
 }
 .mr-laptop-sticky {
+  position: -webkit-sticky;
   position: sticky;
 }
 .mr-laptop-alignleft {
