@@ -370,11 +370,11 @@
 .mr-phone-horizontalscrollcontent > * a,
 .mr-phone-swipe a,
 .mr-phone-swipecontent > * a {
-  user-select: none;
   -moz-user-select: none;
   -webkit-user-drag: none;
   -webkit-user-select: none;
   -ms-user-select: none;
+  user-select: none;
 }
 .mr-phone-swipe,
 .mr-phone-swipecontent > *,
@@ -385,6 +385,10 @@
 .mr-phone-grabbing,
 .mr-phone-grabbingcontent > * {
   cursor: grabbing;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
   user-select: none;
 }
 @supports (-webkit-overflow-scrolling: touch) {
@@ -430,6 +434,7 @@
   position: fixed;
 }
 .mr-phone-sticky {
+  position: -webkit-sticky;
   position: sticky;
 }
 .mr-phone-alignleft {

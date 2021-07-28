@@ -370,11 +370,11 @@
 .mr-desktop-horizontalscrollcontent > * a,
 .mr-desktop-swipe a,
 .mr-desktop-swipecontent > * a {
-  user-select: none;
   -moz-user-select: none;
   -webkit-user-drag: none;
   -webkit-user-select: none;
   -ms-user-select: none;
+  user-select: none;
 }
 .mr-desktop-swipe,
 .mr-desktop-swipecontent > *,
@@ -385,6 +385,10 @@
 .mr-desktop-grabbing,
 .mr-desktop-grabbingcontent > * {
   cursor: grabbing;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
   user-select: none;
 }
 @supports (-webkit-overflow-scrolling: touch) {
@@ -430,6 +434,7 @@
   position: fixed;
 }
 .mr-desktop-sticky {
+  position: -webkit-sticky;
   position: sticky;
 }
 .mr-desktop-alignleft {
