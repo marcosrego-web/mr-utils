@@ -177,8 +177,46 @@ document.addEventListener("click", function (t) {
   if (t.target.matches(".mr-offcanvas-toggle")) {
     mrToggleOffCanvas();
   }
+  if (t.target.matches("body.mr-darkcolors .mr-togglecolors")) {
+    t.preventDefault();
+    document.querySelector("body").classList.remove("mr-darkcolors");
+    document.querySelector("body").classList.add("mr-lightcolors");
+    t.target.classList.remove("mr-darkcolors");
+    t.target.classList.add("mr-lightcolors");
+    document.cookie = "mrColors=mrLightColors; max-age=31536000; path=/";
+  } else if (t.target.matches("body.mr-lightcolors .mr-togglecolors")) {
+    t.preventDefault();
+    document.querySelector("body").classList.remove("mr-lightcolors");
+    t.target.classList.remove("mr-lightcolors");
+    document.cookie = "mrColors=mrColors; max-age=0; path=/";
+  } else if (t.target.matches(".mr-togglecolors")) {
+    t.preventDefault();
+    document.querySelector("body").classList.add("mr-darkcolors");
+    t.target.classList.add("mr-darkcolors");
+    document.cookie = "mrColors=mrDarkColors; max-age=31536000; path=/";
+  }
 });
 document.addEventListener("DOMContentLoaded", function () {
+  if (mrGetCookie("mrColors") == "mrLightColors") {
+    document.querySelector("body").classList.add("mr-lightcolors");
+    const toggleColors = document.querySelectorAll(".mr-togglecolors");
+    if (toggleColors) {
+      for (id = 0; id < toggleColors.length; id++) {
+        toggleColors[id].classList.add("mr-lightcolors");
+      }
+    }
+  } else if (mrGetCookie("mrColors") == "mrDarkColors") {
+    document.querySelector("body").classList.add("mr-darkcolors");
+    const toggleColors = document.querySelectorAll(".mr-togglecolors");
+    if (toggleColors) {
+      for (id = 0; id < toggleColors.length; id++) {
+        toggleColors[id].classList.add("mr-darkcolors");
+      }
+    }
+  } else if (mrGetCookie("mrColors") == "mrColors") {
+    document.querySelector("body").classList.remove("mr-darkcolors");
+    document.querySelector("body").classList.remove("mr-lightcolors");
+  }
   const eles = document.querySelectorAll(
     "[class*='-drag'],[class*='-dragcontent'] > *, [class*='-swipe'],[class*='-swipecontent'] > *"
   );
