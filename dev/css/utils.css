@@ -637,7 +637,7 @@
     opacity: 0;
   }
 }
-@keyframes slideOutBottom {
+@keyframes mrSlideOutBottom {
   0% {
     -webkit-transform: translateY(0%);
     -ms-transform: translateY(0%);
@@ -651,7 +651,7 @@
     opacity: 0;
   }
 }
-@keyframes slideInBottom {
+@keyframes mrSlideInBottom {
   0% {
     -webkit-transform: translateY(100%);
     -ms-transform: translateY(100%);
