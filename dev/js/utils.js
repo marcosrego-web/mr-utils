@@ -89,6 +89,53 @@ function mrCopy(t) {
     t.classList.remove("mr-copied");
   }, 1000);
 }
+function mrThemeColors() {
+  document.querySelector("body").classList.remove("mr-darkcolors");
+  document.querySelector("body").classList.remove("mr-lightcolors");
+  document.cookie = "mrColors=mrColors; max-age=0; path=/";
+}
+function mrDarkColors() {
+  document.querySelector("body").classList.remove("mr-lightcolors");
+  document.querySelector("body").classList.add("mr-darkcolors");
+  document.cookie = "mrColors=mrDarkColors; max-age=31536000; path=/";
+}
+function mrLightColors() {
+  document.querySelector("body").classList.remove("mr-darkcolors");
+  document.querySelector("body").classList.add("mr-lightcolors");
+  document.cookie = "mrColors=mrLightColors; max-age=31536000; path=/";
+}
+function mrToggleColors() {
+  if (document.querySelector("body").classList.contains("mr-darkcolors")) {
+    mrLightColors();
+    const colorToggles = document.querySelectorAll(".mr-togglecolors");
+    if (colorToggles) {
+      for (id = 0; id < colorToggles.length; id++) {
+        colorToggles[id].classList.remove("mr-darkcolors");
+        colorToggles[id].classList.add("mr-lightcolors");
+      }
+    }
+  } else if (
+    document.querySelector("body").classList.contains("mr-lightcolors")
+  ) {
+    mrThemeColors();
+    const colorToggles = document.querySelectorAll(".mr-togglecolors");
+    if (colorToggles) {
+      for (id = 0; id < colorToggles.length; id++) {
+        colorToggles[id].classList.remove("mr-darkcolors");
+        colorToggles[id].classList.remove("mr-lightcolors");
+      }
+    }
+  } else {
+    mrDarkColors();
+    const colorToggles = document.querySelectorAll(".mr-togglecolors");
+    if (colorToggles) {
+      for (id = 0; id < colorToggles.length; id++) {
+        colorToggles[id].classList.remove("mr-lightcolors");
+        colorToggles[id].classList.add("mr-darkcolors");
+      }
+    }
+  }
+}
 function mrToggleOffCanvas() {
   document.querySelector(".mr-offcanvas-container").classList.remove("mr-hide"),
     document
@@ -177,8 +224,18 @@ document.addEventListener("click", function (t) {
   if (t.target.matches(".mr-offcanvas-toggle")) {
     mrToggleOffCanvas();
   }
+  if (t.target.matches(".mr-togglecolors")) {
+    mrToggleColors();
+  }
 });
 document.addEventListener("DOMContentLoaded", function () {
+  if (mrGetCookie("mrColors") == "mrLightColors") {
+    mrLightColors();
+  } else if (mrGetCookie("mrColors") == "mrDarkColors") {
+    mrDarkColors();
+  } else if (mrGetCookie("mrColors") == "mrColors") {
+    mrThemeColors();
+  }
   const eles = document.querySelectorAll(
     "[class*='-drag'],[class*='-dragcontent'] > *, [class*='-swipe'],[class*='-swipecontent'] > *"
   );
