@@ -773,17 +773,17 @@
 }
 .mr-slide,
 .mr-slideoutbottom {
-  -webkit-animation: slideOutBottom 0.5s forwards;
-  animation: slideOutBottom 0.5s forwards;
-  -webkit-animation: slideOutBottom var(--transition-duration, 0.5s) forwards;
-  animation: slideOutBottom var(--transition-duration, 0.5s) forwards;
+  -webkit-animation: mrSlideOutBottom 0.5s forwards;
+  animation: mrSlideOutBottom 0.5s forwards;
+  -webkit-animation: mrSlideOutBottom var(--transition-duration, 0.5s) forwards;
+  animation: mrSlideOutBottom var(--transition-duration, 0.5s) forwards;
 }
 .mr-slide.active:not(.inactive),
 .mr-slideinbottom {
-  -webkit-animation: slideInBottom 0.5s forwards;
-  animation: slideInBottom 0.5s forwards;
-  -webkit-animation: slideInBottom var(--transition-duration, 0.5s) forwards;
-  animation: slideInBottom var(--transition-duration, 0.5s) forwards;
+  -webkit-animation: mrSlideInBottom 0.5s forwards;
+  animation: mrSlideInBottom 0.5s forwards;
+  -webkit-animation: mrSlideInBottom var(--transition-duration, 0.5s) forwards;
+  animation: mrSlideInBottom var(--transition-duration, 0.5s) forwards;
 }
 .mr-transitiontop .mr-slide,
 .mr-slideouttop {
