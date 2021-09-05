@@ -107,167 +107,141 @@
   flex-wrap: nowrap !important;
 }
 .mr-phone-section,
-.mr-phone-0perline
-  > *:not([class*="mr-phone-size"]):not([class*="mr-phone-width"]),
-.mr-phone-1perline
-  > *:not([class*="mr-phone-size"]):not([class*="mr-phone-width"]),
-.mr-phone-perline
-  > *:not([class*="mr-phone-size"]):not([class*="mr-phone-width"]),
+.mr-phone-0perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
+.mr-phone-1perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
+.mr-phone-perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
 .mr-phone-size13,
 .mr-phone-width100 {
   width: 100%;
 }
-.mr-phone-size13 {
-  width: var(--size13, 100%);
+.mr-phone-size13,
+.mr-phone-largesize {
+  width: var(--size-13, 100%);
 }
 .mr-phone-size12,
 .mr-phone-width75 {
   width: 75%;
 }
 .mr-phone-size12 {
-  width: var(--size12, 75%);
+  width: var(--size-12, 75%);
 }
-.mr-phone-2perline
-  > *:not([class*="mr-phone-size"]):not([class*="mr-phone-width"]),
+.mr-phone-2perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
 .mr-phone-size11,
 .mr-phone-width50 {
   width: 50%;
 }
 .mr-phone-size11 {
-  width: var(--size11, 50%);
+  width: var(--size-11, 50%);
 }
-.mr-phone-3perline
-  > *:not([class*="mr-phone-size"]):not([class*="mr-phone-width"]),
+.mr-phone-3perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
 .mr-phone-size10,
 .mr-phone-width33 {
   width: 33.33333333333333%;
 }
 .mr-phone-size10 {
-  width: var(--size10, 33.33333333333333%);
+  width: var(--size-10, 33.33333333333333%);
 }
-.mr-phone-4perline
-  > *:not([class*="mr-phone-size"]):not([class*="mr-phone-width"]),
+.mr-phone-4perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
 .mr-phone-size9,
 .mr-phone-width25 {
   width: 25%;
 }
 .mr-phone-size9 {
-  width: var(--size9, 25%);
+  width: var(--size-9, 25%);
 }
-.mr-phone-5perline
-  > *:not([class*="mr-phone-size"]):not([class*="mr-phone-width"]),
+.mr-phone-5perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
 .mr-phone-size8,
 .mr-phone-width20 {
   width: 20%;
 }
 .mr-phone-size8 {
-  width: var(--size8, 20%);
+  width: var(--size-8, 20%);
 }
-.mr-phone-6perline
-  > *:not([class*="mr-phone-size"]):not([class*="mr-phone-width"]),
+.mr-phone-6perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
 .mr-phone-size7,
 .mr-phone-width16 {
   width: 16.66666666666667%;
 }
 .mr-phone-size7 {
-  width: var(--size7, 16.66666666666667%);
+  width: var(--size-7, 16.66666666666667%);
 }
-.mr-phone-7perline
-  > *:not([class*="mr-phone-size"]):not([class*="mr-phone-width"]),
+.mr-phone-7perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
 .mr-phone-size6,
 .mr-phone-width14 {
   width: 14.28571428571429%;
 }
-.mr-phone-size6 {
-  width: var(--size6, 14.28571428571429%);
+.mr-phone-size6,
+.mr-phone-mediumsize {
+  width: var(--size-6, 14.28571428571429%);
 }
-.mr-phone-8perline
-  > *:not([class*="mr-phone-size"]):not([class*="mr-phone-width"]),
+.mr-phone-8perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
 .mr-phone-size5,
 .mr-phone-width12 {
   width: 12.5%;
 }
 .mr-phone-size5 {
-  width: var(--size5, 12.5%);
+  width: var(--size-5, 12.5%);
 }
-.mr-phone-9perline
-  > *:not([class*="mr-phone-size"]):not([class*="mr-phone-width"]),
+.mr-phone-9perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
 .mr-phone-size4,
 .mr-phone-width11 {
   width: 11.11111111111111%;
 }
 .mr-phone-size4 {
-  width: var(--size4, 11.11111111111111%);
+  width: var(--size-4, 11.11111111111111%);
 }
-.mr-phone-10perline
-  > *:not([class*="mr-phone-size"]):not([class*="mr-phone-width"]),
+.mr-phone-10perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
 .mr-phone-size3,
 .mr-phone-width10 {
   width: 10%;
 }
 .mr-phone-size3 {
-  width: var(--size3, 10%);
+  width: var(--size-3, 10%);
 }
-.mr-phone-11perline
-  > *:not([class*="mr-phone-size"]):not([class*="mr-phone-width"]),
+.mr-phone-11perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
 .mr-phone-size2,
 .mr-phone-width9 {
   width: 9.090909090909091%;
 }
 .mr-phone-size2 {
-  width: var(--size2, 9.090909090909091%);
+  width: var(--size-2, 9.090909090909091%);
 }
-.mr-phone-12perline
-  > *:not([class*="mr-phone-size"]):not([class*="mr-phone-width"]),
+.mr-phone-12perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
 .mr-phone-size1,
 .mr-phone-width8 {
   width: 8.333333333333333%;
 }
-.mr-phone-size1 {
-  width: var(--size1, 8.333333333333333%);
+.mr-phone-size1,
+.mr-phone-smallsize {
+  width: var(--size-1, 8.333333333333333%);
 }
 .mr-phone-sizeauto,
 .mr-phone-widthauto {
   width: auto;
 }
-.mr-phone-fontsize13 {
-  font-size: var(--fontsize13, 13rem);
-}
-.mr-phone-fontsize12 {
-  font-size: var(--fontsize12, 12rem);
-}
-.mr-phone-fontsize11 {
-  font-size: var(--fontsize11, 11rem);
-}
-.mr-phone-fontsize10 {
-  font-size: var(--fontsize10, 10rem);
-}
-.mr-phone-fontsize9 {
-  font-size: var(--fontsize9, 9rem);
-}
-.mr-phone-fontsize8 {
-  font-size: var(--fontsize8, 8rem);
-}
-.mr-phone-fontsize7 {
-  font-size: var(--fontsize7, 7rem);
+.mr-phone-fontsize7,
+.mr-phone-largefontsize {
+  font-size: var(--font-size-7, 2rem);
 }
 .mr-phone-fontsize6 {
-  font-size: var(--fontsize6, 6rem);
+  font-size: var(--font-size-6, 1.125rem);
 }
-.mr-phone-fontsize5 {
-  font-size: var(--fontsize5, 5rem);
+.mr-phone-fontsize5,
+.mr-phone-mediumfontsize {
+  font-size: var(--font-size-5, 1.17rem);
 }
 .mr-phone-fontsize4 {
-  font-size: var(--fontsize4, 4rem);
+  font-size: var(--font-size-4, 1rem);
 }
 .mr-phone-fontsize3 {
-  font-size: var(--fontsize3, 3rem);
+  font-size: var(--font-size-3, 0.875rem);
 }
 .mr-phone-fontsize2 {
-  font-size: var(--fontsize2, 2rem);
+  font-size: var(--font-size-2, 0.75rem);
 }
-.mr-phone-fontsize1 {
-  font-size: var(--fontsize1, 1rem);
+.mr-phone-fontsize1,
+.mr-phone-smallfontsize {
+  font-size: var(--font-size-1, 0.625rem);
 }
 .mr-phone-orderfirst,
 .mr-phone-order-1 {
@@ -378,12 +352,12 @@
 }
 .mr-phone-swipe,
 .mr-phone-swipecontent > *,
-.mr-phone-grab,
-.mr-phone-grabcontent > * {
+.mr-phone-drag,
+.mr-phone-dragcontent > * {
   cursor: grab;
 }
-.mr-phone-grabbing,
-.mr-phone-grabbingcontent > * {
+.mr-phone-dragging,
+.mr-phone-draggingcontent > * {
   cursor: grabbing;
   -moz-user-select: none;
   -webkit-user-drag: none;
@@ -411,17 +385,22 @@
     -webkit-overflow-scrolling: touch !important;
   }
 }
-.mr-phone-show {
-  opacity: 1 !important;
-  visibility: visible !important;
-}
 .mr-phone-show,
 .mr-phone-block {
   display: block !important;
 }
-.mr-phone-hide {
-  opacity: 0 !important;
+.mr-phone-show,
+.mr-phone-visible {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+.mr-phone-hide,
+.mr-phone-none {
   display: none !important;
+}
+.mr-phone-hide,
+.mr-phone-hidden {
+  opacity: 0 !important;
   visibility: hidden !important;
 }
 .mr-phone-relative {
