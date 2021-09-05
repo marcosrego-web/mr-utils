@@ -117,14 +117,14 @@
 }
 .mr-size13,
 .mr-largesize {
-  width: var(--size13, 100%);
+  width: var(--size-13, 100%);
 }
 .mr-size12,
 .mr-width75 {
   width: 75%;
 }
 .mr-size12 {
-  width: var(--size12, 75%);
+  width: var(--size-12, 75%);
 }
 .mr-2perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
 .mr-size11,
@@ -132,7 +132,7 @@
   width: 50%;
 }
 .mr-size11 {
-  width: var(--size11, 50%);
+  width: var(--size-11, 50%);
 }
 .mr-3perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
 .mr-size10,
@@ -140,7 +140,7 @@
   width: 33.33333333333333%;
 }
 .mr-size10 {
-  width: var(--size10, 33.33333333333333%);
+  width: var(--size-10, 33.33333333333333%);
 }
 .mr-4perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
 .mr-size9,
@@ -148,7 +148,7 @@
   width: 25%;
 }
 .mr-size9 {
-  width: var(--size9, 25%);
+  width: var(--size-9, 25%);
 }
 .mr-5perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
 .mr-size8,
@@ -156,7 +156,7 @@
   width: 20%;
 }
 .mr-size8 {
-  width: var(--size8, 20%);
+  width: var(--size-8, 20%);
 }
 .mr-6perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
 .mr-size7,
@@ -164,7 +164,7 @@
   width: 16.66666666666667%;
 }
 .mr-size7 {
-  width: var(--size7, 16.66666666666667%);
+  width: var(--size-7, 16.66666666666667%);
 }
 .mr-7perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
 .mr-size6,
@@ -173,7 +173,7 @@
 }
 .mr-size6,
 .mr-mediumsize {
-  width: var(--size6, 14.28571428571429%);
+  width: var(--size-6, 14.28571428571429%);
 }
 .mr-8perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
 .mr-size5,
@@ -181,7 +181,7 @@
   width: 12.5%;
 }
 .mr-size5 {
-  width: var(--size5, 12.5%);
+  width: var(--size-5, 12.5%);
 }
 .mr-9perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
 .mr-size4,
@@ -189,7 +189,7 @@
   width: 11.11111111111111%;
 }
 .mr-size4 {
-  width: var(--size4, 11.11111111111111%);
+  width: var(--size-4, 11.11111111111111%);
 }
 .mr-10perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
 .mr-size3,
@@ -197,7 +197,7 @@
   width: 10%;
 }
 .mr-size3 {
-  width: var(--size3, 10%);
+  width: var(--size-3, 10%);
 }
 .mr-11perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
 .mr-size2,
@@ -205,7 +205,7 @@
   width: 9.090909090909091%;
 }
 .mr-size2 {
-  width: var(--size2, 9.090909090909091%);
+  width: var(--size-2, 9.090909090909091%);
 }
 .mr-12perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
 .mr-size1,
@@ -214,7 +214,7 @@
 }
 .mr-size1,
 .mr-smallsize {
-  width: var(--size1, 8.333333333333333%);
+  width: var(--size-1, 8.333333333333333%);
 }
 .mr-sizeauto,
 .mr-widthauto {
@@ -222,27 +222,27 @@
 }
 .mr-fontsize7,
 .mr-largefontsize {
-  font-size: var(--heading-1, 2rem);
+  font-size: var(--font-size-7, 2rem);
 }
 .mr-fontsize6 {
-  font-size: var(--heading-2, 1.5rem);
+  font-size: var(--font-size-6, 1.125rem);
 }
 .mr-fontsize5,
 .mr-mediumfontsize {
-  font-size: var(--heading-3, 1.17rem);
+  font-size: var(--font-size-5, 1.17rem);
 }
 .mr-fontsize4 {
-  font-size: var(--heading-4, 1rem);
+  font-size: var(--font-size-4, 1rem);
 }
 .mr-fontsize3 {
-  font-size: var(--text, 1rem);
+  font-size: var(--font-size-3, 0.875rem);
 }
 .mr-fontsize2 {
-  font-size: var(--heading-5, 0.83rem);
+  font-size: var(--font-size-2, 0.75rem);
 }
 .mr-fontsize1,
 .mr-smallfontsize {
-  font-size: var(--heading-6, 0.67rem);
+  font-size: var(--font-size-1, 0.625rem);
 }
 .mr-orderfirst,
 .mr-order-1 {
