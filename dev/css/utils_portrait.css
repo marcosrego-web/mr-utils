@@ -353,7 +353,8 @@
 .mr-portrait-swipe,
 .mr-portrait-swipecontent > *,
 .mr-portrait-drag,
-.mr-portrait-dragcontent > * {
+.mr-portrait-dragcontent > *,
+.mr-portrait-draganddrop:not([draggable="false"]) {
   cursor: grab;
 }
 .mr-portrait-dragging,

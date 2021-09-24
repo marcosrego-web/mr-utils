@@ -353,7 +353,8 @@
 .mr-desktop-swipe,
 .mr-desktop-swipecontent > *,
 .mr-desktop-drag,
-.mr-desktop-dragcontent > * {
+.mr-desktop-dragcontent > *,
+.mr-desktop-draganddrop:not([draggable="false"]) {
   cursor: grab;
 }
 .mr-desktop-dragging,
