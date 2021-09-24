@@ -237,7 +237,7 @@ document.addEventListener("DOMContentLoaded", function () {
     mrThemeColors();
   }
   const eles = document.querySelectorAll(
-    "[class*='-drag'],[class*='-dragcontent'] > *, [class*='-swipe'],[class*='-swipecontent'] > *"
+    "[class*='-drag']:not([class*='-dragcontent']):not([class*='-draganddrop']),[class*='-dragcontent'] > *, [class*='-swipe']:not([class*='-swipecontent']),[class*='-swipecontent'] > *"
   );
   for (id = 0; id < eles.length; id++) {
     const ele = eles[id];

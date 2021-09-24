@@ -353,7 +353,8 @@
 .mr-landscape-swipe,
 .mr-landscape-swipecontent > *,
 .mr-landscape-drag,
-.mr-landscape-dragcontent > * {
+.mr-landscape-dragcontent > *,
+.mr-landscape-draganddrop:not([draggable="false"]) {
   cursor: grab;
 }
 .mr-landscape-dragging,

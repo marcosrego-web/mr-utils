@@ -353,7 +353,8 @@
 .mr-tablet-swipe,
 .mr-tablet-swipecontent > *,
 .mr-tablet-drag,
-.mr-tablet-dragcontent > * {
+.mr-tablet-dragcontent > *,
+.mr-tablet-draganddrop:not([draggable="false"]) {
   cursor: grab;
 }
 .mr-tablet-dragging,
