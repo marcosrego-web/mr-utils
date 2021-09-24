@@ -357,7 +357,7 @@
 .mr-landscape-draganddrop:not([draggable="false"]) {
   cursor: grab;
 }
-.mr-landscape-dragging,
+.mr-landscape-dragging:not([draggable="false"]),
 .mr-landscape-draggingcontent > * {
   cursor: grabbing;
   -moz-user-select: none;

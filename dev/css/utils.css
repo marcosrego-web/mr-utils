@@ -358,7 +358,7 @@
 .mr-draganddrop:not([draggable="false"]) {
   cursor: grab;
 }
-.mr-dragging,
+.mr-dragging:not([draggable="false"]),
 .mr-draggingcontent > * {
   cursor: grabbing;
   -moz-user-select: none;

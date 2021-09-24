@@ -357,7 +357,7 @@
 .mr-phone-draganddrop:not([draggable="false"]) {
   cursor: grab;
 }
-.mr-phone-dragging,
+.mr-phone-dragging:not([draggable="false"]),
 .mr-phone-draggingcontent > * {
   cursor: grabbing;
   -moz-user-select: none;
