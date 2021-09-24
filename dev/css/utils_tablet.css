@@ -357,7 +357,7 @@
 .mr-tablet-draganddrop:not([draggable="false"]) {
   cursor: grab;
 }
-.mr-tablet-dragging,
+.mr-tablet-dragging:not([draggable="false"]),
 .mr-tablet-draggingcontent > * {
   cursor: grabbing;
   -moz-user-select: none;
