@@ -2,7 +2,7 @@
 [class*="mr-"][class*="hidden"],
 [class*="mr-"][class*="none"] {
   display: block !important;
-  opacity: 1 !important;
+  opacity: 0.5 !important;
   visibility: visible !important;
 }
 .mr-flex[class*="mr-"][class*="hide"],
