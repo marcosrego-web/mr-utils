@@ -1,0 +1,29 @@
+[class*="mr-"][class*="hide"],
+[class*="mr-"][class*="hidden"],
+[class*="mr-"][class*="none"] {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+.mr-flex[class*="mr-"][class*="hide"],
+.mr-flex[class*="mr-"][class*="hidden"],
+.mr-flex[class*="mr-"][class*="none"],
+.mr-horizontalscroll,
+.mr-horizontalscrollcontent > *,
+.mr-swipe,
+.mr-swipecontent > * {
+  display: flex !important;
+}
+
+.mr-horizontalscroll,
+.mr-horizontalscrollcontent > *,
+.mr-swipe,
+.mr-swipecontent > * {
+  flex-wrap: wrap !important;
+}
+
+.mr-hidescroll::-webkit-scrollbar,
+.mr-swipe::-webkit-scrollbar,
+.mr-swipecontent > *::-webkit-scrollbar {
+  width: auto !important;
+}
