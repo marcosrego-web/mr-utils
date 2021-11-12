@@ -27,3 +27,24 @@
 .mr-swipecontent > *::-webkit-scrollbar {
   width: auto !important;
 }
+
+.mr-backend-tabs > .components-tab-panel__tabs {
+  flex-wrap: wrap;
+}
+
+.mr-backend-tabs .components-panel__body-toggle {
+  text-transform: capitalize;
+}
+
+.mr-backend-tab {
+  width: 33.333%;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.mr-backend-tab svg {
+  width: 100%;
+  max-width: 24px;
+  height: auto;
+  margin: 0 auto;
+}

@@ -93,47 +93,47 @@ function mrThemeColors() {
   document.querySelector("body").classList.remove("mr-darkcolors");
   document.querySelector("body").classList.remove("mr-lightcolors");
   document.cookie = "mrColors=mrColors; max-age=0; path=/";
+  const colorToggles = document.querySelectorAll(".mr-togglecolors");
+  if (colorToggles) {
+    for (id = 0; id < colorToggles.length; id++) {
+      colorToggles[id].classList.remove("mr-darkcolors");
+      colorToggles[id].classList.remove("mr-lightcolors");
+    }
+  }
 }
 function mrDarkColors() {
   document.querySelector("body").classList.remove("mr-lightcolors");
   document.querySelector("body").classList.add("mr-darkcolors");
   document.cookie = "mrColors=mrDarkColors; max-age=31536000; path=/";
+  const colorToggles = document.querySelectorAll(".mr-togglecolors");
+  if (colorToggles) {
+    for (id = 0; id < colorToggles.length; id++) {
+      colorToggles[id].classList.remove("mr-lightcolors");
+      colorToggles[id].classList.add("mr-darkcolors");
+    }
+  }
 }
 function mrLightColors() {
   document.querySelector("body").classList.remove("mr-darkcolors");
   document.querySelector("body").classList.add("mr-lightcolors");
   document.cookie = "mrColors=mrLightColors; max-age=31536000; path=/";
+  const colorToggles = document.querySelectorAll(".mr-togglecolors");
+  if (colorToggles) {
+    for (id = 0; id < colorToggles.length; id++) {
+      colorToggles[id].classList.remove("mr-darkcolors");
+      colorToggles[id].classList.add("mr-lightcolors");
+    }
+  }
 }
 function mrToggleColors() {
   if (document.querySelector("body").classList.contains("mr-darkcolors")) {
     mrLightColors();
-    const colorToggles = document.querySelectorAll(".mr-togglecolors");
-    if (colorToggles) {
-      for (id = 0; id < colorToggles.length; id++) {
-        colorToggles[id].classList.remove("mr-darkcolors");
-        colorToggles[id].classList.add("mr-lightcolors");
-      }
-    }
   } else if (
     document.querySelector("body").classList.contains("mr-lightcolors")
   ) {
     mrThemeColors();
-    const colorToggles = document.querySelectorAll(".mr-togglecolors");
-    if (colorToggles) {
-      for (id = 0; id < colorToggles.length; id++) {
-        colorToggles[id].classList.remove("mr-darkcolors");
-        colorToggles[id].classList.remove("mr-lightcolors");
-      }
-    }
   } else {
     mrDarkColors();
-    const colorToggles = document.querySelectorAll(".mr-togglecolors");
-    if (colorToggles) {
-      for (id = 0; id < colorToggles.length; id++) {
-        colorToggles[id].classList.remove("mr-lightcolors");
-        colorToggles[id].classList.add("mr-darkcolors");
-      }
-    }
   }
 }
 function mrToggleOffCanvas() {

@@ -107,9 +107,12 @@
   flex-wrap: nowrap !important;
 }
 .mr-portrait-section,
-.mr-portrait-0perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
-.mr-portrait-1perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
-.mr-portrait-perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
+.mr-portrait-0perline
+  > *:not([class*="mr-portrait-size"]):not([class*="mr-portrait-width"]),
+.mr-portrait-1perline
+  > *:not([class*="mr-portrait-size"]):not([class*="mr-portrait-width"]),
+.mr-portrait-perline
+  > *:not([class*="mr-portrait-size"]):not([class*="mr-portrait-width"]),
 .mr-portrait-size13,
 .mr-portrait-width100 {
   width: 100%;
@@ -125,7 +128,8 @@
 .mr-portrait-size12 {
   width: var(--size-12, 75%);
 }
-.mr-portrait-2perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
+.mr-portrait-2perline
+  > *:not([class*="mr-portrait-size"]):not([class*="mr-portrait-width"]),
 .mr-portrait-size11,
 .mr-portrait-width50 {
   width: 50%;
@@ -133,7 +137,8 @@
 .mr-portrait-size11 {
   width: var(--size-11, 50%);
 }
-.mr-portrait-3perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
+.mr-portrait-3perline
+  > *:not([class*="mr-portrait-size"]):not([class*="mr-portrait-width"]),
 .mr-portrait-size10,
 .mr-portrait-width33 {
   width: 33.33333333333333%;
@@ -141,7 +146,8 @@
 .mr-portrait-size10 {
   width: var(--size-10, 33.33333333333333%);
 }
-.mr-portrait-4perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
+.mr-portrait-4perline
+  > *:not([class*="mr-portrait-size"]):not([class*="mr-portrait-width"]),
 .mr-portrait-size9,
 .mr-portrait-width25 {
   width: 25%;
@@ -149,7 +155,8 @@
 .mr-portrait-size9 {
   width: var(--size-9, 25%);
 }
-.mr-portrait-5perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
+.mr-portrait-5perline
+  > *:not([class*="mr-portrait-size"]):not([class*="mr-portrait-width"]),
 .mr-portrait-size8,
 .mr-portrait-width20 {
   width: 20%;
@@ -157,7 +164,8 @@
 .mr-portrait-size8 {
   width: var(--size-8, 20%);
 }
-.mr-portrait-6perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
+.mr-portrait-6perline
+  > *:not([class*="mr-portrait-size"]):not([class*="mr-portrait-width"]),
 .mr-portrait-size7,
 .mr-portrait-width16 {
   width: 16.66666666666667%;
@@ -165,7 +173,8 @@
 .mr-portrait-size7 {
   width: var(--size-7, 16.66666666666667%);
 }
-.mr-portrait-7perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
+.mr-portrait-7perline
+  > *:not([class*="mr-portrait-size"]):not([class*="mr-portrait-width"]),
 .mr-portrait-size6,
 .mr-portrait-width14 {
   width: 14.28571428571429%;
@@ -174,7 +183,8 @@
 .mr-portrait-mediumsize {
   width: var(--size-6, 14.28571428571429%);
 }
-.mr-portrait-8perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
+.mr-portrait-8perline
+  > *:not([class*="mr-portrait-size"]):not([class*="mr-portrait-width"]),
 .mr-portrait-size5,
 .mr-portrait-width12 {
   width: 12.5%;
@@ -182,7 +192,8 @@
 .mr-portrait-size5 {
   width: var(--size-5, 12.5%);
 }
-.mr-portrait-9perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
+.mr-portrait-9perline
+  > *:not([class*="mr-portrait-size"]):not([class*="mr-portrait-width"]),
 .mr-portrait-size4,
 .mr-portrait-width11 {
   width: 11.11111111111111%;
@@ -190,7 +201,8 @@
 .mr-portrait-size4 {
   width: var(--size-4, 11.11111111111111%);
 }
-.mr-portrait-10perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
+.mr-portrait-10perline
+  > *:not([class*="mr-portrait-size"]):not([class*="mr-portrait-width"]),
 .mr-portrait-size3,
 .mr-portrait-width10 {
   width: 10%;
@@ -198,7 +210,8 @@
 .mr-portrait-size3 {
   width: var(--size-3, 10%);
 }
-.mr-portrait-11perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
+.mr-portrait-11perline
+  > *:not([class*="mr-portrait-size"]):not([class*="mr-portrait-width"]),
 .mr-portrait-size2,
 .mr-portrait-width9 {
   width: 9.090909090909091%;
@@ -206,7 +219,8 @@
 .mr-portrait-size2 {
   width: var(--size-2, 9.090909090909091%);
 }
-.mr-portrait-12perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
+.mr-portrait-12perline
+  > *:not([class*="mr-portrait-size"]):not([class*="mr-portrait-width"]),
 .mr-portrait-size1,
 .mr-portrait-width8 {
   width: 8.333333333333333%;
@@ -417,25 +431,47 @@
   position: -webkit-sticky;
   position: sticky;
 }
+.mr-portrait-aligntop {
+  vertical-align: top;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+.mr-portrait-alignright {
+  text-align: right;
+}
+.mr-portrait-alignbottom {
+  align-items: flex-end;
+  align-content: flex-end;
+  vertical-align: bottom;
+}
 .mr-portrait-alignleft {
   text-align: left;
 }
 .mr-portrait-aligncenter {
   text-align: center;
 }
-.mr-portrait-alignright {
-  text-align: right;
-}
 .mr-portrait-top {
   top: 0;
   bottom: auto;
-  margin-top: 0;
-  align-items: flex-start;
-  vertical-align: top;
+}
+.mr-portrait-right {
+  right: 0;
+  left: auto;
 }
 .mr-portrait-middle {
   align-items: center;
+  align-content: center;
   vertical-align: middle;
+}
+.mr-portrait-left {
+  left: 0;
+  right: auto;
+}
+.mr-portrait-floatleft {
+  float: left;
+}
+.mr-portrait-floatright {
+  float: right;
 }
 .mr-portrait-center,
 .mr-portrait-marginauto {
@@ -445,9 +481,6 @@
 .mr-portrait-bottom {
   bottom: 0;
   top: auto;
-  margin-bottom: 0;
-  align-items: flex-end;
-  vertical-align: bottom;
 }
 .mr-portrait-baseline {
   align-items: baseline;
