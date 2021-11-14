@@ -486,3 +486,27 @@
   align-items: baseline;
   vertical-align: baseline;
 }
+.mr-tablet-offsettop:not(.mr-tablet-offsetleft):not(.mr-tablet-offsetright) {
+  transform: translateY(-100%);
+}
+.mr-tablet-offsettop.mr-tablet-offsetleft {
+  transform: translate(-100%, -100%);
+}
+.mr-tablet-offsettop.mr-tablet-offsetright {
+  transform: translate(100%, -100%);
+}
+.mr-tablet-offsetright:not(.mr-tablet-offsettop):not(.mr-tablet-offsetbottom) {
+  transform: translateX(100%);
+}
+.mr-tablet-offsetbottom:not(.mr-tablet-offsetleft):not(.mr-tablet-offsetright) {
+  transform: translateY(100%);
+}
+.mr-tablet-offsetbottom.mr-tablet-offsetleft {
+  transform: translate(-100%, 100%);
+}
+.mr-tablet-offsetbottom.mr-tablet-offsetright {
+  transform: translate(100%, 100%);
+}
+.mr-tablet-offsetleft:not(.mr-tablet-offsettop):not(.mr-tablet-offsetbottom) {
+  transform: translateX(-100%);
+}
