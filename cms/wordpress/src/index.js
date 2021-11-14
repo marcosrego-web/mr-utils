@@ -832,6 +832,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																)}
 																value={mrPerPage}
 																type="number"
+																className="mr-backend-perpage"
 																onChange={(val) =>
 																	setAttributes({
 																		mrPerPage: val === undefined ? "" : val,
@@ -851,6 +852,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																	<ToggleControl
 																		label="Arrows"
 																		checked={mrArrowPagination}
+																		className="mr-backend-perpage"
 																		onChange={() =>
 																			setAttributes({
 																				mrArrowPagination: !mrArrowPagination,
@@ -860,6 +862,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																	<ToggleControl
 																		label="Select dropdown"
 																		checked={mrSelectPagination}
+																		className="mr-backend-perpage"
 																		onChange={() =>
 																			setAttributes({
 																				mrSelectPagination: !mrSelectPagination,
@@ -869,6 +872,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																	<ToggleControl
 																		label="Radio buttons"
 																		checked={mrRadioPagination}
+																		className="mr-backend-perpage"
 																		onChange={() =>
 																			setAttributes({
 																				mrRadioPagination: !mrRadioPagination,
@@ -2957,6 +2961,11 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 												<li>
 													- Change the value of each variable (for margin,
 													padding, transition-duration, font-size and more).
+												</li>
+												<li>
+													- (coming soon) Enable only the utilities' categories
+													and components that you want to use, avoiding unused
+													CSS and JS.
 												</li>
 												<li>- And more framework features...</li>
 											</ul>

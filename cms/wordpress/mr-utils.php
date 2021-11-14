@@ -3,6 +3,18 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
+function mrutils_plugin_notice() {
+    if(is_plugin_active('mrdev-framework_wp/mrdev-framework_wp.php') && is_plugin_active('mr-utils/index.php')) {
+        ?>
+        <div class="notice notice-error is-dismissible">
+            <p><?php _e( "<b>Mr.Utils is already included with Mr.Dev.'s Framework!</b> Feel free to delete the Mr.Utils plugin and enable Mr.<b>Utils Backend</b> on Mr.Dev.'s Framework settings.", 'mrutils' ); ?></p>
+        </div>
+        <?php
+        deactivate_plugins( 'mr-utils/index.php' );
+    }
+}
+add_action( 'admin_notices', 'mrutils_plugin_notice' );
+
 function mrutils_enqueue_block_editor_assets() {
     global $mrutils_version,$mrdev_config_cssutils;
     if(!is_plugin_active('mrdev-framework_wp/mrdev-framework_wp.php') || in_array('mrdev_utils_backend',$mrdev_config_cssutils)) {
@@ -26,13 +38,13 @@ function mrutils_enqueue_block_editor_assets() {
 add_action( 'enqueue_block_editor_assets', 'mrutils_enqueue_block_editor_assets' );
 
 function mrutils_enqueue_mrutils_assets() {
-    //if(!is_plugin_active('mrdev-framework_wp/mrdev-framework_wp.php')) {
-        global $mrutils_version;
+    global $mrutils_version,$mrdev_version;
+    if(!isset($mrdev_version)) {
         wp_enqueue_style(
-            'mrutils-utils',
-            esc_url( plugins_url( '../../css/utils.css', __FILE__ ) ),
-            array( ),
-            $mrutils_version
+                'mrutils-utils',
+                esc_url( plugins_url( '../../css/utils.css', __FILE__ ) ),
+                array( ),
+                $mrutils_version
         );
         wp_enqueue_style(
             'mrutils-utils_desktop',
@@ -83,7 +95,7 @@ function mrutils_enqueue_mrutils_assets() {
             $mrutils_version,
             true
         );
-    //}
+    }
 }
 
 add_action( 'wp_enqueue_scripts', 'mrutils_enqueue_mrutils_assets');

@@ -10,7 +10,7 @@
  * Author uri:		 	https://marcosrego.com
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       mrutils
+ * Text Domain:       mr-utils
  *
  * @package           create-block
  */
@@ -22,4 +22,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $mrutils_version = '0.1.0';
 
-include 'cms/wordpress/mrutils.php';
+include 'cms/wordpress/mr-utils.php';
