@@ -1,1 +1,3562 @@
-!function(){var e={184:function(e,t){var a;!function(){"use strict";var n={}.hasOwnProperty;function l(){for(var e=[],t=0;t<arguments.length;t++){var a=arguments[t];if(a){var r=typeof a;if("string"===r||"number"===r)e.push(a);else if(Array.isArray(a)){if(a.length){var o=l.apply(null,a);o&&e.push(o)}}else if("object"===r)if(a.toString===Object.prototype.toString)for(var i in a)n.call(a,i)&&a[i]&&e.push(i);else e.push(a.toString())}}return e.join(" ")}e.exports?(l.default=l,e.exports=l):void 0===(a=function(){return l}.apply(t,[]))||(e.exports=a)}()}},t={};function a(n){var l=t[n];if(void 0!==l)return l.exports;var r=t[n]={exports:{}};return e[n](r,r.exports,a),r.exports}a.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return a.d(t,{a:t}),t},a.d=function(e,t){for(var n in t)a.o(t,n)&&!a.o(e,n)&&Object.defineProperty(e,n,{enumerable:!0,get:t[n]})},a.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},function(){"use strict";function e(){return e=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var a=arguments[t];for(var n in a)Object.prototype.hasOwnProperty.call(a,n)&&(e[n]=a[n])}return e},e.apply(this,arguments)}var t=window.wp.element,n=a(184),l=a.n(n),r=window.wp.i18n,o=window.wp.hooks,i=window.wp.compose,m=window.wp.blockEditor,p=window.wp.components,d=window.wp.primitives,s=(0,t.createElement)(d.SVG,{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 24 24"},(0,t.createElement)(d.Path,{d:"M14.5 13.8c-1.1 0-2.1.7-2.4 1.8H4V17h8.1c.3 1 1.3 1.8 2.4 1.8s2.1-.7 2.4-1.8H20v-1.5h-3.1c-.3-1-1.3-1.7-2.4-1.7zM11.9 7c-.3-1-1.3-1.8-2.4-1.8S7.4 6 7.1 7H4v1.5h3.1c.3 1 1.3 1.8 2.4 1.8s2.1-.7 2.4-1.8H20V7h-8.1z"})),c=(0,t.createElement)(d.SVG,{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 24 24"},(0,t.createElement)(d.Path,{d:"M18.5 5.5h-13c-1.1 0-2 .9-2 2v9c0 1.1.9 2 2 2h13c1.1 0 2-.9 2-2v-9c0-1.1-.9-2-2-2zm.5 11c0 .3-.2.5-.5.5h-13c-.3 0-.5-.2-.5-.5v-9c0-.3.2-.5.5-.5h13c.3 0 .5.2.5.5v9zM6.5 12H8v-2h2V8.5H6.5V12zm9.5 2h-2v1.5h3.5V12H16v2z"})),u=(0,t.createElement)(d.SVG,{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 24 24"},(0,t.createElement)(d.Path,{d:"M20.5 16h-.7V8c0-1.1-.9-2-2-2H6.2c-1.1 0-2 .9-2 2v8h-.7c-.8 0-1.5.7-1.5 1.5h20c0-.8-.7-1.5-1.5-1.5zM5.7 8c0-.3.2-.5.5-.5h11.6c.3 0 .5.2.5.5v7.6H5.7V8z"})),g=(0,t.createElement)(d.SVG,{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 24 24"},(0,t.createElement)(d.Path,{d:"M17 4H7c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm.5 14c0 .3-.2.5-.5.5H7c-.3 0-.5-.2-.5-.5V6c0-.3.2-.5.5-.5h10c.3 0 .5.2.5.5v12zm-7.5-.5h4V16h-4v1.5z"})),v=(0,t.createElement)(d.SVG,{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 24 24"},(0,t.createElement)(d.Path,{d:"M15 4H9c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm.5 14c0 .3-.2.5-.5.5H9c-.3 0-.5-.2-.5-.5V6c0-.3.2-.5.5-.5h6c.3 0 .5.2.5.5v12zm-4.5-.5h2V16h-2v1.5z"})),h=(0,t.createElement)(d.SVG,{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 24 24"},(0,t.createElement)(d.Path,{d:"M18 11.2h-5.2V6h-1.6v5.2H6v1.6h5.2V18h1.6v-5.2H18z"})),b=(0,t.createElement)(d.SVG,{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 24 24"},(0,t.createElement)(d.Path,{d:"M21.3 10.8l-5.6-5.6c-.7-.7-1.8-.7-2.5 0l-5.6 5.6c-.7.7-.7 1.8 0 2.5l5.6 5.6c.3.3.8.5 1.2.5s.9-.2 1.2-.5l5.6-5.6c.8-.7.8-1.9.1-2.5zm-1 1.4l-5.6 5.6c-.1.1-.3.1-.4 0l-5.6-5.6c-.1-.1-.1-.3 0-.4l5.6-5.6s.1-.1.2-.1.1 0 .2.1l5.6 5.6c.1.1.1.3 0 .4zm-16.6-.4L10 5.5l-1-1-6.3 6.3c-.7.7-.7 1.8 0 2.5L9 19.5l1.1-1.1-6.3-6.3c-.2 0-.2-.2-.1-.3z"})),f=(0,t.createElement)(d.SVG,{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 24 24"},(0,t.createElement)(d.Path,{d:"M18 5.5H6a.5.5 0 00-.5.5v3h13V6a.5.5 0 00-.5-.5zm.5 5H10v8h8a.5.5 0 00.5-.5v-7.5zm-10 0h-3V18a.5.5 0 00.5.5h2.5v-8zM6 4h12a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2z"})),P=(0,t.createElement)(d.SVG,{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 24 24"},(0,t.createElement)(d.Path,{d:"M5 17.7c.4.5.8.9 1.2 1.2l1.1-1.4c-.4-.3-.7-.6-1-1L5 17.7zM5 6.3l1.4 1.1c.3-.4.6-.7 1-1L6.3 5c-.5.4-.9.8-1.3 1.3zm.1 7.8l-1.7.5c.2.6.4 1.1.7 1.6l1.5-.8c-.2-.4-.4-.8-.5-1.3zM4.8 12v-.7L3 11.1v1.8l1.7-.2c.1-.2.1-.5.1-.7zm3 7.9c.5.3 1.1.5 1.6.7l.5-1.7c-.5-.1-.9-.3-1.3-.5l-.8 1.5zM19 6.3c-.4-.5-.8-.9-1.2-1.2l-1.1 1.4c.4.3.7.6 1 1L19 6.3zm-.1 3.6l1.7-.5c-.2-.6-.4-1.1-.7-1.6l-1.5.8c.2.4.4.8.5 1.3zM5.6 8.6l-1.5-.8c-.3.5-.5 1-.7 1.6l1.7.5c.1-.5.3-.9.5-1.3zm2.2-4.5l.8 1.5c.4-.2.8-.4 1.3-.5l-.5-1.7c-.6.2-1.1.4-1.6.7zm8.8 13.5l1.1 1.4c.5-.4.9-.8 1.2-1.2l-1.4-1.1c-.2.3-.5.6-.9.9zm1.8-2.2l1.5.8c.3-.5.5-1.1.7-1.6l-1.7-.5c-.1.5-.3.9-.5 1.3zm2.6-4.3l-1.7.2v1.4l1.7.2V12v-.9zM11.1 3l.2 1.7h1.4l.2-1.7h-1.8zm3 2.1c.5.1.9.3 1.3.5l.8-1.5c-.5-.3-1.1-.5-1.6-.7l-.5 1.7zM12 19.2h-.7l-.2 1.8h1.8l-.2-1.7c-.2-.1-.5-.1-.7-.1zm2.1-.3l.5 1.7c.6-.2 1.1-.4 1.6-.7l-.8-1.5c-.4.2-.8.4-1.3.5z"})),k=(0,t.createElement)(d.SVG,{viewBox:"0 0 24 24",xmlns:"http://www.w3.org/2000/svg"},(0,t.createElement)(d.Path,{d:"M12.5 4.2v1.6h4.7L5.8 17.2V12H4.2v7.8H12v-1.6H6.8L18.2 6.8v4.7h1.6V4.2z"})),y=(0,t.createElement)(d.SVG,{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 24 24"},(0,t.createElement)(d.Path,{d:"M6.9 7L3 17.8h1.7l1-2.8h4.1l1 2.8h1.7L8.6 7H6.9zm-.7 6.6l1.5-4.3 1.5 4.3h-3zM21.6 17c-.1.1-.2.2-.3.2-.1.1-.2.1-.4.1s-.3-.1-.4-.2c-.1-.1-.1-.3-.1-.6V12c0-.5 0-1-.1-1.4-.1-.4-.3-.7-.5-1-.2-.2-.5-.4-.9-.5-.4 0-.8-.1-1.3-.1s-1 .1-1.4.2c-.4.1-.7.3-1 .4-.2.2-.4.3-.6.5-.1.2-.2.4-.2.7 0 .3.1.5.2.8.2.2.4.3.8.3.3 0 .6-.1.8-.3.2-.2.3-.4.3-.7 0-.3-.1-.5-.2-.7-.2-.2-.4-.3-.6-.4.2-.2.4-.3.7-.4.3-.1.6-.1.8-.1.3 0 .6 0 .8.1.2.1.4.3.5.5.1.2.2.5.2.9v1.1c0 .3-.1.5-.3.6-.2.2-.5.3-.9.4-.3.1-.7.3-1.1.4-.4.1-.8.3-1.1.5-.3.2-.6.4-.8.7-.2.3-.3.7-.3 1.2 0 .6.2 1.1.5 1.4.3.4.9.5 1.6.5.5 0 1-.1 1.4-.3.4-.2.8-.6 1.1-1.1 0 .4.1.7.3 1 .2.3.6.4 1.2.4.4 0 .7-.1.9-.2.2-.1.5-.3.7-.4h-.3zm-3-.9c-.2.4-.5.7-.8.8-.3.2-.6.2-.8.2-.4 0-.6-.1-.9-.3-.2-.2-.3-.6-.3-1.1 0-.5.1-.9.3-1.2s.5-.5.8-.7c.3-.2.7-.3 1-.5.3-.1.6-.3.7-.6v3.4z"})),S=(0,t.createElement)(d.SVG,{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 24 24"},(0,t.createElement)(d.Path,{d:"M4 18h6V6H4v12zm9-9.5V10h7V8.5h-7zm0 7h7V14h-7v1.5z"})),z=(0,t.createElement)(d.SVG,{xmlns:"http://www.w3.org/2000/svg",viewBox:"-2 -2 24 24"},(0,t.createElement)(d.Path,{d:"M10 1c-5 0-9 4-9 9s4 9 9 9 9-4 9-9-4-9-9-9zm0 16c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7zm1-11H9v3H6v2h3v3h2v-3h3V9h-3V6zM10 1c-5 0-9 4-9 9s4 9 9 9 9-4 9-9-4-9-9-9zm0 16c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7zm1-11H9v3H6v2h3v3h2v-3h3V9h-3V6z"}));const M=["core/archives","core/audio","core/buttons","core/button","core/categories","core/code","core/column","core/columns","core/group","core/cover","core/coverImage","core/embed","core/file","core/gallery","core/heading","core/html","core/image","core/latest-comments","core/latest-posts","core/latestComments","core/latestPosts","core/list","core/paragraph","core/preformatted","core/pullquote","core/quote","core/reusableBlock","core/separator","core/shortcode","core/subhead","core/table","core/textColumns","core/verse","core/video","core/query-title","core/post-terms"],w=wp.element.createElement("svg",{width:20,height:20},wp.element.createElement("path",{d:"M11.361,13.455c0,0.252-0.51,0.456-1.141,0.456s-1.141-0.204-1.141-0.456c0-0.252,0.51-0.457,1.141-0.457   S11.361,13.203,11.361,13.455z M20.029,12.448c0,1.34-0.843,2.479-2.002,2.859c-1.487,2.854-4.476,4.697-7.792,4.697   c-3.313,0-6.299-1.837-7.786-4.686c-1.177-0.368-2.037-1.515-2.037-2.87c0-0.828,0.325-1.577,0.844-2.12   C0.89,9.954,0.612,9.477,0.451,8.916C0.177,7.969,0.26,6.904,0.686,5.918C1.194,4.739,2.13,3.852,3.18,3.485   c0.237-2.627,4.676-3.569,7.611-3.478c4.147,0.13,5.12,2.016,5.292,3.322c1.331,0.148,2.594,1.146,3.215,2.589   c0.424,0.986,0.509,2.051,0.236,2.998c-0.129,0.449-0.334,0.845-0.597,1.177C19.6,10.639,20.029,11.493,20.029,12.448z    M11.434,17.606l-0.216-0.967H9.236l-0.222,0.964c0.304-0.136,0.73-0.223,1.207-0.223C10.7,17.38,11.129,17.468,11.434,17.606z    M18.203,12.448c0-0.646-0.454-1.169-1.021-1.169c0,0-0.001,0-0.002,0c-0.155,0.25-0.333,0.489-0.534,0.718   c0.126-0.409,0.21-0.826,0.256-1.244c0-0.006-0.001-0.012-0.001-0.018c-0.595-0.317-1.205-1-1.625-1.901   c-0.438-0.939-0.562-1.886-0.395-2.549c-1.687,1.07-4.545,0.562-4.545,0.562c-1.71,0.114-2.167,2.281-2.167,2.281   C7.374,8.952,6.549,8.401,5.831,7.79C5.754,8.129,5.635,8.482,5.47,8.834c-0.489,1.05-1.237,1.805-1.917,2.026   c0.047,0.382,0.127,0.762,0.242,1.135c-0.202-0.229-0.379-0.468-0.534-0.718c-0.001,0-0.001-0.001-0.002-0.001   c-0.568,0-1.022,0.523-1.022,1.17c0,0.646,0.455,1.168,1.022,1.168c0.142,0,0.276-0.032,0.399-0.091   c0.124,0.361,0.279,0.708,0.459,1.038c1.016,0.359,2.496,1.069,3.199,2.279l0.304-1.321c0.095-0.414,0.464-0.708,0.889-0.708h3.44   c0.428,0,0.799,0.296,0.891,0.714l0.291,1.301c0.713-1.216,2.214-1.925,3.227-2.279c0.177-0.324,0.329-0.663,0.449-1.016   c0.115,0.051,0.241,0.083,0.373,0.083C17.749,13.616,18.203,13.092,18.203,12.448z M7.121,9.929c-0.566,0-1.027,0.46-1.027,1.026   s0.461,1.026,1.027,1.026s1.026-0.461,1.026-1.026S7.687,9.929,7.121,9.929z M13.32,9.929c-0.566,0-1.027,0.46-1.027,1.026   s0.461,1.026,1.027,1.026c0.565,0,1.026-0.461,1.026-1.026S13.885,9.929,13.32,9.929z"})),C=(0,i.createHigherOrderComponent)((e=>a=>{const{name:n,attributes:l,setAttributes:o,isSelected:i}=a,{mrAnimation:d,mrPerPage:C,mrArrowPagination:E,mrSelectPagination:A,mrRadioPagination:_,mrPerLine:O,mrPerLinedesktop:L,mrPerLinelaptop:T,mrPerLinetablet:x,mrPerLinephone:B,mrSize:R,mrSizedesktop:V,mrSizelaptop:H,mrSizetablet:D,mrSizephone:F,mrOrder:W,mrOrderdesktop:N,mrOrderlaptop:G,mrOrdertablet:U,mrOrderphone:j,mrDisplay:I,mrDisplaydesktop:q,mrDisplaylaptop:Z,mrDisplaytablet:K,mrDisplayphone:J,mrWrap:Y,mrWrapdesktop:Q,mrWraplaptop:X,mrWraptablet:$,mrWrapphone:ee,mrPaddingTop:te,mrPaddingTopdesktop:ae,mrPaddingToplaptop:ne,mrPaddingToptablet:le,mrPaddingTopphone:re,mrPaddingRight:oe,mrPaddingRightdesktop:ie,mrPaddingRightlaptop:me,mrPaddingRighttablet:pe,mrPaddingRightphone:de,mrPaddingBottom:se,mrPaddingBottomdesktop:ce,mrPaddingBottomlaptop:ue,mrPaddingBottomtablet:ge,mrPaddingBottomphone:ve,mrPaddingLeft:he,mrPaddingLeftdesktop:be,mrPaddingLeftlaptop:fe,mrPaddingLefttablet:Pe,mrPaddingLeftphone:ke,mrMarginTop:ye,mrMarginTopdesktop:Se,mrMarginToplaptop:ze,mrMarginToptablet:Me,mrMarginTopphone:we,mrMarginRight:Ce,mrMarginRightdesktop:Ee,mrMarginRightlaptop:Ae,mrMarginRighttablet:_e,mrMarginRightphone:Oe,mrMarginBottom:Le,mrMarginBottomdesktop:Te,mrMarginBottomlaptop:xe,mrMarginBottomtablet:Be,mrMarginBottomphone:Re,mrMarginLeft:Ve,mrMarginLeftdesktop:He,mrMarginLeftlaptop:De,mrMarginLefttablet:Fe,mrMarginLeftphone:We,mrPosition:Ne,mrPositiondesktop:Ge,mrPositionlaptop:Ue,mrPositiontablet:je,mrPositionphone:Ie,mrPositionAlignment:qe,mrPositionAlignmentdesktop:Ze,mrPositionAlignmentlaptop:Ke,mrPositionAlignmenttablet:Je,mrPositionAlignmentphone:Ye,mrPositionSides:Qe,mrPositionSidesdesktop:Xe,mrPositionSideslaptop:$e,mrPositionSidestablet:et,mrPositionSidesphone:tt,mrContentAlignment:at,mrContentAlignmentdesktop:nt,mrContentAlignmentlaptop:lt,mrContentAlignmenttablet:rt,mrContentAlignmentphone:ot,mrVerticalOffset:it,mrVerticalOffsetdesktop:mt,mrVerticalOffsetlaptop:pt,mrVerticalOffsettablet:dt,mrVerticalOffsetphone:st,mrHorizontalOffset:ct,mrHorizontalOffsetdesktop:ut,mrHorizontalOffsetlaptop:gt,mrHorizontalOffsettablet:vt,mrHorizontalOffsetphone:ht,mrFontSize:bt,mrFontSizedesktop:ft,mrFontSizelaptop:Pt,mrFontSizetablet:kt,mrFontSizephone:yt,mrTextAlignment:St,mrTextAlignmentdesktop:zt,mrTextAlignmentlaptop:Mt,mrTextAlignmenttablet:wt,mrTextAlignmentphone:Ct,mrScroll:Et,mrScrolldesktop:At,mrScrolllaptop:_t,mrScrolltablet:Ot,mrScrollphone:Lt}=l;return(0,t.createElement)(t.Fragment,null,(0,t.createElement)(e,a),i&&M.includes(n)&&(0,t.createElement)(m.InspectorControls,{key:"setting"},(0,t.createElement)(p.Panel,{header:""},(0,t.createElement)(p.PanelBody,{title:(0,r.__)("Utilities","mrutils"),initialOpen:!1},(0,t.createElement)(p.TabPanel,{className:"mr-backend-tabs",activeClass:"is-active",tabs:[{name:"",title:s,className:"mr-backend-tab mr-backend-tab_all"},{name:"desktop",title:c,className:"mr-backend-tab mr-backend-tab_desktop"},{name:"laptop",title:u,className:"mr-backend-tab mr-backend-tab_laptop"},{name:"tablet",title:g,className:"mr-backend-tab mr-backend-tab_tablet"},{name:"phone",title:v,className:"mr-backend-tab mr-backend-tab_phone"},{name:"more",title:h,className:"mr-backend-tab mr-backend-tab_more"}]},(e=>"more"!==e.name?(0,t.createElement)(t.Fragment,null,""===e.name?(0,t.createElement)(p.PanelBody,{icon:b,title:(0,r.__)("Animation","mrutils"),initialOpen:!1},(0,t.createElement)(p.SelectControl,{label:(0,r.__)("Animation","mrutils"),value:d,options:[{value:"",label:"Default"},{value:" mr-fade active",label:"Fade"},{value:" mr-slidetop active",label:"Slide Top"},{value:" mr-slideright active",label:"Slide Right"},{value:" mr-slidebottom active",label:"Slide Bottom"},{value:" mr-slideleft active",label:"Slide Left"},{value:" mr-scale active",label:"Scale"},{value:" mr-scaleright active",label:"Scale Right"},{value:" mr-scaleleft active",label:"Scale Left"},{value:" mr-zoom active",label:"Zoom"},{value:" mr-zoomright active",label:"Zoom Right"},{value:" mr-zoomleft active",label:"Zoom Left"}],onChange:e=>o({mrAnimation:void 0===e?"":e})})):"",(0,t.createElement)(p.PanelBody,{icon:f,title:e.name+(0,r.__)(" Layout","mrutils"),initialOpen:!1},""===e.name?(0,t.createElement)(t.Fragment,null,(0,t.createElement)(p.TextControl,{label:(0,r.__)("Number of items per page","mrutils"),value:C,type:"number",className:"mr-backend-perpage",onChange:e=>o({mrPerPage:void 0===e?"":e}),help:C>0?(0,r.__)("Pagination was applied but you need to preview the frontend to see the actual result.","mrutils"):""}),C>0?(0,t.createElement)(t.Fragment,null,(0,t.createElement)(p.ToggleControl,{label:"Arrows",checked:E,className:"mr-backend-perpage",onChange:()=>o({mrArrowPagination:!E})}),(0,t.createElement)(p.ToggleControl,{label:"Select dropdown",checked:A,className:"mr-backend-perpage",onChange:()=>o({mrSelectPagination:!A})}),(0,t.createElement)(p.ToggleControl,{label:"Radio buttons",checked:_,className:"mr-backend-perpage",onChange:()=>o({mrRadioPagination:!_})})):""):"",(0,t.createElement)(p.SelectControl,{label:(0,r.__)("Number of items per line","mrutils"),value:"desktop"===e.name?L:"laptop"===e.name?T:"tablet"===e.name?x:"phone"===e.name?B:O,options:""===e.name||"desktop"===e.name||"laptop"===e.name||"tablet"===e.name||"phone"===e.name?[{value:"",label:""},{value:(" mr-"+e.name+"-1perline").replace("--","-"),label:"1"},{value:(" mr-"+e.name+"-2perline").replace("--","-"),label:"2"},{value:(" mr-"+e.name+"-3perline").replace("--","-"),label:"3"},{value:(" mr-"+e.name+"-4perline").replace("--","-"),label:"4"},{value:(" mr-"+e.name+"-5perline").replace("--","-"),label:"5"},{value:(" mr-"+e.name+"-6perline").replace("--","-"),label:"6"},{value:(" mr-"+e.name+"-7perline").replace("--","-"),label:"7"},{value:(" mr-"+e.name+"-8perline").replace("--","-"),label:"8"},{value:(" mr-"+e.name+"-9perline").replace("--","-"),label:"9"},{value:(" mr-"+e.name+"-10perline").replace("--","-"),label:"10"},{value:(" mr-"+e.name+"-11perline").replace("--","-"),label:"11"},{value:(" mr-"+e.name+"-12perline").replace("--","-"),label:"12"},{value:(" mr-"+e.name+"-0perline").replace("--","-"),label:"∞"}]:"",onChange:e=>o({mrPerLine:void 0===e||""===e?"":e.includes("-desktop-")||e.includes("-laptop-")||e.includes("-tablet-")||e.includes("-phone-")?O:e.replace("--","-"),mrPerLinedesktop:void 0===e||""===e?"":void 0!==e&&e.includes("-desktop-")?e:L,mrPerLinelaptop:void 0===e||""===e?"":void 0!==e&&e.includes("-laptop-")?e:T,mrPerLinetablet:void 0===e||""===e?"":void 0!==e&&e.includes("-tablet-")?e:x,mrPerLinephone:void 0===e||""===e?"":void 0!==e&&e.includes("-phone-")?e:B})}),(0,t.createElement)(p.RangeControl,{label:(0,r.__)("Item size","mrutils"),value:"desktop"===e.name?V:"laptop"===e.name?H:"tablet"===e.name?D:"phone"===e.name?F:R,initialPosition:0,allowReset:!0,min:0,max:13,onChange:t=>o({mrSize:""===e.name?0===t||void 0===t?"":t:R,mrSizedesktop:"desktop"===e.name?0===t||void 0===t?"":t:V,mrSizelaptop:"laptop"===e.name?0===t||void 0===t?"":t:H,mrSizetablet:"tablet"===e.name?0===t||void 0===t?"":t:D,mrSizephone:"phone"===e.name?0===t||void 0===t?"":t:F})}),(0,t.createElement)(p.SelectControl,{label:(0,r.__)("Item order","mrutils"),value:"desktop"===e.name?N:"laptop"===e.name?G:"tablet"===e.name?U:"phone"===e.name?j:W,options:""===e.name||"desktop"===e.name||"laptop"===e.name||"tablet"===e.name||"phone"===e.name?[{value:"",label:""},{value:(" mr-"+e.name+"-order-1").replace("--","-"),label:"-1"},{value:(" mr-"+e.name+"-order1").replace("--","-"),label:"1"},{value:(" mr-"+e.name+"-order2").replace("--","-"),label:"2"},{value:(" mr-"+e.name+"-order3").replace("--","-"),label:"3"},{value:(" mr-"+e.name+"-order4").replace("--","-"),label:"4"},{value:(" mr-"+e.name+"-order5").replace("--","-"),label:"5"},{value:(" mr-"+e.name+"-order6").replace("--","-"),label:"6"},{value:(" mr-"+e.name+"-order7").replace("--","-"),label:"7"},{value:(" mr-"+e.name+"-order8").replace("--","-"),label:"8"},{value:(" mr-"+e.name+"-order9").replace("--","-"),label:"9"},{value:(" mr-"+e.name+"-order10").replace("--","-"),label:"10"},{value:(" mr-"+e.name+"-order11").replace("--","-"),label:"11"},{value:(" mr-"+e.name+"-order12").replace("--","-"),label:"12"}]:"",onChange:e=>o({mrOrder:void 0===e||""===e?"":e.includes("-desktop-")||e.includes("-laptop-")||e.includes("-tablet-")||e.includes("-phone-")?W:e.replace("--","-"),mrOrderdesktop:void 0===e||""===e?"":void 0!==e&&e.includes("-desktop-")?e:N,mrOrderlaptop:void 0===e||""===e?"":void 0!==e&&e.includes("-laptop-")?e:G,mrOrdertablet:void 0===e||""===e?"":void 0!==e&&e.includes("-tablet-")?e:U,mrOrderphone:void 0===e||""===e?"":void 0!==e&&e.includes("-phone-")?e:j})})),(0,t.createElement)(p.PanelBody,{icon:P,title:e.name+(0,r.__)(" Display","mrutils"),initialOpen:!1},(0,t.createElement)(p.SelectControl,{label:(0,r.__)("Visibility","mrutils"),value:"desktop"===e.name?q:"laptop"===e.name?Z:"tablet"===e.name?K:"phone"===e.name?J:I,options:[{value:"",label:"Default"},{value:(" mr-"+e.name+"-hide").replace("--","-"),label:"Hide"},{value:(" mr-"+e.name+"-show").replace("--","-"),label:"Show"},{value:(" mr-"+e.name+"-none").replace("--","-"),label:"None"},{value:(" mr-"+e.name+"-flex").replace("--","-"),label:"Flex"},{value:(" mr-"+e.name+"-block").replace("--","-"),label:"Block"},{value:(" mr-"+e.name+"-visible").replace("--","-"),label:"Visible"},{value:(" mr-"+e.name+"-hidden").replace("--","-"),label:"Hidden"}],onChange:e=>o({mrDisplay:void 0===e||""===e?"":e.includes("-desktop-")||e.includes("-laptop-")||e.includes("-tablet-")||e.includes("-phone-")?I:e.replace("--","-"),mrDisplaydesktop:void 0===e||""===e?"":void 0!==e&&e.includes("-desktop-")?e:q,mrDisplaylaptop:void 0===e||""===e?"":void 0!==e&&e.includes("-laptop-")?e:Z,mrDisplaytablet:void 0===e||""===e?"":void 0!==e&&e.includes("-tablet-")?e:K,mrDisplayphone:void 0===e||""===e?"":void 0!==e&&e.includes("-phone-")?e:J}),help:" mr-hidden"===I||" mr-hide"===I||" mr-none"===I||" mr-hidden"===q||" mr-hide"===q||" mr-none"===q||" mr-hidden"===Z||" mr-hide"===Z||" mr-none"===Z||" mr-hidden"===K||" mr-hide"===K||" mr-none"===K||" mr-hidden"===J||" mr-hide"===J||" mr-none"===J?(0,r.__)("An opacity was applied to the block in the backend so you can still see and select it. Preview the frontend to see the actual result.","mrutils"):(0,r.__)("")}),(0,t.createElement)(p.SelectControl,{label:(0,r.__)("Wrap","mrutils"),value:"desktop"===e.name?Q:"laptop"===e.name?X:"tablet"===e.name?$:"phone"===e.name?ee:Y,options:""===e.name||"desktop"===e.name||"laptop"===e.name||"tablet"===e.name||"phone"===e.name?[{value:"",label:"Default"},{value:(" mr-"+e.name+"-wrap").replace("--","-"),label:"Wrap"},{value:(" mr-"+e.name+"-nowrap").replace("--","-"),label:"No Wrap"}]:"",onChange:e=>o({mrWrap:void 0===e||""===e?"":e.includes("-desktop-")||e.includes("-laptop-")||e.includes("-tablet-")||e.includes("-phone-")?Y:e.replace("--","-"),mrWrapdesktop:void 0===e||""===e?"":void 0!==e&&e.includes("-desktop-")?e:Q,mrWraplaptop:void 0===e||""===e?"":void 0!==e&&e.includes("-laptop-")?e:X,mrWraptablet:void 0===e||""===e?"":void 0!==e&&e.includes("-tablet-")?e:$,mrWrapphone:void 0===e||""===e?"":void 0!==e&&e.includes("-phone-")?e:ee})})),(0,t.createElement)(p.PanelBody,{icon:k,title:e.name+(0,r.__)(" Spacing","mrutils"),initialOpen:!1},(0,t.createElement)(p.PanelRow,null,(0,t.createElement)(p.TabPanel,{className:"mr-width100",activeClass:"is-active",tabs:[{name:"paddings",title:"Paddings",className:"mr-backend-tab_paddings mr-width100"},{name:"margins",title:"Margins",className:"mr-backend-tab_margins mr-width100"}]},(a=>"paddings"===a.name?(0,t.createElement)(t.Fragment,null,(0,t.createElement)("p",null),(0,t.createElement)(p.SelectControl,{label:(0,r.__)("Padding Top","mrutils"),value:"desktop"===e.name?ae:"laptop"===e.name?ne:"tablet"===e.name?le:"phone"===e.name?re:te,options:[{value:"",label:"Default padding"},{value:(" mr-"+e.name+"-paddingtop").replace("--","-"),label:"Use var(--padding)"},{value:(" mr-"+e.name+"-nopaddingtop").replace("--","-"),label:"Remove padding"}],onChange:e=>o({mrPaddingTop:void 0===e||""===e?"":e.includes("-desktop-")||e.includes("-laptop-")||e.includes("-tablet-")||e.includes("-phone-")?te:e.replace("--","-"),mrPaddingTopdesktop:void 0===e||""===e?"":void 0!==e&&e.includes("-desktop-")?e:ae,mrPaddingToplaptop:void 0===e||""===e?"":void 0!==e&&e.includes("-laptop-")?e:ne,mrPaddingToptablet:void 0===e||""===e?"":void 0!==e&&e.includes("-tablet-")?e:le,mrPaddingTopphone:void 0===e||""===e?"":void 0!==e&&e.includes("-phone-")?e:re})}),(0,t.createElement)(p.SelectControl,{label:(0,r.__)("Padding Right","mrutils"),value:"desktop"===e.name?ie:"laptop"===e.name?me:"tablet"===e.name?pe:"phone"===e.name?de:oe,options:[{value:"",label:"Default padding"},{value:(" mr-"+e.name+"-paddingright").replace("--","-"),label:"Use var(--padding)"},{value:(" mr-"+e.name+"-nopaddingright").replace("--","-"),label:"Remove padding"}],onChange:e=>o({mrPaddingRight:void 0===e||""===e?"":e.includes("-desktop-")||e.includes("-laptop-")||e.includes("-tablet-")||e.includes("-phone-")?oe:e.replace("--","-"),mrPaddingRightdesktop:void 0===e||""===e?"":void 0!==e&&e.includes("-desktop-")?e:ie,mrPaddingRightlaptop:void 0===e||""===e?"":void 0!==e&&e.includes("-laptop-")?e:me,mrPaddingRighttablet:void 0===e||""===e?"":void 0!==e&&e.includes("-tablet-")?e:pe,mrPaddingRightphone:void 0===e||""===e?"":void 0!==e&&e.includes("-phone-")?e:de})}),(0,t.createElement)(p.SelectControl,{label:(0,r.__)("Padding Bottom","mrutils"),value:"desktop"===e.name?ce:"laptop"===e.name?ue:"tablet"===e.name?ge:"phone"===e.name?ve:se,options:[{value:"",label:"Default padding"},{value:(" mr-"+e.name+"-paddingbottom").replace("--","-"),label:"Use var(--padding)"},{value:(" mr-"+e.name+"-nopaddingbottom").replace("--","-"),label:"Remove padding"}],onChange:e=>o({mrPaddingBottom:void 0===e||""===e?"":e.includes("-desktop-")||e.includes("-laptop-")||e.includes("-tablet-")||e.includes("-phone-")?se:e.replace("--","-"),mrPaddingBottomdesktop:void 0===e||""===e?"":void 0!==e&&e.includes("-desktop-")?e:ce,mrPaddingBottomlaptop:void 0===e||""===e?"":void 0!==e&&e.includes("-laptop-")?e:ue,mrPaddingBottomtablet:void 0===e||""===e?"":void 0!==e&&e.includes("-tablet-")?e:ge,mrPaddingBottomphone:void 0===e||""===e?"":void 0!==e&&e.includes("-phone-")?e:ve})}),(0,t.createElement)(p.SelectControl,{label:(0,r.__)("Padding Left","mrutils"),value:"desktop"===e.name?be:"laptop"===e.name?fe:"tablet"===e.name?Pe:"phone"===e.name?ke:he,options:[{value:"",label:"Default padding"},{value:(" mr-"+e.name+"-paddingleft").replace("--","-"),label:"Use var(--padding)"},{value:(" mr-"+e.name+"-nopaddingleft").replace("--","-"),label:"Remove padding"}],onChange:e=>o({mrPaddingLeft:void 0===e||""===e?"":e.includes("-desktop-")||e.includes("-laptop-")||e.includes("-tablet-")||e.includes("-phone-")?he:e.replace("--","-"),mrPaddingLeftdesktop:void 0===e||""===e?"":void 0!==e&&e.includes("-desktop-")?e:be,mrPaddingLeftlaptop:void 0===e||""===e?"":void 0!==e&&e.includes("-laptop-")?e:fe,mrPaddingLefttablet:void 0===e||""===e?"":void 0!==e&&e.includes("-tablet-")?e:Pe,mrPaddingLeftphone:void 0===e||""===e?"":void 0!==e&&e.includes("-phone-")?e:ke})})):(0,t.createElement)(t.Fragment,null,(0,t.createElement)("p",null),(0,t.createElement)(p.SelectControl,{label:(0,r.__)("Margin Top","mrutils"),value:"desktop"===e.name?Se:"laptop"===e.name?ze:"tablet"===e.name?Me:"phone"===e.name?we:ye,options:[{value:"",label:"Default margin"},{value:(" mr-"+e.name+"-margintop").replace("--","-"),label:"Use var(--margin)"},{value:(" mr-"+e.name+"-nomargintop").replace("--","-"),label:"Remove margin"}],onChange:e=>o({mrMarginTop:void 0===e||""===e?"":e.includes("-desktop-")||e.includes("-laptop-")||e.includes("-tablet-")||e.includes("-phone-")?ye:e.replace("--","-"),mrMarginTopdesktop:void 0===e||""===e?"":void 0!==e&&e.includes("-desktop-")?e:Se,mrMarginToplaptop:void 0===e||""===e?"":void 0!==e&&e.includes("-laptop-")?e:ze,mrMarginToptablet:void 0===e||""===e?"":void 0!==e&&e.includes("-tablet-")?e:Me,mrMarginTopphone:void 0===e||""===e?"":void 0!==e&&e.includes("-phone-")?e:we})}),(0,t.createElement)(p.SelectControl,{label:(0,r.__)("Margin Right","mrutils"),value:"desktop"===e.name?Ee:"laptop"===e.name?Ae:"tablet"===e.name?_e:"phone"===e.name?Oe:Ce,options:[{value:"",label:"Default margin"},{value:(" mr-"+e.name+"-marginright").replace("--","-"),label:"Use var(--margin)"},{value:(" mr-"+e.name+"-nomarginright").replace("--","-"),label:"Remove margin"}],onChange:e=>o({mrMarginRight:void 0===e||""===e?"":e.includes("-desktop-")||e.includes("-laptop-")||e.includes("-tablet-")||e.includes("-phone-")?Ce:e.replace("--","-"),mrMarginRightdesktop:void 0===e||""===e?"":void 0!==e&&e.includes("-desktop-")?e:Ee,mrMarginRightlaptop:void 0===e||""===e?"":void 0!==e&&e.includes("-laptop-")?e:Ae,mrMarginRighttablet:void 0===e||""===e?"":void 0!==e&&e.includes("-tablet-")?e:_e,mrMarginRightphone:void 0===e||""===e?"":void 0!==e&&e.includes("-phone-")?e:Oe})}),(0,t.createElement)(p.SelectControl,{label:(0,r.__)("Margin Bottom","mrutils"),value:"desktop"===e.name?Te:"laptop"===e.name?xe:"tablet"===e.name?Be:"phone"===e.name?Re:Le,options:[{value:"",label:"Default margin"},{value:(" mr-"+e.name+"-marginbottom").replace("--","-"),label:"Use var(--margin)"},{value:(" mr-"+e.name+"-nomarginbottom").replace("--","-"),label:"Remove margin"}],onChange:e=>o({mrMarginBottom:void 0===e||""===e?"":e.includes("-desktop-")||e.includes("-laptop-")||e.includes("-tablet-")||e.includes("-phone-")?Le:e.replace("--","-"),mrMarginBottomdesktop:void 0===e||""===e?"":void 0!==e&&e.includes("-desktop-")?e:Te,mrMarginBottomlaptop:void 0===e||""===e?"":void 0!==e&&e.includes("-laptop-")?e:xe,mrMarginBottomtablet:void 0===e||""===e?"":void 0!==e&&e.includes("-tablet-")?e:Be,mrMarginBottomphone:void 0===e||""===e?"":void 0!==e&&e.includes("-phone-")?e:Re})}),(0,t.createElement)(p.SelectControl,{label:(0,r.__)("Margin Left","mrutils"),value:"desktop"===e.name?He:"laptop"===e.name?De:"tablet"===e.name?Fe:"phone"===e.name?We:Ve,options:[{value:"",label:"Default margin"},{value:(" mr-"+e.name+"-marginleft").replace("--","-"),label:"Use var(--margin)"},{value:(" mr-"+e.name+"-nomarginleft").replace("--","-"),label:"Remove margin"}],onChange:e=>o({mrMarginLeft:void 0===e||""===e?"":e.includes("-desktop-")||e.includes("-laptop-")||e.includes("-tablet-")||e.includes("-phone-")?Ve:e.replace("--","-"),mrMarginLeftdesktop:void 0===e||""===e?"":void 0!==e&&e.includes("-desktop-")?e:He,mrMarginLeftlaptop:void 0===e||""===e?"":void 0!==e&&e.includes("-laptop-")?e:De,mrMarginLefttablet:void 0===e||""===e?"":void 0!==e&&e.includes("-tablet-")?e:Fe,mrMarginLeftphone:void 0===e||""===e?"":void 0!==e&&e.includes("-phone-")?e:We})})))))),(0,t.createElement)(p.PanelBody,{icon:y,title:e.name+(0,r.__)(" Text","mrutils"),initialOpen:!1},(0,t.createElement)(p.RangeControl,{label:(0,r.__)("Font Size","mrutils"),value:"desktop"===e.name?ft:"laptop"===e.name?Pt:"tablet"===e.name?kt:"phone"===e.name?yt:bt,initialPosition:0,allowReset:!0,min:0,max:7,onChange:t=>o({mrFontSize:""===e.name?0===t||void 0===t?"":t:bt,mrFontSizedesktop:"desktop"===e.name?0===t||void 0===t?"":t:ft,mrFontSizelaptop:"laptop"===e.name?0===t||void 0===t?"":t:Pt,mrFontSizetablet:"tablet"===e.name?0===t||void 0===t?"":t:kt,mrFontSizephone:"phone"===e.name?0===t||void 0===t?"":t:yt})}),(0,t.createElement)(p.SelectControl,{label:(0,r.__)("Text Alignment","mrutils"),value:"desktop"===e.name?zt:"laptop"===e.name?Mt:"tablet"===e.name?wt:"phone"===e.name?Ct:St,options:i&&"core/paragraph"!=M.name||i&&"core/heading"!=M.name?(0,r.__)([{value:"",label:"Default"},{value:(" mr-"+e.name+"-alignleft").replace("--","-"),label:"Left"},{value:(" mr-"+e.name+"-aligncenter").replace("--","-"),label:"Center"},{value:(" mr-"+e.name+"-alignright").replace("--","-"),label:"Right"}]):"",onChange:e=>o({mrTextAlignment:void 0===e||""===e?"":e.includes("-desktop-")||e.includes("-laptop-")||e.includes("-tablet-")||e.includes("-phone-")?St:e.replace("--","-"),mrTextAlignmentdesktop:void 0===e||""===e?"":void 0!==e&&e.includes("-desktop-")?e:zt,mrTextAlignmentlaptop:void 0===e||""===e?"":void 0!==e&&e.includes("-laptop-")?e:Mt,mrTextAlignmenttablet:void 0===e||""===e?"":void 0!==e&&e.includes("-tablet-")?e:wt,mrTextAlignmentphone:void 0===e||""===e?"":void 0!==e&&e.includes("-phone-")?e:Ct})})),(0,t.createElement)(p.PanelBody,{icon:S,title:e.name+(0,r.__)(" Placement","mrutils"),initialOpen:!1},(0,t.createElement)(p.SelectControl,{label:(0,r.__)("Position Type","mrutils"),value:"desktop"===e.name?Ge:"laptop"===e.name?Ue:"tablet"===e.name?je:"phone"===e.name?Ie:Ne,options:[{value:"",label:"Default"},{value:(" mr-"+e.name+"-relative").replace("--","-"),label:"Relative"},{value:(" mr-"+e.name+"-absolute").replace("--","-"),label:"Absolute"},{value:(" mr-"+e.name+"-fixed").replace("--","-"),label:"Fixed"},{value:(" mr-"+e.name+"-sticky").replace("--","-"),label:"Sticky"}],onChange:e=>o({mrPosition:void 0===e||""===e?"":e.includes("-desktop-")||e.includes("-laptop-")||e.includes("-tablet-")||e.includes("-phone-")?Ne:e.replace("--","-"),mrPositiondesktop:void 0===e||""===e?"":void 0!==e&&e.includes("-desktop-")?e:Ge,mrPositionlaptop:void 0===e||""===e?"":void 0!==e&&e.includes("-laptop-")?e:Ue,mrPositiontablet:void 0===e||""===e?"":void 0!==e&&e.includes("-tablet-")?e:je,mrPositionphone:void 0===e||""===e?"":void 0!==e&&e.includes("-phone-")?e:Ie})}),(0,t.createElement)(p.SelectControl,{label:(0,r.__)("Vertical Alignment","mrutils"),value:"desktop"===e.name?Ze:"laptop"===e.name?Ke:"tablet"===e.name?Je:"phone"===e.name?Ye:qe,options:(Ne+e.name).includes("absolute")||(Ne+e.name).includes("fixed")||(Ne+e.name).includes("sticky")?(0,r.__)([{value:"",label:"Default"},{value:(" mr-"+e.name+"-top").replace("--","-"),label:"Top"},{value:(" mr-"+e.name+"-bottom").replace("--","-"),label:"Bottom"}]):"",onChange:e=>o({mrPositionAlignment:void 0===e||""===e?"":e.includes("-desktop-")||e.includes("-laptop-")||e.includes("-tablet-")||e.includes("-phone-")?qe:e.replace("--","-"),mrPositionAlignmentdesktop:void 0===e||""===e?"":void 0!==e&&e.includes("-desktop-")?e:Ze,mrPositionAlignmentlaptop:void 0===e||""===e?"":void 0!==e&&e.includes("-laptop-")?e:Ke,mrPositionAlignmenttablet:void 0===e||""===e?"":void 0!==e&&e.includes("-tablet-")?e:Je,mrPositionAlignmentphone:void 0===e||""===e?"":void 0!==e&&e.includes("-phone-")?e:Ye})}),(0,t.createElement)(p.SelectControl,{label:(0,r.__)("Horizontal Alignment","mrutils"),value:"desktop"===e.name?Xe:"laptop"===e.name?$e:"tablet"===e.name?et:"phone"===e.name?tt:Qe,options:(Ne+e.name).includes("absolute")||(Ne+e.name).includes("fixed")||(Ne+e.name).includes("sticky")?(0,r.__)([{value:"",label:"Default"},{value:(" mr-"+e.name+"-right").replace("--","-"),label:"Right"},{value:(" mr-"+e.name+"-left").replace("--","-"),label:"Left"}]):"",onChange:e=>o({mrPositionSides:void 0===e||""===e?"":e.includes("-desktop-")||e.includes("-laptop-")||e.includes("-tablet-")||e.includes("-phone-")?Qe:e.replace("--","-"),mrPositionSidesdesktop:void 0===e||""===e?"":void 0!==e&&e.includes("-desktop-")?e:Xe,mrPositionSideslaptop:void 0===e||""===e?"":void 0!==e&&e.includes("-laptop-")?e:$e,mrPositionSidestablet:void 0===e||""===e?"":void 0!==e&&e.includes("-tablet-")?e:et,mrPositionSidesphone:void 0===e||""===e?"":void 0!==e&&e.includes("-phone-")?e:tt})}),(0,t.createElement)(p.SelectControl,{label:(0,r.__)("Content Alignment","mrutils"),value:"desktop"===e.name?nt:"laptop"===e.name?lt:"tablet"===e.name?rt:"phone"===e.name?ot:at,options:(0,r.__)([{value:"",label:"Default"},{value:(" mr-"+e.name+"-aligntop").replace("--","-"),label:"Top"},{value:(" mr-"+e.name+"-floatright").replace("--","-"),label:"Right"},{value:(" mr-"+e.name+"-alignbottom").replace("--","-"),label:"Bottom"},{value:(" mr-"+e.name+"-floatleft").replace("--","-"),label:"Left"},{value:(" mr-"+e.name+"-middle").replace("--","-"),label:"Middle"}]),onChange:e=>o({mrContentAlignment:void 0===e||""===e?"":e.includes("-desktop-")||e.includes("-laptop-")||e.includes("-tablet-")||e.includes("-phone-")?at:e.replace("--","-"),mrContentAlignmentdesktop:void 0===e||""===e?"":void 0!==e&&e.includes("-desktop-")?e:nt,mrContentAlignmentlaptop:void 0===e||""===e?"":void 0!==e&&e.includes("-laptop-")?e:lt,mrContentAlignmenttablet:void 0===e||""===e?"":void 0!==e&&e.includes("-tablet-")?e:rt,mrContentAlignmentphone:void 0===e||""===e?"":void 0!==e&&e.includes("-phone-")?e:ot})}),(0,t.createElement)(p.SelectControl,{label:(0,r.__)("Vertical Offset","mrutils"),value:"desktop"===e.name?mt:"laptop"===e.name?pt:"tablet"===e.name?dt:"phone"===e.name?st:it,options:(0,r.__)([{value:"",label:"Default"},{value:(" mr-"+e.name+"-offsettop").replace("--","-"),label:"Top"},{value:(" mr-"+e.name+"-offsetbottom").replace("--","-"),label:"Bottom"}]),onChange:e=>o({mrVerticalOffset:void 0===e||""===e?"":e.includes("-desktop-")||e.includes("-laptop-")||e.includes("-tablet-")||e.includes("-phone-")?it:e.replace("--","-"),mrVerticalOffsetdesktop:void 0===e||""===e?"":void 0!==e&&e.includes("-desktop-")?e:mt,mrVerticalOffsetlaptop:void 0===e||""===e?"":void 0!==e&&e.includes("-laptop-")?e:pt,mrVerticalOffsettablet:void 0===e||""===e?"":void 0!==e&&e.includes("-tablet-")?e:dt,mrVerticalOffsetphone:void 0===e||""===e?"":void 0!==e&&e.includes("-phone-")?e:st})}),(0,t.createElement)(p.SelectControl,{label:(0,r.__)("Horizontal Offset","mrutils"),value:"desktop"===e.name?ut:"laptop"===e.name?gt:"tablet"===e.name?vt:"phone"===e.name?ht:ct,options:(0,r.__)([{value:"",label:"Default"},{value:(" mr-"+e.name+"-offsetleft").replace("--","-"),label:"Left"},{value:(" mr-"+e.name+"-offsetright").replace("--","-"),label:"Right"}]),onChange:e=>o({mrHorizontalOffset:void 0===e||""===e?"":e.includes("-desktop-")||e.includes("-laptop-")||e.includes("-tablet-")||e.includes("-phone-")?ct:e.replace("--","-"),mrHorizontalOffsetdesktop:void 0===e||""===e?"":void 0!==e&&e.includes("-desktop-")?e:ut,mrHorizontalOffsetlaptop:void 0===e||""===e?"":void 0!==e&&e.includes("-laptop-")?e:gt,mrHorizontalOffsettablet:void 0===e||""===e?"":void 0!==e&&e.includes("-tablet-")?e:vt,mrHorizontalOffsetphone:void 0===e||""===e?"":void 0!==e&&e.includes("-phone-")?e:ht})})),(0,t.createElement)(p.PanelBody,{icon:z,title:e.name+(0,r.__)(" Misc.","mrutils"),initialOpen:!1},(0,t.createElement)(p.SelectControl,{label:(0,r.__)("Scroll","mrutils"),value:"desktop"===e.name?At:"laptop"===e.name?_t:"tablet"===e.name?Ot:"phone"===e.name?Lt:Et,options:[{value:"",label:"Default"},{value:(" mr-"+e.name+"-noscroll").replace("--","-"),label:"No scroll"},{value:(" mr-"+e.name+"-hidescroll").replace("--","-"),label:"Hide scroll"},{value:(" mr-"+e.name+"-scroll").replace("--","-"),label:"Scroll"},{value:(" mr-"+e.name+"-horizontalscroll").replace("--","-"),label:"Horizontal scroll"},{value:(" mr-"+e.name+"-horizontalscrollcontent").replace("--","-"),label:"Horizontal scroll content"},{value:(" mr-"+e.name+"-swipe").replace("--","-"),label:"Swipe"},{value:(" mr-"+e.name+"-swipecontent").replace("--","-"),label:"Swipe content"}],onChange:e=>o({mrScroll:void 0===e||""===e?"":e.includes("-desktop-")||e.includes("-laptop-")||e.includes("-tablet-")||e.includes("-phone-")?Et:e.replace("--","-"),mrScrolldesktop:void 0===e||""===e?"":void 0!==e&&e.includes("-desktop-")?e:At,mrScrolllaptop:void 0===e||""===e?"":void 0!==e&&e.includes("-laptop-")?e:_t,mrScrolltablet:void 0===e||""===e?"":void 0!==e&&e.includes("-tablet-")?e:Ot,mrScrollphone:void 0===e||""===e?"":void 0!==e&&e.includes("-phone-")?e:Lt})}))):(0,t.createElement)(t.Fragment,null,(0,t.createElement)("h4",null,"Other breakpoints"),(0,t.createElement)("p",null,"You also have the following device breakpoints available:"),(0,t.createElement)("p",{class:"mr-backend-other_breakpoints"},(0,t.createElement)("b",null,"landscape, portrait")),(0,t.createElement)("p",null,"However you cannot select them with the interface. In alternative, you can use"," ",(0,t.createElement)("a",{href:"https://github.com/marcosrego-web/mr-utils/wiki/Utility-Classes",target:"_blank"},"utility classes")," ","in ",(0,t.createElement)("b",null,"Advanced - Additional CSS class(es)"),"."),(0,t.createElement)("p",null,(0,t.createElement)("a",{href:"https://github.com/marcosrego-web/mr-utils/wiki/Utility-Classes",target:"_blank"},"Know more"))))),(0,t.createElement)(p.PanelBody,{icon:w,title:(0,r.__)("Need more features?","mrutils"),initialOpen:!1,className:"mr-backend-more_features"},(0,t.createElement)(p.PanelRow,null,(0,t.createElement)("div",null,(0,t.createElement)("p",null,(0,t.createElement)("b",null,"Then you need Mr.Dev.'s Framework!")),(0,t.createElement)("ul",null,(0,t.createElement)("li",null,"- Select only the device breakpoints that you want to use, avoiding the load of all styles and scripts."),(0,t.createElement)("li",null,"- Change the media query values to your own on each device breakpoint."),(0,t.createElement)("li",null,"- Create custom breakpoints."),(0,t.createElement)("li",null,"- Change the value of each variable (for margin, padding, transition-duration, font-size and more)."),(0,t.createElement)("li",null,"- (coming soon) Enable only the utilities' categories and components that you want to use, avoiding unused CSS and JS."),(0,t.createElement)("li",null,"- And more framework features...")),(0,t.createElement)("p",null,(0,t.createElement)("a",{href:"https://marcosrego.com/development/mrdev-framework/",target:"_blank"},"Know more")))))))))}),"mrInspectorControls"),E=(0,i.createHigherOrderComponent)((a=>n=>{const{attributes:l,blockType:r}=n,{mrAnimation:o,mrPerPage:i,mrArrowPagination:m,mrSelectPagination:p,mrRadioPagination:d,mrPerLine:s,mrPerLinedesktop:c,mrPerLinelaptop:u,mrPerLinetablet:g,mrPerLinephone:v,mrSize:h,mrSizedesktop:b,mrSizelaptop:f,mrSizetablet:P,mrSizephone:k,mrOrder:y,mrOrderdesktop:S,mrOrderlaptop:z,mrOrdertablet:M,mrOrderphone:w,mrDisplay:C,mrDisplaydesktop:E,mrDisplaylaptop:A,mrDisplaytablet:_,mrDisplayphone:O,mrWrap:L,mrWrapdesktop:T,mrWraplaptop:x,mrWraptablet:B,mrWrapphone:R,mrPaddingTop:V,mrPaddingTopdesktop:H,mrPaddingToplaptop:D,mrPaddingToptablet:F,mrPaddingTopphone:W,mrPaddingRight:N,mrPaddingRightdesktop:G,mrPaddingRightlaptop:U,mrPaddingRighttablet:j,mrPaddingRightphone:I,mrPaddingBottom:q,mrPaddingBottomdesktop:Z,mrPaddingBottomlaptop:K,mrPaddingBottomtablet:J,mrPaddingBottomphone:Y,mrPaddingLeft:Q,mrPaddingLeftdesktop:X,mrPaddingLeftlaptop:$,mrPaddingLefttablet:ee,mrPaddingLeftphone:te,mrMarginTop:ae,mrMarginTopdesktop:ne,mrMarginToplaptop:le,mrMarginToptablet:re,mrMarginTopphone:oe,mrMarginRight:ie,mrMarginRightdesktop:me,mrMarginRightlaptop:pe,mrMarginRighttablet:de,mrMarginRightphone:se,mrMarginBottom:ce,mrMarginBottomdesktop:ue,mrMarginBottomlaptop:ge,mrMarginBottomtablet:ve,mrMarginBottomphone:he,mrMarginLeft:be,mrMarginLeftdesktop:fe,mrMarginLeftlaptop:Pe,mrMarginLefttablet:ke,mrMarginLeftphone:ye,mrPosition:Se,mrPositiondesktop:ze,mrPositionlaptop:Me,mrPositiontablet:we,mrPositionphone:Ce,mrPositionAlignment:Ee,mrPositionAlignmentdesktop:Ae,mrPositionAlignmentlaptop:_e,mrPositionAlignmenttablet:Oe,mrPositionAlignmentphone:Le,mrPositionSides:Te,mrPositionSidesdesktop:xe,mrPositionSideslaptop:Be,mrPositionSidestablet:Re,mrPositionSidesphone:Ve,mrContentAlignment:He,mrContentAlignmentdesktop:De,mrContentAlignmentlaptop:Fe,mrContentAlignmenttablet:We,mrContentAlignmentphone:Ne,mrVerticalOffset:Ge,mrVerticalOffsetdesktop:Ue,mrVerticalOffsetlaptop:je,mrVerticalOffsettablet:Ie,mrVerticalOffsetphone:qe,mrHorizontalOffset:Ze,mrHorizontalOffsetdesktop:Ke,mrHorizontalOffsetlaptop:Je,mrHorizontalOffsettablet:Ye,mrHorizontalOffsetphone:Qe,mrFontSize:Xe,mrFontSizedesktop:$e,mrFontSizelaptop:et,mrFontSizetablet:tt,mrFontSizephone:at,mrTextAlignment:nt,mrTextAlignmentdesktop:lt,mrTextAlignmentlaptop:rt,mrTextAlignmenttablet:ot,mrTextAlignmentphone:it,mrScroll:mt,mrScrolldesktop:pt,mrScrolllaptop:dt,mrScrolltablet:st,mrScrollphone:ct}=l;let ut="";return i&&(ut=ut+"mr-"+i+"perpage"),m&&(ut+=" mr-arrowpagination"),p&&(ut+=" mr-selectpagination"),d&&(ut+=" mr-radiopagination"),s&&(ut+=s),c&&(ut+=c),u&&(ut+=u),g&&(ut+=g),v&&(ut+=v),h&&(ut=ut+" mr-size"+h),b&&(ut=ut+" mr-desktop-size"+b),f&&(ut=ut+" mr-laptop-size"+f),P&&(ut=ut+" mr-tablet-size"+P),k&&(ut=ut+" mr-phone-size"+k),y&&(ut+=y),S&&(ut+=S),z&&(ut+=z),M&&(ut+=M),w&&(ut+=w),o&&(ut+=o),C&&(ut+=C),E&&(ut+=E),A&&(ut+=A),_&&(ut+=_),O&&(ut+=O),L&&(ut+=L),T&&(ut+=T),x&&(ut+=x),B&&(ut+=B),R&&(ut+=L),V&&(ut+=V),H&&(ut+=H),D&&(ut+=D),F&&(ut+=F),W&&(ut+=W),N&&(ut+=N),G&&(ut+=G),U&&(ut+=U),j&&(ut+=j),I&&(ut+=I),q&&(ut+=q),Z&&(ut+=Z),K&&(ut+=K),J&&(ut+=J),Y&&(ut+=Y),Q&&(ut+=Q),X&&(ut+=X),$&&(ut+=$),ee&&(ut+=ee),te&&(ut+=te),ae&&(ut+=ae),ne&&(ut+=ne),le&&(ut+=le),re&&(ut+=re),oe&&(ut+=oe),ie&&(ut+=ie),me&&(ut+=me),pe&&(ut+=pe),de&&(ut+=de),se&&(ut+=se),ce&&(ut+=ce),ue&&(ut+=ue),ge&&(ut+=ge),ve&&(ut+=ve),he&&(ut+=he),be&&(ut+=be),fe&&(ut+=fe),Pe&&(ut+=Pe),ke&&(ut+=ke),ye&&(ut+=ye),Se&&(ut+=Se),ze&&(ut+=ze),Me&&(ut+=Me),we&&(ut+=we),Ce&&(ut+=Ce)," mr-absolute"!==Se&&" mr-fixed"!==Se&&" mr-sticky"!==Se||(Ee&&(ut+=Ee),Te&&(ut+=Te))," mr-desktop-absolute"!==ze&&" mr-desktop-fixed"!==ze&&" mr-desktop-sticky"!==ze||(Ae&&(ut+=Ae),xe&&(ut+=xe))," mr-laptop-absolute"!==Me&&" mr-laptop-fixed"!==Me&&" mr-laptop-sticky"!==Me||(_e&&(ut+=_e),Be&&(ut+=Be))," mr-tablet-absolute"!==we&&" mr-tablet-fixed"!==we&&" mr-tablet-sticky"!==we||(Oe&&(ut+=Oe),Re&&(ut+=Re))," mr-phone-absolute"!==Ce&&" mr-phone-fixed"!==Ce&&" mr-phone-sticky"!==Ce||(Le&&(ut+=Le),Ve&&(ut+=Ve)),He&&(ut+=He),De&&(ut+=De),Fe&&(ut+=Fe),We&&(ut+=We),Ne&&(ut+=Ne),Ge&&(ut+=Ge),Ue&&(ut+=Ue),je&&(ut+=je),Ie&&(ut+=Ie),qe&&(ut+=qe),Ze&&(ut+=Ze),Ke&&(ut+=Ke),Je&&(ut+=Je),Ye&&(ut+=Ye),Qe&&(ut+=Qe),Xe&&(ut=ut+" mr-fontsize"+Xe),$e&&(ut=ut+" mr-desktop-fontsize"+$e),et&&(ut=ut+" mr-laptop-fontsize"+et),tt&&(ut=ut+" mr-tablet-fontsize"+tt),at&&(ut=ut+" mr-phone-fontsize"+at),nt&&(ut+=nt),lt&&(ut+=lt),rt&&(ut+=rt),ot&&(ut+=ot),it&&(ut+=it),mt&&(ut+=mt),pt&&(ut+=pt),dt&&(ut+=dt),st&&(ut+=st),ct&&(ut+=ct),(0,t.createElement)(a,e({},n,{className:ut}))}),"mrApplyWrapperExtraClass");(0,o.addFilter)("blocks.registerBlockType","mrutils/custom-attributes",(function(e){return void 0!==e.attributes&&M.includes(e.name)&&(e.attributes=Object.assign(e.attributes,{mrAnimation:{type:"string",default:""},mrPerPage:{type:"int",default:""},mrArrowPagination:{type:"string",default:""},mrSelectPagination:{type:"string",default:""},mrRadioPagination:{type:"string",default:""},mrPerLine:{type:"string",default:""},mrPerLinedesktop:{type:"string",default:""},mrPerLinelaptop:{type:"string",default:""},mrPerLinetablet:{type:"string",default:""},mrPerLinephone:{type:"string",default:""},mrOrder:{type:"string",default:""},mrOrderdesktop:{type:"string",default:""},mrOrderlaptop:{type:"string",default:""},mrOrdertablet:{type:"string",default:""},mrOrderphone:{type:"string",default:""},mrSize:{type:"int",default:0},mrSizedesktop:{type:"int",default:0},mrSizelaptop:{type:"int",default:0},mrSizetablet:{type:"int",default:0},mrSizephone:{type:"int",default:0},mrDisplay:{type:"string",default:""},mrDisplaydesktop:{type:"string",default:""},mrDisplaylaptop:{type:"string",default:""},mrDisplaytablet:{type:"string",default:""},mrDisplayphone:{type:"string",default:""},mrWrap:{type:"string",default:""},mrWrapdesktop:{type:"string",default:""},mrWraplaptop:{type:"string",default:""},mrWraptablet:{type:"string",default:""},mrWrapphone:{type:"string",default:""},mrPaddingTop:{type:"string",default:""},mrPaddingTopdesktop:{type:"string",default:""},mrPaddingToplaptop:{type:"string",default:""},mrPaddingToptablet:{type:"string",default:""},mrPaddingTopphone:{type:"string",default:""},mrPaddingRight:{type:"string",default:""},mrPaddingRightdesktop:{type:"string",default:""},mrPaddingRightlaptop:{type:"string",default:""},mrPaddingRighttablet:{type:"string",default:""},mrPaddingRightphone:{type:"string",default:""},mrPaddingBottom:{type:"string",default:""},mrPaddingBottomdesktop:{type:"string",default:""},mrPaddingBottomlaptop:{type:"string",default:""},mrPaddingBottomtablet:{type:"string",default:""},mrPaddingBottomphone:{type:"string",default:""},mrPaddingLeft:{type:"string",default:""},mrPaddingLeftdesktop:{type:"string",default:""},mrPaddingLeftlaptop:{type:"string",default:""},mrPaddingLefttablet:{type:"string",default:""},mrPaddingLeftphone:{type:"string",default:""},mrMarginTop:{type:"string",default:""},mrMarginTopdesktop:{type:"string",default:""},mrMarginToplaptop:{type:"string",default:""},mrMarginToptablet:{type:"string",default:""},mrMarginTopphone:{type:"string",default:""},mrMarginRight:{type:"string",default:""},mrMarginRightdesktop:{type:"string",default:""},mrMarginRightlaptop:{type:"string",default:""},mrMarginRighttablet:{type:"string",default:""},mrMarginRightphone:{type:"string",default:""},mrMarginBottom:{type:"string",default:""},mrMarginBottomdesktop:{type:"string",default:""},mrMarginBottomlaptop:{type:"string",default:""},mrMarginBottomtablet:{type:"string",default:""},mrMarginBottomphone:{type:"string",default:""},mrMarginLeft:{type:"string",default:""},mrMarginLeftdesktop:{type:"string",default:""},mrMarginLeftlaptop:{type:"string",default:""},mrMarginLefttablet:{type:"string",default:""},mrMarginLeftphone:{type:"string",default:""},mrPosition:{type:"string",default:""},mrPositiondesktop:{type:"string",default:""},mrPositionlaptop:{type:"string",default:""},mrPositiontablet:{type:"string",default:""},mrPositionphone:{type:"string",default:""},mrPositionAlignment:{type:"string",default:""},mrPositionAlignmentdesktop:{type:"string",default:""},mrPositionAlignmentlaptop:{type:"string",default:""},mrPositionAlignmenttablet:{type:"string",default:""},mrPositionAlignmentphone:{type:"string",default:""},mrPositionSides:{type:"string",default:""},mrPositionSidesdesktop:{type:"string",default:""},mrPositionSideslaptop:{type:"string",default:""},mrPositionSidestablet:{type:"string",default:""},mrPositionSidesphone:{type:"string",default:""},mrContentAlignment:{type:"string",default:""},mrContentAlignmentdesktop:{type:"string",default:""},mrContentAlignmentlaptop:{type:"string",default:""},mrContentAlignmenttablet:{type:"string",default:""},mrContentAlignmentphone:{type:"string",default:""},mrVerticalOffset:{type:"string",default:""},mrVerticalOffsetdesktop:{type:"string",default:""},mrVerticalOffsetlaptop:{type:"string",default:""},mrVerticalOffsettablet:{type:"string",default:""},mrVerticalOffsetphone:{type:"string",default:""},mrHorizontalOffset:{type:"string",default:""},mrHorizontalOffsetdesktop:{type:"string",default:""},mrHorizontalOffsetlaptop:{type:"string",default:""},mrHorizontalOffsettablet:{type:"string",default:""},mrHorizontalOffsetphone:{type:"string",default:""},mrFontSize:{type:"int",default:0},mrFontSizedesktop:{type:"int",default:0},mrFontSizelaptop:{type:"int",default:0},mrFontSizetablet:{type:"int",default:0},mrFontSizephone:{type:"int",default:0},mrTextAlignment:{type:"string",default:""},mrTextAlignmentdesktop:{type:"string",default:""},mrTextAlignmentlaptop:{type:"string",default:""},mrTextAlignmenttablet:{type:"string",default:""},mrTextAlignmentphone:{type:"string",default:""},mrScroll:{type:"string",default:""},mrScrolldesktop:{type:"string",default:""},mrScrolllaptop:{type:"string",default:""},mrScrolltablet:{type:"string",default:""},mrScrollphone:{type:"string",default:""}})),e})),(0,o.addFilter)("editor.BlockEdit","mrutils/custom-control",C),(0,o.addFilter)("blocks.getSaveContent.extraProps","mrutils/mrApplyExtraClass",(function(e,t,a){const{mrAnimation:n,mrPerPage:r,mrArrowPagination:o,mrSelectPagination:i,mrRadioPagination:m,mrPerLine:p,mrPerLinedesktop:d,mrPerLinelaptop:s,mrPerLinetablet:c,mrPerLinephone:u,mrSize:g,mrSizedesktop:v,mrSizelaptop:h,mrSizetablet:b,mrSizephone:f,mrOrder:P,mrOrderdesktop:k,mrOrderlaptop:y,mrOrdertablet:S,mrOrderphone:z,mrDisplay:w,mrDisplaydesktop:C,mrDisplaylaptop:E,mrDisplaytablet:A,mrDisplayphone:_,mrWrap:O,mrWrapdesktop:L,mrWraplaptop:T,mrWraptablet:x,mrWrapphone:B,mrPaddingTop:R,mrPaddingTopdesktop:V,mrPaddingToplaptop:H,mrPaddingToptablet:D,mrPaddingTopphone:F,mrPaddingRight:W,mrPaddingRightdesktop:N,mrPaddingRightlaptop:G,mrPaddingRighttablet:U,mrPaddingRightphone:j,mrPaddingBottom:I,mrPaddingBottomdesktop:q,mrPaddingBottomlaptop:Z,mrPaddingBottomtablet:K,mrPaddingBottomphone:J,mrPaddingLeft:Y,mrPaddingLeftdesktop:Q,mrPaddingLeftlaptop:X,mrPaddingLefttablet:$,mrPaddingLeftphone:ee,mrMarginTop:te,mrMarginTopdesktop:ae,mrMarginToplaptop:ne,mrMarginToptablet:le,mrMarginTopphone:re,mrMarginRight:oe,mrMarginRightdesktop:ie,mrMarginRightlaptop:me,mrMarginRighttablet:pe,mrMarginRightphone:de,mrMarginBottom:se,mrMarginBottomdesktop:ce,mrMarginBottomlaptop:ue,mrMarginBottomtablet:ge,mrMarginBottomphone:ve,mrMarginLeft:he,mrMarginLeftdesktop:be,mrMarginLeftlaptop:fe,mrMarginLefttablet:Pe,mrMarginLeftphone:ke,mrPosition:ye,mrPositiondesktop:Se,mrPositionlaptop:ze,mrPositiontablet:Me,mrPositionphone:we,mrPositionAlignment:Ce,mrPositionAlignmentdesktop:Ee,mrPositionAlignmentlaptop:Ae,mrPositionAlignmenttablet:_e,mrPositionAlignmentphone:Oe,mrPositionSides:Le,mrPositionSidesdesktop:Te,mrPositionSideslaptop:xe,mrPositionSidestablet:Be,mrPositionSidesphone:Re,mrContentAlignment:Ve,mrContentAlignmentdesktop:He,mrContentAlignmentlaptop:De,mrContentAlignmenttablet:Fe,mrContentAlignmentphone:We,mrVerticalOffset:Ne,mrVerticalOffsetdesktop:Ge,mrVerticalOffsetlaptop:Ue,mrVerticalOffsettablet:je,mrVerticalOffsetphone:Ie,mrHorizontalOffset:qe,mrHorizontalOffsetdesktop:Ze,mrHorizontalOffsetlaptop:Ke,mrHorizontalOffsettablet:Je,mrHorizontalOffsetphone:Ye,mrFontSize:Qe,mrFontSizedesktop:Xe,mrFontSizelaptop:$e,mrFontSizetablet:et,mrFontSizephone:tt,mrTextAlignment:at,mrTextAlignmentdesktop:nt,mrTextAlignmentlaptop:lt,mrTextAlignmenttablet:rt,mrTextAlignmentphone:ot,mrScroll:it,mrScrolldesktop:mt,mrScrolllaptop:pt,mrScrolltablet:dt,mrScrollphone:st}=a;let ct="";return r&&(ct=ct+"mr-"+r+"perpage"),o&&(ct+=" mr-arrowpagination"),i&&(ct+=" mr-selectpagination"),m&&(ct+=" mr-radiopagination"),p&&(ct+=p),d&&(ct+=d),s&&(ct+=s),c&&(ct+=c),u&&(ct+=u),g&&M.includes(t.name)&&(ct=ct+" mr-size"+g),v&&M.includes(t.name)&&(ct=ct+" mr-desktop-size"+v),h&&M.includes(t.name)&&(ct=ct+" mr-laptop-size"+h),b&&M.includes(t.name)&&(ct=ct+" mr-tablet-size"+b),f&&M.includes(t.name)&&(ct=ct+" mr-phone-size"+f),P&&(ct+=P),k&&(ct+=k),y&&(ct+=y),S&&(ct+=S),z&&(ct+=z),n&&(ct+=n),w&&(ct+=w),C&&(ct+=C),E&&(ct+=E),A&&(ct+=A),_&&(ct+=_),O&&(ct+=O),L&&(ct+=L),T&&(ct+=T),x&&(ct+=x),B&&(ct+=O),R&&M.includes(t.name)&&(ct+=R),V&&M.includes(t.name)&&(ct+=V),H&&M.includes(t.name)&&(ct+=H),D&&M.includes(t.name)&&(ct+=D),F&&M.includes(t.name)&&(ct+=F),W&&M.includes(t.name)&&(ct+=W),N&&M.includes(t.name)&&(ct+=N),G&&M.includes(t.name)&&(ct+=G),U&&M.includes(t.name)&&(ct+=U),j&&M.includes(t.name)&&(ct+=j),I&&M.includes(t.name)&&(ct+=I),q&&M.includes(t.name)&&(ct+=q),Z&&M.includes(t.name)&&(ct+=Z),K&&M.includes(t.name)&&(ct+=K),J&&M.includes(t.name)&&(ct+=J),Y&&M.includes(t.name)&&(ct+=Y),Q&&M.includes(t.name)&&(ct+=Q),X&&M.includes(t.name)&&(ct+=X),$&&M.includes(t.name)&&(ct+=$),ee&&M.includes(t.name)&&(ct+=ee),te&&M.includes(t.name)&&(ct+=te),ae&&M.includes(t.name)&&(ct+=ae),ne&&M.includes(t.name)&&(ct+=ne),le&&M.includes(t.name)&&(ct+=le),re&&M.includes(t.name)&&(ct+=re),oe&&M.includes(t.name)&&(ct+=oe),ie&&M.includes(t.name)&&(ct+=ie),me&&M.includes(t.name)&&(ct+=me),pe&&M.includes(t.name)&&(ct+=pe),de&&M.includes(t.name)&&(ct+=de),se&&M.includes(t.name)&&(ct+=se),ce&&M.includes(t.name)&&(ct+=ce),ue&&M.includes(t.name)&&(ct+=ue),ge&&M.includes(t.name)&&(ct+=ge),ve&&M.includes(t.name)&&(ct+=ve),he&&M.includes(t.name)&&(ct+=he),be&&M.includes(t.name)&&(ct+=be),fe&&M.includes(t.name)&&(ct+=fe),Pe&&M.includes(t.name)&&(ct+=Pe),ke&&M.includes(t.name)&&(ct+=ke),ye&&M.includes(t.name)&&(ct+=ye),Se&&M.includes(t.name)&&(ct+=Se),ze&&M.includes(t.name)&&(ct+=ze),Me&&M.includes(t.name)&&(ct+=Me),we&&M.includes(t.name)&&(ct+=we)," mr-absolute"!==ye&&" mr-fixed"!==ye&&" mr-sticky"!==ye||(Ce&&M.includes(t.name)&&(ct+=Ce),Le&&M.includes(t.name)&&(ct+=Le))," mr-desktop-absolute"!==Se&&" mr-desktop-fixed"!==Se&&" mr-desktop-sticky"!==Se||(Ee&&M.includes(t.name)&&(ct+=Ee),Te&&M.includes(t.name)&&(ct+=Te))," mr-laptop-absolute"!==ze&&" mr-laptop-fixed"!==ze&&" mr-laptop-sticky"!==ze||(Ae&&M.includes(t.name)&&(ct+=Ae),xe&&M.includes(t.name)&&(ct+=xe))," mr-tablet-absolute"!==Me&&" mr-tablet-fixed"!==Me&&" mr-tablet-sticky"!==Me||(_e&&M.includes(t.name)&&(ct+=_e),Be&&M.includes(t.name)&&(ct+=Be))," mr-phone-absolute"!==we&&" mr-phone-fixed"!==we&&" mr-phone-sticky"!==we||(Oe&&M.includes(t.name)&&(ct+=Oe),Re&&M.includes(t.name)&&(ct+=Re)),Ve&&M.includes(t.name)&&(ct+=Ve),He&&M.includes(t.name)&&(ct+=He),De&&M.includes(t.name)&&(ct+=De),Fe&&M.includes(t.name)&&(ct+=Fe),We&&M.includes(t.name)&&(ct+=We),Ne&&M.includes(t.name)&&(ct+=Ne),Ge&&M.includes(t.name)&&(ct+=Ge),Ue&&M.includes(t.name)&&(ct+=Ue),je&&M.includes(t.name)&&(ct+=je),Ie&&M.includes(t.name)&&(ct+=Ie),qe&&M.includes(t.name)&&(ct+=qe),Ze&&M.includes(t.name)&&(ct+=Ze),Ke&&M.includes(t.name)&&(ct+=Ke),Je&&M.includes(t.name)&&(ct+=Je),Ye&&M.includes(t.name)&&(ct+=Ye),Qe&&M.includes(t.name)&&(ct=ct+" mr-fontsize"+Qe),Xe&&M.includes(t.name)&&(ct=ct+" mr-desktop-fontsize"+Xe),$e&&M.includes(t.name)&&(ct=ct+" mr-laptop-fontsize"+$e),et&&M.includes(t.name)&&(ct=ct+" mr-tablet-fontsize"+et),tt&&M.includes(t.name)&&(ct=ct+" mr-phone-fontsize"+tt),at&&M.includes(t.name)&&(ct+=at),nt&&M.includes(t.name)&&(ct+=nt),lt&&M.includes(t.name)&&(ct+=lt),rt&&M.includes(t.name)&&(ct+=rt),ot&&M.includes(t.name)&&(ct+=ot),it&&M.includes(t.name)&&(ct+=it),mt&&M.includes(t.name)&&(ct+=mt),pt&&M.includes(t.name)&&(ct+=pt),dt&&M.includes(t.name)&&(ct+=dt),st&&M.includes(t.name)&&(ct+=st),e.className=l()(e.className,ct),e})),(0,o.addFilter)("editor.BlockListBlock","mrutils/mrApplyWrapperExtraClass",E)}()}();
+/******/ (function() { // webpackBootstrap
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./node_modules/@wordpress/icons/build-module/library/aspect-ratio.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/@wordpress/icons/build-module/library/aspect-ratio.js ***!
+  \****************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/primitives */ "@wordpress/primitives");
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * WordPress dependencies
+ */
+
+const aspectRatio = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.SVG, {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 24 24"
+}, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.Path, {
+  d: "M18.5 5.5h-13c-1.1 0-2 .9-2 2v9c0 1.1.9 2 2 2h13c1.1 0 2-.9 2-2v-9c0-1.1-.9-2-2-2zm.5 11c0 .3-.2.5-.5.5h-13c-.3 0-.5-.2-.5-.5v-9c0-.3.2-.5.5-.5h13c.3 0 .5.2.5.5v9zM6.5 12H8v-2h2V8.5H6.5V12zm9.5 2h-2v1.5h3.5V12H16v2z"
+}));
+/* harmony default export */ __webpack_exports__["default"] = (aspectRatio);
+//# sourceMappingURL=aspect-ratio.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@wordpress/icons/build-module/library/desktop.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/@wordpress/icons/build-module/library/desktop.js ***!
+  \***********************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/primitives */ "@wordpress/primitives");
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * WordPress dependencies
+ */
+
+const desktop = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.SVG, {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 24 24"
+}, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.Path, {
+  d: "M20.5 16h-.7V8c0-1.1-.9-2-2-2H6.2c-1.1 0-2 .9-2 2v8h-.7c-.8 0-1.5.7-1.5 1.5h20c0-.8-.7-1.5-1.5-1.5zM5.7 8c0-.3.2-.5.5-.5h11.6c.3 0 .5.2.5.5v7.6H5.7V8z"
+}));
+/* harmony default export */ __webpack_exports__["default"] = (desktop);
+//# sourceMappingURL=desktop.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@wordpress/icons/build-module/library/layout.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@wordpress/icons/build-module/library/layout.js ***!
+  \**********************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/primitives */ "@wordpress/primitives");
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * WordPress dependencies
+ */
+
+const layout = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.SVG, {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 24 24"
+}, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.Path, {
+  d: "M18 5.5H6a.5.5 0 00-.5.5v3h13V6a.5.5 0 00-.5-.5zm.5 5H10v8h8a.5.5 0 00.5-.5v-7.5zm-10 0h-3V18a.5.5 0 00.5.5h2.5v-8zM6 4h12a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2z"
+}));
+/* harmony default export */ __webpack_exports__["default"] = (layout);
+//# sourceMappingURL=layout.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@wordpress/icons/build-module/library/mobile.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@wordpress/icons/build-module/library/mobile.js ***!
+  \**********************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/primitives */ "@wordpress/primitives");
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * WordPress dependencies
+ */
+
+const desktop = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.SVG, {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 24 24"
+}, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.Path, {
+  d: "M15 4H9c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm.5 14c0 .3-.2.5-.5.5H9c-.3 0-.5-.2-.5-.5V6c0-.3.2-.5.5-.5h6c.3 0 .5.2.5.5v12zm-4.5-.5h2V16h-2v1.5z"
+}));
+/* harmony default export */ __webpack_exports__["default"] = (desktop);
+//# sourceMappingURL=mobile.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@wordpress/icons/build-module/library/plus-circle.js":
+/*!***************************************************************************!*\
+  !*** ./node_modules/@wordpress/icons/build-module/library/plus-circle.js ***!
+  \***************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/primitives */ "@wordpress/primitives");
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * WordPress dependencies
+ */
+
+const plusCircle = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.SVG, {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "-2 -2 24 24"
+}, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.Path, {
+  d: "M10 1c-5 0-9 4-9 9s4 9 9 9 9-4 9-9-4-9-9-9zm0 16c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7zm1-11H9v3H6v2h3v3h2v-3h3V9h-3V6zM10 1c-5 0-9 4-9 9s4 9 9 9 9-4 9-9-4-9-9-9zm0 16c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7zm1-11H9v3H6v2h3v3h2v-3h3V9h-3V6z"
+}));
+/* harmony default export */ __webpack_exports__["default"] = (plusCircle);
+//# sourceMappingURL=plus-circle.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@wordpress/icons/build-module/library/plus.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/@wordpress/icons/build-module/library/plus.js ***!
+  \********************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/primitives */ "@wordpress/primitives");
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * WordPress dependencies
+ */
+
+const plus = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.SVG, {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 24 24"
+}, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.Path, {
+  d: "M18 11.2h-5.2V6h-1.6v5.2H6v1.6h5.2V18h1.6v-5.2H18z"
+}));
+/* harmony default export */ __webpack_exports__["default"] = (plus);
+//# sourceMappingURL=plus.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@wordpress/icons/build-module/library/pull-left.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/@wordpress/icons/build-module/library/pull-left.js ***!
+  \*************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/primitives */ "@wordpress/primitives");
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * WordPress dependencies
+ */
+
+const pullLeft = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.SVG, {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 24 24"
+}, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.Path, {
+  d: "M4 18h6V6H4v12zm9-9.5V10h7V8.5h-7zm0 7h7V14h-7v1.5z"
+}));
+/* harmony default export */ __webpack_exports__["default"] = (pullLeft);
+//# sourceMappingURL=pull-left.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@wordpress/icons/build-module/library/resize-corner-n-e.js":
+/*!*********************************************************************************!*\
+  !*** ./node_modules/@wordpress/icons/build-module/library/resize-corner-n-e.js ***!
+  \*********************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/primitives */ "@wordpress/primitives");
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * WordPress dependencies
+ */
+
+const resizeCornerNE = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.SVG, {
+  viewBox: "0 0 24 24",
+  xmlns: "http://www.w3.org/2000/svg"
+}, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.Path, {
+  d: "M12.5 4.2v1.6h4.7L5.8 17.2V12H4.2v7.8H12v-1.6H6.8L18.2 6.8v4.7h1.6V4.2z"
+}));
+/* harmony default export */ __webpack_exports__["default"] = (resizeCornerNE);
+//# sourceMappingURL=resize-corner-n-e.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@wordpress/icons/build-module/library/settings.js":
+/*!************************************************************************!*\
+  !*** ./node_modules/@wordpress/icons/build-module/library/settings.js ***!
+  \************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/primitives */ "@wordpress/primitives");
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * WordPress dependencies
+ */
+
+const settings = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.SVG, {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 24 24"
+}, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.Path, {
+  d: "M14.5 13.8c-1.1 0-2.1.7-2.4 1.8H4V17h8.1c.3 1 1.3 1.8 2.4 1.8s2.1-.7 2.4-1.8H20v-1.5h-3.1c-.3-1-1.3-1.7-2.4-1.7zM11.9 7c-.3-1-1.3-1.8-2.4-1.8S7.4 6 7.1 7H4v1.5h3.1c.3 1 1.3 1.8 2.4 1.8s2.1-.7 2.4-1.8H20V7h-8.1z"
+}));
+/* harmony default export */ __webpack_exports__["default"] = (settings);
+//# sourceMappingURL=settings.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@wordpress/icons/build-module/library/swatch.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@wordpress/icons/build-module/library/swatch.js ***!
+  \**********************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/primitives */ "@wordpress/primitives");
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * WordPress dependencies
+ */
+
+const swatch = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.SVG, {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 24 24"
+}, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.Path, {
+  d: "M5 17.7c.4.5.8.9 1.2 1.2l1.1-1.4c-.4-.3-.7-.6-1-1L5 17.7zM5 6.3l1.4 1.1c.3-.4.6-.7 1-1L6.3 5c-.5.4-.9.8-1.3 1.3zm.1 7.8l-1.7.5c.2.6.4 1.1.7 1.6l1.5-.8c-.2-.4-.4-.8-.5-1.3zM4.8 12v-.7L3 11.1v1.8l1.7-.2c.1-.2.1-.5.1-.7zm3 7.9c.5.3 1.1.5 1.6.7l.5-1.7c-.5-.1-.9-.3-1.3-.5l-.8 1.5zM19 6.3c-.4-.5-.8-.9-1.2-1.2l-1.1 1.4c.4.3.7.6 1 1L19 6.3zm-.1 3.6l1.7-.5c-.2-.6-.4-1.1-.7-1.6l-1.5.8c.2.4.4.8.5 1.3zM5.6 8.6l-1.5-.8c-.3.5-.5 1-.7 1.6l1.7.5c.1-.5.3-.9.5-1.3zm2.2-4.5l.8 1.5c.4-.2.8-.4 1.3-.5l-.5-1.7c-.6.2-1.1.4-1.6.7zm8.8 13.5l1.1 1.4c.5-.4.9-.8 1.2-1.2l-1.4-1.1c-.2.3-.5.6-.9.9zm1.8-2.2l1.5.8c.3-.5.5-1.1.7-1.6l-1.7-.5c-.1.5-.3.9-.5 1.3zm2.6-4.3l-1.7.2v1.4l1.7.2V12v-.9zM11.1 3l.2 1.7h1.4l.2-1.7h-1.8zm3 2.1c.5.1.9.3 1.3.5l.8-1.5c-.5-.3-1.1-.5-1.6-.7l-.5 1.7zM12 19.2h-.7l-.2 1.8h1.8l-.2-1.7c-.2-.1-.5-.1-.7-.1zm2.1-.3l.5 1.7c.6-.2 1.1-.4 1.6-.7l-.8-1.5c-.4.2-.8.4-1.3.5z"
+}));
+/* harmony default export */ __webpack_exports__["default"] = (swatch);
+//# sourceMappingURL=swatch.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@wordpress/icons/build-module/library/symbol.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@wordpress/icons/build-module/library/symbol.js ***!
+  \**********************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/primitives */ "@wordpress/primitives");
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * WordPress dependencies
+ */
+
+const symbol = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.SVG, {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 24 24"
+}, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.Path, {
+  d: "M21.3 10.8l-5.6-5.6c-.7-.7-1.8-.7-2.5 0l-5.6 5.6c-.7.7-.7 1.8 0 2.5l5.6 5.6c.3.3.8.5 1.2.5s.9-.2 1.2-.5l5.6-5.6c.8-.7.8-1.9.1-2.5zm-1 1.4l-5.6 5.6c-.1.1-.3.1-.4 0l-5.6-5.6c-.1-.1-.1-.3 0-.4l5.6-5.6s.1-.1.2-.1.1 0 .2.1l5.6 5.6c.1.1.1.3 0 .4zm-16.6-.4L10 5.5l-1-1-6.3 6.3c-.7.7-.7 1.8 0 2.5L9 19.5l1.1-1.1-6.3-6.3c-.2 0-.2-.2-.1-.3z"
+}));
+/* harmony default export */ __webpack_exports__["default"] = (symbol);
+//# sourceMappingURL=symbol.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@wordpress/icons/build-module/library/tablet.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@wordpress/icons/build-module/library/tablet.js ***!
+  \**********************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/primitives */ "@wordpress/primitives");
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * WordPress dependencies
+ */
+
+const tablet = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.SVG, {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 24 24"
+}, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.Path, {
+  d: "M17 4H7c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm.5 14c0 .3-.2.5-.5.5H7c-.3 0-.5-.2-.5-.5V6c0-.3.2-.5.5-.5h10c.3 0 .5.2.5.5v12zm-7.5-.5h4V16h-4v1.5z"
+}));
+/* harmony default export */ __webpack_exports__["default"] = (tablet);
+//# sourceMappingURL=tablet.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@wordpress/icons/build-module/library/typography.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/@wordpress/icons/build-module/library/typography.js ***!
+  \**************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/primitives */ "@wordpress/primitives");
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * WordPress dependencies
+ */
+
+const typography = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.SVG, {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 24 24"
+}, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.Path, {
+  d: "M6.9 7L3 17.8h1.7l1-2.8h4.1l1 2.8h1.7L8.6 7H6.9zm-.7 6.6l1.5-4.3 1.5 4.3h-3zM21.6 17c-.1.1-.2.2-.3.2-.1.1-.2.1-.4.1s-.3-.1-.4-.2c-.1-.1-.1-.3-.1-.6V12c0-.5 0-1-.1-1.4-.1-.4-.3-.7-.5-1-.2-.2-.5-.4-.9-.5-.4 0-.8-.1-1.3-.1s-1 .1-1.4.2c-.4.1-.7.3-1 .4-.2.2-.4.3-.6.5-.1.2-.2.4-.2.7 0 .3.1.5.2.8.2.2.4.3.8.3.3 0 .6-.1.8-.3.2-.2.3-.4.3-.7 0-.3-.1-.5-.2-.7-.2-.2-.4-.3-.6-.4.2-.2.4-.3.7-.4.3-.1.6-.1.8-.1.3 0 .6 0 .8.1.2.1.4.3.5.5.1.2.2.5.2.9v1.1c0 .3-.1.5-.3.6-.2.2-.5.3-.9.4-.3.1-.7.3-1.1.4-.4.1-.8.3-1.1.5-.3.2-.6.4-.8.7-.2.3-.3.7-.3 1.2 0 .6.2 1.1.5 1.4.3.4.9.5 1.6.5.5 0 1-.1 1.4-.3.4-.2.8-.6 1.1-1.1 0 .4.1.7.3 1 .2.3.6.4 1.2.4.4 0 .7-.1.9-.2.2-.1.5-.3.7-.4h-.3zm-3-.9c-.2.4-.5.7-.8.8-.3.2-.6.2-.8.2-.4 0-.6-.1-.9-.3-.2-.2-.3-.6-.3-1.1 0-.5.1-.9.3-1.2s.5-.5.8-.7c.3-.2.7-.3 1-.5.3-.1.6-.3.7-.6v3.4z"
+}));
+/* harmony default export */ __webpack_exports__["default"] = (typography);
+//# sourceMappingURL=typography.js.map
+
+/***/ }),
+
+/***/ "./node_modules/classnames/index.js":
+/*!******************************************!*\
+  !*** ./node_modules/classnames/index.js ***!
+  \******************************************/
+/***/ (function(module, exports) {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+  Copyright (c) 2018 Jed Watson.
+  Licensed under the MIT License (MIT), see
+  http://jedwatson.github.io/classnames
+*/
+/* global define */
+
+(function () {
+	'use strict';
+
+	var hasOwn = {}.hasOwnProperty;
+
+	function classNames() {
+		var classes = [];
+
+		for (var i = 0; i < arguments.length; i++) {
+			var arg = arguments[i];
+			if (!arg) continue;
+
+			var argType = typeof arg;
+
+			if (argType === 'string' || argType === 'number') {
+				classes.push(arg);
+			} else if (Array.isArray(arg)) {
+				if (arg.length) {
+					var inner = classNames.apply(null, arg);
+					if (inner) {
+						classes.push(inner);
+					}
+				}
+			} else if (argType === 'object') {
+				if (arg.toString === Object.prototype.toString) {
+					for (var key in arg) {
+						if (hasOwn.call(arg, key) && arg[key]) {
+							classes.push(key);
+						}
+					}
+				} else {
+					classes.push(arg.toString());
+				}
+			}
+		}
+
+		return classes.join(' ');
+	}
+
+	if ( true && module.exports) {
+		classNames.default = classNames;
+		module.exports = classNames;
+	} else if (true) {
+		// register as 'classnames', consistent with npm package name
+		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
+			return classNames;
+		}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	} else {}
+}());
+
+
+/***/ }),
+
+/***/ "@wordpress/block-editor":
+/*!*************************************!*\
+  !*** external ["wp","blockEditor"] ***!
+  \*************************************/
+/***/ (function(module) {
+
+"use strict";
+module.exports = window["wp"]["blockEditor"];
+
+/***/ }),
+
+/***/ "@wordpress/components":
+/*!************************************!*\
+  !*** external ["wp","components"] ***!
+  \************************************/
+/***/ (function(module) {
+
+"use strict";
+module.exports = window["wp"]["components"];
+
+/***/ }),
+
+/***/ "@wordpress/compose":
+/*!*********************************!*\
+  !*** external ["wp","compose"] ***!
+  \*********************************/
+/***/ (function(module) {
+
+"use strict";
+module.exports = window["wp"]["compose"];
+
+/***/ }),
+
+/***/ "@wordpress/element":
+/*!*********************************!*\
+  !*** external ["wp","element"] ***!
+  \*********************************/
+/***/ (function(module) {
+
+"use strict";
+module.exports = window["wp"]["element"];
+
+/***/ }),
+
+/***/ "@wordpress/hooks":
+/*!*******************************!*\
+  !*** external ["wp","hooks"] ***!
+  \*******************************/
+/***/ (function(module) {
+
+"use strict";
+module.exports = window["wp"]["hooks"];
+
+/***/ }),
+
+/***/ "@wordpress/i18n":
+/*!******************************!*\
+  !*** external ["wp","i18n"] ***!
+  \******************************/
+/***/ (function(module) {
+
+"use strict";
+module.exports = window["wp"]["i18n"];
+
+/***/ }),
+
+/***/ "@wordpress/primitives":
+/*!************************************!*\
+  !*** external ["wp","primitives"] ***!
+  \************************************/
+/***/ (function(module) {
+
+"use strict";
+module.exports = window["wp"]["primitives"];
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/esm/extends.js":
+/*!************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/extends.js ***!
+  \************************************************************/
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ _extends; }
+/* harmony export */ });
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	!function() {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = function(module) {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				function() { return module['default']; } :
+/******/ 				function() { return module; };
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	!function() {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = function(exports, definition) {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	!function() {
+/******/ 		__webpack_require__.o = function(obj, prop) { return Object.prototype.hasOwnProperty.call(obj, prop); }
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	!function() {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = function(exports) {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	}();
+/******/ 	
+/************************************************************************/
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
+!function() {
+"use strict";
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_hooks__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/hooks */ "@wordpress/hooks");
+/* harmony import */ var _wordpress_hooks__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_hooks__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/compose */ "@wordpress/compose");
+/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_compose__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/settings.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/aspect-ratio.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/desktop.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/tablet.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/mobile.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/plus.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/symbol.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/layout.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/swatch.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/resize-corner-n-e.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/typography.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/pull-left.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/plus-circle.js");
+
+
+
+/**
+ * External Dependencies
+ */
+
+/**
+ * WordPress Dependencies
+ */
+
+
+
+
+
+
+
+
+const allowedBlocks = ["core/archives", "core/audio", "core/buttons", "core/button", "core/categories", "core/code", "core/column", "core/columns", "core/group", "core/cover", "core/coverImage", "core/embed", "core/file", "core/gallery", "core/heading", "core/html", "core/image", "core/latest-comments", "core/latest-posts", "core/latestComments", "core/latestPosts", "core/list", "core/paragraph", "core/preformatted", "core/pullquote", "core/quote", "core/reusableBlock", "core/separator", "core/shortcode", "core/subhead", "core/table", "core/textColumns", "core/verse", "core/video", "core/query-title", "core/post-terms"];
+/**
+ * Adds custom icon
+ */
+
+const mrDevIcon = wp.element.createElement("svg", {
+  width: 20,
+  height: 20
+}, wp.element.createElement("path", {
+  d: "M11.361,13.455c0,0.252-0.51,0.456-1.141,0.456s-1.141-0.204-1.141-0.456c0-0.252,0.51-0.457,1.141-0.457   S11.361,13.203,11.361,13.455z M20.029,12.448c0,1.34-0.843,2.479-2.002,2.859c-1.487,2.854-4.476,4.697-7.792,4.697   c-3.313,0-6.299-1.837-7.786-4.686c-1.177-0.368-2.037-1.515-2.037-2.87c0-0.828,0.325-1.577,0.844-2.12   C0.89,9.954,0.612,9.477,0.451,8.916C0.177,7.969,0.26,6.904,0.686,5.918C1.194,4.739,2.13,3.852,3.18,3.485   c0.237-2.627,4.676-3.569,7.611-3.478c4.147,0.13,5.12,2.016,5.292,3.322c1.331,0.148,2.594,1.146,3.215,2.589   c0.424,0.986,0.509,2.051,0.236,2.998c-0.129,0.449-0.334,0.845-0.597,1.177C19.6,10.639,20.029,11.493,20.029,12.448z    M11.434,17.606l-0.216-0.967H9.236l-0.222,0.964c0.304-0.136,0.73-0.223,1.207-0.223C10.7,17.38,11.129,17.468,11.434,17.606z    M18.203,12.448c0-0.646-0.454-1.169-1.021-1.169c0,0-0.001,0-0.002,0c-0.155,0.25-0.333,0.489-0.534,0.718   c0.126-0.409,0.21-0.826,0.256-1.244c0-0.006-0.001-0.012-0.001-0.018c-0.595-0.317-1.205-1-1.625-1.901   c-0.438-0.939-0.562-1.886-0.395-2.549c-1.687,1.07-4.545,0.562-4.545,0.562c-1.71,0.114-2.167,2.281-2.167,2.281   C7.374,8.952,6.549,8.401,5.831,7.79C5.754,8.129,5.635,8.482,5.47,8.834c-0.489,1.05-1.237,1.805-1.917,2.026   c0.047,0.382,0.127,0.762,0.242,1.135c-0.202-0.229-0.379-0.468-0.534-0.718c-0.001,0-0.001-0.001-0.002-0.001   c-0.568,0-1.022,0.523-1.022,1.17c0,0.646,0.455,1.168,1.022,1.168c0.142,0,0.276-0.032,0.399-0.091   c0.124,0.361,0.279,0.708,0.459,1.038c1.016,0.359,2.496,1.069,3.199,2.279l0.304-1.321c0.095-0.414,0.464-0.708,0.889-0.708h3.44   c0.428,0,0.799,0.296,0.891,0.714l0.291,1.301c0.713-1.216,2.214-1.925,3.227-2.279c0.177-0.324,0.329-0.663,0.449-1.016   c0.115,0.051,0.241,0.083,0.373,0.083C17.749,13.616,18.203,13.092,18.203,12.448z M7.121,9.929c-0.566,0-1.027,0.46-1.027,1.026   s0.461,1.026,1.027,1.026s1.026-0.461,1.026-1.026S7.687,9.929,7.121,9.929z M13.32,9.929c-0.566,0-1.027,0.46-1.027,1.026   s0.461,1.026,1.027,1.026c0.565,0,1.026-0.461,1.026-1.026S13.885,9.929,13.32,9.929z"
+}));
+/**
+ * @param {Object} settings Settings for the block.
+ *
+ * @return {Object} settings Modified settings.
+ */
+
+function mrAddAttributes(settings) {
+  //check if object exists for old Gutenberg version compatibility
+  //add allowedBlocks restriction
+  if (typeof settings.attributes !== "undefined" && allowedBlocks.includes(settings.name)) {
+    settings.attributes = Object.assign(settings.attributes, {
+      mrAnimation: {
+        type: "string",
+        default: ""
+      },
+      mrPerPage: {
+        type: "int",
+        default: ""
+      },
+      mrArrowPagination: {
+        type: "string",
+        default: ""
+      },
+      mrSelectPagination: {
+        type: "string",
+        default: ""
+      },
+      mrRadioPagination: {
+        type: "string",
+        default: ""
+      },
+      mrPerLine: {
+        type: "string",
+        default: ""
+      },
+      mrPerLinedesktop: {
+        type: "string",
+        default: ""
+      },
+      mrPerLinelaptop: {
+        type: "string",
+        default: ""
+      },
+      mrPerLinetablet: {
+        type: "string",
+        default: ""
+      },
+      mrPerLinephone: {
+        type: "string",
+        default: ""
+      },
+      mrOrder: {
+        type: "string",
+        default: ""
+      },
+      mrOrderdesktop: {
+        type: "string",
+        default: ""
+      },
+      mrOrderlaptop: {
+        type: "string",
+        default: ""
+      },
+      mrOrdertablet: {
+        type: "string",
+        default: ""
+      },
+      mrOrderphone: {
+        type: "string",
+        default: ""
+      },
+      mrSize: {
+        type: "int",
+        default: 0
+      },
+      mrSizedesktop: {
+        type: "int",
+        default: 0
+      },
+      mrSizelaptop: {
+        type: "int",
+        default: 0
+      },
+      mrSizetablet: {
+        type: "int",
+        default: 0
+      },
+      mrSizephone: {
+        type: "int",
+        default: 0
+      },
+      mrDisplay: {
+        type: "string",
+        default: ""
+      },
+      mrDisplaydesktop: {
+        type: "string",
+        default: ""
+      },
+      mrDisplaylaptop: {
+        type: "string",
+        default: ""
+      },
+      mrDisplaytablet: {
+        type: "string",
+        default: ""
+      },
+      mrDisplayphone: {
+        type: "string",
+        default: ""
+      },
+      mrWrap: {
+        type: "string",
+        default: ""
+      },
+      mrWrapdesktop: {
+        type: "string",
+        default: ""
+      },
+      mrWraplaptop: {
+        type: "string",
+        default: ""
+      },
+      mrWraptablet: {
+        type: "string",
+        default: ""
+      },
+      mrWrapphone: {
+        type: "string",
+        default: ""
+      },
+      mrPaddingTop: {
+        type: "string",
+        default: ""
+      },
+      mrPaddingTopdesktop: {
+        type: "string",
+        default: ""
+      },
+      mrPaddingToplaptop: {
+        type: "string",
+        default: ""
+      },
+      mrPaddingToptablet: {
+        type: "string",
+        default: ""
+      },
+      mrPaddingTopphone: {
+        type: "string",
+        default: ""
+      },
+      mrPaddingRight: {
+        type: "string",
+        default: ""
+      },
+      mrPaddingRightdesktop: {
+        type: "string",
+        default: ""
+      },
+      mrPaddingRightlaptop: {
+        type: "string",
+        default: ""
+      },
+      mrPaddingRighttablet: {
+        type: "string",
+        default: ""
+      },
+      mrPaddingRightphone: {
+        type: "string",
+        default: ""
+      },
+      mrPaddingBottom: {
+        type: "string",
+        default: ""
+      },
+      mrPaddingBottomdesktop: {
+        type: "string",
+        default: ""
+      },
+      mrPaddingBottomlaptop: {
+        type: "string",
+        default: ""
+      },
+      mrPaddingBottomtablet: {
+        type: "string",
+        default: ""
+      },
+      mrPaddingBottomphone: {
+        type: "string",
+        default: ""
+      },
+      mrPaddingLeft: {
+        type: "string",
+        default: ""
+      },
+      mrPaddingLeftdesktop: {
+        type: "string",
+        default: ""
+      },
+      mrPaddingLeftlaptop: {
+        type: "string",
+        default: ""
+      },
+      mrPaddingLefttablet: {
+        type: "string",
+        default: ""
+      },
+      mrPaddingLeftphone: {
+        type: "string",
+        default: ""
+      },
+      mrMarginTop: {
+        type: "string",
+        default: ""
+      },
+      mrMarginTopdesktop: {
+        type: "string",
+        default: ""
+      },
+      mrMarginToplaptop: {
+        type: "string",
+        default: ""
+      },
+      mrMarginToptablet: {
+        type: "string",
+        default: ""
+      },
+      mrMarginTopphone: {
+        type: "string",
+        default: ""
+      },
+      mrMarginRight: {
+        type: "string",
+        default: ""
+      },
+      mrMarginRightdesktop: {
+        type: "string",
+        default: ""
+      },
+      mrMarginRightlaptop: {
+        type: "string",
+        default: ""
+      },
+      mrMarginRighttablet: {
+        type: "string",
+        default: ""
+      },
+      mrMarginRightphone: {
+        type: "string",
+        default: ""
+      },
+      mrMarginBottom: {
+        type: "string",
+        default: ""
+      },
+      mrMarginBottomdesktop: {
+        type: "string",
+        default: ""
+      },
+      mrMarginBottomlaptop: {
+        type: "string",
+        default: ""
+      },
+      mrMarginBottomtablet: {
+        type: "string",
+        default: ""
+      },
+      mrMarginBottomphone: {
+        type: "string",
+        default: ""
+      },
+      mrMarginLeft: {
+        type: "string",
+        default: ""
+      },
+      mrMarginLeftdesktop: {
+        type: "string",
+        default: ""
+      },
+      mrMarginLeftlaptop: {
+        type: "string",
+        default: ""
+      },
+      mrMarginLefttablet: {
+        type: "string",
+        default: ""
+      },
+      mrMarginLeftphone: {
+        type: "string",
+        default: ""
+      },
+      mrPosition: {
+        type: "string",
+        default: ""
+      },
+      mrPositiondesktop: {
+        type: "string",
+        default: ""
+      },
+      mrPositionlaptop: {
+        type: "string",
+        default: ""
+      },
+      mrPositiontablet: {
+        type: "string",
+        default: ""
+      },
+      mrPositionphone: {
+        type: "string",
+        default: ""
+      },
+      mrPositionAlignment: {
+        type: "string",
+        default: ""
+      },
+      mrPositionAlignmentdesktop: {
+        type: "string",
+        default: ""
+      },
+      mrPositionAlignmentlaptop: {
+        type: "string",
+        default: ""
+      },
+      mrPositionAlignmenttablet: {
+        type: "string",
+        default: ""
+      },
+      mrPositionAlignmentphone: {
+        type: "string",
+        default: ""
+      },
+      mrPositionSides: {
+        type: "string",
+        default: ""
+      },
+      mrPositionSidesdesktop: {
+        type: "string",
+        default: ""
+      },
+      mrPositionSideslaptop: {
+        type: "string",
+        default: ""
+      },
+      mrPositionSidestablet: {
+        type: "string",
+        default: ""
+      },
+      mrPositionSidesphone: {
+        type: "string",
+        default: ""
+      },
+      mrContentAlignment: {
+        type: "string",
+        default: ""
+      },
+      mrContentAlignmentdesktop: {
+        type: "string",
+        default: ""
+      },
+      mrContentAlignmentlaptop: {
+        type: "string",
+        default: ""
+      },
+      mrContentAlignmenttablet: {
+        type: "string",
+        default: ""
+      },
+      mrContentAlignmentphone: {
+        type: "string",
+        default: ""
+      },
+      mrVerticalOffset: {
+        type: "string",
+        default: ""
+      },
+      mrVerticalOffsetdesktop: {
+        type: "string",
+        default: ""
+      },
+      mrVerticalOffsetlaptop: {
+        type: "string",
+        default: ""
+      },
+      mrVerticalOffsettablet: {
+        type: "string",
+        default: ""
+      },
+      mrVerticalOffsetphone: {
+        type: "string",
+        default: ""
+      },
+      mrHorizontalOffset: {
+        type: "string",
+        default: ""
+      },
+      mrHorizontalOffsetdesktop: {
+        type: "string",
+        default: ""
+      },
+      mrHorizontalOffsetlaptop: {
+        type: "string",
+        default: ""
+      },
+      mrHorizontalOffsettablet: {
+        type: "string",
+        default: ""
+      },
+      mrHorizontalOffsetphone: {
+        type: "string",
+        default: ""
+      },
+      mrFontSize: {
+        type: "int",
+        default: 0
+      },
+      mrFontSizedesktop: {
+        type: "int",
+        default: 0
+      },
+      mrFontSizelaptop: {
+        type: "int",
+        default: 0
+      },
+      mrFontSizetablet: {
+        type: "int",
+        default: 0
+      },
+      mrFontSizephone: {
+        type: "int",
+        default: 0
+      },
+      mrTextAlignment: {
+        type: "string",
+        default: ""
+      },
+      mrTextAlignmentdesktop: {
+        type: "string",
+        default: ""
+      },
+      mrTextAlignmentlaptop: {
+        type: "string",
+        default: ""
+      },
+      mrTextAlignmenttablet: {
+        type: "string",
+        default: ""
+      },
+      mrTextAlignmentphone: {
+        type: "string",
+        default: ""
+      },
+      mrScroll: {
+        type: "string",
+        default: ""
+      },
+      mrScrolldesktop: {
+        type: "string",
+        default: ""
+      },
+      mrScrolllaptop: {
+        type: "string",
+        default: ""
+      },
+      mrScrolltablet: {
+        type: "string",
+        default: ""
+      },
+      mrScrollphone: {
+        type: "string",
+        default: ""
+      }
+    });
+  }
+
+  return settings;
+}
+/**
+ * Add Utilities controls.
+ *
+ * @param {function} BlockEdit Block edit component.
+ *
+ * @return {function} BlockEdit Modified block edit component.
+ */
+
+
+const mrInspectorControls = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_5__.createHigherOrderComponent)(BlockEdit => {
+  return props => {
+    const {
+      name,
+      attributes,
+      setAttributes,
+      isSelected
+    } = props;
+    const {
+      mrAnimation,
+      mrPerPage,
+      mrArrowPagination,
+      mrSelectPagination,
+      mrRadioPagination,
+      mrPerLine,
+      mrPerLinedesktop,
+      mrPerLinelaptop,
+      mrPerLinetablet,
+      mrPerLinephone,
+      mrSize,
+      mrSizedesktop,
+      mrSizelaptop,
+      mrSizetablet,
+      mrSizephone,
+      mrOrder,
+      mrOrderdesktop,
+      mrOrderlaptop,
+      mrOrdertablet,
+      mrOrderphone,
+      mrDisplay,
+      mrDisplaydesktop,
+      mrDisplaylaptop,
+      mrDisplaytablet,
+      mrDisplayphone,
+      mrWrap,
+      mrWrapdesktop,
+      mrWraplaptop,
+      mrWraptablet,
+      mrWrapphone,
+      mrPaddingTop,
+      mrPaddingTopdesktop,
+      mrPaddingToplaptop,
+      mrPaddingToptablet,
+      mrPaddingTopphone,
+      mrPaddingRight,
+      mrPaddingRightdesktop,
+      mrPaddingRightlaptop,
+      mrPaddingRighttablet,
+      mrPaddingRightphone,
+      mrPaddingBottom,
+      mrPaddingBottomdesktop,
+      mrPaddingBottomlaptop,
+      mrPaddingBottomtablet,
+      mrPaddingBottomphone,
+      mrPaddingLeft,
+      mrPaddingLeftdesktop,
+      mrPaddingLeftlaptop,
+      mrPaddingLefttablet,
+      mrPaddingLeftphone,
+      mrMarginTop,
+      mrMarginTopdesktop,
+      mrMarginToplaptop,
+      mrMarginToptablet,
+      mrMarginTopphone,
+      mrMarginRight,
+      mrMarginRightdesktop,
+      mrMarginRightlaptop,
+      mrMarginRighttablet,
+      mrMarginRightphone,
+      mrMarginBottom,
+      mrMarginBottomdesktop,
+      mrMarginBottomlaptop,
+      mrMarginBottomtablet,
+      mrMarginBottomphone,
+      mrMarginLeft,
+      mrMarginLeftdesktop,
+      mrMarginLeftlaptop,
+      mrMarginLefttablet,
+      mrMarginLeftphone,
+      mrPosition,
+      mrPositiondesktop,
+      mrPositionlaptop,
+      mrPositiontablet,
+      mrPositionphone,
+      mrPositionAlignment,
+      mrPositionAlignmentdesktop,
+      mrPositionAlignmentlaptop,
+      mrPositionAlignmenttablet,
+      mrPositionAlignmentphone,
+      mrPositionSides,
+      mrPositionSidesdesktop,
+      mrPositionSideslaptop,
+      mrPositionSidestablet,
+      mrPositionSidesphone,
+      mrContentAlignment,
+      mrContentAlignmentdesktop,
+      mrContentAlignmentlaptop,
+      mrContentAlignmenttablet,
+      mrContentAlignmentphone,
+      mrVerticalOffset,
+      mrVerticalOffsetdesktop,
+      mrVerticalOffsetlaptop,
+      mrVerticalOffsettablet,
+      mrVerticalOffsetphone,
+      mrHorizontalOffset,
+      mrHorizontalOffsetdesktop,
+      mrHorizontalOffsetlaptop,
+      mrHorizontalOffsettablet,
+      mrHorizontalOffsetphone,
+      mrFontSize,
+      mrFontSizedesktop,
+      mrFontSizelaptop,
+      mrFontSizetablet,
+      mrFontSizephone,
+      mrTextAlignment,
+      mrTextAlignmentdesktop,
+      mrTextAlignmentlaptop,
+      mrTextAlignmenttablet,
+      mrTextAlignmentphone,
+      mrScroll,
+      mrScrolldesktop,
+      mrScrolllaptop,
+      mrScrolltablet,
+      mrScrollphone
+    } = attributes;
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(BlockEdit, props), isSelected && allowedBlocks.includes(name) && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__.InspectorControls, {
+      key: "setting"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.Panel, {
+      header: ""
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.PanelBody, {
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Utilities", "mrutils"),
+      initialOpen: false
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.TabPanel, {
+      className: "mr-backend-tabs",
+      activeClass: "is-active",
+      tabs: [{
+        name: "",
+        title: _wordpress_icons__WEBPACK_IMPORTED_MODULE_8__["default"],
+        className: "mr-backend-tab mr-backend-tab_all"
+      }, {
+        name: "desktop",
+        title: _wordpress_icons__WEBPACK_IMPORTED_MODULE_9__["default"],
+        className: "mr-backend-tab mr-backend-tab_desktop"
+      }, {
+        name: "laptop",
+        title: _wordpress_icons__WEBPACK_IMPORTED_MODULE_10__["default"],
+        className: "mr-backend-tab mr-backend-tab_laptop"
+      }, {
+        name: "tablet",
+        title: _wordpress_icons__WEBPACK_IMPORTED_MODULE_11__["default"],
+        className: "mr-backend-tab mr-backend-tab_tablet"
+      }, {
+        name: "phone",
+        title: _wordpress_icons__WEBPACK_IMPORTED_MODULE_12__["default"],
+        className: "mr-backend-tab mr-backend-tab_phone"
+      }, {
+        name: "more",
+        title: _wordpress_icons__WEBPACK_IMPORTED_MODULE_13__["default"],
+        className: "mr-backend-tab mr-backend-tab_more"
+      }]
+    }, tab => tab.name !== "more" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, tab.name === "" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.PanelBody, {
+      icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_14__["default"],
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Animations", "mrutils"),
+      initialOpen: false
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.SelectControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Animation", "mrutils"),
+      value: mrAnimation,
+      options: [{
+        value: "",
+        label: "Default"
+      }, {
+        value: " mr-fade active",
+        label: "Fade"
+      }, {
+        value: " mr-slidetop active",
+        label: "Slide Top"
+      }, {
+        value: " mr-slideright active",
+        label: "Slide Right"
+      }, {
+        value: " mr-slidebottom active",
+        label: "Slide Bottom"
+      }, {
+        value: " mr-slideleft active",
+        label: "Slide Left"
+      }, {
+        value: " mr-scale active",
+        label: "Scale"
+      }, {
+        value: " mr-scaleright active",
+        label: "Scale Right"
+      }, {
+        value: " mr-scaleleft active",
+        label: "Scale Left"
+      }, {
+        value: " mr-zoom active",
+        label: "Zoom"
+      }, {
+        value: " mr-zoomright active",
+        label: "Zoom Right"
+      }, {
+        value: " mr-zoomleft active",
+        label: "Zoom Left"
+      }],
+      onChange: val => setAttributes({
+        mrAnimation: val === undefined ? "" : val
+      })
+    })) : "", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.PanelBody, {
+      icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_15__["default"],
+      title: tab.name + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)(" Layout", "mrutils"),
+      initialOpen: false
+    }, tab.name === "" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.TextControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Number of items per page", "mrutils"),
+      value: mrPerPage,
+      type: "number",
+      className: "mr-backend-perpage",
+      onChange: val => setAttributes({
+        mrPerPage: val === undefined ? "" : val
+      }),
+      help: mrPerPage > 0 ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Pagination was applied but you need to preview the frontend to see the actual result.", "mrutils") : ""
+    }), mrPerPage > 0 ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.ToggleControl, {
+      label: "Arrows",
+      checked: mrArrowPagination,
+      className: "mr-backend-perpage",
+      onChange: () => setAttributes({
+        mrArrowPagination: !mrArrowPagination
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.ToggleControl, {
+      label: "Select dropdown",
+      checked: mrSelectPagination,
+      className: "mr-backend-perpage",
+      onChange: () => setAttributes({
+        mrSelectPagination: !mrSelectPagination
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.ToggleControl, {
+      label: "Radio buttons",
+      checked: mrRadioPagination,
+      className: "mr-backend-perpage",
+      onChange: () => setAttributes({
+        mrRadioPagination: !mrRadioPagination
+      })
+    })) : "") : "", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.SelectControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Number of items per line", "mrutils"),
+      value: tab.name === "desktop" ? mrPerLinedesktop : tab.name === "laptop" ? mrPerLinelaptop : tab.name === "tablet" ? mrPerLinetablet : tab.name === "phone" ? mrPerLinephone : mrPerLine,
+      options: tab.name === "" || tab.name === "desktop" || tab.name === "laptop" || tab.name === "tablet" || tab.name === "phone" ? [{
+        value: "",
+        label: ""
+      }, {
+        value: (" mr-" + tab.name + "-1perline").replace("--", "-"),
+        label: "1"
+      }, {
+        value: (" mr-" + tab.name + "-2perline").replace("--", "-"),
+        label: "2"
+      }, {
+        value: (" mr-" + tab.name + "-3perline").replace("--", "-"),
+        label: "3"
+      }, {
+        value: (" mr-" + tab.name + "-4perline").replace("--", "-"),
+        label: "4"
+      }, {
+        value: (" mr-" + tab.name + "-5perline").replace("--", "-"),
+        label: "5"
+      }, {
+        value: (" mr-" + tab.name + "-6perline").replace("--", "-"),
+        label: "6"
+      }, {
+        value: (" mr-" + tab.name + "-7perline").replace("--", "-"),
+        label: "7"
+      }, {
+        value: (" mr-" + tab.name + "-8perline").replace("--", "-"),
+        label: "8"
+      }, {
+        value: (" mr-" + tab.name + "-9perline").replace("--", "-"),
+        label: "9"
+      }, {
+        value: (" mr-" + tab.name + "-10perline").replace("--", "-"),
+        label: "10"
+      }, {
+        value: (" mr-" + tab.name + "-11perline").replace("--", "-"),
+        label: "11"
+      }, {
+        value: (" mr-" + tab.name + "-12perline").replace("--", "-"),
+        label: "12"
+      }, {
+        value: (" mr-" + tab.name + "-0perline").replace("--", "-"),
+        label: "∞"
+      }] : "",
+      onChange: val => setAttributes({
+        mrPerLine: val === undefined || val === "" ? "" : val.includes("-desktop-") || val.includes("-laptop-") || val.includes("-tablet-") || val.includes("-phone-") ? mrPerLine : val.replace("--", "-"),
+        mrPerLinedesktop: val === undefined || val === "" ? "" : val !== undefined && val.includes("-desktop-") ? val : mrPerLinedesktop,
+        mrPerLinelaptop: val === undefined || val === "" ? "" : val !== undefined && val.includes("-laptop-") ? val : mrPerLinelaptop,
+        mrPerLinetablet: val === undefined || val === "" ? "" : val !== undefined && val.includes("-tablet-") ? val : mrPerLinetablet,
+        mrPerLinephone: val === undefined || val === "" ? "" : val !== undefined && val.includes("-phone-") ? val : mrPerLinephone
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.RangeControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Item size", "mrutils"),
+      value: tab.name === "desktop" ? mrSizedesktop : tab.name === "laptop" ? mrSizelaptop : tab.name === "tablet" ? mrSizetablet : tab.name === "phone" ? mrSizephone : mrSize,
+      initialPosition: 0,
+      allowReset: true,
+      min: 0,
+      max: 13,
+      onChange: val => setAttributes({
+        mrSize: tab.name === "" ? val === 0 || val === undefined ? "" : val : mrSize,
+        mrSizedesktop: tab.name === "desktop" ? val === 0 || val === undefined ? "" : val : mrSizedesktop,
+        mrSizelaptop: tab.name === "laptop" ? val === 0 || val === undefined ? "" : val : mrSizelaptop,
+        mrSizetablet: tab.name === "tablet" ? val === 0 || val === undefined ? "" : val : mrSizetablet,
+        mrSizephone: tab.name === "phone" ? val === 0 || val === undefined ? "" : val : mrSizephone
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.SelectControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Item order", "mrutils"),
+      value: tab.name === "desktop" ? mrOrderdesktop : tab.name === "laptop" ? mrOrderlaptop : tab.name === "tablet" ? mrOrdertablet : tab.name === "phone" ? mrOrderphone : mrOrder,
+      options: tab.name === "" || tab.name === "desktop" || tab.name === "laptop" || tab.name === "tablet" || tab.name === "phone" ? [{
+        value: "",
+        label: ""
+      }, {
+        value: (" mr-" + tab.name + "-order-1").replace("--", "-"),
+        label: "-1"
+      }, {
+        value: (" mr-" + tab.name + "-order1").replace("--", "-"),
+        label: "1"
+      }, {
+        value: (" mr-" + tab.name + "-order2").replace("--", "-"),
+        label: "2"
+      }, {
+        value: (" mr-" + tab.name + "-order3").replace("--", "-"),
+        label: "3"
+      }, {
+        value: (" mr-" + tab.name + "-order4").replace("--", "-"),
+        label: "4"
+      }, {
+        value: (" mr-" + tab.name + "-order5").replace("--", "-"),
+        label: "5"
+      }, {
+        value: (" mr-" + tab.name + "-order6").replace("--", "-"),
+        label: "6"
+      }, {
+        value: (" mr-" + tab.name + "-order7").replace("--", "-"),
+        label: "7"
+      }, {
+        value: (" mr-" + tab.name + "-order8").replace("--", "-"),
+        label: "8"
+      }, {
+        value: (" mr-" + tab.name + "-order9").replace("--", "-"),
+        label: "9"
+      }, {
+        value: (" mr-" + tab.name + "-order10").replace("--", "-"),
+        label: "10"
+      }, {
+        value: (" mr-" + tab.name + "-order11").replace("--", "-"),
+        label: "11"
+      }, {
+        value: (" mr-" + tab.name + "-order12").replace("--", "-"),
+        label: "12"
+      }] : "",
+      onChange: val => setAttributes({
+        mrOrder: val === undefined || val === "" ? "" : val.includes("-desktop-") || val.includes("-laptop-") || val.includes("-tablet-") || val.includes("-phone-") ? mrOrder : val.replace("--", "-"),
+        mrOrderdesktop: val === undefined || val === "" ? "" : val !== undefined && val.includes("-desktop-") ? val : mrOrderdesktop,
+        mrOrderlaptop: val === undefined || val === "" ? "" : val !== undefined && val.includes("-laptop-") ? val : mrOrderlaptop,
+        mrOrdertablet: val === undefined || val === "" ? "" : val !== undefined && val.includes("-tablet-") ? val : mrOrdertablet,
+        mrOrderphone: val === undefined || val === "" ? "" : val !== undefined && val.includes("-phone-") ? val : mrOrderphone
+      })
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.PanelBody, {
+      icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_16__["default"],
+      title: tab.name + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)(" Display", "mrutils"),
+      initialOpen: false
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.SelectControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Visibility", "mrutils"),
+      value: tab.name === "desktop" ? mrDisplaydesktop : tab.name === "laptop" ? mrDisplaylaptop : tab.name === "tablet" ? mrDisplaytablet : tab.name === "phone" ? mrDisplayphone : mrDisplay,
+      options: [{
+        value: "",
+        label: "Default"
+      }, {
+        value: (" mr-" + tab.name + "-hide").replace("--", "-"),
+        label: "Hide"
+      }, {
+        value: (" mr-" + tab.name + "-show").replace("--", "-"),
+        label: "Show"
+      }, {
+        value: (" mr-" + tab.name + "-none").replace("--", "-"),
+        label: "None"
+      }, {
+        value: (" mr-" + tab.name + "-flex").replace("--", "-"),
+        label: "Flex"
+      }, {
+        value: (" mr-" + tab.name + "-block").replace("--", "-"),
+        label: "Block"
+      }, {
+        value: (" mr-" + tab.name + "-visible").replace("--", "-"),
+        label: "Visible"
+      }, {
+        value: (" mr-" + tab.name + "-hidden").replace("--", "-"),
+        label: "Hidden"
+      }],
+      onChange: val => setAttributes({
+        mrDisplay: val === undefined || val === "" ? "" : val.includes("-desktop-") || val.includes("-laptop-") || val.includes("-tablet-") || val.includes("-phone-") ? mrDisplay : val.replace("--", "-"),
+        mrDisplaydesktop: val === undefined || val === "" ? "" : val !== undefined && val.includes("-desktop-") ? val : mrDisplaydesktop,
+        mrDisplaylaptop: val === undefined || val === "" ? "" : val !== undefined && val.includes("-laptop-") ? val : mrDisplaylaptop,
+        mrDisplaytablet: val === undefined || val === "" ? "" : val !== undefined && val.includes("-tablet-") ? val : mrDisplaytablet,
+        mrDisplayphone: val === undefined || val === "" ? "" : val !== undefined && val.includes("-phone-") ? val : mrDisplayphone
+      }),
+      help: mrDisplay === " mr-hidden" || mrDisplay === " mr-hide" || mrDisplay === " mr-none" || mrDisplaydesktop === " mr-hidden" || mrDisplaydesktop === " mr-hide" || mrDisplaydesktop === " mr-none" || mrDisplaylaptop === " mr-hidden" || mrDisplaylaptop === " mr-hide" || mrDisplaylaptop === " mr-none" || mrDisplaytablet === " mr-hidden" || mrDisplaytablet === " mr-hide" || mrDisplaytablet === " mr-none" || mrDisplayphone === " mr-hidden" || mrDisplayphone === " mr-hide" || mrDisplayphone === " mr-none" ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("An opacity was applied to the block in the backend so you can still see and select it. Preview the frontend to see the actual result.", "mrutils") : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("")
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.SelectControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Wrap", "mrutils"),
+      value: tab.name === "desktop" ? mrWrapdesktop : tab.name === "laptop" ? mrWraplaptop : tab.name === "tablet" ? mrWraptablet : tab.name === "phone" ? mrWrapphone : mrWrap,
+      options: tab.name === "" || tab.name === "desktop" || tab.name === "laptop" || tab.name === "tablet" || tab.name === "phone" ? [{
+        value: "",
+        label: "Default"
+      }, {
+        value: (" mr-" + tab.name + "-wrap").replace("--", "-"),
+        label: "Wrap"
+      }, {
+        value: (" mr-" + tab.name + "-nowrap").replace("--", "-"),
+        label: "No Wrap"
+      }] : "",
+      onChange: val => setAttributes({
+        mrWrap: val === undefined || val === "" ? "" : val.includes("-desktop-") || val.includes("-laptop-") || val.includes("-tablet-") || val.includes("-phone-") ? mrWrap : val.replace("--", "-"),
+        mrWrapdesktop: val === undefined || val === "" ? "" : val !== undefined && val.includes("-desktop-") ? val : mrWrapdesktop,
+        mrWraplaptop: val === undefined || val === "" ? "" : val !== undefined && val.includes("-laptop-") ? val : mrWraplaptop,
+        mrWraptablet: val === undefined || val === "" ? "" : val !== undefined && val.includes("-tablet-") ? val : mrWraptablet,
+        mrWrapphone: val === undefined || val === "" ? "" : val !== undefined && val.includes("-phone-") ? val : mrWrapphone
+      })
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.PanelBody, {
+      icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_17__["default"],
+      title: tab.name + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)(" Spacing", "mrutils"),
+      initialOpen: false
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.TabPanel, {
+      className: "mr-width100",
+      activeClass: "is-active",
+      tabs: [{
+        name: "paddings",
+        title: "Paddings",
+        className: "mr-backend-tab_paddings mr-width100"
+      }, {
+        name: "margins",
+        title: "Margins",
+        className: "mr-backend-tab_margins mr-width100"
+      }]
+    }, tab2 => tab2.name === "paddings" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.SelectControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Padding Top", "mrutils"),
+      value: tab.name === "desktop" ? mrPaddingTopdesktop : tab.name === "laptop" ? mrPaddingToplaptop : tab.name === "tablet" ? mrPaddingToptablet : tab.name === "phone" ? mrPaddingTopphone : mrPaddingTop,
+      options: [{
+        value: "",
+        label: "Default padding"
+      }, {
+        value: (" mr-" + tab.name + "-paddingtop").replace("--", "-"),
+        label: "Use var(--padding)"
+      }, {
+        value: (" mr-" + tab.name + "-nopaddingtop").replace("--", "-"),
+        label: "Remove padding"
+      }],
+      onChange: val => setAttributes({
+        mrPaddingTop: val === undefined || val === "" ? "" : val.includes("-desktop-") || val.includes("-laptop-") || val.includes("-tablet-") || val.includes("-phone-") ? mrPaddingTop : val.replace("--", "-"),
+        mrPaddingTopdesktop: val === undefined || val === "" ? "" : val !== undefined && val.includes("-desktop-") ? val : mrPaddingTopdesktop,
+        mrPaddingToplaptop: val === undefined || val === "" ? "" : val !== undefined && val.includes("-laptop-") ? val : mrPaddingToplaptop,
+        mrPaddingToptablet: val === undefined || val === "" ? "" : val !== undefined && val.includes("-tablet-") ? val : mrPaddingToptablet,
+        mrPaddingTopphone: val === undefined || val === "" ? "" : val !== undefined && val.includes("-phone-") ? val : mrPaddingTopphone
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.SelectControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Padding Right", "mrutils"),
+      value: tab.name === "desktop" ? mrPaddingRightdesktop : tab.name === "laptop" ? mrPaddingRightlaptop : tab.name === "tablet" ? mrPaddingRighttablet : tab.name === "phone" ? mrPaddingRightphone : mrPaddingRight,
+      options: [{
+        value: "",
+        label: "Default padding"
+      }, {
+        value: (" mr-" + tab.name + "-paddingright").replace("--", "-"),
+        label: "Use var(--padding)"
+      }, {
+        value: (" mr-" + tab.name + "-nopaddingright").replace("--", "-"),
+        label: "Remove padding"
+      }],
+      onChange: val => setAttributes({
+        mrPaddingRight: val === undefined || val === "" ? "" : val.includes("-desktop-") || val.includes("-laptop-") || val.includes("-tablet-") || val.includes("-phone-") ? mrPaddingRight : val.replace("--", "-"),
+        mrPaddingRightdesktop: val === undefined || val === "" ? "" : val !== undefined && val.includes("-desktop-") ? val : mrPaddingRightdesktop,
+        mrPaddingRightlaptop: val === undefined || val === "" ? "" : val !== undefined && val.includes("-laptop-") ? val : mrPaddingRightlaptop,
+        mrPaddingRighttablet: val === undefined || val === "" ? "" : val !== undefined && val.includes("-tablet-") ? val : mrPaddingRighttablet,
+        mrPaddingRightphone: val === undefined || val === "" ? "" : val !== undefined && val.includes("-phone-") ? val : mrPaddingRightphone
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.SelectControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Padding Bottom", "mrutils"),
+      value: tab.name === "desktop" ? mrPaddingBottomdesktop : tab.name === "laptop" ? mrPaddingBottomlaptop : tab.name === "tablet" ? mrPaddingBottomtablet : tab.name === "phone" ? mrPaddingBottomphone : mrPaddingBottom,
+      options: [{
+        value: "",
+        label: "Default padding"
+      }, {
+        value: (" mr-" + tab.name + "-paddingbottom").replace("--", "-"),
+        label: "Use var(--padding)"
+      }, {
+        value: (" mr-" + tab.name + "-nopaddingbottom").replace("--", "-"),
+        label: "Remove padding"
+      }],
+      onChange: val => setAttributes({
+        mrPaddingBottom: val === undefined || val === "" ? "" : val.includes("-desktop-") || val.includes("-laptop-") || val.includes("-tablet-") || val.includes("-phone-") ? mrPaddingBottom : val.replace("--", "-"),
+        mrPaddingBottomdesktop: val === undefined || val === "" ? "" : val !== undefined && val.includes("-desktop-") ? val : mrPaddingBottomdesktop,
+        mrPaddingBottomlaptop: val === undefined || val === "" ? "" : val !== undefined && val.includes("-laptop-") ? val : mrPaddingBottomlaptop,
+        mrPaddingBottomtablet: val === undefined || val === "" ? "" : val !== undefined && val.includes("-tablet-") ? val : mrPaddingBottomtablet,
+        mrPaddingBottomphone: val === undefined || val === "" ? "" : val !== undefined && val.includes("-phone-") ? val : mrPaddingBottomphone
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.SelectControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Padding Left", "mrutils"),
+      value: tab.name === "desktop" ? mrPaddingLeftdesktop : tab.name === "laptop" ? mrPaddingLeftlaptop : tab.name === "tablet" ? mrPaddingLefttablet : tab.name === "phone" ? mrPaddingLeftphone : mrPaddingLeft,
+      options: [{
+        value: "",
+        label: "Default padding"
+      }, {
+        value: (" mr-" + tab.name + "-paddingleft").replace("--", "-"),
+        label: "Use var(--padding)"
+      }, {
+        value: (" mr-" + tab.name + "-nopaddingleft").replace("--", "-"),
+        label: "Remove padding"
+      }],
+      onChange: val => setAttributes({
+        mrPaddingLeft: val === undefined || val === "" ? "" : val.includes("-desktop-") || val.includes("-laptop-") || val.includes("-tablet-") || val.includes("-phone-") ? mrPaddingLeft : val.replace("--", "-"),
+        mrPaddingLeftdesktop: val === undefined || val === "" ? "" : val !== undefined && val.includes("-desktop-") ? val : mrPaddingLeftdesktop,
+        mrPaddingLeftlaptop: val === undefined || val === "" ? "" : val !== undefined && val.includes("-laptop-") ? val : mrPaddingLeftlaptop,
+        mrPaddingLefttablet: val === undefined || val === "" ? "" : val !== undefined && val.includes("-tablet-") ? val : mrPaddingLefttablet,
+        mrPaddingLeftphone: val === undefined || val === "" ? "" : val !== undefined && val.includes("-phone-") ? val : mrPaddingLeftphone
+      })
+    })) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.SelectControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Margin Top", "mrutils"),
+      value: tab.name === "desktop" ? mrMarginTopdesktop : tab.name === "laptop" ? mrMarginToplaptop : tab.name === "tablet" ? mrMarginToptablet : tab.name === "phone" ? mrMarginTopphone : mrMarginTop,
+      options: [{
+        value: "",
+        label: "Default margin"
+      }, {
+        value: (" mr-" + tab.name + "-margintop").replace("--", "-"),
+        label: "Use var(--margin)"
+      }, {
+        value: (" mr-" + tab.name + "-nomargintop").replace("--", "-"),
+        label: "Remove margin"
+      }],
+      onChange: val => setAttributes({
+        mrMarginTop: val === undefined || val === "" ? "" : val.includes("-desktop-") || val.includes("-laptop-") || val.includes("-tablet-") || val.includes("-phone-") ? mrMarginTop : val.replace("--", "-"),
+        mrMarginTopdesktop: val === undefined || val === "" ? "" : val !== undefined && val.includes("-desktop-") ? val : mrMarginTopdesktop,
+        mrMarginToplaptop: val === undefined || val === "" ? "" : val !== undefined && val.includes("-laptop-") ? val : mrMarginToplaptop,
+        mrMarginToptablet: val === undefined || val === "" ? "" : val !== undefined && val.includes("-tablet-") ? val : mrMarginToptablet,
+        mrMarginTopphone: val === undefined || val === "" ? "" : val !== undefined && val.includes("-phone-") ? val : mrMarginTopphone
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.SelectControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Margin Right", "mrutils"),
+      value: tab.name === "desktop" ? mrMarginRightdesktop : tab.name === "laptop" ? mrMarginRightlaptop : tab.name === "tablet" ? mrMarginRighttablet : tab.name === "phone" ? mrMarginRightphone : mrMarginRight,
+      options: [{
+        value: "",
+        label: "Default margin"
+      }, {
+        value: (" mr-" + tab.name + "-marginright").replace("--", "-"),
+        label: "Use var(--margin)"
+      }, {
+        value: (" mr-" + tab.name + "-nomarginright").replace("--", "-"),
+        label: "Remove margin"
+      }],
+      onChange: val => setAttributes({
+        mrMarginRight: val === undefined || val === "" ? "" : val.includes("-desktop-") || val.includes("-laptop-") || val.includes("-tablet-") || val.includes("-phone-") ? mrMarginRight : val.replace("--", "-"),
+        mrMarginRightdesktop: val === undefined || val === "" ? "" : val !== undefined && val.includes("-desktop-") ? val : mrMarginRightdesktop,
+        mrMarginRightlaptop: val === undefined || val === "" ? "" : val !== undefined && val.includes("-laptop-") ? val : mrMarginRightlaptop,
+        mrMarginRighttablet: val === undefined || val === "" ? "" : val !== undefined && val.includes("-tablet-") ? val : mrMarginRighttablet,
+        mrMarginRightphone: val === undefined || val === "" ? "" : val !== undefined && val.includes("-phone-") ? val : mrMarginRightphone
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.SelectControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Margin Bottom", "mrutils"),
+      value: tab.name === "desktop" ? mrMarginBottomdesktop : tab.name === "laptop" ? mrMarginBottomlaptop : tab.name === "tablet" ? mrMarginBottomtablet : tab.name === "phone" ? mrMarginBottomphone : mrMarginBottom,
+      options: [{
+        value: "",
+        label: "Default margin"
+      }, {
+        value: (" mr-" + tab.name + "-marginbottom").replace("--", "-"),
+        label: "Use var(--margin)"
+      }, {
+        value: (" mr-" + tab.name + "-nomarginbottom").replace("--", "-"),
+        label: "Remove margin"
+      }],
+      onChange: val => setAttributes({
+        mrMarginBottom: val === undefined || val === "" ? "" : val.includes("-desktop-") || val.includes("-laptop-") || val.includes("-tablet-") || val.includes("-phone-") ? mrMarginBottom : val.replace("--", "-"),
+        mrMarginBottomdesktop: val === undefined || val === "" ? "" : val !== undefined && val.includes("-desktop-") ? val : mrMarginBottomdesktop,
+        mrMarginBottomlaptop: val === undefined || val === "" ? "" : val !== undefined && val.includes("-laptop-") ? val : mrMarginBottomlaptop,
+        mrMarginBottomtablet: val === undefined || val === "" ? "" : val !== undefined && val.includes("-tablet-") ? val : mrMarginBottomtablet,
+        mrMarginBottomphone: val === undefined || val === "" ? "" : val !== undefined && val.includes("-phone-") ? val : mrMarginBottomphone
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.SelectControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Margin Left", "mrutils"),
+      value: tab.name === "desktop" ? mrMarginLeftdesktop : tab.name === "laptop" ? mrMarginLeftlaptop : tab.name === "tablet" ? mrMarginLefttablet : tab.name === "phone" ? mrMarginLeftphone : mrMarginLeft,
+      options: [{
+        value: "",
+        label: "Default margin"
+      }, {
+        value: (" mr-" + tab.name + "-marginleft").replace("--", "-"),
+        label: "Use var(--margin)"
+      }, {
+        value: (" mr-" + tab.name + "-nomarginleft").replace("--", "-"),
+        label: "Remove margin"
+      }],
+      onChange: val => setAttributes({
+        mrMarginLeft: val === undefined || val === "" ? "" : val.includes("-desktop-") || val.includes("-laptop-") || val.includes("-tablet-") || val.includes("-phone-") ? mrMarginLeft : val.replace("--", "-"),
+        mrMarginLeftdesktop: val === undefined || val === "" ? "" : val !== undefined && val.includes("-desktop-") ? val : mrMarginLeftdesktop,
+        mrMarginLeftlaptop: val === undefined || val === "" ? "" : val !== undefined && val.includes("-laptop-") ? val : mrMarginLeftlaptop,
+        mrMarginLefttablet: val === undefined || val === "" ? "" : val !== undefined && val.includes("-tablet-") ? val : mrMarginLefttablet,
+        mrMarginLeftphone: val === undefined || val === "" ? "" : val !== undefined && val.includes("-phone-") ? val : mrMarginLeftphone
+      })
+    }))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.PanelBody, {
+      icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_18__["default"],
+      title: tab.name + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)(" Text", "mrutils"),
+      initialOpen: false
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.RangeControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Font Size", "mrutils"),
+      value: tab.name === "desktop" ? mrFontSizedesktop : tab.name === "laptop" ? mrFontSizelaptop : tab.name === "tablet" ? mrFontSizetablet : tab.name === "phone" ? mrFontSizephone : mrFontSize,
+      initialPosition: 0,
+      allowReset: true,
+      min: 0,
+      max: 7,
+      onChange: val => setAttributes({
+        mrFontSize: tab.name === "" ? val === 0 || val === undefined ? "" : val : mrFontSize,
+        mrFontSizedesktop: tab.name === "desktop" ? val === 0 || val === undefined ? "" : val : mrFontSizedesktop,
+        mrFontSizelaptop: tab.name === "laptop" ? val === 0 || val === undefined ? "" : val : mrFontSizelaptop,
+        mrFontSizetablet: tab.name === "tablet" ? val === 0 || val === undefined ? "" : val : mrFontSizetablet,
+        mrFontSizephone: tab.name === "phone" ? val === 0 || val === undefined ? "" : val : mrFontSizephone
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.SelectControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Text Alignment", "mrutils"),
+      value: tab.name === "desktop" ? mrTextAlignmentdesktop : tab.name === "laptop" ? mrTextAlignmentlaptop : tab.name === "tablet" ? mrTextAlignmenttablet : tab.name === "phone" ? mrTextAlignmentphone : mrTextAlignment,
+      options: isSelected && allowedBlocks.name != "core/paragraph" || isSelected && allowedBlocks.name != "core/heading" ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)([{
+        value: "",
+        label: "Default"
+      }, {
+        value: (" mr-" + tab.name + "-alignleft").replace("--", "-"),
+        label: "Left"
+      }, {
+        value: (" mr-" + tab.name + "-aligncenter").replace("--", "-"),
+        label: "Center"
+      }, {
+        value: (" mr-" + tab.name + "-alignright").replace("--", "-"),
+        label: "Right"
+      }]) : "",
+      onChange: val => setAttributes({
+        mrTextAlignment: val === undefined || val === "" ? "" : val.includes("-desktop-") || val.includes("-laptop-") || val.includes("-tablet-") || val.includes("-phone-") ? mrTextAlignment : val.replace("--", "-"),
+        mrTextAlignmentdesktop: val === undefined || val === "" ? "" : val !== undefined && val.includes("-desktop-") ? val : mrTextAlignmentdesktop,
+        mrTextAlignmentlaptop: val === undefined || val === "" ? "" : val !== undefined && val.includes("-laptop-") ? val : mrTextAlignmentlaptop,
+        mrTextAlignmenttablet: val === undefined || val === "" ? "" : val !== undefined && val.includes("-tablet-") ? val : mrTextAlignmenttablet,
+        mrTextAlignmentphone: val === undefined || val === "" ? "" : val !== undefined && val.includes("-phone-") ? val : mrTextAlignmentphone
+      })
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.PanelBody, {
+      icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_19__["default"],
+      title: tab.name + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)(" Placement", "mrutils"),
+      initialOpen: false
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.SelectControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Position Type", "mrutils"),
+      value: tab.name === "desktop" ? mrPositiondesktop : tab.name === "laptop" ? mrPositionlaptop : tab.name === "tablet" ? mrPositiontablet : tab.name === "phone" ? mrPositionphone : mrPosition,
+      options: [{
+        value: "",
+        label: "Default"
+      }, {
+        value: (" mr-" + tab.name + "-relative").replace("--", "-"),
+        label: "Relative"
+      }, {
+        value: (" mr-" + tab.name + "-absolute").replace("--", "-"),
+        label: "Absolute"
+      }, {
+        value: (" mr-" + tab.name + "-fixed").replace("--", "-"),
+        label: "Fixed"
+      }, {
+        value: (" mr-" + tab.name + "-sticky").replace("--", "-"),
+        label: "Sticky"
+      }],
+      onChange: val => setAttributes({
+        mrPosition: val === undefined || val === "" ? "" : val.includes("-desktop-") || val.includes("-laptop-") || val.includes("-tablet-") || val.includes("-phone-") ? mrPosition : val.replace("--", "-"),
+        mrPositiondesktop: val === undefined || val === "" ? "" : val !== undefined && val.includes("-desktop-") ? val : mrPositiondesktop,
+        mrPositionlaptop: val === undefined || val === "" ? "" : val !== undefined && val.includes("-laptop-") ? val : mrPositionlaptop,
+        mrPositiontablet: val === undefined || val === "" ? "" : val !== undefined && val.includes("-tablet-") ? val : mrPositiontablet,
+        mrPositionphone: val === undefined || val === "" ? "" : val !== undefined && val.includes("-phone-") ? val : mrPositionphone
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.SelectControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Vertical Alignment", "mrutils"),
+      value: tab.name === "desktop" ? mrPositionAlignmentdesktop : tab.name === "laptop" ? mrPositionAlignmentlaptop : tab.name === "tablet" ? mrPositionAlignmenttablet : tab.name === "phone" ? mrPositionAlignmentphone : mrPositionAlignment,
+      options: (mrPosition + tab.name).includes("absolute") || (mrPosition + tab.name).includes("fixed") || (mrPosition + tab.name).includes("sticky") ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)([{
+        value: "",
+        label: "Default"
+      }, {
+        value: (" mr-" + tab.name + "-top").replace("--", "-"),
+        label: "Top"
+      }, {
+        value: (" mr-" + tab.name + "-bottom").replace("--", "-"),
+        label: "Bottom"
+      }]) : "",
+      onChange: val => setAttributes({
+        mrPositionAlignment: val === undefined || val === "" ? "" : val.includes("-desktop-") || val.includes("-laptop-") || val.includes("-tablet-") || val.includes("-phone-") ? mrPositionAlignment : val.replace("--", "-"),
+        mrPositionAlignmentdesktop: val === undefined || val === "" ? "" : val !== undefined && val.includes("-desktop-") ? val : mrPositionAlignmentdesktop,
+        mrPositionAlignmentlaptop: val === undefined || val === "" ? "" : val !== undefined && val.includes("-laptop-") ? val : mrPositionAlignmentlaptop,
+        mrPositionAlignmenttablet: val === undefined || val === "" ? "" : val !== undefined && val.includes("-tablet-") ? val : mrPositionAlignmenttablet,
+        mrPositionAlignmentphone: val === undefined || val === "" ? "" : val !== undefined && val.includes("-phone-") ? val : mrPositionAlignmentphone
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.SelectControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Horizontal Alignment", "mrutils"),
+      value: tab.name === "desktop" ? mrPositionSidesdesktop : tab.name === "laptop" ? mrPositionSideslaptop : tab.name === "tablet" ? mrPositionSidestablet : tab.name === "phone" ? mrPositionSidesphone : mrPositionSides,
+      options: (mrPosition + tab.name).includes("absolute") || (mrPosition + tab.name).includes("fixed") || (mrPosition + tab.name).includes("sticky") ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)([{
+        value: "",
+        label: "Default"
+      }, {
+        value: (" mr-" + tab.name + "-right").replace("--", "-"),
+        label: "Right"
+      }, {
+        value: (" mr-" + tab.name + "-left").replace("--", "-"),
+        label: "Left"
+      }]) : "",
+      onChange: val => setAttributes({
+        mrPositionSides: val === undefined || val === "" ? "" : val.includes("-desktop-") || val.includes("-laptop-") || val.includes("-tablet-") || val.includes("-phone-") ? mrPositionSides : val.replace("--", "-"),
+        mrPositionSidesdesktop: val === undefined || val === "" ? "" : val !== undefined && val.includes("-desktop-") ? val : mrPositionSidesdesktop,
+        mrPositionSideslaptop: val === undefined || val === "" ? "" : val !== undefined && val.includes("-laptop-") ? val : mrPositionSideslaptop,
+        mrPositionSidestablet: val === undefined || val === "" ? "" : val !== undefined && val.includes("-tablet-") ? val : mrPositionSidestablet,
+        mrPositionSidesphone: val === undefined || val === "" ? "" : val !== undefined && val.includes("-phone-") ? val : mrPositionSidesphone
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.SelectControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Content Alignment", "mrutils"),
+      value: tab.name === "desktop" ? mrContentAlignmentdesktop : tab.name === "laptop" ? mrContentAlignmentlaptop : tab.name === "tablet" ? mrContentAlignmenttablet : tab.name === "phone" ? mrContentAlignmentphone : mrContentAlignment,
+      options: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)([{
+        value: "",
+        label: "Default"
+      }, {
+        value: (" mr-" + tab.name + "-aligntop").replace("--", "-"),
+        label: "Top"
+      }, {
+        value: (" mr-" + tab.name + "-floatright").replace("--", "-"),
+        label: "Right"
+      }, {
+        value: (" mr-" + tab.name + "-alignbottom").replace("--", "-"),
+        label: "Bottom"
+      }, {
+        value: (" mr-" + tab.name + "-floatleft").replace("--", "-"),
+        label: "Left"
+      }, {
+        value: (" mr-" + tab.name + "-middle").replace("--", "-"),
+        label: "Middle"
+      }]),
+      onChange: val => setAttributes({
+        mrContentAlignment: val === undefined || val === "" ? "" : val.includes("-desktop-") || val.includes("-laptop-") || val.includes("-tablet-") || val.includes("-phone-") ? mrContentAlignment : val.replace("--", "-"),
+        mrContentAlignmentdesktop: val === undefined || val === "" ? "" : val !== undefined && val.includes("-desktop-") ? val : mrContentAlignmentdesktop,
+        mrContentAlignmentlaptop: val === undefined || val === "" ? "" : val !== undefined && val.includes("-laptop-") ? val : mrContentAlignmentlaptop,
+        mrContentAlignmenttablet: val === undefined || val === "" ? "" : val !== undefined && val.includes("-tablet-") ? val : mrContentAlignmenttablet,
+        mrContentAlignmentphone: val === undefined || val === "" ? "" : val !== undefined && val.includes("-phone-") ? val : mrContentAlignmentphone
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.SelectControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Vertical Offset", "mrutils"),
+      value: tab.name === "desktop" ? mrVerticalOffsetdesktop : tab.name === "laptop" ? mrVerticalOffsetlaptop : tab.name === "tablet" ? mrVerticalOffsettablet : tab.name === "phone" ? mrVerticalOffsetphone : mrVerticalOffset,
+      options: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)([{
+        value: "",
+        label: "Default"
+      }, {
+        value: (" mr-" + tab.name + "-offsettop").replace("--", "-"),
+        label: "Top"
+      }, {
+        value: (" mr-" + tab.name + "-offsetbottom").replace("--", "-"),
+        label: "Bottom"
+      }]),
+      onChange: val => setAttributes({
+        mrVerticalOffset: val === undefined || val === "" ? "" : val.includes("-desktop-") || val.includes("-laptop-") || val.includes("-tablet-") || val.includes("-phone-") ? mrVerticalOffset : val.replace("--", "-"),
+        mrVerticalOffsetdesktop: val === undefined || val === "" ? "" : val !== undefined && val.includes("-desktop-") ? val : mrVerticalOffsetdesktop,
+        mrVerticalOffsetlaptop: val === undefined || val === "" ? "" : val !== undefined && val.includes("-laptop-") ? val : mrVerticalOffsetlaptop,
+        mrVerticalOffsettablet: val === undefined || val === "" ? "" : val !== undefined && val.includes("-tablet-") ? val : mrVerticalOffsettablet,
+        mrVerticalOffsetphone: val === undefined || val === "" ? "" : val !== undefined && val.includes("-phone-") ? val : mrVerticalOffsetphone
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.SelectControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Horizontal Offset", "mrutils"),
+      value: tab.name === "desktop" ? mrHorizontalOffsetdesktop : tab.name === "laptop" ? mrHorizontalOffsetlaptop : tab.name === "tablet" ? mrHorizontalOffsettablet : tab.name === "phone" ? mrHorizontalOffsetphone : mrHorizontalOffset,
+      options: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)([{
+        value: "",
+        label: "Default"
+      }, {
+        value: (" mr-" + tab.name + "-offsetleft").replace("--", "-"),
+        label: "Left"
+      }, {
+        value: (" mr-" + tab.name + "-offsetright").replace("--", "-"),
+        label: "Right"
+      }]),
+      onChange: val => setAttributes({
+        mrHorizontalOffset: val === undefined || val === "" ? "" : val.includes("-desktop-") || val.includes("-laptop-") || val.includes("-tablet-") || val.includes("-phone-") ? mrHorizontalOffset : val.replace("--", "-"),
+        mrHorizontalOffsetdesktop: val === undefined || val === "" ? "" : val !== undefined && val.includes("-desktop-") ? val : mrHorizontalOffsetdesktop,
+        mrHorizontalOffsetlaptop: val === undefined || val === "" ? "" : val !== undefined && val.includes("-laptop-") ? val : mrHorizontalOffsetlaptop,
+        mrHorizontalOffsettablet: val === undefined || val === "" ? "" : val !== undefined && val.includes("-tablet-") ? val : mrHorizontalOffsettablet,
+        mrHorizontalOffsetphone: val === undefined || val === "" ? "" : val !== undefined && val.includes("-phone-") ? val : mrHorizontalOffsetphone
+      })
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.PanelBody, {
+      icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_20__["default"],
+      title: tab.name + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)(" Misc.", "mrutils"),
+      initialOpen: false
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.SelectControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Scroll", "mrutils"),
+      value: tab.name === "desktop" ? mrScrolldesktop : tab.name === "laptop" ? mrScrolllaptop : tab.name === "tablet" ? mrScrolltablet : tab.name === "phone" ? mrScrollphone : mrScroll,
+      options: [{
+        value: "",
+        label: "Default"
+      }, {
+        value: (" mr-" + tab.name + "-noscroll").replace("--", "-"),
+        label: "No scroll"
+      }, {
+        value: (" mr-" + tab.name + "-hidescroll").replace("--", "-"),
+        label: "Hide scroll"
+      }, {
+        value: (" mr-" + tab.name + "-scroll").replace("--", "-"),
+        label: "Scroll"
+      }, {
+        value: (" mr-" + tab.name + "-horizontalscroll").replace("--", "-"),
+        label: "Horizontal scroll"
+      }, {
+        value: (" mr-" + tab.name + "-horizontalscrollcontent").replace("--", "-"),
+        label: "Horizontal scroll content"
+      }, {
+        value: (" mr-" + tab.name + "-swipe").replace("--", "-"),
+        label: "Swipe"
+      }, {
+        value: (" mr-" + tab.name + "-swipecontent").replace("--", "-"),
+        label: "Swipe content"
+      }],
+      onChange: val => setAttributes({
+        mrScroll: val === undefined || val === "" ? "" : val.includes("-desktop-") || val.includes("-laptop-") || val.includes("-tablet-") || val.includes("-phone-") ? mrScroll : val.replace("--", "-"),
+        mrScrolldesktop: val === undefined || val === "" ? "" : val !== undefined && val.includes("-desktop-") ? val : mrScrolldesktop,
+        mrScrolllaptop: val === undefined || val === "" ? "" : val !== undefined && val.includes("-laptop-") ? val : mrScrolllaptop,
+        mrScrolltablet: val === undefined || val === "" ? "" : val !== undefined && val.includes("-tablet-") ? val : mrScrolltablet,
+        mrScrollphone: val === undefined || val === "" ? "" : val !== undefined && val.includes("-phone-") ? val : mrScrollphone
+      })
+    }))) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h4", null, "Other breakpoints"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null, "You also have the following device breakpoints available:"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", {
+      class: "mr-backend-other_breakpoints"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("b", null, "landscape, portrait")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null, "However you cannot select them with the interface. In alternative, you can use", " ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("a", {
+      href: "https://github.com/marcosrego-web/mr-utils/wiki/Utility-Classes",
+      target: "_blank"
+    }, "utility classes"), " ", "in ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("b", null, "Advanced - Additional CSS class(es)"), "."), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("a", {
+      href: "https://github.com/marcosrego-web/mr-utils/wiki/Utility-Classes",
+      target: "_blank"
+    }, "Know more")))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.PanelBody, {
+      icon: mrDevIcon,
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Need more features?", "mrutils"),
+      initialOpen: false,
+      className: "mr-backend-more_features"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("b", null, "Then you need Mr.Dev.'s Framework!")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("ul", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("li", null, "- Select only the device breakpoints that you want to use, avoiding the load of all styles and scripts."), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("li", null, "- Change the media query values to your own on each device breakpoint."), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("li", null, "- Create custom breakpoints."), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("li", null, "- Change the value of each variable (for margin, padding, transition-duration, font-size and more)."), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("li", null, "- (coming soon) Enable only the categories and components that you want to use, avoiding unused CSS and JS."), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("li", null, "- And more framework features...")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("a", {
+      href: "https://marcosrego.com/development/mrdev-framework/",
+      target: "_blank"
+    }, "Know more")))))))));
+  };
+}, "mrInspectorControls");
+/**
+ * Add classes to backend wrapper for styling porpuses.
+ *
+ * @param {function} BlockListBlock Block edit component.
+ *
+ * @return {function} BlockListBlock Modified block edit component.
+ *
+ */
+
+const mrApplyWrapperExtraClass = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_5__.createHigherOrderComponent)(BlockListBlock => {
+  return props => {
+    const {
+      attributes,
+      blockType
+    } = props;
+    const {
+      mrAnimation,
+      mrPerPage,
+      mrArrowPagination,
+      mrSelectPagination,
+      mrRadioPagination,
+      mrPerLine,
+      mrPerLinedesktop,
+      mrPerLinelaptop,
+      mrPerLinetablet,
+      mrPerLinephone,
+      mrSize,
+      mrSizedesktop,
+      mrSizelaptop,
+      mrSizetablet,
+      mrSizephone,
+      mrOrder,
+      mrOrderdesktop,
+      mrOrderlaptop,
+      mrOrdertablet,
+      mrOrderphone,
+      mrDisplay,
+      mrDisplaydesktop,
+      mrDisplaylaptop,
+      mrDisplaytablet,
+      mrDisplayphone,
+      mrWrap,
+      mrWrapdesktop,
+      mrWraplaptop,
+      mrWraptablet,
+      mrWrapphone,
+      mrPaddingTop,
+      mrPaddingTopdesktop,
+      mrPaddingToplaptop,
+      mrPaddingToptablet,
+      mrPaddingTopphone,
+      mrPaddingRight,
+      mrPaddingRightdesktop,
+      mrPaddingRightlaptop,
+      mrPaddingRighttablet,
+      mrPaddingRightphone,
+      mrPaddingBottom,
+      mrPaddingBottomdesktop,
+      mrPaddingBottomlaptop,
+      mrPaddingBottomtablet,
+      mrPaddingBottomphone,
+      mrPaddingLeft,
+      mrPaddingLeftdesktop,
+      mrPaddingLeftlaptop,
+      mrPaddingLefttablet,
+      mrPaddingLeftphone,
+      mrMarginTop,
+      mrMarginTopdesktop,
+      mrMarginToplaptop,
+      mrMarginToptablet,
+      mrMarginTopphone,
+      mrMarginRight,
+      mrMarginRightdesktop,
+      mrMarginRightlaptop,
+      mrMarginRighttablet,
+      mrMarginRightphone,
+      mrMarginBottom,
+      mrMarginBottomdesktop,
+      mrMarginBottomlaptop,
+      mrMarginBottomtablet,
+      mrMarginBottomphone,
+      mrMarginLeft,
+      mrMarginLeftdesktop,
+      mrMarginLeftlaptop,
+      mrMarginLefttablet,
+      mrMarginLeftphone,
+      mrPosition,
+      mrPositiondesktop,
+      mrPositionlaptop,
+      mrPositiontablet,
+      mrPositionphone,
+      mrPositionAlignment,
+      mrPositionAlignmentdesktop,
+      mrPositionAlignmentlaptop,
+      mrPositionAlignmenttablet,
+      mrPositionAlignmentphone,
+      mrPositionSides,
+      mrPositionSidesdesktop,
+      mrPositionSideslaptop,
+      mrPositionSidestablet,
+      mrPositionSidesphone,
+      mrContentAlignment,
+      mrContentAlignmentdesktop,
+      mrContentAlignmentlaptop,
+      mrContentAlignmenttablet,
+      mrContentAlignmentphone,
+      mrVerticalOffset,
+      mrVerticalOffsetdesktop,
+      mrVerticalOffsetlaptop,
+      mrVerticalOffsettablet,
+      mrVerticalOffsetphone,
+      mrHorizontalOffset,
+      mrHorizontalOffsetdesktop,
+      mrHorizontalOffsetlaptop,
+      mrHorizontalOffsettablet,
+      mrHorizontalOffsetphone,
+      mrFontSize,
+      mrFontSizedesktop,
+      mrFontSizelaptop,
+      mrFontSizetablet,
+      mrFontSizephone,
+      mrTextAlignment,
+      mrTextAlignmentdesktop,
+      mrTextAlignmentlaptop,
+      mrTextAlignmenttablet,
+      mrTextAlignmentphone,
+      mrScroll,
+      mrScrolldesktop,
+      mrScrolllaptop,
+      mrScrolltablet,
+      mrScrollphone
+    } = attributes;
+    let mrClassNames = "";
+
+    if (mrPerPage
+    /*&&
+    allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + "mr-" + mrPerPage + "perpage";
+    }
+
+    if (mrArrowPagination
+    /*&&
+    allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + " mr-arrowpagination";
+    }
+
+    if (mrSelectPagination
+    /*&&
+    allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + " mr-selectpagination";
+    }
+
+    if (mrRadioPagination
+    /*&&
+    allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + " mr-radiopagination";
+    }
+
+    if (mrPerLine
+    /*&&
+    allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrPerLine;
+    }
+
+    if (mrPerLinedesktop
+    /*&&
+    allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrPerLinedesktop;
+    }
+
+    if (mrPerLinelaptop
+    /*&&
+    allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrPerLinelaptop;
+    }
+
+    if (mrPerLinetablet
+    /*&&
+    allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrPerLinetablet;
+    }
+
+    if (mrPerLinephone
+    /*&&
+    allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrPerLinephone;
+    }
+
+    if (mrSize
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + " mr-size" + mrSize;
+    }
+
+    if (mrSizedesktop
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + " mr-desktop-size" + mrSizedesktop;
+    }
+
+    if (mrSizelaptop
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + " mr-laptop-size" + mrSizelaptop;
+    }
+
+    if (mrSizetablet
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + " mr-tablet-size" + mrSizetablet;
+    }
+
+    if (mrSizephone
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + " mr-phone-size" + mrSizephone;
+    }
+
+    if (mrOrder
+    /*&&
+    allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrOrder;
+    }
+
+    if (mrOrderdesktop
+    /*&&
+    allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrOrderdesktop;
+    }
+
+    if (mrOrderlaptop
+    /*&&
+    allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrOrderlaptop;
+    }
+
+    if (mrOrdertablet
+    /*&&
+    allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrOrdertablet;
+    }
+
+    if (mrOrderphone
+    /*&&
+    allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrOrderphone;
+    }
+
+    if (mrAnimation
+    /*&&
+    allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrAnimation;
+    }
+
+    if (mrDisplay
+    /*&&
+    allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrDisplay;
+    }
+
+    if (mrDisplaydesktop
+    /*&&
+    allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrDisplaydesktop;
+    }
+
+    if (mrDisplaylaptop
+    /*&&
+    allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrDisplaylaptop;
+    }
+
+    if (mrDisplaytablet
+    /*&&
+    allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrDisplaytablet;
+    }
+
+    if (mrDisplayphone
+    /*&&
+    allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrDisplayphone;
+    }
+
+    if (mrWrap
+    /*&&
+    allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrWrap;
+    }
+
+    if (mrWrapdesktop
+    /*&&
+    allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrWrapdesktop;
+    }
+
+    if (mrWraplaptop
+    /*&&
+    allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrWraplaptop;
+    }
+
+    if (mrWraptablet
+    /*&&
+    allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrWraptablet;
+    }
+
+    if (mrWrapphone
+    /*&&
+    allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrWrap;
+    }
+
+    if (mrPaddingTop
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrPaddingTop;
+    }
+
+    if (mrPaddingTopdesktop
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrPaddingTopdesktop;
+    }
+
+    if (mrPaddingToplaptop
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrPaddingToplaptop;
+    }
+
+    if (mrPaddingToptablet
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrPaddingToptablet;
+    }
+
+    if (mrPaddingTopphone
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrPaddingTopphone;
+    }
+
+    if (mrPaddingRight
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrPaddingRight;
+    }
+
+    if (mrPaddingRightdesktop
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrPaddingRightdesktop;
+    }
+
+    if (mrPaddingRightlaptop
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrPaddingRightlaptop;
+    }
+
+    if (mrPaddingRighttablet
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrPaddingRighttablet;
+    }
+
+    if (mrPaddingRightphone
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrPaddingRightphone;
+    }
+
+    if (mrPaddingBottom
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrPaddingBottom;
+    }
+
+    if (mrPaddingBottomdesktop
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrPaddingBottomdesktop;
+    }
+
+    if (mrPaddingBottomlaptop
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrPaddingBottomlaptop;
+    }
+
+    if (mrPaddingBottomtablet
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrPaddingBottomtablet;
+    }
+
+    if (mrPaddingBottomphone
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrPaddingBottomphone;
+    }
+
+    if (mrPaddingLeft
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrPaddingLeft;
+    }
+
+    if (mrPaddingLeftdesktop
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrPaddingLeftdesktop;
+    }
+
+    if (mrPaddingLeftlaptop
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrPaddingLeftlaptop;
+    }
+
+    if (mrPaddingLefttablet
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrPaddingLefttablet;
+    }
+
+    if (mrPaddingLeftphone
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrPaddingLeftphone;
+    }
+
+    if (mrMarginTop
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrMarginTop;
+    }
+
+    if (mrMarginTopdesktop
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrMarginTopdesktop;
+    }
+
+    if (mrMarginToplaptop
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrMarginToplaptop;
+    }
+
+    if (mrMarginToptablet
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrMarginToptablet;
+    }
+
+    if (mrMarginTopphone
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrMarginTopphone;
+    }
+
+    if (mrMarginRight
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrMarginRight;
+    }
+
+    if (mrMarginRightdesktop
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrMarginRightdesktop;
+    }
+
+    if (mrMarginRightlaptop
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrMarginRightlaptop;
+    }
+
+    if (mrMarginRighttablet
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrMarginRighttablet;
+    }
+
+    if (mrMarginRightphone
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrMarginRightphone;
+    }
+
+    if (mrMarginBottom
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrMarginBottom;
+    }
+
+    if (mrMarginBottomdesktop
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrMarginBottomdesktop;
+    }
+
+    if (mrMarginBottomlaptop
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrMarginBottomlaptop;
+    }
+
+    if (mrMarginBottomtablet
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrMarginBottomtablet;
+    }
+
+    if (mrMarginBottomphone
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrMarginBottomphone;
+    }
+
+    if (mrMarginLeft
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrMarginLeft;
+    }
+
+    if (mrMarginLeftdesktop
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrMarginLeftdesktop;
+    }
+
+    if (mrMarginLeftlaptop
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrMarginLeftlaptop;
+    }
+
+    if (mrMarginLefttablet
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrMarginLefttablet;
+    }
+
+    if (mrMarginLeftphone
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrMarginLeftphone;
+    }
+
+    if (mrPosition
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrPosition;
+    }
+
+    if (mrPositiondesktop
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrPositiondesktop;
+    }
+
+    if (mrPositionlaptop
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrPositionlaptop;
+    }
+
+    if (mrPositiontablet
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrPositiontablet;
+    }
+
+    if (mrPositionphone
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrPositionphone;
+    }
+
+    if (mrPosition === " mr-absolute" || mrPosition === " mr-fixed" || mrPosition === " mr-sticky") {
+      if (mrPositionAlignment
+      /*&& allowedBlocks.includes(blockType.name)*/
+      ) {
+        mrClassNames = mrClassNames + mrPositionAlignment;
+      }
+
+      if (mrPositionSides
+      /*&& allowedBlocks.includes(blockType.name)*/
+      ) {
+        mrClassNames = mrClassNames + mrPositionSides;
+      }
+    }
+
+    if (mrPositiondesktop === " mr-desktop-absolute" || mrPositiondesktop === " mr-desktop-fixed" || mrPositiondesktop === " mr-desktop-sticky") {
+      if (mrPositionAlignmentdesktop
+      /*&& allowedBlocks.includes(blockType.name)*/
+      ) {
+        mrClassNames = mrClassNames + mrPositionAlignmentdesktop;
+      }
+
+      if (mrPositionSidesdesktop
+      /*&& allowedBlocks.includes(blockType.name)*/
+      ) {
+        mrClassNames = mrClassNames + mrPositionSidesdesktop;
+      }
+    }
+
+    if (mrPositionlaptop === " mr-laptop-absolute" || mrPositionlaptop === " mr-laptop-fixed" || mrPositionlaptop === " mr-laptop-sticky") {
+      if (mrPositionAlignmentlaptop
+      /*&& allowedBlocks.includes(blockType.name)*/
+      ) {
+        mrClassNames = mrClassNames + mrPositionAlignmentlaptop;
+      }
+
+      if (mrPositionSideslaptop
+      /*&& allowedBlocks.includes(blockType.name)*/
+      ) {
+        mrClassNames = mrClassNames + mrPositionSideslaptop;
+      }
+    }
+
+    if (mrPositiontablet === " mr-tablet-absolute" || mrPositiontablet === " mr-tablet-fixed" || mrPositiontablet === " mr-tablet-sticky") {
+      if (mrPositionAlignmenttablet
+      /*&& allowedBlocks.includes(blockType.name)*/
+      ) {
+        mrClassNames = mrClassNames + mrPositionAlignmenttablet;
+      }
+
+      if (mrPositionSidestablet
+      /*&& allowedBlocks.includes(blockType.name)*/
+      ) {
+        mrClassNames = mrClassNames + mrPositionSidestablet;
+      }
+    }
+
+    if (mrPositionphone === " mr-phone-absolute" || mrPositionphone === " mr-phone-fixed" || mrPositionphone === " mr-phone-sticky") {
+      if (mrPositionAlignmentphone
+      /*&& allowedBlocks.includes(blockType.name)*/
+      ) {
+        mrClassNames = mrClassNames + mrPositionAlignmentphone;
+      }
+
+      if (mrPositionSidesphone
+      /*&& allowedBlocks.includes(blockType.name)*/
+      ) {
+        mrClassNames = mrClassNames + mrPositionSidesphone;
+      }
+    }
+
+    if (mrContentAlignment
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrContentAlignment;
+    }
+
+    if (mrContentAlignmentdesktop
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrContentAlignmentdesktop;
+    }
+
+    if (mrContentAlignmentlaptop
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrContentAlignmentlaptop;
+    }
+
+    if (mrContentAlignmenttablet
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrContentAlignmenttablet;
+    }
+
+    if (mrContentAlignmentphone
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrContentAlignmentphone;
+    }
+
+    if (mrVerticalOffset
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrVerticalOffset;
+    }
+
+    if (mrVerticalOffsetdesktop
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrVerticalOffsetdesktop;
+    }
+
+    if (mrVerticalOffsetlaptop
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrVerticalOffsetlaptop;
+    }
+
+    if (mrVerticalOffsettablet
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrVerticalOffsettablet;
+    }
+
+    if (mrVerticalOffsetphone
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrVerticalOffsetphone;
+    }
+
+    if (mrHorizontalOffset
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrHorizontalOffset;
+    }
+
+    if (mrHorizontalOffsetdesktop
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrHorizontalOffsetdesktop;
+    }
+
+    if (mrHorizontalOffsetlaptop
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrHorizontalOffsetlaptop;
+    }
+
+    if (mrHorizontalOffsettablet
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrHorizontalOffsettablet;
+    }
+
+    if (mrHorizontalOffsetphone
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrHorizontalOffsetphone;
+    }
+
+    if (mrFontSize
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + " mr-fontsize" + mrFontSize;
+    }
+
+    if (mrFontSizedesktop
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + " mr-desktop-fontsize" + mrFontSizedesktop;
+    }
+
+    if (mrFontSizelaptop
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + " mr-laptop-fontsize" + mrFontSizelaptop;
+    }
+
+    if (mrFontSizetablet
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + " mr-tablet-fontsize" + mrFontSizetablet;
+    }
+
+    if (mrFontSizephone
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + " mr-phone-fontsize" + mrFontSizephone;
+    }
+
+    if (mrTextAlignment
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrTextAlignment;
+    }
+
+    if (mrTextAlignmentdesktop
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrTextAlignmentdesktop;
+    }
+
+    if (mrTextAlignmentlaptop
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrTextAlignmentlaptop;
+    }
+
+    if (mrTextAlignmenttablet
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrTextAlignmenttablet;
+    }
+
+    if (mrTextAlignmentphone
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrTextAlignmentphone;
+    }
+
+    if (mrScroll
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrScroll;
+    }
+
+    if (mrScrolldesktop
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrScrolldesktop;
+    }
+
+    if (mrScrolllaptop
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrScrolllaptop;
+    }
+
+    if (mrScrolltablet
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrScrolltablet;
+    }
+
+    if (mrScrollphone
+    /*&& allowedBlocks.includes(blockType.name)*/
+    ) {
+      mrClassNames = mrClassNames + mrScrollphone;
+    }
+
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(BlockListBlock, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
+      className: mrClassNames
+    }));
+  };
+}, "mrApplyWrapperExtraClass");
+/**
+ * Add custom element class in save element.
+ *
+ * @param {Object} extraProps     Block element.
+ * @param {Object} blockType      Blocks object.
+ * @param {Object} attributes     Blocks attributes.
+ *
+ * @return {Object} extraProps Modified block element.
+ */
+
+function mrApplyExtraClass(extraProps, blockType, attributes) {
+  const {
+    mrAnimation,
+    mrPerPage,
+    mrArrowPagination,
+    mrSelectPagination,
+    mrRadioPagination,
+    mrPerLine,
+    mrPerLinedesktop,
+    mrPerLinelaptop,
+    mrPerLinetablet,
+    mrPerLinephone,
+    mrSize,
+    mrSizedesktop,
+    mrSizelaptop,
+    mrSizetablet,
+    mrSizephone,
+    mrOrder,
+    mrOrderdesktop,
+    mrOrderlaptop,
+    mrOrdertablet,
+    mrOrderphone,
+    mrDisplay,
+    mrDisplaydesktop,
+    mrDisplaylaptop,
+    mrDisplaytablet,
+    mrDisplayphone,
+    mrWrap,
+    mrWrapdesktop,
+    mrWraplaptop,
+    mrWraptablet,
+    mrWrapphone,
+    mrPaddingTop,
+    mrPaddingTopdesktop,
+    mrPaddingToplaptop,
+    mrPaddingToptablet,
+    mrPaddingTopphone,
+    mrPaddingRight,
+    mrPaddingRightdesktop,
+    mrPaddingRightlaptop,
+    mrPaddingRighttablet,
+    mrPaddingRightphone,
+    mrPaddingBottom,
+    mrPaddingBottomdesktop,
+    mrPaddingBottomlaptop,
+    mrPaddingBottomtablet,
+    mrPaddingBottomphone,
+    mrPaddingLeft,
+    mrPaddingLeftdesktop,
+    mrPaddingLeftlaptop,
+    mrPaddingLefttablet,
+    mrPaddingLeftphone,
+    mrMarginTop,
+    mrMarginTopdesktop,
+    mrMarginToplaptop,
+    mrMarginToptablet,
+    mrMarginTopphone,
+    mrMarginRight,
+    mrMarginRightdesktop,
+    mrMarginRightlaptop,
+    mrMarginRighttablet,
+    mrMarginRightphone,
+    mrMarginBottom,
+    mrMarginBottomdesktop,
+    mrMarginBottomlaptop,
+    mrMarginBottomtablet,
+    mrMarginBottomphone,
+    mrMarginLeft,
+    mrMarginLeftdesktop,
+    mrMarginLeftlaptop,
+    mrMarginLefttablet,
+    mrMarginLeftphone,
+    mrPosition,
+    mrPositiondesktop,
+    mrPositionlaptop,
+    mrPositiontablet,
+    mrPositionphone,
+    mrPositionAlignment,
+    mrPositionAlignmentdesktop,
+    mrPositionAlignmentlaptop,
+    mrPositionAlignmenttablet,
+    mrPositionAlignmentphone,
+    mrPositionSides,
+    mrPositionSidesdesktop,
+    mrPositionSideslaptop,
+    mrPositionSidestablet,
+    mrPositionSidesphone,
+    mrContentAlignment,
+    mrContentAlignmentdesktop,
+    mrContentAlignmentlaptop,
+    mrContentAlignmenttablet,
+    mrContentAlignmentphone,
+    mrVerticalOffset,
+    mrVerticalOffsetdesktop,
+    mrVerticalOffsetlaptop,
+    mrVerticalOffsettablet,
+    mrVerticalOffsetphone,
+    mrHorizontalOffset,
+    mrHorizontalOffsetdesktop,
+    mrHorizontalOffsetlaptop,
+    mrHorizontalOffsettablet,
+    mrHorizontalOffsetphone,
+    mrFontSize,
+    mrFontSizedesktop,
+    mrFontSizelaptop,
+    mrFontSizetablet,
+    mrFontSizephone,
+    mrTextAlignment,
+    mrTextAlignmentdesktop,
+    mrTextAlignmentlaptop,
+    mrTextAlignmenttablet,
+    mrTextAlignmentphone,
+    mrScroll,
+    mrScrolldesktop,
+    mrScrolllaptop,
+    mrScrolltablet,
+    mrScrollphone
+  } = attributes; //check if attribute exists for old Gutenberg version compatibility
+  //add allowedBlocks restriction
+
+  let mrClassNames = "";
+
+  if (mrPerPage
+  /*&&
+  allowedBlocks.includes(blockType.name)*/
+  ) {
+    mrClassNames = mrClassNames + "mr-" + mrPerPage + "perpage";
+  }
+
+  if (mrArrowPagination
+  /*&&
+  allowedBlocks.includes(blockType.name)*/
+  ) {
+    mrClassNames = mrClassNames + " mr-arrowpagination";
+  }
+
+  if (mrSelectPagination
+  /*&&
+  allowedBlocks.includes(blockType.name)*/
+  ) {
+    mrClassNames = mrClassNames + " mr-selectpagination";
+  }
+
+  if (mrRadioPagination
+  /*&&
+  allowedBlocks.includes(blockType.name)*/
+  ) {
+    mrClassNames = mrClassNames + " mr-radiopagination";
+  }
+
+  if (mrPerLine
+  /*&&
+  allowedBlocks.includes(blockType.name)*/
+  ) {
+    mrClassNames = mrClassNames + mrPerLine;
+  }
+
+  if (mrPerLinedesktop
+  /*&&
+  allowedBlocks.includes(blockType.name)*/
+  ) {
+    mrClassNames = mrClassNames + mrPerLinedesktop;
+  }
+
+  if (mrPerLinelaptop
+  /*&&
+  allowedBlocks.includes(blockType.name)*/
+  ) {
+    mrClassNames = mrClassNames + mrPerLinelaptop;
+  }
+
+  if (mrPerLinetablet
+  /*&&
+  allowedBlocks.includes(blockType.name)*/
+  ) {
+    mrClassNames = mrClassNames + mrPerLinetablet;
+  }
+
+  if (mrPerLinephone
+  /*&&
+  allowedBlocks.includes(blockType.name)*/
+  ) {
+    mrClassNames = mrClassNames + mrPerLinephone;
+  }
+
+  if (mrSize && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + " mr-size" + mrSize;
+  }
+
+  if (mrSizedesktop && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + " mr-desktop-size" + mrSizedesktop;
+  }
+
+  if (mrSizelaptop && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + " mr-laptop-size" + mrSizelaptop;
+  }
+
+  if (mrSizetablet && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + " mr-tablet-size" + mrSizetablet;
+  }
+
+  if (mrSizephone && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + " mr-phone-size" + mrSizephone;
+  }
+
+  if (mrOrder
+  /*&&
+  allowedBlocks.includes(blockType.name)*/
+  ) {
+    mrClassNames = mrClassNames + mrOrder;
+  }
+
+  if (mrOrderdesktop
+  /*&&
+  allowedBlocks.includes(blockType.name)*/
+  ) {
+    mrClassNames = mrClassNames + mrOrderdesktop;
+  }
+
+  if (mrOrderlaptop
+  /*&&
+  allowedBlocks.includes(blockType.name)*/
+  ) {
+    mrClassNames = mrClassNames + mrOrderlaptop;
+  }
+
+  if (mrOrdertablet
+  /*&&
+  allowedBlocks.includes(blockType.name)*/
+  ) {
+    mrClassNames = mrClassNames + mrOrdertablet;
+  }
+
+  if (mrOrderphone
+  /*&&
+  allowedBlocks.includes(blockType.name)*/
+  ) {
+    mrClassNames = mrClassNames + mrOrderphone;
+  }
+
+  if (mrAnimation
+  /*&&
+  allowedBlocks.includes(blockType.name)*/
+  ) {
+    mrClassNames = mrClassNames + mrAnimation;
+  }
+
+  if (mrDisplay
+  /*&&
+  allowedBlocks.includes(blockType.name)*/
+  ) {
+    mrClassNames = mrClassNames + mrDisplay;
+  }
+
+  if (mrDisplaydesktop
+  /*&&
+  allowedBlocks.includes(blockType.name)*/
+  ) {
+    mrClassNames = mrClassNames + mrDisplaydesktop;
+  }
+
+  if (mrDisplaylaptop
+  /*&&
+  allowedBlocks.includes(blockType.name)*/
+  ) {
+    mrClassNames = mrClassNames + mrDisplaylaptop;
+  }
+
+  if (mrDisplaytablet
+  /*&&
+  allowedBlocks.includes(blockType.name)*/
+  ) {
+    mrClassNames = mrClassNames + mrDisplaytablet;
+  }
+
+  if (mrDisplayphone
+  /*&&
+  allowedBlocks.includes(blockType.name)*/
+  ) {
+    mrClassNames = mrClassNames + mrDisplayphone;
+  }
+
+  if (mrWrap
+  /*&&
+  allowedBlocks.includes(blockType.name)*/
+  ) {
+    mrClassNames = mrClassNames + mrWrap;
+  }
+
+  if (mrWrapdesktop
+  /*&&
+  allowedBlocks.includes(blockType.name)*/
+  ) {
+    mrClassNames = mrClassNames + mrWrapdesktop;
+  }
+
+  if (mrWraplaptop
+  /*&&
+  allowedBlocks.includes(blockType.name)*/
+  ) {
+    mrClassNames = mrClassNames + mrWraplaptop;
+  }
+
+  if (mrWraptablet
+  /*&&
+  allowedBlocks.includes(blockType.name)*/
+  ) {
+    mrClassNames = mrClassNames + mrWraptablet;
+  }
+
+  if (mrWrapphone
+  /*&&
+  allowedBlocks.includes(blockType.name)*/
+  ) {
+    mrClassNames = mrClassNames + mrWrap;
+  }
+
+  if (mrPaddingTop && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrPaddingTop;
+  }
+
+  if (mrPaddingTopdesktop && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrPaddingTopdesktop;
+  }
+
+  if (mrPaddingToplaptop && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrPaddingToplaptop;
+  }
+
+  if (mrPaddingToptablet && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrPaddingToptablet;
+  }
+
+  if (mrPaddingTopphone && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrPaddingTopphone;
+  }
+
+  if (mrPaddingRight && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrPaddingRight;
+  }
+
+  if (mrPaddingRightdesktop && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrPaddingRightdesktop;
+  }
+
+  if (mrPaddingRightlaptop && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrPaddingRightlaptop;
+  }
+
+  if (mrPaddingRighttablet && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrPaddingRighttablet;
+  }
+
+  if (mrPaddingRightphone && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrPaddingRightphone;
+  }
+
+  if (mrPaddingBottom && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrPaddingBottom;
+  }
+
+  if (mrPaddingBottomdesktop && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrPaddingBottomdesktop;
+  }
+
+  if (mrPaddingBottomlaptop && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrPaddingBottomlaptop;
+  }
+
+  if (mrPaddingBottomtablet && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrPaddingBottomtablet;
+  }
+
+  if (mrPaddingBottomphone && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrPaddingBottomphone;
+  }
+
+  if (mrPaddingLeft && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrPaddingLeft;
+  }
+
+  if (mrPaddingLeftdesktop && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrPaddingLeftdesktop;
+  }
+
+  if (mrPaddingLeftlaptop && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrPaddingLeftlaptop;
+  }
+
+  if (mrPaddingLefttablet && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrPaddingLefttablet;
+  }
+
+  if (mrPaddingLeftphone && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrPaddingLeftphone;
+  }
+
+  if (mrMarginTop && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrMarginTop;
+  }
+
+  if (mrMarginTopdesktop && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrMarginTopdesktop;
+  }
+
+  if (mrMarginToplaptop && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrMarginToplaptop;
+  }
+
+  if (mrMarginToptablet && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrMarginToptablet;
+  }
+
+  if (mrMarginTopphone && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrMarginTopphone;
+  }
+
+  if (mrMarginRight && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrMarginRight;
+  }
+
+  if (mrMarginRightdesktop && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrMarginRightdesktop;
+  }
+
+  if (mrMarginRightlaptop && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrMarginRightlaptop;
+  }
+
+  if (mrMarginRighttablet && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrMarginRighttablet;
+  }
+
+  if (mrMarginRightphone && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrMarginRightphone;
+  }
+
+  if (mrMarginBottom && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrMarginBottom;
+  }
+
+  if (mrMarginBottomdesktop && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrMarginBottomdesktop;
+  }
+
+  if (mrMarginBottomlaptop && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrMarginBottomlaptop;
+  }
+
+  if (mrMarginBottomtablet && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrMarginBottomtablet;
+  }
+
+  if (mrMarginBottomphone && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrMarginBottomphone;
+  }
+
+  if (mrMarginLeft && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrMarginLeft;
+  }
+
+  if (mrMarginLeftdesktop && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrMarginLeftdesktop;
+  }
+
+  if (mrMarginLeftlaptop && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrMarginLeftlaptop;
+  }
+
+  if (mrMarginLefttablet && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrMarginLefttablet;
+  }
+
+  if (mrMarginLeftphone && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrMarginLeftphone;
+  }
+
+  if (mrPosition && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrPosition;
+  }
+
+  if (mrPositiondesktop && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrPositiondesktop;
+  }
+
+  if (mrPositionlaptop && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrPositionlaptop;
+  }
+
+  if (mrPositiontablet && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrPositiontablet;
+  }
+
+  if (mrPositionphone && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrPositionphone;
+  }
+
+  if (mrPosition === " mr-absolute" || mrPosition === " mr-fixed" || mrPosition === " mr-sticky") {
+    if (mrPositionAlignment && allowedBlocks.includes(blockType.name)) {
+      mrClassNames = mrClassNames + mrPositionAlignment;
+    }
+
+    if (mrPositionSides && allowedBlocks.includes(blockType.name)) {
+      mrClassNames = mrClassNames + mrPositionSides;
+    }
+  }
+
+  if (mrPositiondesktop === " mr-desktop-absolute" || mrPositiondesktop === " mr-desktop-fixed" || mrPositiondesktop === " mr-desktop-sticky") {
+    if (mrPositionAlignmentdesktop && allowedBlocks.includes(blockType.name)) {
+      mrClassNames = mrClassNames + mrPositionAlignmentdesktop;
+    }
+
+    if (mrPositionSidesdesktop && allowedBlocks.includes(blockType.name)) {
+      mrClassNames = mrClassNames + mrPositionSidesdesktop;
+    }
+  }
+
+  if (mrPositionlaptop === " mr-laptop-absolute" || mrPositionlaptop === " mr-laptop-fixed" || mrPositionlaptop === " mr-laptop-sticky") {
+    if (mrPositionAlignmentlaptop && allowedBlocks.includes(blockType.name)) {
+      mrClassNames = mrClassNames + mrPositionAlignmentlaptop;
+    }
+
+    if (mrPositionSideslaptop && allowedBlocks.includes(blockType.name)) {
+      mrClassNames = mrClassNames + mrPositionSideslaptop;
+    }
+  }
+
+  if (mrPositiontablet === " mr-tablet-absolute" || mrPositiontablet === " mr-tablet-fixed" || mrPositiontablet === " mr-tablet-sticky") {
+    if (mrPositionAlignmenttablet && allowedBlocks.includes(blockType.name)) {
+      mrClassNames = mrClassNames + mrPositionAlignmenttablet;
+    }
+
+    if (mrPositionSidestablet && allowedBlocks.includes(blockType.name)) {
+      mrClassNames = mrClassNames + mrPositionSidestablet;
+    }
+  }
+
+  if (mrPositionphone === " mr-phone-absolute" || mrPositionphone === " mr-phone-fixed" || mrPositionphone === " mr-phone-sticky") {
+    if (mrPositionAlignmentphone && allowedBlocks.includes(blockType.name)) {
+      mrClassNames = mrClassNames + mrPositionAlignmentphone;
+    }
+
+    if (mrPositionSidesphone && allowedBlocks.includes(blockType.name)) {
+      mrClassNames = mrClassNames + mrPositionSidesphone;
+    }
+  }
+
+  if (mrContentAlignment && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrContentAlignment;
+  }
+
+  if (mrContentAlignmentdesktop && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrContentAlignmentdesktop;
+  }
+
+  if (mrContentAlignmentlaptop && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrContentAlignmentlaptop;
+  }
+
+  if (mrContentAlignmenttablet && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrContentAlignmenttablet;
+  }
+
+  if (mrContentAlignmentphone && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrContentAlignmentphone;
+  }
+
+  if (mrVerticalOffset && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrVerticalOffset;
+  }
+
+  if (mrVerticalOffsetdesktop && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrVerticalOffsetdesktop;
+  }
+
+  if (mrVerticalOffsetlaptop && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrVerticalOffsetlaptop;
+  }
+
+  if (mrVerticalOffsettablet && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrVerticalOffsettablet;
+  }
+
+  if (mrVerticalOffsetphone && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrVerticalOffsetphone;
+  }
+
+  if (mrHorizontalOffset && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrHorizontalOffset;
+  }
+
+  if (mrHorizontalOffsetdesktop && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrHorizontalOffsetdesktop;
+  }
+
+  if (mrHorizontalOffsetlaptop && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrHorizontalOffsetlaptop;
+  }
+
+  if (mrHorizontalOffsettablet && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrHorizontalOffsettablet;
+  }
+
+  if (mrHorizontalOffsetphone && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrHorizontalOffsetphone;
+  }
+
+  if (mrFontSize && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + " mr-fontsize" + mrFontSize;
+  }
+
+  if (mrFontSizedesktop && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + " mr-desktop-fontsize" + mrFontSizedesktop;
+  }
+
+  if (mrFontSizelaptop && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + " mr-laptop-fontsize" + mrFontSizelaptop;
+  }
+
+  if (mrFontSizetablet && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + " mr-tablet-fontsize" + mrFontSizetablet;
+  }
+
+  if (mrFontSizephone && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + " mr-phone-fontsize" + mrFontSizephone;
+  }
+
+  if (mrTextAlignment && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrTextAlignment;
+  }
+
+  if (mrTextAlignmentdesktop && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrTextAlignmentdesktop;
+  }
+
+  if (mrTextAlignmentlaptop && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrTextAlignmentlaptop;
+  }
+
+  if (mrTextAlignmenttablet && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrTextAlignmenttablet;
+  }
+
+  if (mrTextAlignmentphone && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrTextAlignmentphone;
+  }
+
+  if (mrScroll && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrScroll;
+  }
+
+  if (mrScrolldesktop && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrScrolldesktop;
+  }
+
+  if (mrScrolllaptop && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrScrolllaptop;
+  }
+
+  if (mrScrolltablet && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrScrolltablet;
+  }
+
+  if (mrScrollphone && allowedBlocks.includes(blockType.name)) {
+    mrClassNames = mrClassNames + mrScrollphone;
+  }
+
+  extraProps.className = classnames__WEBPACK_IMPORTED_MODULE_2___default()(extraProps.className, mrClassNames);
+  return extraProps;
+} //add filters
+
+
+(0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_4__.addFilter)("blocks.registerBlockType", "mrutils/custom-attributes", mrAddAttributes);
+(0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_4__.addFilter)("editor.BlockEdit", "mrutils/custom-control", mrInspectorControls);
+(0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_4__.addFilter)("blocks.getSaveContent.extraProps", "mrutils/mrApplyExtraClass", mrApplyExtraClass);
+(0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_4__.addFilter)("editor.BlockListBlock", "mrutils/mrApplyWrapperExtraClass", mrApplyWrapperExtraClass);
+}();
+/******/ })()
+;
+//# sourceMappingURL=index.js.map

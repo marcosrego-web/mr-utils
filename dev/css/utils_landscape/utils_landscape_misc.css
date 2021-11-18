@@ -1,0 +1,72 @@
+.mr-landscape-scroll {
+  overflow: auto;
+}
+.mr-landscape-noscroll {
+  overflow: hidden !important;
+}
+.mr-landscape-hidescroll:not(.mr-landscape-horizontalscroll)::-webkit-scrollbar {
+  height: 0;
+}
+.mr-landscape-horizontalscroll.mr-landscape-hidescroll::-webkit-scrollbar,
+.mr-landscape-swipe::-webkit-scrollbar,
+.mr-landscape-swipecontent > *::-webkit-scrollbar {
+  width: 0;
+}
+.mr-landscape-horizontalscroll,
+.mr-landscape-horizontalscrollcontent > *,
+.mr-landscape-swipe,
+.mr-landscape-swipecontent > * {
+  display: -webkit-inline-box;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.mr-landscape-horizontalscroll img,
+.mr-landscape-horizontalscrollcontent > * img,
+.mr-landscape-swipe img,
+.mr-landscape-swipecontent > * img,
+.mr-landscape-horizontalscroll a,
+.mr-landscape-horizontalscrollcontent > * a,
+.mr-landscape-swipe a,
+.mr-landscape-swipecontent > * a {
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.mr-landscape-swipe,
+.mr-landscape-swipecontent > *,
+.mr-landscape-drag,
+.mr-landscape-dragcontent > *,
+.mr-landscape-draganddrop:not([draggable="false"]) {
+  cursor: grab;
+}
+.mr-landscape-dragging:not([draggable="false"]),
+.mr-landscape-draggingcontent > * {
+  cursor: grabbing;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+@supports (-webkit-overflow-scrolling: touch) {
+  .mr-landscape-iosscroll,
+  .mr-landscape-scroll {
+    overflow-y: scroll !important;
+  }
+  .mr-landscape-horizontalscroll,
+  .mr-landscape-horizontalscrollcontent > *,
+  .mr-landscape-swipe,
+  .mr-landscape-swipecontent > * {
+    overflow-x: scroll !important;
+  }
+  .mr-landscape-iosscroll,
+  .mr-landscape-scroll,
+  .mr-landscape-horizontalscroll,
+  .mr-landscape-horizontalscrollcontent > *,
+  .mr-landscape-swipe,
+  .mr-landscape-swipecontent > * {
+    -webkit-overflow-scrolling: touch !important;
+  }
+}

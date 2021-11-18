@@ -1,0 +1,83 @@
+.mr-phone-relative {
+  position: relative;
+}
+.mr-phone-absolute {
+  position: absolute;
+}
+.mr-phone-fixed {
+  position: fixed;
+}
+.mr-phone-sticky {
+  position: -webkit-sticky;
+  position: sticky;
+}
+.mr-phone-aligntop {
+  vertical-align: top;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+.mr-phone-alignbottom {
+  align-items: flex-end;
+  align-content: flex-end;
+  vertical-align: bottom;
+}
+.mr-phone-top {
+  top: 0;
+  bottom: auto;
+}
+.mr-phone-right {
+  right: 0;
+  left: auto;
+}
+.mr-phone-middle {
+  align-items: center;
+  align-content: center;
+  vertical-align: middle;
+}
+.mr-phone-left {
+  left: 0;
+  right: auto;
+}
+.mr-phone-floatleft {
+  float: left;
+}
+.mr-phone-floatright {
+  float: right;
+}
+.mr-phone-center,
+.mr-phone-marginauto {
+  margin-left: auto;
+  margin-right: auto;
+}
+.mr-phone-bottom {
+  bottom: 0;
+  top: auto;
+}
+.mr-phone-baseline {
+  align-items: baseline;
+  vertical-align: baseline;
+}
+.mr-phone-offsettop:not(.mr-phone-offsetleft):not(.mr-phone-offsetright) {
+  transform: translateY(-100%);
+}
+.mr-phone-offsettop.mr-phone-offsetleft {
+  transform: translate(-100%, -100%);
+}
+.mr-phone-offsettop.mr-phone-offsetright {
+  transform: translate(100%, -100%);
+}
+.mr-phone-offsetright:not(.mr-phone-offsettop):not(.mr-phone-offsetbottom) {
+  transform: translateX(100%);
+}
+.mr-phone-offsetbottom:not(.mr-phone-offsetleft):not(.mr-phone-offsetright) {
+  transform: translateY(100%);
+}
+.mr-phone-offsetbottom.mr-phone-offsetleft {
+  transform: translate(-100%, 100%);
+}
+.mr-phone-offsetbottom.mr-phone-offsetright {
+  transform: translate(100%, 100%);
+}
+.mr-phone-offsetleft:not(.mr-phone-offsettop):not(.mr-phone-offsetbottom) {
+  transform: translateX(-100%);
+}

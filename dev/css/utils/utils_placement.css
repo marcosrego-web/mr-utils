@@ -1,0 +1,83 @@
+.mr-relative {
+  position: relative;
+}
+.mr-absolute {
+  position: absolute;
+}
+.mr-fixed {
+  position: fixed;
+}
+.mr-sticky {
+  position: -webkit-sticky;
+  position: sticky;
+}
+.mr-aligntop {
+  vertical-align: top;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+.mr-alignbottom {
+  align-items: flex-end;
+  align-content: flex-end;
+  vertical-align: bottom;
+}
+.mr-top {
+  top: 0;
+  bottom: auto;
+}
+.mr-right {
+  right: 0;
+  left: auto;
+}
+.mr-middle {
+  align-items: center;
+  align-content: center;
+  vertical-align: middle;
+}
+.mr-left {
+  left: 0;
+  right: auto;
+}
+.mr-floatleft {
+  float: left;
+}
+.mr-floatright {
+  float: right;
+}
+.mr-center,
+.mr-marginauto {
+  margin-left: auto;
+  margin-right: auto;
+}
+.mr-bottom {
+  bottom: 0;
+  top: auto;
+}
+.mr-baseline {
+  align-items: baseline;
+  vertical-align: baseline;
+}
+.mr-offsettop:not(.mr-offsetleft):not(.mr-offsetright) {
+  transform: translateY(-100%);
+}
+.mr-offsettop.mr-offsetleft {
+  transform: translate(-100%, -100%);
+}
+.mr-offsettop.mr-offsetright {
+  transform: translate(100%, -100%);
+}
+.mr-offsetright:not(.mr-offsettop):not(.mr-offsetbottom) {
+  transform: translateX(100%);
+}
+.mr-offsetbottom:not(.mr-offsetleft):not(.mr-offsetright) {
+  transform: translateY(100%);
+}
+.mr-offsetbottom.mr-offsetleft {
+  transform: translate(-100%, 100%);
+}
+.mr-offsetbottom.mr-offsetright {
+  transform: translate(100%, 100%);
+}
+.mr-offsetleft:not(.mr-offsettop):not(.mr-offsetbottom) {
+  transform: translateX(-100%);
+}

@@ -242,11 +242,7 @@ function mrLoadPage(e, n) {
     );
   }
 
-  //let t = e.closest("[class*='mr-'][class*='perpage']");
-  //let t = e.closest("[mr-itemsperpage]");
-
   e.classList.remove("active");
-  //t.closest("[mr-itemsperpage]").classList.remove("active");
 
   let mrTimeOut = 0;
   if (
@@ -413,7 +409,6 @@ function mrPagination(t) {
 function mrNext(t, e) {
   if (!e) {
     e = t.closest("[class*='mr-'][class*='perpage']");
-    //e = t.closest("[mr-itemsperpage]");
   }
   let n = parseInt(e.getAttribute("mr-currentpage")) + 1;
   mrLoadPage(e, n);
@@ -421,7 +416,6 @@ function mrNext(t, e) {
 function mrPrev(t, e) {
   if (!e) {
     e = t.closest("[class*='mr-'][class*='perpage']");
-    //e = t.closest("[mr-itemsperpage]");
   }
   let n = parseInt(e.getAttribute("mr-currentpage")) - 1;
   mrLoadPage(e, n);
@@ -429,7 +423,6 @@ function mrPrev(t, e) {
 function mrSelectPage(t, e) {
   if (!e) {
     e = t.closest("[class*='mr-'][class*='perpage']");
-    //e = t.closest("[mr-itemsperpage]");
   }
   t.addEventListener("change", function (event) {
     mrLoadPage(e, event.target.value);
@@ -439,10 +432,17 @@ function mrSelectPage(t, e) {
 function mrRadioPage(t, e) {
   if (!e) {
     e = t.closest("[class*='mr-'][class*='perpage']");
-    //e = t.closest("[mr-itemsperpage]");
   }
   mrLoadPage(e, t.value);
 }
+/*import {
+  mrLoadPage,
+  mrPagination,
+  mrNext,
+  mrPrev,
+  mrSelectPage,
+  mrRadioPage,
+} from "utils/layout.js";*/
 document.addEventListener("click", function (t) {
   if (t.target.matches(".mr-copy")) {
     mrCopy(t.target);
@@ -473,7 +473,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const mrPaginEles = document.querySelectorAll(
     "[class*='mr-'][class*='perpage']"
   );
-  //const mrPaginEles = document.querySelectorAll("[mr-itemsperpage]");
 
   for (id = 0; id < mrPaginEles.length; id++) {
     const mrPaginEle = mrPaginEles[id];

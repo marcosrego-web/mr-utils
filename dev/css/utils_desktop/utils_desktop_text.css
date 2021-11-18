@@ -1,0 +1,33 @@
+.mr-desktop-alignleft {
+  text-align: left;
+}
+.mr-desktop-aligncenter {
+  text-align: center;
+}
+.mr-desktop-alignright {
+  text-align: right;
+}
+.mr-desktop-fontsize7,
+.mr-desktop-largefontsize {
+  font-size: var(--font-size-7, 2rem);
+}
+.mr-desktop-fontsize6 {
+  font-size: var(--font-size-6, 1.125rem);
+}
+.mr-desktop-fontsize5,
+.mr-desktop-mediumfontsize {
+  font-size: var(--font-size-5, 1.17rem);
+}
+.mr-desktop-fontsize4 {
+  font-size: var(--font-size-4, 1rem);
+}
+.mr-desktop-fontsize3 {
+  font-size: var(--font-size-3, 0.875rem);
+}
+.mr-desktop-fontsize2 {
+  font-size: var(--font-size-2, 0.75rem);
+}
+.mr-desktop-fontsize1,
+.mr-desktop-smallfontsize {
+  font-size: var(--font-size-1, 0.625rem);
+}

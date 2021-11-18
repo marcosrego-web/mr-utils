@@ -1,0 +1,67 @@
+.mr-phone-margin {
+  margin: 0.75rem;
+  margin: var(--margin, 0.75rem);
+}
+.mr-phone-margintop {
+  margin-top: 0.75rem;
+  margin-top: var(--margin, 0.75rem);
+}
+.mr-phone-marginright {
+  margin-right: 0.75rem;
+  margin-right: var(--margin, 0.75rem);
+}
+.mr-phone-marginbottom {
+  margin-bottom: 0.75rem;
+  margin-bottom: var(--margin, 0.75rem);
+}
+.mr-phone-marginleft {
+  margin-left: 0.75rem;
+  margin-left: var(--margin, 0.75rem);
+}
+.mr-phone-padding {
+  padding: 0.75rem;
+  padding: var(--padding, 0.75rem);
+}
+.mr-phone-paddingtop {
+  padding-top: 0.75rem;
+  padding-top: var(--padding, 0.75rem);
+}
+.mr-phone-paddingright {
+  padding-right: 0.75rem;
+  padding-right: var(--padding, 0.75rem);
+}
+.mr-phone-paddingbottom {
+  padding-bottom: 0.75rem;
+  padding-bottom: var(--padding, 0.75rem);
+}
+.mr-phone-paddingleft {
+  padding-left: 0.75rem;
+  padding-left: var(--padding, 0.75rem);
+}
+.mr-phone-nomargin {
+  margin: 0 !important;
+}
+.mr-phone-nomargintop {
+  margin-top: 0 !important;
+}
+.mr-phone-nomarginright {
+  margin-right: 0 !important;
+}
+.mr-phone-nomarginbottom {
+  margin-bottom: 0 !important;
+}
+.mr-phone-nomarginleft {
+  margin-left: 0 !important;
+}
+.mr-phone-nopadding {
+  padding: 0 !important;
+}
+.mr-phone-nopaddingtop {
+  padding-top: 0 !important;
+}
+.mr-phone-nopaddingright {
+  padding-right: 0 !important;
+}
+.mr-phone-nopaddingbottom {
+  padding-bottom: 0 !important;
+}

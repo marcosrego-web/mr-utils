@@ -1,0 +1,32 @@
+.mr-laptop-flex {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+}
+.mr-laptop-wrap {
+  flex-wrap: wrap;
+}
+.mr-laptop-nowrap {
+  flex-wrap: nowrap !important;
+}
+.mr-laptop-show,
+.mr-laptop-block {
+  display: block !important;
+}
+.mr-laptop-show,
+.mr-laptop-visible {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+.mr-laptop-hide,
+.mr-laptop-none {
+  display: none !important;
+}
+.mr-laptop-hide,
+.mr-laptop-hidden {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}

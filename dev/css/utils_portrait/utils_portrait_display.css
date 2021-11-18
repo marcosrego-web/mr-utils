@@ -1,0 +1,32 @@
+.mr-portrait-flex {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+}
+.mr-portrait-wrap {
+  flex-wrap: wrap;
+}
+.mr-portrait-nowrap {
+  flex-wrap: nowrap !important;
+}
+.mr-portrait-show,
+.mr-portrait-block {
+  display: block !important;
+}
+.mr-portrait-show,
+.mr-portrait-visible {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+.mr-portrait-hide,
+.mr-portrait-none {
+  display: none !important;
+}
+.mr-portrait-hide,
+.mr-portrait-hidden {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}

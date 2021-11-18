@@ -755,7 +755,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 												{tab.name === "" ? (
 													<PanelBody
 														icon={symbol}
-														title={__("Animation", "mrutils")}
+														title={__("Animations", "mrutils")}
 														initialOpen={false}
 													>
 														<SelectControl
@@ -2963,9 +2963,9 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 													padding, transition-duration, font-size and more).
 												</li>
 												<li>
-													- (coming soon) Enable only the utilities' categories
-													and components that you want to use, avoiding unused
-													CSS and JS.
+													- (coming soon) Enable only the categories and
+													components that you want to use, avoiding unused CSS
+													and JS.
 												</li>
 												<li>- And more framework features...</li>
 											</ul>

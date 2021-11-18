@@ -1,0 +1,32 @@
+.mr-landscape-flex {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+}
+.mr-landscape-wrap {
+  flex-wrap: wrap;
+}
+.mr-landscape-nowrap {
+  flex-wrap: nowrap !important;
+}
+.mr-landscape-show,
+.mr-landscape-block {
+  display: block !important;
+}
+.mr-landscape-show,
+.mr-landscape-visible {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+.mr-landscape-hide,
+.mr-landscape-none {
+  display: none !important;
+}
+.mr-landscape-hide,
+.mr-landscape-hidden {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}

@@ -1,0 +1,32 @@
+.mr-phone-flex {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+}
+.mr-phone-wrap {
+  flex-wrap: wrap;
+}
+.mr-phone-nowrap {
+  flex-wrap: nowrap !important;
+}
+.mr-phone-show,
+.mr-phone-block {
+  display: block !important;
+}
+.mr-phone-show,
+.mr-phone-visible {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+.mr-phone-hide,
+.mr-phone-none {
+  display: none !important;
+}
+.mr-phone-hide,
+.mr-phone-hidden {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}

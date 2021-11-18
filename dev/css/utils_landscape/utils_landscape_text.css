@@ -1,0 +1,33 @@
+.mr-landscape-alignleft {
+  text-align: left;
+}
+.mr-landscape-aligncenter {
+  text-align: center;
+}
+.mr-landscape-alignright {
+  text-align: right;
+}
+.mr-landscape-fontsize7,
+.mr-landscape-largefontsize {
+  font-size: var(--font-size-7, 2rem);
+}
+.mr-landscape-fontsize6 {
+  font-size: var(--font-size-6, 1.125rem);
+}
+.mr-landscape-fontsize5,
+.mr-landscape-mediumfontsize {
+  font-size: var(--font-size-5, 1.17rem);
+}
+.mr-landscape-fontsize4 {
+  font-size: var(--font-size-4, 1rem);
+}
+.mr-landscape-fontsize3 {
+  font-size: var(--font-size-3, 0.875rem);
+}
+.mr-landscape-fontsize2 {
+  font-size: var(--font-size-2, 0.75rem);
+}
+.mr-landscape-fontsize1,
+.mr-landscape-smallfontsize {
+  font-size: var(--font-size-1, 0.625rem);
+}
