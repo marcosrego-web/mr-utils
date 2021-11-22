@@ -1,4 +1,4 @@
-export function mrLoadPage(e, n) {
+function mrLoadPage(e, n) {
   if (n <= 0) {
     n = e.getAttribute("mr-lastpage");
   } else if (!e.querySelector(".mr-page" + n)) {
@@ -41,13 +41,13 @@ export function mrLoadPage(e, n) {
     e.classList.contains("mr-zoomleft")
   ) {
     /*if (
-        t.classList.contains("mr-slide") ||
-        t.classList.contains("mr-slidetop") ||
-        t.classList.contains("mr-slideright") ||
-        t.classList.contains("mr-slideleft")
-      ) {
-        t.parentNode.classList.add("mr-noscroll");
-      }*/
+      t.classList.contains("mr-slide") ||
+      t.classList.contains("mr-slidetop") ||
+      t.classList.contains("mr-slideright") ||
+      t.classList.contains("mr-slideleft")
+    ) {
+      t.parentNode.classList.add("mr-noscroll");
+    }*/
     mrTimeOut = getComputedStyle(document.documentElement).getPropertyValue(
       "--transition-duration"
     );
@@ -76,7 +76,7 @@ export function mrLoadPage(e, n) {
     e.classList.add("active");
   }, mrTimeOut);
 }
-export function mrPagination(t) {
+function mrPagination(t) {
   let mrChildCount = t.children;
   for (id = 0; id < mrChildCount.length; id++) {
     if (t.classList.contains("mr-" + id + "perpage")) {
@@ -116,7 +116,7 @@ export function mrPagination(t) {
             !t.matches(
               "[class*='pagination']"
             )) /*(t.matches("[mr-itemsperpage]") &&
-              !t.matches("[class*='pagination']"))*/
+            !t.matches("[class*='pagination']"))*/
         ) {
           mrPaginationArrows =
             '<button class="mr-arrows mr-prev"><</button><button class="mr-arrows mr-next">&gt;</button>';
@@ -129,7 +129,7 @@ export function mrPagination(t) {
             !t.matches(
               "[class*='pagination']"
             )) /*(t.matches("[mr-itemsperpage]") &&
-              !t.matches("[class*='pagination']")*/
+            !t.matches("[class*='pagination']")*/
         ) {
           mrPaginationSelect =
             '<select class="mr-pageselect" title="/' + mrPageNumber + '">';
@@ -152,7 +152,7 @@ export function mrPagination(t) {
             !t.matches(
               "[class*='pagination']"
             )) /*(t.matches("[mr-itemsperpage]") &&
-              !t.matches("[class*='pagination']"))*/
+            !t.matches("[class*='pagination']"))*/
         ) {
           mrPaginationRadio = '<span class="mr-radios">';
           for (id = 0; id < mrPageNumber; id++) {
@@ -187,21 +187,21 @@ export function mrPagination(t) {
     }
   }
 }
-export function mrNext(t, e) {
+function mrNext(t, e) {
   if (!e) {
     e = t.closest("[class*='mr-'][class*='perpage']");
   }
   let n = parseInt(e.getAttribute("mr-currentpage")) + 1;
   mrLoadPage(e, n);
 }
-export function mrPrev(t, e) {
+function mrPrev(t, e) {
   if (!e) {
     e = t.closest("[class*='mr-'][class*='perpage']");
   }
   let n = parseInt(e.getAttribute("mr-currentpage")) - 1;
   mrLoadPage(e, n);
 }
-export function mrSelectPage(t, e) {
+function mrSelectPage(t, e) {
   if (!e) {
     e = t.closest("[class*='mr-'][class*='perpage']");
   }
@@ -210,9 +210,31 @@ export function mrSelectPage(t, e) {
     event.stopPropagation();
   });
 }
-export function mrRadioPage(t, e) {
+function mrRadioPage(t, e) {
   if (!e) {
     e = t.closest("[class*='mr-'][class*='perpage']");
   }
   mrLoadPage(e, t.value);
 }
+document.addEventListener("click", function (t) {
+  if (t.target.matches(".mr-next")) {
+    mrNext(t.target);
+  } else if (t.target.matches(".mr-prev")) {
+    mrPrev(t.target);
+  } else if (t.target.matches(".mr-pageselect")) {
+    mrSelectPage(t.target);
+  } else if (t.target.matches(".mr-radio:not([checked])")) {
+    mrRadioPage(t.target);
+  }
+  t.stopPropagation();
+});
+document.addEventListener("DOMContentLoaded", function () {
+  const mrPaginEles = document.querySelectorAll(
+    "[class*='mr-'][class*='perpage']"
+  );
+
+  for (id = 0; id < mrPaginEles.length; id++) {
+    const mrPaginEle = mrPaginEles[id];
+    mrPagination(mrPaginEle);
+  }
+});

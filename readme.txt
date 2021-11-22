@@ -6,11 +6,11 @@ Stable tag:        0.1.0
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
-Easily use Mr.Utils front-end toolkit with the block editor GUI.
+Easily use Mr.Utils front-end toolkit with the block editor interface without knowing code, the classes or the functions.
 
 == Description ==
 
-Easily use Mr.Utils front-end toolkit with the block editor GUI.
+Easily use Mr.Utils front-end toolkit with the block editor interface without knowing code, the classes or the functions.
 
 == Installation ==
 

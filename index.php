@@ -27,7 +27,7 @@ if (file_exists(dirname(__FILE__).'/../mrdev-framework_wp/mrdev-framework_wp.php
     function mrutils_plugin_notice() {
         ?>
         <div class="notice notice-error is-dismissible">
-            <p><?php _e( "<b>The Mr.Utils plugin was deactivated because it's already included with the Mr.Dev.'s Framework that you have installed.</b><br>You can now enable CSS and JS Utilities, <b>including Utils Backend</b>, on the Framework settings and <b>delete the Mr.Utils plugin</b>.", 'mr-utils' ); ?></p>
+            <p><?php _e( "<b>The Mr.Utils plugin was deactivated because it's already included with the Mr.Dev.'s Framework that you have installed.</b><br>You can now enable 'Utilities configuration' on the Framework settings and <b>delete the Mr.Utils plugin</b>.", 'mr-utils' ); ?></p>
         </div>
         <?php
         deactivate_plugins( 'mr-utils/index.php' );

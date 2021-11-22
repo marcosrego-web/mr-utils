@@ -5,9 +5,12 @@
   opacity: 0.5 !important;
   visibility: visible !important;
 }
-.mr-flex[class*="mr-"][class*="hide"],
+.mr-flex[class*="mr-"][class*="hide"]:not([class*="hidescroll"]),
 .mr-flex[class*="mr-"][class*="hidden"],
 .mr-flex[class*="mr-"][class*="none"],
+.wp-block-columns[class*="mr-"][class*="hide"]:not([class*="hidescroll"]),
+.wp-block-columns[class*="mr-"][class*="hidden"],
+.wp-block-columns[class*="mr-"][class*="none"],
 .mr-horizontalscroll,
 .mr-horizontalscrollcontent > *,
 .mr-swipe,

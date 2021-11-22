@@ -41,6 +41,7 @@ import {
 	symbol,
 	plusCircle,
 	layout,
+	pages,
 } from "@wordpress/icons";
 
 const allowedBlocks = [
@@ -80,6 +81,7 @@ const allowedBlocks = [
 	"core/video",
 	"core/query-title",
 	"core/post-terms",
+	"core/post-template",
 ];
 
 /**
@@ -713,2229 +715,2361 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 					<InspectorControls key="setting">
 						<Panel header="">
 							<PanelBody title={__("Utilities", "mrutils")} initialOpen={false}>
-								<TabPanel
-									className="mr-backend-tabs"
-									activeClass="is-active"
-									tabs={[
-										{
-											name: "",
-											title: settings,
-											className: "mr-backend-tab mr-backend-tab_all",
-										},
-										{
-											name: "desktop",
-											title: aspectRatio,
-											className: "mr-backend-tab mr-backend-tab_desktop",
-										},
-										{
-											name: "laptop",
-											title: desktop,
-											className: "mr-backend-tab mr-backend-tab_laptop",
-										},
-										{
-											name: "tablet",
-											title: tablet,
-											className: "mr-backend-tab mr-backend-tab_tablet",
-										},
-										{
-											name: "phone",
-											title: mobile,
-											className: "mr-backend-tab mr-backend-tab_phone",
-										},
-										{
-											name: "more",
-											title: plus,
-											className: "mr-backend-tab mr-backend-tab_more",
-										},
-									]}
-								>
-									{(tab) =>
-										tab.name !== "more" ? (
-											<>
-												{tab.name === "" ? (
-													<PanelBody
-														icon={symbol}
-														title={__("Animations", "mrutils")}
-														initialOpen={false}
-													>
-														<SelectControl
-															label={__("Animation", "mrutils")}
-															value={mrAnimation}
-															options={[
-																{ value: "", label: "Default" },
-																{
-																	value: " mr-fade active",
-																	label: "Fade",
-																},
-																{
-																	value: " mr-slidetop active",
-																	label: "Slide Top",
-																},
-																{
-																	value: " mr-slideright active",
-																	label: "Slide Right",
-																},
-																{
-																	value: " mr-slidebottom active",
-																	label: "Slide Bottom",
-																},
-																{
-																	value: " mr-slideleft active",
-																	label: "Slide Left",
-																},
-																{
-																	value: " mr-scale active",
-																	label: "Scale",
-																},
-																{
-																	value: " mr-scaleright active",
-																	label: "Scale Right",
-																},
-																{
-																	value: " mr-scaleleft active",
-																	label: "Scale Left",
-																},
-																{
-																	value: " mr-zoom active",
-																	label: "Zoom",
-																},
-																{
-																	value: " mr-zoomright active",
-																	label: "Zoom Right",
-																},
-																{
-																	value: " mr-zoomleft active",
-																	label: "Zoom Left",
-																},
-															]}
-															onChange={(val) =>
-																setAttributes({
-																	mrAnimation: val === undefined ? "" : val,
-																})
+								{props.name === "core/latest-posts" ||
+								props.name === "core/latest-comments" ||
+								props.name === "core/latestPosts" ||
+								props.name === "core/latestComments" ||
+								props.name === "core/post-template" ||
+								props.name === "core/post-terms" ? (
+									<>
+										<p>
+											Currently this block does not fully support the utilities
+											interface. In alternative, you can use{" "}
+											<a
+												href="https://github.com/marcosrego-web/mr-utils/wiki/Utility-Classes"
+												target="_blank"
+											>
+												utility classes
+											</a>{" "}
+											in <b>Advanced - Additional CSS class(es)</b>.
+										</p>
+										<p>
+											{" "}
+											<a
+												href="https://github.com/marcosrego-web/mr-utils/wiki/Utility-Classes"
+												target="_blank"
+											>
+												Know more
+											</a>{" "}
+										</p>
+									</>
+								) : (
+									<>
+										<TabPanel
+											className="mr-backend-tabs"
+											activeClass="is-active"
+											tabs={[
+												{
+													name: "",
+													title: settings,
+													className: "mr-backend-tab mr-backend-tab_all",
+												},
+												{
+													name: "desktop",
+													title: aspectRatio,
+													className: "mr-backend-tab mr-backend-tab_desktop",
+												},
+												{
+													name: "laptop",
+													title: desktop,
+													className: "mr-backend-tab mr-backend-tab_laptop",
+												},
+												{
+													name: "tablet",
+													title: tablet,
+													className: "mr-backend-tab mr-backend-tab_tablet",
+												},
+												{
+													name: "phone",
+													title: mobile,
+													className: "mr-backend-tab mr-backend-tab_phone",
+												},
+												{
+													name: "more",
+													title: plus,
+													className: "mr-backend-tab mr-backend-tab_more",
+												},
+											]}
+										>
+											{(tab) =>
+												tab.name !== "more" ? (
+													<>
+														{tab.name === "" ? (
+															<PanelBody
+																icon={symbol}
+																title={__("Animations", "mrutils")}
+																initialOpen={false}
+																className="mr-backend-option mr-backend-option_utils_animations"
+															>
+																<SelectControl
+																	label={__("Animation", "mrutils")}
+																	value={mrAnimation}
+																	options={[
+																		{ value: "", label: "Default" },
+																		{
+																			value: " mr-fade active",
+																			label: "Fade",
+																		},
+																		{
+																			value: " mr-slidetop active",
+																			label: "Slide Top",
+																		},
+																		{
+																			value: " mr-slideright active",
+																			label: "Slide Right",
+																		},
+																		{
+																			value: " mr-slidebottom active",
+																			label: "Slide Bottom",
+																		},
+																		{
+																			value: " mr-slideleft active",
+																			label: "Slide Left",
+																		},
+																		{
+																			value: " mr-scale active",
+																			label: "Scale",
+																		},
+																		{
+																			value: " mr-scaleright active",
+																			label: "Scale Right",
+																		},
+																		{
+																			value: " mr-scaleleft active",
+																			label: "Scale Left",
+																		},
+																		{
+																			value: " mr-zoom active",
+																			label: "Zoom",
+																		},
+																		{
+																			value: " mr-zoomright active",
+																			label: "Zoom Right",
+																		},
+																		{
+																			value: " mr-zoomleft active",
+																			label: "Zoom Left",
+																		},
+																	]}
+																	onChange={(val) =>
+																		setAttributes({
+																			mrAnimation: val === undefined ? "" : val,
+																		})
+																	}
+																/>
+															</PanelBody>
+														) : (
+															""
+														)}
+														{tab.name === "" ? (
+															<>
+																<PanelBody
+																	icon={pages}
+																	title={
+																		tab.name + __(" Pagination", "mrutils")
+																	}
+																	initialOpen={false}
+																	className="mr-backend-option mr-backend-option_utils_pagination"
+																>
+																	<TextControl
+																		label={__(
+																			"Number of items per page",
+																			"mrutils"
+																		)}
+																		value={mrPerPage}
+																		type="number"
+																		className="mr-backend-perpage"
+																		onChange={(val) =>
+																			setAttributes({
+																				mrPerPage:
+																					val === undefined || val === 0
+																						? ""
+																						: val,
+																			})
+																		}
+																		help={
+																			mrPerPage > 0
+																				? __(
+																						"Pagination was applied but you need to preview the frontend to see the actual result.",
+																						"mrutils"
+																				  )
+																				: ""
+																		}
+																	/>
+																	{mrPerPage > 0 ? (
+																		<>
+																			<ToggleControl
+																				label="Arrows"
+																				checked={mrArrowPagination}
+																				className="mr-backend-perpage"
+																				onChange={() =>
+																					setAttributes({
+																						mrArrowPagination: !mrArrowPagination,
+																					})
+																				}
+																			/>
+																			<ToggleControl
+																				label="Select dropdown"
+																				checked={mrSelectPagination}
+																				className="mr-backend-perpage"
+																				onChange={() =>
+																					setAttributes({
+																						mrSelectPagination: !mrSelectPagination,
+																					})
+																				}
+																			/>
+																			<ToggleControl
+																				label="Radio buttons"
+																				checked={mrRadioPagination}
+																				className="mr-backend-perpage"
+																				onChange={() =>
+																					setAttributes({
+																						mrRadioPagination: !mrRadioPagination,
+																					})
+																				}
+																			/>
+																		</>
+																	) : (
+																		""
+																	)}
+																</PanelBody>
+															</>
+														) : (
+															""
+														)}
+														<PanelBody
+															icon={layout}
+															title={tab.name + __(" Layout", "mrutils")}
+															initialOpen={false}
+															className={
+																tab.name === ""
+																	? "mr-backend-option mr-backend-option_utils_layout"
+																	: "mr-backend-option mr-backend-option_utils_" +
+																	  tab.name +
+																	  "_layout"
 															}
-														/>
-													</PanelBody>
-												) : (
-													""
-												)}
-												<PanelBody
-													icon={layout}
-													title={tab.name + __(" Layout", "mrutils")}
-													initialOpen={false}
-												>
-													{tab.name === "" ? (
-														<>
-															<TextControl
+														>
+															<SelectControl
 																label={__(
-																	"Number of items per page",
+																	"Number of items per line",
 																	"mrutils"
 																)}
-																value={mrPerPage}
-																type="number"
-																className="mr-backend-perpage"
+																value={
+																	tab.name === "desktop"
+																		? mrPerLinedesktop
+																		: tab.name === "laptop"
+																		? mrPerLinelaptop
+																		: tab.name === "tablet"
+																		? mrPerLinetablet
+																		: tab.name === "phone"
+																		? mrPerLinephone
+																		: mrPerLine
+																}
+																options={
+																	tab.name === "" ||
+																	tab.name === "desktop" ||
+																	tab.name === "laptop" ||
+																	tab.name === "tablet" ||
+																	tab.name === "phone"
+																		? [
+																				{ value: "", label: "" },
+																				{
+																					value: (
+																						" mr-" +
+																						tab.name +
+																						"-1perline"
+																					).replace("--", "-"),
+																					label: "1",
+																				},
+																				{
+																					value: (
+																						" mr-" +
+																						tab.name +
+																						"-2perline"
+																					).replace("--", "-"),
+																					label: "2",
+																				},
+																				{
+																					value: (
+																						" mr-" +
+																						tab.name +
+																						"-3perline"
+																					).replace("--", "-"),
+																					label: "3",
+																				},
+																				{
+																					value: (
+																						" mr-" +
+																						tab.name +
+																						"-4perline"
+																					).replace("--", "-"),
+																					label: "4",
+																				},
+																				{
+																					value: (
+																						" mr-" +
+																						tab.name +
+																						"-5perline"
+																					).replace("--", "-"),
+																					label: "5",
+																				},
+																				{
+																					value: (
+																						" mr-" +
+																						tab.name +
+																						"-6perline"
+																					).replace("--", "-"),
+																					label: "6",
+																				},
+																				{
+																					value: (
+																						" mr-" +
+																						tab.name +
+																						"-7perline"
+																					).replace("--", "-"),
+																					label: "7",
+																				},
+																				{
+																					value: (
+																						" mr-" +
+																						tab.name +
+																						"-8perline"
+																					).replace("--", "-"),
+																					label: "8",
+																				},
+																				{
+																					value: (
+																						" mr-" +
+																						tab.name +
+																						"-9perline"
+																					).replace("--", "-"),
+																					label: "9",
+																				},
+																				{
+																					value: (
+																						" mr-" +
+																						tab.name +
+																						"-10perline"
+																					).replace("--", "-"),
+																					label: "10",
+																				},
+																				{
+																					value: (
+																						" mr-" +
+																						tab.name +
+																						"-11perline"
+																					).replace("--", "-"),
+																					label: "11",
+																				},
+																				{
+																					value: (
+																						" mr-" +
+																						tab.name +
+																						"-12perline"
+																					).replace("--", "-"),
+																					label: "12",
+																				},
+																				{
+																					value: (
+																						" mr-" +
+																						tab.name +
+																						"-0perline"
+																					).replace("--", "-"),
+																					label: "∞",
+																				},
+																		  ]
+																		: ""
+																}
 																onChange={(val) =>
 																	setAttributes({
-																		mrPerPage: val === undefined ? "" : val,
+																		mrPerLine:
+																			val === undefined || val === ""
+																				? ""
+																				: val.includes("-desktop-") ||
+																				  val.includes("-laptop-") ||
+																				  val.includes("-tablet-") ||
+																				  val.includes("-phone-")
+																				? mrPerLine
+																				: val.replace("--", "-"),
+																		mrPerLinedesktop:
+																			val === undefined || val === ""
+																				? ""
+																				: val !== undefined &&
+																				  val.includes("-desktop-")
+																				? val
+																				: mrPerLinedesktop,
+																		mrPerLinelaptop:
+																			val === undefined || val === ""
+																				? ""
+																				: val !== undefined &&
+																				  val.includes("-laptop-")
+																				? val
+																				: mrPerLinelaptop,
+																		mrPerLinetablet:
+																			val === undefined || val === ""
+																				? ""
+																				: val !== undefined &&
+																				  val.includes("-tablet-")
+																				? val
+																				: mrPerLinetablet,
+																		mrPerLinephone:
+																			val === undefined || val === ""
+																				? ""
+																				: val !== undefined &&
+																				  val.includes("-phone-")
+																				? val
+																				: mrPerLinephone,
+																	})
+																}
+															/>
+															<RangeControl
+																label={__("Item size", "mrutils")}
+																value={
+																	tab.name === "desktop"
+																		? mrSizedesktop
+																		: tab.name === "laptop"
+																		? mrSizelaptop
+																		: tab.name === "tablet"
+																		? mrSizetablet
+																		: tab.name === "phone"
+																		? mrSizephone
+																		: mrSize
+																}
+																initialPosition={0}
+																allowReset={true}
+																min={0}
+																max={13}
+																onChange={(val) =>
+																	setAttributes({
+																		mrSize:
+																			tab.name === ""
+																				? val === 0 || val === undefined
+																					? ""
+																					: val
+																				: mrSize,
+																		mrSizedesktop:
+																			tab.name === "desktop"
+																				? val === 0 || val === undefined
+																					? ""
+																					: val
+																				: mrSizedesktop,
+																		mrSizelaptop:
+																			tab.name === "laptop"
+																				? val === 0 || val === undefined
+																					? ""
+																					: val
+																				: mrSizelaptop,
+																		mrSizetablet:
+																			tab.name === "tablet"
+																				? val === 0 || val === undefined
+																					? ""
+																					: val
+																				: mrSizetablet,
+																		mrSizephone:
+																			tab.name === "phone"
+																				? val === 0 || val === undefined
+																					? ""
+																					: val
+																				: mrSizephone,
+																	})
+																}
+															/>
+															<SelectControl
+																label={__("Item order", "mrutils")}
+																value={
+																	tab.name === "desktop"
+																		? mrOrderdesktop
+																		: tab.name === "laptop"
+																		? mrOrderlaptop
+																		: tab.name === "tablet"
+																		? mrOrdertablet
+																		: tab.name === "phone"
+																		? mrOrderphone
+																		: mrOrder
+																}
+																options={
+																	tab.name === "" ||
+																	tab.name === "desktop" ||
+																	tab.name === "laptop" ||
+																	tab.name === "tablet" ||
+																	tab.name === "phone"
+																		? [
+																				{ value: "", label: "" },
+																				{
+																					value: (
+																						" mr-" +
+																						tab.name +
+																						"-order-1"
+																					).replace("--", "-"),
+																					label: "-1",
+																				},
+																				{
+																					value: (
+																						" mr-" +
+																						tab.name +
+																						"-order1"
+																					).replace("--", "-"),
+																					label: "1",
+																				},
+																				{
+																					value: (
+																						" mr-" +
+																						tab.name +
+																						"-order2"
+																					).replace("--", "-"),
+																					label: "2",
+																				},
+																				{
+																					value: (
+																						" mr-" +
+																						tab.name +
+																						"-order3"
+																					).replace("--", "-"),
+																					label: "3",
+																				},
+																				{
+																					value: (
+																						" mr-" +
+																						tab.name +
+																						"-order4"
+																					).replace("--", "-"),
+																					label: "4",
+																				},
+																				{
+																					value: (
+																						" mr-" +
+																						tab.name +
+																						"-order5"
+																					).replace("--", "-"),
+																					label: "5",
+																				},
+																				{
+																					value: (
+																						" mr-" +
+																						tab.name +
+																						"-order6"
+																					).replace("--", "-"),
+																					label: "6",
+																				},
+																				{
+																					value: (
+																						" mr-" +
+																						tab.name +
+																						"-order7"
+																					).replace("--", "-"),
+																					label: "7",
+																				},
+																				{
+																					value: (
+																						" mr-" +
+																						tab.name +
+																						"-order8"
+																					).replace("--", "-"),
+																					label: "8",
+																				},
+																				{
+																					value: (
+																						" mr-" +
+																						tab.name +
+																						"-order9"
+																					).replace("--", "-"),
+																					label: "9",
+																				},
+																				{
+																					value: (
+																						" mr-" +
+																						tab.name +
+																						"-order10"
+																					).replace("--", "-"),
+																					label: "10",
+																				},
+																				{
+																					value: (
+																						" mr-" +
+																						tab.name +
+																						"-order11"
+																					).replace("--", "-"),
+																					label: "11",
+																				},
+																				{
+																					value: (
+																						" mr-" +
+																						tab.name +
+																						"-order12"
+																					).replace("--", "-"),
+																					label: "12",
+																				},
+																		  ]
+																		: ""
+																}
+																onChange={(val) =>
+																	setAttributes({
+																		mrOrder:
+																			val === undefined || val === ""
+																				? ""
+																				: val.includes("-desktop-") ||
+																				  val.includes("-laptop-") ||
+																				  val.includes("-tablet-") ||
+																				  val.includes("-phone-")
+																				? mrOrder
+																				: val.replace("--", "-"),
+																		mrOrderdesktop:
+																			val === undefined || val === ""
+																				? ""
+																				: val !== undefined &&
+																				  val.includes("-desktop-")
+																				? val
+																				: mrOrderdesktop,
+																		mrOrderlaptop:
+																			val === undefined || val === ""
+																				? ""
+																				: val !== undefined &&
+																				  val.includes("-laptop-")
+																				? val
+																				: mrOrderlaptop,
+																		mrOrdertablet:
+																			val === undefined || val === ""
+																				? ""
+																				: val !== undefined &&
+																				  val.includes("-tablet-")
+																				? val
+																				: mrOrdertablet,
+																		mrOrderphone:
+																			val === undefined || val === ""
+																				? ""
+																				: val !== undefined &&
+																				  val.includes("-phone-")
+																				? val
+																				: mrOrderphone,
+																	})
+																}
+															/>
+														</PanelBody>
+														<PanelBody
+															icon={swatch}
+															title={tab.name + __(" Display", "mrutils")}
+															initialOpen={false}
+															className={
+																tab.name === ""
+																	? "mr-backend-option mr-backend-option_utils_display"
+																	: "mr-backend-option mr-backend-option_utils_" +
+																	  tab.name +
+																	  "_display"
+															}
+														>
+															<SelectControl
+																label={__("Visibility", "mrutils")}
+																value={
+																	tab.name === "desktop"
+																		? mrDisplaydesktop
+																		: tab.name === "laptop"
+																		? mrDisplaylaptop
+																		: tab.name === "tablet"
+																		? mrDisplaytablet
+																		: tab.name === "phone"
+																		? mrDisplayphone
+																		: mrDisplay
+																}
+																options={[
+																	{ value: "", label: "Default" },
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-hide"
+																		).replace("--", "-"),
+																		label: "Hide",
+																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-show"
+																		).replace("--", "-"),
+																		label: "Show",
+																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-none"
+																		).replace("--", "-"),
+																		label: "None",
+																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-flex"
+																		).replace("--", "-"),
+																		label: "Flex",
+																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-block"
+																		).replace("--", "-"),
+																		label: "Block",
+																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-visible"
+																		).replace("--", "-"),
+																		label: "Visible",
+																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-hidden"
+																		).replace("--", "-"),
+																		label: "Hidden",
+																	},
+																]}
+																onChange={(val) =>
+																	setAttributes({
+																		mrDisplay:
+																			val === undefined || val === ""
+																				? ""
+																				: val.includes("-desktop-") ||
+																				  val.includes("-laptop-") ||
+																				  val.includes("-tablet-") ||
+																				  val.includes("-phone-")
+																				? mrDisplay
+																				: val.replace("--", "-"),
+																		mrDisplaydesktop:
+																			val === undefined || val === ""
+																				? ""
+																				: val !== undefined &&
+																				  val.includes("-desktop-")
+																				? val
+																				: mrDisplaydesktop,
+																		mrDisplaylaptop:
+																			val === undefined || val === ""
+																				? ""
+																				: val !== undefined &&
+																				  val.includes("-laptop-")
+																				? val
+																				: mrDisplaylaptop,
+																		mrDisplaytablet:
+																			val === undefined || val === ""
+																				? ""
+																				: val !== undefined &&
+																				  val.includes("-tablet-")
+																				? val
+																				: mrDisplaytablet,
+																		mrDisplayphone:
+																			val === undefined || val === ""
+																				? ""
+																				: val !== undefined &&
+																				  val.includes("-phone-")
+																				? val
+																				: mrDisplayphone,
 																	})
 																}
 																help={
-																	mrPerPage > 0
+																	mrDisplay === " mr-hidden" ||
+																	mrDisplay === " mr-hide" ||
+																	mrDisplay === " mr-none" ||
+																	mrDisplaydesktop === " mr-hidden" ||
+																	mrDisplaydesktop === " mr-hide" ||
+																	mrDisplaydesktop === " mr-none" ||
+																	mrDisplaylaptop === " mr-hidden" ||
+																	mrDisplaylaptop === " mr-hide" ||
+																	mrDisplaylaptop === " mr-none" ||
+																	mrDisplaytablet === " mr-hidden" ||
+																	mrDisplaytablet === " mr-hide" ||
+																	mrDisplaytablet === " mr-none" ||
+																	mrDisplayphone === " mr-hidden" ||
+																	mrDisplayphone === " mr-hide" ||
+																	mrDisplayphone === " mr-none"
 																		? __(
-																				"Pagination was applied but you need to preview the frontend to see the actual result.",
+																				"An opacity was applied to the block in the backend so you can still see and select it. Preview the frontend to see the actual result.",
 																				"mrutils"
 																		  )
-																		: ""
+																		: __("")
 																}
 															/>
-															{mrPerPage > 0 ? (
-																<>
-																	<ToggleControl
-																		label="Arrows"
-																		checked={mrArrowPagination}
-																		className="mr-backend-perpage"
-																		onChange={() =>
-																			setAttributes({
-																				mrArrowPagination: !mrArrowPagination,
-																			})
-																		}
-																	/>
-																	<ToggleControl
-																		label="Select dropdown"
-																		checked={mrSelectPagination}
-																		className="mr-backend-perpage"
-																		onChange={() =>
-																			setAttributes({
-																				mrSelectPagination: !mrSelectPagination,
-																			})
-																		}
-																	/>
-																	<ToggleControl
-																		label="Radio buttons"
-																		checked={mrRadioPagination}
-																		className="mr-backend-perpage"
-																		onChange={() =>
-																			setAttributes({
-																				mrRadioPagination: !mrRadioPagination,
-																			})
-																		}
-																	/>
-																</>
-															) : (
-																""
-															)}
-														</>
-													) : (
-														""
-													)}
-
-													<SelectControl
-														label={__("Number of items per line", "mrutils")}
-														value={
-															tab.name === "desktop"
-																? mrPerLinedesktop
-																: tab.name === "laptop"
-																? mrPerLinelaptop
-																: tab.name === "tablet"
-																? mrPerLinetablet
-																: tab.name === "phone"
-																? mrPerLinephone
-																: mrPerLine
-														}
-														options={
-															tab.name === "" ||
-															tab.name === "desktop" ||
-															tab.name === "laptop" ||
-															tab.name === "tablet" ||
-															tab.name === "phone"
-																? [
-																		{ value: "", label: "" },
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-1perline"
-																			).replace("--", "-"),
-																			label: "1",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-2perline"
-																			).replace("--", "-"),
-																			label: "2",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-3perline"
-																			).replace("--", "-"),
-																			label: "3",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-4perline"
-																			).replace("--", "-"),
-																			label: "4",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-5perline"
-																			).replace("--", "-"),
-																			label: "5",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-6perline"
-																			).replace("--", "-"),
-																			label: "6",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-7perline"
-																			).replace("--", "-"),
-																			label: "7",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-8perline"
-																			).replace("--", "-"),
-																			label: "8",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-9perline"
-																			).replace("--", "-"),
-																			label: "9",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-10perline"
-																			).replace("--", "-"),
-																			label: "10",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-11perline"
-																			).replace("--", "-"),
-																			label: "11",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-12perline"
-																			).replace("--", "-"),
-																			label: "12",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-0perline"
-																			).replace("--", "-"),
-																			label: "∞",
-																		},
-																  ]
-																: ""
-														}
-														onChange={(val) =>
-															setAttributes({
-																mrPerLine:
-																	val === undefined || val === ""
-																		? ""
-																		: val.includes("-desktop-") ||
-																		  val.includes("-laptop-") ||
-																		  val.includes("-tablet-") ||
-																		  val.includes("-phone-")
-																		? mrPerLine
-																		: val.replace("--", "-"),
-																mrPerLinedesktop:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-desktop-")
-																		? val
-																		: mrPerLinedesktop,
-																mrPerLinelaptop:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-laptop-")
-																		? val
-																		: mrPerLinelaptop,
-																mrPerLinetablet:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-tablet-")
-																		? val
-																		: mrPerLinetablet,
-																mrPerLinephone:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-phone-")
-																		? val
-																		: mrPerLinephone,
-															})
-														}
-													/>
-													<RangeControl
-														label={__("Item size", "mrutils")}
-														value={
-															tab.name === "desktop"
-																? mrSizedesktop
-																: tab.name === "laptop"
-																? mrSizelaptop
-																: tab.name === "tablet"
-																? mrSizetablet
-																: tab.name === "phone"
-																? mrSizephone
-																: mrSize
-														}
-														initialPosition={0}
-														allowReset={true}
-														min={0}
-														max={13}
-														onChange={(val) =>
-															setAttributes({
-																mrSize:
-																	tab.name === ""
-																		? val === 0 || val === undefined
-																			? ""
-																			: val
-																		: mrSize,
-																mrSizedesktop:
+															<SelectControl
+																label={__("Wrap", "mrutils")}
+																value={
 																	tab.name === "desktop"
-																		? val === 0 || val === undefined
-																			? ""
-																			: val
-																		: mrSizedesktop,
-																mrSizelaptop:
-																	tab.name === "laptop"
-																		? val === 0 || val === undefined
-																			? ""
-																			: val
-																		: mrSizelaptop,
-																mrSizetablet:
-																	tab.name === "tablet"
-																		? val === 0 || val === undefined
-																			? ""
-																			: val
-																		: mrSizetablet,
-																mrSizephone:
+																		? mrWrapdesktop
+																		: tab.name === "laptop"
+																		? mrWraplaptop
+																		: tab.name === "tablet"
+																		? mrWraptablet
+																		: tab.name === "phone"
+																		? mrWrapphone
+																		: mrWrap
+																}
+																options={
+																	tab.name === "" ||
+																	tab.name === "desktop" ||
+																	tab.name === "laptop" ||
+																	tab.name === "tablet" ||
 																	tab.name === "phone"
-																		? val === 0 || val === undefined
-																			? ""
-																			: val
-																		: mrSizephone,
-															})
-														}
-													/>
-													<SelectControl
-														label={__("Item order", "mrutils")}
-														value={
-															tab.name === "desktop"
-																? mrOrderdesktop
-																: tab.name === "laptop"
-																? mrOrderlaptop
-																: tab.name === "tablet"
-																? mrOrdertablet
-																: tab.name === "phone"
-																? mrOrderphone
-																: mrOrder
-														}
-														options={
-															tab.name === "" ||
-															tab.name === "desktop" ||
-															tab.name === "laptop" ||
-															tab.name === "tablet" ||
-															tab.name === "phone"
-																? [
-																		{ value: "", label: "" },
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-order-1"
-																			).replace("--", "-"),
-																			label: "-1",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-order1"
-																			).replace("--", "-"),
-																			label: "1",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-order2"
-																			).replace("--", "-"),
-																			label: "2",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-order3"
-																			).replace("--", "-"),
-																			label: "3",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-order4"
-																			).replace("--", "-"),
-																			label: "4",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-order5"
-																			).replace("--", "-"),
-																			label: "5",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-order6"
-																			).replace("--", "-"),
-																			label: "6",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-order7"
-																			).replace("--", "-"),
-																			label: "7",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-order8"
-																			).replace("--", "-"),
-																			label: "8",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-order9"
-																			).replace("--", "-"),
-																			label: "9",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-order10"
-																			).replace("--", "-"),
-																			label: "10",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-order11"
-																			).replace("--", "-"),
-																			label: "11",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-order12"
-																			).replace("--", "-"),
-																			label: "12",
-																		},
-																  ]
-																: ""
-														}
-														onChange={(val) =>
-															setAttributes({
-																mrOrder:
-																	val === undefined || val === ""
-																		? ""
-																		: val.includes("-desktop-") ||
-																		  val.includes("-laptop-") ||
-																		  val.includes("-tablet-") ||
-																		  val.includes("-phone-")
-																		? mrOrder
-																		: val.replace("--", "-"),
-																mrOrderdesktop:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-desktop-")
-																		? val
-																		: mrOrderdesktop,
-																mrOrderlaptop:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-laptop-")
-																		? val
-																		: mrOrderlaptop,
-																mrOrdertablet:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-tablet-")
-																		? val
-																		: mrOrdertablet,
-																mrOrderphone:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-phone-")
-																		? val
-																		: mrOrderphone,
-															})
-														}
-													/>
-												</PanelBody>
-												<PanelBody
-													icon={swatch}
-													title={tab.name + __(" Display", "mrutils")}
-													initialOpen={false}
-												>
-													<SelectControl
-														label={__("Visibility", "mrutils")}
-														value={
-															tab.name === "desktop"
-																? mrDisplaydesktop
-																: tab.name === "laptop"
-																? mrDisplaylaptop
-																: tab.name === "tablet"
-																? mrDisplaytablet
-																: tab.name === "phone"
-																? mrDisplayphone
-																: mrDisplay
-														}
-														options={[
-															{ value: "", label: "Default" },
-															{
-																value: (" mr-" + tab.name + "-hide").replace(
-																	"--",
-																	"-"
-																),
-																label: "Hide",
-															},
-															{
-																value: (" mr-" + tab.name + "-show").replace(
-																	"--",
-																	"-"
-																),
-																label: "Show",
-															},
-															{
-																value: (" mr-" + tab.name + "-none").replace(
-																	"--",
-																	"-"
-																),
-																label: "None",
-															},
-															{
-																value: (" mr-" + tab.name + "-flex").replace(
-																	"--",
-																	"-"
-																),
-																label: "Flex",
-															},
-															{
-																value: (" mr-" + tab.name + "-block").replace(
-																	"--",
-																	"-"
-																),
-																label: "Block",
-															},
-															{
-																value: (" mr-" + tab.name + "-visible").replace(
-																	"--",
-																	"-"
-																),
-																label: "Visible",
-															},
-															{
-																value: (" mr-" + tab.name + "-hidden").replace(
-																	"--",
-																	"-"
-																),
-																label: "Hidden",
-															},
-														]}
-														onChange={(val) =>
-															setAttributes({
-																mrDisplay:
-																	val === undefined || val === ""
-																		? ""
-																		: val.includes("-desktop-") ||
-																		  val.includes("-laptop-") ||
-																		  val.includes("-tablet-") ||
-																		  val.includes("-phone-")
-																		? mrDisplay
-																		: val.replace("--", "-"),
-																mrDisplaydesktop:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-desktop-")
-																		? val
-																		: mrDisplaydesktop,
-																mrDisplaylaptop:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-laptop-")
-																		? val
-																		: mrDisplaylaptop,
-																mrDisplaytablet:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-tablet-")
-																		? val
-																		: mrDisplaytablet,
-																mrDisplayphone:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-phone-")
-																		? val
-																		: mrDisplayphone,
-															})
-														}
-														help={
-															mrDisplay === " mr-hidden" ||
-															mrDisplay === " mr-hide" ||
-															mrDisplay === " mr-none" ||
-															mrDisplaydesktop === " mr-hidden" ||
-															mrDisplaydesktop === " mr-hide" ||
-															mrDisplaydesktop === " mr-none" ||
-															mrDisplaylaptop === " mr-hidden" ||
-															mrDisplaylaptop === " mr-hide" ||
-															mrDisplaylaptop === " mr-none" ||
-															mrDisplaytablet === " mr-hidden" ||
-															mrDisplaytablet === " mr-hide" ||
-															mrDisplaytablet === " mr-none" ||
-															mrDisplayphone === " mr-hidden" ||
-															mrDisplayphone === " mr-hide" ||
-															mrDisplayphone === " mr-none"
-																? __(
-																		"An opacity was applied to the block in the backend so you can still see and select it. Preview the frontend to see the actual result.",
-																		"mrutils"
-																  )
-																: __("")
-														}
-													/>
-													<SelectControl
-														label={__("Wrap", "mrutils")}
-														value={
-															tab.name === "desktop"
-																? mrWrapdesktop
-																: tab.name === "laptop"
-																? mrWraplaptop
-																: tab.name === "tablet"
-																? mrWraptablet
-																: tab.name === "phone"
-																? mrWrapphone
-																: mrWrap
-														}
-														options={
-															tab.name === "" ||
-															tab.name === "desktop" ||
-															tab.name === "laptop" ||
-															tab.name === "tablet" ||
-															tab.name === "phone"
-																? [
-																		{ value: "", label: "Default" },
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-wrap"
-																			).replace("--", "-"),
-																			label: "Wrap",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-nowrap"
-																			).replace("--", "-"),
-																			label: "No Wrap",
-																		},
-																  ]
-																: ""
-														}
-														onChange={(val) =>
-															setAttributes({
-																mrWrap:
-																	val === undefined || val === ""
-																		? ""
-																		: val.includes("-desktop-") ||
-																		  val.includes("-laptop-") ||
-																		  val.includes("-tablet-") ||
-																		  val.includes("-phone-")
-																		? mrWrap
-																		: val.replace("--", "-"),
-																mrWrapdesktop:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-desktop-")
-																		? val
-																		: mrWrapdesktop,
-																mrWraplaptop:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-laptop-")
-																		? val
-																		: mrWraplaptop,
-																mrWraptablet:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-tablet-")
-																		? val
-																		: mrWraptablet,
-																mrWrapphone:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-phone-")
-																		? val
-																		: mrWrapphone,
-															})
-														}
-													/>
-												</PanelBody>
-												<PanelBody
-													icon={resizeCornerNE}
-													title={tab.name + __(" Spacing", "mrutils")}
-													initialOpen={false}
-												>
-													<PanelRow>
-														<TabPanel
-															className="mr-width100"
-															activeClass="is-active"
-															tabs={[
-																{
-																	name: "paddings",
-																	title: "Paddings",
-																	className:
-																		"mr-backend-tab_paddings mr-width100",
-																},
-																{
-																	name: "margins",
-																	title: "Margins",
-																	className:
-																		"mr-backend-tab_margins mr-width100",
-																},
-															]}
-														>
-															{(tab2) =>
-																tab2.name === "paddings" ? (
-																	<>
-																		<p></p>
-																		<SelectControl
-																			label={__("Padding Top", "mrutils")}
-																			value={
-																				tab.name === "desktop"
-																					? mrPaddingTopdesktop
-																					: tab.name === "laptop"
-																					? mrPaddingToplaptop
-																					: tab.name === "tablet"
-																					? mrPaddingToptablet
-																					: tab.name === "phone"
-																					? mrPaddingTopphone
-																					: mrPaddingTop
-																			}
-																			options={[
-																				{ value: "", label: "Default padding" },
+																		? [
+																				{ value: "", label: "Default" },
 																				{
 																					value: (
 																						" mr-" +
 																						tab.name +
-																						"-paddingtop"
+																						"-wrap"
 																					).replace("--", "-"),
-																					label: "Use var(--padding)",
+																					label: "Wrap",
 																				},
 																				{
 																					value: (
 																						" mr-" +
 																						tab.name +
-																						"-nopaddingtop"
+																						"-nowrap"
 																					).replace("--", "-"),
-																					label: "Remove padding",
+																					label: "No Wrap",
 																				},
-																			]}
-																			onChange={(val) =>
-																				setAttributes({
-																					mrPaddingTop:
-																						val === undefined || val === ""
-																							? ""
-																							: val.includes("-desktop-") ||
-																							  val.includes("-laptop-") ||
-																							  val.includes("-tablet-") ||
-																							  val.includes("-phone-")
-																							? mrPaddingTop
-																							: val.replace("--", "-"),
-																					mrPaddingTopdesktop:
-																						val === undefined || val === ""
-																							? ""
-																							: val !== undefined &&
-																							  val.includes("-desktop-")
-																							? val
-																							: mrPaddingTopdesktop,
-																					mrPaddingToplaptop:
-																						val === undefined || val === ""
-																							? ""
-																							: val !== undefined &&
-																							  val.includes("-laptop-")
-																							? val
-																							: mrPaddingToplaptop,
-																					mrPaddingToptablet:
-																						val === undefined || val === ""
-																							? ""
-																							: val !== undefined &&
-																							  val.includes("-tablet-")
-																							? val
-																							: mrPaddingToptablet,
-																					mrPaddingTopphone:
-																						val === undefined || val === ""
-																							? ""
-																							: val !== undefined &&
-																							  val.includes("-phone-")
-																							? val
-																							: mrPaddingTopphone,
-																				})
-																			}
-																		/>
-
-																		<SelectControl
-																			label={__("Padding Right", "mrutils")}
-																			value={
-																				tab.name === "desktop"
-																					? mrPaddingRightdesktop
-																					: tab.name === "laptop"
-																					? mrPaddingRightlaptop
-																					: tab.name === "tablet"
-																					? mrPaddingRighttablet
-																					: tab.name === "phone"
-																					? mrPaddingRightphone
-																					: mrPaddingRight
-																			}
-																			options={[
-																				{ value: "", label: "Default padding" },
-																				{
-																					value: (
-																						" mr-" +
-																						tab.name +
-																						"-paddingright"
-																					).replace("--", "-"),
-																					label: "Use var(--padding)",
-																				},
-																				{
-																					value: (
-																						" mr-" +
-																						tab.name +
-																						"-nopaddingright"
-																					).replace("--", "-"),
-																					label: "Remove padding",
-																				},
-																			]}
-																			onChange={(val) =>
-																				setAttributes({
-																					mrPaddingRight:
-																						val === undefined || val === ""
-																							? ""
-																							: val.includes("-desktop-") ||
-																							  val.includes("-laptop-") ||
-																							  val.includes("-tablet-") ||
-																							  val.includes("-phone-")
-																							? mrPaddingRight
-																							: val.replace("--", "-"),
-																					mrPaddingRightdesktop:
-																						val === undefined || val === ""
-																							? ""
-																							: val !== undefined &&
-																							  val.includes("-desktop-")
-																							? val
-																							: mrPaddingRightdesktop,
-																					mrPaddingRightlaptop:
-																						val === undefined || val === ""
-																							? ""
-																							: val !== undefined &&
-																							  val.includes("-laptop-")
-																							? val
-																							: mrPaddingRightlaptop,
-																					mrPaddingRighttablet:
-																						val === undefined || val === ""
-																							? ""
-																							: val !== undefined &&
-																							  val.includes("-tablet-")
-																							? val
-																							: mrPaddingRighttablet,
-																					mrPaddingRightphone:
-																						val === undefined || val === ""
-																							? ""
-																							: val !== undefined &&
-																							  val.includes("-phone-")
-																							? val
-																							: mrPaddingRightphone,
-																				})
-																			}
-																		/>
-
-																		<SelectControl
-																			label={__("Padding Bottom", "mrutils")}
-																			value={
-																				tab.name === "desktop"
-																					? mrPaddingBottomdesktop
-																					: tab.name === "laptop"
-																					? mrPaddingBottomlaptop
-																					: tab.name === "tablet"
-																					? mrPaddingBottomtablet
-																					: tab.name === "phone"
-																					? mrPaddingBottomphone
-																					: mrPaddingBottom
-																			}
-																			options={[
-																				{ value: "", label: "Default padding" },
-																				{
-																					value: (
-																						" mr-" +
-																						tab.name +
-																						"-paddingbottom"
-																					).replace("--", "-"),
-																					label: "Use var(--padding)",
-																				},
-																				{
-																					value: (
-																						" mr-" +
-																						tab.name +
-																						"-nopaddingbottom"
-																					).replace("--", "-"),
-																					label: "Remove padding",
-																				},
-																			]}
-																			onChange={(val) =>
-																				setAttributes({
-																					mrPaddingBottom:
-																						val === undefined || val === ""
-																							? ""
-																							: val.includes("-desktop-") ||
-																							  val.includes("-laptop-") ||
-																							  val.includes("-tablet-") ||
-																							  val.includes("-phone-")
-																							? mrPaddingBottom
-																							: val.replace("--", "-"),
-																					mrPaddingBottomdesktop:
-																						val === undefined || val === ""
-																							? ""
-																							: val !== undefined &&
-																							  val.includes("-desktop-")
-																							? val
-																							: mrPaddingBottomdesktop,
-																					mrPaddingBottomlaptop:
-																						val === undefined || val === ""
-																							? ""
-																							: val !== undefined &&
-																							  val.includes("-laptop-")
-																							? val
-																							: mrPaddingBottomlaptop,
-																					mrPaddingBottomtablet:
-																						val === undefined || val === ""
-																							? ""
-																							: val !== undefined &&
-																							  val.includes("-tablet-")
-																							? val
-																							: mrPaddingBottomtablet,
-																					mrPaddingBottomphone:
-																						val === undefined || val === ""
-																							? ""
-																							: val !== undefined &&
-																							  val.includes("-phone-")
-																							? val
-																							: mrPaddingBottomphone,
-																				})
-																			}
-																		/>
-
-																		<SelectControl
-																			label={__("Padding Left", "mrutils")}
-																			value={
-																				tab.name === "desktop"
-																					? mrPaddingLeftdesktop
-																					: tab.name === "laptop"
-																					? mrPaddingLeftlaptop
-																					: tab.name === "tablet"
-																					? mrPaddingLefttablet
-																					: tab.name === "phone"
-																					? mrPaddingLeftphone
-																					: mrPaddingLeft
-																			}
-																			options={[
-																				{ value: "", label: "Default padding" },
-																				{
-																					value: (
-																						" mr-" +
-																						tab.name +
-																						"-paddingleft"
-																					).replace("--", "-"),
-																					label: "Use var(--padding)",
-																				},
-																				{
-																					value: (
-																						" mr-" +
-																						tab.name +
-																						"-nopaddingleft"
-																					).replace("--", "-"),
-																					label: "Remove padding",
-																				},
-																			]}
-																			onChange={(val) =>
-																				setAttributes({
-																					mrPaddingLeft:
-																						val === undefined || val === ""
-																							? ""
-																							: val.includes("-desktop-") ||
-																							  val.includes("-laptop-") ||
-																							  val.includes("-tablet-") ||
-																							  val.includes("-phone-")
-																							? mrPaddingLeft
-																							: val.replace("--", "-"),
-																					mrPaddingLeftdesktop:
-																						val === undefined || val === ""
-																							? ""
-																							: val !== undefined &&
-																							  val.includes("-desktop-")
-																							? val
-																							: mrPaddingLeftdesktop,
-																					mrPaddingLeftlaptop:
-																						val === undefined || val === ""
-																							? ""
-																							: val !== undefined &&
-																							  val.includes("-laptop-")
-																							? val
-																							: mrPaddingLeftlaptop,
-																					mrPaddingLefttablet:
-																						val === undefined || val === ""
-																							? ""
-																							: val !== undefined &&
-																							  val.includes("-tablet-")
-																							? val
-																							: mrPaddingLefttablet,
-																					mrPaddingLeftphone:
-																						val === undefined || val === ""
-																							? ""
-																							: val !== undefined &&
-																							  val.includes("-phone-")
-																							? val
-																							: mrPaddingLeftphone,
-																				})
-																			}
-																		/>
-																	</>
-																) : (
-																	<>
-																		<p></p>
-																		<SelectControl
-																			label={__("Margin Top", "mrutils")}
-																			value={
-																				tab.name === "desktop"
-																					? mrMarginTopdesktop
-																					: tab.name === "laptop"
-																					? mrMarginToplaptop
-																					: tab.name === "tablet"
-																					? mrMarginToptablet
-																					: tab.name === "phone"
-																					? mrMarginTopphone
-																					: mrMarginTop
-																			}
-																			options={[
-																				{ value: "", label: "Default margin" },
-																				{
-																					value: (
-																						" mr-" +
-																						tab.name +
-																						"-margintop"
-																					).replace("--", "-"),
-																					label: "Use var(--margin)",
-																				},
-																				{
-																					value: (
-																						" mr-" +
-																						tab.name +
-																						"-nomargintop"
-																					).replace("--", "-"),
-																					label: "Remove margin",
-																				},
-																			]}
-																			onChange={(val) =>
-																				setAttributes({
-																					mrMarginTop:
-																						val === undefined || val === ""
-																							? ""
-																							: val.includes("-desktop-") ||
-																							  val.includes("-laptop-") ||
-																							  val.includes("-tablet-") ||
-																							  val.includes("-phone-")
-																							? mrMarginTop
-																							: val.replace("--", "-"),
-																					mrMarginTopdesktop:
-																						val === undefined || val === ""
-																							? ""
-																							: val !== undefined &&
-																							  val.includes("-desktop-")
-																							? val
-																							: mrMarginTopdesktop,
-																					mrMarginToplaptop:
-																						val === undefined || val === ""
-																							? ""
-																							: val !== undefined &&
-																							  val.includes("-laptop-")
-																							? val
-																							: mrMarginToplaptop,
-																					mrMarginToptablet:
-																						val === undefined || val === ""
-																							? ""
-																							: val !== undefined &&
-																							  val.includes("-tablet-")
-																							? val
-																							: mrMarginToptablet,
-																					mrMarginTopphone:
-																						val === undefined || val === ""
-																							? ""
-																							: val !== undefined &&
-																							  val.includes("-phone-")
-																							? val
-																							: mrMarginTopphone,
-																				})
-																			}
-																		/>
-
-																		<SelectControl
-																			label={__("Margin Right", "mrutils")}
-																			value={
-																				tab.name === "desktop"
-																					? mrMarginRightdesktop
-																					: tab.name === "laptop"
-																					? mrMarginRightlaptop
-																					: tab.name === "tablet"
-																					? mrMarginRighttablet
-																					: tab.name === "phone"
-																					? mrMarginRightphone
-																					: mrMarginRight
-																			}
-																			options={[
-																				{ value: "", label: "Default margin" },
-																				{
-																					value: (
-																						" mr-" +
-																						tab.name +
-																						"-marginright"
-																					).replace("--", "-"),
-																					label: "Use var(--margin)",
-																				},
-																				{
-																					value: (
-																						" mr-" +
-																						tab.name +
-																						"-nomarginright"
-																					).replace("--", "-"),
-																					label: "Remove margin",
-																				},
-																			]}
-																			onChange={(val) =>
-																				setAttributes({
-																					mrMarginRight:
-																						val === undefined || val === ""
-																							? ""
-																							: val.includes("-desktop-") ||
-																							  val.includes("-laptop-") ||
-																							  val.includes("-tablet-") ||
-																							  val.includes("-phone-")
-																							? mrMarginRight
-																							: val.replace("--", "-"),
-																					mrMarginRightdesktop:
-																						val === undefined || val === ""
-																							? ""
-																							: val !== undefined &&
-																							  val.includes("-desktop-")
-																							? val
-																							: mrMarginRightdesktop,
-																					mrMarginRightlaptop:
-																						val === undefined || val === ""
-																							? ""
-																							: val !== undefined &&
-																							  val.includes("-laptop-")
-																							? val
-																							: mrMarginRightlaptop,
-																					mrMarginRighttablet:
-																						val === undefined || val === ""
-																							? ""
-																							: val !== undefined &&
-																							  val.includes("-tablet-")
-																							? val
-																							: mrMarginRighttablet,
-																					mrMarginRightphone:
-																						val === undefined || val === ""
-																							? ""
-																							: val !== undefined &&
-																							  val.includes("-phone-")
-																							? val
-																							: mrMarginRightphone,
-																				})
-																			}
-																		/>
-
-																		<SelectControl
-																			label={__("Margin Bottom", "mrutils")}
-																			value={
-																				tab.name === "desktop"
-																					? mrMarginBottomdesktop
-																					: tab.name === "laptop"
-																					? mrMarginBottomlaptop
-																					: tab.name === "tablet"
-																					? mrMarginBottomtablet
-																					: tab.name === "phone"
-																					? mrMarginBottomphone
-																					: mrMarginBottom
-																			}
-																			options={[
-																				{ value: "", label: "Default margin" },
-																				{
-																					value: (
-																						" mr-" +
-																						tab.name +
-																						"-marginbottom"
-																					).replace("--", "-"),
-																					label: "Use var(--margin)",
-																				},
-																				{
-																					value: (
-																						" mr-" +
-																						tab.name +
-																						"-nomarginbottom"
-																					).replace("--", "-"),
-																					label: "Remove margin",
-																				},
-																			]}
-																			onChange={(val) =>
-																				setAttributes({
-																					mrMarginBottom:
-																						val === undefined || val === ""
-																							? ""
-																							: val.includes("-desktop-") ||
-																							  val.includes("-laptop-") ||
-																							  val.includes("-tablet-") ||
-																							  val.includes("-phone-")
-																							? mrMarginBottom
-																							: val.replace("--", "-"),
-																					mrMarginBottomdesktop:
-																						val === undefined || val === ""
-																							? ""
-																							: val !== undefined &&
-																							  val.includes("-desktop-")
-																							? val
-																							: mrMarginBottomdesktop,
-																					mrMarginBottomlaptop:
-																						val === undefined || val === ""
-																							? ""
-																							: val !== undefined &&
-																							  val.includes("-laptop-")
-																							? val
-																							: mrMarginBottomlaptop,
-																					mrMarginBottomtablet:
-																						val === undefined || val === ""
-																							? ""
-																							: val !== undefined &&
-																							  val.includes("-tablet-")
-																							? val
-																							: mrMarginBottomtablet,
-																					mrMarginBottomphone:
-																						val === undefined || val === ""
-																							? ""
-																							: val !== undefined &&
-																							  val.includes("-phone-")
-																							? val
-																							: mrMarginBottomphone,
-																				})
-																			}
-																		/>
-
-																		<SelectControl
-																			label={__("Margin Left", "mrutils")}
-																			value={
-																				tab.name === "desktop"
-																					? mrMarginLeftdesktop
-																					: tab.name === "laptop"
-																					? mrMarginLeftlaptop
-																					: tab.name === "tablet"
-																					? mrMarginLefttablet
-																					: tab.name === "phone"
-																					? mrMarginLeftphone
-																					: mrMarginLeft
-																			}
-																			options={[
-																				{ value: "", label: "Default margin" },
-																				{
-																					value: (
-																						" mr-" +
-																						tab.name +
-																						"-marginleft"
-																					).replace("--", "-"),
-																					label: "Use var(--margin)",
-																				},
-																				{
-																					value: (
-																						" mr-" +
-																						tab.name +
-																						"-nomarginleft"
-																					).replace("--", "-"),
-																					label: "Remove margin",
-																				},
-																			]}
-																			onChange={(val) =>
-																				setAttributes({
-																					mrMarginLeft:
-																						val === undefined || val === ""
-																							? ""
-																							: val.includes("-desktop-") ||
-																							  val.includes("-laptop-") ||
-																							  val.includes("-tablet-") ||
-																							  val.includes("-phone-")
-																							? mrMarginLeft
-																							: val.replace("--", "-"),
-																					mrMarginLeftdesktop:
-																						val === undefined || val === ""
-																							? ""
-																							: val !== undefined &&
-																							  val.includes("-desktop-")
-																							? val
-																							: mrMarginLeftdesktop,
-																					mrMarginLeftlaptop:
-																						val === undefined || val === ""
-																							? ""
-																							: val !== undefined &&
-																							  val.includes("-laptop-")
-																							? val
-																							: mrMarginLeftlaptop,
-																					mrMarginLefttablet:
-																						val === undefined || val === ""
-																							? ""
-																							: val !== undefined &&
-																							  val.includes("-tablet-")
-																							? val
-																							: mrMarginLefttablet,
-																					mrMarginLeftphone:
-																						val === undefined || val === ""
-																							? ""
-																							: val !== undefined &&
-																							  val.includes("-phone-")
-																							? val
-																							: mrMarginLeftphone,
-																				})
-																			}
-																		/>
-																	</>
-																)
+																		  ]
+																		: ""
+																}
+																onChange={(val) =>
+																	setAttributes({
+																		mrWrap:
+																			val === undefined || val === ""
+																				? ""
+																				: val.includes("-desktop-") ||
+																				  val.includes("-laptop-") ||
+																				  val.includes("-tablet-") ||
+																				  val.includes("-phone-")
+																				? mrWrap
+																				: val.replace("--", "-"),
+																		mrWrapdesktop:
+																			val === undefined || val === ""
+																				? ""
+																				: val !== undefined &&
+																				  val.includes("-desktop-")
+																				? val
+																				: mrWrapdesktop,
+																		mrWraplaptop:
+																			val === undefined || val === ""
+																				? ""
+																				: val !== undefined &&
+																				  val.includes("-laptop-")
+																				? val
+																				: mrWraplaptop,
+																		mrWraptablet:
+																			val === undefined || val === ""
+																				? ""
+																				: val !== undefined &&
+																				  val.includes("-tablet-")
+																				? val
+																				: mrWraptablet,
+																		mrWrapphone:
+																			val === undefined || val === ""
+																				? ""
+																				: val !== undefined &&
+																				  val.includes("-phone-")
+																				? val
+																				: mrWrapphone,
+																	})
+																}
+															/>
+														</PanelBody>
+														<PanelBody
+															icon={resizeCornerNE}
+															title={tab.name + __(" Spacing", "mrutils")}
+															initialOpen={false}
+															className={
+																tab.name === ""
+																	? "mr-backend-option mr-backend-option_utils_spacing"
+																	: "mr-backend-option mr-backend-option_utils_" +
+																	  tab.name +
+																	  "_spacing"
 															}
-														</TabPanel>
-													</PanelRow>
-												</PanelBody>
+														>
+															<PanelRow>
+																<TabPanel
+																	className="mr-width100"
+																	activeClass="is-active"
+																	tabs={[
+																		{
+																			name: "paddings",
+																			title: "Paddings",
+																			className:
+																				"mr-backend-tab_paddings mr-width100",
+																		},
+																		{
+																			name: "margins",
+																			title: "Margins",
+																			className:
+																				"mr-backend-tab_margins mr-width100",
+																		},
+																	]}
+																>
+																	{(tab2) =>
+																		tab2.name === "paddings" ? (
+																			<>
+																				<p></p>
+																				<SelectControl
+																					label={__("Padding Top", "mrutils")}
+																					value={
+																						tab.name === "desktop"
+																							? mrPaddingTopdesktop
+																							: tab.name === "laptop"
+																							? mrPaddingToplaptop
+																							: tab.name === "tablet"
+																							? mrPaddingToptablet
+																							: tab.name === "phone"
+																							? mrPaddingTopphone
+																							: mrPaddingTop
+																					}
+																					options={[
+																						{
+																							value: "",
+																							label: "Default padding",
+																						},
+																						{
+																							value: (
+																								" mr-" +
+																								tab.name +
+																								"-paddingtop"
+																							).replace("--", "-"),
+																							label: "Use var(--padding)",
+																						},
+																						{
+																							value: (
+																								" mr-" +
+																								tab.name +
+																								"-nopaddingtop"
+																							).replace("--", "-"),
+																							label: "Remove padding",
+																						},
+																					]}
+																					onChange={(val) =>
+																						setAttributes({
+																							mrPaddingTop:
+																								val === undefined || val === ""
+																									? ""
+																									: val.includes("-desktop-") ||
+																									  val.includes("-laptop-") ||
+																									  val.includes("-tablet-") ||
+																									  val.includes("-phone-")
+																									? mrPaddingTop
+																									: val.replace("--", "-"),
+																							mrPaddingTopdesktop:
+																								val === undefined || val === ""
+																									? ""
+																									: val !== undefined &&
+																									  val.includes("-desktop-")
+																									? val
+																									: mrPaddingTopdesktop,
+																							mrPaddingToplaptop:
+																								val === undefined || val === ""
+																									? ""
+																									: val !== undefined &&
+																									  val.includes("-laptop-")
+																									? val
+																									: mrPaddingToplaptop,
+																							mrPaddingToptablet:
+																								val === undefined || val === ""
+																									? ""
+																									: val !== undefined &&
+																									  val.includes("-tablet-")
+																									? val
+																									: mrPaddingToptablet,
+																							mrPaddingTopphone:
+																								val === undefined || val === ""
+																									? ""
+																									: val !== undefined &&
+																									  val.includes("-phone-")
+																									? val
+																									: mrPaddingTopphone,
+																						})
+																					}
+																				/>
 
-												<PanelBody
-													icon={typography}
-													title={tab.name + __(" Text", "mrutils")}
-													initialOpen={false}
-												>
-													<RangeControl
-														label={__("Font Size", "mrutils")}
-														value={
-															tab.name === "desktop"
-																? mrFontSizedesktop
-																: tab.name === "laptop"
-																? mrFontSizelaptop
-																: tab.name === "tablet"
-																? mrFontSizetablet
-																: tab.name === "phone"
-																? mrFontSizephone
-																: mrFontSize
-														}
-														initialPosition={0}
-														allowReset={true}
-														min={0}
-														max={7}
-														onChange={(val) =>
-															setAttributes({
-																mrFontSize:
-																	tab.name === ""
-																		? val === 0 || val === undefined
-																			? ""
-																			: val
-																		: mrFontSize,
-																mrFontSizedesktop:
+																				<SelectControl
+																					label={__("Padding Right", "mrutils")}
+																					value={
+																						tab.name === "desktop"
+																							? mrPaddingRightdesktop
+																							: tab.name === "laptop"
+																							? mrPaddingRightlaptop
+																							: tab.name === "tablet"
+																							? mrPaddingRighttablet
+																							: tab.name === "phone"
+																							? mrPaddingRightphone
+																							: mrPaddingRight
+																					}
+																					options={[
+																						{
+																							value: "",
+																							label: "Default padding",
+																						},
+																						{
+																							value: (
+																								" mr-" +
+																								tab.name +
+																								"-paddingright"
+																							).replace("--", "-"),
+																							label: "Use var(--padding)",
+																						},
+																						{
+																							value: (
+																								" mr-" +
+																								tab.name +
+																								"-nopaddingright"
+																							).replace("--", "-"),
+																							label: "Remove padding",
+																						},
+																					]}
+																					onChange={(val) =>
+																						setAttributes({
+																							mrPaddingRight:
+																								val === undefined || val === ""
+																									? ""
+																									: val.includes("-desktop-") ||
+																									  val.includes("-laptop-") ||
+																									  val.includes("-tablet-") ||
+																									  val.includes("-phone-")
+																									? mrPaddingRight
+																									: val.replace("--", "-"),
+																							mrPaddingRightdesktop:
+																								val === undefined || val === ""
+																									? ""
+																									: val !== undefined &&
+																									  val.includes("-desktop-")
+																									? val
+																									: mrPaddingRightdesktop,
+																							mrPaddingRightlaptop:
+																								val === undefined || val === ""
+																									? ""
+																									: val !== undefined &&
+																									  val.includes("-laptop-")
+																									? val
+																									: mrPaddingRightlaptop,
+																							mrPaddingRighttablet:
+																								val === undefined || val === ""
+																									? ""
+																									: val !== undefined &&
+																									  val.includes("-tablet-")
+																									? val
+																									: mrPaddingRighttablet,
+																							mrPaddingRightphone:
+																								val === undefined || val === ""
+																									? ""
+																									: val !== undefined &&
+																									  val.includes("-phone-")
+																									? val
+																									: mrPaddingRightphone,
+																						})
+																					}
+																				/>
+
+																				<SelectControl
+																					label={__(
+																						"Padding Bottom",
+																						"mrutils"
+																					)}
+																					value={
+																						tab.name === "desktop"
+																							? mrPaddingBottomdesktop
+																							: tab.name === "laptop"
+																							? mrPaddingBottomlaptop
+																							: tab.name === "tablet"
+																							? mrPaddingBottomtablet
+																							: tab.name === "phone"
+																							? mrPaddingBottomphone
+																							: mrPaddingBottom
+																					}
+																					options={[
+																						{
+																							value: "",
+																							label: "Default padding",
+																						},
+																						{
+																							value: (
+																								" mr-" +
+																								tab.name +
+																								"-paddingbottom"
+																							).replace("--", "-"),
+																							label: "Use var(--padding)",
+																						},
+																						{
+																							value: (
+																								" mr-" +
+																								tab.name +
+																								"-nopaddingbottom"
+																							).replace("--", "-"),
+																							label: "Remove padding",
+																						},
+																					]}
+																					onChange={(val) =>
+																						setAttributes({
+																							mrPaddingBottom:
+																								val === undefined || val === ""
+																									? ""
+																									: val.includes("-desktop-") ||
+																									  val.includes("-laptop-") ||
+																									  val.includes("-tablet-") ||
+																									  val.includes("-phone-")
+																									? mrPaddingBottom
+																									: val.replace("--", "-"),
+																							mrPaddingBottomdesktop:
+																								val === undefined || val === ""
+																									? ""
+																									: val !== undefined &&
+																									  val.includes("-desktop-")
+																									? val
+																									: mrPaddingBottomdesktop,
+																							mrPaddingBottomlaptop:
+																								val === undefined || val === ""
+																									? ""
+																									: val !== undefined &&
+																									  val.includes("-laptop-")
+																									? val
+																									: mrPaddingBottomlaptop,
+																							mrPaddingBottomtablet:
+																								val === undefined || val === ""
+																									? ""
+																									: val !== undefined &&
+																									  val.includes("-tablet-")
+																									? val
+																									: mrPaddingBottomtablet,
+																							mrPaddingBottomphone:
+																								val === undefined || val === ""
+																									? ""
+																									: val !== undefined &&
+																									  val.includes("-phone-")
+																									? val
+																									: mrPaddingBottomphone,
+																						})
+																					}
+																				/>
+
+																				<SelectControl
+																					label={__("Padding Left", "mrutils")}
+																					value={
+																						tab.name === "desktop"
+																							? mrPaddingLeftdesktop
+																							: tab.name === "laptop"
+																							? mrPaddingLeftlaptop
+																							: tab.name === "tablet"
+																							? mrPaddingLefttablet
+																							: tab.name === "phone"
+																							? mrPaddingLeftphone
+																							: mrPaddingLeft
+																					}
+																					options={[
+																						{
+																							value: "",
+																							label: "Default padding",
+																						},
+																						{
+																							value: (
+																								" mr-" +
+																								tab.name +
+																								"-paddingleft"
+																							).replace("--", "-"),
+																							label: "Use var(--padding)",
+																						},
+																						{
+																							value: (
+																								" mr-" +
+																								tab.name +
+																								"-nopaddingleft"
+																							).replace("--", "-"),
+																							label: "Remove padding",
+																						},
+																					]}
+																					onChange={(val) =>
+																						setAttributes({
+																							mrPaddingLeft:
+																								val === undefined || val === ""
+																									? ""
+																									: val.includes("-desktop-") ||
+																									  val.includes("-laptop-") ||
+																									  val.includes("-tablet-") ||
+																									  val.includes("-phone-")
+																									? mrPaddingLeft
+																									: val.replace("--", "-"),
+																							mrPaddingLeftdesktop:
+																								val === undefined || val === ""
+																									? ""
+																									: val !== undefined &&
+																									  val.includes("-desktop-")
+																									? val
+																									: mrPaddingLeftdesktop,
+																							mrPaddingLeftlaptop:
+																								val === undefined || val === ""
+																									? ""
+																									: val !== undefined &&
+																									  val.includes("-laptop-")
+																									? val
+																									: mrPaddingLeftlaptop,
+																							mrPaddingLefttablet:
+																								val === undefined || val === ""
+																									? ""
+																									: val !== undefined &&
+																									  val.includes("-tablet-")
+																									? val
+																									: mrPaddingLefttablet,
+																							mrPaddingLeftphone:
+																								val === undefined || val === ""
+																									? ""
+																									: val !== undefined &&
+																									  val.includes("-phone-")
+																									? val
+																									: mrPaddingLeftphone,
+																						})
+																					}
+																				/>
+																			</>
+																		) : (
+																			<>
+																				<p></p>
+																				<SelectControl
+																					label={__("Margin Top", "mrutils")}
+																					value={
+																						tab.name === "desktop"
+																							? mrMarginTopdesktop
+																							: tab.name === "laptop"
+																							? mrMarginToplaptop
+																							: tab.name === "tablet"
+																							? mrMarginToptablet
+																							: tab.name === "phone"
+																							? mrMarginTopphone
+																							: mrMarginTop
+																					}
+																					options={[
+																						{
+																							value: "",
+																							label: "Default margin",
+																						},
+																						{
+																							value: (
+																								" mr-" +
+																								tab.name +
+																								"-margintop"
+																							).replace("--", "-"),
+																							label: "Use var(--margin)",
+																						},
+																						{
+																							value: (
+																								" mr-" +
+																								tab.name +
+																								"-nomargintop"
+																							).replace("--", "-"),
+																							label: "Remove margin",
+																						},
+																					]}
+																					onChange={(val) =>
+																						setAttributes({
+																							mrMarginTop:
+																								val === undefined || val === ""
+																									? ""
+																									: val.includes("-desktop-") ||
+																									  val.includes("-laptop-") ||
+																									  val.includes("-tablet-") ||
+																									  val.includes("-phone-")
+																									? mrMarginTop
+																									: val.replace("--", "-"),
+																							mrMarginTopdesktop:
+																								val === undefined || val === ""
+																									? ""
+																									: val !== undefined &&
+																									  val.includes("-desktop-")
+																									? val
+																									: mrMarginTopdesktop,
+																							mrMarginToplaptop:
+																								val === undefined || val === ""
+																									? ""
+																									: val !== undefined &&
+																									  val.includes("-laptop-")
+																									? val
+																									: mrMarginToplaptop,
+																							mrMarginToptablet:
+																								val === undefined || val === ""
+																									? ""
+																									: val !== undefined &&
+																									  val.includes("-tablet-")
+																									? val
+																									: mrMarginToptablet,
+																							mrMarginTopphone:
+																								val === undefined || val === ""
+																									? ""
+																									: val !== undefined &&
+																									  val.includes("-phone-")
+																									? val
+																									: mrMarginTopphone,
+																						})
+																					}
+																				/>
+
+																				<SelectControl
+																					label={__("Margin Right", "mrutils")}
+																					value={
+																						tab.name === "desktop"
+																							? mrMarginRightdesktop
+																							: tab.name === "laptop"
+																							? mrMarginRightlaptop
+																							: tab.name === "tablet"
+																							? mrMarginRighttablet
+																							: tab.name === "phone"
+																							? mrMarginRightphone
+																							: mrMarginRight
+																					}
+																					options={[
+																						{
+																							value: "",
+																							label: "Default margin",
+																						},
+																						{
+																							value: (
+																								" mr-" +
+																								tab.name +
+																								"-marginright"
+																							).replace("--", "-"),
+																							label: "Use var(--margin)",
+																						},
+																						{
+																							value: (
+																								" mr-" +
+																								tab.name +
+																								"-nomarginright"
+																							).replace("--", "-"),
+																							label: "Remove margin",
+																						},
+																					]}
+																					onChange={(val) =>
+																						setAttributes({
+																							mrMarginRight:
+																								val === undefined || val === ""
+																									? ""
+																									: val.includes("-desktop-") ||
+																									  val.includes("-laptop-") ||
+																									  val.includes("-tablet-") ||
+																									  val.includes("-phone-")
+																									? mrMarginRight
+																									: val.replace("--", "-"),
+																							mrMarginRightdesktop:
+																								val === undefined || val === ""
+																									? ""
+																									: val !== undefined &&
+																									  val.includes("-desktop-")
+																									? val
+																									: mrMarginRightdesktop,
+																							mrMarginRightlaptop:
+																								val === undefined || val === ""
+																									? ""
+																									: val !== undefined &&
+																									  val.includes("-laptop-")
+																									? val
+																									: mrMarginRightlaptop,
+																							mrMarginRighttablet:
+																								val === undefined || val === ""
+																									? ""
+																									: val !== undefined &&
+																									  val.includes("-tablet-")
+																									? val
+																									: mrMarginRighttablet,
+																							mrMarginRightphone:
+																								val === undefined || val === ""
+																									? ""
+																									: val !== undefined &&
+																									  val.includes("-phone-")
+																									? val
+																									: mrMarginRightphone,
+																						})
+																					}
+																				/>
+
+																				<SelectControl
+																					label={__("Margin Bottom", "mrutils")}
+																					value={
+																						tab.name === "desktop"
+																							? mrMarginBottomdesktop
+																							: tab.name === "laptop"
+																							? mrMarginBottomlaptop
+																							: tab.name === "tablet"
+																							? mrMarginBottomtablet
+																							: tab.name === "phone"
+																							? mrMarginBottomphone
+																							: mrMarginBottom
+																					}
+																					options={[
+																						{
+																							value: "",
+																							label: "Default margin",
+																						},
+																						{
+																							value: (
+																								" mr-" +
+																								tab.name +
+																								"-marginbottom"
+																							).replace("--", "-"),
+																							label: "Use var(--margin)",
+																						},
+																						{
+																							value: (
+																								" mr-" +
+																								tab.name +
+																								"-nomarginbottom"
+																							).replace("--", "-"),
+																							label: "Remove margin",
+																						},
+																					]}
+																					onChange={(val) =>
+																						setAttributes({
+																							mrMarginBottom:
+																								val === undefined || val === ""
+																									? ""
+																									: val.includes("-desktop-") ||
+																									  val.includes("-laptop-") ||
+																									  val.includes("-tablet-") ||
+																									  val.includes("-phone-")
+																									? mrMarginBottom
+																									: val.replace("--", "-"),
+																							mrMarginBottomdesktop:
+																								val === undefined || val === ""
+																									? ""
+																									: val !== undefined &&
+																									  val.includes("-desktop-")
+																									? val
+																									: mrMarginBottomdesktop,
+																							mrMarginBottomlaptop:
+																								val === undefined || val === ""
+																									? ""
+																									: val !== undefined &&
+																									  val.includes("-laptop-")
+																									? val
+																									: mrMarginBottomlaptop,
+																							mrMarginBottomtablet:
+																								val === undefined || val === ""
+																									? ""
+																									: val !== undefined &&
+																									  val.includes("-tablet-")
+																									? val
+																									: mrMarginBottomtablet,
+																							mrMarginBottomphone:
+																								val === undefined || val === ""
+																									? ""
+																									: val !== undefined &&
+																									  val.includes("-phone-")
+																									? val
+																									: mrMarginBottomphone,
+																						})
+																					}
+																				/>
+
+																				<SelectControl
+																					label={__("Margin Left", "mrutils")}
+																					value={
+																						tab.name === "desktop"
+																							? mrMarginLeftdesktop
+																							: tab.name === "laptop"
+																							? mrMarginLeftlaptop
+																							: tab.name === "tablet"
+																							? mrMarginLefttablet
+																							: tab.name === "phone"
+																							? mrMarginLeftphone
+																							: mrMarginLeft
+																					}
+																					options={[
+																						{
+																							value: "",
+																							label: "Default margin",
+																						},
+																						{
+																							value: (
+																								" mr-" +
+																								tab.name +
+																								"-marginleft"
+																							).replace("--", "-"),
+																							label: "Use var(--margin)",
+																						},
+																						{
+																							value: (
+																								" mr-" +
+																								tab.name +
+																								"-nomarginleft"
+																							).replace("--", "-"),
+																							label: "Remove margin",
+																						},
+																					]}
+																					onChange={(val) =>
+																						setAttributes({
+																							mrMarginLeft:
+																								val === undefined || val === ""
+																									? ""
+																									: val.includes("-desktop-") ||
+																									  val.includes("-laptop-") ||
+																									  val.includes("-tablet-") ||
+																									  val.includes("-phone-")
+																									? mrMarginLeft
+																									: val.replace("--", "-"),
+																							mrMarginLeftdesktop:
+																								val === undefined || val === ""
+																									? ""
+																									: val !== undefined &&
+																									  val.includes("-desktop-")
+																									? val
+																									: mrMarginLeftdesktop,
+																							mrMarginLeftlaptop:
+																								val === undefined || val === ""
+																									? ""
+																									: val !== undefined &&
+																									  val.includes("-laptop-")
+																									? val
+																									: mrMarginLeftlaptop,
+																							mrMarginLefttablet:
+																								val === undefined || val === ""
+																									? ""
+																									: val !== undefined &&
+																									  val.includes("-tablet-")
+																									? val
+																									: mrMarginLefttablet,
+																							mrMarginLeftphone:
+																								val === undefined || val === ""
+																									? ""
+																									: val !== undefined &&
+																									  val.includes("-phone-")
+																									? val
+																									: mrMarginLeftphone,
+																						})
+																					}
+																				/>
+																			</>
+																		)
+																	}
+																</TabPanel>
+															</PanelRow>
+														</PanelBody>
+
+														<PanelBody
+															icon={typography}
+															title={tab.name + __(" Text", "mrutils")}
+															initialOpen={false}
+															className={
+																tab.name === ""
+																	? "mr-backend-option mr-backend-option_utils_text"
+																	: "mr-backend-option mr-backend-option_utils_" +
+																	  tab.name +
+																	  "_text"
+															}
+														>
+															<RangeControl
+																label={__("Font Size", "mrutils")}
+																value={
 																	tab.name === "desktop"
-																		? val === 0 || val === undefined
-																			? ""
-																			: val
-																		: mrFontSizedesktop,
-																mrFontSizelaptop:
-																	tab.name === "laptop"
-																		? val === 0 || val === undefined
-																			? ""
-																			: val
-																		: mrFontSizelaptop,
-																mrFontSizetablet:
-																	tab.name === "tablet"
-																		? val === 0 || val === undefined
-																			? ""
-																			: val
-																		: mrFontSizetablet,
-																mrFontSizephone:
-																	tab.name === "phone"
-																		? val === 0 || val === undefined
-																			? ""
-																			: val
-																		: mrFontSizephone,
-															})
-														}
-													/>
+																		? mrFontSizedesktop
+																		: tab.name === "laptop"
+																		? mrFontSizelaptop
+																		: tab.name === "tablet"
+																		? mrFontSizetablet
+																		: tab.name === "phone"
+																		? mrFontSizephone
+																		: mrFontSize
+																}
+																initialPosition={0}
+																allowReset={true}
+																min={0}
+																max={7}
+																onChange={(val) =>
+																	setAttributes({
+																		mrFontSize:
+																			tab.name === ""
+																				? val === 0 || val === undefined
+																					? ""
+																					: val
+																				: mrFontSize,
+																		mrFontSizedesktop:
+																			tab.name === "desktop"
+																				? val === 0 || val === undefined
+																					? ""
+																					: val
+																				: mrFontSizedesktop,
+																		mrFontSizelaptop:
+																			tab.name === "laptop"
+																				? val === 0 || val === undefined
+																					? ""
+																					: val
+																				: mrFontSizelaptop,
+																		mrFontSizetablet:
+																			tab.name === "tablet"
+																				? val === 0 || val === undefined
+																					? ""
+																					: val
+																				: mrFontSizetablet,
+																		mrFontSizephone:
+																			tab.name === "phone"
+																				? val === 0 || val === undefined
+																					? ""
+																					: val
+																				: mrFontSizephone,
+																	})
+																}
+															/>
 
-													<SelectControl
-														label={__("Text Alignment", "mrutils")}
-														value={
-															tab.name === "desktop"
-																? mrTextAlignmentdesktop
-																: tab.name === "laptop"
-																? mrTextAlignmentlaptop
-																: tab.name === "tablet"
-																? mrTextAlignmenttablet
-																: tab.name === "phone"
-																? mrTextAlignmentphone
-																: mrTextAlignment
-														}
-														options={
-															(isSelected &&
-																allowedBlocks.name != "core/paragraph") ||
-															(isSelected &&
-																allowedBlocks.name != "core/heading")
-																? __([
-																		{ value: "", label: "Default" },
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-alignleft"
-																			).replace("--", "-"),
-																			label: "Left",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-aligncenter"
-																			).replace("--", "-"),
-																			label: "Center",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-alignright"
-																			).replace("--", "-"),
-																			label: "Right",
-																		},
-																  ])
-																: ""
-														}
-														onChange={(val) =>
-															setAttributes({
-																mrTextAlignment:
-																	val === undefined || val === ""
-																		? ""
-																		: val.includes("-desktop-") ||
-																		  val.includes("-laptop-") ||
-																		  val.includes("-tablet-") ||
-																		  val.includes("-phone-")
-																		? mrTextAlignment
-																		: val.replace("--", "-"),
-																mrTextAlignmentdesktop:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-desktop-")
-																		? val
-																		: mrTextAlignmentdesktop,
-																mrTextAlignmentlaptop:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-laptop-")
-																		? val
-																		: mrTextAlignmentlaptop,
-																mrTextAlignmenttablet:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-tablet-")
-																		? val
-																		: mrTextAlignmenttablet,
-																mrTextAlignmentphone:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-phone-")
-																		? val
-																		: mrTextAlignmentphone,
-															})
-														}
-													/>
-												</PanelBody>
+															<SelectControl
+																label={__("Text Alignment", "mrutils")}
+																value={
+																	tab.name === "desktop"
+																		? mrTextAlignmentdesktop
+																		: tab.name === "laptop"
+																		? mrTextAlignmentlaptop
+																		: tab.name === "tablet"
+																		? mrTextAlignmenttablet
+																		: tab.name === "phone"
+																		? mrTextAlignmentphone
+																		: mrTextAlignment
+																}
+																options={
+																	(isSelected &&
+																		allowedBlocks.name != "core/paragraph") ||
+																	(isSelected &&
+																		allowedBlocks.name != "core/heading")
+																		? __([
+																				{ value: "", label: "Default" },
+																				{
+																					value: (
+																						" mr-" +
+																						tab.name +
+																						"-alignleft"
+																					).replace("--", "-"),
+																					label: "Left",
+																				},
+																				{
+																					value: (
+																						" mr-" +
+																						tab.name +
+																						"-aligncenter"
+																					).replace("--", "-"),
+																					label: "Center",
+																				},
+																				{
+																					value: (
+																						" mr-" +
+																						tab.name +
+																						"-alignright"
+																					).replace("--", "-"),
+																					label: "Right",
+																				},
+																		  ])
+																		: ""
+																}
+																onChange={(val) =>
+																	setAttributes({
+																		mrTextAlignment:
+																			val === undefined || val === ""
+																				? ""
+																				: val.includes("-desktop-") ||
+																				  val.includes("-laptop-") ||
+																				  val.includes("-tablet-") ||
+																				  val.includes("-phone-")
+																				? mrTextAlignment
+																				: val.replace("--", "-"),
+																		mrTextAlignmentdesktop:
+																			val === undefined || val === ""
+																				? ""
+																				: val !== undefined &&
+																				  val.includes("-desktop-")
+																				? val
+																				: mrTextAlignmentdesktop,
+																		mrTextAlignmentlaptop:
+																			val === undefined || val === ""
+																				? ""
+																				: val !== undefined &&
+																				  val.includes("-laptop-")
+																				? val
+																				: mrTextAlignmentlaptop,
+																		mrTextAlignmenttablet:
+																			val === undefined || val === ""
+																				? ""
+																				: val !== undefined &&
+																				  val.includes("-tablet-")
+																				? val
+																				: mrTextAlignmenttablet,
+																		mrTextAlignmentphone:
+																			val === undefined || val === ""
+																				? ""
+																				: val !== undefined &&
+																				  val.includes("-phone-")
+																				? val
+																				: mrTextAlignmentphone,
+																	})
+																}
+															/>
+														</PanelBody>
 
-												<PanelBody
-													icon={pullLeft}
-													title={tab.name + __(" Placement", "mrutils")}
-													initialOpen={false}
-												>
-													<SelectControl
-														label={__("Position Type", "mrutils")}
-														value={
-															tab.name === "desktop"
-																? mrPositiondesktop
-																: tab.name === "laptop"
-																? mrPositionlaptop
-																: tab.name === "tablet"
-																? mrPositiontablet
-																: tab.name === "phone"
-																? mrPositionphone
-																: mrPosition
-														}
-														options={[
-															{ value: "", label: "Default" },
-															{
-																value: (
-																	" mr-" +
-																	tab.name +
-																	"-relative"
-																).replace("--", "-"),
-																label: "Relative",
-															},
-															{
-																value: (
-																	" mr-" +
-																	tab.name +
-																	"-absolute"
-																).replace("--", "-"),
-																label: "Absolute",
-															},
-															{
-																value: (" mr-" + tab.name + "-fixed").replace(
-																	"--",
-																	"-"
-																),
-																label: "Fixed",
-															},
-															{
-																value: (" mr-" + tab.name + "-sticky").replace(
-																	"--",
-																	"-"
-																),
-																label: "Sticky",
-															},
-														]}
-														onChange={(val) =>
-															setAttributes({
-																mrPosition:
-																	val === undefined || val === ""
-																		? ""
-																		: val.includes("-desktop-") ||
-																		  val.includes("-laptop-") ||
-																		  val.includes("-tablet-") ||
-																		  val.includes("-phone-")
-																		? mrPosition
-																		: val.replace("--", "-"),
-																mrPositiondesktop:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-desktop-")
-																		? val
-																		: mrPositiondesktop,
-																mrPositionlaptop:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-laptop-")
-																		? val
-																		: mrPositionlaptop,
-																mrPositiontablet:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-tablet-")
-																		? val
-																		: mrPositiontablet,
-																mrPositionphone:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-phone-")
-																		? val
-																		: mrPositionphone,
-															})
-														}
-													/>
+														<PanelBody
+															icon={pullLeft}
+															title={tab.name + __(" Placement", "mrutils")}
+															initialOpen={false}
+															className={
+																tab.name === ""
+																	? "mr-backend-option mr-backend-option_utils_placement"
+																	: "mr-backend-option mr-backend-option_utils_" +
+																	  tab.name +
+																	  "_placement"
+															}
+														>
+															<SelectControl
+																label={__("Position Type", "mrutils")}
+																value={
+																	tab.name === "desktop"
+																		? mrPositiondesktop
+																		: tab.name === "laptop"
+																		? mrPositionlaptop
+																		: tab.name === "tablet"
+																		? mrPositiontablet
+																		: tab.name === "phone"
+																		? mrPositionphone
+																		: mrPosition
+																}
+																options={[
+																	{ value: "", label: "Default" },
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-relative"
+																		).replace("--", "-"),
+																		label: "Relative",
+																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-absolute"
+																		).replace("--", "-"),
+																		label: "Absolute",
+																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-fixed"
+																		).replace("--", "-"),
+																		label: "Fixed",
+																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-sticky"
+																		).replace("--", "-"),
+																		label: "Sticky",
+																	},
+																]}
+																onChange={(val) =>
+																	setAttributes({
+																		mrPosition:
+																			val === undefined || val === ""
+																				? ""
+																				: val.includes("-desktop-") ||
+																				  val.includes("-laptop-") ||
+																				  val.includes("-tablet-") ||
+																				  val.includes("-phone-")
+																				? mrPosition
+																				: val.replace("--", "-"),
+																		mrPositiondesktop:
+																			val === undefined || val === ""
+																				? ""
+																				: val !== undefined &&
+																				  val.includes("-desktop-")
+																				? val
+																				: mrPositiondesktop,
+																		mrPositionlaptop:
+																			val === undefined || val === ""
+																				? ""
+																				: val !== undefined &&
+																				  val.includes("-laptop-")
+																				? val
+																				: mrPositionlaptop,
+																		mrPositiontablet:
+																			val === undefined || val === ""
+																				? ""
+																				: val !== undefined &&
+																				  val.includes("-tablet-")
+																				? val
+																				: mrPositiontablet,
+																		mrPositionphone:
+																			val === undefined || val === ""
+																				? ""
+																				: val !== undefined &&
+																				  val.includes("-phone-")
+																				? val
+																				: mrPositionphone,
+																	})
+																}
+															/>
 
-													<SelectControl
-														label={__("Vertical Alignment", "mrutils")}
-														value={
-															tab.name === "desktop"
-																? mrPositionAlignmentdesktop
-																: tab.name === "laptop"
-																? mrPositionAlignmentlaptop
-																: tab.name === "tablet"
-																? mrPositionAlignmenttablet
-																: tab.name === "phone"
-																? mrPositionAlignmentphone
-																: mrPositionAlignment
-														}
-														options={
-															(mrPosition + tab.name).includes("absolute") ||
-															(mrPosition + tab.name).includes("fixed") ||
-															(mrPosition + tab.name).includes("sticky")
-																? __([
-																		{ value: "", label: "Default" },
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-top"
-																			).replace("--", "-"),
-																			label: "Top",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-bottom"
-																			).replace("--", "-"),
-																			label: "Bottom",
-																		},
-																  ])
-																: ""
-														}
-														onChange={(val) =>
-															setAttributes({
-																mrPositionAlignment:
-																	val === undefined || val === ""
-																		? ""
-																		: val.includes("-desktop-") ||
-																		  val.includes("-laptop-") ||
-																		  val.includes("-tablet-") ||
-																		  val.includes("-phone-")
-																		? mrPositionAlignment
-																		: val.replace("--", "-"),
-																mrPositionAlignmentdesktop:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-desktop-")
-																		? val
-																		: mrPositionAlignmentdesktop,
-																mrPositionAlignmentlaptop:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-laptop-")
-																		? val
-																		: mrPositionAlignmentlaptop,
-																mrPositionAlignmenttablet:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-tablet-")
-																		? val
-																		: mrPositionAlignmenttablet,
-																mrPositionAlignmentphone:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-phone-")
-																		? val
-																		: mrPositionAlignmentphone,
-															})
-														}
-													/>
-													<SelectControl
-														label={__("Horizontal Alignment", "mrutils")}
-														value={
-															tab.name === "desktop"
-																? mrPositionSidesdesktop
-																: tab.name === "laptop"
-																? mrPositionSideslaptop
-																: tab.name === "tablet"
-																? mrPositionSidestablet
-																: tab.name === "phone"
-																? mrPositionSidesphone
-																: mrPositionSides
-														}
-														options={
-															(mrPosition + tab.name).includes("absolute") ||
-															(mrPosition + tab.name).includes("fixed") ||
-															(mrPosition + tab.name).includes("sticky")
-																? __([
-																		{ value: "", label: "Default" },
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-right"
-																			).replace("--", "-"),
-																			label: "Right",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-left"
-																			).replace("--", "-"),
-																			label: "Left",
-																		},
-																  ])
-																: ""
-														}
-														onChange={(val) =>
-															setAttributes({
-																mrPositionSides:
-																	val === undefined || val === ""
-																		? ""
-																		: val.includes("-desktop-") ||
-																		  val.includes("-laptop-") ||
-																		  val.includes("-tablet-") ||
-																		  val.includes("-phone-")
-																		? mrPositionSides
-																		: val.replace("--", "-"),
-																mrPositionSidesdesktop:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-desktop-")
-																		? val
-																		: mrPositionSidesdesktop,
-																mrPositionSideslaptop:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-laptop-")
-																		? val
-																		: mrPositionSideslaptop,
-																mrPositionSidestablet:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-tablet-")
-																		? val
-																		: mrPositionSidestablet,
-																mrPositionSidesphone:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-phone-")
-																		? val
-																		: mrPositionSidesphone,
-															})
-														}
-													/>
-													<SelectControl
-														label={__("Content Alignment", "mrutils")}
-														value={
-															tab.name === "desktop"
-																? mrContentAlignmentdesktop
-																: tab.name === "laptop"
-																? mrContentAlignmentlaptop
-																: tab.name === "tablet"
-																? mrContentAlignmenttablet
-																: tab.name === "phone"
-																? mrContentAlignmentphone
-																: mrContentAlignment
-														}
-														options={__([
-															{ value: "", label: "Default" },
-															{
-																value: (
-																	" mr-" +
-																	tab.name +
-																	"-aligntop"
-																).replace("--", "-"),
-																label: "Top",
-															},
-															{
-																value: (
-																	" mr-" +
-																	tab.name +
-																	"-floatright"
-																).replace("--", "-"),
-																label: "Right",
-															},
-															{
-																value: (
-																	" mr-" +
-																	tab.name +
-																	"-alignbottom"
-																).replace("--", "-"),
-																label: "Bottom",
-															},
-															{
-																value: (
-																	" mr-" +
-																	tab.name +
-																	"-floatleft"
-																).replace("--", "-"),
-																label: "Left",
-															},
-															{
-																value: (" mr-" + tab.name + "-middle").replace(
-																	"--",
-																	"-"
-																),
-																label: "Middle",
-															},
-														])}
-														onChange={(val) =>
-															setAttributes({
-																mrContentAlignment:
-																	val === undefined || val === ""
-																		? ""
-																		: val.includes("-desktop-") ||
-																		  val.includes("-laptop-") ||
-																		  val.includes("-tablet-") ||
-																		  val.includes("-phone-")
-																		? mrContentAlignment
-																		: val.replace("--", "-"),
-																mrContentAlignmentdesktop:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-desktop-")
-																		? val
-																		: mrContentAlignmentdesktop,
-																mrContentAlignmentlaptop:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-laptop-")
-																		? val
-																		: mrContentAlignmentlaptop,
-																mrContentAlignmenttablet:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-tablet-")
-																		? val
-																		: mrContentAlignmenttablet,
-																mrContentAlignmentphone:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-phone-")
-																		? val
-																		: mrContentAlignmentphone,
-															})
-														}
-													/>
-													<SelectControl
-														label={__("Vertical Offset", "mrutils")}
-														value={
-															tab.name === "desktop"
-																? mrVerticalOffsetdesktop
-																: tab.name === "laptop"
-																? mrVerticalOffsetlaptop
-																: tab.name === "tablet"
-																? mrVerticalOffsettablet
-																: tab.name === "phone"
-																? mrVerticalOffsetphone
-																: mrVerticalOffset
-														}
-														options={__([
-															{ value: "", label: "Default" },
-															{
-																value: (
-																	" mr-" +
-																	tab.name +
-																	"-offsettop"
-																).replace("--", "-"),
-																label: "Top",
-															},
-															{
-																value: (
-																	" mr-" +
-																	tab.name +
-																	"-offsetbottom"
-																).replace("--", "-"),
-																label: "Bottom",
-															},
-														])}
-														onChange={(val) =>
-															setAttributes({
-																mrVerticalOffset:
-																	val === undefined || val === ""
-																		? ""
-																		: val.includes("-desktop-") ||
-																		  val.includes("-laptop-") ||
-																		  val.includes("-tablet-") ||
-																		  val.includes("-phone-")
-																		? mrVerticalOffset
-																		: val.replace("--", "-"),
-																mrVerticalOffsetdesktop:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-desktop-")
-																		? val
-																		: mrVerticalOffsetdesktop,
-																mrVerticalOffsetlaptop:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-laptop-")
-																		? val
-																		: mrVerticalOffsetlaptop,
-																mrVerticalOffsettablet:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-tablet-")
-																		? val
-																		: mrVerticalOffsettablet,
-																mrVerticalOffsetphone:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-phone-")
-																		? val
-																		: mrVerticalOffsetphone,
-															})
-														}
-													/>
-													<SelectControl
-														label={__("Horizontal Offset", "mrutils")}
-														value={
-															tab.name === "desktop"
-																? mrHorizontalOffsetdesktop
-																: tab.name === "laptop"
-																? mrHorizontalOffsetlaptop
-																: tab.name === "tablet"
-																? mrHorizontalOffsettablet
-																: tab.name === "phone"
-																? mrHorizontalOffsetphone
-																: mrHorizontalOffset
-														}
-														options={__([
-															{ value: "", label: "Default" },
-															{
-																value: (
-																	" mr-" +
-																	tab.name +
-																	"-offsetleft"
-																).replace("--", "-"),
-																label: "Left",
-															},
-															{
-																value: (
-																	" mr-" +
-																	tab.name +
-																	"-offsetright"
-																).replace("--", "-"),
-																label: "Right",
-															},
-														])}
-														onChange={(val) =>
-															setAttributes({
-																mrHorizontalOffset:
-																	val === undefined || val === ""
-																		? ""
-																		: val.includes("-desktop-") ||
-																		  val.includes("-laptop-") ||
-																		  val.includes("-tablet-") ||
-																		  val.includes("-phone-")
-																		? mrHorizontalOffset
-																		: val.replace("--", "-"),
-																mrHorizontalOffsetdesktop:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-desktop-")
-																		? val
-																		: mrHorizontalOffsetdesktop,
-																mrHorizontalOffsetlaptop:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-laptop-")
-																		? val
-																		: mrHorizontalOffsetlaptop,
-																mrHorizontalOffsettablet:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-tablet-")
-																		? val
-																		: mrHorizontalOffsettablet,
-																mrHorizontalOffsetphone:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-phone-")
-																		? val
-																		: mrHorizontalOffsetphone,
-															})
-														}
-													/>
-												</PanelBody>
-												<PanelBody
-													icon={plusCircle}
-													title={tab.name + __(" Misc.", "mrutils")}
-													initialOpen={false}
-												>
-													<SelectControl
-														label={__("Scroll", "mrutils")}
-														value={
-															tab.name === "desktop"
-																? mrScrolldesktop
-																: tab.name === "laptop"
-																? mrScrolllaptop
-																: tab.name === "tablet"
-																? mrScrolltablet
-																: tab.name === "phone"
-																? mrScrollphone
-																: mrScroll
-														}
-														options={[
-															{ value: "", label: "Default" },
-															{
-																value: (
-																	" mr-" +
-																	tab.name +
-																	"-noscroll"
-																).replace("--", "-"),
-																label: "No scroll",
-															},
-															{
-																value: (
-																	" mr-" +
-																	tab.name +
-																	"-hidescroll"
-																).replace("--", "-"),
-																label: "Hide scroll",
-															},
-															{
-																value: (" mr-" + tab.name + "-scroll").replace(
-																	"--",
-																	"-"
-																),
-																label: "Scroll",
-															},
-															{
-																value: (
-																	" mr-" +
-																	tab.name +
-																	"-horizontalscroll"
-																).replace("--", "-"),
-																label: "Horizontal scroll",
-															},
-															{
-																value: (
-																	" mr-" +
-																	tab.name +
-																	"-horizontalscrollcontent"
-																).replace("--", "-"),
-																label: "Horizontal scroll content",
-															},
-															{
-																value: (" mr-" + tab.name + "-swipe").replace(
-																	"--",
-																	"-"
-																),
-																label: "Swipe",
-															},
-															{
-																value: (
-																	" mr-" +
-																	tab.name +
-																	"-swipecontent"
-																).replace("--", "-"),
-																label: "Swipe content",
-															},
-														]}
-														onChange={(val) =>
-															setAttributes({
-																mrScroll:
-																	val === undefined || val === ""
-																		? ""
-																		: val.includes("-desktop-") ||
-																		  val.includes("-laptop-") ||
-																		  val.includes("-tablet-") ||
-																		  val.includes("-phone-")
-																		? mrScroll
-																		: val.replace("--", "-"),
-																mrScrolldesktop:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-desktop-")
-																		? val
-																		: mrScrolldesktop,
-																mrScrolllaptop:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-laptop-")
-																		? val
-																		: mrScrolllaptop,
-																mrScrolltablet:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-tablet-")
-																		? val
-																		: mrScrolltablet,
-																mrScrollphone:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-phone-")
-																		? val
-																		: mrScrollphone,
-															})
-														}
-													/>
-												</PanelBody>
-											</>
-										) : (
-											<>
-												<h4>Other breakpoints</h4>
-												<p>
-													You also have the following device breakpoints
-													available:
-												</p>
-												<p class="mr-backend-other_breakpoints">
-													<b>landscape, portrait</b>
-												</p>
-												<p>
-													However you cannot select them with the interface. In
-													alternative, you can use{" "}
-													<a
-														href="https://github.com/marcosrego-web/mr-utils/wiki/Utility-Classes"
-														target="_blank"
-													>
-														utility classes
-													</a>{" "}
-													in <b>Advanced - Additional CSS class(es)</b>.
-												</p>
-												<p>
-													<a
-														href="https://github.com/marcosrego-web/mr-utils/wiki/Utility-Classes"
-														target="_blank"
-													>
-														Know more
-													</a>
-												</p>
-											</>
-										)
-									}
-								</TabPanel>
+															<SelectControl
+																label={__("Vertical Alignment", "mrutils")}
+																value={
+																	tab.name === "desktop"
+																		? mrPositionAlignmentdesktop
+																		: tab.name === "laptop"
+																		? mrPositionAlignmentlaptop
+																		: tab.name === "tablet"
+																		? mrPositionAlignmenttablet
+																		: tab.name === "phone"
+																		? mrPositionAlignmentphone
+																		: mrPositionAlignment
+																}
+																options={
+																	(mrPosition + tab.name).includes(
+																		"absolute"
+																	) ||
+																	(mrPosition + tab.name).includes("fixed") ||
+																	(mrPosition + tab.name).includes("sticky")
+																		? __([
+																				{ value: "", label: "Default" },
+																				{
+																					value: (
+																						" mr-" +
+																						tab.name +
+																						"-top"
+																					).replace("--", "-"),
+																					label: "Top",
+																				},
+																				{
+																					value: (
+																						" mr-" +
+																						tab.name +
+																						"-bottom"
+																					).replace("--", "-"),
+																					label: "Bottom",
+																				},
+																		  ])
+																		: ""
+																}
+																onChange={(val) =>
+																	setAttributes({
+																		mrPositionAlignment:
+																			val === undefined || val === ""
+																				? ""
+																				: val.includes("-desktop-") ||
+																				  val.includes("-laptop-") ||
+																				  val.includes("-tablet-") ||
+																				  val.includes("-phone-")
+																				? mrPositionAlignment
+																				: val.replace("--", "-"),
+																		mrPositionAlignmentdesktop:
+																			val === undefined || val === ""
+																				? ""
+																				: val !== undefined &&
+																				  val.includes("-desktop-")
+																				? val
+																				: mrPositionAlignmentdesktop,
+																		mrPositionAlignmentlaptop:
+																			val === undefined || val === ""
+																				? ""
+																				: val !== undefined &&
+																				  val.includes("-laptop-")
+																				? val
+																				: mrPositionAlignmentlaptop,
+																		mrPositionAlignmenttablet:
+																			val === undefined || val === ""
+																				? ""
+																				: val !== undefined &&
+																				  val.includes("-tablet-")
+																				? val
+																				: mrPositionAlignmenttablet,
+																		mrPositionAlignmentphone:
+																			val === undefined || val === ""
+																				? ""
+																				: val !== undefined &&
+																				  val.includes("-phone-")
+																				? val
+																				: mrPositionAlignmentphone,
+																	})
+																}
+															/>
+															<SelectControl
+																label={__("Horizontal Alignment", "mrutils")}
+																value={
+																	tab.name === "desktop"
+																		? mrPositionSidesdesktop
+																		: tab.name === "laptop"
+																		? mrPositionSideslaptop
+																		: tab.name === "tablet"
+																		? mrPositionSidestablet
+																		: tab.name === "phone"
+																		? mrPositionSidesphone
+																		: mrPositionSides
+																}
+																options={
+																	(mrPosition + tab.name).includes(
+																		"absolute"
+																	) ||
+																	(mrPosition + tab.name).includes("fixed") ||
+																	(mrPosition + tab.name).includes("sticky")
+																		? __([
+																				{ value: "", label: "Default" },
+																				{
+																					value: (
+																						" mr-" +
+																						tab.name +
+																						"-right"
+																					).replace("--", "-"),
+																					label: "Right",
+																				},
+																				{
+																					value: (
+																						" mr-" +
+																						tab.name +
+																						"-left"
+																					).replace("--", "-"),
+																					label: "Left",
+																				},
+																		  ])
+																		: ""
+																}
+																onChange={(val) =>
+																	setAttributes({
+																		mrPositionSides:
+																			val === undefined || val === ""
+																				? ""
+																				: val.includes("-desktop-") ||
+																				  val.includes("-laptop-") ||
+																				  val.includes("-tablet-") ||
+																				  val.includes("-phone-")
+																				? mrPositionSides
+																				: val.replace("--", "-"),
+																		mrPositionSidesdesktop:
+																			val === undefined || val === ""
+																				? ""
+																				: val !== undefined &&
+																				  val.includes("-desktop-")
+																				? val
+																				: mrPositionSidesdesktop,
+																		mrPositionSideslaptop:
+																			val === undefined || val === ""
+																				? ""
+																				: val !== undefined &&
+																				  val.includes("-laptop-")
+																				? val
+																				: mrPositionSideslaptop,
+																		mrPositionSidestablet:
+																			val === undefined || val === ""
+																				? ""
+																				: val !== undefined &&
+																				  val.includes("-tablet-")
+																				? val
+																				: mrPositionSidestablet,
+																		mrPositionSidesphone:
+																			val === undefined || val === ""
+																				? ""
+																				: val !== undefined &&
+																				  val.includes("-phone-")
+																				? val
+																				: mrPositionSidesphone,
+																	})
+																}
+															/>
+															<SelectControl
+																label={__("Content Alignment", "mrutils")}
+																value={
+																	tab.name === "desktop"
+																		? mrContentAlignmentdesktop
+																		: tab.name === "laptop"
+																		? mrContentAlignmentlaptop
+																		: tab.name === "tablet"
+																		? mrContentAlignmenttablet
+																		: tab.name === "phone"
+																		? mrContentAlignmentphone
+																		: mrContentAlignment
+																}
+																options={__([
+																	{ value: "", label: "Default" },
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-aligntop"
+																		).replace("--", "-"),
+																		label: "Top",
+																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-floatright"
+																		).replace("--", "-"),
+																		label: "Right",
+																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-alignbottom"
+																		).replace("--", "-"),
+																		label: "Bottom",
+																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-floatleft"
+																		).replace("--", "-"),
+																		label: "Left",
+																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-middle"
+																		).replace("--", "-"),
+																		label: "Middle",
+																	},
+																])}
+																onChange={(val) =>
+																	setAttributes({
+																		mrContentAlignment:
+																			val === undefined || val === ""
+																				? ""
+																				: val.includes("-desktop-") ||
+																				  val.includes("-laptop-") ||
+																				  val.includes("-tablet-") ||
+																				  val.includes("-phone-")
+																				? mrContentAlignment
+																				: val.replace("--", "-"),
+																		mrContentAlignmentdesktop:
+																			val === undefined || val === ""
+																				? ""
+																				: val !== undefined &&
+																				  val.includes("-desktop-")
+																				? val
+																				: mrContentAlignmentdesktop,
+																		mrContentAlignmentlaptop:
+																			val === undefined || val === ""
+																				? ""
+																				: val !== undefined &&
+																				  val.includes("-laptop-")
+																				? val
+																				: mrContentAlignmentlaptop,
+																		mrContentAlignmenttablet:
+																			val === undefined || val === ""
+																				? ""
+																				: val !== undefined &&
+																				  val.includes("-tablet-")
+																				? val
+																				: mrContentAlignmenttablet,
+																		mrContentAlignmentphone:
+																			val === undefined || val === ""
+																				? ""
+																				: val !== undefined &&
+																				  val.includes("-phone-")
+																				? val
+																				: mrContentAlignmentphone,
+																	})
+																}
+															/>
+															<SelectControl
+																label={__("Vertical Offset", "mrutils")}
+																value={
+																	tab.name === "desktop"
+																		? mrVerticalOffsetdesktop
+																		: tab.name === "laptop"
+																		? mrVerticalOffsetlaptop
+																		: tab.name === "tablet"
+																		? mrVerticalOffsettablet
+																		: tab.name === "phone"
+																		? mrVerticalOffsetphone
+																		: mrVerticalOffset
+																}
+																options={__([
+																	{ value: "", label: "Default" },
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-offsettop"
+																		).replace("--", "-"),
+																		label: "Top",
+																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-offsetbottom"
+																		).replace("--", "-"),
+																		label: "Bottom",
+																	},
+																])}
+																onChange={(val) =>
+																	setAttributes({
+																		mrVerticalOffset:
+																			val === undefined || val === ""
+																				? ""
+																				: val.includes("-desktop-") ||
+																				  val.includes("-laptop-") ||
+																				  val.includes("-tablet-") ||
+																				  val.includes("-phone-")
+																				? mrVerticalOffset
+																				: val.replace("--", "-"),
+																		mrVerticalOffsetdesktop:
+																			val === undefined || val === ""
+																				? ""
+																				: val !== undefined &&
+																				  val.includes("-desktop-")
+																				? val
+																				: mrVerticalOffsetdesktop,
+																		mrVerticalOffsetlaptop:
+																			val === undefined || val === ""
+																				? ""
+																				: val !== undefined &&
+																				  val.includes("-laptop-")
+																				? val
+																				: mrVerticalOffsetlaptop,
+																		mrVerticalOffsettablet:
+																			val === undefined || val === ""
+																				? ""
+																				: val !== undefined &&
+																				  val.includes("-tablet-")
+																				? val
+																				: mrVerticalOffsettablet,
+																		mrVerticalOffsetphone:
+																			val === undefined || val === ""
+																				? ""
+																				: val !== undefined &&
+																				  val.includes("-phone-")
+																				? val
+																				: mrVerticalOffsetphone,
+																	})
+																}
+															/>
+															<SelectControl
+																label={__("Horizontal Offset", "mrutils")}
+																value={
+																	tab.name === "desktop"
+																		? mrHorizontalOffsetdesktop
+																		: tab.name === "laptop"
+																		? mrHorizontalOffsetlaptop
+																		: tab.name === "tablet"
+																		? mrHorizontalOffsettablet
+																		: tab.name === "phone"
+																		? mrHorizontalOffsetphone
+																		: mrHorizontalOffset
+																}
+																options={__([
+																	{ value: "", label: "Default" },
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-offsetleft"
+																		).replace("--", "-"),
+																		label: "Left",
+																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-offsetright"
+																		).replace("--", "-"),
+																		label: "Right",
+																	},
+																])}
+																onChange={(val) =>
+																	setAttributes({
+																		mrHorizontalOffset:
+																			val === undefined || val === ""
+																				? ""
+																				: val.includes("-desktop-") ||
+																				  val.includes("-laptop-") ||
+																				  val.includes("-tablet-") ||
+																				  val.includes("-phone-")
+																				? mrHorizontalOffset
+																				: val.replace("--", "-"),
+																		mrHorizontalOffsetdesktop:
+																			val === undefined || val === ""
+																				? ""
+																				: val !== undefined &&
+																				  val.includes("-desktop-")
+																				? val
+																				: mrHorizontalOffsetdesktop,
+																		mrHorizontalOffsetlaptop:
+																			val === undefined || val === ""
+																				? ""
+																				: val !== undefined &&
+																				  val.includes("-laptop-")
+																				? val
+																				: mrHorizontalOffsetlaptop,
+																		mrHorizontalOffsettablet:
+																			val === undefined || val === ""
+																				? ""
+																				: val !== undefined &&
+																				  val.includes("-tablet-")
+																				? val
+																				: mrHorizontalOffsettablet,
+																		mrHorizontalOffsetphone:
+																			val === undefined || val === ""
+																				? ""
+																				: val !== undefined &&
+																				  val.includes("-phone-")
+																				? val
+																				: mrHorizontalOffsetphone,
+																	})
+																}
+															/>
+														</PanelBody>
+														<PanelBody
+															icon={plusCircle}
+															title={tab.name + __(" Misc.", "mrutils")}
+															initialOpen={false}
+															className={
+																tab.name === ""
+																	? "mr-backend-option mr-backend-option_utils_misc"
+																	: "mr-backend-option mr-backend-option_utils_" +
+																	  tab.name +
+																	  "_misc"
+															}
+														>
+															<SelectControl
+																label={__("Scroll", "mrutils")}
+																value={
+																	tab.name === "desktop"
+																		? mrScrolldesktop
+																		: tab.name === "laptop"
+																		? mrScrolllaptop
+																		: tab.name === "tablet"
+																		? mrScrolltablet
+																		: tab.name === "phone"
+																		? mrScrollphone
+																		: mrScroll
+																}
+																options={[
+																	{ value: "", label: "Default" },
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-noscroll"
+																		).replace("--", "-"),
+																		label: "No scroll",
+																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-hidescroll"
+																		).replace("--", "-"),
+																		label: "Hide scroll",
+																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-scroll"
+																		).replace("--", "-"),
+																		label: "Scroll",
+																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-horizontalscroll"
+																		).replace("--", "-"),
+																		label: "Horizontal scroll",
+																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-horizontalscrollcontent"
+																		).replace("--", "-"),
+																		label: "Horizontal scroll content",
+																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-swipe"
+																		).replace("--", "-"),
+																		label: "Swipe",
+																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-swipecontent"
+																		).replace("--", "-"),
+																		label: "Swipe content",
+																	},
+																]}
+																onChange={(val) =>
+																	setAttributes({
+																		mrScroll:
+																			val === undefined || val === ""
+																				? ""
+																				: val.includes("-desktop-") ||
+																				  val.includes("-laptop-") ||
+																				  val.includes("-tablet-") ||
+																				  val.includes("-phone-")
+																				? mrScroll
+																				: val.replace("--", "-"),
+																		mrScrolldesktop:
+																			val === undefined || val === ""
+																				? ""
+																				: val !== undefined &&
+																				  val.includes("-desktop-")
+																				? val
+																				: mrScrolldesktop,
+																		mrScrolllaptop:
+																			val === undefined || val === ""
+																				? ""
+																				: val !== undefined &&
+																				  val.includes("-laptop-")
+																				? val
+																				: mrScrolllaptop,
+																		mrScrolltablet:
+																			val === undefined || val === ""
+																				? ""
+																				: val !== undefined &&
+																				  val.includes("-tablet-")
+																				? val
+																				: mrScrolltablet,
+																		mrScrollphone:
+																			val === undefined || val === ""
+																				? ""
+																				: val !== undefined &&
+																				  val.includes("-phone-")
+																				? val
+																				: mrScrollphone,
+																	})
+																}
+															/>
+														</PanelBody>
+													</>
+												) : (
+													<>
+														<h4>Other breakpoints</h4>
+														<p>
+															You also have the following device breakpoints
+															available:
+														</p>
+														<p class="mr-backend-other_breakpoints">
+															<b>landscape, portrait</b>
+														</p>
+														<p>
+															However you cannot select them with the interface.
+															In alternative, you can use{" "}
+															<a
+																href="https://github.com/marcosrego-web/mr-utils/wiki/Utility-Classes"
+																target="_blank"
+															>
+																utility classes
+															</a>{" "}
+															in <b>Advanced - Additional CSS class(es)</b>.
+														</p>
+														<p>
+															<a
+																href="https://github.com/marcosrego-web/mr-utils/wiki/Utility-Classes"
+																target="_blank"
+															>
+																Know more
+															</a>
+														</p>
+													</>
+												)
+											}
+										</TabPanel>
+									</>
+								)}
 
 								<PanelBody
 									icon={mrDevIcon}
@@ -2963,9 +3097,8 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 													padding, transition-duration, font-size and more).
 												</li>
 												<li>
-													- (coming soon) Enable only the categories and
-													components that you want to use, avoiding unused CSS
-													and JS.
+													- Enable only the categories and components that you
+													want to use, avoiding unused CSS and JS.
 												</li>
 												<li>- And more framework features...</li>
 											</ul>
@@ -3121,8 +3254,11 @@ const mrApplyWrapperExtraClass = createHigherOrderComponent(
 			} = attributes;
 
 			let mrClassNames = "";
-			if (mrPerPage /*&&
-				allowedBlocks.includes(blockType.name)*/) {
+			if (
+				mrPerPage &&
+				mrPerPage > 0 /*&&
+				allowedBlocks.includes(blockType.name)*/
+			) {
 				mrClassNames = mrClassNames + "mr-" + mrPerPage + "perpage";
 			}
 
@@ -3812,7 +3948,7 @@ function mrApplyExtraClass(extraProps, blockType, attributes) {
 	//add allowedBlocks restriction
 
 	let mrClassNames = "";
-	if (mrPerPage /*&&
+	if (mrPerPage && mrPerPage > 0 /*&&
 		allowedBlocks.includes(blockType.name)*/) {
 		mrClassNames = mrClassNames + "mr-" + mrPerPage + "perpage";
 	}

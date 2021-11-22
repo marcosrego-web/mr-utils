@@ -1,141 +1,3 @@
-function mrGetCookie(t) {
-  if (t) {
-    const e = t + "=",
-      o = decodeURIComponent(document.cookie).split(";");
-    for (id = 0; id < o.length; id++) {
-      let t = o[id];
-      for (; " " === t.charAt(0); ) t = t.substring(1);
-      if (0 === t.indexOf(e)) return t.substring(e.length, t.length);
-    }
-    return "";
-  }
-}
-function mrIsInView(t, e, o) {
-  if (t) {
-    void 0 === e && (e = window.screen.height), void 0 === o && (o = 0);
-    let r = t.getBoundingClientRect().top - e,
-      n = t.getBoundingClientRect().top + t.offsetHeight - o;
-    if (r < 0 && n > 0) return !0;
-  }
-}
-function mrScrollTo(t, e, p) {
-  t &&
-    ((element = p || document.scrollingElement || document.documentElement),
-    (start = element.scrollTop),
-    (change = t - start),
-    (startDate = +new Date()),
-    (easeInOutQuad = function (t, e, o, r) {
-      return (t /= r / 2) < 1
-        ? (o / 2) * t * t + e
-        : (-o / 2) * (--t * (t - 2) - 1) + e;
-    }),
-    (animateScroll = function () {
-      const o = +new Date() - startDate;
-      (element.scrollTop = parseInt(easeInOutQuad(o, start, change, e))),
-        o < e ? requestAnimationFrame(animateScroll) : (element.scrollTop = t);
-    }),
-    animateScroll());
-}
-/*function mrScrollTo(to, duration = 500) {
-const easeOutQuad = function (t, b, c, d) {
-  t /= d;
-  return -c * t * (t - 2) + b;
-};
-return new Promise((resolve, reject) => {
-  const element = document.scrollingElement;
-  if (typeof to === "string") {
-    to = document.querySelector(to) || reject();
-  }
-  if (typeof to !== "number") {
-    to = to.getBoundingClientRect().top + element.scrollTop;
-  }
-  let start = element.scrollTop,
-    change = to - start,
-    currentTime = 0,
-    increment = 20;
-  const animateScroll = function () {
-    currentTime += increment;
-    let val = easeOutQuad(currentTime, start, change, duration);
-    element.scrollTop = val;
-    if (currentTime < duration) {
-      setTimeout(animateScroll, increment);
-    } else {
-      resolve();
-    }
-  };
-  animateScroll();
-});
-}*/
-function mrParallax(t) {
-  if (
-    t &&
-    (t = document.querySelectorAll(t)) &&
-    !matchMedia("(prefers-reduced-motion: reduce)").matches
-  )
-    for (id = 0; id < t.length; id++) {
-      const e = t[id];
-      let o = e.getBoundingClientRect().top / 6,
-        r = Math.round(100 * o) / 100;
-      e.style.backgroundPositionY = r + "px";
-    }
-}
-function mrCopy(t) {
-  event.preventDefault();
-  t.classList.add("mr-copied");
-  t.select();
-  t.setSelectionRange(0, 99999);
-  document.execCommand("copy");
-  setTimeout(function () {
-    t.classList.remove("mr-copied");
-  }, 1000);
-}
-function mrThemeColors() {
-  document.querySelector("body").classList.remove("mr-darkcolors");
-  document.querySelector("body").classList.remove("mr-lightcolors");
-  document.cookie = "mrColors=mrColors; max-age=0; path=/";
-  const colorToggles = document.querySelectorAll(".mr-togglecolors");
-  if (colorToggles) {
-    for (id = 0; id < colorToggles.length; id++) {
-      colorToggles[id].classList.remove("mr-darkcolors");
-      colorToggles[id].classList.remove("mr-lightcolors");
-    }
-  }
-}
-function mrDarkColors() {
-  document.querySelector("body").classList.remove("mr-lightcolors");
-  document.querySelector("body").classList.add("mr-darkcolors");
-  document.cookie = "mrColors=mrDarkColors; max-age=31536000; path=/";
-  const colorToggles = document.querySelectorAll(".mr-togglecolors");
-  if (colorToggles) {
-    for (id = 0; id < colorToggles.length; id++) {
-      colorToggles[id].classList.remove("mr-lightcolors");
-      colorToggles[id].classList.add("mr-darkcolors");
-    }
-  }
-}
-function mrLightColors() {
-  document.querySelector("body").classList.remove("mr-darkcolors");
-  document.querySelector("body").classList.add("mr-lightcolors");
-  document.cookie = "mrColors=mrLightColors; max-age=31536000; path=/";
-  const colorToggles = document.querySelectorAll(".mr-togglecolors");
-  if (colorToggles) {
-    for (id = 0; id < colorToggles.length; id++) {
-      colorToggles[id].classList.remove("mr-darkcolors");
-      colorToggles[id].classList.add("mr-lightcolors");
-    }
-  }
-}
-function mrToggleColors() {
-  if (document.querySelector("body").classList.contains("mr-darkcolors")) {
-    mrLightColors();
-  } else if (
-    document.querySelector("body").classList.contains("mr-lightcolors")
-  ) {
-    mrThemeColors();
-  } else {
-    mrDarkColors();
-  }
-}
 function mrToggleOffCanvas() {
   document.querySelector(".mr-offcanvas-container").classList.remove("mr-hide"),
     document
@@ -217,6 +79,12 @@ function mrToggleOffCanvas() {
           .querySelector(".mr-offcanvas")
           .classList.add("mr-transitionbottom"));
 }
+document.addEventListener("click", function (t) {
+  if (t.target.matches(".mr-offcanvas-toggle")) {
+    mrToggleOffCanvas();
+  }
+  t.stopPropagation();
+});
 function mrLoadPage(e, n) {
   if (n <= 0) {
     n = e.getAttribute("mr-lastpage");
@@ -435,22 +303,8 @@ function mrRadioPage(t, e) {
   }
   mrLoadPage(e, t.value);
 }
-/*import {
-  mrLoadPage,
-  mrPagination,
-  mrNext,
-  mrPrev,
-  mrSelectPage,
-  mrRadioPage,
-} from "utils/layout.js";*/
 document.addEventListener("click", function (t) {
-  if (t.target.matches(".mr-copy")) {
-    mrCopy(t.target);
-  } else if (t.target.matches(".mr-offcanvas-toggle")) {
-    mrToggleOffCanvas();
-  } else if (t.target.matches(".mr-togglecolors")) {
-    mrToggleColors();
-  } else if (t.target.matches(".mr-next")) {
+  if (t.target.matches(".mr-next")) {
     mrNext(t.target);
   } else if (t.target.matches(".mr-prev")) {
     mrPrev(t.target);
@@ -462,14 +316,6 @@ document.addEventListener("click", function (t) {
   t.stopPropagation();
 });
 document.addEventListener("DOMContentLoaded", function () {
-  if (mrGetCookie("mrColors") == "mrLightColors") {
-    mrLightColors();
-  } else if (mrGetCookie("mrColors") == "mrDarkColors") {
-    mrDarkColors();
-  } else if (mrGetCookie("mrColors") == "mrColors") {
-    mrThemeColors();
-  }
-
   const mrPaginEles = document.querySelectorAll(
     "[class*='mr-'][class*='perpage']"
   );
@@ -477,6 +323,161 @@ document.addEventListener("DOMContentLoaded", function () {
   for (id = 0; id < mrPaginEles.length; id++) {
     const mrPaginEle = mrPaginEles[id];
     mrPagination(mrPaginEle);
+  }
+});
+function mrGetCookie(t) {
+  if (t) {
+    const e = t + "=",
+      o = decodeURIComponent(document.cookie).split(";");
+    for (id = 0; id < o.length; id++) {
+      let t = o[id];
+      for (; " " === t.charAt(0); ) t = t.substring(1);
+      if (0 === t.indexOf(e)) return t.substring(e.length, t.length);
+    }
+    return "";
+  }
+}
+function mrIsInView(t, e, o) {
+  if (t) {
+    void 0 === e && (e = window.screen.height), void 0 === o && (o = 0);
+    let r = t.getBoundingClientRect().top - e,
+      n = t.getBoundingClientRect().top + t.offsetHeight - o;
+    if (r < 0 && n > 0) return !0;
+  }
+}
+function mrScrollTo(t, e, p) {
+  t &&
+    ((element = p || document.scrollingElement || document.documentElement),
+    (start = element.scrollTop),
+    (change = t - start),
+    (startDate = +new Date()),
+    (easeInOutQuad = function (t, e, o, r) {
+      return (t /= r / 2) < 1
+        ? (o / 2) * t * t + e
+        : (-o / 2) * (--t * (t - 2) - 1) + e;
+    }),
+    (animateScroll = function () {
+      const o = +new Date() - startDate;
+      (element.scrollTop = parseInt(easeInOutQuad(o, start, change, e))),
+        o < e ? requestAnimationFrame(animateScroll) : (element.scrollTop = t);
+    }),
+    animateScroll());
+}
+/*function mrScrollTo(to, duration = 500) {
+const easeOutQuad = function (t, b, c, d) {
+  t /= d;
+  return -c * t * (t - 2) + b;
+};
+return new Promise((resolve, reject) => {
+  const element = document.scrollingElement;
+  if (typeof to === "string") {
+    to = document.querySelector(to) || reject();
+  }
+  if (typeof to !== "number") {
+    to = to.getBoundingClientRect().top + element.scrollTop;
+  }
+  let start = element.scrollTop,
+    change = to - start,
+    currentTime = 0,
+    increment = 20;
+  const animateScroll = function () {
+    currentTime += increment;
+    let val = easeOutQuad(currentTime, start, change, duration);
+    element.scrollTop = val;
+    if (currentTime < duration) {
+      setTimeout(animateScroll, increment);
+    } else {
+      resolve();
+    }
+  };
+  animateScroll();
+});
+}*/
+function mrParallax(t) {
+  if (
+    t &&
+    (t = document.querySelectorAll(t)) &&
+    !matchMedia("(prefers-reduced-motion: reduce)").matches
+  )
+    for (id = 0; id < t.length; id++) {
+      const e = t[id];
+      let o = e.getBoundingClientRect().top / 6,
+        r = Math.round(100 * o) / 100;
+      e.style.backgroundPositionY = r + "px";
+    }
+}
+function mrCopy(t) {
+  event.preventDefault();
+  t.classList.add("mr-copied");
+  t.select();
+  t.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  setTimeout(function () {
+    t.classList.remove("mr-copied");
+  }, 1000);
+}
+function mrThemeColors() {
+  document.querySelector("body").classList.remove("mr-darkcolors");
+  document.querySelector("body").classList.remove("mr-lightcolors");
+  document.cookie = "mrColors=mrColors; max-age=0; path=/";
+  const colorToggles = document.querySelectorAll(".mr-togglecolors");
+  if (colorToggles) {
+    for (id = 0; id < colorToggles.length; id++) {
+      colorToggles[id].classList.remove("mr-darkcolors");
+      colorToggles[id].classList.remove("mr-lightcolors");
+    }
+  }
+}
+function mrDarkColors() {
+  document.querySelector("body").classList.remove("mr-lightcolors");
+  document.querySelector("body").classList.add("mr-darkcolors");
+  document.cookie = "mrColors=mrDarkColors; max-age=31536000; path=/";
+  const colorToggles = document.querySelectorAll(".mr-togglecolors");
+  if (colorToggles) {
+    for (id = 0; id < colorToggles.length; id++) {
+      colorToggles[id].classList.remove("mr-lightcolors");
+      colorToggles[id].classList.add("mr-darkcolors");
+    }
+  }
+}
+function mrLightColors() {
+  document.querySelector("body").classList.remove("mr-darkcolors");
+  document.querySelector("body").classList.add("mr-lightcolors");
+  document.cookie = "mrColors=mrLightColors; max-age=31536000; path=/";
+  const colorToggles = document.querySelectorAll(".mr-togglecolors");
+  if (colorToggles) {
+    for (id = 0; id < colorToggles.length; id++) {
+      colorToggles[id].classList.remove("mr-darkcolors");
+      colorToggles[id].classList.add("mr-lightcolors");
+    }
+  }
+}
+function mrToggleColors() {
+  if (document.querySelector("body").classList.contains("mr-darkcolors")) {
+    mrLightColors();
+  } else if (
+    document.querySelector("body").classList.contains("mr-lightcolors")
+  ) {
+    mrThemeColors();
+  } else {
+    mrDarkColors();
+  }
+}
+document.addEventListener("click", function (t) {
+  if (t.target.matches(".mr-copy")) {
+    mrCopy(t.target);
+  } else if (t.target.matches(".mr-togglecolors")) {
+    mrToggleColors();
+  }
+  t.stopPropagation();
+});
+document.addEventListener("DOMContentLoaded", function () {
+  if (mrGetCookie("mrColors") == "mrLightColors") {
+    mrLightColors();
+  } else if (mrGetCookie("mrColors") == "mrDarkColors") {
+    mrDarkColors();
+  } else if (mrGetCookie("mrColors") == "mrColors") {
+    mrThemeColors();
   }
 
   const mrDragEles = document.querySelectorAll(
