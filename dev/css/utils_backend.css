@@ -76,6 +76,41 @@
   background-size: 36px;
 }
 
+.editor-styles-wrapper .mr-fontsize7,
+.editor-styles-wrapper .mr-largefontsize,
+.editor-styles-wrapper .mr-desktop-fontsize7,
+.editor-styles-wrapper .mr-desktop-largefontsize {
+  font-size: var(--font-size-7, 2rem);
+}
+.editor-styles-wrapper .mr-fontsize6,
+.editor-styles-wrapper .mr-desktop-fontsize6 {
+  font-size: var(--font-size-6, 1.125rem);
+}
+.editor-styles-wrapper .mr-fontsize5,
+.editor-styles-wrapper .mr-mediumfontsize,
+.editor-styles-wrapper .mr-desktop-fontsize5,
+.editor-styles-wrapper .mr-desktop-mediumfontsize {
+  font-size: var(--font-size-5, 1.17rem);
+}
+.editor-styles-wrapper .mr-fontsize4,
+.editor-styles-wrapper .mr-desktop-fontsize4 {
+  font-size: var(--font-size-4, 1rem);
+}
+.editor-styles-wrapper .mr-fontsize3,
+.editor-styles-wrapper .mr-desktop-fontsize3 {
+  font-size: var(--font-size-3, 0.875rem);
+}
+.editor-styles-wrapper .mr-fontsize2,
+.editor-styles-wrapper .mr-desktop-fontsize2 {
+  font-size: var(--font-size-2, 0.75rem);
+}
+.editor-styles-wrapper .mr-fontsize1,
+.editor-styles-wrapper .mr-smallfontsize,
+.editor-styles-wrapper .mr-desktop-fontsize1,
+.editor-styles-wrapper .mr-desktop-smallfontsize {
+  font-size: var(--font-size-1, 0.625rem);
+}
+
 @media (min-width: 782px) {
   .wp-block-columns[class*="mr-"][class*="perline"] > .wp-block-column {
     flex-basis: initial;
