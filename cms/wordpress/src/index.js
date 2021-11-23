@@ -883,7 +883,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																						"Pagination was applied but you need to preview the frontend to see the actual result.",
 																						"mrutils"
 																				  )
-																				: ""
+																				: "Add pagination into parent blocks (such as Group, Columns and List blocks), to consider each direct child element as a page item."
 																		}
 																	/>
 																	{mrPerPage > 0 ? (
