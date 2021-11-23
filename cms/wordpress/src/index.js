@@ -45,11 +45,10 @@ import {
 } from "@wordpress/icons";
 
 const allowedBlocks = [
-	"core/archives",
+	//Commented blocks means tested not working
 	"core/audio",
 	"core/buttons",
 	"core/button",
-	"core/categories",
 	"core/code",
 	"core/column",
 	"core/columns",
@@ -62,10 +61,6 @@ const allowedBlocks = [
 	"core/heading",
 	"core/html",
 	"core/image",
-	"core/latest-comments",
-	"core/latest-posts",
-	"core/latestComments",
-	"core/latestPosts",
 	"core/list",
 	"core/paragraph",
 	"core/preformatted",
@@ -80,8 +75,35 @@ const allowedBlocks = [
 	"core/verse",
 	"core/video",
 	"core/query-title",
+	"core/site-title",
+	"core/archives",
+	"core/categories",
+	"core/latest-comments",
+	"core/latest-posts",
+	"core/latestComments",
+	"core/latestPosts",
+	"core/rss",
+	"core/query",
 	"core/post-terms",
 	"core/post-template",
+	"core/site-logo",
+	"core/site-tagline",
+	"core/calendar",
+	"core/page-list",
+	"core/tag-cloud",
+	"core/search",
+	"core/loginout",
+	"core/navigation",
+	"core/post-author",
+	"core/post-comments",
+	"core/post-content",
+	"core/post-date",
+	"core/post-excerpt",
+	"core/post-featured-image",
+	"core/post-title",
+	"core/template-part",
+	"core/term-description",
+	"core/post-navigation-link",
 ];
 
 /**
@@ -720,7 +742,35 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 								props.name === "core/latestPosts" ||
 								props.name === "core/latestComments" ||
 								props.name === "core/post-template" ||
-								props.name === "core/post-terms" ? (
+								props.name === "core/post-terms" ||
+								props.name === "core/archives" ||
+								props.name === "core/categories" ||
+								props.name === "core/latest-comments" ||
+								props.name === "core/latest-posts" ||
+								props.name === "core/latestComments" ||
+								props.name === "core/latestPosts" ||
+								props.name === "core/rss" ||
+								props.name === "core/query" ||
+								props.name === "core/post-terms" ||
+								props.name === "core/post-template" ||
+								props.name === "core/site-logo" ||
+								props.name === "core/site-tagline" ||
+								props.name === "core/calendar" ||
+								props.name === "core/page-list" ||
+								props.name === "core/tag-cloud" ||
+								props.name === "core/search" ||
+								props.name === "core/loginout" ||
+								props.name === "core/navigation" ||
+								props.name === "core/post-author" ||
+								props.name === "core/post-comments" ||
+								props.name === "core/post-content" ||
+								props.name === "core/post-date" ||
+								props.name === "core/post-excerpt" ||
+								props.name === "core/post-featured-image" ||
+								props.name === "core/post-title" ||
+								props.name === "core/template-part" ||
+								props.name === "core/term-description" ||
+								props.name === "core/post-navigation-link" ? (
 									<>
 										<p>
 											Currently this block does not fully support the utilities
@@ -4465,11 +4515,11 @@ function mrApplyExtraClass(extraProps, blockType, attributes) {
 
 //add filters
 
-addFilter(
+/*addFilter(
 	"blocks.registerBlockType",
 	"mrutils/custom-attributes",
 	mrAddAttributes
-);
+);*/
 
 addFilter("editor.BlockEdit", "mrutils/custom-control", mrInspectorControls);
 
