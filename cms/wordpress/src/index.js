@@ -3088,17 +3088,17 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 													use, avoiding the load of all styles and scripts.
 												</li>
 												<li>
-													- Change the media query values to your own on each
-													device breakpoint.
+													- Enable only the categories and components that you
+													want to use, avoiding unused CSS and JS.
+												</li>
+												<li>
+													- Change the media query values of each device
+													breakpoint.
 												</li>
 												<li>- Create custom breakpoints.</li>
 												<li>
 													- Change the value of each variable (for margin,
 													padding, transition-duration, font-size and more).
-												</li>
-												<li>
-													- Enable only the categories and components that you
-													want to use, avoiding unused CSS and JS.
 												</li>
 												<li>- And more framework features...</li>
 											</ul>

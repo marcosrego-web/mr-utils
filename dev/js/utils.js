@@ -262,7 +262,7 @@ function mrPagination(t) {
 
         t.innerHTML =
           t.innerHTML +
-          '<div class="mr-pagination mr-absolute">' +
+          '<div class="mr-pagination mr-absolute mr-offsetbottom">' +
           mrPaginationArrows +
           mrPaginationSelect +
           mrPaginationRadio +
