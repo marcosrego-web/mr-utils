@@ -45,7 +45,6 @@ import {
 } from "@wordpress/icons";
 
 const allowedBlocks = [
-	//Commented blocks means tested not working
 	"core/audio",
 	"core/buttons",
 	"core/button",
@@ -76,7 +75,7 @@ const allowedBlocks = [
 	"core/video",
 	"core/query-title",
 	"core/site-title",
-	"core/archives",
+	/*"core/archives",
 	"core/categories",
 	"core/latest-comments",
 	"core/latest-posts",
@@ -103,7 +102,7 @@ const allowedBlocks = [
 	"core/post-title",
 	"core/template-part",
 	"core/term-description",
-	"core/post-navigation-link",
+	"core/post-navigation-link",*/
 ];
 
 /**
@@ -737,13 +736,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 					<InspectorControls key="setting">
 						<Panel header="">
 							<PanelBody title={__("Utilities", "mrutils")} initialOpen={false}>
-								{props.name === "core/latest-posts" ||
-								props.name === "core/latest-comments" ||
-								props.name === "core/latestPosts" ||
-								props.name === "core/latestComments" ||
-								props.name === "core/post-template" ||
-								props.name === "core/post-terms" ||
-								props.name === "core/archives" ||
+								{props.name === "core/archives" ||
 								props.name === "core/categories" ||
 								props.name === "core/latest-comments" ||
 								props.name === "core/latest-posts" ||
@@ -4515,11 +4508,11 @@ function mrApplyExtraClass(extraProps, blockType, attributes) {
 
 //add filters
 
-/*addFilter(
+addFilter(
 	"blocks.registerBlockType",
 	"mrutils/custom-attributes",
 	mrAddAttributes
-);*/
+);
 
 addFilter("editor.BlockEdit", "mrutils/custom-control", mrInspectorControls);
 
