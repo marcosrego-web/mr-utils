@@ -32,6 +32,12 @@ function mrutils_enqueue_mrutils_assets() {
                 $mrutils_version
         );
         wp_enqueue_style(
+            'mrutils-utils_hover',
+            esc_url( plugins_url( '../../css/utils_hover.css', __FILE__ ) ),
+            array( ),
+            $mrutils_version
+        );
+        wp_enqueue_style(
             'mrutils-utils_desktop',
             esc_url( plugins_url( '../../css/utils_desktop.css', __FILE__ ) ),
             array( ),

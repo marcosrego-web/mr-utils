@@ -322,3 +322,19 @@
 .mr-zoominright {
   transform-origin: right center;
 }
+.mr-transition,
+.mr-ease {
+  transition: all var(--transition-duration, 0.5s) ease;
+}
+.mr-easein {
+  transition: all var(--transition-duration, 0.5s) ease-in;
+}
+.mr-easeout {
+  transition: all var(--transition-duration, 0.5s) ease-out;
+}
+.mr-easeinout {
+  transition: all var(--transition-duration, 0.5s) ease-in-out;
+}
+.mr-linear {
+  transition: all var(--transition-duration, 0.5s) linear;
+}

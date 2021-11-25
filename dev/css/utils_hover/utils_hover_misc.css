@@ -1,0 +1,18 @@
+.mr-hover-scroll:hover {
+  overflow: auto;
+}
+.mr-hover-noscroll:hover {
+  overflow: hidden !important;
+}
+.mr-hover-hidescroll:not(.mr-horizontalscroll)::-webkit-scrollbar {
+  height: 0;
+}
+.mr-hover-hidescroll.mr-horizontalscroll::-webkit-scrollbar {
+  width: 0;
+}
+@supports (-webkit-overflow-scrolling: touch) {
+  .mr-hover-iosscroll:hover,
+  .mr-hover-scroll:hover {
+    overflow-y: scroll !important;
+  }
+}

@@ -42,9 +42,10 @@ import {
 	plusCircle,
 	layout,
 	pages,
+	moveTo,
 } from "@wordpress/icons";
 
-const allowedBlocks = [
+const mrAllowedBlocks = [
 	"core/audio",
 	"core/buttons",
 	"core/button",
@@ -105,6 +106,33 @@ const allowedBlocks = [
 	"core/post-navigation-link",*/
 ];
 
+const mrUtilsBreakpoints = ["hover", "desktop", "laptop", "tablet", "phone"];
+
+const mrUtilsGlobalFeatures = [
+	"animations",
+	"pagination",
+	"offcanvas",
+	"other",
+];
+
+const mrUtilsBreakpointsFeatures = [
+	"display",
+	"layout",
+	"placement",
+	"spacing",
+	"text",
+	"misc",
+];
+
+const mrUtilsStateFeatures = [
+	"animations",
+	"display",
+	"layout",
+	"spacing",
+	"text",
+	"misc",
+];
+
 /**
  * Adds custom icon
  */
@@ -127,13 +155,25 @@ const mrDevIcon = wp.element.createElement(
  */
 function mrAddAttributes(settings) {
 	//check if object exists for old Gutenberg version compatibility
-	//add allowedBlocks restriction
+	//add mrAllowedBlocks restriction
 	if (
 		typeof settings.attributes !== "undefined" &&
-		allowedBlocks.includes(settings.name)
+		mrAllowedBlocks.includes(settings.name)
 	) {
 		settings.attributes = Object.assign(settings.attributes, {
 			mrAnimation: {
+				type: "string",
+				default: "",
+			},
+			mrAnimationhover: {
+				type: "string",
+				default: "",
+			},
+			mrTransition: {
+				type: "string",
+				default: "",
+			},
+			mrTransitionhover: {
 				type: "string",
 				default: "",
 			},
@@ -197,6 +237,10 @@ function mrAddAttributes(settings) {
 				type: "int",
 				default: 0,
 			},
+			mrSizehover: {
+				type: "int",
+				default: 0,
+			},
 			mrSizedesktop: {
 				type: "int",
 				default: 0,
@@ -214,6 +258,10 @@ function mrAddAttributes(settings) {
 				default: 0,
 			},
 			mrDisplay: {
+				type: "string",
+				default: "",
+			},
+			mrDisplayhover: {
 				type: "string",
 				default: "",
 			},
@@ -257,6 +305,10 @@ function mrAddAttributes(settings) {
 				type: "string",
 				default: "",
 			},
+			mrPaddingTophover: {
+				type: "string",
+				default: "",
+			},
 			mrPaddingTopdesktop: {
 				type: "string",
 				default: "",
@@ -274,6 +326,10 @@ function mrAddAttributes(settings) {
 				default: "",
 			},
 			mrPaddingRight: {
+				type: "string",
+				default: "",
+			},
+			mrPaddingRighthover: {
 				type: "string",
 				default: "",
 			},
@@ -297,6 +353,10 @@ function mrAddAttributes(settings) {
 				type: "string",
 				default: "",
 			},
+			mrPaddingBottomhover: {
+				type: "string",
+				default: "",
+			},
 			mrPaddingBottomdesktop: {
 				type: "string",
 				default: "",
@@ -314,6 +374,10 @@ function mrAddAttributes(settings) {
 				default: "",
 			},
 			mrPaddingLeft: {
+				type: "string",
+				default: "",
+			},
+			mrPaddingLefthover: {
 				type: "string",
 				default: "",
 			},
@@ -337,6 +401,10 @@ function mrAddAttributes(settings) {
 				type: "string",
 				default: "",
 			},
+			mrMarginTophover: {
+				type: "string",
+				default: "",
+			},
 			mrMarginTopdesktop: {
 				type: "string",
 				default: "",
@@ -354,6 +422,10 @@ function mrAddAttributes(settings) {
 				default: "",
 			},
 			mrMarginRight: {
+				type: "string",
+				default: "",
+			},
+			mrMarginRighthover: {
 				type: "string",
 				default: "",
 			},
@@ -377,6 +449,10 @@ function mrAddAttributes(settings) {
 				type: "string",
 				default: "",
 			},
+			mrMarginBottomhover: {
+				type: "string",
+				default: "",
+			},
 			mrMarginBottomdesktop: {
 				type: "string",
 				default: "",
@@ -394,6 +470,10 @@ function mrAddAttributes(settings) {
 				default: "",
 			},
 			mrMarginLeft: {
+				type: "string",
+				default: "",
+			},
+			mrMarginLefthover: {
 				type: "string",
 				default: "",
 			},
@@ -538,6 +618,10 @@ function mrAddAttributes(settings) {
 				type: "int",
 				default: 0,
 			},
+			mrFontSizehover: {
+				type: "int",
+				default: 0,
+			},
 			mrFontSizedesktop: {
 				type: "int",
 				default: 0,
@@ -578,6 +662,10 @@ function mrAddAttributes(settings) {
 				type: "string",
 				default: "",
 			},
+			mrScrollhover: {
+				type: "string",
+				default: "",
+			},
 			mrScrolldesktop: {
 				type: "string",
 				default: "",
@@ -613,6 +701,9 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 
 		const {
 			mrAnimation,
+			mrAnimationhover,
+			mrTransition,
+			mrTransitionhover,
 			mrPerPage,
 			mrArrowPagination,
 			mrSelectPagination,
@@ -623,6 +714,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 			mrPerLinetablet,
 			mrPerLinephone,
 			mrSize,
+			mrSizehover,
 			mrSizedesktop,
 			mrSizelaptop,
 			mrSizetablet,
@@ -633,6 +725,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 			mrOrdertablet,
 			mrOrderphone,
 			mrDisplay,
+			mrDisplayhover,
 			mrDisplaydesktop,
 			mrDisplaylaptop,
 			mrDisplaytablet,
@@ -643,41 +736,49 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 			mrWraptablet,
 			mrWrapphone,
 			mrPaddingTop,
+			mrPaddingTophover,
 			mrPaddingTopdesktop,
 			mrPaddingToplaptop,
 			mrPaddingToptablet,
 			mrPaddingTopphone,
 			mrPaddingRight,
+			mrPaddingRighthover,
 			mrPaddingRightdesktop,
 			mrPaddingRightlaptop,
 			mrPaddingRighttablet,
 			mrPaddingRightphone,
 			mrPaddingBottom,
+			mrPaddingBottomhover,
 			mrPaddingBottomdesktop,
 			mrPaddingBottomlaptop,
 			mrPaddingBottomtablet,
 			mrPaddingBottomphone,
 			mrPaddingLeft,
+			mrPaddingLefthover,
 			mrPaddingLeftdesktop,
 			mrPaddingLeftlaptop,
 			mrPaddingLefttablet,
 			mrPaddingLeftphone,
 			mrMarginTop,
+			mrMarginTophover,
 			mrMarginTopdesktop,
 			mrMarginToplaptop,
 			mrMarginToptablet,
 			mrMarginTopphone,
 			mrMarginRight,
+			mrMarginRighthover,
 			mrMarginRightdesktop,
 			mrMarginRightlaptop,
 			mrMarginRighttablet,
 			mrMarginRightphone,
 			mrMarginBottom,
+			mrMarginBottomhover,
 			mrMarginBottomdesktop,
 			mrMarginBottomlaptop,
 			mrMarginBottomtablet,
 			mrMarginBottomphone,
 			mrMarginLeft,
+			mrMarginLefthover,
 			mrMarginLeftdesktop,
 			mrMarginLeftlaptop,
 			mrMarginLefttablet,
@@ -713,6 +814,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 			mrHorizontalOffsettablet,
 			mrHorizontalOffsetphone,
 			mrFontSize,
+			mrFontSizehover,
 			mrFontSizedesktop,
 			mrFontSizelaptop,
 			mrFontSizetablet,
@@ -723,6 +825,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 			mrTextAlignmenttablet,
 			mrTextAlignmentphone,
 			mrScroll,
+			mrScrollhover,
 			mrScrolldesktop,
 			mrScrolllaptop,
 			mrScrolltablet,
@@ -732,7 +835,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 		return (
 			<Fragment>
 				<BlockEdit {...props} />
-				{isSelected && allowedBlocks.includes(name) && (
+				{isSelected && mrAllowedBlocks.includes(name) && (
 					<InspectorControls key="setting">
 						<Panel header="">
 							<PanelBody title={__("Utilities", "mrutils")} initialOpen={false}>
@@ -798,6 +901,11 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 													className: "mr-backend-tab mr-backend-tab_all",
 												},
 												{
+													name: "hover",
+													title: moveTo,
+													className: "mr-backend-tab mr-backend-tab_hover",
+												},
+												{
 													name: "desktop",
 													title: aspectRatio,
 													className: "mr-backend-tab mr-backend-tab_desktop",
@@ -827,66 +935,208 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 											{(tab) =>
 												tab.name !== "more" ? (
 													<>
-														{tab.name === "" ? (
+														{tab.name === "" || tab.name === "hover" ? (
 															<PanelBody
 																icon={symbol}
-																title={__("Animations", "mrutils")}
+																title={tab.name + __(" Animations", "mrutils")}
 																initialOpen={false}
-																className="mr-backend-option mr-backend-option_utils_animations"
+																className={
+																	tab.name === ""
+																		? "mr-backend-option mr-backend-option_utils_animations"
+																		: "mr-backend-option mr-backend-option_utils_" +
+																		  tab.name +
+																		  "_animations"
+																}
 															>
 																<SelectControl
 																	label={__("Animation", "mrutils")}
-																	value={mrAnimation}
+																	value={
+																		tab.name === "hover"
+																			? mrAnimationhover
+																			: mrAnimation
+																	}
 																	options={[
 																		{ value: "", label: "Default" },
 																		{
-																			value: " mr-fade active",
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-fade active"
+																			).replace("--", "-"),
 																			label: "Fade",
 																		},
 																		{
-																			value: " mr-slidetop active",
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-slidetop active"
+																			).replace("--", "-"),
 																			label: "Slide Top",
 																		},
 																		{
-																			value: " mr-slideright active",
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-slideright active"
+																			).replace("--", "-"),
 																			label: "Slide Right",
 																		},
 																		{
-																			value: " mr-slidebottom active",
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-slidebottom active"
+																			).replace("--", "-"),
 																			label: "Slide Bottom",
 																		},
 																		{
-																			value: " mr-slideleft active",
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-slideleft active"
+																			).replace("--", "-"),
 																			label: "Slide Left",
 																		},
 																		{
-																			value: " mr-scale active",
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-scale active"
+																			).replace("--", "-"),
 																			label: "Scale",
 																		},
 																		{
-																			value: " mr-scaleright active",
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-scaleright active"
+																			).replace("--", "-"),
 																			label: "Scale Right",
 																		},
 																		{
-																			value: " mr-scaleleft active",
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-scaleleft active"
+																			).replace("--", "-"),
 																			label: "Scale Left",
 																		},
 																		{
-																			value: " mr-zoom active",
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-zoom active"
+																			).replace("--", "-"),
 																			label: "Zoom",
 																		},
 																		{
-																			value: " mr-zoomright active",
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-zoomright active"
+																			).replace("--", "-"),
 																			label: "Zoom Right",
 																		},
 																		{
-																			value: " mr-zoomleft active",
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-zoomleft active"
+																			).replace("--", "-"),
 																			label: "Zoom Left",
 																		},
 																	]}
 																	onChange={(val) =>
 																		setAttributes({
-																			mrAnimation: val === undefined ? "" : val,
+																			mrAnimation:
+																				val === undefined || val === ""
+																					? ""
+																					: val.includes("-desktop-") ||
+																					  val.includes("-laptop-") ||
+																					  val.includes("-tablet-") ||
+																					  val.includes("-phone-") ||
+																					  val.includes("-hover-")
+																					? mrAnimation
+																					: val.replace("--", "-"),
+																			mrAnimationhover:
+																				val === undefined || val === ""
+																					? ""
+																					: val !== undefined &&
+																					  val.includes("-hover-")
+																					? val
+																					: mrAnimationhover,
+																		})
+																	}
+																/>
+																<SelectControl
+																	label={__("Transition", "mrutils")}
+																	value={
+																		tab.name === "hover"
+																			? mrTransitionhover
+																			: mrTransition
+																	}
+																	options={[
+																		{ value: "", label: "Default" },
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-transition"
+																			).replace("--", "-"),
+																			label: "Ease",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-easeinout"
+																			).replace("--", "-"),
+																			label: "Ease In Out",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-easein"
+																			).replace("--", "-"),
+																			label: "Ease In",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-easeout"
+																			).replace("--", "-"),
+																			label: "Ease Out",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-linear"
+																			).replace("--", "-"),
+																			label: "Linear",
+																		},
+																	]}
+																	onChange={(val) =>
+																		setAttributes({
+																			mrTransition:
+																				val === undefined || val === ""
+																					? ""
+																					: val.includes("-desktop-") ||
+																					  val.includes("-laptop-") ||
+																					  val.includes("-tablet-") ||
+																					  val.includes("-phone-") ||
+																					  val.includes("-hover-")
+																					? mrTransition
+																					: val.replace("--", "-"),
+																			mrTransitionhover:
+																				val === undefined || val === ""
+																					? ""
+																					: val !== undefined &&
+																					  val.includes("-hover-")
+																					? val
+																					: mrTransitionhover,
 																		})
 																	}
 																/>
@@ -926,7 +1176,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																						"Pagination was applied but you need to preview the frontend to see the actual result.",
 																						"mrutils"
 																				  )
-																				: "Add pagination into parent blocks (such as Group, Columns and List blocks), to consider each direct child element as a page item."
+																				: "Adding pagination into parent blocks (such as Group, Columns and List blocks) will consider each direct child as a page's item."
 																		}
 																	/>
 																	{mrPerPage > 0 ? (
@@ -1160,6 +1410,8 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																value={
 																	tab.name === "desktop"
 																		? mrSizedesktop
+																		: tab.name === "hover"
+																		? mrSizehover
 																		: tab.name === "laptop"
 																		? mrSizelaptop
 																		: tab.name === "tablet"
@@ -1180,6 +1432,12 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																					? ""
 																					: val
 																				: mrSize,
+																		mrSizehover:
+																			tab.name === "hover"
+																				? val === 0 || val === undefined
+																					? ""
+																					: val
+																				: mrSizehover,
 																		mrSizedesktop:
 																			tab.name === "desktop"
 																				? val === 0 || val === undefined
@@ -1205,6 +1463,26 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																					: val
 																				: mrSizephone,
 																	})
+																}
+																help={
+																	tab.name == "" && mrSize > 0
+																		? getComputedStyle(
+																				document.documentElement
+																		  ).getPropertyValue("--size-" + mrSize) +
+																		  " var(--size-" +
+																		  mrSize +
+																		  ")"
+																		: tab.name == "hover" && mrSizehover > 0
+																		? "var(--size-" + mrSizehover + ")"
+																		: tab.name == "desktop" && mrSizedesktop > 0
+																		? "var(--size-" + mrSizedesktop + ")"
+																		: tab.name == "laptop" && mrSizelaptop > 0
+																		? "var(--size-" + mrSizelaptop + ")"
+																		: tab.name == "tablet" && mrSizetablet > 0
+																		? "var(--size-" + mrSizetablet + ")"
+																		: tab.name == "phone" && mrSizephone > 0
+																		? "var(--size-" + mrSizephone + ")"
+																		: ""
 																}
 															/>
 															<SelectControl
@@ -1393,7 +1671,9 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 															<SelectControl
 																label={__("Visibility", "mrutils")}
 																value={
-																	tab.name === "desktop"
+																	tab.name === "hover"
+																		? mrDisplayhover
+																		: tab.name === "desktop"
 																		? mrDisplaydesktop
 																		: tab.name === "laptop"
 																		? mrDisplaylaptop
@@ -1473,6 +1753,13 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																				  val.includes("-phone-")
 																				? mrDisplay
 																				: val.replace("--", "-"),
+																		mrDisplayhover:
+																			val === undefined || val === ""
+																				? ""
+																				: val !== undefined &&
+																				  val.includes("-hover-")
+																				? val
+																				: mrDisplayhover,
 																		mrDisplaydesktop:
 																			val === undefined || val === ""
 																				? ""
@@ -1507,6 +1794,9 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																	mrDisplay === " mr-hidden" ||
 																	mrDisplay === " mr-hide" ||
 																	mrDisplay === " mr-none" ||
+																	mrDisplayhover === " mr-hidden" ||
+																	mrDisplayhover === " mr-hide" ||
+																	mrDisplayhover === " mr-none" ||
 																	mrDisplaydesktop === " mr-hidden" ||
 																	mrDisplaydesktop === " mr-hide" ||
 																	mrDisplaydesktop === " mr-none" ||
@@ -1647,7 +1937,9 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																				<SelectControl
 																					label={__("Padding Top", "mrutils")}
 																					value={
-																						tab.name === "desktop"
+																						tab.name === "hover"
+																							? mrPaddingTophover
+																							: tab.name === "desktop"
 																							? mrPaddingTopdesktop
 																							: tab.name === "laptop"
 																							? mrPaddingToplaptop
@@ -1690,6 +1982,13 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																									  val.includes("-phone-")
 																									? mrPaddingTop
 																									: val.replace("--", "-"),
+																							mrPaddingTophover:
+																								val === undefined || val === ""
+																									? ""
+																									: val !== undefined &&
+																									  val.includes("-hover-")
+																									? val
+																									: mrPaddingTophover,
 																							mrPaddingTopdesktop:
 																								val === undefined || val === ""
 																									? ""
@@ -1725,7 +2024,9 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																				<SelectControl
 																					label={__("Padding Right", "mrutils")}
 																					value={
-																						tab.name === "desktop"
+																						tab.name === "hover"
+																							? mrPaddingRighthover
+																							: tab.name === "desktop"
 																							? mrPaddingRightdesktop
 																							: tab.name === "laptop"
 																							? mrPaddingRightlaptop
@@ -1768,6 +2069,13 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																									  val.includes("-phone-")
 																									? mrPaddingRight
 																									: val.replace("--", "-"),
+																							mrPaddingRighthover:
+																								val === undefined || val === ""
+																									? ""
+																									: val !== undefined &&
+																									  val.includes("-hover-")
+																									? val
+																									: mrPaddingRighthover,
 																							mrPaddingRightdesktop:
 																								val === undefined || val === ""
 																									? ""
@@ -1806,7 +2114,9 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																						"mrutils"
 																					)}
 																					value={
-																						tab.name === "desktop"
+																						tab.name === "hover"
+																							? mrPaddingBottomhover
+																							: tab.name === "desktop"
 																							? mrPaddingBottomdesktop
 																							: tab.name === "laptop"
 																							? mrPaddingBottomlaptop
@@ -1849,6 +2159,13 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																									  val.includes("-phone-")
 																									? mrPaddingBottom
 																									: val.replace("--", "-"),
+																							mrPaddingBottomhover:
+																								val === undefined || val === ""
+																									? ""
+																									: val !== undefined &&
+																									  val.includes("-hover-")
+																									? val
+																									: mrPaddingBottomhover,
 																							mrPaddingBottomdesktop:
 																								val === undefined || val === ""
 																									? ""
@@ -1884,7 +2201,9 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																				<SelectControl
 																					label={__("Padding Left", "mrutils")}
 																					value={
-																						tab.name === "desktop"
+																						tab.name === "hover"
+																							? mrPaddingLefthover
+																							: tab.name === "desktop"
 																							? mrPaddingLeftdesktop
 																							: tab.name === "laptop"
 																							? mrPaddingLeftlaptop
@@ -1927,6 +2246,13 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																									  val.includes("-phone-")
 																									? mrPaddingLeft
 																									: val.replace("--", "-"),
+																							mrPaddingLefthover:
+																								val === undefined || val === ""
+																									? ""
+																									: val !== undefined &&
+																									  val.includes("-hover-")
+																									? val
+																									: mrPaddingLefthover,
 																							mrPaddingLeftdesktop:
 																								val === undefined || val === ""
 																									? ""
@@ -1965,7 +2291,9 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																				<SelectControl
 																					label={__("Margin Top", "mrutils")}
 																					value={
-																						tab.name === "desktop"
+																						tab.name === "hover"
+																							? mrMarginTophover
+																							: tab.name === "desktop"
 																							? mrMarginTopdesktop
 																							: tab.name === "laptop"
 																							? mrMarginToplaptop
@@ -2008,6 +2336,13 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																									  val.includes("-phone-")
 																									? mrMarginTop
 																									: val.replace("--", "-"),
+																							mrMarginTophover:
+																								val === undefined || val === ""
+																									? ""
+																									: val !== undefined &&
+																									  val.includes("-hover-")
+																									? val
+																									: mrMarginTophover,
 																							mrMarginTopdesktop:
 																								val === undefined || val === ""
 																									? ""
@@ -2043,7 +2378,9 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																				<SelectControl
 																					label={__("Margin Right", "mrutils")}
 																					value={
-																						tab.name === "desktop"
+																						tab.name === "hover"
+																							? mrMarginRighthover
+																							: tab.name === "desktop"
 																							? mrMarginRightdesktop
 																							: tab.name === "laptop"
 																							? mrMarginRightlaptop
@@ -2086,6 +2423,13 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																									  val.includes("-phone-")
 																									? mrMarginRight
 																									: val.replace("--", "-"),
+																							mrMarginRighthover:
+																								val === undefined || val === ""
+																									? ""
+																									: val !== undefined &&
+																									  val.includes("-hover-")
+																									? val
+																									: mrMarginRighthover,
 																							mrMarginRightdesktop:
 																								val === undefined || val === ""
 																									? ""
@@ -2121,7 +2465,9 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																				<SelectControl
 																					label={__("Margin Bottom", "mrutils")}
 																					value={
-																						tab.name === "desktop"
+																						tab.name === "hover"
+																							? mrMarginBottomhover
+																							: tab.name === "desktop"
 																							? mrMarginBottomdesktop
 																							: tab.name === "laptop"
 																							? mrMarginBottomlaptop
@@ -2164,6 +2510,13 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																									  val.includes("-phone-")
 																									? mrMarginBottom
 																									: val.replace("--", "-"),
+																							mrMarginBottomhover:
+																								val === undefined || val === ""
+																									? ""
+																									: val !== undefined &&
+																									  val.includes("-hover-")
+																									? val
+																									: mrMarginBottomhover,
 																							mrMarginBottomdesktop:
 																								val === undefined || val === ""
 																									? ""
@@ -2199,7 +2552,9 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																				<SelectControl
 																					label={__("Margin Left", "mrutils")}
 																					value={
-																						tab.name === "desktop"
+																						tab.name === "hover"
+																							? mrMarginLefthover
+																							: tab.name === "desktop"
 																							? mrMarginLeftdesktop
 																							: tab.name === "laptop"
 																							? mrMarginLeftlaptop
@@ -2242,6 +2597,13 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																									  val.includes("-phone-")
 																									? mrMarginLeft
 																									: val.replace("--", "-"),
+																							mrMarginLefthover:
+																								val === undefined || val === ""
+																									? ""
+																									: val !== undefined &&
+																									  val.includes("-hover-")
+																									? val
+																									: mrMarginLefthover,
 																							mrMarginLeftdesktop:
 																								val === undefined || val === ""
 																									? ""
@@ -2279,7 +2641,6 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																</TabPanel>
 															</PanelRow>
 														</PanelBody>
-
 														<PanelBody
 															icon={typography}
 															title={tab.name + __(" Text", "mrutils")}
@@ -2295,7 +2656,9 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 															<RangeControl
 																label={__("Font Size", "mrutils")}
 																value={
-																	tab.name === "desktop"
+																	tab.name === "hover"
+																		? mrFontSizehover
+																		: tab.name === "desktop"
 																		? mrFontSizedesktop
 																		: tab.name === "laptop"
 																		? mrFontSizelaptop
@@ -2317,6 +2680,12 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																					? ""
 																					: val
 																				: mrFontSize,
+																		mrFontSizehover:
+																			tab.name === "hover"
+																				? val === 0 || val === undefined
+																					? ""
+																					: val
+																				: mrFontSizehover,
 																		mrFontSizedesktop:
 																			tab.name === "desktop"
 																				? val === 0 || val === undefined
@@ -2343,613 +2712,656 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																				: mrFontSizephone,
 																	})
 																}
-															/>
-
-															<SelectControl
-																label={__("Text Alignment", "mrutils")}
-																value={
-																	tab.name === "desktop"
-																		? mrTextAlignmentdesktop
-																		: tab.name === "laptop"
-																		? mrTextAlignmentlaptop
-																		: tab.name === "tablet"
-																		? mrTextAlignmenttablet
-																		: tab.name === "phone"
-																		? mrTextAlignmentphone
-																		: mrTextAlignment
-																}
-																options={
-																	(isSelected &&
-																		allowedBlocks.name != "core/paragraph") ||
-																	(isSelected &&
-																		allowedBlocks.name != "core/heading")
-																		? __([
-																				{ value: "", label: "Default" },
-																				{
-																					value: (
-																						" mr-" +
-																						tab.name +
-																						"-alignleft"
-																					).replace("--", "-"),
-																					label: "Left",
-																				},
-																				{
-																					value: (
-																						" mr-" +
-																						tab.name +
-																						"-aligncenter"
-																					).replace("--", "-"),
-																					label: "Center",
-																				},
-																				{
-																					value: (
-																						" mr-" +
-																						tab.name +
-																						"-alignright"
-																					).replace("--", "-"),
-																					label: "Right",
-																				},
-																		  ])
+																help={
+																	tab.name == "" && mrFontSize > 0
+																		? "var(--font-size-" + mrFontSize + ")"
+																		: tab.name == "hover" && mrFontSizehover > 0
+																		? "var(--font-size-" + mrFontSizehover + ")"
+																		: tab.name == "desktop" &&
+																		  mrFontSizedesktop > 0
+																		? "var(--font-size-" +
+																		  mrFontSizedesktop +
+																		  ")"
+																		: tab.name == "laptop" &&
+																		  mrFontSizelaptop > 0
+																		? "var(--font-size-" +
+																		  mrFontSizelaptop +
+																		  ")"
+																		: tab.name == "tablet" &&
+																		  mrFontSizetablet > 0
+																		? "var(--font-size-" +
+																		  mrFontSizetablet +
+																		  ")"
+																		: tab.name == "phone" && mrFontSizephone > 0
+																		? "var(--font-size-" + mrFontSizephone + ")"
 																		: ""
 																}
-																onChange={(val) =>
-																	setAttributes({
-																		mrTextAlignment:
-																			val === undefined || val === ""
-																				? ""
-																				: val.includes("-desktop-") ||
-																				  val.includes("-laptop-") ||
-																				  val.includes("-tablet-") ||
-																				  val.includes("-phone-")
-																				? mrTextAlignment
-																				: val.replace("--", "-"),
-																		mrTextAlignmentdesktop:
-																			val === undefined || val === ""
-																				? ""
-																				: val !== undefined &&
-																				  val.includes("-desktop-")
-																				? val
-																				: mrTextAlignmentdesktop,
-																		mrTextAlignmentlaptop:
-																			val === undefined || val === ""
-																				? ""
-																				: val !== undefined &&
-																				  val.includes("-laptop-")
-																				? val
-																				: mrTextAlignmentlaptop,
-																		mrTextAlignmenttablet:
-																			val === undefined || val === ""
-																				? ""
-																				: val !== undefined &&
-																				  val.includes("-tablet-")
-																				? val
-																				: mrTextAlignmenttablet,
-																		mrTextAlignmentphone:
-																			val === undefined || val === ""
-																				? ""
-																				: val !== undefined &&
-																				  val.includes("-phone-")
-																				? val
-																				: mrTextAlignmentphone,
-																	})
-																}
 															/>
+
+															{tab.name !== "hover" ? (
+																<>
+																	<SelectControl
+																		label={__("Text Alignment", "mrutils")}
+																		value={
+																			tab.name === "desktop"
+																				? mrTextAlignmentdesktop
+																				: tab.name === "laptop"
+																				? mrTextAlignmentlaptop
+																				: tab.name === "tablet"
+																				? mrTextAlignmenttablet
+																				: tab.name === "phone"
+																				? mrTextAlignmentphone
+																				: mrTextAlignment
+																		}
+																		options={
+																			(isSelected &&
+																				mrAllowedBlocks.name !=
+																					"core/paragraph") ||
+																			(isSelected &&
+																				mrAllowedBlocks.name != "core/heading")
+																				? __([
+																						{ value: "", label: "Default" },
+																						{
+																							value: (
+																								" mr-" +
+																								tab.name +
+																								"-alignleft"
+																							).replace("--", "-"),
+																							label: "Left",
+																						},
+																						{
+																							value: (
+																								" mr-" +
+																								tab.name +
+																								"-aligncenter"
+																							).replace("--", "-"),
+																							label: "Center",
+																						},
+																						{
+																							value: (
+																								" mr-" +
+																								tab.name +
+																								"-alignright"
+																							).replace("--", "-"),
+																							label: "Right",
+																						},
+																				  ])
+																				: ""
+																		}
+																		onChange={(val) =>
+																			setAttributes({
+																				mrTextAlignment:
+																					val === undefined || val === ""
+																						? ""
+																						: val.includes("-desktop-") ||
+																						  val.includes("-laptop-") ||
+																						  val.includes("-tablet-") ||
+																						  val.includes("-phone-")
+																						? mrTextAlignment
+																						: val.replace("--", "-"),
+																				mrTextAlignmentdesktop:
+																					val === undefined || val === ""
+																						? ""
+																						: val !== undefined &&
+																						  val.includes("-desktop-")
+																						? val
+																						: mrTextAlignmentdesktop,
+																				mrTextAlignmentlaptop:
+																					val === undefined || val === ""
+																						? ""
+																						: val !== undefined &&
+																						  val.includes("-laptop-")
+																						? val
+																						: mrTextAlignmentlaptop,
+																				mrTextAlignmenttablet:
+																					val === undefined || val === ""
+																						? ""
+																						: val !== undefined &&
+																						  val.includes("-tablet-")
+																						? val
+																						: mrTextAlignmenttablet,
+																				mrTextAlignmentphone:
+																					val === undefined || val === ""
+																						? ""
+																						: val !== undefined &&
+																						  val.includes("-phone-")
+																						? val
+																						: mrTextAlignmentphone,
+																			})
+																		}
+																	/>
+																</>
+															) : (
+																""
+															)}
 														</PanelBody>
+														{tab.name !== "hover" ? (
+															<>
+																<PanelBody
+																	icon={pullLeft}
+																	title={tab.name + __(" Placement", "mrutils")}
+																	initialOpen={false}
+																	className={
+																		tab.name === ""
+																			? "mr-backend-option mr-backend-option_utils_placement"
+																			: "mr-backend-option mr-backend-option_utils_" +
+																			  tab.name +
+																			  "_placement"
+																	}
+																>
+																	<SelectControl
+																		label={__("Position Type", "mrutils")}
+																		value={
+																			tab.name === "desktop"
+																				? mrPositiondesktop
+																				: tab.name === "laptop"
+																				? mrPositionlaptop
+																				: tab.name === "tablet"
+																				? mrPositiontablet
+																				: tab.name === "phone"
+																				? mrPositionphone
+																				: mrPosition
+																		}
+																		options={[
+																			{ value: "", label: "Default" },
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-relative"
+																				).replace("--", "-"),
+																				label: "Relative",
+																			},
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-absolute"
+																				).replace("--", "-"),
+																				label: "Absolute",
+																			},
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-fixed"
+																				).replace("--", "-"),
+																				label: "Fixed",
+																			},
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-sticky"
+																				).replace("--", "-"),
+																				label: "Sticky",
+																			},
+																		]}
+																		onChange={(val) =>
+																			setAttributes({
+																				mrPosition:
+																					val === undefined || val === ""
+																						? ""
+																						: val.includes("-desktop-") ||
+																						  val.includes("-laptop-") ||
+																						  val.includes("-tablet-") ||
+																						  val.includes("-phone-")
+																						? mrPosition
+																						: val.replace("--", "-"),
+																				mrPositiondesktop:
+																					val === undefined || val === ""
+																						? ""
+																						: val !== undefined &&
+																						  val.includes("-desktop-")
+																						? val
+																						: mrPositiondesktop,
+																				mrPositionlaptop:
+																					val === undefined || val === ""
+																						? ""
+																						: val !== undefined &&
+																						  val.includes("-laptop-")
+																						? val
+																						: mrPositionlaptop,
+																				mrPositiontablet:
+																					val === undefined || val === ""
+																						? ""
+																						: val !== undefined &&
+																						  val.includes("-tablet-")
+																						? val
+																						: mrPositiontablet,
+																				mrPositionphone:
+																					val === undefined || val === ""
+																						? ""
+																						: val !== undefined &&
+																						  val.includes("-phone-")
+																						? val
+																						: mrPositionphone,
+																			})
+																		}
+																	/>
 
-														<PanelBody
-															icon={pullLeft}
-															title={tab.name + __(" Placement", "mrutils")}
-															initialOpen={false}
-															className={
-																tab.name === ""
-																	? "mr-backend-option mr-backend-option_utils_placement"
-																	: "mr-backend-option mr-backend-option_utils_" +
-																	  tab.name +
-																	  "_placement"
-															}
-														>
-															<SelectControl
-																label={__("Position Type", "mrutils")}
-																value={
-																	tab.name === "desktop"
-																		? mrPositiondesktop
-																		: tab.name === "laptop"
-																		? mrPositionlaptop
-																		: tab.name === "tablet"
-																		? mrPositiontablet
-																		: tab.name === "phone"
-																		? mrPositionphone
-																		: mrPosition
-																}
-																options={[
-																	{ value: "", label: "Default" },
-																	{
-																		value: (
-																			" mr-" +
-																			tab.name +
-																			"-relative"
-																		).replace("--", "-"),
-																		label: "Relative",
-																	},
-																	{
-																		value: (
-																			" mr-" +
-																			tab.name +
-																			"-absolute"
-																		).replace("--", "-"),
-																		label: "Absolute",
-																	},
-																	{
-																		value: (
-																			" mr-" +
-																			tab.name +
-																			"-fixed"
-																		).replace("--", "-"),
-																		label: "Fixed",
-																	},
-																	{
-																		value: (
-																			" mr-" +
-																			tab.name +
-																			"-sticky"
-																		).replace("--", "-"),
-																		label: "Sticky",
-																	},
-																]}
-																onChange={(val) =>
-																	setAttributes({
-																		mrPosition:
-																			val === undefined || val === ""
-																				? ""
-																				: val.includes("-desktop-") ||
-																				  val.includes("-laptop-") ||
-																				  val.includes("-tablet-") ||
-																				  val.includes("-phone-")
-																				? mrPosition
-																				: val.replace("--", "-"),
-																		mrPositiondesktop:
-																			val === undefined || val === ""
-																				? ""
-																				: val !== undefined &&
-																				  val.includes("-desktop-")
-																				? val
-																				: mrPositiondesktop,
-																		mrPositionlaptop:
-																			val === undefined || val === ""
-																				? ""
-																				: val !== undefined &&
-																				  val.includes("-laptop-")
-																				? val
-																				: mrPositionlaptop,
-																		mrPositiontablet:
-																			val === undefined || val === ""
-																				? ""
-																				: val !== undefined &&
-																				  val.includes("-tablet-")
-																				? val
-																				: mrPositiontablet,
-																		mrPositionphone:
-																			val === undefined || val === ""
-																				? ""
-																				: val !== undefined &&
-																				  val.includes("-phone-")
-																				? val
-																				: mrPositionphone,
-																	})
-																}
-															/>
-
-															<SelectControl
-																label={__("Vertical Alignment", "mrutils")}
-																value={
-																	tab.name === "desktop"
-																		? mrPositionAlignmentdesktop
-																		: tab.name === "laptop"
-																		? mrPositionAlignmentlaptop
-																		: tab.name === "tablet"
-																		? mrPositionAlignmenttablet
-																		: tab.name === "phone"
-																		? mrPositionAlignmentphone
-																		: mrPositionAlignment
-																}
-																options={
-																	(mrPosition + tab.name).includes(
-																		"absolute"
-																	) ||
-																	(mrPosition + tab.name).includes("fixed") ||
-																	(mrPosition + tab.name).includes("sticky")
-																		? __([
-																				{ value: "", label: "Default" },
-																				{
-																					value: (
-																						" mr-" +
-																						tab.name +
-																						"-top"
-																					).replace("--", "-"),
-																					label: "Top",
-																				},
-																				{
-																					value: (
-																						" mr-" +
-																						tab.name +
-																						"-bottom"
-																					).replace("--", "-"),
-																					label: "Bottom",
-																				},
-																		  ])
-																		: ""
-																}
-																onChange={(val) =>
-																	setAttributes({
-																		mrPositionAlignment:
-																			val === undefined || val === ""
-																				? ""
-																				: val.includes("-desktop-") ||
-																				  val.includes("-laptop-") ||
-																				  val.includes("-tablet-") ||
-																				  val.includes("-phone-")
-																				? mrPositionAlignment
-																				: val.replace("--", "-"),
-																		mrPositionAlignmentdesktop:
-																			val === undefined || val === ""
-																				? ""
-																				: val !== undefined &&
-																				  val.includes("-desktop-")
-																				? val
-																				: mrPositionAlignmentdesktop,
-																		mrPositionAlignmentlaptop:
-																			val === undefined || val === ""
-																				? ""
-																				: val !== undefined &&
-																				  val.includes("-laptop-")
-																				? val
-																				: mrPositionAlignmentlaptop,
-																		mrPositionAlignmenttablet:
-																			val === undefined || val === ""
-																				? ""
-																				: val !== undefined &&
-																				  val.includes("-tablet-")
-																				? val
-																				: mrPositionAlignmenttablet,
-																		mrPositionAlignmentphone:
-																			val === undefined || val === ""
-																				? ""
-																				: val !== undefined &&
-																				  val.includes("-phone-")
-																				? val
-																				: mrPositionAlignmentphone,
-																	})
-																}
-															/>
-															<SelectControl
-																label={__("Horizontal Alignment", "mrutils")}
-																value={
-																	tab.name === "desktop"
-																		? mrPositionSidesdesktop
-																		: tab.name === "laptop"
-																		? mrPositionSideslaptop
-																		: tab.name === "tablet"
-																		? mrPositionSidestablet
-																		: tab.name === "phone"
-																		? mrPositionSidesphone
-																		: mrPositionSides
-																}
-																options={
-																	(mrPosition + tab.name).includes(
-																		"absolute"
-																	) ||
-																	(mrPosition + tab.name).includes("fixed") ||
-																	(mrPosition + tab.name).includes("sticky")
-																		? __([
-																				{ value: "", label: "Default" },
-																				{
-																					value: (
-																						" mr-" +
-																						tab.name +
-																						"-right"
-																					).replace("--", "-"),
-																					label: "Right",
-																				},
-																				{
-																					value: (
-																						" mr-" +
-																						tab.name +
-																						"-left"
-																					).replace("--", "-"),
-																					label: "Left",
-																				},
-																		  ])
-																		: ""
-																}
-																onChange={(val) =>
-																	setAttributes({
-																		mrPositionSides:
-																			val === undefined || val === ""
-																				? ""
-																				: val.includes("-desktop-") ||
-																				  val.includes("-laptop-") ||
-																				  val.includes("-tablet-") ||
-																				  val.includes("-phone-")
-																				? mrPositionSides
-																				: val.replace("--", "-"),
-																		mrPositionSidesdesktop:
-																			val === undefined || val === ""
-																				? ""
-																				: val !== undefined &&
-																				  val.includes("-desktop-")
-																				? val
-																				: mrPositionSidesdesktop,
-																		mrPositionSideslaptop:
-																			val === undefined || val === ""
-																				? ""
-																				: val !== undefined &&
-																				  val.includes("-laptop-")
-																				? val
-																				: mrPositionSideslaptop,
-																		mrPositionSidestablet:
-																			val === undefined || val === ""
-																				? ""
-																				: val !== undefined &&
-																				  val.includes("-tablet-")
-																				? val
-																				: mrPositionSidestablet,
-																		mrPositionSidesphone:
-																			val === undefined || val === ""
-																				? ""
-																				: val !== undefined &&
-																				  val.includes("-phone-")
-																				? val
-																				: mrPositionSidesphone,
-																	})
-																}
-															/>
-															<SelectControl
-																label={__("Content Alignment", "mrutils")}
-																value={
-																	tab.name === "desktop"
-																		? mrContentAlignmentdesktop
-																		: tab.name === "laptop"
-																		? mrContentAlignmentlaptop
-																		: tab.name === "tablet"
-																		? mrContentAlignmenttablet
-																		: tab.name === "phone"
-																		? mrContentAlignmentphone
-																		: mrContentAlignment
-																}
-																options={__([
-																	{ value: "", label: "Default" },
-																	{
-																		value: (
-																			" mr-" +
-																			tab.name +
-																			"-aligntop"
-																		).replace("--", "-"),
-																		label: "Top",
-																	},
-																	{
-																		value: (
-																			" mr-" +
-																			tab.name +
-																			"-floatright"
-																		).replace("--", "-"),
-																		label: "Right",
-																	},
-																	{
-																		value: (
-																			" mr-" +
-																			tab.name +
-																			"-alignbottom"
-																		).replace("--", "-"),
-																		label: "Bottom",
-																	},
-																	{
-																		value: (
-																			" mr-" +
-																			tab.name +
-																			"-floatleft"
-																		).replace("--", "-"),
-																		label: "Left",
-																	},
-																	{
-																		value: (
-																			" mr-" +
-																			tab.name +
-																			"-middle"
-																		).replace("--", "-"),
-																		label: "Middle",
-																	},
-																])}
-																onChange={(val) =>
-																	setAttributes({
-																		mrContentAlignment:
-																			val === undefined || val === ""
-																				? ""
-																				: val.includes("-desktop-") ||
-																				  val.includes("-laptop-") ||
-																				  val.includes("-tablet-") ||
-																				  val.includes("-phone-")
-																				? mrContentAlignment
-																				: val.replace("--", "-"),
-																		mrContentAlignmentdesktop:
-																			val === undefined || val === ""
-																				? ""
-																				: val !== undefined &&
-																				  val.includes("-desktop-")
-																				? val
-																				: mrContentAlignmentdesktop,
-																		mrContentAlignmentlaptop:
-																			val === undefined || val === ""
-																				? ""
-																				: val !== undefined &&
-																				  val.includes("-laptop-")
-																				? val
-																				: mrContentAlignmentlaptop,
-																		mrContentAlignmenttablet:
-																			val === undefined || val === ""
-																				? ""
-																				: val !== undefined &&
-																				  val.includes("-tablet-")
-																				? val
-																				: mrContentAlignmenttablet,
-																		mrContentAlignmentphone:
-																			val === undefined || val === ""
-																				? ""
-																				: val !== undefined &&
-																				  val.includes("-phone-")
-																				? val
-																				: mrContentAlignmentphone,
-																	})
-																}
-															/>
-															<SelectControl
-																label={__("Vertical Offset", "mrutils")}
-																value={
-																	tab.name === "desktop"
-																		? mrVerticalOffsetdesktop
-																		: tab.name === "laptop"
-																		? mrVerticalOffsetlaptop
-																		: tab.name === "tablet"
-																		? mrVerticalOffsettablet
-																		: tab.name === "phone"
-																		? mrVerticalOffsetphone
-																		: mrVerticalOffset
-																}
-																options={__([
-																	{ value: "", label: "Default" },
-																	{
-																		value: (
-																			" mr-" +
-																			tab.name +
-																			"-offsettop"
-																		).replace("--", "-"),
-																		label: "Top",
-																	},
-																	{
-																		value: (
-																			" mr-" +
-																			tab.name +
-																			"-offsetbottom"
-																		).replace("--", "-"),
-																		label: "Bottom",
-																	},
-																])}
-																onChange={(val) =>
-																	setAttributes({
-																		mrVerticalOffset:
-																			val === undefined || val === ""
-																				? ""
-																				: val.includes("-desktop-") ||
-																				  val.includes("-laptop-") ||
-																				  val.includes("-tablet-") ||
-																				  val.includes("-phone-")
-																				? mrVerticalOffset
-																				: val.replace("--", "-"),
-																		mrVerticalOffsetdesktop:
-																			val === undefined || val === ""
-																				? ""
-																				: val !== undefined &&
-																				  val.includes("-desktop-")
-																				? val
-																				: mrVerticalOffsetdesktop,
-																		mrVerticalOffsetlaptop:
-																			val === undefined || val === ""
-																				? ""
-																				: val !== undefined &&
-																				  val.includes("-laptop-")
-																				? val
-																				: mrVerticalOffsetlaptop,
-																		mrVerticalOffsettablet:
-																			val === undefined || val === ""
-																				? ""
-																				: val !== undefined &&
-																				  val.includes("-tablet-")
-																				? val
-																				: mrVerticalOffsettablet,
-																		mrVerticalOffsetphone:
-																			val === undefined || val === ""
-																				? ""
-																				: val !== undefined &&
-																				  val.includes("-phone-")
-																				? val
-																				: mrVerticalOffsetphone,
-																	})
-																}
-															/>
-															<SelectControl
-																label={__("Horizontal Offset", "mrutils")}
-																value={
-																	tab.name === "desktop"
-																		? mrHorizontalOffsetdesktop
-																		: tab.name === "laptop"
-																		? mrHorizontalOffsetlaptop
-																		: tab.name === "tablet"
-																		? mrHorizontalOffsettablet
-																		: tab.name === "phone"
-																		? mrHorizontalOffsetphone
-																		: mrHorizontalOffset
-																}
-																options={__([
-																	{ value: "", label: "Default" },
-																	{
-																		value: (
-																			" mr-" +
-																			tab.name +
-																			"-offsetleft"
-																		).replace("--", "-"),
-																		label: "Left",
-																	},
-																	{
-																		value: (
-																			" mr-" +
-																			tab.name +
-																			"-offsetright"
-																		).replace("--", "-"),
-																		label: "Right",
-																	},
-																])}
-																onChange={(val) =>
-																	setAttributes({
-																		mrHorizontalOffset:
-																			val === undefined || val === ""
-																				? ""
-																				: val.includes("-desktop-") ||
-																				  val.includes("-laptop-") ||
-																				  val.includes("-tablet-") ||
-																				  val.includes("-phone-")
-																				? mrHorizontalOffset
-																				: val.replace("--", "-"),
-																		mrHorizontalOffsetdesktop:
-																			val === undefined || val === ""
-																				? ""
-																				: val !== undefined &&
-																				  val.includes("-desktop-")
-																				? val
-																				: mrHorizontalOffsetdesktop,
-																		mrHorizontalOffsetlaptop:
-																			val === undefined || val === ""
-																				? ""
-																				: val !== undefined &&
-																				  val.includes("-laptop-")
-																				? val
-																				: mrHorizontalOffsetlaptop,
-																		mrHorizontalOffsettablet:
-																			val === undefined || val === ""
-																				? ""
-																				: val !== undefined &&
-																				  val.includes("-tablet-")
-																				? val
-																				: mrHorizontalOffsettablet,
-																		mrHorizontalOffsetphone:
-																			val === undefined || val === ""
-																				? ""
-																				: val !== undefined &&
-																				  val.includes("-phone-")
-																				? val
-																				: mrHorizontalOffsetphone,
-																	})
-																}
-															/>
-														</PanelBody>
+																	<SelectControl
+																		label={__("Vertical Alignment", "mrutils")}
+																		value={
+																			tab.name === "desktop"
+																				? mrPositionAlignmentdesktop
+																				: tab.name === "laptop"
+																				? mrPositionAlignmentlaptop
+																				: tab.name === "tablet"
+																				? mrPositionAlignmenttablet
+																				: tab.name === "phone"
+																				? mrPositionAlignmentphone
+																				: mrPositionAlignment
+																		}
+																		options={
+																			(mrPosition + tab.name).includes(
+																				"absolute"
+																			) ||
+																			(mrPosition + tab.name).includes(
+																				"fixed"
+																			) ||
+																			(mrPosition + tab.name).includes("sticky")
+																				? __([
+																						{ value: "", label: "Default" },
+																						{
+																							value: (
+																								" mr-" +
+																								tab.name +
+																								"-top"
+																							).replace("--", "-"),
+																							label: "Top",
+																						},
+																						{
+																							value: (
+																								" mr-" +
+																								tab.name +
+																								"-bottom"
+																							).replace("--", "-"),
+																							label: "Bottom",
+																						},
+																				  ])
+																				: ""
+																		}
+																		onChange={(val) =>
+																			setAttributes({
+																				mrPositionAlignment:
+																					val === undefined || val === ""
+																						? ""
+																						: val.includes("-desktop-") ||
+																						  val.includes("-laptop-") ||
+																						  val.includes("-tablet-") ||
+																						  val.includes("-phone-")
+																						? mrPositionAlignment
+																						: val.replace("--", "-"),
+																				mrPositionAlignmentdesktop:
+																					val === undefined || val === ""
+																						? ""
+																						: val !== undefined &&
+																						  val.includes("-desktop-")
+																						? val
+																						: mrPositionAlignmentdesktop,
+																				mrPositionAlignmentlaptop:
+																					val === undefined || val === ""
+																						? ""
+																						: val !== undefined &&
+																						  val.includes("-laptop-")
+																						? val
+																						: mrPositionAlignmentlaptop,
+																				mrPositionAlignmenttablet:
+																					val === undefined || val === ""
+																						? ""
+																						: val !== undefined &&
+																						  val.includes("-tablet-")
+																						? val
+																						: mrPositionAlignmenttablet,
+																				mrPositionAlignmentphone:
+																					val === undefined || val === ""
+																						? ""
+																						: val !== undefined &&
+																						  val.includes("-phone-")
+																						? val
+																						: mrPositionAlignmentphone,
+																			})
+																		}
+																	/>
+																	<SelectControl
+																		label={__(
+																			"Horizontal Alignment",
+																			"mrutils"
+																		)}
+																		value={
+																			tab.name === "desktop"
+																				? mrPositionSidesdesktop
+																				: tab.name === "laptop"
+																				? mrPositionSideslaptop
+																				: tab.name === "tablet"
+																				? mrPositionSidestablet
+																				: tab.name === "phone"
+																				? mrPositionSidesphone
+																				: mrPositionSides
+																		}
+																		options={
+																			(mrPosition + tab.name).includes(
+																				"absolute"
+																			) ||
+																			(mrPosition + tab.name).includes(
+																				"fixed"
+																			) ||
+																			(mrPosition + tab.name).includes("sticky")
+																				? __([
+																						{ value: "", label: "Default" },
+																						{
+																							value: (
+																								" mr-" +
+																								tab.name +
+																								"-right"
+																							).replace("--", "-"),
+																							label: "Right",
+																						},
+																						{
+																							value: (
+																								" mr-" +
+																								tab.name +
+																								"-left"
+																							).replace("--", "-"),
+																							label: "Left",
+																						},
+																				  ])
+																				: ""
+																		}
+																		onChange={(val) =>
+																			setAttributes({
+																				mrPositionSides:
+																					val === undefined || val === ""
+																						? ""
+																						: val.includes("-desktop-") ||
+																						  val.includes("-laptop-") ||
+																						  val.includes("-tablet-") ||
+																						  val.includes("-phone-")
+																						? mrPositionSides
+																						: val.replace("--", "-"),
+																				mrPositionSidesdesktop:
+																					val === undefined || val === ""
+																						? ""
+																						: val !== undefined &&
+																						  val.includes("-desktop-")
+																						? val
+																						: mrPositionSidesdesktop,
+																				mrPositionSideslaptop:
+																					val === undefined || val === ""
+																						? ""
+																						: val !== undefined &&
+																						  val.includes("-laptop-")
+																						? val
+																						: mrPositionSideslaptop,
+																				mrPositionSidestablet:
+																					val === undefined || val === ""
+																						? ""
+																						: val !== undefined &&
+																						  val.includes("-tablet-")
+																						? val
+																						: mrPositionSidestablet,
+																				mrPositionSidesphone:
+																					val === undefined || val === ""
+																						? ""
+																						: val !== undefined &&
+																						  val.includes("-phone-")
+																						? val
+																						: mrPositionSidesphone,
+																			})
+																		}
+																	/>
+																	<SelectControl
+																		label={__("Content Alignment", "mrutils")}
+																		value={
+																			tab.name === "desktop"
+																				? mrContentAlignmentdesktop
+																				: tab.name === "laptop"
+																				? mrContentAlignmentlaptop
+																				: tab.name === "tablet"
+																				? mrContentAlignmenttablet
+																				: tab.name === "phone"
+																				? mrContentAlignmentphone
+																				: mrContentAlignment
+																		}
+																		options={__([
+																			{ value: "", label: "Default" },
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-aligntop"
+																				).replace("--", "-"),
+																				label: "Top",
+																			},
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-floatright"
+																				).replace("--", "-"),
+																				label: "Right",
+																			},
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-alignbottom"
+																				).replace("--", "-"),
+																				label: "Bottom",
+																			},
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-floatleft"
+																				).replace("--", "-"),
+																				label: "Left",
+																			},
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-middle"
+																				).replace("--", "-"),
+																				label: "Middle",
+																			},
+																		])}
+																		onChange={(val) =>
+																			setAttributes({
+																				mrContentAlignment:
+																					val === undefined || val === ""
+																						? ""
+																						: val.includes("-desktop-") ||
+																						  val.includes("-laptop-") ||
+																						  val.includes("-tablet-") ||
+																						  val.includes("-phone-")
+																						? mrContentAlignment
+																						: val.replace("--", "-"),
+																				mrContentAlignmentdesktop:
+																					val === undefined || val === ""
+																						? ""
+																						: val !== undefined &&
+																						  val.includes("-desktop-")
+																						? val
+																						: mrContentAlignmentdesktop,
+																				mrContentAlignmentlaptop:
+																					val === undefined || val === ""
+																						? ""
+																						: val !== undefined &&
+																						  val.includes("-laptop-")
+																						? val
+																						: mrContentAlignmentlaptop,
+																				mrContentAlignmenttablet:
+																					val === undefined || val === ""
+																						? ""
+																						: val !== undefined &&
+																						  val.includes("-tablet-")
+																						? val
+																						: mrContentAlignmenttablet,
+																				mrContentAlignmentphone:
+																					val === undefined || val === ""
+																						? ""
+																						: val !== undefined &&
+																						  val.includes("-phone-")
+																						? val
+																						: mrContentAlignmentphone,
+																			})
+																		}
+																	/>
+																	<SelectControl
+																		label={__("Vertical Offset", "mrutils")}
+																		value={
+																			tab.name === "desktop"
+																				? mrVerticalOffsetdesktop
+																				: tab.name === "laptop"
+																				? mrVerticalOffsetlaptop
+																				: tab.name === "tablet"
+																				? mrVerticalOffsettablet
+																				: tab.name === "phone"
+																				? mrVerticalOffsetphone
+																				: mrVerticalOffset
+																		}
+																		options={__([
+																			{ value: "", label: "Default" },
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-offsettop"
+																				).replace("--", "-"),
+																				label: "Top",
+																			},
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-offsetbottom"
+																				).replace("--", "-"),
+																				label: "Bottom",
+																			},
+																		])}
+																		onChange={(val) =>
+																			setAttributes({
+																				mrVerticalOffset:
+																					val === undefined || val === ""
+																						? ""
+																						: val.includes("-desktop-") ||
+																						  val.includes("-laptop-") ||
+																						  val.includes("-tablet-") ||
+																						  val.includes("-phone-")
+																						? mrVerticalOffset
+																						: val.replace("--", "-"),
+																				mrVerticalOffsetdesktop:
+																					val === undefined || val === ""
+																						? ""
+																						: val !== undefined &&
+																						  val.includes("-desktop-")
+																						? val
+																						: mrVerticalOffsetdesktop,
+																				mrVerticalOffsetlaptop:
+																					val === undefined || val === ""
+																						? ""
+																						: val !== undefined &&
+																						  val.includes("-laptop-")
+																						? val
+																						: mrVerticalOffsetlaptop,
+																				mrVerticalOffsettablet:
+																					val === undefined || val === ""
+																						? ""
+																						: val !== undefined &&
+																						  val.includes("-tablet-")
+																						? val
+																						: mrVerticalOffsettablet,
+																				mrVerticalOffsetphone:
+																					val === undefined || val === ""
+																						? ""
+																						: val !== undefined &&
+																						  val.includes("-phone-")
+																						? val
+																						: mrVerticalOffsetphone,
+																			})
+																		}
+																	/>
+																	<SelectControl
+																		label={__("Horizontal Offset", "mrutils")}
+																		value={
+																			tab.name === "desktop"
+																				? mrHorizontalOffsetdesktop
+																				: tab.name === "laptop"
+																				? mrHorizontalOffsetlaptop
+																				: tab.name === "tablet"
+																				? mrHorizontalOffsettablet
+																				: tab.name === "phone"
+																				? mrHorizontalOffsetphone
+																				: mrHorizontalOffset
+																		}
+																		options={__([
+																			{ value: "", label: "Default" },
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-offsetleft"
+																				).replace("--", "-"),
+																				label: "Left",
+																			},
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-offsetright"
+																				).replace("--", "-"),
+																				label: "Right",
+																			},
+																		])}
+																		onChange={(val) =>
+																			setAttributes({
+																				mrHorizontalOffset:
+																					val === undefined || val === ""
+																						? ""
+																						: val.includes("-desktop-") ||
+																						  val.includes("-laptop-") ||
+																						  val.includes("-tablet-") ||
+																						  val.includes("-phone-")
+																						? mrHorizontalOffset
+																						: val.replace("--", "-"),
+																				mrHorizontalOffsetdesktop:
+																					val === undefined || val === ""
+																						? ""
+																						: val !== undefined &&
+																						  val.includes("-desktop-")
+																						? val
+																						: mrHorizontalOffsetdesktop,
+																				mrHorizontalOffsetlaptop:
+																					val === undefined || val === ""
+																						? ""
+																						: val !== undefined &&
+																						  val.includes("-laptop-")
+																						? val
+																						: mrHorizontalOffsetlaptop,
+																				mrHorizontalOffsettablet:
+																					val === undefined || val === ""
+																						? ""
+																						: val !== undefined &&
+																						  val.includes("-tablet-")
+																						? val
+																						: mrHorizontalOffsettablet,
+																				mrHorizontalOffsetphone:
+																					val === undefined || val === ""
+																						? ""
+																						: val !== undefined &&
+																						  val.includes("-phone-")
+																						? val
+																						: mrHorizontalOffsetphone,
+																			})
+																		}
+																	/>
+																</PanelBody>
+															</>
+														) : (
+															""
+														)}
 														<PanelBody
 															icon={plusCircle}
 															title={tab.name + __(" Misc.", "mrutils")}
@@ -2965,7 +3377,9 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 															<SelectControl
 																label={__("Scroll", "mrutils")}
 																value={
-																	tab.name === "desktop"
+																	tab.name === "hover"
+																		? mrScrollhover
+																		: tab.name === "desktop"
 																		? mrScrolldesktop
 																		: tab.name === "laptop"
 																		? mrScrolllaptop
@@ -3001,38 +3415,46 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																		).replace("--", "-"),
 																		label: "Scroll",
 																	},
-																	{
-																		value: (
-																			" mr-" +
-																			tab.name +
-																			"-horizontalscroll"
-																		).replace("--", "-"),
-																		label: "Horizontal scroll",
-																	},
-																	{
-																		value: (
-																			" mr-" +
-																			tab.name +
-																			"-horizontalscrollcontent"
-																		).replace("--", "-"),
-																		label: "Horizontal scroll content",
-																	},
-																	{
-																		value: (
-																			" mr-" +
-																			tab.name +
-																			"-swipe"
-																		).replace("--", "-"),
-																		label: "Swipe",
-																	},
-																	{
-																		value: (
-																			" mr-" +
-																			tab.name +
-																			"-swipecontent"
-																		).replace("--", "-"),
-																		label: "Swipe content",
-																	},
+																	tab.name != "hover"
+																		? {
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-horizontalscroll"
+																				).replace("--", "-"),
+																				label: "Horizontal scroll",
+																		  }
+																		: "",
+																	tab.name != "hover"
+																		? {
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-horizontalscrollcontent"
+																				).replace("--", "-"),
+																				label: "Horizontal scroll content",
+																		  }
+																		: "",
+																	tab.name != "hover"
+																		? {
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-swipe"
+																				).replace("--", "-"),
+																				label: "Swipe",
+																		  }
+																		: "",
+																	tab.name != "hover"
+																		? {
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-swipecontent"
+																				).replace("--", "-"),
+																				label: "Swipe content",
+																		  }
+																		: "",
 																]}
 																onChange={(val) =>
 																	setAttributes({
@@ -3045,6 +3467,13 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																				  val.includes("-phone-")
 																				? mrScroll
 																				: val.replace("--", "-"),
+																		mrScrollhover:
+																			val === undefined || val === ""
+																				? ""
+																				: val !== undefined &&
+																				  val.includes("-hover-")
+																				? val
+																				: mrScrollhover,
 																		mrScrolldesktop:
 																			val === undefined || val === ""
 																				? ""
@@ -3125,24 +3554,26 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 											<p>
 												<b>Then you need Mr.Dev.'s Framework!</b>
 											</p>
+											<p>The framework will give you an interface to:</p>
 											<ul>
 												<li>
 													- Select only the device breakpoints that you want to
 													use, avoiding the load of all styles and scripts.
 												</li>
 												<li>
-													- Enable only the categories and components that you
+													- Enable only the components and features that you
 													want to use, avoiding unused CSS and JS.
+												</li>
+												<li>
+													- Change the value of each variable (for margin,
+													padding, transition-duration, size, font-size and
+													more).
 												</li>
 												<li>
 													- Change the media query values of each device
 													breakpoint.
 												</li>
 												<li>- Create custom breakpoints.</li>
-												<li>
-													- Change the value of each variable (for margin,
-													padding, transition-duration, font-size and more).
-												</li>
 												<li>- And more framework features...</li>
 											</ul>
 											<p>
@@ -3180,6 +3611,9 @@ const mrApplyWrapperExtraClass = createHigherOrderComponent(
 
 			const {
 				mrAnimation,
+				mrAnimationhover,
+				mrTransition,
+				mrTransitionhover,
 				mrPerPage,
 				mrArrowPagination,
 				mrSelectPagination,
@@ -3190,6 +3624,7 @@ const mrApplyWrapperExtraClass = createHigherOrderComponent(
 				mrPerLinetablet,
 				mrPerLinephone,
 				mrSize,
+				mrSizehover,
 				mrSizedesktop,
 				mrSizelaptop,
 				mrSizetablet,
@@ -3200,6 +3635,7 @@ const mrApplyWrapperExtraClass = createHigherOrderComponent(
 				mrOrdertablet,
 				mrOrderphone,
 				mrDisplay,
+				mrDisplayhover,
 				mrDisplaydesktop,
 				mrDisplaylaptop,
 				mrDisplaytablet,
@@ -3210,41 +3646,49 @@ const mrApplyWrapperExtraClass = createHigherOrderComponent(
 				mrWraptablet,
 				mrWrapphone,
 				mrPaddingTop,
+				mrPaddingTophover,
 				mrPaddingTopdesktop,
 				mrPaddingToplaptop,
 				mrPaddingToptablet,
 				mrPaddingTopphone,
 				mrPaddingRight,
+				mrPaddingRighthover,
 				mrPaddingRightdesktop,
 				mrPaddingRightlaptop,
 				mrPaddingRighttablet,
 				mrPaddingRightphone,
 				mrPaddingBottom,
+				mrPaddingBottomhover,
 				mrPaddingBottomdesktop,
 				mrPaddingBottomlaptop,
 				mrPaddingBottomtablet,
 				mrPaddingBottomphone,
 				mrPaddingLeft,
+				mrPaddingLefthover,
 				mrPaddingLeftdesktop,
 				mrPaddingLeftlaptop,
 				mrPaddingLefttablet,
 				mrPaddingLeftphone,
 				mrMarginTop,
+				mrMarginTophover,
 				mrMarginTopdesktop,
 				mrMarginToplaptop,
 				mrMarginToptablet,
 				mrMarginTopphone,
 				mrMarginRight,
+				mrMarginRighthover,
 				mrMarginRightdesktop,
 				mrMarginRightlaptop,
 				mrMarginRighttablet,
 				mrMarginRightphone,
 				mrMarginBottom,
+				mrMarginBottomhover,
 				mrMarginBottomdesktop,
 				mrMarginBottomlaptop,
 				mrMarginBottomtablet,
 				mrMarginBottomphone,
 				mrMarginLeft,
+				mrMarginLefthover,
 				mrMarginLeftdesktop,
 				mrMarginLeftlaptop,
 				mrMarginLefttablet,
@@ -3280,6 +3724,7 @@ const mrApplyWrapperExtraClass = createHigherOrderComponent(
 				mrHorizontalOffsettablet,
 				mrHorizontalOffsetphone,
 				mrFontSize,
+				mrFontSizehover,
 				mrFontSizedesktop,
 				mrFontSizelaptop,
 				mrFontSizetablet,
@@ -3290,6 +3735,7 @@ const mrApplyWrapperExtraClass = createHigherOrderComponent(
 				mrTextAlignmenttablet,
 				mrTextAlignmentphone,
 				mrScroll,
+				mrScrollhover,
 				mrScrolldesktop,
 				mrScrolllaptop,
 				mrScrolltablet,
@@ -3297,333 +3743,405 @@ const mrApplyWrapperExtraClass = createHigherOrderComponent(
 			} = attributes;
 
 			let mrClassNames = "";
-			if (
-				mrPerPage &&
-				mrPerPage > 0 /*&&
-				allowedBlocks.includes(blockType.name)*/
-			) {
+
+			/*Object.keys(attributes).forEach(function (value) {
+				console.log(attributes);
+				if (
+					attributes == "mrPerPage" &&
+					attributes[value] &&
+					attributes[value] > 0
+				) {
+					mrClassNames = mrClassNames + "mr-" + attributes[value] + "perpage";
+				} else if (attributes == "mrArrowPagination" && attributes[value]) {
+					mrClassNames = mrClassNames + " mr-arrowpagination";
+				} else if (attributes == "mrSelectPagination" && attributes[value]) {
+					mrClassNames = mrClassNames + " mr-selectpagination";
+				} else if (attributes == "mrRadioPagination" && attributes[value]) {
+					mrClassNames = mrClassNames + " mr-radiopagination";
+				} else if (attributes == "mrSize" && attributes[value]) {
+					mrClassNames = mrClassNames + " mr-size" + attributes[value];
+				} else if (attributes == "mrSizehover" && attributes[value]) {
+					mrClassNames = mrClassNames + " mr-hover-size" + attributes[value];
+				} else if (attributes == "mrSizedesktop" && attributes[value]) {
+					mrClassNames = mrClassNames + " mr-desktop-size" + attributes[value];
+				} else if (attributes == "mrSizelaptop" && attributes[value]) {
+					mrClassNames = mrClassNames + " mr-laptop-size" + attributes[value];
+				} else if (attributes == "mrSizetablet" && attributes[value]) {
+					mrClassNames = mrClassNames + " mr-tablet-size" + attributes[value];
+				} else if (attributes == "mrSizephone" && attributes[value]) {
+					mrClassNames = mrClassNames + " mr-phone-size" + attributes[value];
+				} else if (attributes == "mrFontSize" && attributes[value]) {
+					mrClassNames = mrClassNames + " mr-size" + attributes[value];
+				} else if (attributes == "mrFontSizehover" && attributes[value]) {
+					mrClassNames =
+						mrClassNames + " mr-hover-fontsize" + attributes[value];
+				} else if (attributes == "mrFontSizedesktop" && attributes[value]) {
+					mrClassNames =
+						mrClassNames + " mr-desktop-fontsize" + attributes[value];
+				} else if (attributes == "mrFontSizelaptop" && attributes[value]) {
+					mrClassNames =
+						mrClassNames + " mr-laptop-fontsize" + attributes[value];
+				} else if (attributes == "mrFontSizetablet" && attributes[value]) {
+					mrClassNames =
+						mrClassNames + " mr-tablet-fontsize" + attributes[value];
+				} else if (attributes == "mrFontSizephone" && attributes[value]) {
+					mrClassNames =
+						mrClassNames + " mr-phone-fontsize" + attributes[value];
+				} else if (attributes.startsWith("mr") && attributes[value]) {
+					mrClassNames = mrClassNames + " mr-" + attributes[value];
+				}
+			});
+			*/
+
+			if (mrPerPage && mrPerPage > 0) {
 				mrClassNames = mrClassNames + "mr-" + mrPerPage + "perpage";
 			}
 
-			if (mrArrowPagination /*&&
-				allowedBlocks.includes(blockType.name)*/) {
+			if (mrArrowPagination) {
 				mrClassNames = mrClassNames + " mr-arrowpagination";
 			}
 
-			if (mrSelectPagination /*&&
-				allowedBlocks.includes(blockType.name)*/) {
+			if (mrSelectPagination) {
 				mrClassNames = mrClassNames + " mr-selectpagination";
 			}
 
-			if (mrRadioPagination /*&&
-				allowedBlocks.includes(blockType.name)*/) {
+			if (mrRadioPagination) {
 				mrClassNames = mrClassNames + " mr-radiopagination";
 			}
 
-			if (mrPerLine /*&&
-				allowedBlocks.includes(blockType.name)*/) {
+			if (mrPerLine) {
 				mrClassNames = mrClassNames + mrPerLine;
 			}
 
-			if (mrPerLinedesktop /*&&
-				allowedBlocks.includes(blockType.name)*/) {
+			if (mrPerLinedesktop) {
 				mrClassNames = mrClassNames + mrPerLinedesktop;
 			}
 
-			if (mrPerLinelaptop /*&&
-				allowedBlocks.includes(blockType.name)*/) {
+			if (mrPerLinelaptop) {
 				mrClassNames = mrClassNames + mrPerLinelaptop;
 			}
 
-			if (mrPerLinetablet /*&&
-				allowedBlocks.includes(blockType.name)*/) {
+			if (mrPerLinetablet) {
 				mrClassNames = mrClassNames + mrPerLinetablet;
 			}
 
-			if (mrPerLinephone /*&&
-				allowedBlocks.includes(blockType.name)*/) {
+			if (mrPerLinephone) {
 				mrClassNames = mrClassNames + mrPerLinephone;
 			}
 
-			if (mrSize /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrSize) {
 				mrClassNames = mrClassNames + " mr-size" + mrSize;
 			}
 
-			if (mrSizedesktop /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrSizehover) {
+				mrClassNames = mrClassNames + " mr-hover-size" + mrSizehover;
+			}
+
+			if (mrSizedesktop) {
 				mrClassNames = mrClassNames + " mr-desktop-size" + mrSizedesktop;
 			}
 
-			if (mrSizelaptop /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrSizelaptop) {
 				mrClassNames = mrClassNames + " mr-laptop-size" + mrSizelaptop;
 			}
 
-			if (mrSizetablet /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrSizetablet) {
 				mrClassNames = mrClassNames + " mr-tablet-size" + mrSizetablet;
 			}
 
-			if (mrSizephone /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrSizephone) {
 				mrClassNames = mrClassNames + " mr-phone-size" + mrSizephone;
 			}
 
-			if (mrOrder /*&&
-				allowedBlocks.includes(blockType.name)*/) {
+			if (mrOrder) {
 				mrClassNames = mrClassNames + mrOrder;
 			}
 
-			if (mrOrderdesktop /*&&
-				allowedBlocks.includes(blockType.name)*/) {
+			if (mrOrderdesktop) {
 				mrClassNames = mrClassNames + mrOrderdesktop;
 			}
 
-			if (mrOrderlaptop /*&&
-				allowedBlocks.includes(blockType.name)*/) {
+			if (mrOrderlaptop) {
 				mrClassNames = mrClassNames + mrOrderlaptop;
 			}
 
-			if (mrOrdertablet /*&&
-				allowedBlocks.includes(blockType.name)*/) {
+			if (mrOrdertablet) {
 				mrClassNames = mrClassNames + mrOrdertablet;
 			}
 
-			if (mrOrderphone /*&&
-				allowedBlocks.includes(blockType.name)*/) {
+			if (mrOrderphone) {
 				mrClassNames = mrClassNames + mrOrderphone;
 			}
 
-			if (mrAnimation /*&&
-				allowedBlocks.includes(blockType.name)*/) {
+			if (mrAnimation) {
 				mrClassNames = mrClassNames + mrAnimation;
 			}
 
-			if (mrDisplay /*&&
-				allowedBlocks.includes(blockType.name)*/) {
+			if (mrAnimationhover) {
+				mrClassNames = mrClassNames + mrAnimationhover;
+			}
+
+			if (mrTransition) {
+				mrClassNames = mrClassNames + mrTransition;
+			}
+
+			if (mrTransitionhover) {
+				mrClassNames = mrClassNames + mrTransitionhover;
+			}
+
+			if (mrDisplay) {
 				mrClassNames = mrClassNames + mrDisplay;
 			}
 
-			if (mrDisplaydesktop /*&&
-				allowedBlocks.includes(blockType.name)*/) {
+			if (mrDisplayhover) {
+				mrClassNames = mrClassNames + mrDisplayhover;
+			}
+
+			if (mrDisplaydesktop) {
 				mrClassNames = mrClassNames + mrDisplaydesktop;
 			}
 
-			if (mrDisplaylaptop /*&&
-				allowedBlocks.includes(blockType.name)*/) {
+			if (mrDisplaylaptop) {
 				mrClassNames = mrClassNames + mrDisplaylaptop;
 			}
 
-			if (mrDisplaytablet /*&&
-				allowedBlocks.includes(blockType.name)*/) {
+			if (mrDisplaytablet) {
 				mrClassNames = mrClassNames + mrDisplaytablet;
 			}
 
-			if (mrDisplayphone /*&&
-				allowedBlocks.includes(blockType.name)*/) {
+			if (mrDisplayphone) {
 				mrClassNames = mrClassNames + mrDisplayphone;
 			}
 
-			if (mrWrap /*&&
-				allowedBlocks.includes(blockType.name)*/) {
+			if (mrWrap) {
 				mrClassNames = mrClassNames + mrWrap;
 			}
 
-			if (mrWrapdesktop /*&&
-				allowedBlocks.includes(blockType.name)*/) {
+			if (mrWrapdesktop) {
 				mrClassNames = mrClassNames + mrWrapdesktop;
 			}
 
-			if (mrWraplaptop /*&&
-				allowedBlocks.includes(blockType.name)*/) {
+			if (mrWraplaptop) {
 				mrClassNames = mrClassNames + mrWraplaptop;
 			}
 
-			if (mrWraptablet /*&&
-				allowedBlocks.includes(blockType.name)*/) {
+			if (mrWraptablet) {
 				mrClassNames = mrClassNames + mrWraptablet;
 			}
 
-			if (mrWrapphone /*&&
-				allowedBlocks.includes(blockType.name)*/) {
+			if (mrWrapphone) {
 				mrClassNames = mrClassNames + mrWrap;
 			}
 
-			if (mrPaddingTop /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrPaddingTop) {
 				mrClassNames = mrClassNames + mrPaddingTop;
 			}
 
-			if (mrPaddingTopdesktop /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrPaddingTophover) {
+				mrClassNames = mrClassNames + mrPaddingTophover;
+			}
+
+			if (mrPaddingTopdesktop) {
 				mrClassNames = mrClassNames + mrPaddingTopdesktop;
 			}
 
-			if (mrPaddingToplaptop /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrPaddingToplaptop) {
 				mrClassNames = mrClassNames + mrPaddingToplaptop;
 			}
 
-			if (mrPaddingToptablet /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrPaddingToptablet) {
 				mrClassNames = mrClassNames + mrPaddingToptablet;
 			}
 
-			if (mrPaddingTopphone /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrPaddingTopphone) {
 				mrClassNames = mrClassNames + mrPaddingTopphone;
 			}
 
-			if (mrPaddingRight /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrPaddingRight) {
 				mrClassNames = mrClassNames + mrPaddingRight;
 			}
 
-			if (mrPaddingRightdesktop /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrPaddingRighthover) {
+				mrClassNames = mrClassNames + mrPaddingRighthover;
+			}
+
+			if (mrPaddingRightdesktop) {
 				mrClassNames = mrClassNames + mrPaddingRightdesktop;
 			}
 
-			if (mrPaddingRightlaptop /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrPaddingRightlaptop) {
 				mrClassNames = mrClassNames + mrPaddingRightlaptop;
 			}
 
-			if (mrPaddingRighttablet /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrPaddingRighttablet) {
 				mrClassNames = mrClassNames + mrPaddingRighttablet;
 			}
 
-			if (mrPaddingRightphone /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrPaddingRightphone) {
 				mrClassNames = mrClassNames + mrPaddingRightphone;
 			}
 
-			if (mrPaddingBottom /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrPaddingBottom) {
 				mrClassNames = mrClassNames + mrPaddingBottom;
 			}
 
-			if (
-				mrPaddingBottomdesktop /*&& allowedBlocks.includes(blockType.name)*/
-			) {
+			if (mrPaddingBottomhover) {
+				mrClassNames = mrClassNames + mrPaddingBottomhover;
+			}
+
+			if (mrPaddingBottomdesktop) {
 				mrClassNames = mrClassNames + mrPaddingBottomdesktop;
 			}
 
-			if (mrPaddingBottomlaptop /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrPaddingBottomlaptop) {
 				mrClassNames = mrClassNames + mrPaddingBottomlaptop;
 			}
 
-			if (mrPaddingBottomtablet /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrPaddingBottomtablet) {
 				mrClassNames = mrClassNames + mrPaddingBottomtablet;
 			}
 
-			if (mrPaddingBottomphone /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrPaddingBottomphone) {
 				mrClassNames = mrClassNames + mrPaddingBottomphone;
 			}
 
-			if (mrPaddingLeft /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrPaddingLeft) {
 				mrClassNames = mrClassNames + mrPaddingLeft;
 			}
 
-			if (mrPaddingLeftdesktop /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrPaddingLefthover) {
+				mrClassNames = mrClassNames + mrPaddingLefthover;
+			}
+
+			if (mrPaddingLeftdesktop) {
 				mrClassNames = mrClassNames + mrPaddingLeftdesktop;
 			}
 
-			if (mrPaddingLeftlaptop /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrPaddingLeftlaptop) {
 				mrClassNames = mrClassNames + mrPaddingLeftlaptop;
 			}
 
-			if (mrPaddingLefttablet /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrPaddingLefttablet) {
 				mrClassNames = mrClassNames + mrPaddingLefttablet;
 			}
 
-			if (mrPaddingLeftphone /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrPaddingLeftphone) {
 				mrClassNames = mrClassNames + mrPaddingLeftphone;
 			}
 
-			if (mrMarginTop /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrMarginTop) {
 				mrClassNames = mrClassNames + mrMarginTop;
 			}
 
-			if (mrMarginTopdesktop /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrMarginTophover) {
+				mrClassNames = mrClassNames + mrMarginTophover;
+			}
+
+			if (mrMarginTopdesktop) {
 				mrClassNames = mrClassNames + mrMarginTopdesktop;
 			}
 
-			if (mrMarginToplaptop /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrMarginToplaptop) {
 				mrClassNames = mrClassNames + mrMarginToplaptop;
 			}
 
-			if (mrMarginToptablet /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrMarginToptablet) {
 				mrClassNames = mrClassNames + mrMarginToptablet;
 			}
 
-			if (mrMarginTopphone /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrMarginTopphone) {
 				mrClassNames = mrClassNames + mrMarginTopphone;
 			}
 
-			if (mrMarginRight /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrMarginRight) {
 				mrClassNames = mrClassNames + mrMarginRight;
 			}
 
-			if (mrMarginRightdesktop /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrMarginRighthover) {
+				mrClassNames = mrClassNames + mrMarginRighthover;
+			}
+
+			if (mrMarginRightdesktop) {
 				mrClassNames = mrClassNames + mrMarginRightdesktop;
 			}
 
-			if (mrMarginRightlaptop /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrMarginRightlaptop) {
 				mrClassNames = mrClassNames + mrMarginRightlaptop;
 			}
 
-			if (mrMarginRighttablet /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrMarginRighttablet) {
 				mrClassNames = mrClassNames + mrMarginRighttablet;
 			}
 
-			if (mrMarginRightphone /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrMarginRightphone) {
 				mrClassNames = mrClassNames + mrMarginRightphone;
 			}
 
-			if (mrMarginBottom /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrMarginBottom) {
 				mrClassNames = mrClassNames + mrMarginBottom;
 			}
 
-			if (mrMarginBottomdesktop /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrMarginBottomhover) {
+				mrClassNames = mrClassNames + mrMarginBottomhover;
+			}
+
+			if (mrMarginBottomdesktop) {
 				mrClassNames = mrClassNames + mrMarginBottomdesktop;
 			}
 
-			if (mrMarginBottomlaptop /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrMarginBottomlaptop) {
 				mrClassNames = mrClassNames + mrMarginBottomlaptop;
 			}
 
-			if (mrMarginBottomtablet /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrMarginBottomtablet) {
 				mrClassNames = mrClassNames + mrMarginBottomtablet;
 			}
 
-			if (mrMarginBottomphone /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrMarginBottomphone) {
 				mrClassNames = mrClassNames + mrMarginBottomphone;
 			}
 
-			if (mrMarginLeft /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrMarginLeft) {
 				mrClassNames = mrClassNames + mrMarginLeft;
 			}
 
-			if (mrMarginLeftdesktop /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrMarginLefthover) {
+				mrClassNames = mrClassNames + mrMarginLefthover;
+			}
+
+			if (mrMarginLeftdesktop) {
 				mrClassNames = mrClassNames + mrMarginLeftdesktop;
 			}
 
-			if (mrMarginLeftlaptop /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrMarginLeftlaptop) {
 				mrClassNames = mrClassNames + mrMarginLeftlaptop;
 			}
 
-			if (mrMarginLefttablet /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrMarginLefttablet) {
 				mrClassNames = mrClassNames + mrMarginLefttablet;
 			}
 
-			if (mrMarginLeftphone /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrMarginLeftphone) {
 				mrClassNames = mrClassNames + mrMarginLeftphone;
 			}
 
-			if (mrPosition /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrPosition) {
 				mrClassNames = mrClassNames + mrPosition;
 			}
 
-			if (mrPositiondesktop /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrPositiondesktop) {
 				mrClassNames = mrClassNames + mrPositiondesktop;
 			}
 
-			if (mrPositionlaptop /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrPositionlaptop) {
 				mrClassNames = mrClassNames + mrPositionlaptop;
 			}
 
-			if (mrPositiontablet /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrPositiontablet) {
 				mrClassNames = mrClassNames + mrPositiontablet;
 			}
 
-			if (mrPositionphone /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrPositionphone) {
 				mrClassNames = mrClassNames + mrPositionphone;
 			}
 
@@ -3632,10 +4150,10 @@ const mrApplyWrapperExtraClass = createHigherOrderComponent(
 				mrPosition === " mr-fixed" ||
 				mrPosition === " mr-sticky"
 			) {
-				if (mrPositionAlignment /*&& allowedBlocks.includes(blockType.name)*/) {
+				if (mrPositionAlignment) {
 					mrClassNames = mrClassNames + mrPositionAlignment;
 				}
-				if (mrPositionSides /*&& allowedBlocks.includes(blockType.name)*/) {
+				if (mrPositionSides) {
 					mrClassNames = mrClassNames + mrPositionSides;
 				}
 			}
@@ -3645,14 +4163,10 @@ const mrApplyWrapperExtraClass = createHigherOrderComponent(
 				mrPositiondesktop === " mr-desktop-fixed" ||
 				mrPositiondesktop === " mr-desktop-sticky"
 			) {
-				if (
-					mrPositionAlignmentdesktop /*&& allowedBlocks.includes(blockType.name)*/
-				) {
+				if (mrPositionAlignmentdesktop) {
 					mrClassNames = mrClassNames + mrPositionAlignmentdesktop;
 				}
-				if (
-					mrPositionSidesdesktop /*&& allowedBlocks.includes(blockType.name)*/
-				) {
+				if (mrPositionSidesdesktop) {
 					mrClassNames = mrClassNames + mrPositionSidesdesktop;
 				}
 			}
@@ -3662,14 +4176,10 @@ const mrApplyWrapperExtraClass = createHigherOrderComponent(
 				mrPositionlaptop === " mr-laptop-fixed" ||
 				mrPositionlaptop === " mr-laptop-sticky"
 			) {
-				if (
-					mrPositionAlignmentlaptop /*&& allowedBlocks.includes(blockType.name)*/
-				) {
+				if (mrPositionAlignmentlaptop) {
 					mrClassNames = mrClassNames + mrPositionAlignmentlaptop;
 				}
-				if (
-					mrPositionSideslaptop /*&& allowedBlocks.includes(blockType.name)*/
-				) {
+				if (mrPositionSideslaptop) {
 					mrClassNames = mrClassNames + mrPositionSideslaptop;
 				}
 			}
@@ -3679,14 +4189,10 @@ const mrApplyWrapperExtraClass = createHigherOrderComponent(
 				mrPositiontablet === " mr-tablet-fixed" ||
 				mrPositiontablet === " mr-tablet-sticky"
 			) {
-				if (
-					mrPositionAlignmenttablet /*&& allowedBlocks.includes(blockType.name)*/
-				) {
+				if (mrPositionAlignmenttablet) {
 					mrClassNames = mrClassNames + mrPositionAlignmenttablet;
 				}
-				if (
-					mrPositionSidestablet /*&& allowedBlocks.includes(blockType.name)*/
-				) {
+				if (mrPositionSidestablet) {
 					mrClassNames = mrClassNames + mrPositionSidestablet;
 				}
 			}
@@ -3696,162 +4202,143 @@ const mrApplyWrapperExtraClass = createHigherOrderComponent(
 				mrPositionphone === " mr-phone-fixed" ||
 				mrPositionphone === " mr-phone-sticky"
 			) {
-				if (
-					mrPositionAlignmentphone /*&& allowedBlocks.includes(blockType.name)*/
-				) {
+				if (mrPositionAlignmentphone) {
 					mrClassNames = mrClassNames + mrPositionAlignmentphone;
 				}
-				if (
-					mrPositionSidesphone /*&& allowedBlocks.includes(blockType.name)*/
-				) {
+				if (mrPositionSidesphone) {
 					mrClassNames = mrClassNames + mrPositionSidesphone;
 				}
 			}
 
-			if (mrContentAlignment /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrContentAlignment) {
 				mrClassNames = mrClassNames + mrContentAlignment;
 			}
 
-			if (
-				mrContentAlignmentdesktop /*&& allowedBlocks.includes(blockType.name)*/
-			) {
+			if (mrContentAlignmentdesktop) {
 				mrClassNames = mrClassNames + mrContentAlignmentdesktop;
 			}
 
-			if (
-				mrContentAlignmentlaptop /*&& allowedBlocks.includes(blockType.name)*/
-			) {
+			if (mrContentAlignmentlaptop) {
 				mrClassNames = mrClassNames + mrContentAlignmentlaptop;
 			}
 
-			if (
-				mrContentAlignmenttablet /*&& allowedBlocks.includes(blockType.name)*/
-			) {
+			if (mrContentAlignmenttablet) {
 				mrClassNames = mrClassNames + mrContentAlignmenttablet;
 			}
 
-			if (
-				mrContentAlignmentphone /*&& allowedBlocks.includes(blockType.name)*/
-			) {
+			if (mrContentAlignmentphone) {
 				mrClassNames = mrClassNames + mrContentAlignmentphone;
 			}
 
-			if (mrVerticalOffset /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrVerticalOffset) {
 				mrClassNames = mrClassNames + mrVerticalOffset;
 			}
 
-			if (
-				mrVerticalOffsetdesktop /*&& allowedBlocks.includes(blockType.name)*/
-			) {
+			if (mrVerticalOffsetdesktop) {
 				mrClassNames = mrClassNames + mrVerticalOffsetdesktop;
 			}
 
-			if (
-				mrVerticalOffsetlaptop /*&& allowedBlocks.includes(blockType.name)*/
-			) {
+			if (mrVerticalOffsetlaptop) {
 				mrClassNames = mrClassNames + mrVerticalOffsetlaptop;
 			}
 
-			if (
-				mrVerticalOffsettablet /*&& allowedBlocks.includes(blockType.name)*/
-			) {
+			if (mrVerticalOffsettablet) {
 				mrClassNames = mrClassNames + mrVerticalOffsettablet;
 			}
 
-			if (mrVerticalOffsetphone /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrVerticalOffsetphone) {
 				mrClassNames = mrClassNames + mrVerticalOffsetphone;
 			}
 
-			if (mrHorizontalOffset /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrHorizontalOffset) {
 				mrClassNames = mrClassNames + mrHorizontalOffset;
 			}
 
-			if (
-				mrHorizontalOffsetdesktop /*&& allowedBlocks.includes(blockType.name)*/
-			) {
+			if (mrHorizontalOffsetdesktop) {
 				mrClassNames = mrClassNames + mrHorizontalOffsetdesktop;
 			}
 
-			if (
-				mrHorizontalOffsetlaptop /*&& allowedBlocks.includes(blockType.name)*/
-			) {
+			if (mrHorizontalOffsetlaptop) {
 				mrClassNames = mrClassNames + mrHorizontalOffsetlaptop;
 			}
 
-			if (
-				mrHorizontalOffsettablet /*&& allowedBlocks.includes(blockType.name)*/
-			) {
+			if (mrHorizontalOffsettablet) {
 				mrClassNames = mrClassNames + mrHorizontalOffsettablet;
 			}
 
-			if (
-				mrHorizontalOffsetphone /*&& allowedBlocks.includes(blockType.name)*/
-			) {
+			if (mrHorizontalOffsetphone) {
 				mrClassNames = mrClassNames + mrHorizontalOffsetphone;
 			}
 
-			if (mrFontSize /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrFontSize) {
 				mrClassNames = mrClassNames + " mr-fontsize" + mrFontSize;
 			}
 
-			if (mrFontSizedesktop /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrFontSizehover) {
+				mrClassNames = mrClassNames + " mr-hover-fontsize" + mrFontSizehover;
+			}
+
+			if (mrFontSizedesktop) {
 				mrClassNames =
 					mrClassNames + " mr-desktop-fontsize" + mrFontSizedesktop;
 			}
 
-			if (mrFontSizelaptop /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrFontSizelaptop) {
 				mrClassNames = mrClassNames + " mr-laptop-fontsize" + mrFontSizelaptop;
 			}
 
-			if (mrFontSizetablet /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrFontSizetablet) {
 				mrClassNames = mrClassNames + " mr-tablet-fontsize" + mrFontSizetablet;
 			}
 
-			if (mrFontSizephone /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrFontSizephone) {
 				mrClassNames = mrClassNames + " mr-phone-fontsize" + mrFontSizephone;
 			}
 
-			if (mrTextAlignment /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrTextAlignment) {
 				mrClassNames = mrClassNames + mrTextAlignment;
 			}
 
-			if (
-				mrTextAlignmentdesktop /*&& allowedBlocks.includes(blockType.name)*/
-			) {
+			if (mrTextAlignmentdesktop) {
 				mrClassNames = mrClassNames + mrTextAlignmentdesktop;
 			}
 
-			if (mrTextAlignmentlaptop /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrTextAlignmentlaptop) {
 				mrClassNames = mrClassNames + mrTextAlignmentlaptop;
 			}
 
-			if (mrTextAlignmenttablet /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrTextAlignmenttablet) {
 				mrClassNames = mrClassNames + mrTextAlignmenttablet;
 			}
 
-			if (mrTextAlignmentphone /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrTextAlignmentphone) {
 				mrClassNames = mrClassNames + mrTextAlignmentphone;
 			}
 
-			if (mrScroll /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrScroll) {
 				mrClassNames = mrClassNames + mrScroll;
 			}
 
-			if (mrScrolldesktop /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrScrollhover) {
+				mrClassNames = mrClassNames + mrScrollhover;
+			}
+
+			if (mrScrolldesktop) {
 				mrClassNames = mrClassNames + mrScrolldesktop;
 			}
 
-			if (mrScrolllaptop /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrScrolllaptop) {
 				mrClassNames = mrClassNames + mrScrolllaptop;
 			}
 
-			if (mrScrolltablet /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrScrolltablet) {
 				mrClassNames = mrClassNames + mrScrolltablet;
 			}
 
-			if (mrScrollphone /*&& allowedBlocks.includes(blockType.name)*/) {
+			if (mrScrollphone) {
 				mrClassNames = mrClassNames + mrScrollphone;
 			}
+			//}
 
 			return <BlockListBlock {...props} className={mrClassNames} />;
 		};
@@ -3860,17 +4347,20 @@ const mrApplyWrapperExtraClass = createHigherOrderComponent(
 );
 
 /**
- * Add custom element class in save element.
+ * Add custom attributes[value] class in save attributes[value].
  *
- * @param {Object} extraProps     Block element.
+ * @param {Object} extraProps     Block attributes[value].
  * @param {Object} blockType      Blocks object.
  * @param {Object} attributes     Blocks attributes.
  *
- * @return {Object} extraProps Modified block element.
+ * @return {Object} extraProps Modified block attributes[value].
  */
 function mrApplyExtraClass(extraProps, blockType, attributes) {
 	const {
 		mrAnimation,
+		mrAnimationhover,
+		mrTransition,
+		mrTransitionhover,
 		mrPerPage,
 		mrArrowPagination,
 		mrSelectPagination,
@@ -3881,6 +4371,7 @@ function mrApplyExtraClass(extraProps, blockType, attributes) {
 		mrPerLinetablet,
 		mrPerLinephone,
 		mrSize,
+		mrSizehover,
 		mrSizedesktop,
 		mrSizelaptop,
 		mrSizetablet,
@@ -3891,6 +4382,7 @@ function mrApplyExtraClass(extraProps, blockType, attributes) {
 		mrOrdertablet,
 		mrOrderphone,
 		mrDisplay,
+		mrDisplayhover,
 		mrDisplaydesktop,
 		mrDisplaylaptop,
 		mrDisplaytablet,
@@ -3901,41 +4393,49 @@ function mrApplyExtraClass(extraProps, blockType, attributes) {
 		mrWraptablet,
 		mrWrapphone,
 		mrPaddingTop,
+		mrPaddingTophover,
 		mrPaddingTopdesktop,
 		mrPaddingToplaptop,
 		mrPaddingToptablet,
 		mrPaddingTopphone,
 		mrPaddingRight,
+		mrPaddingRighthover,
 		mrPaddingRightdesktop,
 		mrPaddingRightlaptop,
 		mrPaddingRighttablet,
 		mrPaddingRightphone,
 		mrPaddingBottom,
+		mrPaddingBottomhover,
 		mrPaddingBottomdesktop,
 		mrPaddingBottomlaptop,
 		mrPaddingBottomtablet,
 		mrPaddingBottomphone,
 		mrPaddingLeft,
+		mrPaddingLefthover,
 		mrPaddingLeftdesktop,
 		mrPaddingLeftlaptop,
 		mrPaddingLefttablet,
 		mrPaddingLeftphone,
 		mrMarginTop,
+		mrMarginTophover,
 		mrMarginTopdesktop,
 		mrMarginToplaptop,
 		mrMarginToptablet,
 		mrMarginTopphone,
 		mrMarginRight,
+		mrMarginRighthover,
 		mrMarginRightdesktop,
 		mrMarginRightlaptop,
 		mrMarginRighttablet,
 		mrMarginRightphone,
 		mrMarginBottom,
+		mrMarginBottomhover,
 		mrMarginBottomdesktop,
 		mrMarginBottomlaptop,
 		mrMarginBottomtablet,
 		mrMarginBottomphone,
 		mrMarginLeft,
+		mrMarginLefthover,
 		mrMarginLeftdesktop,
 		mrMarginLeftlaptop,
 		mrMarginLefttablet,
@@ -3971,6 +4471,7 @@ function mrApplyExtraClass(extraProps, blockType, attributes) {
 		mrHorizontalOffsettablet,
 		mrHorizontalOffsetphone,
 		mrFontSize,
+		mrFontSizehover,
 		mrFontSizedesktop,
 		mrFontSizelaptop,
 		mrFontSizetablet,
@@ -3981,6 +4482,7 @@ function mrApplyExtraClass(extraProps, blockType, attributes) {
 		mrTextAlignmenttablet,
 		mrTextAlignmentphone,
 		mrScroll,
+		mrScrollhover,
 		mrScrolldesktop,
 		mrScrolllaptop,
 		mrScrolltablet,
@@ -3988,517 +4490,554 @@ function mrApplyExtraClass(extraProps, blockType, attributes) {
 	} = attributes;
 
 	//check if attribute exists for old Gutenberg version compatibility
-	//add allowedBlocks restriction
+	//add mrAllowedBlocks restriction
 
 	let mrClassNames = "";
-	if (mrPerPage && mrPerPage > 0 /*&&
-		allowedBlocks.includes(blockType.name)*/) {
-		mrClassNames = mrClassNames + "mr-" + mrPerPage + "perpage";
-	}
-
-	if (mrArrowPagination /*&&
-		allowedBlocks.includes(blockType.name)*/) {
-		mrClassNames = mrClassNames + " mr-arrowpagination";
-	}
-
-	if (mrSelectPagination /*&&
-		allowedBlocks.includes(blockType.name)*/) {
-		mrClassNames = mrClassNames + " mr-selectpagination";
-	}
-
-	if (mrRadioPagination /*&&
-		allowedBlocks.includes(blockType.name)*/) {
-		mrClassNames = mrClassNames + " mr-radiopagination";
-	}
-
-	if (mrPerLine /*&&
-		allowedBlocks.includes(blockType.name)*/) {
-		mrClassNames = mrClassNames + mrPerLine;
-	}
-
-	if (mrPerLinedesktop /*&&
-		allowedBlocks.includes(blockType.name)*/) {
-		mrClassNames = mrClassNames + mrPerLinedesktop;
-	}
-
-	if (mrPerLinelaptop /*&&
-		allowedBlocks.includes(blockType.name)*/) {
-		mrClassNames = mrClassNames + mrPerLinelaptop;
-	}
-
-	if (mrPerLinetablet /*&&
-		allowedBlocks.includes(blockType.name)*/) {
-		mrClassNames = mrClassNames + mrPerLinetablet;
-	}
-
-	if (mrPerLinephone /*&&
-		allowedBlocks.includes(blockType.name)*/) {
-		mrClassNames = mrClassNames + mrPerLinephone;
-	}
-
-	if (mrSize && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + " mr-size" + mrSize;
-	}
-
-	if (mrSizedesktop && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + " mr-desktop-size" + mrSizedesktop;
-	}
-
-	if (mrSizelaptop && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + " mr-laptop-size" + mrSizelaptop;
-	}
-
-	if (mrSizetablet && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + " mr-tablet-size" + mrSizetablet;
-	}
-
-	if (mrSizephone && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + " mr-phone-size" + mrSizephone;
-	}
-
-	if (mrOrder /*&&
-		allowedBlocks.includes(blockType.name)*/) {
-		mrClassNames = mrClassNames + mrOrder;
-	}
-
-	if (mrOrderdesktop /*&&
-		allowedBlocks.includes(blockType.name)*/) {
-		mrClassNames = mrClassNames + mrOrderdesktop;
-	}
-
-	if (mrOrderlaptop /*&&
-		allowedBlocks.includes(blockType.name)*/) {
-		mrClassNames = mrClassNames + mrOrderlaptop;
-	}
-
-	if (mrOrdertablet /*&&
-		allowedBlocks.includes(blockType.name)*/) {
-		mrClassNames = mrClassNames + mrOrdertablet;
-	}
-
-	if (mrOrderphone /*&&
-		allowedBlocks.includes(blockType.name)*/) {
-		mrClassNames = mrClassNames + mrOrderphone;
-	}
-
-	if (mrAnimation /*&&
-		allowedBlocks.includes(blockType.name)*/) {
-		mrClassNames = mrClassNames + mrAnimation;
-	}
-
-	if (mrDisplay /*&&
-		allowedBlocks.includes(blockType.name)*/) {
-		mrClassNames = mrClassNames + mrDisplay;
-	}
-
-	if (mrDisplaydesktop /*&&
-		allowedBlocks.includes(blockType.name)*/) {
-		mrClassNames = mrClassNames + mrDisplaydesktop;
-	}
-
-	if (mrDisplaylaptop /*&&
-		allowedBlocks.includes(blockType.name)*/) {
-		mrClassNames = mrClassNames + mrDisplaylaptop;
-	}
-
-	if (mrDisplaytablet /*&&
-		allowedBlocks.includes(blockType.name)*/) {
-		mrClassNames = mrClassNames + mrDisplaytablet;
-	}
-
-	if (mrDisplayphone /*&&
-		allowedBlocks.includes(blockType.name)*/) {
-		mrClassNames = mrClassNames + mrDisplayphone;
-	}
-
-	if (mrWrap /*&&
-		allowedBlocks.includes(blockType.name)*/) {
-		mrClassNames = mrClassNames + mrWrap;
-	}
-
-	if (mrWrapdesktop /*&&
-		allowedBlocks.includes(blockType.name)*/) {
-		mrClassNames = mrClassNames + mrWrapdesktop;
-	}
-
-	if (mrWraplaptop /*&&
-		allowedBlocks.includes(blockType.name)*/) {
-		mrClassNames = mrClassNames + mrWraplaptop;
-	}
-
-	if (mrWraptablet /*&&
-		allowedBlocks.includes(blockType.name)*/) {
-		mrClassNames = mrClassNames + mrWraptablet;
-	}
-
-	if (mrWrapphone /*&&
-		allowedBlocks.includes(blockType.name)*/) {
-		mrClassNames = mrClassNames + mrWrap;
-	}
-
-	if (mrPaddingTop && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrPaddingTop;
-	}
-
-	if (mrPaddingTopdesktop && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrPaddingTopdesktop;
-	}
-
-	if (mrPaddingToplaptop && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrPaddingToplaptop;
-	}
-
-	if (mrPaddingToptablet && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrPaddingToptablet;
-	}
-
-	if (mrPaddingTopphone && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrPaddingTopphone;
-	}
-
-	if (mrPaddingRight && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrPaddingRight;
-	}
-
-	if (mrPaddingRightdesktop && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrPaddingRightdesktop;
-	}
-
-	if (mrPaddingRightlaptop && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrPaddingRightlaptop;
-	}
-
-	if (mrPaddingRighttablet && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrPaddingRighttablet;
-	}
-
-	if (mrPaddingRightphone && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrPaddingRightphone;
-	}
-
-	if (mrPaddingBottom && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrPaddingBottom;
-	}
-
-	if (mrPaddingBottomdesktop && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrPaddingBottomdesktop;
-	}
-
-	if (mrPaddingBottomlaptop && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrPaddingBottomlaptop;
-	}
-
-	if (mrPaddingBottomtablet && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrPaddingBottomtablet;
-	}
-
-	if (mrPaddingBottomphone && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrPaddingBottomphone;
-	}
-
-	if (mrPaddingLeft && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrPaddingLeft;
-	}
-
-	if (mrPaddingLeftdesktop && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrPaddingLeftdesktop;
-	}
-
-	if (mrPaddingLeftlaptop && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrPaddingLeftlaptop;
-	}
-
-	if (mrPaddingLefttablet && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrPaddingLefttablet;
-	}
-
-	if (mrPaddingLeftphone && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrPaddingLeftphone;
-	}
-
-	if (mrMarginTop && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrMarginTop;
-	}
-
-	if (mrMarginTopdesktop && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrMarginTopdesktop;
-	}
-
-	if (mrMarginToplaptop && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrMarginToplaptop;
-	}
-
-	if (mrMarginToptablet && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrMarginToptablet;
-	}
-
-	if (mrMarginTopphone && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrMarginTopphone;
-	}
-
-	if (mrMarginRight && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrMarginRight;
-	}
-
-	if (mrMarginRightdesktop && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrMarginRightdesktop;
-	}
-
-	if (mrMarginRightlaptop && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrMarginRightlaptop;
-	}
-
-	if (mrMarginRighttablet && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrMarginRighttablet;
-	}
-
-	if (mrMarginRightphone && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrMarginRightphone;
-	}
-
-	if (mrMarginBottom && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrMarginBottom;
-	}
-
-	if (mrMarginBottomdesktop && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrMarginBottomdesktop;
-	}
-
-	if (mrMarginBottomlaptop && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrMarginBottomlaptop;
-	}
-
-	if (mrMarginBottomtablet && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrMarginBottomtablet;
-	}
-
-	if (mrMarginBottomphone && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrMarginBottomphone;
-	}
-
-	if (mrMarginLeft && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrMarginLeft;
-	}
-
-	if (mrMarginLeftdesktop && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrMarginLeftdesktop;
-	}
-
-	if (mrMarginLeftlaptop && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrMarginLeftlaptop;
-	}
-
-	if (mrMarginLefttablet && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrMarginLefttablet;
-	}
-
-	if (mrMarginLeftphone && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrMarginLeftphone;
-	}
-
-	if (mrPosition && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrPosition;
-	}
-
-	if (mrPositiondesktop && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrPositiondesktop;
-	}
-
-	if (mrPositionlaptop && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrPositionlaptop;
-	}
-
-	if (mrPositiontablet && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrPositiontablet;
-	}
-
-	if (mrPositionphone && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrPositionphone;
-	}
-
-	if (
-		mrPosition === " mr-absolute" ||
-		mrPosition === " mr-fixed" ||
-		mrPosition === " mr-sticky"
-	) {
-		if (mrPositionAlignment && allowedBlocks.includes(blockType.name)) {
-			mrClassNames = mrClassNames + mrPositionAlignment;
+	if (mrAllowedBlocks.includes(blockType.name)) {
+		if (mrPerPage && mrPerPage > 0) {
+			mrClassNames = mrClassNames + "mr-" + mrPerPage + "perpage";
 		}
-		if (mrPositionSides && allowedBlocks.includes(blockType.name)) {
-			mrClassNames = mrClassNames + mrPositionSides;
+
+		if (mrArrowPagination) {
+			mrClassNames = mrClassNames + " mr-arrowpagination";
 		}
-	}
 
-	if (
-		mrPositiondesktop === " mr-desktop-absolute" ||
-		mrPositiondesktop === " mr-desktop-fixed" ||
-		mrPositiondesktop === " mr-desktop-sticky"
-	) {
-		if (mrPositionAlignmentdesktop && allowedBlocks.includes(blockType.name)) {
-			mrClassNames = mrClassNames + mrPositionAlignmentdesktop;
+		if (mrSelectPagination) {
+			mrClassNames = mrClassNames + " mr-selectpagination";
 		}
-		if (mrPositionSidesdesktop && allowedBlocks.includes(blockType.name)) {
-			mrClassNames = mrClassNames + mrPositionSidesdesktop;
+
+		if (mrRadioPagination) {
+			mrClassNames = mrClassNames + " mr-radiopagination";
 		}
-	}
 
-	if (
-		mrPositionlaptop === " mr-laptop-absolute" ||
-		mrPositionlaptop === " mr-laptop-fixed" ||
-		mrPositionlaptop === " mr-laptop-sticky"
-	) {
-		if (mrPositionAlignmentlaptop && allowedBlocks.includes(blockType.name)) {
-			mrClassNames = mrClassNames + mrPositionAlignmentlaptop;
+		if (mrPerLine) {
+			mrClassNames = mrClassNames + mrPerLine;
 		}
-		if (mrPositionSideslaptop && allowedBlocks.includes(blockType.name)) {
-			mrClassNames = mrClassNames + mrPositionSideslaptop;
+
+		if (mrPerLinedesktop) {
+			mrClassNames = mrClassNames + mrPerLinedesktop;
 		}
-	}
 
-	if (
-		mrPositiontablet === " mr-tablet-absolute" ||
-		mrPositiontablet === " mr-tablet-fixed" ||
-		mrPositiontablet === " mr-tablet-sticky"
-	) {
-		if (mrPositionAlignmenttablet && allowedBlocks.includes(blockType.name)) {
-			mrClassNames = mrClassNames + mrPositionAlignmenttablet;
+		if (mrPerLinelaptop) {
+			mrClassNames = mrClassNames + mrPerLinelaptop;
 		}
-		if (mrPositionSidestablet && allowedBlocks.includes(blockType.name)) {
-			mrClassNames = mrClassNames + mrPositionSidestablet;
+
+		if (mrPerLinetablet) {
+			mrClassNames = mrClassNames + mrPerLinetablet;
 		}
-	}
 
-	if (
-		mrPositionphone === " mr-phone-absolute" ||
-		mrPositionphone === " mr-phone-fixed" ||
-		mrPositionphone === " mr-phone-sticky"
-	) {
-		if (mrPositionAlignmentphone && allowedBlocks.includes(blockType.name)) {
-			mrClassNames = mrClassNames + mrPositionAlignmentphone;
+		if (mrPerLinephone) {
+			mrClassNames = mrClassNames + mrPerLinephone;
 		}
-		if (mrPositionSidesphone && allowedBlocks.includes(blockType.name)) {
-			mrClassNames = mrClassNames + mrPositionSidesphone;
+
+		if (mrSize) {
+			mrClassNames = mrClassNames + " mr-size" + mrSize;
 		}
-	}
 
-	if (mrContentAlignment && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrContentAlignment;
-	}
+		if (mrSizehover) {
+			mrClassNames = mrClassNames + " mr-hover-size" + mrSizehover;
+		}
 
-	if (mrContentAlignmentdesktop && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrContentAlignmentdesktop;
-	}
+		if (mrSizedesktop) {
+			mrClassNames = mrClassNames + " mr-desktop-size" + mrSizedesktop;
+		}
 
-	if (mrContentAlignmentlaptop && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrContentAlignmentlaptop;
-	}
+		if (mrSizelaptop) {
+			mrClassNames = mrClassNames + " mr-laptop-size" + mrSizelaptop;
+		}
 
-	if (mrContentAlignmenttablet && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrContentAlignmenttablet;
-	}
+		if (mrSizetablet) {
+			mrClassNames = mrClassNames + " mr-tablet-size" + mrSizetablet;
+		}
 
-	if (mrContentAlignmentphone && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrContentAlignmentphone;
-	}
+		if (mrSizephone) {
+			mrClassNames = mrClassNames + " mr-phone-size" + mrSizephone;
+		}
 
-	if (mrVerticalOffset && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrVerticalOffset;
-	}
+		if (mrOrder) {
+			mrClassNames = mrClassNames + mrOrder;
+		}
 
-	if (mrVerticalOffsetdesktop && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrVerticalOffsetdesktop;
-	}
+		if (mrOrderdesktop) {
+			mrClassNames = mrClassNames + mrOrderdesktop;
+		}
 
-	if (mrVerticalOffsetlaptop && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrVerticalOffsetlaptop;
-	}
+		if (mrOrderlaptop) {
+			mrClassNames = mrClassNames + mrOrderlaptop;
+		}
 
-	if (mrVerticalOffsettablet && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrVerticalOffsettablet;
-	}
+		if (mrOrdertablet) {
+			mrClassNames = mrClassNames + mrOrdertablet;
+		}
 
-	if (mrVerticalOffsetphone && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrVerticalOffsetphone;
-	}
+		if (mrOrderphone) {
+			mrClassNames = mrClassNames + mrOrderphone;
+		}
 
-	if (mrHorizontalOffset && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrHorizontalOffset;
-	}
+		if (mrAnimation) {
+			mrClassNames = mrClassNames + mrAnimation;
+		}
 
-	if (mrHorizontalOffsetdesktop && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrHorizontalOffsetdesktop;
-	}
+		if (mrAnimationhover) {
+			mrClassNames = mrClassNames + mrAnimationhover;
+		}
 
-	if (mrHorizontalOffsetlaptop && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrHorizontalOffsetlaptop;
-	}
+		if (mrTransition) {
+			mrClassNames = mrClassNames + mrTransition;
+		}
 
-	if (mrHorizontalOffsettablet && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrHorizontalOffsettablet;
-	}
+		if (mrTransitionhover) {
+			mrClassNames = mrClassNames + mrTransitionhover;
+		}
 
-	if (mrHorizontalOffsetphone && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrHorizontalOffsetphone;
-	}
+		if (mrDisplay) {
+			mrClassNames = mrClassNames + mrDisplay;
+		}
 
-	if (mrFontSize && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + " mr-fontsize" + mrFontSize;
-	}
+		if (mrDisplayhover) {
+			mrClassNames = mrClassNames + mrDisplayhover;
+		}
 
-	if (mrFontSizedesktop && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + " mr-desktop-fontsize" + mrFontSizedesktop;
-	}
+		if (mrDisplaydesktop) {
+			mrClassNames = mrClassNames + mrDisplaydesktop;
+		}
 
-	if (mrFontSizelaptop && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + " mr-laptop-fontsize" + mrFontSizelaptop;
-	}
+		if (mrDisplaylaptop) {
+			mrClassNames = mrClassNames + mrDisplaylaptop;
+		}
 
-	if (mrFontSizetablet && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + " mr-tablet-fontsize" + mrFontSizetablet;
-	}
+		if (mrDisplaytablet) {
+			mrClassNames = mrClassNames + mrDisplaytablet;
+		}
 
-	if (mrFontSizephone && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + " mr-phone-fontsize" + mrFontSizephone;
-	}
+		if (mrDisplayphone) {
+			mrClassNames = mrClassNames + mrDisplayphone;
+		}
 
-	if (mrTextAlignment && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrTextAlignment;
-	}
+		if (mrWrap) {
+			mrClassNames = mrClassNames + mrWrap;
+		}
 
-	if (mrTextAlignmentdesktop && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrTextAlignmentdesktop;
-	}
+		if (mrWrapdesktop) {
+			mrClassNames = mrClassNames + mrWrapdesktop;
+		}
 
-	if (mrTextAlignmentlaptop && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrTextAlignmentlaptop;
-	}
+		if (mrWraplaptop) {
+			mrClassNames = mrClassNames + mrWraplaptop;
+		}
 
-	if (mrTextAlignmenttablet && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrTextAlignmenttablet;
-	}
+		if (mrWraptablet) {
+			mrClassNames = mrClassNames + mrWraptablet;
+		}
 
-	if (mrTextAlignmentphone && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrTextAlignmentphone;
-	}
+		if (mrWrapphone) {
+			mrClassNames = mrClassNames + mrWrap;
+		}
 
-	if (mrScroll && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrScroll;
-	}
+		if (mrPaddingTop) {
+			mrClassNames = mrClassNames + mrPaddingTop;
+		}
 
-	if (mrScrolldesktop && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrScrolldesktop;
-	}
+		if (mrPaddingTophover) {
+			mrClassNames = mrClassNames + mrPaddingTophover;
+		}
 
-	if (mrScrolllaptop && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrScrolllaptop;
-	}
+		if (mrPaddingTopdesktop) {
+			mrClassNames = mrClassNames + mrPaddingTopdesktop;
+		}
 
-	if (mrScrolltablet && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrScrolltablet;
-	}
+		if (mrPaddingToplaptop) {
+			mrClassNames = mrClassNames + mrPaddingToplaptop;
+		}
 
-	if (mrScrollphone && allowedBlocks.includes(blockType.name)) {
-		mrClassNames = mrClassNames + mrScrollphone;
+		if (mrPaddingToptablet) {
+			mrClassNames = mrClassNames + mrPaddingToptablet;
+		}
+
+		if (mrPaddingTopphone) {
+			mrClassNames = mrClassNames + mrPaddingTopphone;
+		}
+
+		if (mrPaddingRight) {
+			mrClassNames = mrClassNames + mrPaddingRight;
+		}
+
+		if (mrPaddingRighthover) {
+			mrClassNames = mrClassNames + mrPaddingRighthover;
+		}
+
+		if (mrPaddingRightdesktop) {
+			mrClassNames = mrClassNames + mrPaddingRightdesktop;
+		}
+
+		if (mrPaddingRightlaptop) {
+			mrClassNames = mrClassNames + mrPaddingRightlaptop;
+		}
+
+		if (mrPaddingRighttablet) {
+			mrClassNames = mrClassNames + mrPaddingRighttablet;
+		}
+
+		if (mrPaddingRightphone) {
+			mrClassNames = mrClassNames + mrPaddingRightphone;
+		}
+
+		if (mrPaddingBottom) {
+			mrClassNames = mrClassNames + mrPaddingBottom;
+		}
+
+		if (mrPaddingBottomhover) {
+			mrClassNames = mrClassNames + mrPaddingBottomhover;
+		}
+
+		if (mrPaddingBottomdesktop) {
+			mrClassNames = mrClassNames + mrPaddingBottomdesktop;
+		}
+
+		if (mrPaddingBottomlaptop) {
+			mrClassNames = mrClassNames + mrPaddingBottomlaptop;
+		}
+
+		if (mrPaddingBottomtablet) {
+			mrClassNames = mrClassNames + mrPaddingBottomtablet;
+		}
+
+		if (mrPaddingBottomphone) {
+			mrClassNames = mrClassNames + mrPaddingBottomphone;
+		}
+
+		if (mrPaddingLeft) {
+			mrClassNames = mrClassNames + mrPaddingLeft;
+		}
+
+		if (mrPaddingLefthover) {
+			mrClassNames = mrClassNames + mrPaddingLefthover;
+		}
+
+		if (mrPaddingLeftdesktop) {
+			mrClassNames = mrClassNames + mrPaddingLeftdesktop;
+		}
+
+		if (mrPaddingLeftlaptop) {
+			mrClassNames = mrClassNames + mrPaddingLeftlaptop;
+		}
+
+		if (mrPaddingLefttablet) {
+			mrClassNames = mrClassNames + mrPaddingLefttablet;
+		}
+
+		if (mrPaddingLeftphone) {
+			mrClassNames = mrClassNames + mrPaddingLeftphone;
+		}
+
+		if (mrMarginTop) {
+			mrClassNames = mrClassNames + mrMarginTop;
+		}
+
+		if (mrMarginTophover) {
+			mrClassNames = mrClassNames + mrMarginTophover;
+		}
+
+		if (mrMarginTopdesktop) {
+			mrClassNames = mrClassNames + mrMarginTopdesktop;
+		}
+
+		if (mrMarginToplaptop) {
+			mrClassNames = mrClassNames + mrMarginToplaptop;
+		}
+
+		if (mrMarginToptablet) {
+			mrClassNames = mrClassNames + mrMarginToptablet;
+		}
+
+		if (mrMarginTopphone) {
+			mrClassNames = mrClassNames + mrMarginTopphone;
+		}
+
+		if (mrMarginRight) {
+			mrClassNames = mrClassNames + mrMarginRight;
+		}
+
+		if (mrMarginRighthover) {
+			mrClassNames = mrClassNames + mrMarginRighthover;
+		}
+
+		if (mrMarginRightdesktop) {
+			mrClassNames = mrClassNames + mrMarginRightdesktop;
+		}
+
+		if (mrMarginRightlaptop) {
+			mrClassNames = mrClassNames + mrMarginRightlaptop;
+		}
+
+		if (mrMarginRighttablet) {
+			mrClassNames = mrClassNames + mrMarginRighttablet;
+		}
+
+		if (mrMarginRightphone) {
+			mrClassNames = mrClassNames + mrMarginRightphone;
+		}
+
+		if (mrMarginBottom) {
+			mrClassNames = mrClassNames + mrMarginBottom;
+		}
+
+		if (mrMarginBottomhover) {
+			mrClassNames = mrClassNames + mrMarginBottomhover;
+		}
+
+		if (mrMarginBottomdesktop) {
+			mrClassNames = mrClassNames + mrMarginBottomdesktop;
+		}
+
+		if (mrMarginBottomlaptop) {
+			mrClassNames = mrClassNames + mrMarginBottomlaptop;
+		}
+
+		if (mrMarginBottomtablet) {
+			mrClassNames = mrClassNames + mrMarginBottomtablet;
+		}
+
+		if (mrMarginBottomphone) {
+			mrClassNames = mrClassNames + mrMarginBottomphone;
+		}
+
+		if (mrMarginLeft) {
+			mrClassNames = mrClassNames + mrMarginLeft;
+		}
+
+		if (mrMarginLefthover) {
+			mrClassNames = mrClassNames + mrMarginLefthover;
+		}
+
+		if (mrMarginLeftdesktop) {
+			mrClassNames = mrClassNames + mrMarginLeftdesktop;
+		}
+
+		if (mrMarginLeftlaptop) {
+			mrClassNames = mrClassNames + mrMarginLeftlaptop;
+		}
+
+		if (mrMarginLefttablet) {
+			mrClassNames = mrClassNames + mrMarginLefttablet;
+		}
+
+		if (mrMarginLeftphone) {
+			mrClassNames = mrClassNames + mrMarginLeftphone;
+		}
+
+		if (mrPosition) {
+			mrClassNames = mrClassNames + mrPosition;
+		}
+
+		if (mrPositiondesktop) {
+			mrClassNames = mrClassNames + mrPositiondesktop;
+		}
+
+		if (mrPositionlaptop) {
+			mrClassNames = mrClassNames + mrPositionlaptop;
+		}
+
+		if (mrPositiontablet) {
+			mrClassNames = mrClassNames + mrPositiontablet;
+		}
+
+		if (mrPositionphone) {
+			mrClassNames = mrClassNames + mrPositionphone;
+		}
+
+		if (
+			mrPosition === " mr-absolute" ||
+			mrPosition === " mr-fixed" ||
+			mrPosition === " mr-sticky"
+		) {
+			if (mrPositionAlignment) {
+				mrClassNames = mrClassNames + mrPositionAlignment;
+			}
+			if (mrPositionSides) {
+				mrClassNames = mrClassNames + mrPositionSides;
+			}
+		}
+
+		if (
+			mrPositiondesktop === " mr-desktop-absolute" ||
+			mrPositiondesktop === " mr-desktop-fixed" ||
+			mrPositiondesktop === " mr-desktop-sticky"
+		) {
+			if (mrPositionAlignmentdesktop) {
+				mrClassNames = mrClassNames + mrPositionAlignmentdesktop;
+			}
+			if (mrPositionSidesdesktop) {
+				mrClassNames = mrClassNames + mrPositionSidesdesktop;
+			}
+		}
+
+		if (
+			mrPositionlaptop === " mr-laptop-absolute" ||
+			mrPositionlaptop === " mr-laptop-fixed" ||
+			mrPositionlaptop === " mr-laptop-sticky"
+		) {
+			if (mrPositionAlignmentlaptop) {
+				mrClassNames = mrClassNames + mrPositionAlignmentlaptop;
+			}
+			if (mrPositionSideslaptop) {
+				mrClassNames = mrClassNames + mrPositionSideslaptop;
+			}
+		}
+
+		if (
+			mrPositiontablet === " mr-tablet-absolute" ||
+			mrPositiontablet === " mr-tablet-fixed" ||
+			mrPositiontablet === " mr-tablet-sticky"
+		) {
+			if (mrPositionAlignmenttablet) {
+				mrClassNames = mrClassNames + mrPositionAlignmenttablet;
+			}
+			if (mrPositionSidestablet) {
+				mrClassNames = mrClassNames + mrPositionSidestablet;
+			}
+		}
+
+		if (
+			mrPositionphone === " mr-phone-absolute" ||
+			mrPositionphone === " mr-phone-fixed" ||
+			mrPositionphone === " mr-phone-sticky"
+		) {
+			if (mrPositionAlignmentphone) {
+				mrClassNames = mrClassNames + mrPositionAlignmentphone;
+			}
+			if (mrPositionSidesphone) {
+				mrClassNames = mrClassNames + mrPositionSidesphone;
+			}
+		}
+
+		if (mrContentAlignment) {
+			mrClassNames = mrClassNames + mrContentAlignment;
+		}
+
+		if (mrContentAlignmentdesktop) {
+			mrClassNames = mrClassNames + mrContentAlignmentdesktop;
+		}
+
+		if (mrContentAlignmentlaptop) {
+			mrClassNames = mrClassNames + mrContentAlignmentlaptop;
+		}
+
+		if (mrContentAlignmenttablet) {
+			mrClassNames = mrClassNames + mrContentAlignmenttablet;
+		}
+
+		if (mrContentAlignmentphone) {
+			mrClassNames = mrClassNames + mrContentAlignmentphone;
+		}
+
+		if (mrVerticalOffset) {
+			mrClassNames = mrClassNames + mrVerticalOffset;
+		}
+
+		if (mrVerticalOffsetdesktop) {
+			mrClassNames = mrClassNames + mrVerticalOffsetdesktop;
+		}
+
+		if (mrVerticalOffsetlaptop) {
+			mrClassNames = mrClassNames + mrVerticalOffsetlaptop;
+		}
+
+		if (mrVerticalOffsettablet) {
+			mrClassNames = mrClassNames + mrVerticalOffsettablet;
+		}
+
+		if (mrVerticalOffsetphone) {
+			mrClassNames = mrClassNames + mrVerticalOffsetphone;
+		}
+
+		if (mrHorizontalOffset) {
+			mrClassNames = mrClassNames + mrHorizontalOffset;
+		}
+
+		if (mrHorizontalOffsetdesktop) {
+			mrClassNames = mrClassNames + mrHorizontalOffsetdesktop;
+		}
+
+		if (mrHorizontalOffsetlaptop) {
+			mrClassNames = mrClassNames + mrHorizontalOffsetlaptop;
+		}
+
+		if (mrHorizontalOffsettablet) {
+			mrClassNames = mrClassNames + mrHorizontalOffsettablet;
+		}
+
+		if (mrHorizontalOffsetphone) {
+			mrClassNames = mrClassNames + mrHorizontalOffsetphone;
+		}
+
+		if (mrFontSize) {
+			mrClassNames = mrClassNames + " mr-fontsize" + mrFontSize;
+		}
+
+		if (mrFontSizehover) {
+			mrClassNames = mrClassNames + " mr-hover-fontsize" + mrFontSizehover;
+		}
+
+		if (mrFontSizedesktop) {
+			mrClassNames = mrClassNames + " mr-desktop-fontsize" + mrFontSizedesktop;
+		}
+
+		if (mrFontSizelaptop) {
+			mrClassNames = mrClassNames + " mr-laptop-fontsize" + mrFontSizelaptop;
+		}
+
+		if (mrFontSizetablet) {
+			mrClassNames = mrClassNames + " mr-tablet-fontsize" + mrFontSizetablet;
+		}
+
+		if (mrFontSizephone) {
+			mrClassNames = mrClassNames + " mr-phone-fontsize" + mrFontSizephone;
+		}
+
+		if (mrTextAlignment) {
+			mrClassNames = mrClassNames + mrTextAlignment;
+		}
+
+		if (mrTextAlignmentdesktop) {
+			mrClassNames = mrClassNames + mrTextAlignmentdesktop;
+		}
+
+		if (mrTextAlignmentlaptop) {
+			mrClassNames = mrClassNames + mrTextAlignmentlaptop;
+		}
+
+		if (mrTextAlignmenttablet) {
+			mrClassNames = mrClassNames + mrTextAlignmenttablet;
+		}
+
+		if (mrTextAlignmentphone) {
+			mrClassNames = mrClassNames + mrTextAlignmentphone;
+		}
+
+		if (mrScroll) {
+			mrClassNames = mrClassNames + mrScroll;
+		}
+
+		if (mrScrollhover) {
+			mrClassNames = mrClassNames + mrScrollhover;
+		}
+
+		if (mrScrolldesktop) {
+			mrClassNames = mrClassNames + mrScrolldesktop;
+		}
+
+		if (mrScrolllaptop) {
+			mrClassNames = mrClassNames + mrScrolllaptop;
+		}
+
+		if (mrScrolltablet) {
+			mrClassNames = mrClassNames + mrScrolltablet;
+		}
+
+		if (mrScrollphone) {
+			mrClassNames = mrClassNames + mrScrollphone;
+		}
 	}
 
 	extraProps.className = classnames(extraProps.className, mrClassNames);
