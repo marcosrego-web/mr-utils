@@ -103,7 +103,29 @@ const mrAllowedBlocks = [
 	"core/post-title",
 	"core/template-part",
 	"core/term-description",
-	"core/post-navigation-link",*/
+	"core/post-navigation-link",
+	//WooCommerce
+	"woocommerce/handpicked-products",
+	"woocommerce/all-reviews",
+	"woocommerce/featured-category",
+	"woocommerce/featured-product",
+	"woocommerce/product-best-sellers",
+	"woocommerce/product-categories",
+	"woocommerce/product-category",
+	"woocommerce/product-new",
+	"woocommerce/product-on-sale",
+	"woocommerce/products-by-attribute",
+	"woocommerce/product-top-rated",
+	"woocommerce/reviews-by-product",
+	"woocommerce/reviews-by-category",
+	"woocommerce/product-search",
+	"woocommerce/products-by-tag",
+	"woocommerce/all-products",
+	"woocommerce/price-filter",
+	"woocommerce/attribute-filter",
+	"woocommerce/stock-filter",
+	"woocommerce/active-filters",
+	*/
 ];
 
 const mrUtilsBreakpoints = ["hover", "desktop", "laptop", "tablet", "phone"];
@@ -3744,600 +3766,53 @@ const mrApplyWrapperExtraClass = createHigherOrderComponent(
 
 			let mrClassNames = "";
 
-			/*Object.keys(attributes).forEach(function (value) {
-				console.log(attributes);
+			Object.keys(attributes).forEach(function (value) {
 				if (
-					attributes == "mrPerPage" &&
+					value == "mrPerPage" &&
 					attributes[value] &&
 					attributes[value] > 0
 				) {
 					mrClassNames = mrClassNames + "mr-" + attributes[value] + "perpage";
-				} else if (attributes == "mrArrowPagination" && attributes[value]) {
+				} else if (value == "mrArrowPagination" && attributes[value]) {
 					mrClassNames = mrClassNames + " mr-arrowpagination";
-				} else if (attributes == "mrSelectPagination" && attributes[value]) {
+				} else if (value == "mrSelectPagination" && attributes[value]) {
 					mrClassNames = mrClassNames + " mr-selectpagination";
-				} else if (attributes == "mrRadioPagination" && attributes[value]) {
+				} else if (value == "mrRadioPagination" && attributes[value]) {
 					mrClassNames = mrClassNames + " mr-radiopagination";
-				} else if (attributes == "mrSize" && attributes[value]) {
+				} else if (value == "mrSize" && attributes[value]) {
 					mrClassNames = mrClassNames + " mr-size" + attributes[value];
-				} else if (attributes == "mrSizehover" && attributes[value]) {
+				} else if (value == "mrSizehover" && attributes[value]) {
 					mrClassNames = mrClassNames + " mr-hover-size" + attributes[value];
-				} else if (attributes == "mrSizedesktop" && attributes[value]) {
+				} else if (value == "mrSizedesktop" && attributes[value]) {
 					mrClassNames = mrClassNames + " mr-desktop-size" + attributes[value];
-				} else if (attributes == "mrSizelaptop" && attributes[value]) {
+				} else if (value == "mrSizelaptop" && attributes[value]) {
 					mrClassNames = mrClassNames + " mr-laptop-size" + attributes[value];
-				} else if (attributes == "mrSizetablet" && attributes[value]) {
+				} else if (value == "mrSizetablet" && attributes[value]) {
 					mrClassNames = mrClassNames + " mr-tablet-size" + attributes[value];
-				} else if (attributes == "mrSizephone" && attributes[value]) {
+				} else if (value == "mrSizephone" && attributes[value]) {
 					mrClassNames = mrClassNames + " mr-phone-size" + attributes[value];
-				} else if (attributes == "mrFontSize" && attributes[value]) {
-					mrClassNames = mrClassNames + " mr-size" + attributes[value];
-				} else if (attributes == "mrFontSizehover" && attributes[value]) {
+				} else if (value == "mrFontSize" && attributes[value]) {
+					mrClassNames = mrClassNames + " mr-fontsize" + attributes[value];
+				} else if (value == "mrFontSizehover" && attributes[value]) {
 					mrClassNames =
 						mrClassNames + " mr-hover-fontsize" + attributes[value];
-				} else if (attributes == "mrFontSizedesktop" && attributes[value]) {
+				} else if (value == "mrFontSizedesktop" && attributes[value]) {
 					mrClassNames =
 						mrClassNames + " mr-desktop-fontsize" + attributes[value];
-				} else if (attributes == "mrFontSizelaptop" && attributes[value]) {
+				} else if (value == "mrFontSizelaptop" && attributes[value]) {
 					mrClassNames =
 						mrClassNames + " mr-laptop-fontsize" + attributes[value];
-				} else if (attributes == "mrFontSizetablet" && attributes[value]) {
+				} else if (value == "mrFontSizetablet" && attributes[value]) {
 					mrClassNames =
 						mrClassNames + " mr-tablet-fontsize" + attributes[value];
-				} else if (attributes == "mrFontSizephone" && attributes[value]) {
+				} else if (value == "mrFontSizephone" && attributes[value]) {
 					mrClassNames =
 						mrClassNames + " mr-phone-fontsize" + attributes[value];
-				} else if (attributes.startsWith("mr") && attributes[value]) {
+				} else if (value.startsWith("mr") && attributes[value]) {
 					mrClassNames = mrClassNames + " mr-" + attributes[value];
 				}
 			});
-			*/
 
-			if (mrPerPage && mrPerPage > 0) {
-				mrClassNames = mrClassNames + "mr-" + mrPerPage + "perpage";
-			}
-
-			if (mrArrowPagination) {
-				mrClassNames = mrClassNames + " mr-arrowpagination";
-			}
-
-			if (mrSelectPagination) {
-				mrClassNames = mrClassNames + " mr-selectpagination";
-			}
-
-			if (mrRadioPagination) {
-				mrClassNames = mrClassNames + " mr-radiopagination";
-			}
-
-			if (mrPerLine) {
-				mrClassNames = mrClassNames + mrPerLine;
-			}
-
-			if (mrPerLinedesktop) {
-				mrClassNames = mrClassNames + mrPerLinedesktop;
-			}
-
-			if (mrPerLinelaptop) {
-				mrClassNames = mrClassNames + mrPerLinelaptop;
-			}
-
-			if (mrPerLinetablet) {
-				mrClassNames = mrClassNames + mrPerLinetablet;
-			}
-
-			if (mrPerLinephone) {
-				mrClassNames = mrClassNames + mrPerLinephone;
-			}
-
-			if (mrSize) {
-				mrClassNames = mrClassNames + " mr-size" + mrSize;
-			}
-
-			if (mrSizehover) {
-				mrClassNames = mrClassNames + " mr-hover-size" + mrSizehover;
-			}
-
-			if (mrSizedesktop) {
-				mrClassNames = mrClassNames + " mr-desktop-size" + mrSizedesktop;
-			}
-
-			if (mrSizelaptop) {
-				mrClassNames = mrClassNames + " mr-laptop-size" + mrSizelaptop;
-			}
-
-			if (mrSizetablet) {
-				mrClassNames = mrClassNames + " mr-tablet-size" + mrSizetablet;
-			}
-
-			if (mrSizephone) {
-				mrClassNames = mrClassNames + " mr-phone-size" + mrSizephone;
-			}
-
-			if (mrOrder) {
-				mrClassNames = mrClassNames + mrOrder;
-			}
-
-			if (mrOrderdesktop) {
-				mrClassNames = mrClassNames + mrOrderdesktop;
-			}
-
-			if (mrOrderlaptop) {
-				mrClassNames = mrClassNames + mrOrderlaptop;
-			}
-
-			if (mrOrdertablet) {
-				mrClassNames = mrClassNames + mrOrdertablet;
-			}
-
-			if (mrOrderphone) {
-				mrClassNames = mrClassNames + mrOrderphone;
-			}
-
-			if (mrAnimation) {
-				mrClassNames = mrClassNames + mrAnimation;
-			}
-
-			if (mrAnimationhover) {
-				mrClassNames = mrClassNames + mrAnimationhover;
-			}
-
-			if (mrTransition) {
-				mrClassNames = mrClassNames + mrTransition;
-			}
-
-			if (mrTransitionhover) {
-				mrClassNames = mrClassNames + mrTransitionhover;
-			}
-
-			if (mrDisplay) {
-				mrClassNames = mrClassNames + mrDisplay;
-			}
-
-			if (mrDisplayhover) {
-				mrClassNames = mrClassNames + mrDisplayhover;
-			}
-
-			if (mrDisplaydesktop) {
-				mrClassNames = mrClassNames + mrDisplaydesktop;
-			}
-
-			if (mrDisplaylaptop) {
-				mrClassNames = mrClassNames + mrDisplaylaptop;
-			}
-
-			if (mrDisplaytablet) {
-				mrClassNames = mrClassNames + mrDisplaytablet;
-			}
-
-			if (mrDisplayphone) {
-				mrClassNames = mrClassNames + mrDisplayphone;
-			}
-
-			if (mrWrap) {
-				mrClassNames = mrClassNames + mrWrap;
-			}
-
-			if (mrWrapdesktop) {
-				mrClassNames = mrClassNames + mrWrapdesktop;
-			}
-
-			if (mrWraplaptop) {
-				mrClassNames = mrClassNames + mrWraplaptop;
-			}
-
-			if (mrWraptablet) {
-				mrClassNames = mrClassNames + mrWraptablet;
-			}
-
-			if (mrWrapphone) {
-				mrClassNames = mrClassNames + mrWrap;
-			}
-
-			if (mrPaddingTop) {
-				mrClassNames = mrClassNames + mrPaddingTop;
-			}
-
-			if (mrPaddingTophover) {
-				mrClassNames = mrClassNames + mrPaddingTophover;
-			}
-
-			if (mrPaddingTopdesktop) {
-				mrClassNames = mrClassNames + mrPaddingTopdesktop;
-			}
-
-			if (mrPaddingToplaptop) {
-				mrClassNames = mrClassNames + mrPaddingToplaptop;
-			}
-
-			if (mrPaddingToptablet) {
-				mrClassNames = mrClassNames + mrPaddingToptablet;
-			}
-
-			if (mrPaddingTopphone) {
-				mrClassNames = mrClassNames + mrPaddingTopphone;
-			}
-
-			if (mrPaddingRight) {
-				mrClassNames = mrClassNames + mrPaddingRight;
-			}
-
-			if (mrPaddingRighthover) {
-				mrClassNames = mrClassNames + mrPaddingRighthover;
-			}
-
-			if (mrPaddingRightdesktop) {
-				mrClassNames = mrClassNames + mrPaddingRightdesktop;
-			}
-
-			if (mrPaddingRightlaptop) {
-				mrClassNames = mrClassNames + mrPaddingRightlaptop;
-			}
-
-			if (mrPaddingRighttablet) {
-				mrClassNames = mrClassNames + mrPaddingRighttablet;
-			}
-
-			if (mrPaddingRightphone) {
-				mrClassNames = mrClassNames + mrPaddingRightphone;
-			}
-
-			if (mrPaddingBottom) {
-				mrClassNames = mrClassNames + mrPaddingBottom;
-			}
-
-			if (mrPaddingBottomhover) {
-				mrClassNames = mrClassNames + mrPaddingBottomhover;
-			}
-
-			if (mrPaddingBottomdesktop) {
-				mrClassNames = mrClassNames + mrPaddingBottomdesktop;
-			}
-
-			if (mrPaddingBottomlaptop) {
-				mrClassNames = mrClassNames + mrPaddingBottomlaptop;
-			}
-
-			if (mrPaddingBottomtablet) {
-				mrClassNames = mrClassNames + mrPaddingBottomtablet;
-			}
-
-			if (mrPaddingBottomphone) {
-				mrClassNames = mrClassNames + mrPaddingBottomphone;
-			}
-
-			if (mrPaddingLeft) {
-				mrClassNames = mrClassNames + mrPaddingLeft;
-			}
-
-			if (mrPaddingLefthover) {
-				mrClassNames = mrClassNames + mrPaddingLefthover;
-			}
-
-			if (mrPaddingLeftdesktop) {
-				mrClassNames = mrClassNames + mrPaddingLeftdesktop;
-			}
-
-			if (mrPaddingLeftlaptop) {
-				mrClassNames = mrClassNames + mrPaddingLeftlaptop;
-			}
-
-			if (mrPaddingLefttablet) {
-				mrClassNames = mrClassNames + mrPaddingLefttablet;
-			}
-
-			if (mrPaddingLeftphone) {
-				mrClassNames = mrClassNames + mrPaddingLeftphone;
-			}
-
-			if (mrMarginTop) {
-				mrClassNames = mrClassNames + mrMarginTop;
-			}
-
-			if (mrMarginTophover) {
-				mrClassNames = mrClassNames + mrMarginTophover;
-			}
-
-			if (mrMarginTopdesktop) {
-				mrClassNames = mrClassNames + mrMarginTopdesktop;
-			}
-
-			if (mrMarginToplaptop) {
-				mrClassNames = mrClassNames + mrMarginToplaptop;
-			}
-
-			if (mrMarginToptablet) {
-				mrClassNames = mrClassNames + mrMarginToptablet;
-			}
-
-			if (mrMarginTopphone) {
-				mrClassNames = mrClassNames + mrMarginTopphone;
-			}
-
-			if (mrMarginRight) {
-				mrClassNames = mrClassNames + mrMarginRight;
-			}
-
-			if (mrMarginRighthover) {
-				mrClassNames = mrClassNames + mrMarginRighthover;
-			}
-
-			if (mrMarginRightdesktop) {
-				mrClassNames = mrClassNames + mrMarginRightdesktop;
-			}
-
-			if (mrMarginRightlaptop) {
-				mrClassNames = mrClassNames + mrMarginRightlaptop;
-			}
-
-			if (mrMarginRighttablet) {
-				mrClassNames = mrClassNames + mrMarginRighttablet;
-			}
-
-			if (mrMarginRightphone) {
-				mrClassNames = mrClassNames + mrMarginRightphone;
-			}
-
-			if (mrMarginBottom) {
-				mrClassNames = mrClassNames + mrMarginBottom;
-			}
-
-			if (mrMarginBottomhover) {
-				mrClassNames = mrClassNames + mrMarginBottomhover;
-			}
-
-			if (mrMarginBottomdesktop) {
-				mrClassNames = mrClassNames + mrMarginBottomdesktop;
-			}
-
-			if (mrMarginBottomlaptop) {
-				mrClassNames = mrClassNames + mrMarginBottomlaptop;
-			}
-
-			if (mrMarginBottomtablet) {
-				mrClassNames = mrClassNames + mrMarginBottomtablet;
-			}
-
-			if (mrMarginBottomphone) {
-				mrClassNames = mrClassNames + mrMarginBottomphone;
-			}
-
-			if (mrMarginLeft) {
-				mrClassNames = mrClassNames + mrMarginLeft;
-			}
-
-			if (mrMarginLefthover) {
-				mrClassNames = mrClassNames + mrMarginLefthover;
-			}
-
-			if (mrMarginLeftdesktop) {
-				mrClassNames = mrClassNames + mrMarginLeftdesktop;
-			}
-
-			if (mrMarginLeftlaptop) {
-				mrClassNames = mrClassNames + mrMarginLeftlaptop;
-			}
-
-			if (mrMarginLefttablet) {
-				mrClassNames = mrClassNames + mrMarginLefttablet;
-			}
-
-			if (mrMarginLeftphone) {
-				mrClassNames = mrClassNames + mrMarginLeftphone;
-			}
-
-			if (mrPosition) {
-				mrClassNames = mrClassNames + mrPosition;
-			}
-
-			if (mrPositiondesktop) {
-				mrClassNames = mrClassNames + mrPositiondesktop;
-			}
-
-			if (mrPositionlaptop) {
-				mrClassNames = mrClassNames + mrPositionlaptop;
-			}
-
-			if (mrPositiontablet) {
-				mrClassNames = mrClassNames + mrPositiontablet;
-			}
-
-			if (mrPositionphone) {
-				mrClassNames = mrClassNames + mrPositionphone;
-			}
-
-			if (
-				mrPosition === " mr-absolute" ||
-				mrPosition === " mr-fixed" ||
-				mrPosition === " mr-sticky"
-			) {
-				if (mrPositionAlignment) {
-					mrClassNames = mrClassNames + mrPositionAlignment;
-				}
-				if (mrPositionSides) {
-					mrClassNames = mrClassNames + mrPositionSides;
-				}
-			}
-
-			if (
-				mrPositiondesktop === " mr-desktop-absolute" ||
-				mrPositiondesktop === " mr-desktop-fixed" ||
-				mrPositiondesktop === " mr-desktop-sticky"
-			) {
-				if (mrPositionAlignmentdesktop) {
-					mrClassNames = mrClassNames + mrPositionAlignmentdesktop;
-				}
-				if (mrPositionSidesdesktop) {
-					mrClassNames = mrClassNames + mrPositionSidesdesktop;
-				}
-			}
-
-			if (
-				mrPositionlaptop === " mr-laptop-absolute" ||
-				mrPositionlaptop === " mr-laptop-fixed" ||
-				mrPositionlaptop === " mr-laptop-sticky"
-			) {
-				if (mrPositionAlignmentlaptop) {
-					mrClassNames = mrClassNames + mrPositionAlignmentlaptop;
-				}
-				if (mrPositionSideslaptop) {
-					mrClassNames = mrClassNames + mrPositionSideslaptop;
-				}
-			}
-
-			if (
-				mrPositiontablet === " mr-tablet-absolute" ||
-				mrPositiontablet === " mr-tablet-fixed" ||
-				mrPositiontablet === " mr-tablet-sticky"
-			) {
-				if (mrPositionAlignmenttablet) {
-					mrClassNames = mrClassNames + mrPositionAlignmenttablet;
-				}
-				if (mrPositionSidestablet) {
-					mrClassNames = mrClassNames + mrPositionSidestablet;
-				}
-			}
-
-			if (
-				mrPositionphone === " mr-phone-absolute" ||
-				mrPositionphone === " mr-phone-fixed" ||
-				mrPositionphone === " mr-phone-sticky"
-			) {
-				if (mrPositionAlignmentphone) {
-					mrClassNames = mrClassNames + mrPositionAlignmentphone;
-				}
-				if (mrPositionSidesphone) {
-					mrClassNames = mrClassNames + mrPositionSidesphone;
-				}
-			}
-
-			if (mrContentAlignment) {
-				mrClassNames = mrClassNames + mrContentAlignment;
-			}
-
-			if (mrContentAlignmentdesktop) {
-				mrClassNames = mrClassNames + mrContentAlignmentdesktop;
-			}
-
-			if (mrContentAlignmentlaptop) {
-				mrClassNames = mrClassNames + mrContentAlignmentlaptop;
-			}
-
-			if (mrContentAlignmenttablet) {
-				mrClassNames = mrClassNames + mrContentAlignmenttablet;
-			}
-
-			if (mrContentAlignmentphone) {
-				mrClassNames = mrClassNames + mrContentAlignmentphone;
-			}
-
-			if (mrVerticalOffset) {
-				mrClassNames = mrClassNames + mrVerticalOffset;
-			}
-
-			if (mrVerticalOffsetdesktop) {
-				mrClassNames = mrClassNames + mrVerticalOffsetdesktop;
-			}
-
-			if (mrVerticalOffsetlaptop) {
-				mrClassNames = mrClassNames + mrVerticalOffsetlaptop;
-			}
-
-			if (mrVerticalOffsettablet) {
-				mrClassNames = mrClassNames + mrVerticalOffsettablet;
-			}
-
-			if (mrVerticalOffsetphone) {
-				mrClassNames = mrClassNames + mrVerticalOffsetphone;
-			}
-
-			if (mrHorizontalOffset) {
-				mrClassNames = mrClassNames + mrHorizontalOffset;
-			}
-
-			if (mrHorizontalOffsetdesktop) {
-				mrClassNames = mrClassNames + mrHorizontalOffsetdesktop;
-			}
-
-			if (mrHorizontalOffsetlaptop) {
-				mrClassNames = mrClassNames + mrHorizontalOffsetlaptop;
-			}
-
-			if (mrHorizontalOffsettablet) {
-				mrClassNames = mrClassNames + mrHorizontalOffsettablet;
-			}
-
-			if (mrHorizontalOffsetphone) {
-				mrClassNames = mrClassNames + mrHorizontalOffsetphone;
-			}
-
-			if (mrFontSize) {
-				mrClassNames = mrClassNames + " mr-fontsize" + mrFontSize;
-			}
-
-			if (mrFontSizehover) {
-				mrClassNames = mrClassNames + " mr-hover-fontsize" + mrFontSizehover;
-			}
-
-			if (mrFontSizedesktop) {
-				mrClassNames =
-					mrClassNames + " mr-desktop-fontsize" + mrFontSizedesktop;
-			}
-
-			if (mrFontSizelaptop) {
-				mrClassNames = mrClassNames + " mr-laptop-fontsize" + mrFontSizelaptop;
-			}
-
-			if (mrFontSizetablet) {
-				mrClassNames = mrClassNames + " mr-tablet-fontsize" + mrFontSizetablet;
-			}
-
-			if (mrFontSizephone) {
-				mrClassNames = mrClassNames + " mr-phone-fontsize" + mrFontSizephone;
-			}
-
-			if (mrTextAlignment) {
-				mrClassNames = mrClassNames + mrTextAlignment;
-			}
-
-			if (mrTextAlignmentdesktop) {
-				mrClassNames = mrClassNames + mrTextAlignmentdesktop;
-			}
-
-			if (mrTextAlignmentlaptop) {
-				mrClassNames = mrClassNames + mrTextAlignmentlaptop;
-			}
-
-			if (mrTextAlignmenttablet) {
-				mrClassNames = mrClassNames + mrTextAlignmenttablet;
-			}
-
-			if (mrTextAlignmentphone) {
-				mrClassNames = mrClassNames + mrTextAlignmentphone;
-			}
-
-			if (mrScroll) {
-				mrClassNames = mrClassNames + mrScroll;
-			}
-
-			if (mrScrollhover) {
-				mrClassNames = mrClassNames + mrScrollhover;
-			}
-
-			if (mrScrolldesktop) {
-				mrClassNames = mrClassNames + mrScrolldesktop;
-			}
-
-			if (mrScrolllaptop) {
-				mrClassNames = mrClassNames + mrScrolllaptop;
-			}
-
-			if (mrScrolltablet) {
-				mrClassNames = mrClassNames + mrScrolltablet;
-			}
-
-			if (mrScrollphone) {
-				mrClassNames = mrClassNames + mrScrollphone;
-			}
 			//}
 
 			return <BlockListBlock {...props} className={mrClassNames} />;
@@ -4494,550 +3969,44 @@ function mrApplyExtraClass(extraProps, blockType, attributes) {
 
 	let mrClassNames = "";
 	if (mrAllowedBlocks.includes(blockType.name)) {
-		if (mrPerPage && mrPerPage > 0) {
-			mrClassNames = mrClassNames + "mr-" + mrPerPage + "perpage";
-		}
-
-		if (mrArrowPagination) {
-			mrClassNames = mrClassNames + " mr-arrowpagination";
-		}
-
-		if (mrSelectPagination) {
-			mrClassNames = mrClassNames + " mr-selectpagination";
-		}
-
-		if (mrRadioPagination) {
-			mrClassNames = mrClassNames + " mr-radiopagination";
-		}
-
-		if (mrPerLine) {
-			mrClassNames = mrClassNames + mrPerLine;
-		}
-
-		if (mrPerLinedesktop) {
-			mrClassNames = mrClassNames + mrPerLinedesktop;
-		}
-
-		if (mrPerLinelaptop) {
-			mrClassNames = mrClassNames + mrPerLinelaptop;
-		}
-
-		if (mrPerLinetablet) {
-			mrClassNames = mrClassNames + mrPerLinetablet;
-		}
-
-		if (mrPerLinephone) {
-			mrClassNames = mrClassNames + mrPerLinephone;
-		}
-
-		if (mrSize) {
-			mrClassNames = mrClassNames + " mr-size" + mrSize;
-		}
-
-		if (mrSizehover) {
-			mrClassNames = mrClassNames + " mr-hover-size" + mrSizehover;
-		}
-
-		if (mrSizedesktop) {
-			mrClassNames = mrClassNames + " mr-desktop-size" + mrSizedesktop;
-		}
-
-		if (mrSizelaptop) {
-			mrClassNames = mrClassNames + " mr-laptop-size" + mrSizelaptop;
-		}
-
-		if (mrSizetablet) {
-			mrClassNames = mrClassNames + " mr-tablet-size" + mrSizetablet;
-		}
-
-		if (mrSizephone) {
-			mrClassNames = mrClassNames + " mr-phone-size" + mrSizephone;
-		}
-
-		if (mrOrder) {
-			mrClassNames = mrClassNames + mrOrder;
-		}
-
-		if (mrOrderdesktop) {
-			mrClassNames = mrClassNames + mrOrderdesktop;
-		}
-
-		if (mrOrderlaptop) {
-			mrClassNames = mrClassNames + mrOrderlaptop;
-		}
-
-		if (mrOrdertablet) {
-			mrClassNames = mrClassNames + mrOrdertablet;
-		}
-
-		if (mrOrderphone) {
-			mrClassNames = mrClassNames + mrOrderphone;
-		}
-
-		if (mrAnimation) {
-			mrClassNames = mrClassNames + mrAnimation;
-		}
-
-		if (mrAnimationhover) {
-			mrClassNames = mrClassNames + mrAnimationhover;
-		}
-
-		if (mrTransition) {
-			mrClassNames = mrClassNames + mrTransition;
-		}
-
-		if (mrTransitionhover) {
-			mrClassNames = mrClassNames + mrTransitionhover;
-		}
-
-		if (mrDisplay) {
-			mrClassNames = mrClassNames + mrDisplay;
-		}
-
-		if (mrDisplayhover) {
-			mrClassNames = mrClassNames + mrDisplayhover;
-		}
-
-		if (mrDisplaydesktop) {
-			mrClassNames = mrClassNames + mrDisplaydesktop;
-		}
-
-		if (mrDisplaylaptop) {
-			mrClassNames = mrClassNames + mrDisplaylaptop;
-		}
-
-		if (mrDisplaytablet) {
-			mrClassNames = mrClassNames + mrDisplaytablet;
-		}
-
-		if (mrDisplayphone) {
-			mrClassNames = mrClassNames + mrDisplayphone;
-		}
-
-		if (mrWrap) {
-			mrClassNames = mrClassNames + mrWrap;
-		}
-
-		if (mrWrapdesktop) {
-			mrClassNames = mrClassNames + mrWrapdesktop;
-		}
-
-		if (mrWraplaptop) {
-			mrClassNames = mrClassNames + mrWraplaptop;
-		}
-
-		if (mrWraptablet) {
-			mrClassNames = mrClassNames + mrWraptablet;
-		}
-
-		if (mrWrapphone) {
-			mrClassNames = mrClassNames + mrWrap;
-		}
-
-		if (mrPaddingTop) {
-			mrClassNames = mrClassNames + mrPaddingTop;
-		}
-
-		if (mrPaddingTophover) {
-			mrClassNames = mrClassNames + mrPaddingTophover;
-		}
-
-		if (mrPaddingTopdesktop) {
-			mrClassNames = mrClassNames + mrPaddingTopdesktop;
-		}
-
-		if (mrPaddingToplaptop) {
-			mrClassNames = mrClassNames + mrPaddingToplaptop;
-		}
-
-		if (mrPaddingToptablet) {
-			mrClassNames = mrClassNames + mrPaddingToptablet;
-		}
-
-		if (mrPaddingTopphone) {
-			mrClassNames = mrClassNames + mrPaddingTopphone;
-		}
-
-		if (mrPaddingRight) {
-			mrClassNames = mrClassNames + mrPaddingRight;
-		}
-
-		if (mrPaddingRighthover) {
-			mrClassNames = mrClassNames + mrPaddingRighthover;
-		}
-
-		if (mrPaddingRightdesktop) {
-			mrClassNames = mrClassNames + mrPaddingRightdesktop;
-		}
-
-		if (mrPaddingRightlaptop) {
-			mrClassNames = mrClassNames + mrPaddingRightlaptop;
-		}
-
-		if (mrPaddingRighttablet) {
-			mrClassNames = mrClassNames + mrPaddingRighttablet;
-		}
-
-		if (mrPaddingRightphone) {
-			mrClassNames = mrClassNames + mrPaddingRightphone;
-		}
-
-		if (mrPaddingBottom) {
-			mrClassNames = mrClassNames + mrPaddingBottom;
-		}
-
-		if (mrPaddingBottomhover) {
-			mrClassNames = mrClassNames + mrPaddingBottomhover;
-		}
-
-		if (mrPaddingBottomdesktop) {
-			mrClassNames = mrClassNames + mrPaddingBottomdesktop;
-		}
-
-		if (mrPaddingBottomlaptop) {
-			mrClassNames = mrClassNames + mrPaddingBottomlaptop;
-		}
-
-		if (mrPaddingBottomtablet) {
-			mrClassNames = mrClassNames + mrPaddingBottomtablet;
-		}
-
-		if (mrPaddingBottomphone) {
-			mrClassNames = mrClassNames + mrPaddingBottomphone;
-		}
-
-		if (mrPaddingLeft) {
-			mrClassNames = mrClassNames + mrPaddingLeft;
-		}
-
-		if (mrPaddingLefthover) {
-			mrClassNames = mrClassNames + mrPaddingLefthover;
-		}
-
-		if (mrPaddingLeftdesktop) {
-			mrClassNames = mrClassNames + mrPaddingLeftdesktop;
-		}
-
-		if (mrPaddingLeftlaptop) {
-			mrClassNames = mrClassNames + mrPaddingLeftlaptop;
-		}
-
-		if (mrPaddingLefttablet) {
-			mrClassNames = mrClassNames + mrPaddingLefttablet;
-		}
-
-		if (mrPaddingLeftphone) {
-			mrClassNames = mrClassNames + mrPaddingLeftphone;
-		}
-
-		if (mrMarginTop) {
-			mrClassNames = mrClassNames + mrMarginTop;
-		}
-
-		if (mrMarginTophover) {
-			mrClassNames = mrClassNames + mrMarginTophover;
-		}
-
-		if (mrMarginTopdesktop) {
-			mrClassNames = mrClassNames + mrMarginTopdesktop;
-		}
-
-		if (mrMarginToplaptop) {
-			mrClassNames = mrClassNames + mrMarginToplaptop;
-		}
-
-		if (mrMarginToptablet) {
-			mrClassNames = mrClassNames + mrMarginToptablet;
-		}
-
-		if (mrMarginTopphone) {
-			mrClassNames = mrClassNames + mrMarginTopphone;
-		}
-
-		if (mrMarginRight) {
-			mrClassNames = mrClassNames + mrMarginRight;
-		}
-
-		if (mrMarginRighthover) {
-			mrClassNames = mrClassNames + mrMarginRighthover;
-		}
-
-		if (mrMarginRightdesktop) {
-			mrClassNames = mrClassNames + mrMarginRightdesktop;
-		}
-
-		if (mrMarginRightlaptop) {
-			mrClassNames = mrClassNames + mrMarginRightlaptop;
-		}
-
-		if (mrMarginRighttablet) {
-			mrClassNames = mrClassNames + mrMarginRighttablet;
-		}
-
-		if (mrMarginRightphone) {
-			mrClassNames = mrClassNames + mrMarginRightphone;
-		}
-
-		if (mrMarginBottom) {
-			mrClassNames = mrClassNames + mrMarginBottom;
-		}
-
-		if (mrMarginBottomhover) {
-			mrClassNames = mrClassNames + mrMarginBottomhover;
-		}
-
-		if (mrMarginBottomdesktop) {
-			mrClassNames = mrClassNames + mrMarginBottomdesktop;
-		}
-
-		if (mrMarginBottomlaptop) {
-			mrClassNames = mrClassNames + mrMarginBottomlaptop;
-		}
-
-		if (mrMarginBottomtablet) {
-			mrClassNames = mrClassNames + mrMarginBottomtablet;
-		}
-
-		if (mrMarginBottomphone) {
-			mrClassNames = mrClassNames + mrMarginBottomphone;
-		}
-
-		if (mrMarginLeft) {
-			mrClassNames = mrClassNames + mrMarginLeft;
-		}
-
-		if (mrMarginLefthover) {
-			mrClassNames = mrClassNames + mrMarginLefthover;
-		}
-
-		if (mrMarginLeftdesktop) {
-			mrClassNames = mrClassNames + mrMarginLeftdesktop;
-		}
-
-		if (mrMarginLeftlaptop) {
-			mrClassNames = mrClassNames + mrMarginLeftlaptop;
-		}
-
-		if (mrMarginLefttablet) {
-			mrClassNames = mrClassNames + mrMarginLefttablet;
-		}
-
-		if (mrMarginLeftphone) {
-			mrClassNames = mrClassNames + mrMarginLeftphone;
-		}
-
-		if (mrPosition) {
-			mrClassNames = mrClassNames + mrPosition;
-		}
-
-		if (mrPositiondesktop) {
-			mrClassNames = mrClassNames + mrPositiondesktop;
-		}
-
-		if (mrPositionlaptop) {
-			mrClassNames = mrClassNames + mrPositionlaptop;
-		}
-
-		if (mrPositiontablet) {
-			mrClassNames = mrClassNames + mrPositiontablet;
-		}
-
-		if (mrPositionphone) {
-			mrClassNames = mrClassNames + mrPositionphone;
-		}
-
-		if (
-			mrPosition === " mr-absolute" ||
-			mrPosition === " mr-fixed" ||
-			mrPosition === " mr-sticky"
-		) {
-			if (mrPositionAlignment) {
-				mrClassNames = mrClassNames + mrPositionAlignment;
+		Object.keys(attributes).forEach(function (value) {
+			if (value == "mrPerPage" && attributes[value] && attributes[value] > 0) {
+				mrClassNames = mrClassNames + "mr-" + attributes[value] + "perpage";
+			} else if (value == "mrArrowPagination" && attributes[value]) {
+				mrClassNames = mrClassNames + " mr-arrowpagination";
+			} else if (value == "mrSelectPagination" && attributes[value]) {
+				mrClassNames = mrClassNames + " mr-selectpagination";
+			} else if (value == "mrRadioPagination" && attributes[value]) {
+				mrClassNames = mrClassNames + " mr-radiopagination";
+			} else if (value == "mrSize" && attributes[value]) {
+				mrClassNames = mrClassNames + " mr-size" + attributes[value];
+			} else if (value == "mrSizehover" && attributes[value]) {
+				mrClassNames = mrClassNames + " mr-hover-size" + attributes[value];
+			} else if (value == "mrSizedesktop" && attributes[value]) {
+				mrClassNames = mrClassNames + " mr-desktop-size" + attributes[value];
+			} else if (value == "mrSizelaptop" && attributes[value]) {
+				mrClassNames = mrClassNames + " mr-laptop-size" + attributes[value];
+			} else if (value == "mrSizetablet" && attributes[value]) {
+				mrClassNames = mrClassNames + " mr-tablet-size" + attributes[value];
+			} else if (value == "mrSizephone" && attributes[value]) {
+				mrClassNames = mrClassNames + " mr-phone-size" + attributes[value];
+			} else if (value == "mrFontSize" && attributes[value]) {
+				mrClassNames = mrClassNames + " mr-fontsize" + attributes[value];
+			} else if (value == "mrFontSizehover" && attributes[value]) {
+				mrClassNames = mrClassNames + " mr-hover-fontsize" + attributes[value];
+			} else if (value == "mrFontSizedesktop" && attributes[value]) {
+				mrClassNames =
+					mrClassNames + " mr-desktop-fontsize" + attributes[value];
+			} else if (value == "mrFontSizelaptop" && attributes[value]) {
+				mrClassNames = mrClassNames + " mr-laptop-fontsize" + attributes[value];
+			} else if (value == "mrFontSizetablet" && attributes[value]) {
+				mrClassNames = mrClassNames + " mr-tablet-fontsize" + attributes[value];
+			} else if (value == "mrFontSizephone" && attributes[value]) {
+				mrClassNames = mrClassNames + " mr-phone-fontsize" + attributes[value];
+			} else if (value.startsWith("mr") && attributes[value]) {
+				mrClassNames = mrClassNames + " mr-" + attributes[value];
 			}
-			if (mrPositionSides) {
-				mrClassNames = mrClassNames + mrPositionSides;
-			}
-		}
-
-		if (
-			mrPositiondesktop === " mr-desktop-absolute" ||
-			mrPositiondesktop === " mr-desktop-fixed" ||
-			mrPositiondesktop === " mr-desktop-sticky"
-		) {
-			if (mrPositionAlignmentdesktop) {
-				mrClassNames = mrClassNames + mrPositionAlignmentdesktop;
-			}
-			if (mrPositionSidesdesktop) {
-				mrClassNames = mrClassNames + mrPositionSidesdesktop;
-			}
-		}
-
-		if (
-			mrPositionlaptop === " mr-laptop-absolute" ||
-			mrPositionlaptop === " mr-laptop-fixed" ||
-			mrPositionlaptop === " mr-laptop-sticky"
-		) {
-			if (mrPositionAlignmentlaptop) {
-				mrClassNames = mrClassNames + mrPositionAlignmentlaptop;
-			}
-			if (mrPositionSideslaptop) {
-				mrClassNames = mrClassNames + mrPositionSideslaptop;
-			}
-		}
-
-		if (
-			mrPositiontablet === " mr-tablet-absolute" ||
-			mrPositiontablet === " mr-tablet-fixed" ||
-			mrPositiontablet === " mr-tablet-sticky"
-		) {
-			if (mrPositionAlignmenttablet) {
-				mrClassNames = mrClassNames + mrPositionAlignmenttablet;
-			}
-			if (mrPositionSidestablet) {
-				mrClassNames = mrClassNames + mrPositionSidestablet;
-			}
-		}
-
-		if (
-			mrPositionphone === " mr-phone-absolute" ||
-			mrPositionphone === " mr-phone-fixed" ||
-			mrPositionphone === " mr-phone-sticky"
-		) {
-			if (mrPositionAlignmentphone) {
-				mrClassNames = mrClassNames + mrPositionAlignmentphone;
-			}
-			if (mrPositionSidesphone) {
-				mrClassNames = mrClassNames + mrPositionSidesphone;
-			}
-		}
-
-		if (mrContentAlignment) {
-			mrClassNames = mrClassNames + mrContentAlignment;
-		}
-
-		if (mrContentAlignmentdesktop) {
-			mrClassNames = mrClassNames + mrContentAlignmentdesktop;
-		}
-
-		if (mrContentAlignmentlaptop) {
-			mrClassNames = mrClassNames + mrContentAlignmentlaptop;
-		}
-
-		if (mrContentAlignmenttablet) {
-			mrClassNames = mrClassNames + mrContentAlignmenttablet;
-		}
-
-		if (mrContentAlignmentphone) {
-			mrClassNames = mrClassNames + mrContentAlignmentphone;
-		}
-
-		if (mrVerticalOffset) {
-			mrClassNames = mrClassNames + mrVerticalOffset;
-		}
-
-		if (mrVerticalOffsetdesktop) {
-			mrClassNames = mrClassNames + mrVerticalOffsetdesktop;
-		}
-
-		if (mrVerticalOffsetlaptop) {
-			mrClassNames = mrClassNames + mrVerticalOffsetlaptop;
-		}
-
-		if (mrVerticalOffsettablet) {
-			mrClassNames = mrClassNames + mrVerticalOffsettablet;
-		}
-
-		if (mrVerticalOffsetphone) {
-			mrClassNames = mrClassNames + mrVerticalOffsetphone;
-		}
-
-		if (mrHorizontalOffset) {
-			mrClassNames = mrClassNames + mrHorizontalOffset;
-		}
-
-		if (mrHorizontalOffsetdesktop) {
-			mrClassNames = mrClassNames + mrHorizontalOffsetdesktop;
-		}
-
-		if (mrHorizontalOffsetlaptop) {
-			mrClassNames = mrClassNames + mrHorizontalOffsetlaptop;
-		}
-
-		if (mrHorizontalOffsettablet) {
-			mrClassNames = mrClassNames + mrHorizontalOffsettablet;
-		}
-
-		if (mrHorizontalOffsetphone) {
-			mrClassNames = mrClassNames + mrHorizontalOffsetphone;
-		}
-
-		if (mrFontSize) {
-			mrClassNames = mrClassNames + " mr-fontsize" + mrFontSize;
-		}
-
-		if (mrFontSizehover) {
-			mrClassNames = mrClassNames + " mr-hover-fontsize" + mrFontSizehover;
-		}
-
-		if (mrFontSizedesktop) {
-			mrClassNames = mrClassNames + " mr-desktop-fontsize" + mrFontSizedesktop;
-		}
-
-		if (mrFontSizelaptop) {
-			mrClassNames = mrClassNames + " mr-laptop-fontsize" + mrFontSizelaptop;
-		}
-
-		if (mrFontSizetablet) {
-			mrClassNames = mrClassNames + " mr-tablet-fontsize" + mrFontSizetablet;
-		}
-
-		if (mrFontSizephone) {
-			mrClassNames = mrClassNames + " mr-phone-fontsize" + mrFontSizephone;
-		}
-
-		if (mrTextAlignment) {
-			mrClassNames = mrClassNames + mrTextAlignment;
-		}
-
-		if (mrTextAlignmentdesktop) {
-			mrClassNames = mrClassNames + mrTextAlignmentdesktop;
-		}
-
-		if (mrTextAlignmentlaptop) {
-			mrClassNames = mrClassNames + mrTextAlignmentlaptop;
-		}
-
-		if (mrTextAlignmenttablet) {
-			mrClassNames = mrClassNames + mrTextAlignmenttablet;
-		}
-
-		if (mrTextAlignmentphone) {
-			mrClassNames = mrClassNames + mrTextAlignmentphone;
-		}
-
-		if (mrScroll) {
-			mrClassNames = mrClassNames + mrScroll;
-		}
-
-		if (mrScrollhover) {
-			mrClassNames = mrClassNames + mrScrollhover;
-		}
-
-		if (mrScrolldesktop) {
-			mrClassNames = mrClassNames + mrScrolldesktop;
-		}
-
-		if (mrScrolllaptop) {
-			mrClassNames = mrClassNames + mrScrolllaptop;
-		}
-
-		if (mrScrolltablet) {
-			mrClassNames = mrClassNames + mrScrolltablet;
-		}
-
-		if (mrScrollphone) {
-			mrClassNames = mrClassNames + mrScrollphone;
-		}
+		});
 	}
 
 	extraProps.className = classnames(extraProps.className, mrClassNames);
