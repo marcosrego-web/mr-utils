@@ -1,0 +1,26 @@
+.mr-hover-flex {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+}
+.mr-hover-show,
+.mr-hover-block {
+  display: block !important;
+}
+.mr-hover-show,
+.mr-hover-visible {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+.mr-hover-hide,
+.mr-hover-none {
+  display: none !important;
+}
+.mr-hover-hide,
+.mr-hover-hidden {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}

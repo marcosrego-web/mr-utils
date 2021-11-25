@@ -1,0 +1,103 @@
+/*(not used on breakpoints)*/
+.mr-offcanvas-container {
+  background-color: #fff;
+  background-color: var(--offcanvas-background-color, #fff);
+}
+.mr-transitionleft .mr-offcanvas-container,
+.mr-transitionright .mr-offcanvas-container {
+  width: var(--offcanvas-size, 100%);
+}
+.mr-transitiontop .mr-offcanvas-container,
+.mr-transitionbottom .mr-offcanvas-container {
+  height: var(--offcanvas-size, 100%);
+}
+.mr-offcanvas-container,
+.mr-offcanvas-container p,
+.mr-offcanvas-container li,
+.mr-offcanvas-container a,
+.mr-offcanvas-container h1,
+.mr-offcanvas-container h2,
+.mr-offcanvas-container h3,
+.mr-offcanvas-container h4,
+.mr-offcanvas-container h5,
+.mr-offcanvas-container h6 {
+  color: #000;
+  color: var(--offcanvas-text-color, #000);
+}
+.mr-offcanvas-toggle {
+  color: #000;
+  color: var(--offcanvas-toggle-color, #000);
+}
+.mr-offcanvas-container,
+.mr-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100vh;
+  overflow: auto;
+  z-index: 20;
+}
+.admin-bar .mr-offcanvas-container {
+  padding-top: 46px;
+}
+.admin-bar .mr-offcanvas-toggle {
+  margin-top: 46px;
+}
+.mr-offcanvas-toggle {
+  position: fixed;
+  width: 2.5em;
+  height: 1.5em;
+  cursor: pointer;
+  z-index: 21;
+  display: none;
+}
+.mr-transitionleft .mr-offcanvas-toggle:not(.active),
+.mr-transitionright .mr-offcanvas-toggle.active {
+  right: 1.5rem;
+  right: var(--padding, 0.75rem);
+  top: 1.5rem;
+  top: var(--padding, 0.75rem);
+}
+.mr-transitionright .mr-offcanvas-toggle:not(.active),
+.mr-transitionleft .mr-offcanvas-toggle.active {
+  left: 1.5rem;
+  left: var(--padding, 0.75rem);
+  top: 1.5rem;
+  top: var(--padding, 0.75rem);
+}
+.mr-transitionbottom .mr-offcanvas-toggle:not(.active),
+.mr-transitiontop .mr-offcanvas-toggle.active {
+  left: calc(50% - 1.25em);
+  top: 1.5rem;
+  top: var(--padding, 0.75rem);
+}
+.mr-transitiontop .mr-offcanvas-toggle:not(.active),
+.mr-transitionbottom .mr-offcanvas-toggle.active {
+  left: calc(50% - 1.25em);
+  bottom: var(--padding, 0.75rem);
+}
+.mr-transitionleft .mr-offcanvas-container:not(.active),
+.mr-transitionright .mr-offcanvas-container.active {
+  margin-left: calc(100% - var(--offcanvas-size, 100%));
+}
+.mr-offcanvas-toggle:before,
+.mr-offcanvas-toggle:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.mr-offcanvas-toggle:before {
+  height: 100%;
+  border: 0.2em solid;
+  border-left: 0;
+  border-right: 0;
+  border-radius: 0.2em;
+}
+.mr-offcanvas-toggle:after {
+  height: 0.85em;
+  border-bottom: 0.2em solid;
+}

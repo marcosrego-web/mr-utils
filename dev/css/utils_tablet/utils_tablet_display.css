@@ -1,0 +1,32 @@
+.mr-tablet-flex {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+}
+.mr-tablet-wrap {
+  flex-wrap: wrap;
+}
+.mr-tablet-nowrap {
+  flex-wrap: nowrap !important;
+}
+.mr-tablet-show,
+.mr-tablet-block {
+  display: block !important;
+}
+.mr-tablet-show,
+.mr-tablet-visible {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+.mr-tablet-hide,
+.mr-tablet-none {
+  display: none !important;
+}
+.mr-tablet-hide,
+.mr-tablet-hidden {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}

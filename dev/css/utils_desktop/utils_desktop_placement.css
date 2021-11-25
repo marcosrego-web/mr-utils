@@ -1,0 +1,83 @@
+.mr-desktop-relative {
+  position: relative;
+}
+.mr-desktop-absolute {
+  position: absolute;
+}
+.mr-desktop-fixed {
+  position: fixed;
+}
+.mr-desktop-sticky {
+  position: -webkit-sticky;
+  position: sticky;
+}
+.mr-desktop-aligntop {
+  vertical-align: top;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+.mr-desktop-alignbottom {
+  align-items: flex-end;
+  align-content: flex-end;
+  vertical-align: bottom;
+}
+.mr-desktop-top {
+  top: 0;
+  bottom: auto;
+}
+.mr-desktop-right {
+  right: 0;
+  left: auto;
+}
+.mr-desktop-middle {
+  align-items: center;
+  align-content: center;
+  vertical-align: middle;
+}
+.mr-desktop-left {
+  left: 0;
+  right: auto;
+}
+.mr-desktop-floatleft {
+  float: left;
+}
+.mr-desktop-floatright {
+  float: right;
+}
+.mr-desktop-center,
+.mr-desktop-marginauto {
+  margin-left: auto;
+  margin-right: auto;
+}
+.mr-desktop-bottom {
+  bottom: 0;
+  top: auto;
+}
+.mr-desktop-baseline {
+  align-items: baseline;
+  vertical-align: baseline;
+}
+.mr-desktop-offsettop:not(.mr-desktop-offsetleft):not(.mr-desktop-offsetright) {
+  transform: translateY(-100%);
+}
+.mr-desktop-offsettop.mr-desktop-offsetleft {
+  transform: translate(-100%, -100%);
+}
+.mr-desktop-offsettop.mr-desktop-offsetright {
+  transform: translate(100%, -100%);
+}
+.mr-desktop-offsetright:not(.mr-desktop-offsettop):not(.mr-desktop-offsetbottom) {
+  transform: translateX(100%);
+}
+.mr-desktop-offsetbottom:not(.mr-desktop-offsetleft):not(.mr-desktop-offsetright) {
+  transform: translateY(100%);
+}
+.mr-desktop-offsetbottom.mr-desktop-offsetleft {
+  transform: translate(-100%, 100%);
+}
+.mr-desktop-offsetbottom.mr-desktop-offsetright {
+  transform: translate(100%, 100%);
+}
+.mr-desktop-offsetleft:not(.mr-desktop-offsettop):not(.mr-desktop-offsetbottom) {
+  transform: translateX(-100%);
+}

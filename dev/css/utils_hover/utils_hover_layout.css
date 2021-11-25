@@ -1,0 +1,98 @@
+.mr-hover-size13:hover,
+.mr-hover-width100:hover {
+  width: 100%;
+}
+.mr-hover-size13:hover,
+.mr-hover-largesize:hover {
+  width: var(--size-13, 100%);
+}
+.mr-hover-size12:hover,
+.mr-hover-width75:hover {
+  width: 75%;
+}
+.mr-hover-size12:hover {
+  width: var(--size-12, 75%);
+}
+.mr-hover-size11:hover,
+.mr-hover-width50:hover {
+  width: 50%;
+}
+.mr-hover-size11:hover {
+  width: var(--size-11, 50%);
+}
+.mr-hover-size10:hover,
+.mr-hover-width33:hover {
+  width: 33.33333333333333%;
+}
+.mr-hover-size10:hover {
+  width: var(--size-10, 33.33333333333333%);
+}
+.mr-hover-size9:hover,
+.mr-hover-width25:hover {
+  width: 25%;
+}
+.mr-hover-size9:hover {
+  width: var(--size-9, 25%);
+}
+.mr-hover-size8:hover,
+.mr-hover-width20:hover {
+  width: 20%;
+}
+.mr-hover-size8:hover {
+  width: var(--size-8, 20%);
+}
+.mr-hover-size7:hover,
+.mr-hover-width16:hover {
+  width: 16.66666666666667%;
+}
+.mr-hover-size7:hover {
+  width: var(--size-7, 16.66666666666667%);
+}
+.mr-hover-size6:hover,
+.mr-hover-width14:hover {
+  width: 14.28571428571429%;
+}
+.mr-hover-size6:hover,
+.mr-hover-mediumsize:hover {
+  width: var(--size-6, 14.28571428571429%);
+}
+.mr-hover-size5:hover,
+.mr-hover-width12:hover {
+  width: 12.5%;
+}
+.mr-hover-size5:hover {
+  width: var(--size-5, 12.5%);
+}
+.mr-hover-size4:hover,
+.mr-hover-width11:hover {
+  width: 11.11111111111111%;
+}
+.mr-hover-size4:hover {
+  width: var(--size-4, 11.11111111111111%);
+}
+.mr-hover-size3:hover,
+.mr-hover-width10:hover {
+  width: 10%;
+}
+.mr-hover-size3:hover {
+  width: var(--size-3, 10%);
+}
+.mr-hover-size2:hover,
+.mr-hover-width9:hover {
+  width: 9.090909090909091%;
+}
+.mr-hover-size2:hover {
+  width: var(--size-2, 9.090909090909091%);
+}
+.mr-hover-size1:hover,
+.mr-hover-width8:hover {
+  width: 8.333333333333333%;
+}
+.mr-hover-size1:hover,
+.mr-hover-smallsize:hover {
+  width: var(--size-1, 8.333333333333333%);
+}
+.mr-hover-sizeauto:hover,
+.mr-hover-widthauto:hover {
+  width: auto;
+}

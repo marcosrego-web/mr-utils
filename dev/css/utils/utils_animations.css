@@ -1,0 +1,340 @@
+/*(not used on breakpoints)*/
+/*ANIMATIONS*/
+@keyframes mrFadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes mrFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes mrSlideOutTop {
+  0% {
+    -webkit-transform: translateY(0%);
+    -ms-transform: translateY(0%);
+    transform: translateY(0%);
+  }
+  100% {
+    -webkit-transform: translateY(100%);
+    -ms-transform: translateY(100%);
+    transform: translateY(100%);
+  }
+}
+@keyframes mrSlideInTop {
+  0% {
+    -webkit-transform: translateY(-100%);
+    -ms-transform: translateY(-100%);
+    transform: translateY(-100%);
+  }
+  100% {
+    -webkit-transform: translateY(0%);
+    -ms-transform: translateY(0%);
+    transform: translateY(0%);
+  }
+}
+@keyframes mrSlideOutBottom {
+  0% {
+    -webkit-transform: translateY(0%);
+    -ms-transform: translateY(0%);
+    transform: translateY(0%);
+  }
+  100% {
+    -webkit-transform: translateY(-100%);
+    -ms-transform: translateY(-100%);
+    transform: translateY(-100%);
+  }
+}
+@keyframes mrSlideInBottom {
+  0% {
+    -webkit-transform: translateY(100%);
+    -ms-transform: translateY(100%);
+    transform: translateY(100%);
+  }
+  100% {
+    -webkit-transform: translateY(0%);
+    -ms-transform: translateY(0%);
+    transform: translateY(0%);
+  }
+}
+@keyframes mrSlideOutRight {
+  0% {
+    -webkit-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    transform: translateX(0%);
+  }
+  100% {
+    -webkit-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+}
+@keyframes mrSlideInRight {
+  0% {
+    -webkit-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+  100% {
+    -webkit-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    transform: translateX(0%);
+  }
+}
+@keyframes mrSlideOutLeft {
+  0% {
+    -webkit-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    transform: translateX(0%);
+  }
+  100% {
+    -webkit-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+}
+@keyframes mrSlideInLeft {
+  0% {
+    -webkit-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+  100% {
+    -webkit-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    transform: translateX(0%);
+  }
+}
+@keyframes mrScaleOut {
+  0% {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+  }
+  100% {
+    -webkit-transform: scale(0);
+    -ms-transform: scale(0);
+    transform: scale(0);
+  }
+}
+@keyframes mrScaleIn {
+  0% {
+    -webkit-transform: scale(0);
+    -ms-transform: scale(0);
+    transform: scale(0);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+  }
+}
+@keyframes mrZoomOut {
+  0% {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(2);
+    -ms-transform: scale(2);
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+@keyframes mrZoomIn {
+  0% {
+    -webkit-transform: scale(0);
+    -ms-transform: scale(0);
+    transform: scale(0);
+    opacity: 0;
+    transform-origin: center;
+  }
+  100% {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+    transform-origin: center;
+  }
+}
+.mr-fade,
+.mr-fadeout {
+  -webkit-animation: mrFadeOut 0.5s forwards;
+  animation: mrFadeOut 0.5s forwards;
+  -webkit-animation: mrFadeOut var(--transition-duration, 0.5s) forwards;
+  animation: mrFadeOut var(--transition-duration, 0.5s) forwards;
+}
+.mr-fade.active:not(.inactive),
+.mr-fadein {
+  -webkit-animation: mrFadeIn 0.5s forwards;
+  animation: mrFadeIn 0.5s forwards;
+  -webkit-animation: mrFadeIn var(--transition-duration, 0.5s) forwards;
+  animation: mrFadeIn var(--transition-duration, 0.5s) forwards;
+}
+.mr-slide,
+.mr-slidebottom,
+.mr-slideoutbottom {
+  -webkit-animation: mrSlideOutBottom 0.5s forwards;
+  animation: mrSlideOutBottom 0.5s forwards;
+  -webkit-animation: mrSlideOutBottom var(--transition-duration, 0.5s) forwards;
+  animation: mrSlideOutBottom var(--transition-duration, 0.5s) forwards;
+}
+.mr-slide.active:not(.inactive),
+.mr-slidebottom.active:not(.inactive),
+.mr-slideinbottom {
+  -webkit-animation: mrSlideInBottom 0.5s forwards;
+  animation: mrSlideInBottom 0.5s forwards;
+  -webkit-animation: mrSlideInBottom var(--transition-duration, 0.5s) forwards;
+  animation: mrSlideInBottom var(--transition-duration, 0.5s) forwards;
+}
+.mr-transitiontop .mr-slide,
+.mr-slidetop,
+.mr-slideouttop {
+  -webkit-animation: mrSlideOutTop 0.5s forwards;
+  animation: mrSlideOutTop 0.5s forwards;
+  -webkit-animation: mrSlideOutTop var(--transition-duration, 0.5s) forwards;
+  animation: mrSlideOutTop var(--transition-duration, 0.5s) forwards;
+}
+.mr-transitiontop .mr-slide.active:not(.inactive),
+.mr-slidetop.active:not(.inactive),
+.mr-slideintop {
+  -webkit-animation: mrSlideInTop 0.5s forwards;
+  animation: mrSlideInTop 0.5s forwards;
+  -webkit-animation: mrSlideInTop var(--transition-duration, 0.5s) forwards;
+  animation: mrSlideInTop var(--transition-duration, 0.5s) forwards;
+}
+.mr-transitionright .mr-slide,
+.mr-slideright,
+.mr-slideoutright {
+  -webkit-animation: mrSlideOutRight 0.5s forwards;
+  animation: mrSlideOutRight 0.5s forwards;
+  -webkit-animation: mrSlideOutRight var(--transition-duration, 0.5s) forwards;
+  animation: mrSlideOutRight var(--transition-duration, 0.5s) forwards;
+}
+.mr-transitionright .mr-slide.active:not(.inactive),
+.mr-slideright.active:not(.inactive),
+.mr-slideinright {
+  -webkit-animation: mrSlideInRight 0.5s forwards;
+  animation: mrSlideInRight 0.5s forwards;
+  -webkit-animation: mrSlideInRight var(--transition-duration, 0.5s) forwards;
+  animation: mrSlideInRight var(--transition-duration, 0.5s) forwards;
+}
+.mr-transitionleft .mr-slide,
+.mr-slideleft,
+.mr-slideoutleft {
+  -webkit-animation: mrSlideOutLeft 0.5s forwards;
+  animation: mrSlideOutLeft 0.5s forwards;
+  -webkit-animation: mrSlideOutLeft var(--transition-duration, 0.5s) forwards;
+  animation: mrSlideOutLeft var(--transition-duration, 0.5s) forwards;
+}
+.mr-transitionleft .mr-slide.active:not(.inactive),
+.mr-slideleft.active:not(.inactive),
+.mr-slideinleft {
+  -webkit-animation: mrSlideInLeft 0.5s forwards;
+  animation: mrSlideInLeft 0.5s forwards;
+  -webkit-animation: mrSlideInLeft var(--transition-duration, 0.5s) forwards;
+  animation: mrSlideInLeft var(--transition-duration, 0.5s) forwards;
+}
+.mr-scale,
+.mr-scaleleft,
+.mr-scaleright,
+.mr-scaleout,
+.mr-scaleoutleft,
+.mr-scaleoutright {
+  transform-origin: center;
+  -webkit-animation: mrScaleOut 0.5s forwards;
+  animation: mrScaleOut 0.5s forwards;
+  -webkit-animation: mrScaleOut var(--transition-duration, 0.5s) forwards;
+  animation: mrScaleOut var(--transition-duration, 0.5s) forwards;
+}
+.mr-scale.active:not(.inactive),
+.mr-scaleleft.active:not(.inactive),
+.mr-scaleright.active:not(.inactive),
+.mr-scalein,
+.mr-scaleinleft,
+.mr-scaleinright {
+  -webkit-animation: mrScaleIn 0.5s forwards;
+  animation: mrScaleIn 0.5s forwards;
+  -webkit-animation: mrScaleIn var(--transition-duration, 0.5s) forwards;
+  animation: mrScaleIn var(--transition-duration, 0.5s) forwards;
+}
+.mr-transitionleft .mr-scale:not(.active),
+.mr-scaleleft:not(.active),
+.mr-scaleoutright,
+.mr-transitionright .mr-scale.active,
+.mr-scaleright.active,
+.mr-scaleoutleft {
+  transform-origin: right center;
+}
+.mr-transitionleft .mr-scale.active,
+.mr-scaleleft.active,
+.mr-scaleinright,
+.mr-transitionright .mr-scale:not(.active),
+.mr-scaleright:not(.active),
+.mr-scaleoutleft {
+  transform-origin: left center;
+}
+.mr-zoom,
+.mr-zoomleft,
+.mr-zoomright,
+.mr-zoomout,
+.mr-zoomoutleft,
+.mr-zoomoutright {
+  transform-origin: center;
+  -webkit-animation: mrZoomOut 0.5s forwards;
+  animation: mrZoomOut 0.5s forwards;
+  -webkit-animation: mrZoomOut var(--transition-duration, 0.5s) forwards;
+  animation: mrZoomOut var(--transition-duration, 0.5s) forwards;
+}
+.mr-zoom.active:not(.inactive),
+.mr-zoomleft.active:not(.inactive),
+.mr-zoomright.active:not(.inactive),
+.mr-zoomin,
+.mr-zoominleft,
+.mr-zoominright {
+  -webkit-animation: mrZoomIn 0.5s forwards;
+  animation: mrZoomIn 0.5s forwards;
+  -webkit-animation: mrZoomIn var(--transition-duration, 0.5s) forwards;
+  animation: mrZoomIn var(--transition-duration, 0.5s) forwards;
+}
+.mr-transitionleft .mr-zoom.active,
+.mr-zoomleft.active,
+.mr-zoominleft,
+.mr-transitionleft .mr-zoom:not(.active),
+.mr-zoomleft:not(.active),
+.mr-zoomoutleft {
+  transform-origin: left center;
+}
+.mr-transitionright .mr-zoom.active,
+.mr-zoomright.active,
+.mr-zoomoutright,
+.mr-transitionright .mr-zoom:not(.active),
+.mr-zoomright:not(.active),
+.mr-zoominright {
+  transform-origin: right center;
+}
+.mr-transition,
+.mr-ease {
+  transition: all var(--transition-duration, 0.5s) ease;
+}
+.mr-easein {
+  transition: all var(--transition-duration, 0.5s) ease-in;
+}
+.mr-easeout {
+  transition: all var(--transition-duration, 0.5s) ease-out;
+}
+.mr-easeinout {
+  transition: all var(--transition-duration, 0.5s) ease-in-out;
+}
+.mr-linear {
+  transition: all var(--transition-duration, 0.5s) linear;
+}

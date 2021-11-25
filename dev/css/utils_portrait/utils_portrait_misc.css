@@ -1,0 +1,72 @@
+.mr-portrait-scroll {
+  overflow: auto;
+}
+.mr-portrait-noscroll {
+  overflow: hidden !important;
+}
+.mr-portrait-hidescroll:not(.mr-portrait-horizontalscroll)::-webkit-scrollbar {
+  height: 0;
+}
+.mr-portrait-horizontalscroll.mr-portrait-hidescroll::-webkit-scrollbar,
+.mr-portrait-swipe::-webkit-scrollbar,
+.mr-portrait-swipecontent > *::-webkit-scrollbar {
+  width: 0;
+}
+.mr-portrait-horizontalscroll,
+.mr-portrait-horizontalscrollcontent > *,
+.mr-portrait-swipe,
+.mr-portrait-swipecontent > * {
+  display: -webkit-inline-box;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.mr-portrait-horizontalscroll img,
+.mr-portrait-horizontalscrollcontent > * img,
+.mr-portrait-swipe img,
+.mr-portrait-swipecontent > * img,
+.mr-portrait-horizontalscroll a,
+.mr-portrait-horizontalscrollcontent > * a,
+.mr-portrait-swipe a,
+.mr-portrait-swipecontent > * a {
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.mr-portrait-swipe,
+.mr-portrait-swipecontent > *,
+.mr-portrait-drag,
+.mr-portrait-dragcontent > *,
+.mr-portrait-draganddrop:not([draggable="false"]) {
+  cursor: grab;
+}
+.mr-portrait-dragging:not([draggable="false"]),
+.mr-portrait-draggingcontent > * {
+  cursor: grabbing;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+@supports (-webkit-overflow-scrolling: touch) {
+  .mr-portrait-iosscroll,
+  .mr-portrait-scroll {
+    overflow-y: scroll !important;
+  }
+  .mr-portrait-horizontalscroll,
+  .mr-portrait-horizontalscrollcontent > *,
+  .mr-portrait-swipe,
+  .mr-portrait-swipecontent > * {
+    overflow-x: scroll !important;
+  }
+  .mr-portrait-iosscroll,
+  .mr-portrait-scroll,
+  .mr-portrait-horizontalscroll,
+  .mr-portrait-horizontalscrollcontent > *,
+  .mr-portrait-swipe,
+  .mr-portrait-swipecontent > * {
+    -webkit-overflow-scrolling: touch !important;
+  }
+}

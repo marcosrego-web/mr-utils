@@ -1,0 +1,72 @@
+.mr-tablet-scroll {
+  overflow: auto;
+}
+.mr-tablet-noscroll {
+  overflow: hidden !important;
+}
+.mr-tablet-hidescroll:not(.mr-tablet-horizontalscroll)::-webkit-scrollbar {
+  height: 0;
+}
+.mr-tablet-horizontalscroll.mr-tablet-hidescroll::-webkit-scrollbar,
+.mr-tablet-swipe::-webkit-scrollbar,
+.mr-tablet-swipecontent > *::-webkit-scrollbar {
+  width: 0;
+}
+.mr-tablet-horizontalscroll,
+.mr-tablet-horizontalscrollcontent > *,
+.mr-tablet-swipe,
+.mr-tablet-swipecontent > * {
+  display: -webkit-inline-box;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.mr-tablet-horizontalscroll img,
+.mr-tablet-horizontalscrollcontent > * img,
+.mr-tablet-swipe img,
+.mr-tablet-swipecontent > * img,
+.mr-tablet-horizontalscroll a,
+.mr-tablet-horizontalscrollcontent > * a,
+.mr-tablet-swipe a,
+.mr-tablet-swipecontent > * a {
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.mr-tablet-swipe,
+.mr-tablet-swipecontent > *,
+.mr-tablet-drag,
+.mr-tablet-dragcontent > *,
+.mr-tablet-draganddrop:not([draggable="false"]) {
+  cursor: grab;
+}
+.mr-tablet-dragging:not([draggable="false"]),
+.mr-tablet-draggingcontent > * {
+  cursor: grabbing;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+@supports (-webkit-overflow-scrolling: touch) {
+  .mr-tablet-iosscroll,
+  .mr-tablet-scroll {
+    overflow-y: scroll !important;
+  }
+  .mr-tablet-horizontalscroll,
+  .mr-tablet-horizontalscrollcontent > *,
+  .mr-tablet-swipe,
+  .mr-tablet-swipecontent > * {
+    overflow-x: scroll !important;
+  }
+  .mr-tablet-iosscroll,
+  .mr-tablet-scroll,
+  .mr-tablet-horizontalscroll,
+  .mr-tablet-horizontalscrollcontent > *,
+  .mr-tablet-swipe,
+  .mr-tablet-swipecontent > * {
+    -webkit-overflow-scrolling: touch !important;
+  }
+}

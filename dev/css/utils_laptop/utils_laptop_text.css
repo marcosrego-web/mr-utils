@@ -1,0 +1,33 @@
+.mr-laptop-alignleft {
+  text-align: left;
+}
+.mr-laptop-aligncenter {
+  text-align: center;
+}
+.mr-laptop-alignright {
+  text-align: right;
+}
+.mr-laptop-fontsize7,
+.mr-laptop-largefontsize {
+  font-size: var(--font-size-7, 2rem);
+}
+.mr-laptop-fontsize6 {
+  font-size: var(--font-size-6, 1.125rem);
+}
+.mr-laptop-fontsize5,
+.mr-laptop-mediumfontsize {
+  font-size: var(--font-size-5, 1.17rem);
+}
+.mr-laptop-fontsize4 {
+  font-size: var(--font-size-4, 1rem);
+}
+.mr-laptop-fontsize3 {
+  font-size: var(--font-size-3, 0.875rem);
+}
+.mr-laptop-fontsize2 {
+  font-size: var(--font-size-2, 0.75rem);
+}
+.mr-laptop-fontsize1,
+.mr-laptop-smallfontsize {
+  font-size: var(--font-size-1, 0.625rem);
+}

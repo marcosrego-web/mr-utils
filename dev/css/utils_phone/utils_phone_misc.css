@@ -1,0 +1,72 @@
+.mr-phone-scroll {
+  overflow: auto;
+}
+.mr-phone-noscroll {
+  overflow: hidden !important;
+}
+.mr-phone-hidescroll:not(.mr-phone-horizontalscroll)::-webkit-scrollbar {
+  height: 0;
+}
+.mr-phone-horizontalscroll.mr-phone-hidescroll::-webkit-scrollbar,
+.mr-phone-swipe::-webkit-scrollbar,
+.mr-phone-swipecontent > *::-webkit-scrollbar {
+  width: 0;
+}
+.mr-phone-horizontalscroll,
+.mr-phone-horizontalscrollcontent > *,
+.mr-phone-swipe,
+.mr-phone-swipecontent > * {
+  display: -webkit-inline-box;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.mr-phone-horizontalscroll img,
+.mr-phone-horizontalscrollcontent > * img,
+.mr-phone-swipe img,
+.mr-phone-swipecontent > * img,
+.mr-phone-horizontalscroll a,
+.mr-phone-horizontalscrollcontent > * a,
+.mr-phone-swipe a,
+.mr-phone-swipecontent > * a {
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.mr-phone-swipe,
+.mr-phone-swipecontent > *,
+.mr-phone-drag,
+.mr-phone-dragcontent > *,
+.mr-phone-draganddrop:not([draggable="false"]) {
+  cursor: grab;
+}
+.mr-phone-dragging:not([draggable="false"]),
+.mr-phone-draggingcontent > * {
+  cursor: grabbing;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+@supports (-webkit-overflow-scrolling: touch) {
+  .mr-phone-iosscroll,
+  .mr-phone-scroll {
+    overflow-y: scroll !important;
+  }
+  .mr-phone-horizontalscroll,
+  .mr-phone-horizontalscrollcontent > *,
+  .mr-phone-swipe,
+  .mr-phone-swipecontent > * {
+    overflow-x: scroll !important;
+  }
+  .mr-phone-iosscroll,
+  .mr-phone-scroll,
+  .mr-phone-horizontalscroll,
+  .mr-phone-horizontalscrollcontent > *,
+  .mr-phone-swipe,
+  .mr-phone-swipecontent > * {
+    -webkit-overflow-scrolling: touch !important;
+  }
+}

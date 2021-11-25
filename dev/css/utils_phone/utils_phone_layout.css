@@ -1,0 +1,220 @@
+.mr-phone-12perline,
+.mr-phone-11perline,
+.mr-phone-10perline,
+.mr-phone-9perline,
+.mr-phone-8perline,
+.mr-phone-7perline,
+.mr-phone-6perline,
+.mr-phone-5perline,
+.mr-phone-4perline,
+.mr-phone-3perline,
+.mr-phone-2perline,
+.mr-phone-1perline,
+.mr-phone-0perline,
+.mr-phone-perline {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+}
+.mr-phone-12perline,
+.mr-phone-11perline,
+.mr-phone-10perline,
+.mr-phone-9perline,
+.mr-phone-8perline,
+.mr-phone-7perline,
+.mr-phone-6perline,
+.mr-phone-5perline,
+.mr-phone-4perline,
+.mr-phone-3perline,
+.mr-phone-2perline,
+.mr-phone-1perline,
+.mr-phone-perline {
+  flex-wrap: wrap;
+}
+.mr-phone-section,
+.mr-phone-0perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
+.mr-phone-1perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
+.mr-phone-perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
+.mr-phone-size13,
+.mr-phone-width100 {
+  width: 100%;
+}
+.mr-phone-size13,
+.mr-phone-largesize {
+  width: var(--size-13, 100%);
+}
+.mr-phone-size12,
+.mr-phone-width75 {
+  width: 75%;
+}
+.mr-phone-size12 {
+  width: var(--size-12, 75%);
+}
+.mr-phone-2perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
+.mr-phone-size11,
+.mr-phone-width50 {
+  width: 50%;
+}
+.mr-phone-size11 {
+  width: var(--size-11, 50%);
+}
+.mr-phone-3perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
+.mr-phone-size10,
+.mr-phone-width33 {
+  width: 33.33333333333333%;
+}
+.mr-phone-size10 {
+  width: var(--size-10, 33.33333333333333%);
+}
+.mr-phone-4perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
+.mr-phone-size9,
+.mr-phone-width25 {
+  width: 25%;
+}
+.mr-phone-size9 {
+  width: var(--size-9, 25%);
+}
+.mr-phone-5perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
+.mr-phone-size8,
+.mr-phone-width20 {
+  width: 20%;
+}
+.mr-phone-size8 {
+  width: var(--size-8, 20%);
+}
+.mr-phone-6perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
+.mr-phone-size7,
+.mr-phone-width16 {
+  width: 16.66666666666667%;
+}
+.mr-phone-size7 {
+  width: var(--size-7, 16.66666666666667%);
+}
+.mr-phone-7perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
+.mr-phone-size6,
+.mr-phone-width14 {
+  width: 14.28571428571429%;
+}
+.mr-phone-size6,
+.mr-phone-mediumsize {
+  width: var(--size-6, 14.28571428571429%);
+}
+.mr-phone-8perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
+.mr-phone-size5,
+.mr-phone-width12 {
+  width: 12.5%;
+}
+.mr-phone-size5 {
+  width: var(--size-5, 12.5%);
+}
+.mr-phone-9perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
+.mr-phone-size4,
+.mr-phone-width11 {
+  width: 11.11111111111111%;
+}
+.mr-phone-size4 {
+  width: var(--size-4, 11.11111111111111%);
+}
+.mr-phone-10perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
+.mr-phone-size3,
+.mr-phone-width10 {
+  width: 10%;
+}
+.mr-phone-size3 {
+  width: var(--size-3, 10%);
+}
+.mr-phone-11perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
+.mr-phone-size2,
+.mr-phone-width9 {
+  width: 9.090909090909091%;
+}
+.mr-phone-size2 {
+  width: var(--size-2, 9.090909090909091%);
+}
+.mr-phone-12perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
+.mr-phone-size1,
+.mr-phone-width8 {
+  width: 8.333333333333333%;
+}
+.mr-phone-size1,
+.mr-phone-smallsize {
+  width: var(--size-1, 8.333333333333333%);
+}
+.mr-phone-sizeauto,
+.mr-phone-widthauto {
+  width: auto;
+}
+.mr-phone-orderfirst,
+.mr-phone-order-1 {
+  -ms-flex-order: -1;
+  -webkit-order: -1;
+  order: -1;
+}
+.mr-phone-order1 {
+  -ms-flex-order: 1;
+  -webkit-order: 1;
+  order: 1;
+}
+.mr-phone-order2 {
+  -ms-flex-order: 2;
+  -webkit-order: 2;
+  order: 2;
+}
+.mr-phone-order3 {
+  -ms-flex-order: 3;
+  -webkit-order: 3;
+  order: 3;
+}
+.mr-phone-order4 {
+  -ms-flex-order: 4;
+  -webkit-order: 4;
+  order: 4;
+}
+.mr-phone-order5 {
+  -ms-flex-order: 5;
+  -webkit-order: 5;
+  order: 5;
+}
+.mr-phone-order6 {
+  -ms-flex-order: 6;
+  -webkit-order: 6;
+  order: 6;
+}
+.mr-phone-order7 {
+  -ms-flex-order: 7;
+  -webkit-order: 7;
+  order: 7;
+}
+.mr-phone-order8 {
+  -ms-flex-order: 8;
+  -webkit-order: 8;
+  order: 8;
+}
+.mr-phone-order9 {
+  -ms-flex-order: 9;
+  -webkit-order: 9;
+  order: 9;
+}
+.mr-phone-order10 {
+  -ms-flex-order: 10;
+  -webkit-order: 10;
+  order: 10;
+}
+.mr-phone-order11 {
+  -ms-flex-order: 11;
+  -webkit-order: 11;
+  order: 11;
+}
+.mr-phone-order12 {
+  -ms-flex-order: 12;
+  -webkit-order: 12;
+  order: 12;
+}
+.mr-phone-orderlast {
+  -ms-flex-order: 999;
+  -webkit-order: 999;
+  order: 999;
+}

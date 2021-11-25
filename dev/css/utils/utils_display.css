@@ -1,0 +1,32 @@
+.mr-flex {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+}
+.mr-wrap {
+  flex-wrap: wrap;
+}
+.mr-nowrap {
+  flex-wrap: nowrap !important;
+}
+.mr-show,
+.mr-block {
+  display: block !important;
+}
+.mr-show,
+.mr-visible {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+.mr-hide,
+.mr-none {
+  display: none !important;
+}
+.mr-hide,
+.mr-hidden {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}

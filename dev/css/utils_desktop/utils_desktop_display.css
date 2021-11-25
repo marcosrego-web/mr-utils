@@ -1,0 +1,32 @@
+.mr-desktop-flex {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+}
+.mr-desktop-wrap {
+  flex-wrap: wrap;
+}
+.mr-desktop-nowrap {
+  flex-wrap: nowrap !important;
+}
+.mr-desktop-show,
+.mr-desktop-block {
+  display: block !important;
+}
+.mr-desktop-show,
+.mr-desktop-visible {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+.mr-desktop-hide,
+.mr-desktop-none {
+  display: none !important;
+}
+.mr-desktop-hide,
+.mr-desktop-hidden {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}

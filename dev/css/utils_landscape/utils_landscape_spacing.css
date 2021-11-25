@@ -1,0 +1,67 @@
+.mr-landscape-margin {
+  margin: 0.75rem;
+  margin: var(--margin, 0.75rem);
+}
+.mr-landscape-margintop {
+  margin-top: 0.75rem;
+  margin-top: var(--margin, 0.75rem);
+}
+.mr-landscape-marginright {
+  margin-right: 0.75rem;
+  margin-right: var(--margin, 0.75rem);
+}
+.mr-landscape-marginbottom {
+  margin-bottom: 0.75rem;
+  margin-bottom: var(--margin, 0.75rem);
+}
+.mr-landscape-marginleft {
+  margin-left: 0.75rem;
+  margin-left: var(--margin, 0.75rem);
+}
+.mr-landscape-padding {
+  padding: 0.75rem;
+  padding: var(--padding, 0.75rem);
+}
+.mr-landscape-paddingtop {
+  padding-top: 0.75rem;
+  padding-top: var(--padding, 0.75rem);
+}
+.mr-landscape-paddingright {
+  padding-right: 0.75rem;
+  padding-right: var(--padding, 0.75rem);
+}
+.mr-landscape-paddingbottom {
+  padding-bottom: 0.75rem;
+  padding-bottom: var(--padding, 0.75rem);
+}
+.mr-landscape-paddingleft {
+  padding-left: 0.75rem;
+  padding-left: var(--padding, 0.75rem);
+}
+.mr-landscape-nomargin {
+  margin: 0 !important;
+}
+.mr-landscape-nomargintop {
+  margin-top: 0 !important;
+}
+.mr-landscape-nomarginright {
+  margin-right: 0 !important;
+}
+.mr-landscape-nomarginbottom {
+  margin-bottom: 0 !important;
+}
+.mr-landscape-nomarginleft {
+  margin-left: 0 !important;
+}
+.mr-landscape-nopadding {
+  padding: 0 !important;
+}
+.mr-landscape-nopaddingtop {
+  padding-top: 0 !important;
+}
+.mr-landscape-nopaddingright {
+  padding-right: 0 !important;
+}
+.mr-landscape-nopaddingbottom {
+  padding-bottom: 0 !important;
+}

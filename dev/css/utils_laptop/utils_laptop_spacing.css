@@ -1,0 +1,67 @@
+.mr-laptop-margin {
+  margin: 0.75rem;
+  margin: var(--margin, 0.75rem);
+}
+.mr-laptop-margintop {
+  margin-top: 0.75rem;
+  margin-top: var(--margin, 0.75rem);
+}
+.mr-laptop-marginright {
+  margin-right: 0.75rem;
+  margin-right: var(--margin, 0.75rem);
+}
+.mr-laptop-marginbottom {
+  margin-bottom: 0.75rem;
+  margin-bottom: var(--margin, 0.75rem);
+}
+.mr-laptop-marginleft {
+  margin-left: 0.75rem;
+  margin-left: var(--margin, 0.75rem);
+}
+.mr-laptop-padding {
+  padding: 0.75rem;
+  padding: var(--padding, 0.75rem);
+}
+.mr-laptop-paddingtop {
+  padding-top: 0.75rem;
+  padding-top: var(--padding, 0.75rem);
+}
+.mr-laptop-paddingright {
+  padding-right: 0.75rem;
+  padding-right: var(--padding, 0.75rem);
+}
+.mr-laptop-paddingbottom {
+  padding-bottom: 0.75rem;
+  padding-bottom: var(--padding, 0.75rem);
+}
+.mr-laptop-paddingleft {
+  padding-left: 0.75rem;
+  padding-left: var(--padding, 0.75rem);
+}
+.mr-laptop-nomargin {
+  margin: 0 !important;
+}
+.mr-laptop-nomargintop {
+  margin-top: 0 !important;
+}
+.mr-laptop-nomarginright {
+  margin-right: 0 !important;
+}
+.mr-laptop-nomarginbottom {
+  margin-bottom: 0 !important;
+}
+.mr-laptop-nomarginleft {
+  margin-left: 0 !important;
+}
+.mr-laptop-nopadding {
+  padding: 0 !important;
+}
+.mr-laptop-nopaddingtop {
+  padding-top: 0 !important;
+}
+.mr-laptop-nopaddingright {
+  padding-right: 0 !important;
+}
+.mr-laptop-nopaddingbottom {
+  padding-bottom: 0 !important;
+}
