@@ -78,7 +78,7 @@ function mrLoadPage(e, n) {
 }
 function mrPagination(t) {
   let mrChildCount = t.children;
-  for (id = 0; id < mrChildCount.length; id++) {
+  for (let id = 0; id < mrChildCount.length; id++) {
     if (t.classList.contains("mr-" + id + "perpage")) {
       mrPerPage = id;
       if (mrPerPage < mrChildCount.length) {
@@ -87,7 +87,7 @@ function mrPagination(t) {
 
         let mrPageNumber = 1;
         let mrPerPageReset = 1;
-        for (id = 0; id < mrChildCount.length; id++) {
+        for (let id = 0; id < mrChildCount.length; id++) {
           let mrElemChild = mrChildCount[id];
 
           mrPerPageReset = mrPerPageReset + 1;
@@ -133,7 +133,7 @@ function mrPagination(t) {
         ) {
           mrPaginationSelect =
             '<select class="mr-pageselect" title="/' + mrPageNumber + '">';
-          for (id = 0; id < mrPageNumber; id++) {
+          for (let id = 0; id < mrPageNumber; id++) {
             mrPaginElePage = id + 1;
             mrPaginationSelect +=
               '<option value="' +
@@ -155,7 +155,7 @@ function mrPagination(t) {
             !t.matches("[class*='pagination']"))*/
         ) {
           mrPaginationRadio = '<span class="mr-radios">';
-          for (id = 0; id < mrPageNumber; id++) {
+          for (let id = 0; id < mrPageNumber; id++) {
             mrPaginElePage = id + 1;
             mrPaginationRadio +=
               '<input name="mr-radio" title="' +
@@ -233,8 +233,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "[class*='mr-'][class*='perpage']"
   );
 
-  for (id = 0; id < mrPaginEles.length; id++) {
-    const mrPaginEle = mrPaginEles[id];
-    mrPagination(mrPaginEle);
+  for (let id = 0; id < mrPaginEles.length; id++) {
+    mrPagination(mrPaginEles[id]);
   }
 });

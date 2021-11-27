@@ -860,7 +860,10 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 				{isSelected && mrAllowedBlocks.includes(name) && (
 					<InspectorControls key="setting">
 						<Panel header="">
-							<PanelBody title={__("Utilities", "mrutils")} initialOpen={false}>
+							<PanelBody
+								title={__("Utilities", "mr-utils")}
+								initialOpen={false}
+							>
 								{props.name === "core/archives" ||
 								props.name === "core/categories" ||
 								props.name === "core/latest-comments" ||
@@ -960,7 +963,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 														{tab.name === "" || tab.name === "hover" ? (
 															<PanelBody
 																icon={symbol}
-																title={tab.name + __(" Animations", "mrutils")}
+																title={tab.name + __(" Animations", "mr-utils")}
 																initialOpen={false}
 																className={
 																	tab.name === ""
@@ -971,7 +974,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																}
 															>
 																<SelectControl
-																	label={__("Animation", "mrutils")}
+																	label={__("Animation", "mr-utils")}
 																	value={
 																		tab.name === "hover"
 																			? mrAnimationhover
@@ -1091,7 +1094,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																	}
 																/>
 																<SelectControl
-																	label={__("Transition", "mrutils")}
+																	label={__("Transition", "mr-utils")}
 																	value={
 																		tab.name === "hover"
 																			? mrTransitionhover
@@ -1171,7 +1174,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																<PanelBody
 																	icon={pages}
 																	title={
-																		tab.name + __(" Pagination", "mrutils")
+																		tab.name + __(" Pagination", "mr-utils")
 																	}
 																	initialOpen={false}
 																	className="mr-backend-option mr-backend-option_utils_pagination"
@@ -1179,7 +1182,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																	<TextControl
 																		label={__(
 																			"Number of items per page",
-																			"mrutils"
+																			"mr-utils"
 																		)}
 																		value={mrPerPage}
 																		type="number"
@@ -1196,7 +1199,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																			mrPerPage > 0
 																				? __(
 																						"Pagination was applied but you need to preview the frontend to see the actual result.",
-																						"mrutils"
+																						"mr-utils"
 																				  )
 																				: "Adding pagination into parent blocks (such as Group, Columns and List blocks) will consider each direct child as a page's item."
 																		}
@@ -1244,7 +1247,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 														)}
 														<PanelBody
 															icon={layout}
-															title={tab.name + __(" Layout", "mrutils")}
+															title={tab.name + __(" Layout", "mr-utils")}
 															initialOpen={false}
 															className={
 																tab.name === ""
@@ -1257,7 +1260,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 															<SelectControl
 																label={__(
 																	"Number of items per line",
-																	"mrutils"
+																	"mr-utils"
 																)}
 																value={
 																	tab.name === "desktop"
@@ -1428,7 +1431,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																}
 															/>
 															<RangeControl
-																label={__("Item size", "mrutils")}
+																label={__("Item size", "mr-utils")}
 																value={
 																	tab.name === "desktop"
 																		? mrSizedesktop
@@ -1508,7 +1511,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																}
 															/>
 															<SelectControl
-																label={__("Item order", "mrutils")}
+																label={__("Item order", "mr-utils")}
 																value={
 																	tab.name === "desktop"
 																		? mrOrderdesktop
@@ -1680,7 +1683,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 														</PanelBody>
 														<PanelBody
 															icon={swatch}
-															title={tab.name + __(" Display", "mrutils")}
+															title={tab.name + __(" Display", "mr-utils")}
 															initialOpen={false}
 															className={
 																tab.name === ""
@@ -1691,7 +1694,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 															}
 														>
 															<SelectControl
-																label={__("Visibility", "mrutils")}
+																label={__("Visibility", "mr-utils")}
 																value={
 																	tab.name === "hover"
 																		? mrDisplayhover
@@ -1833,13 +1836,13 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																	mrDisplayphone === " mr-none"
 																		? __(
 																				"An opacity was applied to the block in the backend so you can still see and select it. Preview the frontend to see the actual result.",
-																				"mrutils"
+																				"mr-utils"
 																		  )
 																		: __("")
 																}
 															/>
 															<SelectControl
-																label={__("Wrap", "mrutils")}
+																label={__("Wrap", "mr-utils")}
 																value={
 																	tab.name === "desktop"
 																		? mrWrapdesktop
@@ -1923,7 +1926,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 														</PanelBody>
 														<PanelBody
 															icon={resizeCornerNE}
-															title={tab.name + __(" Spacing", "mrutils")}
+															title={tab.name + __(" Spacing", "mr-utils")}
 															initialOpen={false}
 															className={
 																tab.name === ""
@@ -1957,7 +1960,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																			<>
 																				<p></p>
 																				<SelectControl
-																					label={__("Padding Top", "mrutils")}
+																					label={__("Padding Top", "mr-utils")}
 																					value={
 																						tab.name === "hover"
 																							? mrPaddingTophover
@@ -2044,7 +2047,10 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																				/>
 
 																				<SelectControl
-																					label={__("Padding Right", "mrutils")}
+																					label={__(
+																						"Padding Right",
+																						"mr-utils"
+																					)}
 																					value={
 																						tab.name === "hover"
 																							? mrPaddingRighthover
@@ -2133,7 +2139,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																				<SelectControl
 																					label={__(
 																						"Padding Bottom",
-																						"mrutils"
+																						"mr-utils"
 																					)}
 																					value={
 																						tab.name === "hover"
@@ -2221,7 +2227,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																				/>
 
 																				<SelectControl
-																					label={__("Padding Left", "mrutils")}
+																					label={__("Padding Left", "mr-utils")}
 																					value={
 																						tab.name === "hover"
 																							? mrPaddingLefthover
@@ -2311,7 +2317,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																			<>
 																				<p></p>
 																				<SelectControl
-																					label={__("Margin Top", "mrutils")}
+																					label={__("Margin Top", "mr-utils")}
 																					value={
 																						tab.name === "hover"
 																							? mrMarginTophover
@@ -2398,7 +2404,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																				/>
 
 																				<SelectControl
-																					label={__("Margin Right", "mrutils")}
+																					label={__("Margin Right", "mr-utils")}
 																					value={
 																						tab.name === "hover"
 																							? mrMarginRighthover
@@ -2485,7 +2491,10 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																				/>
 
 																				<SelectControl
-																					label={__("Margin Bottom", "mrutils")}
+																					label={__(
+																						"Margin Bottom",
+																						"mr-utils"
+																					)}
 																					value={
 																						tab.name === "hover"
 																							? mrMarginBottomhover
@@ -2572,7 +2581,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																				/>
 
 																				<SelectControl
-																					label={__("Margin Left", "mrutils")}
+																					label={__("Margin Left", "mr-utils")}
 																					value={
 																						tab.name === "hover"
 																							? mrMarginLefthover
@@ -2665,7 +2674,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 														</PanelBody>
 														<PanelBody
 															icon={typography}
-															title={tab.name + __(" Text", "mrutils")}
+															title={tab.name + __(" Text", "mr-utils")}
 															initialOpen={false}
 															className={
 																tab.name === ""
@@ -2676,7 +2685,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 															}
 														>
 															<RangeControl
-																label={__("Font Size", "mrutils")}
+																label={__("Font Size", "mr-utils")}
 																value={
 																	tab.name === "hover"
 																		? mrFontSizehover
@@ -2763,7 +2772,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 															{tab.name !== "hover" ? (
 																<>
 																	<SelectControl
-																		label={__("Text Alignment", "mrutils")}
+																		label={__("Text Alignment", "mr-utils")}
 																		value={
 																			tab.name === "desktop"
 																				? mrTextAlignmentdesktop
@@ -2861,7 +2870,9 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 															<>
 																<PanelBody
 																	icon={pullLeft}
-																	title={tab.name + __(" Placement", "mrutils")}
+																	title={
+																		tab.name + __(" Placement", "mr-utils")
+																	}
 																	initialOpen={false}
 																	className={
 																		tab.name === ""
@@ -2872,7 +2883,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																	}
 																>
 																	<SelectControl
-																		label={__("Position Type", "mrutils")}
+																		label={__("Position Type", "mr-utils")}
 																		value={
 																			tab.name === "desktop"
 																				? mrPositiondesktop
@@ -2963,7 +2974,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																	/>
 
 																	<SelectControl
-																		label={__("Vertical Alignment", "mrutils")}
+																		label={__("Vertical Alignment", "mr-utils")}
 																		value={
 																			tab.name === "desktop"
 																				? mrPositionAlignmentdesktop
@@ -3049,7 +3060,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																	<SelectControl
 																		label={__(
 																			"Horizontal Alignment",
-																			"mrutils"
+																			"mr-utils"
 																		)}
 																		value={
 																			tab.name === "desktop"
@@ -3134,7 +3145,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																		}
 																	/>
 																	<SelectControl
-																		label={__("Content Alignment", "mrutils")}
+																		label={__("Content Alignment", "mr-utils")}
 																		value={
 																			tab.name === "desktop"
 																				? mrContentAlignmentdesktop
@@ -3232,7 +3243,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																		}
 																	/>
 																	<SelectControl
-																		label={__("Vertical Offset", "mrutils")}
+																		label={__("Vertical Offset", "mr-utils")}
 																		value={
 																			tab.name === "desktop"
 																				? mrVerticalOffsetdesktop
@@ -3306,7 +3317,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																		}
 																	/>
 																	<SelectControl
-																		label={__("Horizontal Offset", "mrutils")}
+																		label={__("Horizontal Offset", "mr-utils")}
 																		value={
 																			tab.name === "desktop"
 																				? mrHorizontalOffsetdesktop
@@ -3386,7 +3397,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 														)}
 														<PanelBody
 															icon={plusCircle}
-															title={tab.name + __(" Misc.", "mrutils")}
+															title={tab.name + __(" Misc.", "mr-utils")}
 															initialOpen={false}
 															className={
 																tab.name === ""
@@ -3397,7 +3408,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 															}
 														>
 															<SelectControl
-																label={__("Scroll", "mrutils")}
+																label={__("Scroll", "mr-utils")}
 																value={
 																	tab.name === "hover"
 																		? mrScrollhover
@@ -3567,7 +3578,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 
 								<PanelBody
 									icon={mrDevIcon}
-									title={__("Need more features?", "mrutils")}
+									title={__("Need more features?", "mr-utils")}
 									initialOpen={false}
 									className="mr-backend-more_features"
 								>
@@ -3765,51 +3776,45 @@ const mrApplyWrapperExtraClass = createHigherOrderComponent(
 			} = attributes;
 
 			let mrClassNames = "";
-
+			let mrAttr = "";
+			let mrAttrValue = "";
 			Object.keys(attributes).forEach(function (value) {
-				if (
-					value == "mrPerPage" &&
-					attributes[value] &&
-					attributes[value] > 0
-				) {
-					mrClassNames = mrClassNames + "mr-" + attributes[value] + "perpage";
-				} else if (value == "mrArrowPagination" && attributes[value]) {
+				mrAttr = value;
+				mrAttrValue = attributes[value];
+				if (mrAttr == "mrPerPage" && mrAttrValue && mrAttrValue > 0) {
+					mrClassNames = mrClassNames + "mr-" + mrAttrValue + "perpage";
+				} else if (mrAttr == "mrArrowPagination" && mrAttrValue) {
 					mrClassNames = mrClassNames + " mr-arrowpagination";
-				} else if (value == "mrSelectPagination" && attributes[value]) {
+				} else if (mrAttr == "mrSelectPagination" && mrAttrValue) {
 					mrClassNames = mrClassNames + " mr-selectpagination";
-				} else if (value == "mrRadioPagination" && attributes[value]) {
+				} else if (mrAttr == "mrRadioPagination" && mrAttrValue) {
 					mrClassNames = mrClassNames + " mr-radiopagination";
-				} else if (value == "mrSize" && attributes[value]) {
-					mrClassNames = mrClassNames + " mr-size" + attributes[value];
-				} else if (value == "mrSizehover" && attributes[value]) {
-					mrClassNames = mrClassNames + " mr-hover-size" + attributes[value];
-				} else if (value == "mrSizedesktop" && attributes[value]) {
-					mrClassNames = mrClassNames + " mr-desktop-size" + attributes[value];
-				} else if (value == "mrSizelaptop" && attributes[value]) {
-					mrClassNames = mrClassNames + " mr-laptop-size" + attributes[value];
-				} else if (value == "mrSizetablet" && attributes[value]) {
-					mrClassNames = mrClassNames + " mr-tablet-size" + attributes[value];
-				} else if (value == "mrSizephone" && attributes[value]) {
-					mrClassNames = mrClassNames + " mr-phone-size" + attributes[value];
-				} else if (value == "mrFontSize" && attributes[value]) {
-					mrClassNames = mrClassNames + " mr-fontsize" + attributes[value];
-				} else if (value == "mrFontSizehover" && attributes[value]) {
-					mrClassNames =
-						mrClassNames + " mr-hover-fontsize" + attributes[value];
-				} else if (value == "mrFontSizedesktop" && attributes[value]) {
-					mrClassNames =
-						mrClassNames + " mr-desktop-fontsize" + attributes[value];
-				} else if (value == "mrFontSizelaptop" && attributes[value]) {
-					mrClassNames =
-						mrClassNames + " mr-laptop-fontsize" + attributes[value];
-				} else if (value == "mrFontSizetablet" && attributes[value]) {
-					mrClassNames =
-						mrClassNames + " mr-tablet-fontsize" + attributes[value];
-				} else if (value == "mrFontSizephone" && attributes[value]) {
-					mrClassNames =
-						mrClassNames + " mr-phone-fontsize" + attributes[value];
-				} else if (value.startsWith("mr") && attributes[value]) {
-					mrClassNames = mrClassNames + " mr-" + attributes[value];
+				} else if (mrAttr == "mrSize" && mrAttrValue) {
+					mrClassNames = mrClassNames + " mr-size" + mrAttrValue;
+				} else if (mrAttr == "mrSizehover" && mrAttrValue) {
+					mrClassNames = mrClassNames + " mr-hover-size" + mrAttrValue;
+				} else if (mrAttr == "mrSizedesktop" && mrAttrValue) {
+					mrClassNames = mrClassNames + " mr-desktop-size" + mrAttrValue;
+				} else if (mrAttr == "mrSizelaptop" && mrAttrValue) {
+					mrClassNames = mrClassNames + " mr-laptop-size" + mrAttrValue;
+				} else if (mrAttr == "mrSizetablet" && mrAttrValue) {
+					mrClassNames = mrClassNames + " mr-tablet-size" + mrAttrValue;
+				} else if (mrAttr == "mrSizephone" && mrAttrValue) {
+					mrClassNames = mrClassNames + " mr-phone-size" + mrAttrValue;
+				} else if (mrAttr == "mrFontSize" && mrAttrValue) {
+					mrClassNames = mrClassNames + " mr-fontsize" + mrAttrValue;
+				} else if (mrAttr == "mrFontSizehover" && mrAttrValue) {
+					mrClassNames = mrClassNames + " mr-hover-fontsize" + mrAttrValue;
+				} else if (mrAttr == "mrFontSizedesktop" && mrAttrValue) {
+					mrClassNames = mrClassNames + " mr-desktop-fontsize" + mrAttrValue;
+				} else if (mrAttr == "mrFontSizelaptop" && mrAttrValue) {
+					mrClassNames = mrClassNames + " mr-laptop-fontsize" + mrAttrValue;
+				} else if (mrAttr == "mrFontSizetablet" && mrAttrValue) {
+					mrClassNames = mrClassNames + " mr-tablet-fontsize" + mrAttrValue;
+				} else if (mrAttr == "mrFontSizephone" && mrAttrValue) {
+					mrClassNames = mrClassNames + " mr-phone-fontsize" + mrAttrValue;
+				} else if (mrAttr.startsWith("mr") && mrAttrValue) {
+					mrClassNames = mrClassNames + " mr-" + mrAttrValue;
 				}
 			});
 
@@ -3822,13 +3827,13 @@ const mrApplyWrapperExtraClass = createHigherOrderComponent(
 );
 
 /**
- * Add custom attributes[value] class in save attributes[value].
+ * Add custom mrAttrValue class in save mrAttrValue.
  *
- * @param {Object} extraProps     Block attributes[value].
+ * @param {Object} extraProps     Block mrAttrValue.
  * @param {Object} blockType      Blocks object.
  * @param {Object} attributes     Blocks attributes.
  *
- * @return {Object} extraProps Modified block attributes[value].
+ * @return {Object} extraProps Modified block mrAttrValue.
  */
 function mrApplyExtraClass(extraProps, blockType, attributes) {
 	const {
@@ -3968,43 +3973,46 @@ function mrApplyExtraClass(extraProps, blockType, attributes) {
 	//add mrAllowedBlocks restriction
 
 	let mrClassNames = "";
+	let mrAttr = "";
+	let mrAttrValue = "";
 	if (mrAllowedBlocks.includes(blockType.name)) {
 		Object.keys(attributes).forEach(function (value) {
-			if (value == "mrPerPage" && attributes[value] && attributes[value] > 0) {
-				mrClassNames = mrClassNames + "mr-" + attributes[value] + "perpage";
-			} else if (value == "mrArrowPagination" && attributes[value]) {
+			mrAttr = value;
+			mrAttrValue = attributes[value];
+			if (mrAttr == "mrPerPage" && mrAttrValue && mrAttrValue > 0) {
+				mrClassNames = mrClassNames + "mr-" + mrAttrValue + "perpage";
+			} else if (mrAttr == "mrArrowPagination" && mrAttrValue) {
 				mrClassNames = mrClassNames + " mr-arrowpagination";
-			} else if (value == "mrSelectPagination" && attributes[value]) {
+			} else if (mrAttr == "mrSelectPagination" && mrAttrValue) {
 				mrClassNames = mrClassNames + " mr-selectpagination";
-			} else if (value == "mrRadioPagination" && attributes[value]) {
+			} else if (mrAttr == "mrRadioPagination" && mrAttrValue) {
 				mrClassNames = mrClassNames + " mr-radiopagination";
-			} else if (value == "mrSize" && attributes[value]) {
-				mrClassNames = mrClassNames + " mr-size" + attributes[value];
-			} else if (value == "mrSizehover" && attributes[value]) {
-				mrClassNames = mrClassNames + " mr-hover-size" + attributes[value];
-			} else if (value == "mrSizedesktop" && attributes[value]) {
-				mrClassNames = mrClassNames + " mr-desktop-size" + attributes[value];
-			} else if (value == "mrSizelaptop" && attributes[value]) {
-				mrClassNames = mrClassNames + " mr-laptop-size" + attributes[value];
-			} else if (value == "mrSizetablet" && attributes[value]) {
-				mrClassNames = mrClassNames + " mr-tablet-size" + attributes[value];
-			} else if (value == "mrSizephone" && attributes[value]) {
-				mrClassNames = mrClassNames + " mr-phone-size" + attributes[value];
-			} else if (value == "mrFontSize" && attributes[value]) {
-				mrClassNames = mrClassNames + " mr-fontsize" + attributes[value];
-			} else if (value == "mrFontSizehover" && attributes[value]) {
-				mrClassNames = mrClassNames + " mr-hover-fontsize" + attributes[value];
-			} else if (value == "mrFontSizedesktop" && attributes[value]) {
-				mrClassNames =
-					mrClassNames + " mr-desktop-fontsize" + attributes[value];
-			} else if (value == "mrFontSizelaptop" && attributes[value]) {
-				mrClassNames = mrClassNames + " mr-laptop-fontsize" + attributes[value];
-			} else if (value == "mrFontSizetablet" && attributes[value]) {
-				mrClassNames = mrClassNames + " mr-tablet-fontsize" + attributes[value];
-			} else if (value == "mrFontSizephone" && attributes[value]) {
-				mrClassNames = mrClassNames + " mr-phone-fontsize" + attributes[value];
-			} else if (value.startsWith("mr") && attributes[value]) {
-				mrClassNames = mrClassNames + " mr-" + attributes[value];
+			} else if (mrAttr == "mrSize" && mrAttrValue) {
+				mrClassNames = mrClassNames + " mr-size" + mrAttrValue;
+			} else if (mrAttr == "mrSizehover" && mrAttrValue) {
+				mrClassNames = mrClassNames + " mr-hover-size" + mrAttrValue;
+			} else if (mrAttr == "mrSizedesktop" && mrAttrValue) {
+				mrClassNames = mrClassNames + " mr-desktop-size" + mrAttrValue;
+			} else if (mrAttr == "mrSizelaptop" && mrAttrValue) {
+				mrClassNames = mrClassNames + " mr-laptop-size" + mrAttrValue;
+			} else if (mrAttr == "mrSizetablet" && mrAttrValue) {
+				mrClassNames = mrClassNames + " mr-tablet-size" + mrAttrValue;
+			} else if (mrAttr == "mrSizephone" && mrAttrValue) {
+				mrClassNames = mrClassNames + " mr-phone-size" + mrAttrValue;
+			} else if (mrAttr == "mrFontSize" && mrAttrValue) {
+				mrClassNames = mrClassNames + " mr-fontsize" + mrAttrValue;
+			} else if (mrAttr == "mrFontSizehover" && mrAttrValue) {
+				mrClassNames = mrClassNames + " mr-hover-fontsize" + mrAttrValue;
+			} else if (mrAttr == "mrFontSizedesktop" && mrAttrValue) {
+				mrClassNames = mrClassNames + " mr-desktop-fontsize" + mrAttrValue;
+			} else if (mrAttr == "mrFontSizelaptop" && mrAttrValue) {
+				mrClassNames = mrClassNames + " mr-laptop-fontsize" + mrAttrValue;
+			} else if (mrAttr == "mrFontSizetablet" && mrAttrValue) {
+				mrClassNames = mrClassNames + " mr-tablet-fontsize" + mrAttrValue;
+			} else if (mrAttr == "mrFontSizephone" && mrAttrValue) {
+				mrClassNames = mrClassNames + " mr-phone-fontsize" + mrAttrValue;
+			} else if (mrAttr.startsWith("mr") && mrAttrValue) {
+				mrClassNames = mrClassNames + " mr-" + mrAttrValue;
 			}
 		});
 	}
@@ -4018,20 +4026,20 @@ function mrApplyExtraClass(extraProps, blockType, attributes) {
 
 addFilter(
 	"blocks.registerBlockType",
-	"mrutils/custom-attributes",
+	"mr-utils/custom-attributes",
 	mrAddAttributes
 );
 
-addFilter("editor.BlockEdit", "mrutils/custom-control", mrInspectorControls);
+addFilter("editor.BlockEdit", "mr-utils/custom-control", mrInspectorControls);
 
 addFilter(
 	"blocks.getSaveContent.extraProps",
-	"mrutils/mrApplyExtraClass",
+	"mr-utils/mrApplyExtraClass",
 	mrApplyExtraClass
 );
 
 addFilter(
 	"editor.BlockListBlock",
-	"mrutils/mrApplyWrapperExtraClass",
+	"mr-utils/mrApplyWrapperExtraClass",
 	mrApplyWrapperExtraClass
 );
