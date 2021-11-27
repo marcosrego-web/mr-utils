@@ -101,7 +101,7 @@ function mrLoadPage(e, n) {
 
   let mrRadios = e.querySelectorAll(".mr-radio");
   if (mrRadios.length) {
-    for (id = 0; id < mrRadios.length; id++) {
+    for (let id = 0; id < mrRadios.length; id++) {
       mrRadios[id].removeAttribute("checked");
     }
     e.querySelector('.mr-radio[value="' + n + '"]').setAttribute(
@@ -153,7 +153,7 @@ function mrLoadPage(e, n) {
 
   setTimeout(function () {
     let mrPages = e.querySelectorAll("[class*='mr-page']:not(.mr-pageselect)");
-    for (id = 0; id < mrPages.length; id++) {
+    for (let id = 0; id < mrPages.length; id++) {
       mrPage = mrPages[id];
       mrPage.style.setProperty("display", "none", "important");
       if (mrPage.classList.contains("mr-page" + n)) {
@@ -165,7 +165,7 @@ function mrLoadPage(e, n) {
 }
 function mrPagination(t) {
   let mrChildCount = t.children;
-  for (id = 0; id < mrChildCount.length; id++) {
+  for (let id = 0; id < mrChildCount.length; id++) {
     if (t.classList.contains("mr-" + id + "perpage")) {
       mrPerPage = id;
       if (mrPerPage < mrChildCount.length) {
@@ -174,7 +174,7 @@ function mrPagination(t) {
 
         let mrPageNumber = 1;
         let mrPerPageReset = 1;
-        for (id = 0; id < mrChildCount.length; id++) {
+        for (let id = 0; id < mrChildCount.length; id++) {
           let mrElemChild = mrChildCount[id];
 
           mrPerPageReset = mrPerPageReset + 1;
@@ -220,7 +220,7 @@ function mrPagination(t) {
         ) {
           mrPaginationSelect =
             '<select class="mr-pageselect" title="/' + mrPageNumber + '">';
-          for (id = 0; id < mrPageNumber; id++) {
+          for (let id = 0; id < mrPageNumber; id++) {
             mrPaginElePage = id + 1;
             mrPaginationSelect +=
               '<option value="' +
@@ -242,7 +242,7 @@ function mrPagination(t) {
             !t.matches("[class*='pagination']"))*/
         ) {
           mrPaginationRadio = '<span class="mr-radios">';
-          for (id = 0; id < mrPageNumber; id++) {
+          for (let id = 0; id < mrPageNumber; id++) {
             mrPaginElePage = id + 1;
             mrPaginationRadio +=
               '<input name="mr-radio" title="' +
@@ -320,7 +320,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "[class*='mr-'][class*='perpage']"
   );
 
-  for (id = 0; id < mrPaginEles.length; id++) {
+  for (let id = 0; id < mrPaginEles.length; id++) {
     const mrPaginEle = mrPaginEles[id];
     mrPagination(mrPaginEle);
   }
@@ -329,7 +329,7 @@ function mrGetCookie(t) {
   if (t) {
     const e = t + "=",
       o = decodeURIComponent(document.cookie).split(";");
-    for (id = 0; id < o.length; id++) {
+    for (let id = 0; id < o.length; id++) {
       let t = o[id];
       for (; " " === t.charAt(0); ) t = t.substring(1);
       if (0 === t.indexOf(e)) return t.substring(e.length, t.length);
@@ -399,7 +399,7 @@ function mrParallax(t) {
     (t = document.querySelectorAll(t)) &&
     !matchMedia("(prefers-reduced-motion: reduce)").matches
   )
-    for (id = 0; id < t.length; id++) {
+    for (let id = 0; id < t.length; id++) {
       const e = t[id];
       let o = e.getBoundingClientRect().top / 6,
         r = Math.round(100 * o) / 100;
@@ -422,7 +422,7 @@ function mrThemeColors() {
   document.cookie = "mrColors=mrColors; max-age=0; path=/";
   const colorToggles = document.querySelectorAll(".mr-togglecolors");
   if (colorToggles) {
-    for (id = 0; id < colorToggles.length; id++) {
+    for (let id = 0; id < colorToggles.length; id++) {
       colorToggles[id].classList.remove("mr-darkcolors");
       colorToggles[id].classList.remove("mr-lightcolors");
     }
@@ -434,7 +434,7 @@ function mrDarkColors() {
   document.cookie = "mrColors=mrDarkColors; max-age=31536000; path=/";
   const colorToggles = document.querySelectorAll(".mr-togglecolors");
   if (colorToggles) {
-    for (id = 0; id < colorToggles.length; id++) {
+    for (let id = 0; id < colorToggles.length; id++) {
       colorToggles[id].classList.remove("mr-lightcolors");
       colorToggles[id].classList.add("mr-darkcolors");
     }
@@ -446,7 +446,7 @@ function mrLightColors() {
   document.cookie = "mrColors=mrLightColors; max-age=31536000; path=/";
   const colorToggles = document.querySelectorAll(".mr-togglecolors");
   if (colorToggles) {
-    for (id = 0; id < colorToggles.length; id++) {
+    for (let id = 0; id < colorToggles.length; id++) {
       colorToggles[id].classList.remove("mr-darkcolors");
       colorToggles[id].classList.add("mr-lightcolors");
     }
@@ -483,7 +483,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const mrDragEles = document.querySelectorAll(
     "[class*='mr-'][class*='-drag']:not([class*='-dragcontent']):not([class*='-draganddrop']),[class*='-dragcontent'] > *, [class*='mr-'][class*='-swipe']:not([class*='-swipecontent']),[class*='mr-'][class*='-swipecontent'] > *"
   );
-  for (id = 0; id < mrDragEles.length; id++) {
+  for (let id = 0; id < mrDragEles.length; id++) {
     const mrDragEle = mrDragEles[id];
     mrDragEle.classList.remove("mr-dragging");
     let pos = { top: 0, left: 0, x: 0, y: 0 };
