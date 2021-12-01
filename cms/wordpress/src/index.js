@@ -1824,21 +1824,21 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																	mrDisplay === " mr-hidden" ||
 																	mrDisplay === " mr-hide" ||
 																	mrDisplay === " mr-none" ||
-																	mrDisplayhover === " mr-hidden" ||
-																	mrDisplayhover === " mr-hide" ||
-																	mrDisplayhover === " mr-none" ||
-																	mrDisplaydesktop === " mr-hidden" ||
-																	mrDisplaydesktop === " mr-hide" ||
-																	mrDisplaydesktop === " mr-none" ||
-																	mrDisplaylaptop === " mr-hidden" ||
-																	mrDisplaylaptop === " mr-hide" ||
-																	mrDisplaylaptop === " mr-none" ||
-																	mrDisplaytablet === " mr-hidden" ||
-																	mrDisplaytablet === " mr-hide" ||
-																	mrDisplaytablet === " mr-none" ||
-																	mrDisplayphone === " mr-hidden" ||
-																	mrDisplayphone === " mr-hide" ||
-																	mrDisplayphone === " mr-none"
+																	mrDisplayhover === " mr-hover-hidden" ||
+																	mrDisplayhover === " mr-hover-hide" ||
+																	mrDisplayhover === " mr-hover-none" ||
+																	mrDisplaydesktop === " mr-desktop-hidden" ||
+																	mrDisplaydesktop === " mr-desktop-hide" ||
+																	mrDisplaydesktop === " mr-desktop-none" ||
+																	mrDisplaylaptop === " mr-laptop-hidden" ||
+																	mrDisplaylaptop === " mr-laptop-hide" ||
+																	mrDisplaylaptop === " mr-laptop-none" ||
+																	mrDisplaytablet === " mr-tablet-hidden" ||
+																	mrDisplaytablet === " mr-tablet-hide" ||
+																	mrDisplaytablet === " mr-tablet-none" ||
+																	mrDisplayphone === " mr-phone-hidden" ||
+																	mrDisplayphone === " mr-phone-hide" ||
+																	mrDisplayphone === " mr-phone-none"
 																		? __(
 																				"An opacity was applied to the block in the backend so you can still see and select it. Preview the frontend to see the actual result.",
 																				"mr-utils"
