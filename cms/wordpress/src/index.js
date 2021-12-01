@@ -3821,7 +3821,7 @@ const mrApplyWrapperExtraClass = createHigherOrderComponent(
 					} else if (mrAttr == "mrFontSizephone" && mrAttrValue) {
 						mrClassNames = mrClassNames + " mr-phone-fontsize" + mrAttrValue;
 					} else if (mrAttr.startsWith("mr") && mrAttrValue) {
-						mrClassNames = mrClassNames + " mr-" + mrAttrValue;
+						mrClassNames = mrClassNames + mrAttrValue;
 					}
 				}
 			});
@@ -4027,7 +4027,7 @@ function mrApplyExtraClass(extraProps, blockType, attributes) {
 				} else if (mrAttr == "mrFontSizephone" && mrAttrValue) {
 					mrClassNames = mrClassNames + " mr-phone-fontsize" + mrAttrValue;
 				} else if (mrAttr.startsWith("mr") && mrAttrValue) {
-					mrClassNames = mrClassNames + " mr-" + mrAttrValue;
+					mrClassNames = mrClassNames + mrAttrValue;
 				}
 			}
 		});
