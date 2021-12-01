@@ -1201,7 +1201,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																						"Pagination was applied but you need to preview the frontend to see the actual result.",
 																						"mr-utils"
 																				  )
-																				: "Adding pagination into parent blocks (such as Group, Columns and List blocks) will consider each direct child as a page's item."
+																				: "Apply into parent blocks (such as Group, Columns and List blocks) to consider each direct child as a page's item."
 																		}
 																	/>
 																	{mrPerPage > 0 ? (
@@ -1428,6 +1428,11 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																				? val
 																				: mrPerLinephone,
 																	})
+																}
+																help={
+																	mrPerLine === undefined || mrPerLine === ""
+																		? "Apply into parent blocks (such as Group, Columns and List blocks) to consider each direct child as a line's item."
+																		: ""
 																}
 															/>
 															<RangeControl
@@ -3788,8 +3793,10 @@ const mrApplyWrapperExtraClass = createHigherOrderComponent(
 					mrAttrValue !== "mr-tablet" &&
 					mrAttrValue !== "mr-phone"
 				) {
-					if (mrAttr == "mrPerPage" && mrAttrValue && mrAttrValue > 0) {
-						mrClassNames = mrClassNames + " mr-" + mrAttrValue + "perpage";
+					if (mrAttr == "mrPerPage" && mrAttrValue) {
+						if (mrAttrValue > 0) {
+							mrClassNames = mrClassNames + " mr-" + mrAttrValue + "perpage";
+						}
 					} else if (mrAttr == "mrArrowPagination" && mrAttrValue) {
 						mrClassNames = mrClassNames + " mr-arrowpagination";
 					} else if (mrAttr == "mrSelectPagination" && mrAttrValue) {
@@ -3994,8 +4001,10 @@ function mrApplyExtraClass(extraProps, blockType, attributes) {
 				mrAttrValue !== "mr-tablet" &&
 				mrAttrValue !== "mr-phone"
 			) {
-				if (mrAttr == "mrPerPage" && mrAttrValue && mrAttrValue > 0) {
-					mrClassNames = mrClassNames + " mr-" + mrAttrValue + "perpage";
+				if (mrAttr == "mrPerPage" && mrAttrValue) {
+					if (mrAttrValue > 0) {
+						mrClassNames = mrClassNames + " mr-" + mrAttrValue + "perpage";
+					}
 				} else if (mrAttr == "mrArrowPagination" && mrAttrValue) {
 					mrClassNames = mrClassNames + " mr-arrowpagination";
 				} else if (mrAttr == "mrSelectPagination" && mrAttrValue) {
