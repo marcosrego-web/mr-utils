@@ -23,7 +23,7 @@ function mrLoadPage(e, n) {
     );
   }
 
-  e.classList.remove("active");
+  e.classList.remove("mr-active");
 
   let mrTimeOut = 0;
   if (
@@ -73,117 +73,121 @@ function mrLoadPage(e, n) {
         mrPage.style.setProperty("display", "", "");
       }
     }
-    e.classList.add("active");
+    e.classList.add("mr-active");
   }, mrTimeOut);
 }
 function mrPagination(t) {
-  let mrChildCount = t.children;
-  for (let id = 0; id < mrChildCount.length; id++) {
-    if (t.classList.contains("mr-" + id + "perpage")) {
-      mrPerPage = id;
-      if (mrPerPage < mrChildCount.length) {
-        t.classList.add("mr-relative");
-        t.setAttribute("mr-currentpage", 1);
+  if (!t.querySelector(".mr-pagination")) {
+    let mrChildCount = t.children;
+    for (let id = 0; id < mrChildCount.length; id++) {
+      if (t.classList.contains("mr-" + id + "perpage")) {
+        mrPerPage = id;
+        if (mrPerPage < mrChildCount.length) {
+          t.classList.add("mr-relative");
+          t.setAttribute("mr-currentpage", 1);
 
-        let mrPageNumber = 1;
-        let mrPerPageReset = 1;
-        for (let id = 0; id < mrChildCount.length; id++) {
-          let mrElemChild = mrChildCount[id];
+          let mrPageNumber = 1;
+          let mrPerPageReset = 1;
+          for (let id = 0; id < mrChildCount.length; id++) {
+            let mrElemChild = mrChildCount[id];
 
-          mrPerPageReset = mrPerPageReset + 1;
+            mrPerPageReset = mrPerPageReset + 1;
 
-          mrElemChild.classList.add("mr-page" + mrPageNumber);
+            mrElemChild.classList.add("mr-page" + mrPageNumber);
 
-          if (mrPageNumber > 1) {
-            mrElemChild.style.setProperty("display", "none", "important");
-            mrElemChild.classList.remove("active");
-          }
-
-          if (mrPerPageReset > mrPerPage) {
-            mrPageNumber = mrPageNumber + 1;
-            mrPerPageReset = 1;
-          }
-        }
-
-        mrPageNumber = mrPageNumber - 1;
-
-        t.setAttribute("mr-lastpage", mrPageNumber);
-
-        let mrPaginationArrows = "";
-        if (
-          t.classList.contains("mr-arrowpagination") ||
-          (t.matches("[class*='mr-'][class*='perpage']") &&
-            !t.matches(
-              "[class*='pagination']"
-            )) /*(t.matches("[mr-itemsperpage]") &&
-            !t.matches("[class*='pagination']"))*/
-        ) {
-          mrPaginationArrows =
-            '<button class="mr-arrows mr-prev"><</button><button class="mr-arrows mr-next">&gt;</button>';
-        }
-
-        let mrPaginationSelect = "";
-        if (
-          t.classList.contains("mr-selectpagination") ||
-          (t.matches("[class*='mr-'][class*='perpage']") &&
-            !t.matches(
-              "[class*='pagination']"
-            )) /*(t.matches("[mr-itemsperpage]") &&
-            !t.matches("[class*='pagination']")*/
-        ) {
-          mrPaginationSelect =
-            '<select class="mr-pageselect" title="/' + mrPageNumber + '">';
-          for (let id = 0; id < mrPageNumber; id++) {
-            mrPaginElePage = id + 1;
-            mrPaginationSelect +=
-              '<option value="' +
-              mrPaginElePage +
-              '">' +
-              mrPaginElePage +
-              "</option>";
-          }
-          mrPaginationSelect += "</select>";
-        }
-
-        let mrPaginationRadio = "";
-        if (
-          t.classList.contains("mr-radiopagination") ||
-          (t.matches("[class*='mr-'][class*='perpage']") &&
-            !t.matches(
-              "[class*='pagination']"
-            )) /*(t.matches("[mr-itemsperpage]") &&
-            !t.matches("[class*='pagination']"))*/
-        ) {
-          mrPaginationRadio = '<span class="mr-radios">';
-          for (let id = 0; id < mrPageNumber; id++) {
-            mrPaginElePage = id + 1;
-            mrPaginationRadio +=
-              '<input name="mr-radio" title="' +
-              mrPaginElePage +
-              "/" +
-              mrPageNumber +
-              '" class="mr-radio" type="radio" value="' +
-              mrPaginElePage +
-              '" ';
-            if (mrPaginElePage === 1) {
-              mrPaginationRadio += 'checked="checked"';
+            if (mrPageNumber > 1) {
+              mrElemChild.style.setProperty("display", "none", "important");
+              mrElemChild.classList.remove("mr-active");
             }
-            mrPaginationRadio += ">";
-          }
-          mrPaginationRadio += "</div>";
-        }
 
-        t.innerHTML =
-          t.innerHTML +
-          '<div class="mr-pagination mr-absolute mr-bottom mr-offsetbottom">' +
-          mrPaginationArrows +
-          mrPaginationSelect +
-          mrPaginationRadio +
-          "</div>";
+            if (mrPerPageReset > mrPerPage) {
+              mrPageNumber = mrPageNumber + 1;
+              mrPerPageReset = 1;
+            }
+          }
+
+          if (mrPerPageReset < mrPerPage) {
+            mrPageNumber = mrPageNumber - 1;
+          }
+
+          t.setAttribute("mr-lastpage", mrPageNumber);
+
+          let mrPaginationArrows = "";
+          if (
+            t.classList.contains("mr-arrowpagination") ||
+            (t.matches("[class*='mr-'][class*='perpage']") &&
+              !t.matches(
+                "[class*='pagination']"
+              )) /*(t.matches("[mr-itemsperpage]") &&
+              !t.matches("[class*='pagination']"))*/
+          ) {
+            mrPaginationArrows =
+              '<button class="mr-arrows mr-prev"><</button><button class="mr-arrows mr-next">&gt;</button>';
+          }
+
+          let mrPaginationSelect = "";
+          if (
+            t.classList.contains("mr-selectpagination") ||
+            (t.matches("[class*='mr-'][class*='perpage']") &&
+              !t.matches(
+                "[class*='pagination']"
+              )) /*(t.matches("[mr-itemsperpage]") &&
+              !t.matches("[class*='pagination']")*/
+          ) {
+            mrPaginationSelect =
+              '<select class="mr-pageselect" title="/' + mrPageNumber + '">';
+            for (let id = 0; id < mrPageNumber; id++) {
+              mrPaginElePage = id + 1;
+              mrPaginationSelect +=
+                '<option value="' +
+                mrPaginElePage +
+                '">' +
+                mrPaginElePage +
+                "</option>";
+            }
+            mrPaginationSelect += "</select>";
+          }
+
+          let mrPaginationRadio = "";
+          if (
+            t.classList.contains("mr-radiopagination") ||
+            (t.matches("[class*='mr-'][class*='perpage']") &&
+              !t.matches(
+                "[class*='pagination']"
+              )) /*(t.matches("[mr-itemsperpage]") &&
+              !t.matches("[class*='pagination']"))*/
+          ) {
+            mrPaginationRadio = '<span class="mr-radios">';
+            for (let id = 0; id < mrPageNumber; id++) {
+              mrPaginElePage = id + 1;
+              mrPaginationRadio +=
+                '<input name="mr-radio" title="' +
+                mrPaginElePage +
+                "/" +
+                mrPageNumber +
+                '" class="mr-radio" type="radio" value="' +
+                mrPaginElePage +
+                '" ';
+              if (mrPaginElePage === 1) {
+                mrPaginationRadio += 'checked="checked"';
+              }
+              mrPaginationRadio += ">";
+            }
+            mrPaginationRadio += "</div>";
+          }
+
+          t.innerHTML =
+            t.innerHTML +
+            '<div class="mr-pagination mr-absolute mr-bottom mr-offsetbottom">' +
+            mrPaginationArrows +
+            mrPaginationSelect +
+            mrPaginationRadio +
+            "</div>";
+        }
+        break;
+      } else if (id == mrChildCount.length) {
+        break;
       }
-      break;
-    } else if (id == mrChildCount.length) {
-      break;
     }
   }
 }
@@ -235,5 +239,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   for (let id = 0; id < mrPaginEles.length; id++) {
     mrPagination(mrPaginEles[id]);
+  }
+
+  const mrTabsEles = document.querySelectorAll(".mr-tabs");
+
+  for (let id = 0; id < mrTabsEles.length; id++) {
+    const mrTabsEle = mrTabsEles[id];
+    mrTabs(mrTabsEle);
   }
 });

@@ -43,6 +43,7 @@ import {
 	layout,
 	pages,
 	moveTo,
+	blockDefault,
 } from "@wordpress/icons";
 
 const mrAllowedBlocks = [
@@ -212,6 +213,10 @@ function mrAddAttributes(settings) {
 				default: "",
 			},
 			mrRadioPagination: {
+				type: "string",
+				default: "",
+			},
+			mrComponent: {
 				type: "string",
 				default: "",
 			},
@@ -727,6 +732,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 			mrTransition,
 			mrTransitionhover,
 			mrPerPage,
+			mrComponent,
 			mrArrowPagination,
 			mrSelectPagination,
 			mrRadioPagination,
@@ -1201,7 +1207,10 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																						"Pagination was applied but you need to preview the frontend to see the actual result.",
 																						"mr-utils"
 																				  )
-																				: "Apply into parent blocks (such as Group, Columns and List blocks) to consider each direct child as a page's item."
+																				: __(
+																						"Apply into parent blocks (such as Columns and List blocks) to consider each direct child as a page's item.",
+																						"mr-utils"
+																				  )
 																		}
 																	/>
 																	{mrPerPage > 0 ? (
@@ -1240,6 +1249,62 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																	) : (
 																		""
 																	)}
+																</PanelBody>
+																<PanelBody
+																	icon={blockDefault}
+																	title={
+																		tab.name + __(" Components", "mr-utils")
+																	}
+																	initialOpen={false}
+																	className={
+																		tab.name === ""
+																			? "mr-backend-option mr-backend-option_utils_components"
+																			: "mr-backend-option mr-backend-option_utils_" +
+																			  tab.name +
+																			  "_components"
+																	}
+																>
+																	<SelectControl
+																		label={__("Component", "mr-utils")}
+																		value={mrComponent}
+																		options={[
+																			{ value: "", label: "Default" },
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-tabs"
+																				).replace("--", "-"),
+																				label: "Tabs",
+																			},
+																		]}
+																		onChange={(val) =>
+																			setAttributes({
+																				mrComponent:
+																					val === undefined || val === ""
+																						? ""
+																						: val.includes("-desktop-") ||
+																						  val.includes("-laptop-") ||
+																						  val.includes("-tablet-") ||
+																						  val.includes("-phone-") ||
+																						  val.includes("-hover-")
+																						? mrComponent
+																						: val.replace("--", "-"),
+																			})
+																		}
+																		help={
+																			mrComponent
+																				? __(
+																						"The component was applied but you need to preview the frontend to see the actual result.",
+																						"mr-utils",
+																						"mr-utils"
+																				  )
+																				: __(
+																						"Apply into parent blocks (such as Columns and List blocks) to consider each direct child as a component item.",
+																						"mr-utils"
+																				  )
+																		}
+																	/>
 																</PanelBody>
 															</>
 														) : (
@@ -1431,7 +1496,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																}
 																help={
 																	mrPerLine === undefined || mrPerLine === ""
-																		? "Apply into parent blocks (such as Group, Columns and List blocks) to consider each direct child as a line's item."
+																		? "Apply into parent blocks (such as Columns and List blocks) to consider each direct child as a line's item."
 																		: ""
 																}
 															/>
@@ -3653,6 +3718,7 @@ const mrApplyWrapperExtraClass = createHigherOrderComponent(
 				mrTransition,
 				mrTransitionhover,
 				mrPerPage,
+				mrComponent,
 				mrArrowPagination,
 				mrSelectPagination,
 				mrRadioPagination,

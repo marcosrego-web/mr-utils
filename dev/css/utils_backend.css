@@ -67,13 +67,54 @@
 .block-editor-block-list__layout
   .block-editor-block-list__block[class*="mr-"][class*="perpage"]:not(.mr-visible),
 .block-editor-block-list__layout
-  .block-editor-block-list__block[mr-itemsperpage]:not(.mr-visible) {
+  .block-editor-block-list__block[mr-itemsperpage]:not(.mr-visible),
+.block-editor-block-list__layout
+  .block-editor-block-list__block:is(.mr-tabs):not(.mr-visible),
+.block-editor-block-list__layout
+  .block-editor-block-list__block[mr-component]:not(.mr-visible) {
   opacity: 1;
   visibility: visible;
+}
+.block-editor-block-list__layout
+  .block-editor-block-list__block[class*="mr-"][class*="perpage"]:not(.mr-visible):before,
+.block-editor-block-list__layout
+  .block-editor-block-list__block[mr-itemsperpage]:not(.mr-visible):before {
+  content: "";
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='36' height='36' role='img' aria-hidden='true' focusable='false'%3E%3Cpath d='M7 13.8h6v-1.5H7v1.5zM18 16V4c0-1.1-.9-2-2-2H6c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2zM5.5 16V4c0-.3.2-.5.5-.5h10c.3 0 .5.2.5.5v12c0 .3-.2.5-.5.5H6c-.3 0-.5-.2-.5-.5zM7 10.5h8V9H7v1.5zm0-3.3h8V5.8H7v1.4zM20.2 6v13c0 .7-.6 1.2-1.2 1.2H8v1.5h11c1.5 0 2.7-1.2 2.7-2.8V6h-1.5z'%3E%3C/path%3E%3C/svg%3E");
-  background-repeat: no-repeat no-repeat;
-  background-position: top right;
-  background-size: 36px;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 36px;
+  height: 36px;
+  position: absolute;
+  transform: translateX(calc(-100% - 15px));
+}
+
+.block-editor-block-list__layout
+  .block-editor-block-list__block:is(.mr-tabs):not(.mr-visible):before,
+.block-editor-block-list__layout
+  .block-editor-block-list__block[mr-component]:not(.mr-visible):before {
+  content: "";
+  background-image: url("data:image/svg+xml,%3Csvg width='36' height='36' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' class='components-panel__icon' role='img' aria-hidden='true' focusable='false'%3E%3Cpath d='M19 8h-1V6h-5v2h-2V6H6v2H5c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-8c0-1.1-.9-2-2-2zm.5 10c0 .3-.2.5-.5.5H5c-.3 0-.5-.2-.5-.5v-8c0-.3.2-.5.5-.5h14c.3 0 .5.2.5.5v8z'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 36px;
+  height: 36px;
+  position: absolute;
+  transform: translateX(calc(-100% - 15px));
+}
+
+.block-editor-block-list__layout
+  .block-editor-block-list__block:is(.mr-tabs)[class*="mr-"][class*="perpage"]:not(.mr-visible):before,
+.block-editor-block-list__layout
+  .block-editor-block-list__block[mr-component][mr-itemsperpage]:not(.mr-visible):before {
+  content: "";
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='82' viewBox='0 0 20 37' fill='none'%3E%3Cpath d='M16.3333 24.6667H15.5V23H11.3333V24.6667H9.66667V23H5.5V24.6667H4.66667C3.75 24.6667 3 25.4167 3 26.3333V33C3 33.9167 3.75 34.6667 4.66667 34.6667H16.3333C17.25 34.6667 18 33.9167 18 33V26.3333C18 25.4167 17.25 24.6667 16.3333 24.6667ZM16.75 33C16.75 33.25 16.5833 33.4167 16.3333 33.4167H4.66667C4.41667 33.4167 4.25 33.25 4.25 33V26.3333C4.25 26.0833 4.41667 25.9167 4.66667 25.9167H16.3333C16.5833 25.9167 16.75 26.0833 16.75 26.3333V33Z' fill='black'/%3E%3Cpath d='M5.83398 11.4993H10.834V10.2493H5.83398V11.4993ZM15.0007 13.3327V3.33268C15.0007 2.41602 14.2507 1.66602 13.334 1.66602H5.00065C4.08398 1.66602 3.33398 2.41602 3.33398 3.33268V13.3327C3.33398 14.2493 4.08398 14.9993 5.00065 14.9993H13.334C14.2507 14.9993 15.0007 14.2493 15.0007 13.3327ZM4.58398 13.3327V3.33268C4.58398 3.08268 4.75065 2.91602 5.00065 2.91602H13.334C13.584 2.91602 13.7507 3.08268 13.7507 3.33268V13.3327C13.7507 13.5827 13.584 13.7493 13.334 13.7493H5.00065C4.75065 13.7493 4.58398 13.5827 4.58398 13.3327ZM5.83398 8.74935H12.5007V7.49935H5.83398V8.74935ZM5.83398 5.99935H12.5007V4.83268H5.83398V5.99935ZM16.834 4.99935V15.8327C16.834 16.416 16.334 16.8327 15.834 16.8327H6.66732V18.0827H15.834C17.084 18.0827 18.084 17.0827 18.084 15.7493V4.99935H16.834Z' fill='black'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 36px;
+  height: 82px;
+  position: absolute;
+  transform: translateX(calc(-100% - 15px));
 }
 
 .editor-styles-wrapper .mr-fontsize7,

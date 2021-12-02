@@ -2,12 +2,14 @@ function mrToggleOffCanvas() {
   document.querySelector(".mr-offcanvas-container").classList.remove("mr-hide"),
     document
       .querySelector(".mr-offcanvas-container")
-      .classList.toggle("active"),
-    document.querySelector(".mr-offcanvas-toggle").classList.toggle("active"),
+      .classList.toggle("mr-active"),
+    document
+      .querySelector(".mr-offcanvas-toggle")
+      .classList.toggle("mr-active"),
     document.querySelector("body").classList.toggle("mr-offcanvasopened"),
     document.querySelector("body").classList.toggle("mr-noscroll"),
     document.querySelector(
-      ".mr-offcanvas.mr-transitionright .mr-offcanvas-container:not(.active)"
+      ".mr-offcanvas.mr-transitionright .mr-offcanvas-container:not(.mr-active)"
     )
       ? (document
           .querySelector(".mr-offcanvas")
@@ -16,7 +18,7 @@ function mrToggleOffCanvas() {
           .querySelector(".mr-offcanvas")
           .classList.add("mr-transitionleft"))
       : document.querySelector(
-          ".mr-offcanvas.mr-transitionleft .mr-offcanvas-container.active"
+          ".mr-offcanvas.mr-transitionleft .mr-offcanvas-container.mr-active"
         )
       ? (document
           .querySelector(".mr-offcanvas")
@@ -25,7 +27,7 @@ function mrToggleOffCanvas() {
           .querySelector(".mr-offcanvas")
           .classList.add("mr-transitionright"))
       : document.querySelector(
-          ".mr-offcanvas.mr-transitionleft .mr-offcanvas-container:not(.active)"
+          ".mr-offcanvas.mr-transitionleft .mr-offcanvas-container:not(.mr-active)"
         )
       ? (document
           .querySelector(".mr-offcanvas")
@@ -34,7 +36,7 @@ function mrToggleOffCanvas() {
           .querySelector(".mr-offcanvas")
           .classList.add("mr-transitionright"))
       : document.querySelector(
-          ".mr-offcanvas.mr-transitionright .mr-offcanvas-container.active"
+          ".mr-offcanvas.mr-transitionright .mr-offcanvas-container.mr-active"
         )
       ? (document
           .querySelector(".mr-offcanvas")
@@ -43,7 +45,7 @@ function mrToggleOffCanvas() {
           .querySelector(".mr-offcanvas")
           .classList.add("mr-transitionleft"))
       : document.querySelector(
-          ".mr-offcanvas.mr-transitiontop .mr-offcanvas-container:not(.active)"
+          ".mr-offcanvas.mr-transitiontop .mr-offcanvas-container:not(.mr-active)"
         )
       ? (document
           .querySelector(".mr-offcanvas")
@@ -52,7 +54,7 @@ function mrToggleOffCanvas() {
           .querySelector(".mr-offcanvas")
           .classList.add("mr-transitionbottom"))
       : document.querySelector(
-          ".mr-offcanvas.mr-transitionbottom .mr-offcanvas-container.active"
+          ".mr-offcanvas.mr-transitionbottom .mr-offcanvas-container.mr-active"
         )
       ? (document
           .querySelector(".mr-offcanvas")
@@ -61,7 +63,7 @@ function mrToggleOffCanvas() {
           .querySelector(".mr-offcanvas")
           .classList.add("mr-transitiontop"))
       : document.querySelector(
-          ".mr-offcanvas.mr-transitionbottom .mr-offcanvas-container:not(.active)"
+          ".mr-offcanvas.mr-transitionbottom .mr-offcanvas-container:not(.mr-active)"
         )
       ? (document
           .querySelector(".mr-offcanvas")
@@ -70,7 +72,7 @@ function mrToggleOffCanvas() {
           .querySelector(".mr-offcanvas")
           .classList.add("mr-transitiontop"))
       : document.querySelector(
-          ".mr-offcanvas.mr-transitiontop .mr-offcanvas-container.active"
+          ".mr-offcanvas.mr-transitiontop .mr-offcanvas-container.mr-active"
         ) &&
         (document
           .querySelector(".mr-offcanvas")

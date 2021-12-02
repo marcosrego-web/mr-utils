@@ -173,7 +173,7 @@
   -webkit-animation: mrFadeOut var(--transition-duration, 0.5s) forwards;
   animation: mrFadeOut var(--transition-duration, 0.5s) forwards;
 }
-.mr-fade.active:not(.inactive),
+.mr-fade.mr-active:not(.mr-inactive),
 .mr-fadein {
   -webkit-animation: mrFadeIn 0.5s forwards;
   animation: mrFadeIn 0.5s forwards;
@@ -188,8 +188,8 @@
   -webkit-animation: mrSlideOutBottom var(--transition-duration, 0.5s) forwards;
   animation: mrSlideOutBottom var(--transition-duration, 0.5s) forwards;
 }
-.mr-slide.active:not(.inactive),
-.mr-slidebottom.active:not(.inactive),
+.mr-slide.mr-active:not(.mr-inactive),
+.mr-slidebottom.mr-active:not(.mr-inactive),
 .mr-slideinbottom {
   -webkit-animation: mrSlideInBottom 0.5s forwards;
   animation: mrSlideInBottom 0.5s forwards;
@@ -204,8 +204,8 @@
   -webkit-animation: mrSlideOutTop var(--transition-duration, 0.5s) forwards;
   animation: mrSlideOutTop var(--transition-duration, 0.5s) forwards;
 }
-.mr-transitiontop .mr-slide.active:not(.inactive),
-.mr-slidetop.active:not(.inactive),
+.mr-transitiontop .mr-slide.mr-active:not(.mr-inactive),
+.mr-slidetop.mr-active:not(.mr-inactive),
 .mr-slideintop {
   -webkit-animation: mrSlideInTop 0.5s forwards;
   animation: mrSlideInTop 0.5s forwards;
@@ -220,8 +220,8 @@
   -webkit-animation: mrSlideOutRight var(--transition-duration, 0.5s) forwards;
   animation: mrSlideOutRight var(--transition-duration, 0.5s) forwards;
 }
-.mr-transitionright .mr-slide.active:not(.inactive),
-.mr-slideright.active:not(.inactive),
+.mr-transitionright .mr-slide.mr-active:not(.mr-inactive),
+.mr-slideright.mr-active:not(.mr-inactive),
 .mr-slideinright {
   -webkit-animation: mrSlideInRight 0.5s forwards;
   animation: mrSlideInRight 0.5s forwards;
@@ -236,8 +236,8 @@
   -webkit-animation: mrSlideOutLeft var(--transition-duration, 0.5s) forwards;
   animation: mrSlideOutLeft var(--transition-duration, 0.5s) forwards;
 }
-.mr-transitionleft .mr-slide.active:not(.inactive),
-.mr-slideleft.active:not(.inactive),
+.mr-transitionleft .mr-slide.mr-active:not(.mr-inactive),
+.mr-slideleft.mr-active:not(.mr-inactive),
 .mr-slideinleft {
   -webkit-animation: mrSlideInLeft 0.5s forwards;
   animation: mrSlideInLeft 0.5s forwards;
@@ -256,9 +256,9 @@
   -webkit-animation: mrScaleOut var(--transition-duration, 0.5s) forwards;
   animation: mrScaleOut var(--transition-duration, 0.5s) forwards;
 }
-.mr-scale.active:not(.inactive),
-.mr-scaleleft.active:not(.inactive),
-.mr-scaleright.active:not(.inactive),
+.mr-scale.mr-active:not(.mr-inactive),
+.mr-scaleleft.mr-active:not(.mr-inactive),
+.mr-scaleright.mr-active:not(.mr-inactive),
 .mr-scalein,
 .mr-scaleinleft,
 .mr-scaleinright {
@@ -267,19 +267,19 @@
   -webkit-animation: mrScaleIn var(--transition-duration, 0.5s) forwards;
   animation: mrScaleIn var(--transition-duration, 0.5s) forwards;
 }
-.mr-transitionleft .mr-scale:not(.active),
-.mr-scaleleft:not(.active),
+.mr-transitionleft .mr-scale:not(.mr-active),
+.mr-scaleleft:not(.mr-active),
 .mr-scaleoutright,
-.mr-transitionright .mr-scale.active,
-.mr-scaleright.active,
+.mr-transitionright .mr-scale.mr-active,
+.mr-scaleright.mr-active,
 .mr-scaleoutleft {
   transform-origin: right center;
 }
-.mr-transitionleft .mr-scale.active,
-.mr-scaleleft.active,
+.mr-transitionleft .mr-scale.mr-active,
+.mr-scaleleft.mr-active,
 .mr-scaleinright,
-.mr-transitionright .mr-scale:not(.active),
-.mr-scaleright:not(.active),
+.mr-transitionright .mr-scale:not(.mr-active),
+.mr-scaleright:not(.mr-active),
 .mr-scaleoutleft {
   transform-origin: left center;
 }
@@ -295,9 +295,9 @@
   -webkit-animation: mrZoomOut var(--transition-duration, 0.5s) forwards;
   animation: mrZoomOut var(--transition-duration, 0.5s) forwards;
 }
-.mr-zoom.active:not(.inactive),
-.mr-zoomleft.active:not(.inactive),
-.mr-zoomright.active:not(.inactive),
+.mr-zoom.mr-active:not(.mr-inactive),
+.mr-zoomleft.mr-active:not(.mr-inactive),
+.mr-zoomright.mr-active:not(.mr-inactive),
 .mr-zoomin,
 .mr-zoominleft,
 .mr-zoominright {
@@ -306,19 +306,19 @@
   -webkit-animation: mrZoomIn var(--transition-duration, 0.5s) forwards;
   animation: mrZoomIn var(--transition-duration, 0.5s) forwards;
 }
-.mr-transitionleft .mr-zoom.active,
-.mr-zoomleft.active,
+.mr-transitionleft .mr-zoom.mr-active,
+.mr-zoomleft.mr-active,
 .mr-zoominleft,
-.mr-transitionleft .mr-zoom:not(.active),
-.mr-zoomleft:not(.active),
+.mr-transitionleft .mr-zoom:not(.mr-active),
+.mr-zoomleft:not(.mr-active),
 .mr-zoomoutleft {
   transform-origin: left center;
 }
-.mr-transitionright .mr-zoom.active,
-.mr-zoomright.active,
+.mr-transitionright .mr-zoom.mr-active,
+.mr-zoomright.mr-active,
 .mr-zoomoutright,
-.mr-transitionright .mr-zoom:not(.active),
-.mr-zoomright:not(.active),
+.mr-transitionright .mr-zoom:not(.mr-active),
+.mr-zoomright:not(.mr-active),
 .mr-zoominright {
   transform-origin: right center;
 }
