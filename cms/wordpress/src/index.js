@@ -992,7 +992,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																			value: (
 																				" mr-" +
 																				tab.name +
-																				"-fade active"
+																				"-fade"
 																			).replace("--", "-"),
 																			label: "Fade",
 																		},
@@ -1000,7 +1000,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																			value: (
 																				" mr-" +
 																				tab.name +
-																				"-slidetop active"
+																				"-slidetop"
 																			).replace("--", "-"),
 																			label: "Slide Top",
 																		},
@@ -1008,7 +1008,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																			value: (
 																				" mr-" +
 																				tab.name +
-																				"-slideright active"
+																				"-slideright"
 																			).replace("--", "-"),
 																			label: "Slide Right",
 																		},
@@ -1016,7 +1016,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																			value: (
 																				" mr-" +
 																				tab.name +
-																				"-slidebottom active"
+																				"-slidebottom"
 																			).replace("--", "-"),
 																			label: "Slide Bottom",
 																		},
@@ -1024,7 +1024,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																			value: (
 																				" mr-" +
 																				tab.name +
-																				"-slideleft active"
+																				"-slideleft"
 																			).replace("--", "-"),
 																			label: "Slide Left",
 																		},
@@ -1032,7 +1032,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																			value: (
 																				" mr-" +
 																				tab.name +
-																				"-scale active"
+																				"-scale"
 																			).replace("--", "-"),
 																			label: "Scale",
 																		},
@@ -1040,7 +1040,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																			value: (
 																				" mr-" +
 																				tab.name +
-																				"-scaleright active"
+																				"-scaleright"
 																			).replace("--", "-"),
 																			label: "Scale Right",
 																		},
@@ -1048,7 +1048,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																			value: (
 																				" mr-" +
 																				tab.name +
-																				"-scaleleft active"
+																				"-scaleleft"
 																			).replace("--", "-"),
 																			label: "Scale Left",
 																		},
@@ -1056,7 +1056,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																			value: (
 																				" mr-" +
 																				tab.name +
-																				"-zoom active"
+																				"-zoom"
 																			).replace("--", "-"),
 																			label: "Zoom",
 																		},
@@ -1064,7 +1064,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																			value: (
 																				" mr-" +
 																				tab.name +
-																				"-zoomright active"
+																				"-zoomright"
 																			).replace("--", "-"),
 																			label: "Zoom Right",
 																		},
@@ -1072,7 +1072,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																			value: (
 																				" mr-" +
 																				tab.name +
-																				"-zoomleft active"
+																				"-zoomleft"
 																			).replace("--", "-"),
 																			label: "Zoom Left",
 																		},
@@ -3893,6 +3893,8 @@ const mrApplyWrapperExtraClass = createHigherOrderComponent(
 						mrClassNames = mrClassNames + " mr-tablet-fontsize" + mrAttrValue;
 					} else if (mrAttr == "mrFontSizephone" && mrAttrValue) {
 						mrClassNames = mrClassNames + " mr-phone-fontsize" + mrAttrValue;
+					} else if (mrAttr == "mrAnimation" && mrAttrValue) {
+						mrClassNames = mrClassNames + mrAttrValue + " mr-active";
 					} else if (mrAttr.startsWith("mr") && mrAttrValue) {
 						mrClassNames = mrClassNames + mrAttrValue;
 					}
@@ -4101,6 +4103,8 @@ function mrApplyExtraClass(extraProps, blockType, attributes) {
 					mrClassNames = mrClassNames + " mr-tablet-fontsize" + mrAttrValue;
 				} else if (mrAttr == "mrFontSizephone" && mrAttrValue) {
 					mrClassNames = mrClassNames + " mr-phone-fontsize" + mrAttrValue;
+				} else if (mrAttr == "mrAnimation" && mrAttrValue) {
+					mrClassNames = mrClassNames + mrAttrValue + " mr-active";
 				} else if (mrAttr.startsWith("mr") && mrAttrValue) {
 					mrClassNames = mrClassNames + mrAttrValue;
 				}
