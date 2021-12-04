@@ -75,7 +75,7 @@ function mrTabs(t) {
     for (let id = 0; id < mrChildCount.length; id++) {
       if (!mrChildCount[id].classList.contains("mr-pagination")) {
         mrChildCount[id].classList.add("mr-tabitem" + id);
-        mrtab += '<button value="mr-tabitem' + id + '" class="mr-tab';
+        mrtab += '<button value="mr-tabitem' + id + '" class="mr-tab mr-block';
         if (id == 0) {
           mrtab += " mr-active";
         } else {
@@ -88,7 +88,7 @@ function mrTabs(t) {
       }
     }
     t.innerHTML =
-      '<div class="mr-tabslist mr-flex mr-scroll mr-nobullets mr-absolute mr-top mr-offsettop">' +
+      '<div class="mr-tabslist mr-horizontalscroll mr-nobullets mr-absolute mr-top mr-offsettop">' +
       mrtab +
       "</div>" +
       t.innerHTML;
@@ -100,6 +100,7 @@ document.addEventListener("click", function (t) {
   }
   t.stopPropagation();
 });
+
 function mrToggleOffCanvas() {
   document.querySelector(".mr-offcanvas-container").classList.remove("mr-hide"),
     document
@@ -189,6 +190,7 @@ document.addEventListener("click", function (t) {
   }
   t.stopPropagation();
 });
+
 function mrGetCookie(t) {
   if (t) {
     const e = t + "=",
@@ -377,6 +379,7 @@ document.addEventListener("DOMContentLoaded", function () {
     mrDragEle.addEventListener("mousedown", mouseDownHandler);
   }
 });
+
 function mrLoadPage(e, n) {
   if (n <= 0) {
     n = e.getAttribute("mr-lastpage");

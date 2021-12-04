@@ -85,8 +85,7 @@
   background-position: center;
   width: 36px;
   height: 36px;
-  position: -webkit-sticky;
-  position: sticky;
+  position: absolute;
   top: 0;
   left: 0;
   transform: translateX(calc(-100% - 15px));
@@ -102,8 +101,7 @@
   background-position: center;
   width: 36px;
   height: 36px;
-  position: -webkit-sticky;
-  position: sticky;
+  position: absolute;
   top: 0;
   left: 0;
   transform: translateX(calc(-100% - 15px));
@@ -119,8 +117,7 @@
   background-position: center;
   width: 36px;
   height: 82px;
-  position: -webkit-sticky;
-  position: sticky;
+  position: absolute;
   top: 0;
   left: 0;
   transform: translateX(calc(-100% - 15px));
@@ -159,6 +156,11 @@
 .editor-styles-wrapper .mr-desktop-fontsize1,
 .editor-styles-wrapper .mr-desktop-smallfontsize {
   font-size: var(--font-size-1, 0.625rem);
+}
+
+.components-base-control.components-range-control
+  + .components-notice.is-warning {
+  display: none;
 }
 
 @media (min-width: 782px) {
