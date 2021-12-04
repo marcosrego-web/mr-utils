@@ -75,7 +75,7 @@ function mrTabs(t) {
     for (let id = 0; id < mrChildCount.length; id++) {
       if (!mrChildCount[id].classList.contains("mr-pagination")) {
         mrChildCount[id].classList.add("mr-tabitem" + id);
-        mrtab += '<button value="mr-tabitem' + id + '" class="mr-tab mr-block';
+        mrtab += '<button value="mr-tabitem' + id + '" class="mr-tab';
         if (id == 0) {
           mrtab += " mr-active";
         } else {

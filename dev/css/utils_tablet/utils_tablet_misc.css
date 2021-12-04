@@ -20,6 +20,12 @@
   overflow-x: auto;
   overflow-y: hidden;
 }
+.mr-tablet-horizontalscroll > *,
+.mr-tablet-horizontalscrollcontent > * > *,
+.mr-tablet-swipe > *,
+.mr-tablet-swipecontent > * > * {
+  display: block;
+}
 .mr-tablet-horizontalscroll img,
 .mr-tablet-horizontalscrollcontent > * img,
 .mr-tablet-swipe img,

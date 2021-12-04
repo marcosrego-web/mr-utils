@@ -20,6 +20,12 @@
   overflow-x: auto;
   overflow-y: hidden;
 }
+.mr-phone-horizontalscroll > *,
+.mr-phone-horizontalscrollcontent > * > *,
+.mr-phone-swipe > *,
+.mr-phone-swipecontent > * > * {
+  display: block;
+}
 .mr-phone-horizontalscroll img,
 .mr-phone-horizontalscrollcontent > * img,
 .mr-phone-swipe img,

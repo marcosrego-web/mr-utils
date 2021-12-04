@@ -20,6 +20,12 @@
   overflow-x: auto;
   overflow-y: hidden;
 }
+.mr-landscape-horizontalscroll > *,
+.mr-landscape-horizontalscrollcontent > * > *,
+.mr-landscape-swipe > *,
+.mr-landscape-swipecontent > * > * {
+  display: block;
+}
 .mr-landscape-horizontalscroll img,
 .mr-landscape-horizontalscrollcontent > * img,
 .mr-landscape-swipe img,

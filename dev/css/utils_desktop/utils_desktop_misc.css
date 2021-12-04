@@ -20,6 +20,12 @@
   overflow-x: auto;
   overflow-y: hidden;
 }
+.mr-desktop-horizontalscroll > *,
+.mr-desktop-horizontalscrollcontent > * > *,
+.mr-desktop-swipe > *,
+.mr-desktop-swipecontent > * > * {
+  display: block;
+}
 .mr-desktop-horizontalscroll img,
 .mr-desktop-horizontalscrollcontent > * img,
 .mr-desktop-swipe img,
