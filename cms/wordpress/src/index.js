@@ -204,6 +204,10 @@ function mrAddAttributes(settings) {
 				type: "int",
 				default: "",
 			},
+			mrPaginationPosition: {
+				type: "int",
+				default: "",
+			},
 			mrArrowPagination: {
 				type: "string",
 				default: "",
@@ -217,6 +221,10 @@ function mrAddAttributes(settings) {
 				default: "",
 			},
 			mrComponent: {
+				type: "string",
+				default: "",
+			},
+			mrNavPosition: {
 				type: "string",
 				default: "",
 			},
@@ -732,7 +740,9 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 			mrTransition,
 			mrTransitionhover,
 			mrPerPage,
+			mrPaginationPosition,
 			mrComponent,
+			mrNavPosition,
 			mrArrowPagination,
 			mrSelectPagination,
 			mrRadioPagination,
@@ -1215,6 +1225,38 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																	/>
 																	{mrPerPage > 0 ? (
 																		<>
+																			<SelectControl
+																				label={__(
+																					"Pagination position",
+																					"mr-utils"
+																				)}
+																				value={mrPaginationPosition}
+																				options={[
+																					{ value: "", label: "Bottom" },
+																					{
+																						value: (
+																							" mr-" +
+																							tab.name +
+																							"-paginationtop"
+																						).replace("--", "-"),
+																						label: "Top",
+																					},
+																				]}
+																				onChange={(val) =>
+																					setAttributes({
+																						mrPaginationPosition:
+																							val === undefined || val === ""
+																								? ""
+																								: val.includes("-desktop-") ||
+																								  val.includes("-laptop-") ||
+																								  val.includes("-tablet-") ||
+																								  val.includes("-phone-") ||
+																								  val.includes("-hover-")
+																								? mrPaginationPosition
+																								: val.replace("--", "-"),
+																					})
+																				}
+																			/>
 																			<ToggleControl
 																				label="Arrows"
 																				checked={mrArrowPagination}
@@ -1305,6 +1347,42 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																				  )
 																		}
 																	/>
+																	{mrComponent.includes("tabs") ? (
+																		<SelectControl
+																			label={__(
+																				"Navigation position",
+																				"mr-utils"
+																			)}
+																			value={mrNavPosition}
+																			options={[
+																				{ value: "", label: "Top" },
+																				{
+																					value: (
+																						" mr-" +
+																						tab.name +
+																						"-tabsbottom"
+																					).replace("--", "-"),
+																					label: "Bottom",
+																				},
+																			]}
+																			onChange={(val) =>
+																				setAttributes({
+																					mrNavPosition:
+																						val === undefined || val === ""
+																							? ""
+																							: val.includes("-desktop-") ||
+																							  val.includes("-laptop-") ||
+																							  val.includes("-tablet-") ||
+																							  val.includes("-phone-") ||
+																							  val.includes("-hover-")
+																							? mrNavPosition
+																							: val.replace("--", "-"),
+																				})
+																			}
+																		/>
+																	) : (
+																		""
+																	)}
 																</PanelBody>
 															</>
 														) : (
@@ -1836,6 +1914,30 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																		).replace("--", "-"),
 																		label: "Hidden",
 																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-transparent"
+																		).replace("--", "-"),
+																		label: "Transparent",
+																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-semiopaque"
+																		).replace("--", "-"),
+																		label: "Semi-opaque",
+																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-opaque"
+																		).replace("--", "-"),
+																		label: "Opaque",
+																	},
 																]}
 																onChange={(val) =>
 																	setAttributes({
@@ -1889,26 +1991,41 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																	mrDisplay === " mr-hidden" ||
 																	mrDisplay === " mr-hide" ||
 																	mrDisplay === " mr-none" ||
+																	mrDisplay === " mr-transparent" ||
 																	mrDisplayhover === " mr-hover-hidden" ||
 																	mrDisplayhover === " mr-hover-hide" ||
 																	mrDisplayhover === " mr-hover-none" ||
 																	mrDisplaydesktop === " mr-desktop-hidden" ||
 																	mrDisplaydesktop === " mr-desktop-hide" ||
 																	mrDisplaydesktop === " mr-desktop-none" ||
+																	mrDisplaydesktop ===
+																		" mr-desktop-transparent" ||
 																	mrDisplaylaptop === " mr-laptop-hidden" ||
 																	mrDisplaylaptop === " mr-laptop-hide" ||
 																	mrDisplaylaptop === " mr-laptop-none" ||
+																	mrDisplaylaptop ===
+																		" mr-laptop-transparent" ||
 																	mrDisplaytablet === " mr-tablet-hidden" ||
 																	mrDisplaytablet === " mr-tablet-hide" ||
 																	mrDisplaytablet === " mr-tablet-none" ||
+																	mrDisplaytablet ===
+																		" mr-tablet-transparent" ||
 																	mrDisplayphone === " mr-phone-hidden" ||
 																	mrDisplayphone === " mr-phone-hide" ||
-																	mrDisplayphone === " mr-phone-none"
-																		? __(
-																				"An opacity was applied to the block in the backend so you can still see and select it. Preview the frontend to see the actual result.",
-																				"mr-utils"
-																		  )
-																		: __("")
+																	mrDisplayphone === " mr-phone-none" ||
+																	mrDisplayphone === " mr-phone-transparent" ? (
+																		__(
+																			"An opacity is applied to the block in the backend so you can still see and select it. Preview the frontend to see the actual result.",
+																			"mr-utils"
+																		)
+																	) : (
+																		<a
+																			href="https://github.com/marcosrego-web/mr-utils/wiki/Utility-Classes#display"
+																			target="_blank"
+																		>
+																			Know the differences between visibilities
+																		</a>
+																	)
 																}
 															/>
 															<SelectControl
@@ -3718,7 +3835,9 @@ const mrApplyWrapperExtraClass = createHigherOrderComponent(
 				mrTransition,
 				mrTransitionhover,
 				mrPerPage,
+				mrPaginationPosition,
 				mrComponent,
+				mrNavPosition,
 				mrArrowPagination,
 				mrSelectPagination,
 				mrRadioPagination,
@@ -3895,6 +4014,8 @@ const mrApplyWrapperExtraClass = createHigherOrderComponent(
 						mrClassNames = mrClassNames + " mr-phone-fontsize" + mrAttrValue;
 					} else if (mrAttr == "mrAnimation" && mrAttrValue) {
 						mrClassNames = mrClassNames + mrAttrValue + " mr-active";
+					} else if (mrAttr == "mrAnimationhover" && mrAttrValue) {
+						mrClassNames = mrClassNames + mrAttrValue + " mr-active";
 					} else if (mrAttr.startsWith("mr") && mrAttrValue) {
 						mrClassNames = mrClassNames + mrAttrValue;
 					}
@@ -3925,6 +4046,7 @@ function mrApplyExtraClass(extraProps, blockType, attributes) {
 		mrTransition,
 		mrTransitionhover,
 		mrPerPage,
+		mrPaginationPosition,
 		mrArrowPagination,
 		mrSelectPagination,
 		mrRadioPagination,
@@ -4104,6 +4226,8 @@ function mrApplyExtraClass(extraProps, blockType, attributes) {
 				} else if (mrAttr == "mrFontSizephone" && mrAttrValue) {
 					mrClassNames = mrClassNames + " mr-phone-fontsize" + mrAttrValue;
 				} else if (mrAttr == "mrAnimation" && mrAttrValue) {
+					mrClassNames = mrClassNames + mrAttrValue + " mr-active";
+				} else if (mrAttr == "mrAnimationhover" && mrAttrValue) {
 					mrClassNames = mrClassNames + mrAttrValue + " mr-active";
 				} else if (mrAttr.startsWith("mr") && mrAttrValue) {
 					mrClassNames = mrClassNames + mrAttrValue;

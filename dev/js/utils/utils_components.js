@@ -1,6 +1,14 @@
 function mrTab(t, e, v) {
   if (!e) {
-    e = t.closest(".mr-tabs");
+    e = t.parentNode.nextElementSibling;
+    if (
+      (t.parentNode.previousElementSibling &&
+        t.parentNode.previousElementSibling.classList.contains("mr-tabs")) ||
+      t.classList.contains("mr-tabsbottom") ||
+      t.classList.contains("mr-tabsright")
+    ) {
+      e = t.parentNode.previousElementSibling;
+    }
   }
   e.classList.remove("mr-active");
 
@@ -68,10 +76,12 @@ function mrTab(t, e, v) {
   }, mrTimeOut);
 }
 function mrTabs(t) {
-  if (!t.querySelector(".mr-tabslist")) {
+  if (
+    !t.previousElementSibling.querySelector(".mr-tabslist") &&
+    !t.nextElementSibling.querySelector(".mr-tabslist")
+  ) {
     let mrChildCount = t.children;
     let mrtab = "";
-    t.classList.add("mr-relative");
     for (let id = 0; id < mrChildCount.length; id++) {
       if (!mrChildCount[id].classList.contains("mr-pagination")) {
         mrChildCount[id].classList.add("mr-tabitem" + id);
@@ -82,16 +92,31 @@ function mrTabs(t) {
           mrChildCount[id].style.setProperty("display", "none", "important");
         }
         mrtab +=
-          '" style="cursor: pointer; word-break: break-word;">' +
+          '">' +
           mrChildCount[id].querySelector("*:first-child").innerText +
           "</button>";
       }
     }
-    t.innerHTML =
-      '<div class="mr-tabslist mr-horizontalscroll mr-nobullets mr-absolute mr-top mr-offsettop">' +
-      mrtab +
-      "</div>" +
-      t.innerHTML;
+    if (
+      (t.previousElementSibling &&
+        t.previousElementSibling.classList.contains("mr-tabsbottom")) ||
+      (t.previousElementSibling &&
+        t.previousElementSibling.classList.contains("mr-tabsright")) ||
+      t.classList.contains("mr-tabsbottom") ||
+      t.classList.contains("mr-tabsright")
+    ) {
+      t.outerHTML =
+        t.outerHTML +
+        '<div class="mr-tabslist mr-horizontalscroll">' +
+        mrtab +
+        "</div>";
+    } else {
+      t.outerHTML =
+        '<div class="mr-tabslist mr-horizontalscroll">' +
+        mrtab +
+        "</div>" +
+        t.outerHTML;
+    }
   }
 }
 document.addEventListener("click", function (t) {
@@ -99,4 +124,13 @@ document.addEventListener("click", function (t) {
     mrTab(t.target);
   }
   t.stopPropagation();
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const mrTabsEles = document.querySelectorAll(".mr-tabs");
+
+  for (let id = 0; id < mrTabsEles.length; id++) {
+    const mrTabsEle = mrTabsEles[id];
+    mrTabs(mrTabsEle);
+  }
 });

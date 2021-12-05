@@ -12,6 +12,16 @@
 .mr-landscape-nowrap {
   flex-wrap: nowrap !important;
 }
+.mr-landscape-transparent {
+  opacity: 0;
+}
+.mr-landscape-opaque {
+  opacity: 1;
+}
+.mr-landscape-semiopaque {
+  opacity: 0.5;
+  opacity: var(--opacity, 0.5);
+}
 .mr-landscape-show,
 .mr-landscape-block {
   display: block !important;

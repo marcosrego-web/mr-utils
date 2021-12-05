@@ -12,6 +12,16 @@
 .mr-phone-nowrap {
   flex-wrap: nowrap !important;
 }
+.mr-phone-transparent {
+  opacity: 0;
+}
+.mr-phone-opaque {
+  opacity: 1;
+}
+.mr-phone-semiopaque {
+  opacity: 0.5;
+  opacity: var(--opacity, 0.5);
+}
 .mr-phone-show,
 .mr-phone-block {
   display: block !important;

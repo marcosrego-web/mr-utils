@@ -12,6 +12,16 @@
 .mr-laptop-nowrap {
   flex-wrap: nowrap !important;
 }
+.mr-laptop-transparent {
+  opacity: 0;
+}
+.mr-laptop-opaque {
+  opacity: 1;
+}
+.mr-laptop-semiopaque {
+  opacity: 0.5;
+  opacity: var(--opacity, 0.5);
+}
 .mr-laptop-show,
 .mr-laptop-block {
   display: block !important;

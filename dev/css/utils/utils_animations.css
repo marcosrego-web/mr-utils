@@ -1,5 +1,4 @@
-/*(not used on breakpoints)*/
-/*ANIMATIONS*/
+/*(not used on breakpoints only states such as hover)*/
 @keyframes mrFadeOut {
   0% {
     opacity: 1;
@@ -23,16 +22,16 @@
     transform: translateY(0%);
   }
   100% {
-    -webkit-transform: translateY(100%);
-    -ms-transform: translateY(100%);
-    transform: translateY(100%);
+    -webkit-transform: translateY(100vh);
+    -ms-transform: translateY(100vh);
+    transform: translateY(100vh);
   }
 }
 @keyframes mrSlideInTop {
   0% {
-    -webkit-transform: translateY(-100%);
-    -ms-transform: translateY(-100%);
-    transform: translateY(-100%);
+    -webkit-transform: translateY(-100vh);
+    -ms-transform: translateY(-100vh);
+    transform: translateY(-100vh);
   }
   100% {
     -webkit-transform: translateY(0%);
@@ -47,16 +46,16 @@
     transform: translateY(0%);
   }
   100% {
-    -webkit-transform: translateY(-100%);
-    -ms-transform: translateY(-100%);
-    transform: translateY(-100%);
+    -webkit-transform: translateY(-100vh);
+    -ms-transform: translateY(-100vh);
+    transform: translateY(-100vh);
   }
 }
 @keyframes mrSlideInBottom {
   0% {
-    -webkit-transform: translateY(100%);
-    -ms-transform: translateY(100%);
-    transform: translateY(100%);
+    -webkit-transform: translateY(100vh);
+    -ms-transform: translateY(100vh);
+    transform: translateY(100vh);
   }
   100% {
     -webkit-transform: translateY(0%);
@@ -71,16 +70,16 @@
     transform: translateX(0%);
   }
   100% {
-    -webkit-transform: translateX(-100%);
-    -ms-transform: translateX(-100%);
-    transform: translateX(-100%);
+    -webkit-transform: translateX(-100vw);
+    -ms-transform: translateX(-100vw);
+    transform: translateX(-100vw);
   }
 }
 @keyframes mrSlideInRight {
   0% {
-    -webkit-transform: translateX(100%);
-    -ms-transform: translateX(100%);
-    transform: translateX(100%);
+    -webkit-transform: translateX(100vw);
+    -ms-transform: translateX(100vw);
+    transform: translateX(100vw);
   }
   100% {
     -webkit-transform: translateX(0%);
@@ -95,16 +94,16 @@
     transform: translateX(0%);
   }
   100% {
-    -webkit-transform: translateX(100%);
-    -ms-transform: translateX(100%);
-    transform: translateX(100%);
+    -webkit-transform: translateX(100vw);
+    -ms-transform: translateX(100vw);
+    transform: translateX(100vw);
   }
 }
 @keyframes mrSlideInLeft {
   0% {
-    -webkit-transform: translateX(-100%);
-    -ms-transform: translateX(-100%);
-    transform: translateX(-100%);
+    -webkit-transform: translateX(-100vw);
+    -ms-transform: translateX(-100vw);
+    transform: translateX(-100vw);
   }
   100% {
     -webkit-transform: translateX(0%);
@@ -182,63 +181,78 @@
 }
 .mr-slide,
 .mr-slidebottom,
-.mr-slideoutbottom {
+.mr-slideright,
+.mr-slideleft,
+.mr-slidetop,
+.mr-slideintop,
+.mr-slideinbottom,
+.mr-slideouttop,
+.mr-slideoutbottom,
+.mr-slideinright,
+.mr-slideoutright,
+.mr-slideinleft,
+.mr-slideoutleft {
+  overflow: hidden;
+}
+.mr-slide > *,
+.mr-slidebottom > *,
+.mr-slideoutbottom > * {
   -webkit-animation: mrSlideOutBottom 0.5s forwards;
   animation: mrSlideOutBottom 0.5s forwards;
   -webkit-animation: mrSlideOutBottom var(--transition-duration, 0.5s) forwards;
   animation: mrSlideOutBottom var(--transition-duration, 0.5s) forwards;
 }
-.mr-slide.mr-active:not(.mr-inactive),
-.mr-slidebottom.mr-active:not(.mr-inactive),
-.mr-slideinbottom {
+.mr-slide.mr-active:not(.mr-inactive) > *,
+.mr-slidebottom.mr-active:not(.mr-inactive) > *,
+.mr-slideinbottom > * {
   -webkit-animation: mrSlideInBottom 0.5s forwards;
   animation: mrSlideInBottom 0.5s forwards;
   -webkit-animation: mrSlideInBottom var(--transition-duration, 0.5s) forwards;
   animation: mrSlideInBottom var(--transition-duration, 0.5s) forwards;
 }
-.mr-transitiontop .mr-slide,
-.mr-slidetop,
-.mr-slideouttop {
+.mr-transitiontop .mr-slide > *,
+.mr-slidetop > *,
+.mr-slideouttop > * {
   -webkit-animation: mrSlideOutTop 0.5s forwards;
   animation: mrSlideOutTop 0.5s forwards;
   -webkit-animation: mrSlideOutTop var(--transition-duration, 0.5s) forwards;
   animation: mrSlideOutTop var(--transition-duration, 0.5s) forwards;
 }
-.mr-transitiontop .mr-slide.mr-active:not(.mr-inactive),
-.mr-slidetop.mr-active:not(.mr-inactive),
-.mr-slideintop {
+.mr-transitiontop .mr-slide.mr-active:not(.mr-inactive) > *,
+.mr-slidetop.mr-active:not(.mr-inactive) > *,
+.mr-slideintop > * {
   -webkit-animation: mrSlideInTop 0.5s forwards;
   animation: mrSlideInTop 0.5s forwards;
   -webkit-animation: mrSlideInTop var(--transition-duration, 0.5s) forwards;
   animation: mrSlideInTop var(--transition-duration, 0.5s) forwards;
 }
-.mr-transitionright .mr-slide,
-.mr-slideright,
-.mr-slideoutright {
+.mr-transitionright .mr-slide > *,
+.mr-slideright > *,
+.mr-slideoutright > * {
   -webkit-animation: mrSlideOutRight 0.5s forwards;
   animation: mrSlideOutRight 0.5s forwards;
   -webkit-animation: mrSlideOutRight var(--transition-duration, 0.5s) forwards;
   animation: mrSlideOutRight var(--transition-duration, 0.5s) forwards;
 }
-.mr-transitionright .mr-slide.mr-active:not(.mr-inactive),
-.mr-slideright.mr-active:not(.mr-inactive),
-.mr-slideinright {
+.mr-transitionright .mr-slide.mr-active:not(.mr-inactive) > *,
+.mr-slideright.mr-active:not(.mr-inactive) > *,
+.mr-slideinright > * {
   -webkit-animation: mrSlideInRight 0.5s forwards;
   animation: mrSlideInRight 0.5s forwards;
   -webkit-animation: mrSlideInRight var(--transition-duration, 0.5s) forwards;
   animation: mrSlideInRight var(--transition-duration, 0.5s) forwards;
 }
-.mr-transitionleft .mr-slide,
-.mr-slideleft,
-.mr-slideoutleft {
+.mr-transitionleft .mr-slide > *,
+.mr-slideleft > *,
+.mr-slideoutleft > * {
   -webkit-animation: mrSlideOutLeft 0.5s forwards;
   animation: mrSlideOutLeft 0.5s forwards;
   -webkit-animation: mrSlideOutLeft var(--transition-duration, 0.5s) forwards;
   animation: mrSlideOutLeft var(--transition-duration, 0.5s) forwards;
 }
-.mr-transitionleft .mr-slide.mr-active:not(.mr-inactive),
-.mr-slideleft.mr-active:not(.mr-inactive),
-.mr-slideinleft {
+.mr-transitionleft .mr-slide.mr-active:not(.mr-inactive) > *,
+.mr-slideleft.mr-active:not(.mr-inactive) > *,
+.mr-slideinleft > * {
   -webkit-animation: mrSlideInLeft 0.5s forwards;
   animation: mrSlideInLeft 0.5s forwards;
   -webkit-animation: mrSlideInLeft var(--transition-duration, 0.5s) forwards;
@@ -324,17 +338,22 @@
 }
 .mr-transition,
 .mr-ease {
+  transition: all 0.5s ease;
   transition: all var(--transition-duration, 0.5s) ease;
 }
 .mr-easein {
+  transition: all 0.5s ease-in;
   transition: all var(--transition-duration, 0.5s) ease-in;
 }
 .mr-easeout {
+  transition: all 0.5s ease-out;
   transition: all var(--transition-duration, 0.5s) ease-out;
 }
 .mr-easeinout {
+  transition: all 0.5s ease-in-out;
   transition: all var(--transition-duration, 0.5s) ease-in-out;
 }
 .mr-linear {
+  transition: all 0.5s linear;
   transition: all var(--transition-duration, 0.5s) linear;
 }
