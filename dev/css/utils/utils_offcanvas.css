@@ -1,14 +1,14 @@
 /*(not used on breakpoints)*/
-.mr-offcanvas-container {
+.mr-offcanvas-container .mr-offcanvas-content {
   background-color: #fff;
   background-color: var(--offcanvas-background-color, #fff);
 }
-.mr-transitionleft .mr-offcanvas-container,
-.mr-transitionright .mr-offcanvas-container {
+.mr-transitionleft .mr-offcanvas-container .mr-offcanvas-content,
+.mr-transitionright .mr-offcanvas-container .mr-offcanvas-content {
   width: var(--offcanvas-size, 100%);
 }
-.mr-transitiontop .mr-offcanvas-container,
-.mr-transitionbottom .mr-offcanvas-container {
+.mr-transitiontop .mr-offcanvas-container .mr-offcanvas-content,
+.mr-transitionbottom .mr-offcanvas-container .mr-offcanvas-content {
   height: var(--offcanvas-size, 100%);
 }
 .mr-offcanvas-container,
@@ -28,7 +28,7 @@
   color: #000;
   color: var(--offcanvas-toggle-color, #000);
 }
-.mr-offcanvas-container,
+.mr-offcanvas-container .mr-offcanvas-content,
 .mr-overlay {
   position: fixed;
   top: 0;
@@ -78,8 +78,10 @@
   left: calc(50% - 1.25em);
   bottom: var(--padding, 0.75rem);
 }
-.mr-transitionleft .mr-offcanvas-container:not(.mr-active),
-.mr-transitionright .mr-offcanvas-container.mr-active {
+.mr-transitionleft
+  .mr-offcanvas-container:not(.mr-active)
+  .mr-offcanvas-content,
+.mr-transitionright .mr-offcanvas-container.mr-active .mr-offcanvas-content {
   margin-left: calc(100% - var(--offcanvas-size, 100%));
 }
 .mr-offcanvas-toggle:before,
