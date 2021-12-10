@@ -65,3 +65,6 @@
 .mr-tablet-nopaddingbottom {
   padding-bottom: 0 !important;
 }
+.mr-tablet-nopaddingleft {
+  padding-left: 0 !important;
+}

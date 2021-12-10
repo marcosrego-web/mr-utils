@@ -65,3 +65,6 @@
 .mr-hover-nopaddingbottom:hover {
   padding-bottom: 0 !important;
 }
+.mr-hover-nopaddingleft:hover {
+  padding-left: 0 !important;
+}

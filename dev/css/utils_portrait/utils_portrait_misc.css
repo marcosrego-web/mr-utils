@@ -4,12 +4,8 @@
 .mr-portrait-noscroll {
   overflow: hidden !important;
 }
-.mr-portrait-hidescroll:not(.mr-portrait-horizontalscroll)::-webkit-scrollbar {
+.mr-portrait-hidescroll::-webkit-scrollbar {
   height: 0;
-}
-.mr-portrait-horizontalscroll.mr-portrait-hidescroll::-webkit-scrollbar,
-.mr-portrait-swipe::-webkit-scrollbar,
-.mr-portrait-swipecontent > *::-webkit-scrollbar {
   width: 0;
 }
 .mr-portrait-horizontalscroll,

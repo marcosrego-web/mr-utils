@@ -4,12 +4,8 @@
 .mr-laptop-noscroll {
   overflow: hidden !important;
 }
-.mr-laptop-hidescroll:not(.mr-laptop-horizontalscroll)::-webkit-scrollbar {
+.mr-laptop-hidescroll::-webkit-scrollbar {
   height: 0;
-}
-.mr-laptop-horizontalscroll.mr-laptop-hidescroll::-webkit-scrollbar,
-.mr-laptop-swipe::-webkit-scrollbar,
-.mr-laptop-swipecontent > *::-webkit-scrollbar {
   width: 0;
 }
 .mr-laptop-horizontalscroll,

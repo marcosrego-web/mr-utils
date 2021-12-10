@@ -65,3 +65,6 @@
 .mr-phone-nopaddingbottom {
   padding-bottom: 0 !important;
 }
+.mr-phone-nopaddingleft {
+  padding-left: 0 !important;
+}

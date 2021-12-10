@@ -133,7 +133,7 @@ function mrPagination(t) {
       }
     }
 
-    if (mrCurrentPage > mrChildCount.length) {
+    if (!t.querySelector(".mr-page" + mrCurrentPage)) {
       mrCurrentPage = mrCurrentPage - 1;
     }
 
@@ -154,7 +154,9 @@ function mrPagination(t) {
     let mrPaginationSelect = "";
     if (
       t.classList.contains("mr-selectpagination") ||
-      (t.matches("[class*='mr-'][class*='perpage']") &&
+      (t.matches(
+        "[class*='mr-'][class*='perpage']:not([class*='mr-widget'])"
+      ) &&
         !t.matches(".mr-arrowpagination") &&
         !t.matches(".mr-selectpagination") &&
         !t.matches(".mr-radiopagination"))
@@ -176,7 +178,9 @@ function mrPagination(t) {
     let mrPaginationRadio = "";
     if (
       t.classList.contains("mr-radiopagination") ||
-      (t.matches("[class*='mr-'][class*='perpage']") &&
+      (t.matches(
+        "[class*='mr-'][class*='perpage']:not([class*='mr-widget'])"
+      ) &&
         !t.matches(".mr-arrowpagination") &&
         !t.matches(".mr-selectpagination") &&
         !t.matches(".mr-radiopagination"))
@@ -234,7 +238,7 @@ function mrNext(t, e) {
     if (
       (t.parentNode.nextElementSibling &&
         t.parentNode.nextElementSibling.matches(
-          "[class*='mr-'][class*='perpage']"
+          "[class*='mr-'][class*='perpage']:not([class*='mr-widget'])"
         )) ||
       t.parentNode.classList.contains("mr-paginationtop") ||
       t.parentNode.classList.contains("mr-paginationleft")
@@ -251,7 +255,7 @@ function mrPrev(t, e) {
     if (
       (t.parentNode.nextElementSibling &&
         t.parentNode.nextElementSibling.matches(
-          "[class*='mr-'][class*='perpage']"
+          "[class*='mr-'][class*='perpage']:not([class*='mr-widget'])"
         )) ||
       t.parentNode.classList.contains("mr-paginationtop") ||
       t.parentNode.classList.contains("mr-paginationleft")
@@ -268,7 +272,7 @@ function mrSelectPage(t, e) {
     if (
       (t.parentNode.nextElementSibling &&
         t.parentNode.nextElementSibling.matches(
-          "[class*='mr-'][class*='perpage']"
+          "[class*='mr-'][class*='perpage']:not([class*='mr-widget'])"
         )) ||
       t.parentNode.classList.contains("mr-paginationtop") ||
       t.parentNode.classList.contains("mr-paginationleft")
@@ -287,7 +291,7 @@ function mrRadioPage(t, e) {
     if (
       (t.parentNode.parentNode.nextElementSibling &&
         t.parentNode.parentNode.nextElementSibling.matches(
-          "[class*='mr-'][class*='perpage']"
+          "[class*='mr-'][class*='perpage']:not([class*='mr-widget'])"
         )) ||
       t.parentNode.parentNode.classList.contains("mr-paginationtop") ||
       t.parentNode.parentNode.classList.contains("mr-paginationleft")
@@ -311,7 +315,7 @@ document.addEventListener("click", function (t) {
 });
 document.addEventListener("DOMContentLoaded", function () {
   const mrPaginEles = document.querySelectorAll(
-    "[class*='mr-'][class*='perpage']"
+    "[class*='mr-'][class*='perpage']:not([class*='mr-widget'])"
   );
 
   for (let id = 0; id < mrPaginEles.length; id++) {
