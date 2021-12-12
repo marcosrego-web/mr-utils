@@ -44,6 +44,7 @@ import {
 	pages,
 	moveTo,
 	blockDefault,
+	replace,
 } from "@wordpress/icons";
 
 const mrAllowedBlocks = [
@@ -135,6 +136,7 @@ const mrUtilsGlobalFeatures = [
 	"animations",
 	"pagination",
 	"offcanvas",
+	"dynamic",
 	"other",
 ];
 
@@ -221,6 +223,10 @@ function mrAddAttributes(settings) {
 				default: "",
 			},
 			mrComponent: {
+				type: "string",
+				default: "",
+			},
+			mrActiveWhen: {
 				type: "string",
 				default: "",
 			},
@@ -742,6 +748,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 			mrPerPage,
 			mrPaginationPosition,
 			mrComponent,
+			mrActiveWhen,
 			mrNavPosition,
 			mrArrowPagination,
 			mrSelectPagination,
@@ -976,6 +983,209 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 											{(tab) =>
 												tab.name !== "more" ? (
 													<>
+														{tab.name === "" ? (
+															<>
+																<PanelBody
+																	icon={pages}
+																	title={
+																		tab.name + __(" Pagination", "mr-utils")
+																	}
+																	initialOpen={false}
+																	className="mr-backend-option mr-backend-option_utils_pagination"
+																>
+																	<TextControl
+																		label={__(
+																			"Number of items per page",
+																			"mr-utils"
+																		)}
+																		value={mrPerPage}
+																		type="number"
+																		className="mr-backend-perpage"
+																		onChange={(val) =>
+																			setAttributes({
+																				mrPerPage:
+																					val === undefined || val === 0
+																						? ""
+																						: val,
+																			})
+																		}
+																		help={
+																			mrPerPage > 0
+																				? __(
+																						"Pagination was applied but you need to preview the frontend to see the actual result.",
+																						"mr-utils"
+																				  )
+																				: __(
+																						"Apply into parent blocks (such as Columns and List blocks) to consider each direct child as a page's item.",
+																						"mr-utils"
+																				  )
+																		}
+																	/>
+																	{mrPerPage > 0 ? (
+																		<>
+																			<SelectControl
+																				label={__(
+																					"Pagination position",
+																					"mr-utils"
+																				)}
+																				value={mrPaginationPosition}
+																				options={[
+																					{ value: "", label: "Bottom" },
+																					{
+																						value: (
+																							" mr-" +
+																							tab.name +
+																							"-paginationtop"
+																						).replace("--", "-"),
+																						label: "Top",
+																					},
+																				]}
+																				onChange={(val) =>
+																					setAttributes({
+																						mrPaginationPosition:
+																							val === undefined || val === ""
+																								? ""
+																								: val.includes("-desktop-") ||
+																								  val.includes("-laptop-") ||
+																								  val.includes("-tablet-") ||
+																								  val.includes("-phone-") ||
+																								  val.includes("-hover-")
+																								? mrPaginationPosition
+																								: val.replace("--", "-"),
+																					})
+																				}
+																			/>
+																			<ToggleControl
+																				label="Arrows"
+																				checked={mrArrowPagination}
+																				className="mr-backend-perpage"
+																				onChange={() =>
+																					setAttributes({
+																						mrArrowPagination: !mrArrowPagination,
+																					})
+																				}
+																			/>
+																			<ToggleControl
+																				label="Select dropdown"
+																				checked={mrSelectPagination}
+																				className="mr-backend-perpage"
+																				onChange={() =>
+																					setAttributes({
+																						mrSelectPagination: !mrSelectPagination,
+																					})
+																				}
+																			/>
+																			<ToggleControl
+																				label="Radio buttons"
+																				checked={mrRadioPagination}
+																				className="mr-backend-perpage"
+																				onChange={() =>
+																					setAttributes({
+																						mrRadioPagination: !mrRadioPagination,
+																					})
+																				}
+																			/>
+																		</>
+																	) : (
+																		""
+																	)}
+																</PanelBody>
+																<PanelBody
+																	icon={blockDefault}
+																	title={
+																		tab.name + __(" Components", "mr-utils")
+																	}
+																	initialOpen={false}
+																	className={
+																		tab.name === ""
+																			? "mr-backend-option mr-backend-option_utils_components"
+																			: "mr-backend-option mr-backend-option_utils_" +
+																			  tab.name +
+																			  "_components"
+																	}
+																>
+																	<SelectControl
+																		label={__("Component", "mr-utils")}
+																		value={mrComponent}
+																		options={[
+																			{ value: "", label: "Default" },
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-tabs"
+																				).replace("--", "-"),
+																				label: "Tabs",
+																			},
+																		]}
+																		onChange={(val) =>
+																			setAttributes({
+																				mrComponent:
+																					val === undefined || val === ""
+																						? ""
+																						: val.includes("-desktop-") ||
+																						  val.includes("-laptop-") ||
+																						  val.includes("-tablet-") ||
+																						  val.includes("-phone-") ||
+																						  val.includes("-hover-")
+																						? mrComponent
+																						: val.replace("--", "-"),
+																			})
+																		}
+																		help={
+																			mrComponent
+																				? __(
+																						"The component was applied but you need to preview the frontend to see the actual result.",
+																						"mr-utils",
+																						"mr-utils"
+																				  )
+																				: __(
+																						"Apply into parent blocks (such as Columns and List blocks) to consider each direct child as a component item.",
+																						"mr-utils"
+																				  )
+																		}
+																	/>
+																	{mrComponent.includes("tabs") ? (
+																		<SelectControl
+																			label={__(
+																				"Navigation position",
+																				"mr-utils"
+																			)}
+																			value={mrNavPosition}
+																			options={[
+																				{ value: "", label: "Top" },
+																				{
+																					value: (
+																						" mr-" +
+																						tab.name +
+																						"-tabsbottom"
+																					).replace("--", "-"),
+																					label: "Bottom",
+																				},
+																			]}
+																			onChange={(val) =>
+																				setAttributes({
+																					mrNavPosition:
+																						val === undefined || val === ""
+																							? ""
+																							: val.includes("-desktop-") ||
+																							  val.includes("-laptop-") ||
+																							  val.includes("-tablet-") ||
+																							  val.includes("-phone-") ||
+																							  val.includes("-hover-")
+																							? mrNavPosition
+																							: val.replace("--", "-"),
+																				})
+																			}
+																		/>
+																	) : (
+																		""
+																	)}
+																</PanelBody>
+															</>
+														) : (
+															""
+														)}
 														{tab.name === "" || tab.name === "hover" ? (
 															<PanelBody
 																icon={symbol}
@@ -1188,141 +1398,34 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 														{tab.name === "" ? (
 															<>
 																<PanelBody
-																	icon={pages}
-																	title={
-																		tab.name + __(" Pagination", "mr-utils")
-																	}
-																	initialOpen={false}
-																	className="mr-backend-option mr-backend-option_utils_pagination"
-																>
-																	<TextControl
-																		label={__(
-																			"Number of items per page",
-																			"mr-utils"
-																		)}
-																		value={mrPerPage}
-																		type="number"
-																		className="mr-backend-perpage"
-																		onChange={(val) =>
-																			setAttributes({
-																				mrPerPage:
-																					val === undefined || val === 0
-																						? ""
-																						: val,
-																			})
-																		}
-																		help={
-																			mrPerPage > 0
-																				? __(
-																						"Pagination was applied but you need to preview the frontend to see the actual result.",
-																						"mr-utils"
-																				  )
-																				: __(
-																						"Apply into parent blocks (such as Columns and List blocks) to consider each direct child as a page's item.",
-																						"mr-utils"
-																				  )
-																		}
-																	/>
-																	{mrPerPage > 0 ? (
-																		<>
-																			<SelectControl
-																				label={__(
-																					"Pagination position",
-																					"mr-utils"
-																				)}
-																				value={mrPaginationPosition}
-																				options={[
-																					{ value: "", label: "Bottom" },
-																					{
-																						value: (
-																							" mr-" +
-																							tab.name +
-																							"-paginationtop"
-																						).replace("--", "-"),
-																						label: "Top",
-																					},
-																				]}
-																				onChange={(val) =>
-																					setAttributes({
-																						mrPaginationPosition:
-																							val === undefined || val === ""
-																								? ""
-																								: val.includes("-desktop-") ||
-																								  val.includes("-laptop-") ||
-																								  val.includes("-tablet-") ||
-																								  val.includes("-phone-") ||
-																								  val.includes("-hover-")
-																								? mrPaginationPosition
-																								: val.replace("--", "-"),
-																					})
-																				}
-																			/>
-																			<ToggleControl
-																				label="Arrows"
-																				checked={mrArrowPagination}
-																				className="mr-backend-perpage"
-																				onChange={() =>
-																					setAttributes({
-																						mrArrowPagination: !mrArrowPagination,
-																					})
-																				}
-																			/>
-																			<ToggleControl
-																				label="Select dropdown"
-																				checked={mrSelectPagination}
-																				className="mr-backend-perpage"
-																				onChange={() =>
-																					setAttributes({
-																						mrSelectPagination: !mrSelectPagination,
-																					})
-																				}
-																			/>
-																			<ToggleControl
-																				label="Radio buttons"
-																				checked={mrRadioPagination}
-																				className="mr-backend-perpage"
-																				onChange={() =>
-																					setAttributes({
-																						mrRadioPagination: !mrRadioPagination,
-																					})
-																				}
-																			/>
-																		</>
-																	) : (
-																		""
-																	)}
-																</PanelBody>
-																<PanelBody
-																	icon={blockDefault}
-																	title={
-																		tab.name + __(" Components", "mr-utils")
-																	}
+																	icon={replace}
+																	title={tab.name + __(" Dynamic", "mr-utils")}
 																	initialOpen={false}
 																	className={
 																		tab.name === ""
-																			? "mr-backend-option mr-backend-option_utils_components"
+																			? "mr-backend-option mr-backend-option_utils_dynamic"
 																			: "mr-backend-option mr-backend-option_utils_" +
 																			  tab.name +
-																			  "_components"
+																			  "_dynamic"
 																	}
 																>
 																	<SelectControl
-																		label={__("Component", "mr-utils")}
-																		value={mrComponent}
+																		label={__("Active when:", "mr-utils")}
+																		value={mrActiveWhen}
 																		options={[
 																			{ value: "", label: "Default" },
 																			{
 																				value: (
 																					" mr-" +
 																					tab.name +
-																					"-tabs"
+																					"-activeinview"
 																				).replace("--", "-"),
-																				label: "Tabs",
+																				label: "In view",
 																			},
 																		]}
 																		onChange={(val) =>
 																			setAttributes({
-																				mrComponent:
+																				mrActiveWhen:
 																					val === undefined || val === ""
 																						? ""
 																						: val.includes("-desktop-") ||
@@ -1330,59 +1433,23 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																						  val.includes("-tablet-") ||
 																						  val.includes("-phone-") ||
 																						  val.includes("-hover-")
-																						? mrComponent
+																						? mrActiveWhen
 																						: val.replace("--", "-"),
 																			})
 																		}
 																		help={
-																			mrComponent
+																			mrActiveWhen
 																				? __(
-																						"The component was applied but you need to preview the frontend to see the actual result.",
+																						"The task is ready but you need to preview the frontend to see the actual result.",
 																						"mr-utils",
 																						"mr-utils"
 																				  )
 																				: __(
-																						"Apply into parent blocks (such as Columns and List blocks) to consider each direct child as a component item.",
+																						"Adds the class 'mr-active' depending of the selected situation. You can combine with animations to decide when the animation should start.",
 																						"mr-utils"
 																				  )
 																		}
 																	/>
-																	{mrComponent.includes("tabs") ? (
-																		<SelectControl
-																			label={__(
-																				"Navigation position",
-																				"mr-utils"
-																			)}
-																			value={mrNavPosition}
-																			options={[
-																				{ value: "", label: "Top" },
-																				{
-																					value: (
-																						" mr-" +
-																						tab.name +
-																						"-tabsbottom"
-																					).replace("--", "-"),
-																					label: "Bottom",
-																				},
-																			]}
-																			onChange={(val) =>
-																				setAttributes({
-																					mrNavPosition:
-																						val === undefined || val === ""
-																							? ""
-																							: val.includes("-desktop-") ||
-																							  val.includes("-laptop-") ||
-																							  val.includes("-tablet-") ||
-																							  val.includes("-phone-") ||
-																							  val.includes("-hover-")
-																							? mrNavPosition
-																							: val.replace("--", "-"),
-																				})
-																			}
-																		/>
-																	) : (
-																		""
-																	)}
 																</PanelBody>
 															</>
 														) : (
@@ -3837,6 +3904,7 @@ const mrApplyWrapperExtraClass = createHigherOrderComponent(
 				mrPerPage,
 				mrPaginationPosition,
 				mrComponent,
+				mrActiveWhen,
 				mrNavPosition,
 				mrArrowPagination,
 				mrSelectPagination,
@@ -4016,6 +4084,9 @@ const mrApplyWrapperExtraClass = createHigherOrderComponent(
 						mrClassNames = mrClassNames + mrAttrValue + " mr-active";
 					} else if (mrAttr == "mrAnimationhover" && mrAttrValue) {
 						mrClassNames = mrClassNames + mrAttrValue + " mr-active";
+					} else if (mrAttr == "mrActiveWhen" && mrAttrValue) {
+						//mrClassNames = mrClassNames.replace(" mr-active", "");
+						mrClassNames = mrClassNames + mrAttrValue;
 					} else if (mrAttr.startsWith("mr") && mrAttrValue) {
 						mrClassNames = mrClassNames + mrAttrValue;
 					}
@@ -4229,6 +4300,9 @@ function mrApplyExtraClass(extraProps, blockType, attributes) {
 					mrClassNames = mrClassNames + mrAttrValue + " mr-active";
 				} else if (mrAttr == "mrAnimationhover" && mrAttrValue) {
 					mrClassNames = mrClassNames + mrAttrValue + " mr-active";
+				} else if (mrAttr == "mrActiveWhen" && mrAttrValue) {
+					mrClassNames = mrClassNames.replace(" mr-active", "");
+					mrClassNames = mrClassNames + mrAttrValue;
 				} else if (mrAttr.startsWith("mr") && mrAttrValue) {
 					mrClassNames = mrClassNames + mrAttrValue;
 				}
