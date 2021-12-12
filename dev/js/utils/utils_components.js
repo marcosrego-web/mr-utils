@@ -77,8 +77,11 @@ function mrTab(t, e, v) {
 }
 function mrTabs(t) {
   if (
-    !t.previousElementSibling.querySelector(".mr-tabslist") &&
-    !t.nextElementSibling.querySelector(".mr-tabslist")
+    (!t.previousElementSibling && !t.nextElementSibling) ||
+    (t.previousElementSibling &&
+      !t.previousElementSibling.querySelector(".mr-tabslist") &&
+      t.nextElementSibling &&
+      !t.nextElementSibling.querySelector(".mr-tabslist"))
   ) {
     let mrChildCount = t.children;
     let mrtab = "";

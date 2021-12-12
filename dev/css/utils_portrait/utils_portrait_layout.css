@@ -34,6 +34,22 @@
 .mr-portrait-perline {
   flex-wrap: wrap;
 }
+.mr-portrait-12perline > *,
+.mr-portrait-11perline > *,
+.mr-portrait-10perline > *,
+.mr-portrait-9perline > *,
+.mr-portrait-8perline > *,
+.mr-portrait-7perline > *,
+.mr-portrait-6perline > *,
+.mr-portrait-5perline > *,
+.mr-portrait-4perline > *,
+.mr-portrait-3perline > *,
+.mr-portrait-2perline > *,
+.mr-portrait-1perline > *,
+.mr-portrait-0perline > *,
+.mr-portrait-perline > * {
+  flex-basis: auto !important;
+}
 .mr-portrait-section,
 .mr-portrait-0perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
 .mr-portrait-1perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
