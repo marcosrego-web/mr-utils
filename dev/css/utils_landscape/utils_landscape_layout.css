@@ -34,6 +34,22 @@
 .mr-landscape-perline {
   flex-wrap: wrap;
 }
+.mr-landscape-12perline > *,
+.mr-landscape-11perline > *,
+.mr-landscape-10perline > *,
+.mr-landscape-9perline > *,
+.mr-landscape-8perline > *,
+.mr-landscape-7perline > *,
+.mr-landscape-6perline > *,
+.mr-landscape-5perline > *,
+.mr-landscape-4perline > *,
+.mr-landscape-3perline > *,
+.mr-landscape-2perline > *,
+.mr-landscape-1perline > *,
+.mr-landscape-0perline > *,
+.mr-landscape-perline > * {
+  flex-basis: auto !important;
+}
 .mr-landscape-section,
 .mr-landscape-0perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
 .mr-landscape-1perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
