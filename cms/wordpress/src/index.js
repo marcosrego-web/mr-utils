@@ -1099,7 +1099,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																			value: (
 																				" mr-" +
 																				tab.name +
-																				"-tabsbottom"
+																				"-navbottom"
 																			).replace("--", "-"),
 																			label: "Bottom",
 																		},

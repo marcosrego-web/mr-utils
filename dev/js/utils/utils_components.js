@@ -4,8 +4,8 @@ function mrTab(t, e, v) {
     if (
       (t.parentNode.previousElementSibling &&
         t.parentNode.previousElementSibling.classList.contains("mr-tabs")) ||
-      t.classList.contains("mr-tabsbottom") ||
-      t.classList.contains("mr-tabsright")
+      t.classList.contains("mr-navbottom") ||
+      t.classList.contains("mr-navright")
     ) {
       e = t.parentNode.previousElementSibling;
     }
@@ -102,11 +102,11 @@ function mrTabs(t) {
     }
     if (
       (t.previousElementSibling &&
-        t.previousElementSibling.classList.contains("mr-tabsbottom")) ||
+        t.previousElementSibling.classList.contains("mr-navbottom")) ||
       (t.previousElementSibling &&
-        t.previousElementSibling.classList.contains("mr-tabsright")) ||
-      t.classList.contains("mr-tabsbottom") ||
-      t.classList.contains("mr-tabsright")
+        t.previousElementSibling.classList.contains("mr-navright")) ||
+      t.classList.contains("mr-navbottom") ||
+      t.classList.contains("mr-navright")
     ) {
       t.outerHTML =
         t.outerHTML +
