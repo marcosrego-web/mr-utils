@@ -18,6 +18,19 @@ function mrIsInView(t, e, o) {
     if (r < 0 && n > 0) return !0;
   }
 }
+function mrActiveInView() {
+  const t = document.querySelectorAll(".mr-activeinview");
+  if (t) {
+    for (let id = 0; id < t.length; id++) {
+      let o = t[id];
+      if (mrIsInView(o) && !o.classList.contains("mr-active")) {
+        o.classList.add("mr-active");
+      } else if (!mrIsInView(o) && o.classList.contains("mr-active")) {
+        o.classList.remove("mr-active");
+      }
+    }
+  }
+}
 function mrScrollTo(t, e, p) {
   t &&
     ((element = p || document.scrollingElement || document.documentElement),
@@ -37,35 +50,35 @@ function mrScrollTo(t, e, p) {
     animateScroll());
 }
 /*function mrScrollTo(to, duration = 500) {
-const easeOutQuad = function (t, b, c, d) {
-  t /= d;
-  return -c * t * (t - 2) + b;
-};
-return new Promise((resolve, reject) => {
-  const element = document.scrollingElement;
-  if (typeof to === "string") {
-    to = document.querySelector(to) || reject();
-  }
-  if (typeof to !== "number") {
-    to = to.getBoundingClientRect().top + element.scrollTop;
-  }
-  let start = element.scrollTop,
-    change = to - start,
-    currentTime = 0,
-    increment = 20;
-  const animateScroll = function () {
-    currentTime += increment;
-    let val = easeOutQuad(currentTime, start, change, duration);
-    element.scrollTop = val;
-    if (currentTime < duration) {
-      setTimeout(animateScroll, increment);
-    } else {
-      resolve();
-    }
+  const easeOutQuad = function (t, b, c, d) {
+    t /= d;
+    return -c * t * (t - 2) + b;
   };
-  animateScroll();
-});
-}*/
+  return new Promise((resolve, reject) => {
+    const element = document.scrollingElement;
+    if (typeof to === "string") {
+      to = document.querySelector(to) || reject();
+    }
+    if (typeof to !== "number") {
+      to = to.getBoundingClientRect().top + element.scrollTop;
+    }
+    let start = element.scrollTop,
+      change = to - start,
+      currentTime = 0,
+      increment = 20;
+    const animateScroll = function () {
+      currentTime += increment;
+      let val = easeOutQuad(currentTime, start, change, duration);
+      element.scrollTop = val;
+      if (currentTime < duration) {
+        setTimeout(animateScroll, increment);
+      } else {
+        resolve();
+      }
+    };
+    animateScroll();
+  });
+  }*/
 function mrParallax(t) {
   if (
     t &&
@@ -144,7 +157,12 @@ document.addEventListener("click", function (t) {
   }
   t.stopPropagation();
 });
+window.addEventListener("scroll", function () {
+  mrActiveInView();
+});
 document.addEventListener("DOMContentLoaded", function () {
+  mrActiveInView();
+
   if (mrGetCookie("mrColors") == "mrLightColors") {
     mrLightColors();
   } else if (mrGetCookie("mrColors") == "mrDarkColors") {

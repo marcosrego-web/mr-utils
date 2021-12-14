@@ -4,12 +4,8 @@
 .mr-phone-noscroll {
   overflow: hidden !important;
 }
-.mr-phone-hidescroll:not(.mr-phone-horizontalscroll)::-webkit-scrollbar {
+.mr-phone-hidescroll::-webkit-scrollbar {
   height: 0;
-}
-.mr-phone-horizontalscroll.mr-phone-hidescroll::-webkit-scrollbar,
-.mr-phone-swipe::-webkit-scrollbar,
-.mr-phone-swipecontent > *::-webkit-scrollbar {
   width: 0;
 }
 .mr-phone-horizontalscroll,
@@ -19,6 +15,12 @@
   display: -webkit-inline-box;
   overflow-x: auto;
   overflow-y: hidden;
+}
+.mr-phone-horizontalscroll > *,
+.mr-phone-horizontalscrollcontent > * > *,
+.mr-phone-swipe > *,
+.mr-phone-swipecontent > * > * {
+  display: block;
 }
 .mr-phone-horizontalscroll img,
 .mr-phone-horizontalscrollcontent > * img,

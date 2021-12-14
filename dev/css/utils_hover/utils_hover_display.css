@@ -1,4 +1,4 @@
-.mr-hover-flex {
+.mr-hover-flex:hover {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -6,21 +6,31 @@
   display: flex;
   width: 100%;
 }
-.mr-hover-show,
-.mr-hover-block {
+.mr-hover-transparent:hover {
+  opacity: 0;
+}
+.mr-hover-opaque:hover {
+  opacity: 1;
+}
+.mr-hover-semiopaque:hover {
+  opacity: 0.5;
+  opacity: var(--opacity, 0.5);
+}
+.mr-hover-show:hover,
+.mr-hover-block:hover {
   display: block !important;
 }
-.mr-hover-show,
-.mr-hover-visible {
+.mr-hover-show:hover,
+.mr-hover-visible:hover {
   opacity: 1 !important;
   visibility: visible !important;
 }
-.mr-hover-hide,
-.mr-hover-none {
+.mr-hover-hide:hover,
+.mr-hover-none:hover {
   display: none !important;
 }
-.mr-hover-hide,
-.mr-hover-hidden {
+.mr-hover-hide:hover,
+.mr-hover-hidden:hover {
   opacity: 0 !important;
   visibility: hidden !important;
 }

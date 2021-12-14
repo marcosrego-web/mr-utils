@@ -34,6 +34,22 @@
 .mr-tablet-perline {
   flex-wrap: wrap;
 }
+.mr-tablet-12perline > *,
+.mr-tablet-11perline > *,
+.mr-tablet-10perline > *,
+.mr-tablet-9perline > *,
+.mr-tablet-8perline > *,
+.mr-tablet-7perline > *,
+.mr-tablet-6perline > *,
+.mr-tablet-5perline > *,
+.mr-tablet-4perline > *,
+.mr-tablet-3perline > *,
+.mr-tablet-2perline > *,
+.mr-tablet-1perline > *,
+.mr-tablet-0perline > *,
+.mr-tablet-perline > * {
+  flex-basis: auto !important;
+}
 .mr-tablet-section,
 .mr-tablet-0perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
 .mr-tablet-1perline > *:not([class*="mr-size"]):not([class*="mr-width"]),

@@ -4,12 +4,8 @@
 .mr-landscape-noscroll {
   overflow: hidden !important;
 }
-.mr-landscape-hidescroll:not(.mr-landscape-horizontalscroll)::-webkit-scrollbar {
+.mr-landscape-hidescroll::-webkit-scrollbar {
   height: 0;
-}
-.mr-landscape-horizontalscroll.mr-landscape-hidescroll::-webkit-scrollbar,
-.mr-landscape-swipe::-webkit-scrollbar,
-.mr-landscape-swipecontent > *::-webkit-scrollbar {
   width: 0;
 }
 .mr-landscape-horizontalscroll,
@@ -19,6 +15,12 @@
   display: -webkit-inline-box;
   overflow-x: auto;
   overflow-y: hidden;
+}
+.mr-landscape-horizontalscroll > *,
+.mr-landscape-horizontalscrollcontent > * > *,
+.mr-landscape-swipe > *,
+.mr-landscape-swipecontent > * > * {
+  display: block;
 }
 .mr-landscape-horizontalscroll img,
 .mr-landscape-horizontalscrollcontent > * img,

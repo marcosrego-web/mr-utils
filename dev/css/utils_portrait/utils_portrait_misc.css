@@ -4,12 +4,8 @@
 .mr-portrait-noscroll {
   overflow: hidden !important;
 }
-.mr-portrait-hidescroll:not(.mr-portrait-horizontalscroll)::-webkit-scrollbar {
+.mr-portrait-hidescroll::-webkit-scrollbar {
   height: 0;
-}
-.mr-portrait-horizontalscroll.mr-portrait-hidescroll::-webkit-scrollbar,
-.mr-portrait-swipe::-webkit-scrollbar,
-.mr-portrait-swipecontent > *::-webkit-scrollbar {
   width: 0;
 }
 .mr-portrait-horizontalscroll,
@@ -19,6 +15,12 @@
   display: -webkit-inline-box;
   overflow-x: auto;
   overflow-y: hidden;
+}
+.mr-portrait-horizontalscroll > *,
+.mr-portrait-horizontalscrollcontent > * > *,
+.mr-portrait-swipe > *,
+.mr-portrait-swipecontent > * > * {
+  display: block;
 }
 .mr-portrait-horizontalscroll img,
 .mr-portrait-horizontalscrollcontent > * img,

@@ -12,6 +12,16 @@
 .mr-tablet-nowrap {
   flex-wrap: nowrap !important;
 }
+.mr-tablet-transparent {
+  opacity: 0;
+}
+.mr-tablet-opaque {
+  opacity: 1;
+}
+.mr-tablet-semiopaque {
+  opacity: 0.5;
+  opacity: var(--opacity, 0.5);
+}
 .mr-tablet-show,
 .mr-tablet-block {
   display: block !important;

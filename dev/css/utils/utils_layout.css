@@ -34,6 +34,22 @@
 .mr-perline {
   flex-wrap: wrap;
 }
+.mr-12perline > *,
+.mr-11perline > *,
+.mr-10perline > *,
+.mr-9perline > *,
+.mr-8perline > *,
+.mr-7perline > *,
+.mr-6perline > *,
+.mr-5perline > *,
+.mr-4perline > *,
+.mr-3perline > *,
+.mr-2perline > *,
+.mr-1perline > *,
+.mr-0perline > *,
+.mr-perline > * {
+  flex-basis: auto !important;
+}
 .mr-section,
 .mr-0perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
 .mr-1perline > *:not([class*="mr-size"]):not([class*="mr-width"]),

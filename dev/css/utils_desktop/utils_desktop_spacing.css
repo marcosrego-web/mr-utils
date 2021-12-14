@@ -65,3 +65,6 @@
 .mr-desktop-nopaddingbottom {
   padding-bottom: 0 !important;
 }
+.mr-desktop-nopaddingleft {
+  padding-left: 0 !important;
+}

@@ -34,6 +34,22 @@
 .mr-phone-perline {
   flex-wrap: wrap;
 }
+.mr-phone-12perline > *,
+.mr-phone-11perline > *,
+.mr-phone-10perline > *,
+.mr-phone-9perline > *,
+.mr-phone-8perline > *,
+.mr-phone-7perline > *,
+.mr-phone-6perline > *,
+.mr-phone-5perline > *,
+.mr-phone-4perline > *,
+.mr-phone-3perline > *,
+.mr-phone-2perline > *,
+.mr-phone-1perline > *,
+.mr-phone-0perline > *,
+.mr-phone-perline > * {
+  flex-basis: auto !important;
+}
 .mr-phone-section,
 .mr-phone-0perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
 .mr-phone-1perline > *:not([class*="mr-size"]):not([class*="mr-width"]),

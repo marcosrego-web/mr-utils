@@ -34,6 +34,22 @@
 .mr-laptop-perline {
   flex-wrap: wrap;
 }
+.mr-laptop-12perline > *,
+.mr-laptop-11perline > *,
+.mr-laptop-10perline > *,
+.mr-laptop-9perline > *,
+.mr-laptop-8perline > *,
+.mr-laptop-7perline > *,
+.mr-laptop-6perline > *,
+.mr-laptop-5perline > *,
+.mr-laptop-4perline > *,
+.mr-laptop-3perline > *,
+.mr-laptop-2perline > *,
+.mr-laptop-1perline > *,
+.mr-laptop-0perline > *,
+.mr-laptop-perline > * {
+  flex-basis: auto !important;
+}
 .mr-laptop-section,
 .mr-laptop-0perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
 .mr-laptop-1perline > *:not([class*="mr-size"]):not([class*="mr-width"]),

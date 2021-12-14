@@ -1,116 +1,25 @@
-function mrToggleOffCanvas() {
-  document.querySelector(".mr-offcanvas-container").classList.remove("mr-hide"),
-    document
-      .querySelector(".mr-offcanvas-container")
-      .classList.toggle("active"),
-    document.querySelector(".mr-offcanvas-toggle").classList.toggle("active"),
-    document.querySelector("body").classList.toggle("mr-offcanvasopened"),
-    document.querySelector("body").classList.toggle("mr-noscroll"),
-    document.querySelector(
-      ".mr-offcanvas.mr-transitionright .mr-offcanvas-container:not(.active)"
-    )
-      ? (document
-          .querySelector(".mr-offcanvas")
-          .classList.remove("mr-transitionright"),
-        document
-          .querySelector(".mr-offcanvas")
-          .classList.add("mr-transitionleft"))
-      : document.querySelector(
-          ".mr-offcanvas.mr-transitionleft .mr-offcanvas-container.active"
-        )
-      ? (document
-          .querySelector(".mr-offcanvas")
-          .classList.remove("mr-transitionleft"),
-        document
-          .querySelector(".mr-offcanvas")
-          .classList.add("mr-transitionright"))
-      : document.querySelector(
-          ".mr-offcanvas.mr-transitionleft .mr-offcanvas-container:not(.active)"
-        )
-      ? (document
-          .querySelector(".mr-offcanvas")
-          .classList.remove("mr-transitionleft"),
-        document
-          .querySelector(".mr-offcanvas")
-          .classList.add("mr-transitionright"))
-      : document.querySelector(
-          ".mr-offcanvas.mr-transitionright .mr-offcanvas-container.active"
-        )
-      ? (document
-          .querySelector(".mr-offcanvas")
-          .classList.remove("mr-transitionright"),
-        document
-          .querySelector(".mr-offcanvas")
-          .classList.add("mr-transitionleft"))
-      : document.querySelector(
-          ".mr-offcanvas.mr-transitiontop .mr-offcanvas-container:not(.active)"
-        )
-      ? (document
-          .querySelector(".mr-offcanvas")
-          .classList.remove("mr-transitiontop"),
-        document
-          .querySelector(".mr-offcanvas")
-          .classList.add("mr-transitionbottom"))
-      : document.querySelector(
-          ".mr-offcanvas.mr-transitionbottom .mr-offcanvas-container.active"
-        )
-      ? (document
-          .querySelector(".mr-offcanvas")
-          .classList.remove("mr-transitionbottom"),
-        document
-          .querySelector(".mr-offcanvas")
-          .classList.add("mr-transitiontop"))
-      : document.querySelector(
-          ".mr-offcanvas.mr-transitionbottom .mr-offcanvas-container:not(.active)"
-        )
-      ? (document
-          .querySelector(".mr-offcanvas")
-          .classList.remove("mr-transitionbottom"),
-        document
-          .querySelector(".mr-offcanvas")
-          .classList.add("mr-transitiontop"))
-      : document.querySelector(
-          ".mr-offcanvas.mr-transitiontop .mr-offcanvas-container.active"
-        ) &&
-        (document
-          .querySelector(".mr-offcanvas")
-          .classList.remove("mr-transitiontop"),
-        document
-          .querySelector(".mr-offcanvas")
-          .classList.add("mr-transitionbottom"));
-}
-document.addEventListener("click", function (t) {
-  if (t.target.matches(".mr-offcanvas-toggle")) {
-    mrToggleOffCanvas();
-  }
-  t.stopPropagation();
-});
-function mrLoadPage(e, n) {
-  if (n <= 0) {
-    n = e.getAttribute("mr-lastpage");
-  } else if (!e.querySelector(".mr-page" + n)) {
-    n = 1;
-  }
-
-  e.setAttribute("mr-currentpage", n);
-
-  let mrPageSelect = e.querySelector(".mr-pageselect");
-  if (mrPageSelect) {
-    mrPageSelect.value = n;
-  }
-
-  let mrRadios = e.querySelectorAll(".mr-radio");
-  if (mrRadios.length) {
-    for (let id = 0; id < mrRadios.length; id++) {
-      mrRadios[id].removeAttribute("checked");
+function mrTab(t, e, v) {
+  if (!e) {
+    e = t.parentNode.nextElementSibling;
+    if (
+      (t.parentNode.previousElementSibling &&
+        t.parentNode.previousElementSibling.classList.contains("mr-tabs")) ||
+      t.classList.contains("mr-tabsbottom") ||
+      t.classList.contains("mr-tabsright")
+    ) {
+      e = t.parentNode.previousElementSibling;
     }
-    e.querySelector('.mr-radio[value="' + n + '"]').setAttribute(
-      "checked",
-      "checked"
-    );
   }
+  e.classList.remove("mr-active");
 
-  e.classList.remove("active");
+  let mrTabsList = t.parentNode.children;
+  for (id = 0; id < mrTabsList.length; id++) {
+    let mrTabList = mrTabsList[id];
+    if (mrTabList.classList.contains("mr-active")) {
+      mrTabList.classList.remove("mr-active");
+    }
+  }
+  t.classList.add("mr-active");
 
   let mrTimeOut = 0;
   if (
@@ -128,13 +37,13 @@ function mrLoadPage(e, n) {
     e.classList.contains("mr-zoomleft")
   ) {
     /*if (
-      t.classList.contains("mr-slide") ||
-      t.classList.contains("mr-slidetop") ||
-      t.classList.contains("mr-slideright") ||
-      t.classList.contains("mr-slideleft")
-    ) {
-      t.parentNode.classList.add("mr-noscroll");
-    }*/
+        t.classList.contains("mr-slide") ||
+        t.classList.contains("mr-slidetop") ||
+        t.classList.contains("mr-slideright") ||
+        t.classList.contains("mr-slideleft")
+      ) {
+        t.parentNode.classList.add("mr-noscroll");
+      }*/
     mrTimeOut = getComputedStyle(document.documentElement).getPropertyValue(
       "--transition-duration"
     );
@@ -152,179 +61,83 @@ function mrLoadPage(e, n) {
   }
 
   setTimeout(function () {
-    let mrPages = e.querySelectorAll("[class*='mr-page']:not(.mr-pageselect)");
-    for (let id = 0; id < mrPages.length; id++) {
-      mrPage = mrPages[id];
-      mrPage.style.setProperty("display", "none", "important");
-      if (mrPage.classList.contains("mr-page" + n)) {
-        mrPage.style.setProperty("display", "", "");
+    let mrTabsItems = e.querySelectorAll("[class*='mr-tabitem']");
+    if (!v) {
+      v = t.getAttribute("value");
+    }
+    for (id = 0; id < mrTabsItems.length; id++) {
+      mrTabItem = mrTabsItems[id];
+      mrTabItem.style.setProperty("display", "none", "important");
+      if (mrTabItem.classList.contains(v)) {
+        mrTabItem.style.setProperty("display", "", "");
       }
     }
-    e.classList.add("active");
+    e.classList.add("mr-active");
   }, mrTimeOut);
 }
-function mrPagination(t) {
-  let mrChildCount = t.children;
-  for (let id = 0; id < mrChildCount.length; id++) {
-    if (t.classList.contains("mr-" + id + "perpage")) {
-      mrPerPage = id;
-      if (mrPerPage < mrChildCount.length) {
-        t.classList.add("mr-relative");
-        t.setAttribute("mr-currentpage", 1);
-
-        let mrPageNumber = 1;
-        let mrPerPageReset = 1;
-        for (let id = 0; id < mrChildCount.length; id++) {
-          let mrElemChild = mrChildCount[id];
-
-          mrPerPageReset = mrPerPageReset + 1;
-
-          mrElemChild.classList.add("mr-page" + mrPageNumber);
-
-          if (mrPageNumber > 1) {
-            mrElemChild.style.setProperty("display", "none", "important");
-            mrElemChild.classList.remove("active");
-          }
-
-          if (mrPerPageReset > mrPerPage) {
-            mrPageNumber = mrPageNumber + 1;
-            mrPerPageReset = 1;
-          }
+function mrTabs(t) {
+  if (
+    (!t.previousElementSibling && !t.nextElementSibling) ||
+    (t.previousElementSibling &&
+      !t.previousElementSibling.querySelector(".mr-tabslist") &&
+      t.nextElementSibling &&
+      !t.nextElementSibling.querySelector(".mr-tabslist"))
+  ) {
+    let mrChildCount = t.children;
+    let mrtab = "";
+    for (let id = 0; id < mrChildCount.length; id++) {
+      if (!mrChildCount[id].classList.contains("mr-pagination")) {
+        mrChildCount[id].classList.add("mr-tabitem" + id);
+        mrtab += '<button value="mr-tabitem' + id + '" class="mr-tab';
+        if (id == 0) {
+          mrtab += " mr-active";
+        } else {
+          mrChildCount[id].style.setProperty("display", "none", "important");
         }
-
-        mrPageNumber = mrPageNumber - 1;
-
-        t.setAttribute("mr-lastpage", mrPageNumber);
-
-        let mrPaginationArrows = "";
-        if (
-          t.classList.contains("mr-arrowpagination") ||
-          (t.matches("[class*='mr-'][class*='perpage']") &&
-            !t.matches(
-              "[class*='pagination']"
-            )) /*(t.matches("[mr-itemsperpage]") &&
-            !t.matches("[class*='pagination']"))*/
-        ) {
-          mrPaginationArrows =
-            '<button class="mr-arrows mr-prev"><</button><button class="mr-arrows mr-next">&gt;</button>';
-        }
-
-        let mrPaginationSelect = "";
-        if (
-          t.classList.contains("mr-selectpagination") ||
-          (t.matches("[class*='mr-'][class*='perpage']") &&
-            !t.matches(
-              "[class*='pagination']"
-            )) /*(t.matches("[mr-itemsperpage]") &&
-            !t.matches("[class*='pagination']")*/
-        ) {
-          mrPaginationSelect =
-            '<select class="mr-pageselect" title="/' + mrPageNumber + '">';
-          for (let id = 0; id < mrPageNumber; id++) {
-            mrPaginElePage = id + 1;
-            mrPaginationSelect +=
-              '<option value="' +
-              mrPaginElePage +
-              '">' +
-              mrPaginElePage +
-              "</option>";
-          }
-          mrPaginationSelect += "</select>";
-        }
-
-        let mrPaginationRadio = "";
-        if (
-          t.classList.contains("mr-radiopagination") ||
-          (t.matches("[class*='mr-'][class*='perpage']") &&
-            !t.matches(
-              "[class*='pagination']"
-            )) /*(t.matches("[mr-itemsperpage]") &&
-            !t.matches("[class*='pagination']"))*/
-        ) {
-          mrPaginationRadio = '<span class="mr-radios">';
-          for (let id = 0; id < mrPageNumber; id++) {
-            mrPaginElePage = id + 1;
-            mrPaginationRadio +=
-              '<input name="mr-radio" title="' +
-              mrPaginElePage +
-              "/" +
-              mrPageNumber +
-              '" class="mr-radio" type="radio" value="' +
-              mrPaginElePage +
-              '" ';
-            if (mrPaginElePage === 1) {
-              mrPaginationRadio += 'checked="checked"';
-            }
-            mrPaginationRadio += ">";
-          }
-          mrPaginationRadio += "</div>";
-        }
-
-        t.innerHTML =
-          t.innerHTML +
-          '<div class="mr-pagination mr-absolute mr-bottom mr-offsetbottom">' +
-          mrPaginationArrows +
-          mrPaginationSelect +
-          mrPaginationRadio +
-          "</div>";
+        mrtab +=
+          '">' +
+          mrChildCount[id].querySelector("*:first-child").innerText +
+          "</button>";
       }
-      break;
-    } else if (id == mrChildCount.length) {
-      break;
+    }
+    if (
+      (t.previousElementSibling &&
+        t.previousElementSibling.classList.contains("mr-tabsbottom")) ||
+      (t.previousElementSibling &&
+        t.previousElementSibling.classList.contains("mr-tabsright")) ||
+      t.classList.contains("mr-tabsbottom") ||
+      t.classList.contains("mr-tabsright")
+    ) {
+      t.outerHTML =
+        t.outerHTML +
+        '<div class="mr-tabslist mr-horizontalscroll">' +
+        mrtab +
+        "</div>";
+    } else {
+      t.outerHTML =
+        '<div class="mr-tabslist mr-horizontalscroll">' +
+        mrtab +
+        "</div>" +
+        t.outerHTML;
     }
   }
 }
-function mrNext(t, e) {
-  if (!e) {
-    e = t.closest("[class*='mr-'][class*='perpage']");
-  }
-  let n = parseInt(e.getAttribute("mr-currentpage")) + 1;
-  mrLoadPage(e, n);
-}
-function mrPrev(t, e) {
-  if (!e) {
-    e = t.closest("[class*='mr-'][class*='perpage']");
-  }
-  let n = parseInt(e.getAttribute("mr-currentpage")) - 1;
-  mrLoadPage(e, n);
-}
-function mrSelectPage(t, e) {
-  if (!e) {
-    e = t.closest("[class*='mr-'][class*='perpage']");
-  }
-  t.addEventListener("change", function (event) {
-    mrLoadPage(e, event.target.value);
-    event.stopPropagation();
-  });
-}
-function mrRadioPage(t, e) {
-  if (!e) {
-    e = t.closest("[class*='mr-'][class*='perpage']");
-  }
-  mrLoadPage(e, t.value);
-}
 document.addEventListener("click", function (t) {
-  if (t.target.matches(".mr-next")) {
-    mrNext(t.target);
-  } else if (t.target.matches(".mr-prev")) {
-    mrPrev(t.target);
-  } else if (t.target.matches(".mr-pageselect")) {
-    mrSelectPage(t.target);
-  } else if (t.target.matches(".mr-radio:not([checked])")) {
-    mrRadioPage(t.target);
+  if (t.target.matches(".mr-tab")) {
+    mrTab(t.target);
   }
   t.stopPropagation();
 });
-document.addEventListener("DOMContentLoaded", function () {
-  const mrPaginEles = document.querySelectorAll(
-    "[class*='mr-'][class*='perpage']"
-  );
 
-  for (let id = 0; id < mrPaginEles.length; id++) {
-    const mrPaginEle = mrPaginEles[id];
-    mrPagination(mrPaginEle);
+document.addEventListener("DOMContentLoaded", function () {
+  const mrTabsEles = document.querySelectorAll(".mr-tabs");
+
+  for (let id = 0; id < mrTabsEles.length; id++) {
+    const mrTabsEle = mrTabsEles[id];
+    mrTabs(mrTabsEle);
   }
 });
+
 function mrGetCookie(t) {
   if (t) {
     const e = t + "=",
@@ -343,6 +156,19 @@ function mrIsInView(t, e, o) {
     let r = t.getBoundingClientRect().top - e,
       n = t.getBoundingClientRect().top + t.offsetHeight - o;
     if (r < 0 && n > 0) return !0;
+  }
+}
+function mrActiveInView() {
+  const t = document.querySelectorAll(".mr-activeinview");
+  if (t) {
+    for (let id = 0; id < t.length; id++) {
+      let o = t[id];
+      if (mrIsInView(o) && !o.classList.contains("mr-active")) {
+        o.classList.add("mr-active");
+      } else if (!mrIsInView(o) && o.classList.contains("mr-active")) {
+        o.classList.remove("mr-active");
+      }
+    }
   }
 }
 function mrScrollTo(t, e, p) {
@@ -364,35 +190,35 @@ function mrScrollTo(t, e, p) {
     animateScroll());
 }
 /*function mrScrollTo(to, duration = 500) {
-const easeOutQuad = function (t, b, c, d) {
-  t /= d;
-  return -c * t * (t - 2) + b;
-};
-return new Promise((resolve, reject) => {
-  const element = document.scrollingElement;
-  if (typeof to === "string") {
-    to = document.querySelector(to) || reject();
-  }
-  if (typeof to !== "number") {
-    to = to.getBoundingClientRect().top + element.scrollTop;
-  }
-  let start = element.scrollTop,
-    change = to - start,
-    currentTime = 0,
-    increment = 20;
-  const animateScroll = function () {
-    currentTime += increment;
-    let val = easeOutQuad(currentTime, start, change, duration);
-    element.scrollTop = val;
-    if (currentTime < duration) {
-      setTimeout(animateScroll, increment);
-    } else {
-      resolve();
-    }
+  const easeOutQuad = function (t, b, c, d) {
+    t /= d;
+    return -c * t * (t - 2) + b;
   };
-  animateScroll();
-});
-}*/
+  return new Promise((resolve, reject) => {
+    const element = document.scrollingElement;
+    if (typeof to === "string") {
+      to = document.querySelector(to) || reject();
+    }
+    if (typeof to !== "number") {
+      to = to.getBoundingClientRect().top + element.scrollTop;
+    }
+    let start = element.scrollTop,
+      change = to - start,
+      currentTime = 0,
+      increment = 20;
+    const animateScroll = function () {
+      currentTime += increment;
+      let val = easeOutQuad(currentTime, start, change, duration);
+      element.scrollTop = val;
+      if (currentTime < duration) {
+        setTimeout(animateScroll, increment);
+      } else {
+        resolve();
+      }
+    };
+    animateScroll();
+  });
+  }*/
 function mrParallax(t) {
   if (
     t &&
@@ -471,7 +297,12 @@ document.addEventListener("click", function (t) {
   }
   t.stopPropagation();
 });
+window.addEventListener("scroll", function () {
+  mrActiveInView();
+});
 document.addEventListener("DOMContentLoaded", function () {
+  mrActiveInView();
+
   if (mrGetCookie("mrColors") == "mrLightColors") {
     mrLightColors();
   } else if (mrGetCookie("mrColors") == "mrDarkColors") {
@@ -511,5 +342,420 @@ document.addEventListener("DOMContentLoaded", function () {
       document.removeEventListener("mouseup", mouseUpHandler);
     };
     mrDragEle.addEventListener("mousedown", mouseDownHandler);
+  }
+});
+
+function mrToggleOffCanvas() {
+  document.querySelector(".mr-offcanvas-container").classList.remove("mr-hide"),
+    document
+      .querySelector(".mr-offcanvas-container")
+      .classList.toggle("mr-active"),
+    document
+      .querySelector(".mr-offcanvas-toggle")
+      .classList.toggle("mr-active"),
+    document.querySelector("body").classList.toggle("mr-offcanvasopened"),
+    document.querySelector("body").classList.toggle("mr-noscroll"),
+    document.querySelector(
+      ".mr-offcanvas.mr-transitionright .mr-offcanvas-container:not(.mr-active)"
+    )
+      ? (document
+          .querySelector(".mr-offcanvas")
+          .classList.remove("mr-transitionright"),
+        document
+          .querySelector(".mr-offcanvas")
+          .classList.add("mr-transitionleft"))
+      : document.querySelector(
+          ".mr-offcanvas.mr-transitionleft .mr-offcanvas-container.mr-active"
+        )
+      ? (document
+          .querySelector(".mr-offcanvas")
+          .classList.remove("mr-transitionleft"),
+        document
+          .querySelector(".mr-offcanvas")
+          .classList.add("mr-transitionright"))
+      : document.querySelector(
+          ".mr-offcanvas.mr-transitionleft .mr-offcanvas-container:not(.mr-active)"
+        )
+      ? (document
+          .querySelector(".mr-offcanvas")
+          .classList.remove("mr-transitionleft"),
+        document
+          .querySelector(".mr-offcanvas")
+          .classList.add("mr-transitionright"))
+      : document.querySelector(
+          ".mr-offcanvas.mr-transitionright .mr-offcanvas-container.mr-active"
+        )
+      ? (document
+          .querySelector(".mr-offcanvas")
+          .classList.remove("mr-transitionright"),
+        document
+          .querySelector(".mr-offcanvas")
+          .classList.add("mr-transitionleft"))
+      : document.querySelector(
+          ".mr-offcanvas.mr-transitiontop .mr-offcanvas-container:not(.mr-active)"
+        )
+      ? (document
+          .querySelector(".mr-offcanvas")
+          .classList.remove("mr-transitiontop"),
+        document
+          .querySelector(".mr-offcanvas")
+          .classList.add("mr-transitionbottom"))
+      : document.querySelector(
+          ".mr-offcanvas.mr-transitionbottom .mr-offcanvas-container.mr-active"
+        )
+      ? (document
+          .querySelector(".mr-offcanvas")
+          .classList.remove("mr-transitionbottom"),
+        document
+          .querySelector(".mr-offcanvas")
+          .classList.add("mr-transitiontop"))
+      : document.querySelector(
+          ".mr-offcanvas.mr-transitionbottom .mr-offcanvas-container:not(.mr-active)"
+        )
+      ? (document
+          .querySelector(".mr-offcanvas")
+          .classList.remove("mr-transitionbottom"),
+        document
+          .querySelector(".mr-offcanvas")
+          .classList.add("mr-transitiontop"))
+      : document.querySelector(
+          ".mr-offcanvas.mr-transitiontop .mr-offcanvas-container.mr-active"
+        ) &&
+        (document
+          .querySelector(".mr-offcanvas")
+          .classList.remove("mr-transitiontop"),
+        document
+          .querySelector(".mr-offcanvas")
+          .classList.add("mr-transitionbottom"));
+}
+document.addEventListener("click", function (t) {
+  if (t.target.matches(".mr-offcanvas-toggle")) {
+    mrToggleOffCanvas();
+  }
+  t.stopPropagation();
+});
+
+function mrLoadPage(e, n) {
+  if (n <= 0) {
+    n = e.getAttribute("mr-lastpage");
+  } else if (!e.querySelector(".mr-page" + n)) {
+    n = 1;
+  }
+
+  let mrPaginationTrigger = e.nextElementSibling;
+  if (
+    e.previousElementSibling &&
+    e.previousElementSibling.classList.contains("mr-pagination")
+  ) {
+    mrPaginationTrigger = e.previousElementSibling;
+  }
+
+  if (mrPaginationTrigger) {
+    e.setAttribute("mr-currentpage", n);
+
+    let mrPageSelect = mrPaginationTrigger.querySelector(".mr-pageselect");
+    if (mrPageSelect) {
+      mrPageSelect.value = n;
+    }
+
+    let mrRadios = mrPaginationTrigger.querySelectorAll(".mr-radio");
+    if (mrRadios.length) {
+      for (id = 0; id < mrRadios.length; id++) {
+        mrRadios[id].removeAttribute("checked");
+        mrRadios[id].classList.remove("mr-active");
+      }
+      mrPaginationTrigger
+        .querySelector('.mr-radio[value="' + n + '"]')
+        .setAttribute("checked", "checked");
+      mrPaginationTrigger
+        .querySelector('.mr-radio[value="' + n + '"]')
+        .classList.add("mr-active");
+    }
+
+    e.classList.remove("mr-active");
+
+    let mrTimeOut = 0;
+    if (
+      e.classList.contains("mr-fade") ||
+      e.classList.contains("mr-slide") ||
+      e.classList.contains("mr-slidetop") ||
+      e.classList.contains("mr-slideright") ||
+      e.classList.contains("mr-slidebottom") ||
+      e.classList.contains("mr-slideleft") ||
+      e.classList.contains("mr-scale") ||
+      e.classList.contains("mr-scaleright") ||
+      e.classList.contains("mr-scaleleft") ||
+      e.classList.contains("mr-zoom") ||
+      e.classList.contains("mr-zoomright") ||
+      e.classList.contains("mr-zoomleft")
+    ) {
+      /*if (
+        t.classList.contains("mr-slide") ||
+        t.classList.contains("mr-slidetop") ||
+        t.classList.contains("mr-slideright") ||
+        t.classList.contains("mr-slideleft")
+      ) {
+        t.parentNode.classList.add("mr-noscroll");
+      }*/
+      mrTimeOut = getComputedStyle(document.documentElement).getPropertyValue(
+        "--transition-duration"
+      );
+      if (mrTimeOut) {
+        if (mrTimeOut.includes("ms")) {
+          mrTimeOut = mrTimeOut.replace("ms", "");
+          mrTimeOut = parseInt(mrTimeOut) + 100;
+        } else if (mrTimeOut.includes("s")) {
+          mrTimeOut = mrTimeOut.replace("s", "");
+          mrTimeOut = parseInt(mrTimeOut) * 1000 + 100;
+        }
+      } else {
+        mrTimeOut = 500 + 100;
+      }
+    }
+
+    setTimeout(function () {
+      let mrPages = e.querySelectorAll(
+        "[class*='mr-page']:not(.mr-pageselect)"
+      );
+      for (id = 0; id < mrPages.length; id++) {
+        mrPage = mrPages[id];
+        mrPage.style.setProperty("display", "none", "important");
+        if (mrPage.classList.contains("mr-page" + n)) {
+          mrPage.style.setProperty("display", "", "");
+        }
+      }
+      e.classList.add("mr-active");
+    }, mrTimeOut);
+  }
+}
+function mrPagination(t) {
+  /*if (
+    t.previousElementSibling &&
+    !t.previousElementSibling.querySelector(".mr-pagination") &&
+    t.nextElementSibling &&
+    !t.nextElementSibling.querySelector(".mr-pagination")
+  ) {*/
+  let mrChildCount = t.children;
+  for (let id = 0; id < mrChildCount.length; id++) {
+    if (t.classList.contains("mr-" + id + "perpage")) {
+      mrPerPage = id;
+      break;
+    } else if (id == mrChildCount.length) {
+      mrPerPage = 0;
+      break;
+    }
+  }
+  if (mrPerPage < mrChildCount.length) {
+    t.setAttribute("mr-currentpage", 1);
+
+    let mrCurrentPage = 1;
+    let mrPerPageReset = 1;
+    for (let id = 0; id < mrChildCount.length; id++) {
+      let mrElemChild = mrChildCount[id];
+
+      mrElemChild.classList.add("mr-page" + mrCurrentPage);
+
+      if (mrCurrentPage === 1) {
+        mrElemChild.classList.add("mr-active");
+      } else {
+        mrElemChild.style.setProperty("display", "none", "important");
+        mrElemChild.classList.remove("mr-active");
+      }
+
+      mrPerPageReset = mrPerPageReset + 1;
+
+      if (mrPerPageReset > mrPerPage) {
+        mrCurrentPage = mrCurrentPage + 1;
+        mrPerPageReset = 1;
+      }
+    }
+
+    if (!t.querySelector(".mr-page" + mrCurrentPage)) {
+      mrCurrentPage = mrCurrentPage - 1;
+    }
+
+    t.setAttribute("mr-lastpage", mrCurrentPage);
+
+    let mrPaginationArrows = "";
+    if (
+      t.classList.contains("mr-arrowpagination") ||
+      (t.matches("[class*='mr-'][class*='perpage']") &&
+        !t.matches(".mr-arrowpagination") &&
+        !t.matches(".mr-selectpagination") &&
+        !t.matches(".mr-radiopagination"))
+    ) {
+      mrPaginationArrows =
+        '<button class="mr-arrows mr-prev"><</button><button class="mr-arrows mr-next">&gt;</button>';
+    }
+
+    let mrPaginationSelect = "";
+    if (
+      t.classList.contains("mr-selectpagination") ||
+      (t.matches(
+        "[class*='mr-'][class*='perpage']:not([class*='mr-widget'])"
+      ) &&
+        !t.matches(".mr-arrowpagination") &&
+        !t.matches(".mr-selectpagination") &&
+        !t.matches(".mr-radiopagination"))
+    ) {
+      mrPaginationSelect =
+        '<select class="mr-pageselect" title="/' + mrCurrentPage + '">';
+      for (let id = 0; id < mrCurrentPage; id++) {
+        mrPaginElePage = id + 1;
+        mrPaginationSelect +=
+          '<option value="' +
+          mrPaginElePage +
+          '">' +
+          mrPaginElePage +
+          "</option>";
+      }
+      mrPaginationSelect += "</select>";
+    }
+
+    let mrPaginationRadio = "";
+    if (
+      t.classList.contains("mr-radiopagination") ||
+      (t.matches(
+        "[class*='mr-'][class*='perpage']:not([class*='mr-widget'])"
+      ) &&
+        !t.matches(".mr-arrowpagination") &&
+        !t.matches(".mr-selectpagination") &&
+        !t.matches(".mr-radiopagination"))
+    ) {
+      mrPaginationRadio = '<span class="mr-radios">';
+      for (let id = 0; id < mrCurrentPage; id++) {
+        mrPaginElePage = id + 1;
+        mrPaginationRadio +=
+          '<input name="mr-radio" title="' +
+          mrPaginElePage +
+          "/" +
+          mrCurrentPage +
+          '" class="mr-radio" type="radio" value="' +
+          mrPaginElePage +
+          '" ';
+        if (mrPaginElePage === 1) {
+          mrPaginationRadio += 'checked="checked"';
+        }
+        mrPaginationRadio += ">";
+      }
+      mrPaginationRadio += "</div>";
+    }
+
+    if (
+      (t.nextElementSibling &&
+        t.nextElementSibling.classList.contains("mr-paginationtop")) ||
+      (t.nextElementSibling &&
+        t.nextElementSibling.classList.contains("mr-paginationleft")) ||
+      t.classList.contains("mr-paginationtop") ||
+      t.classList.contains("mr-paginationleft")
+    ) {
+      t.outerHTML =
+        '<div class="mr-pagination">' +
+        mrPaginationArrows +
+        mrPaginationSelect +
+        mrPaginationRadio +
+        "</div>" +
+        t.outerHTML;
+    } else {
+      t.outerHTML =
+        t.outerHTML +
+        '<div class="mr-pagination">' +
+        mrPaginationArrows +
+        mrPaginationSelect +
+        mrPaginationRadio +
+        "</div>";
+    }
+  }
+
+  //}
+}
+function mrNext(t, e) {
+  if (!e) {
+    e = t.parentNode.previousElementSibling;
+    if (
+      (t.parentNode.nextElementSibling &&
+        t.parentNode.nextElementSibling.matches(
+          "[class*='mr-'][class*='perpage']:not([class*='mr-widget'])"
+        )) ||
+      t.parentNode.classList.contains("mr-paginationtop") ||
+      t.parentNode.classList.contains("mr-paginationleft")
+    ) {
+      e = t.parentNode.nextElementSibling;
+    }
+  }
+  let n = parseInt(e.getAttribute("mr-currentpage")) + 1;
+  mrLoadPage(e, n);
+}
+function mrPrev(t, e) {
+  if (!e) {
+    e = t.parentNode.previousElementSibling;
+    if (
+      (t.parentNode.nextElementSibling &&
+        t.parentNode.nextElementSibling.matches(
+          "[class*='mr-'][class*='perpage']:not([class*='mr-widget'])"
+        )) ||
+      t.parentNode.classList.contains("mr-paginationtop") ||
+      t.parentNode.classList.contains("mr-paginationleft")
+    ) {
+      e = t.parentNode.nextElementSibling;
+    }
+  }
+  let n = parseInt(e.getAttribute("mr-currentpage")) - 1;
+  mrLoadPage(e, n);
+}
+function mrSelectPage(t, e) {
+  if (!e) {
+    e = t.parentNode.previousElementSibling;
+    if (
+      (t.parentNode.nextElementSibling &&
+        t.parentNode.nextElementSibling.matches(
+          "[class*='mr-'][class*='perpage']:not([class*='mr-widget'])"
+        )) ||
+      t.parentNode.classList.contains("mr-paginationtop") ||
+      t.parentNode.classList.contains("mr-paginationleft")
+    ) {
+      e = t.parentNode.nextElementSibling;
+    }
+  }
+  t.addEventListener("change", function (event) {
+    mrLoadPage(e, event.target.value);
+    event.stopPropagation();
+  });
+}
+function mrRadioPage(t, e) {
+  if (!e) {
+    e = t.parentNode.parentNode.previousElementSibling;
+    if (
+      (t.parentNode.parentNode.nextElementSibling &&
+        t.parentNode.parentNode.nextElementSibling.matches(
+          "[class*='mr-'][class*='perpage']:not([class*='mr-widget'])"
+        )) ||
+      t.parentNode.parentNode.classList.contains("mr-paginationtop") ||
+      t.parentNode.parentNode.classList.contains("mr-paginationleft")
+    ) {
+      e = t.parentNode.parentNode.nextElementSibling;
+    }
+  }
+  mrLoadPage(e, t.value);
+}
+document.addEventListener("click", function (t) {
+  if (t.target.matches(".mr-next")) {
+    mrNext(t.target);
+  } else if (t.target.matches(".mr-prev")) {
+    mrPrev(t.target);
+  } else if (t.target.matches(".mr-pageselect")) {
+    mrSelectPage(t.target);
+  } else if (t.target.matches(".mr-radio:not([checked])")) {
+    mrRadioPage(t.target);
+  }
+  t.stopPropagation();
+});
+document.addEventListener("DOMContentLoaded", function () {
+  const mrPaginEles = document.querySelectorAll(
+    "[class*='mr-'][class*='perpage']:not([class*='mr-widget'])"
+  );
+
+  for (let id = 0; id < mrPaginEles.length; id++) {
+    mrPagination(mrPaginEles[id]);
   }
 });

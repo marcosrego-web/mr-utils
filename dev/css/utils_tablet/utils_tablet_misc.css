@@ -4,12 +4,8 @@
 .mr-tablet-noscroll {
   overflow: hidden !important;
 }
-.mr-tablet-hidescroll:not(.mr-tablet-horizontalscroll)::-webkit-scrollbar {
+.mr-tablet-hidescroll::-webkit-scrollbar {
   height: 0;
-}
-.mr-tablet-horizontalscroll.mr-tablet-hidescroll::-webkit-scrollbar,
-.mr-tablet-swipe::-webkit-scrollbar,
-.mr-tablet-swipecontent > *::-webkit-scrollbar {
   width: 0;
 }
 .mr-tablet-horizontalscroll,
@@ -19,6 +15,12 @@
   display: -webkit-inline-box;
   overflow-x: auto;
   overflow-y: hidden;
+}
+.mr-tablet-horizontalscroll > *,
+.mr-tablet-horizontalscrollcontent > * > *,
+.mr-tablet-swipe > *,
+.mr-tablet-swipecontent > * > * {
+  display: block;
 }
 .mr-tablet-horizontalscroll img,
 .mr-tablet-horizontalscrollcontent > * img,

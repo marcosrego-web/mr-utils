@@ -12,6 +12,16 @@
 .mr-nowrap {
   flex-wrap: nowrap !important;
 }
+.mr-transparent {
+  opacity: 0;
+}
+.mr-opaque {
+  opacity: 1;
+}
+.mr-semiopaque {
+  opacity: 0.5;
+  opacity: var(--opacity, 0.5);
+}
 .mr-show,
 .mr-block {
   display: block !important;

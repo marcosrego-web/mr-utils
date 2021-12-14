@@ -1,14 +1,14 @@
 /*(not used on breakpoints)*/
-.mr-offcanvas-container {
+.mr-offcanvas-container .mr-offcanvas-content {
   background-color: #fff;
   background-color: var(--offcanvas-background-color, #fff);
 }
-.mr-transitionleft .mr-offcanvas-container,
-.mr-transitionright .mr-offcanvas-container {
+.mr-transitionleft .mr-offcanvas-container .mr-offcanvas-content,
+.mr-transitionright .mr-offcanvas-container .mr-offcanvas-content {
   width: var(--offcanvas-size, 100%);
 }
-.mr-transitiontop .mr-offcanvas-container,
-.mr-transitionbottom .mr-offcanvas-container {
+.mr-transitiontop .mr-offcanvas-container .mr-offcanvas-content,
+.mr-transitionbottom .mr-offcanvas-container .mr-offcanvas-content {
   height: var(--offcanvas-size, 100%);
 }
 .mr-offcanvas-container,
@@ -28,7 +28,7 @@
   color: #000;
   color: var(--offcanvas-toggle-color, #000);
 }
-.mr-offcanvas-container,
+.mr-offcanvas-container .mr-offcanvas-content,
 .mr-overlay {
   position: fixed;
   top: 0;
@@ -53,33 +53,35 @@
   z-index: 21;
   display: none;
 }
-.mr-transitionleft .mr-offcanvas-toggle:not(.active),
-.mr-transitionright .mr-offcanvas-toggle.active {
+.mr-transitionleft .mr-offcanvas-toggle:not(.mr-active),
+.mr-transitionright .mr-offcanvas-toggle.mr-active {
   right: 1.5rem;
   right: var(--padding, 0.75rem);
   top: 1.5rem;
   top: var(--padding, 0.75rem);
 }
-.mr-transitionright .mr-offcanvas-toggle:not(.active),
-.mr-transitionleft .mr-offcanvas-toggle.active {
+.mr-transitionright .mr-offcanvas-toggle:not(.mr-active),
+.mr-transitionleft .mr-offcanvas-toggle.mr-active {
   left: 1.5rem;
   left: var(--padding, 0.75rem);
   top: 1.5rem;
   top: var(--padding, 0.75rem);
 }
-.mr-transitionbottom .mr-offcanvas-toggle:not(.active),
-.mr-transitiontop .mr-offcanvas-toggle.active {
+.mr-transitionbottom .mr-offcanvas-toggle:not(.mr-active),
+.mr-transitiontop .mr-offcanvas-toggle.mr-active {
   left: calc(50% - 1.25em);
   top: 1.5rem;
   top: var(--padding, 0.75rem);
 }
-.mr-transitiontop .mr-offcanvas-toggle:not(.active),
-.mr-transitionbottom .mr-offcanvas-toggle.active {
+.mr-transitiontop .mr-offcanvas-toggle:not(.mr-active),
+.mr-transitionbottom .mr-offcanvas-toggle.mr-active {
   left: calc(50% - 1.25em);
   bottom: var(--padding, 0.75rem);
 }
-.mr-transitionleft .mr-offcanvas-container:not(.active),
-.mr-transitionright .mr-offcanvas-container.active {
+.mr-transitionleft
+  .mr-offcanvas-container:not(.mr-active)
+  .mr-offcanvas-content,
+.mr-transitionright .mr-offcanvas-container.mr-active .mr-offcanvas-content {
   margin-left: calc(100% - var(--offcanvas-size, 100%));
 }
 .mr-offcanvas-toggle:before,

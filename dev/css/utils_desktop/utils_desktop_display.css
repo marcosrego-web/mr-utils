@@ -12,6 +12,16 @@
 .mr-desktop-nowrap {
   flex-wrap: nowrap !important;
 }
+.mr-desktop-transparent {
+  opacity: 0;
+}
+.mr-desktop-opaque {
+  opacity: 1;
+}
+.mr-desktop-semiopaque {
+  opacity: 0.5;
+  opacity: var(--opacity, 0.5);
+}
 .mr-desktop-show,
 .mr-desktop-block {
   display: block !important;

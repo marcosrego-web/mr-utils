@@ -12,6 +12,16 @@
 .mr-portrait-nowrap {
   flex-wrap: nowrap !important;
 }
+.mr-portrait-transparent {
+  opacity: 0;
+}
+.mr-portrait-opaque {
+  opacity: 1;
+}
+.mr-portrait-semiopaque {
+  opacity: 0.5;
+  opacity: var(--opacity, 0.5);
+}
 .mr-portrait-show,
 .mr-portrait-block {
   display: block !important;
