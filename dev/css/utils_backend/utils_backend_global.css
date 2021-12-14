@@ -1,0 +1,45 @@
+[class*="mr-"][class*="hide"]:not([class*="hidescroll"]):not(.mr-hover-hide:not(:hover)),
+[class*="mr-"][class*="hidden"]:not(.mr-hover-hidden:not(:hover)),
+[class*="mr-"][class*="none"]:not(.mr-hover-none:not(:hover)) {
+  display: block !important;
+  opacity: 0.5 !important;
+  visibility: visible !important;
+}
+[class*="mr-"][class*="transparent"]:not(.mr-hover-transparent) {
+  opacity: 0.5 !important;
+}
+.mr-flex[class*="mr-"][class*="hide"]:not([class*="hidescroll"]):not(.mr-hover-hide:not(:hover)),
+.mr-flex[class*="mr-"][class*="hidden"]:not(.mr-hover-hidden:not(:hover)),
+.mr-flex[class*="mr-"][class*="none"]:not(.mr-hover-none:not(:hover)),
+.mr-horizontalscroll,
+.mr-horizontalscrollcontent > *,
+.mr-swipe,
+.mr-swipecontent > * {
+  display: flex !important;
+}
+
+.mr-horizontalscroll,
+.mr-horizontalscrollcontent > *,
+.mr-swipe,
+.mr-swipecontent > * {
+  flex-wrap: wrap !important;
+}
+
+.mr-hidescroll::-webkit-scrollbar,
+.mr-swipe::-webkit-scrollbar,
+.mr-swipecontent > *::-webkit-scrollbar {
+  width: auto !important;
+}
+
+.mr-backend-tab {
+  width: 25%;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.mr-backend-tab svg {
+  width: 100%;
+  max-width: 24px;
+  height: auto;
+  margin: 0 auto;
+}
