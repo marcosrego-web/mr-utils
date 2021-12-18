@@ -1,4 +1,9 @@
 function mrTab(t, e, v) {
+  if (!t.classList.contains("mr-tab")) {
+    if (t.closest(".mr-tab")) {
+      t = t.closest(".mr-tab");
+    }
+  }
   if (!e) {
     e = t.parentNode.nextElementSibling;
     if (
@@ -36,14 +41,6 @@ function mrTab(t, e, v) {
     e.classList.contains("mr-zoomright") ||
     e.classList.contains("mr-zoomleft")
   ) {
-    /*if (
-        t.classList.contains("mr-slide") ||
-        t.classList.contains("mr-slidetop") ||
-        t.classList.contains("mr-slideright") ||
-        t.classList.contains("mr-slideleft")
-      ) {
-        t.parentNode.classList.add("mr-noscroll");
-      }*/
     mrTimeOut = getComputedStyle(document.documentElement).getPropertyValue(
       "--transition-duration"
     );
@@ -61,38 +58,44 @@ function mrTab(t, e, v) {
   }
 
   setTimeout(function () {
-    let mrTabsItems = e.querySelectorAll("[class*='mr-tabitem']");
     if (!v) {
-      v = t.getAttribute("value");
+      v = Array.from(t.parentNode.children).indexOf(t);
     }
+    let mrTabsItems = e.children;
     for (id = 0; id < mrTabsItems.length; id++) {
-      mrTabItem = mrTabsItems[id];
+      let mrTabItem = mrTabsItems[id];
       mrTabItem.style.setProperty("display", "none", "important");
-      if (mrTabItem.classList.contains(v)) {
+      mrTabItem.classList.remove("mr-active");
+      if (id === v) {
         mrTabItem.style.setProperty("display", "", "");
+        mrTabItem.classList.add("mr-active");
       }
     }
     e.classList.add("mr-active");
   }, mrTimeOut);
 }
 function mrTabs(t) {
+  let mrChildCount = t.children;
+  for (let id = 0; id < mrChildCount.length; id++) {
+    if (!mrChildCount[id].classList.contains("mr-pagination")) {
+      if (id == 0) {
+        mrChildCount[id].classList.add("mr-active");
+      } else {
+        mrChildCount[id].classList.remove("mr-active");
+        mrChildCount[id].style.setProperty("display", "none", "important");
+      }
+    }
+  }
   if (
-    (!t.previousElementSibling && !t.nextElementSibling) ||
-    (t.previousElementSibling &&
-      !t.previousElementSibling.querySelector(".mr-tabslist") &&
-      t.nextElementSibling &&
-      !t.nextElementSibling.querySelector(".mr-tabslist"))
+    !t.previousElementSibling.classList.contains("mr-tabslist") &&
+    !t.nextElementSibling.classList.contains("mr-tabslist")
   ) {
-    let mrChildCount = t.children;
     let mrtab = "";
     for (let id = 0; id < mrChildCount.length; id++) {
       if (!mrChildCount[id].classList.contains("mr-pagination")) {
-        mrChildCount[id].classList.add("mr-tabitem" + id);
-        mrtab += '<button value="mr-tabitem' + id + '" class="mr-tab';
+        mrtab += '<button class="mr-tab';
         if (id == 0) {
           mrtab += " mr-active";
-        } else {
-          mrChildCount[id].style.setProperty("display", "none", "important");
         }
         mrtab +=
           '">' +
@@ -122,16 +125,24 @@ function mrTabs(t) {
     }
   }
 }
+
 document.addEventListener("click", function (t) {
-  if (t.target.matches(".mr-tab")) {
+  if (t.target.matches(".mr-tabslist *")) {
     mrTab(t.target);
   }
   t.stopPropagation();
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-  const mrTabsEles = document.querySelectorAll(".mr-tabs");
+  const mrTabsLists = document.querySelectorAll(".mr-tabslist");
+  for (let id = 0; id < mrTabsLists.length; id++) {
+    const mrTabsListsItems = mrTabsLists[id].children;
+    for (id = 0; id < mrTabsListsItems.length; id++) {
+      mrTabsListsItems[id].classList.add("mr-tab");
+    }
+  }
 
+  const mrTabsEles = document.querySelectorAll(".mr-tabs");
   for (let id = 0; id < mrTabsEles.length; id++) {
     const mrTabsEle = mrTabsEles[id];
     mrTabs(mrTabsEle);
