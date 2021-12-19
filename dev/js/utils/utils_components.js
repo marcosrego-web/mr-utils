@@ -17,9 +17,9 @@ function mrTab(t, e, v) {
   }
   e.classList.remove("mr-active");
 
-  let mrTabsList = t.parentNode.children;
-  for (id = 0; id < mrTabsList.length; id++) {
-    let mrTabList = mrTabsList[id];
+  let mrTabsNav = t.parentNode.children;
+  for (id = 0; id < mrTabsNav.length; id++) {
+    let mrTabList = mrTabsNav[id];
     if (mrTabList.classList.contains("mr-active")) {
       mrTabList.classList.remove("mr-active");
     }
@@ -74,7 +74,7 @@ function mrTab(t, e, v) {
     e.classList.add("mr-active");
   }, mrTimeOut);
 }
-function mrTabsList(t) {
+function mrTabsNav(t) {
   let mrChildCount = t.children;
   for (let id = 0; id < mrChildCount.length; id++) {
     mrChildCount[id].classList.add("mr-tab");
@@ -116,12 +116,12 @@ function mrTabs(t) {
   }
   if (
     !t.previousElementSibling ||
-    (!t.previousElementSibling.classList.contains("mr-tabslist") &&
+    (!t.previousElementSibling.classList.contains("mr-tabsnav") &&
       !t.nextElementSibling) ||
-    (!t.nextElementSibling.classList.contains("mr-tabslist") &&
+    (!t.nextElementSibling.classList.contains("mr-tabsnav") &&
       t.classList.contains("mr-navbottom") &&
       !t.nextElementSibling) ||
-    (!t.nextElementSibling.classList.contains("mr-tabslist") &&
+    (!t.nextElementSibling.classList.contains("mr-tabsnav") &&
       t.classList.contains("mr-navright"))
   ) {
     let mrtab = "";
@@ -147,12 +147,12 @@ function mrTabs(t) {
     ) {
       t.outerHTML =
         t.outerHTML +
-        '<div class="mr-tabslist mr-horizontalscroll">' +
+        '<div class="mr-tabsnav mr-horizontalscroll">' +
         mrtab +
         "</div>";
     } else {
       t.outerHTML =
-        '<div class="mr-tabslist mr-horizontalscroll">' +
+        '<div class="mr-tabsnav mr-horizontalscroll">' +
         mrtab +
         "</div>" +
         t.outerHTML;
@@ -161,16 +161,16 @@ function mrTabs(t) {
 }
 
 document.addEventListener("click", function (t) {
-  if (t.target.matches(".mr-tabslist *")) {
+  if (t.target.matches(".mr-tabsnav *")) {
     mrTab(t.target);
   }
   t.stopPropagation();
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-  const mrTabsLists = document.querySelectorAll(".mr-tabslist");
-  for (let id = 0; id < mrTabsLists.length; id++) {
-    mrTabsList(mrTabsLists[id]);
+  const mrTabsNavs = document.querySelectorAll(".mr-tabsnav");
+  for (let id = 0; id < mrTabsNavs.length; id++) {
+    mrTabsNav(mrTabsNavs[id]);
   }
 
   const mrTabsEles = document.querySelectorAll(".mr-tabs");

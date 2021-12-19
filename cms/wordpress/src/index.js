@@ -1061,6 +1061,14 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																		).replace("--", "-"),
 																		label: "Tabs",
 																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-tabsnav"
+																		).replace("--", "-"),
+																		label: "Tabs Navigation",
+																	},
 																]}
 																onChange={(val) =>
 																	setAttributes({
