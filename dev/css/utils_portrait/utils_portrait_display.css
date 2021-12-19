@@ -6,12 +6,6 @@
   display: flex;
   width: 100%;
 }
-.mr-portrait-wrap {
-  flex-wrap: wrap;
-}
-.mr-portrait-nowrap {
-  flex-wrap: nowrap !important;
-}
 .mr-portrait-transparent {
   opacity: 0;
 }

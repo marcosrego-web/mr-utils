@@ -6,12 +6,6 @@
   display: flex;
   width: 100%;
 }
-.mr-phone-wrap {
-  flex-wrap: wrap;
-}
-.mr-phone-nowrap {
-  flex-wrap: nowrap !important;
-}
 .mr-phone-transparent {
   opacity: 0;
 }

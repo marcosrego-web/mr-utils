@@ -34,6 +34,12 @@
 .mr-phone-perline {
   flex-wrap: wrap;
 }
+.mr-phone-wrap {
+  flex-wrap: wrap !important;
+}
+.mr-phone-nowrap {
+  flex-wrap: nowrap !important;
+}
 .mr-phone-12perline > *,
 .mr-phone-11perline > *,
 .mr-phone-10perline > *,

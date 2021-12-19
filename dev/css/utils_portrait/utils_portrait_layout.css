@@ -34,6 +34,12 @@
 .mr-portrait-perline {
   flex-wrap: wrap;
 }
+.mr-portrait-wrap {
+  flex-wrap: wrap !important;
+}
+.mr-portrait-nowrap {
+  flex-wrap: nowrap !important;
+}
 .mr-portrait-12perline > *,
 .mr-portrait-11perline > *,
 .mr-portrait-10perline > *,

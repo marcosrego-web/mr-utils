@@ -34,6 +34,12 @@
 .mr-tablet-perline {
   flex-wrap: wrap;
 }
+.mr-tablet-wrap {
+  flex-wrap: wrap !important;
+}
+.mr-tablet-nowrap {
+  flex-wrap: nowrap !important;
+}
 .mr-tablet-12perline > *,
 .mr-tablet-11perline > *,
 .mr-tablet-10perline > *,

@@ -1061,6 +1061,14 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																		).replace("--", "-"),
 																		label: "Tabs",
 																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-tabsnav"
+																		).replace("--", "-"),
+																		label: "Tabs Navigation",
+																	},
 																]}
 																onChange={(val) =>
 																	setAttributes({
@@ -1099,7 +1107,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																			value: (
 																				" mr-" +
 																				tab.name +
-																				"-tabsbottom"
+																				"-navbottom"
 																			).replace("--", "-"),
 																			label: "Bottom",
 																		},
@@ -1580,6 +1588,88 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																: ""
 														}
 													/>
+													<SelectControl
+														label={__("Wrap", "mr-utils")}
+														value={
+															tab.name === "desktop"
+																? mrWrapdesktop
+																: tab.name === "laptop"
+																? mrWraplaptop
+																: tab.name === "tablet"
+																? mrWraptablet
+																: tab.name === "phone"
+																? mrWrapphone
+																: mrWrap
+														}
+														options={
+															tab.name === "" ||
+															tab.name === "desktop" ||
+															tab.name === "laptop" ||
+															tab.name === "tablet" ||
+															tab.name === "phone"
+																? [
+																		{ value: "", label: "Default" },
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-wrap"
+																			).replace("--", "-"),
+																			label: "Wrap",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-nowrap"
+																			).replace("--", "-"),
+																			label: "No Wrap",
+																		},
+																  ]
+																: ""
+														}
+														onChange={(val) =>
+															setAttributes({
+																mrWrap:
+																	val === undefined || val === ""
+																		? ""
+																		: val.includes("-desktop-") ||
+																		  val.includes("-laptop-") ||
+																		  val.includes("-tablet-") ||
+																		  val.includes("-phone-")
+																		? mrWrap
+																		: val.replace("--", "-"),
+																mrWrapdesktop:
+																	val === undefined || val === ""
+																		? ""
+																		: val !== undefined &&
+																		  val.includes("-desktop-")
+																		? val
+																		: mrWrapdesktop,
+																mrWraplaptop:
+																	val === undefined || val === ""
+																		? ""
+																		: val !== undefined &&
+																		  val.includes("-laptop-")
+																		? val
+																		: mrWraplaptop,
+																mrWraptablet:
+																	val === undefined || val === ""
+																		? ""
+																		: val !== undefined &&
+																		  val.includes("-tablet-")
+																		? val
+																		: mrWraptablet,
+																mrWrapphone:
+																	val === undefined || val === ""
+																		? ""
+																		: val !== undefined &&
+																		  val.includes("-phone-")
+																		? val
+																		: mrWrapphone,
+															})
+														}
+													/>
 													<RangeControl
 														label={__("Item size", "mr-utils")}
 														value={
@@ -2017,88 +2107,6 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																	Know the differences between visibilities
 																</a>
 															)
-														}
-													/>
-													<SelectControl
-														label={__("Wrap", "mr-utils")}
-														value={
-															tab.name === "desktop"
-																? mrWrapdesktop
-																: tab.name === "laptop"
-																? mrWraplaptop
-																: tab.name === "tablet"
-																? mrWraptablet
-																: tab.name === "phone"
-																? mrWrapphone
-																: mrWrap
-														}
-														options={
-															tab.name === "" ||
-															tab.name === "desktop" ||
-															tab.name === "laptop" ||
-															tab.name === "tablet" ||
-															tab.name === "phone"
-																? [
-																		{ value: "", label: "Default" },
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-wrap"
-																			).replace("--", "-"),
-																			label: "Wrap",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-nowrap"
-																			).replace("--", "-"),
-																			label: "No Wrap",
-																		},
-																  ]
-																: ""
-														}
-														onChange={(val) =>
-															setAttributes({
-																mrWrap:
-																	val === undefined || val === ""
-																		? ""
-																		: val.includes("-desktop-") ||
-																		  val.includes("-laptop-") ||
-																		  val.includes("-tablet-") ||
-																		  val.includes("-phone-")
-																		? mrWrap
-																		: val.replace("--", "-"),
-																mrWrapdesktop:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-desktop-")
-																		? val
-																		: mrWrapdesktop,
-																mrWraplaptop:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-laptop-")
-																		? val
-																		: mrWraplaptop,
-																mrWraptablet:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-tablet-")
-																		? val
-																		: mrWraptablet,
-																mrWrapphone:
-																	val === undefined || val === ""
-																		? ""
-																		: val !== undefined &&
-																		  val.includes("-phone-")
-																		? val
-																		: mrWrapphone,
-															})
 														}
 													/>
 												</PanelBody>

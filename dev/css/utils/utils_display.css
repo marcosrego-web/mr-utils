@@ -6,12 +6,6 @@
   display: flex;
   width: 100%;
 }
-.mr-wrap {
-  flex-wrap: wrap;
-}
-.mr-nowrap {
-  flex-wrap: nowrap !important;
-}
 .mr-transparent {
   opacity: 0;
 }

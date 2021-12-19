@@ -1,20 +1,26 @@
+/* Components */
 function mrTab(t, e, v) {
+  if (!t.classList.contains("mr-tab")) {
+    if (t.closest(".mr-tab")) {
+      t = t.closest(".mr-tab");
+    }
+  }
   if (!e) {
     e = t.parentNode.nextElementSibling;
     if (
       (t.parentNode.previousElementSibling &&
         t.parentNode.previousElementSibling.classList.contains("mr-tabs")) ||
-      t.classList.contains("mr-tabsbottom") ||
-      t.classList.contains("mr-tabsright")
+      t.classList.contains("mr-navbottom") ||
+      t.classList.contains("mr-navright")
     ) {
       e = t.parentNode.previousElementSibling;
     }
   }
   e.classList.remove("mr-active");
 
-  let mrTabsList = t.parentNode.children;
-  for (id = 0; id < mrTabsList.length; id++) {
-    let mrTabList = mrTabsList[id];
+  let mrTabsNav = t.parentNode.children;
+  for (id = 0; id < mrTabsNav.length; id++) {
+    let mrTabList = mrTabsNav[id];
     if (mrTabList.classList.contains("mr-active")) {
       mrTabList.classList.remove("mr-active");
     }
@@ -36,14 +42,6 @@ function mrTab(t, e, v) {
     e.classList.contains("mr-zoomright") ||
     e.classList.contains("mr-zoomleft")
   ) {
-    /*if (
-        t.classList.contains("mr-slide") ||
-        t.classList.contains("mr-slidetop") ||
-        t.classList.contains("mr-slideright") ||
-        t.classList.contains("mr-slideleft")
-      ) {
-        t.parentNode.classList.add("mr-noscroll");
-      }*/
     mrTimeOut = getComputedStyle(document.documentElement).getPropertyValue(
       "--transition-duration"
     );
@@ -61,38 +59,78 @@ function mrTab(t, e, v) {
   }
 
   setTimeout(function () {
-    let mrTabsItems = e.querySelectorAll("[class*='mr-tabitem']");
     if (!v) {
-      v = t.getAttribute("value");
+      v = Array.from(t.parentNode.children).indexOf(t);
     }
+    let mrTabsItems = e.children;
     for (id = 0; id < mrTabsItems.length; id++) {
-      mrTabItem = mrTabsItems[id];
+      let mrTabItem = mrTabsItems[id];
       mrTabItem.style.setProperty("display", "none", "important");
-      if (mrTabItem.classList.contains(v)) {
+      mrTabItem.classList.remove("mr-active");
+      if (id === v) {
         mrTabItem.style.setProperty("display", "", "");
+        mrTabItem.classList.add("mr-active");
       }
     }
     e.classList.add("mr-active");
   }, mrTimeOut);
 }
-function mrTabs(t) {
+function mrTabsNav(t) {
+  let mrChildCount = t.children;
+  for (let id = 0; id < mrChildCount.length; id++) {
+    mrChildCount[id].classList.add("mr-tab");
+    if (id === 0) {
+      mrChildCount[id].classList.add("mr-active");
+    }
+  }
   if (
-    (!t.previousElementSibling && !t.nextElementSibling) ||
-    (t.previousElementSibling &&
-      !t.previousElementSibling.querySelector(".mr-tabslist") &&
-      t.nextElementSibling &&
-      !t.nextElementSibling.querySelector(".mr-tabslist"))
+    (t.classList.contains("mr-navbottom") &&
+      t.previousElementSibling &&
+      !t.previousElementSibling.classList.contains("mr-tabs")) ||
+    (t.classList.contains("mr-navright") &&
+      t.previousElementSibling &&
+      !t.previousElementSibling.classList.contains("mr-tabs"))
   ) {
-    let mrChildCount = t.children;
+    t.previousElementSibling.classList.add("mr-tabs");
+  } else if (
+    (!t.classList.contains("mr-navbottom") &&
+      t.nextElementSibling &&
+      !t.nextElementSibling.classList.contains("mr-tabs")) ||
+    (!t.classList.contains("mr-navright") &&
+      t.nextElementSibling &&
+      !t.nextElementSibling.classList.contains("mr-tabs"))
+  ) {
+    t.nextElementSibling.classList.add("mr-tabs");
+  }
+}
+function mrTabs(t) {
+  let mrChildCount = t.children;
+  for (let id = 0; id < mrChildCount.length; id++) {
+    if (!mrChildCount[id].classList.contains("mr-pagination")) {
+      if (id == 0) {
+        mrChildCount[id].classList.add("mr-active");
+      } else {
+        mrChildCount[id].classList.remove("mr-active");
+        mrChildCount[id].style.setProperty("display", "none", "important");
+      }
+    }
+  }
+  if (
+    !t.previousElementSibling ||
+    (!t.previousElementSibling.classList.contains("mr-tabsnav") &&
+      !t.nextElementSibling) ||
+    (!t.nextElementSibling.classList.contains("mr-tabsnav") &&
+      t.classList.contains("mr-navbottom") &&
+      !t.nextElementSibling) ||
+    (!t.nextElementSibling.classList.contains("mr-tabsnav") &&
+      t.classList.contains("mr-navright"))
+  ) {
     let mrtab = "";
     for (let id = 0; id < mrChildCount.length; id++) {
       if (!mrChildCount[id].classList.contains("mr-pagination")) {
-        mrChildCount[id].classList.add("mr-tabitem" + id);
-        mrtab += '<button value="mr-tabitem' + id + '" class="mr-tab';
-        if (id == 0) {
+        mrtab += '<button class="mr-tab';
+        if (id === 0) {
           mrtab += " mr-active";
-        } else {
-          mrChildCount[id].style.setProperty("display", "none", "important");
         }
         mrtab +=
           '">' +
@@ -102,42 +140,47 @@ function mrTabs(t) {
     }
     if (
       (t.previousElementSibling &&
-        t.previousElementSibling.classList.contains("mr-tabsbottom")) ||
+        t.previousElementSibling.classList.contains("mr-navbottom")) ||
       (t.previousElementSibling &&
-        t.previousElementSibling.classList.contains("mr-tabsright")) ||
-      t.classList.contains("mr-tabsbottom") ||
-      t.classList.contains("mr-tabsright")
+        t.previousElementSibling.classList.contains("mr-navright")) ||
+      t.classList.contains("mr-navbottom") ||
+      t.classList.contains("mr-navright")
     ) {
       t.outerHTML =
         t.outerHTML +
-        '<div class="mr-tabslist mr-horizontalscroll">' +
+        '<div class="mr-tabsnav mr-horizontalscroll">' +
         mrtab +
         "</div>";
     } else {
       t.outerHTML =
-        '<div class="mr-tabslist mr-horizontalscroll">' +
+        '<div class="mr-tabsnav mr-horizontalscroll">' +
         mrtab +
         "</div>" +
         t.outerHTML;
     }
   }
 }
+
 document.addEventListener("click", function (t) {
-  if (t.target.matches(".mr-tab")) {
+  if (t.target.matches(".mr-tabsnav *")) {
     mrTab(t.target);
   }
   t.stopPropagation();
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-  const mrTabsEles = document.querySelectorAll(".mr-tabs");
+  const mrTabsNavs = document.querySelectorAll(".mr-tabsnav");
+  for (let id = 0; id < mrTabsNavs.length; id++) {
+    mrTabsNav(mrTabsNavs[id]);
+  }
 
+  const mrTabsEles = document.querySelectorAll(".mr-tabs");
   for (let id = 0; id < mrTabsEles.length; id++) {
-    const mrTabsEle = mrTabsEles[id];
-    mrTabs(mrTabsEle);
+    mrTabs(mrTabsEles[id]);
   }
 });
 
+/* Dynamic */
 function mrGetCookie(t) {
   if (t) {
     const e = t + "=",
@@ -345,6 +388,8 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
+/* Offcanvas */
+
 function mrToggleOffCanvas() {
   document.querySelector(".mr-offcanvas-container").classList.remove("mr-hide"),
     document
@@ -435,6 +480,7 @@ document.addEventListener("click", function (t) {
   t.stopPropagation();
 });
 
+/*Pagination*/
 function mrLoadPage(e, n) {
   if (n <= 0) {
     n = e.getAttribute("mr-lastpage");

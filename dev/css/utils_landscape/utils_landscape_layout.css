@@ -34,6 +34,12 @@
 .mr-landscape-perline {
   flex-wrap: wrap;
 }
+.mr-landscape-wrap {
+  flex-wrap: wrap !important;
+}
+.mr-landscape-nowrap {
+  flex-wrap: nowrap !important;
+}
 .mr-landscape-12perline > *,
 .mr-landscape-11perline > *,
 .mr-landscape-10perline > *,

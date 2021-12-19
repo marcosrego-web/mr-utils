@@ -6,12 +6,6 @@
   display: flex;
   width: 100%;
 }
-.mr-landscape-wrap {
-  flex-wrap: wrap;
-}
-.mr-landscape-nowrap {
-  flex-wrap: nowrap !important;
-}
 .mr-landscape-transparent {
   opacity: 0;
 }
