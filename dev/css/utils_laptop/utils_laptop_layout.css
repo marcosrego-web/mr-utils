@@ -34,6 +34,12 @@
 .mr-laptop-perline {
   flex-wrap: wrap;
 }
+.mr-laptop-wrap {
+  flex-wrap: wrap !important;
+}
+.mr-laptop-nowrap {
+  flex-wrap: nowrap !important;
+}
 .mr-laptop-12perline > *,
 .mr-laptop-11perline > *,
 .mr-laptop-10perline > *,

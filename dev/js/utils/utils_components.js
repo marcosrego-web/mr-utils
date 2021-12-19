@@ -74,6 +74,34 @@ function mrTab(t, e, v) {
     e.classList.add("mr-active");
   }, mrTimeOut);
 }
+function mrTabsList(t) {
+  let mrChildCount = t.children;
+  for (let id = 0; id < mrChildCount.length; id++) {
+    mrChildCount[id].classList.add("mr-tab");
+    if (id === 0) {
+      mrChildCount[id].classList.add("mr-active");
+    }
+  }
+  if (
+    (t.classList.contains("mr-navbottom") &&
+      t.previousElementSibling &&
+      !t.previousElementSibling.classList.contains("mr-tabs")) ||
+    (t.classList.contains("mr-navright") &&
+      t.previousElementSibling &&
+      !t.previousElementSibling.classList.contains("mr-tabs"))
+  ) {
+    t.previousElementSibling.classList.add("mr-tabs");
+  } else if (
+    (!t.classList.contains("mr-navbottom") &&
+      t.nextElementSibling &&
+      !t.nextElementSibling.classList.contains("mr-tabs")) ||
+    (!t.classList.contains("mr-navright") &&
+      t.nextElementSibling &&
+      !t.nextElementSibling.classList.contains("mr-tabs"))
+  ) {
+    t.nextElementSibling.classList.add("mr-tabs");
+  }
+}
 function mrTabs(t) {
   let mrChildCount = t.children;
   for (let id = 0; id < mrChildCount.length; id++) {
@@ -87,14 +115,20 @@ function mrTabs(t) {
     }
   }
   if (
-    !t.previousElementSibling.classList.contains("mr-tabslist") &&
-    !t.nextElementSibling.classList.contains("mr-tabslist")
+    !t.previousElementSibling ||
+    (!t.previousElementSibling.classList.contains("mr-tabslist") &&
+      !t.nextElementSibling) ||
+    (!t.nextElementSibling.classList.contains("mr-tabslist") &&
+      t.classList.contains("mr-navbottom") &&
+      !t.nextElementSibling) ||
+    (!t.nextElementSibling.classList.contains("mr-tabslist") &&
+      t.classList.contains("mr-navright"))
   ) {
     let mrtab = "";
     for (let id = 0; id < mrChildCount.length; id++) {
       if (!mrChildCount[id].classList.contains("mr-pagination")) {
         mrtab += '<button class="mr-tab';
-        if (id == 0) {
+        if (id === 0) {
           mrtab += " mr-active";
         }
         mrtab +=
@@ -136,15 +170,11 @@ document.addEventListener("click", function (t) {
 document.addEventListener("DOMContentLoaded", function () {
   const mrTabsLists = document.querySelectorAll(".mr-tabslist");
   for (let id = 0; id < mrTabsLists.length; id++) {
-    const mrTabsListsItems = mrTabsLists[id].children;
-    for (id = 0; id < mrTabsListsItems.length; id++) {
-      mrTabsListsItems[id].classList.add("mr-tab");
-    }
+    mrTabsList(mrTabsLists[id]);
   }
 
   const mrTabsEles = document.querySelectorAll(".mr-tabs");
   for (let id = 0; id < mrTabsEles.length; id++) {
-    const mrTabsEle = mrTabsEles[id];
-    mrTabs(mrTabsEle);
+    mrTabs(mrTabsEles[id]);
   }
 });
