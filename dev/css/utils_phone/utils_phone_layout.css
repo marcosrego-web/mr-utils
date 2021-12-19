@@ -34,6 +34,9 @@
 .mr-phone-perline {
   flex-wrap: wrap;
 }
+.mr-phone-0perline {
+  flex-wrap: nowrap;
+}
 .mr-phone-wrap {
   flex-wrap: wrap !important;
 }

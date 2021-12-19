@@ -92,12 +92,8 @@ function mrTabsNav(t) {
   ) {
     t.previousElementSibling.classList.add("mr-tabs");
   } else if (
-    (!t.classList.contains("mr-navbottom") &&
-      t.nextElementSibling &&
-      !t.nextElementSibling.classList.contains("mr-tabs")) ||
-    (!t.classList.contains("mr-navright") &&
-      t.nextElementSibling &&
-      !t.nextElementSibling.classList.contains("mr-tabs"))
+    t.nextElementSibling &&
+    !t.nextElementSibling.classList.contains("mr-tabs")
   ) {
     t.nextElementSibling.classList.add("mr-tabs");
   }
