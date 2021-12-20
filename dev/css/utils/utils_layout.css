@@ -34,6 +34,9 @@
 .mr-perline {
   flex-wrap: wrap;
 }
+.mr-0perline {
+  flex-wrap: nowrap;
+}
 .mr-wrap {
   flex-wrap: wrap !important;
 }

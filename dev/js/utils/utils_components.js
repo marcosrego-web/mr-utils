@@ -92,12 +92,8 @@ function mrTabsNav(t) {
   ) {
     t.previousElementSibling.classList.add("mr-tabs");
   } else if (
-    (!t.classList.contains("mr-navbottom") &&
-      t.nextElementSibling &&
-      !t.nextElementSibling.classList.contains("mr-tabs")) ||
-    (!t.classList.contains("mr-navright") &&
-      t.nextElementSibling &&
-      !t.nextElementSibling.classList.contains("mr-tabs"))
+    t.nextElementSibling &&
+    !t.nextElementSibling.classList.contains("mr-tabs")
   ) {
     t.nextElementSibling.classList.add("mr-tabs");
   }
@@ -105,24 +101,18 @@ function mrTabsNav(t) {
 function mrTabs(t) {
   let mrChildCount = t.children;
   for (let id = 0; id < mrChildCount.length; id++) {
-    if (!mrChildCount[id].classList.contains("mr-pagination")) {
-      if (id == 0) {
-        mrChildCount[id].classList.add("mr-active");
-      } else {
-        mrChildCount[id].classList.remove("mr-active");
-        mrChildCount[id].style.setProperty("display", "none", "important");
-      }
+    if (id == 0) {
+      mrChildCount[id].classList.add("mr-active");
+    } else {
+      mrChildCount[id].classList.remove("mr-active");
+      mrChildCount[id].style.setProperty("display", "none", "important");
     }
   }
   if (
     !t.previousElementSibling ||
     (!t.previousElementSibling.classList.contains("mr-tabsnav") &&
       !t.nextElementSibling) ||
-    (!t.nextElementSibling.classList.contains("mr-tabsnav") &&
-      t.classList.contains("mr-navbottom") &&
-      !t.nextElementSibling) ||
-    (!t.nextElementSibling.classList.contains("mr-tabsnav") &&
-      t.classList.contains("mr-navright"))
+    !t.nextElementSibling.classList.contains("mr-tabsnav")
   ) {
     let mrtab = "";
     for (let id = 0; id < mrChildCount.length; id++) {

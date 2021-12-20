@@ -1,7 +1,7 @@
 === MR.Utils ===
 Contributors:      Marcos Rego
-Tags:              block
-Tested up to:      5.8.0
+Tags:              block, editor, utilities, frontend, toolkit, utils, dev, developer, bootstrap, tailwind, css, js, breakpoints, devices
+Tested up to:      5.8.2
 Stable tag:        0.1.0
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
@@ -12,31 +12,38 @@ Easily use Mr.Utils front-end toolkit with the block editor interface without kn
 
 Easily use Mr.Utils front-end toolkit with the block editor interface without knowing code, the classes or the functions.
 
+You can transform parent blocks (such as Columns or Groups) into components such as Tabs, Swiper or Sliders (with pagination).
+
+You can select what to do when mouse hovering a block (e.g. animations or a semi-opacity).
+
+You can also apply changes to specific devices/breakpoints: Show/hide blocks depending of the device, remove default margins/paddings, apply a global margin/padding, change font-size depending of device and more.
+
 == Installation ==
 
-This section describes how to install the plugin and get it working.
-
-e.g.
-
 1. Upload the plugin files to the `/wp-content/plugins/mrutils` directory, or install the plugin through the WordPress plugins screen directly.
-1. Activate the plugin through the 'Plugins' screen in WordPress
-
 
 == Frequently Asked Questions ==
 
-= A question that someone might have =
+= Where can I find more information about Mr.Utils? =
 
-An answer to that question.
+You can find detailed information on the documentation at: https://github.com/marcosrego-web/mr-utils/wiki
+You can also find some tips & tricks on the blog: https://marcosrego.com/blog/
+General information can be found on: https://marcosrego.com/development/mr-utils/
+
+= How do I contact the developer? =
+
+You can contact me at: https://marcosrego.com/client-area/contact/
 
 == Screenshots ==
 
-1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
-the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets
-directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png`
-(or jpg, jpeg, gif).
-2. This is the second screen shot
+1. Mr.Utils options are found inside the "Utilities" section (closed by default), to not obstruct or confuse with the editor's default options.
+2. Options divided into categories that apply to all devices.
+3. All options opened (except for breakpoints).
+4. Example of options that will apply when mouse hovering a block.
+5. Example of options that will only apply on phone devices.
+6. Using Mr.Dev.'s Framework allows to select which options will be available (reducing HTTP requests and file size).
 
 == Changelog ==
 
 = 0.1.0 =
-* Release
+* First release
