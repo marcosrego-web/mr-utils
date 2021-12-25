@@ -3762,6 +3762,10 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 													breakpoint.
 												</li>
 												<li>- Create custom breakpoints.</li>
+												<li>
+													- Toggle a offcanvas section with reusable blocks
+													using a hamburger menu.
+												</li>
 												<li>- And more framework features...</li>
 											</ul>
 											<p>

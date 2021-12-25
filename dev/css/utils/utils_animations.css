@@ -1,4 +1,26 @@
 /*(not used on breakpoints only states such as hover)*/
+@keyframes mrHide {
+  0% {
+    opacity: 1;
+  }
+  99% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes mrShow {
+  0% {
+    opacity: 0;
+  }
+  99% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 @keyframes mrFadeOut {
   0% {
     opacity: 1;
@@ -15,18 +37,6 @@
     opacity: 1;
   }
 }
-@keyframes mrSlideOutTop {
-  0% {
-    -webkit-transform: translateY(0%);
-    -ms-transform: translateY(0%);
-    transform: translateY(0%);
-  }
-  100% {
-    -webkit-transform: translateY(100vh);
-    -ms-transform: translateY(100vh);
-    transform: translateY(100vh);
-  }
-}
 @keyframes mrSlideInTop {
   0% {
     -webkit-transform: translateY(-100vh);
@@ -39,7 +49,7 @@
     transform: translateY(0%);
   }
 }
-@keyframes mrSlideOutBottom {
+@keyframes mrSlideOutTop {
   0% {
     -webkit-transform: translateY(0%);
     -ms-transform: translateY(0%);
@@ -63,16 +73,16 @@
     transform: translateY(0%);
   }
 }
-@keyframes mrSlideOutRight {
+@keyframes mrSlideOutBottom {
   0% {
-    -webkit-transform: translateX(0%);
-    -ms-transform: translateX(0%);
-    transform: translateX(0%);
+    -webkit-transform: translateY(0%);
+    -ms-transform: translateY(0%);
+    transform: translateY(0%);
   }
   100% {
-    -webkit-transform: translateX(-100vw);
-    -ms-transform: translateX(-100vw);
-    transform: translateX(-100vw);
+    -webkit-transform: translateY(100vh);
+    -ms-transform: translateY(100vh);
+    transform: translateY(100vh);
   }
 }
 @keyframes mrSlideInRight {
@@ -87,7 +97,7 @@
     transform: translateX(0%);
   }
 }
-@keyframes mrSlideOutLeft {
+@keyframes mrSlideOutRight {
   0% {
     -webkit-transform: translateX(0%);
     -ms-transform: translateX(0%);
@@ -109,6 +119,18 @@
     -webkit-transform: translateX(0%);
     -ms-transform: translateX(0%);
     transform: translateX(0%);
+  }
+}
+@keyframes mrSlideOutLeft {
+  0% {
+    -webkit-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    transform: translateX(0%);
+  }
+  100% {
+    -webkit-transform: translateX(-100vw);
+    -ms-transform: translateX(-100vw);
+    transform: translateX(-100vw);
   }
 }
 @keyframes mrScaleOut {

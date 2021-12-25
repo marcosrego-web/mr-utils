@@ -1,14 +1,17 @@
 /*(not used on breakpoints)*/
-.mr-offcanvas-container .mr-offcanvas-content {
+.mr-offcanvas-container {
+  animation: mrShow var(--transition-duration, 0.5s) forwards;
+}
+.mr-offcanvas-content {
   background-color: #fff;
   background-color: var(--offcanvas-background-color, #fff);
 }
-.mr-transitionleft .mr-offcanvas-container .mr-offcanvas-content,
-.mr-transitionright .mr-offcanvas-container .mr-offcanvas-content {
+.mr-transitionleft .mr-offcanvas-content,
+.mr-transitionright .mr-offcanvas-content {
   width: var(--offcanvas-size, 100%);
 }
-.mr-transitiontop .mr-offcanvas-container .mr-offcanvas-content,
-.mr-transitionbottom .mr-offcanvas-container .mr-offcanvas-content {
+.mr-transitiontop .mr-offcanvas-content,
+.mr-transitionbottom .mr-offcanvas-content {
   height: var(--offcanvas-size, 100%);
 }
 .mr-offcanvas-container,
@@ -28,8 +31,7 @@
   color: #000;
   color: var(--offcanvas-toggle-color, #000);
 }
-.mr-offcanvas-container .mr-offcanvas-content,
-.mr-overlay {
+.mr-offcanvas-content {
   position: fixed;
   top: 0;
   left: 0;
@@ -51,38 +53,30 @@
   height: 1.5em;
   cursor: pointer;
   z-index: 21;
-  display: none;
 }
-.mr-transitionleft .mr-offcanvas-toggle:not(.mr-active),
-.mr-transitionright .mr-offcanvas-toggle.mr-active {
+.mr-transitionright .mr-offcanvas-toggle {
   right: 1.5rem;
   right: var(--padding, 0.75rem);
   top: 1.5rem;
   top: var(--padding, 0.75rem);
 }
-.mr-transitionright .mr-offcanvas-toggle:not(.mr-active),
-.mr-transitionleft .mr-offcanvas-toggle.mr-active {
+.mr-transitionleft .mr-offcanvas-toggle {
   left: 1.5rem;
   left: var(--padding, 0.75rem);
   top: 1.5rem;
   top: var(--padding, 0.75rem);
 }
-.mr-transitionbottom .mr-offcanvas-toggle:not(.mr-active),
-.mr-transitiontop .mr-offcanvas-toggle.mr-active {
+.mr-transitiontop .mr-offcanvas-toggle {
   left: calc(50% - 1.25em);
   top: 1.5rem;
   top: var(--padding, 0.75rem);
 }
-.mr-transitiontop .mr-offcanvas-toggle:not(.mr-active),
-.mr-transitionbottom .mr-offcanvas-toggle.mr-active {
+.mr-transitionbottom .mr-offcanvas-toggle {
   left: calc(50% - 1.25em);
   bottom: var(--padding, 0.75rem);
 }
-.mr-transitionleft
-  .mr-offcanvas-container:not(.mr-active)
-  .mr-offcanvas-content,
-.mr-transitionright .mr-offcanvas-container.mr-active .mr-offcanvas-content {
-  margin-left: calc(100% - var(--offcanvas-size, 100%));
+.mr-offcanvas-toggle {
+  appearance: none;
 }
 .mr-offcanvas-toggle:before,
 .mr-offcanvas-toggle:after {
@@ -102,4 +96,67 @@
 .mr-offcanvas-toggle:after {
   height: 0.85em;
   border-bottom: 0.2em solid;
+}
+.mr-transitionright .mr-offcanvas-content {
+  margin-right: 0;
+  margin-left: auto;
+}
+.mr-transitionbottom .mr-offcanvas-content {
+  top: auto;
+}
+.mr-transitiontop
+  .mr-offcanvas-toggle:not(:checked)
+  + .mr-offcanvas-container
+  .mr-offcanvas-content {
+  -webkit-animation: mrSlideOutTop var(--transition-duration, 0.5s) forwards;
+  animation: mrSlideOutTop var(--transition-duration, 0.5s) forwards;
+}
+.mr-transitiontop
+  .mr-offcanvas-toggle:checked
+  + .mr-offcanvas-container
+  .mr-offcanvas-content {
+  -webkit-animation: mrSlideInTop var(--transition-duration, 0.5s) forwards;
+  animation: mrSlideInTop var(--transition-duration, 0.5s) forwards;
+}
+.mr-transitionright
+  .mr-offcanvas-toggle:not(:checked)
+  + .mr-offcanvas-container
+  .mr-offcanvas-content {
+  -webkit-animation: mrSlideOutRight var(--transition-duration, 0.5s) forwards;
+  animation: mrSlideOutRight var(--transition-duration, 0.5s) forwards;
+}
+.mr-transitionright
+  .mr-offcanvas-toggle:checked
+  + .mr-offcanvas-container
+  .mr-offcanvas-content {
+  -webkit-animation: mrSlideInRight var(--transition-duration, 0.5s) forwards;
+  animation: mrSlideInRight var(--transition-duration, 0.5s) forwards;
+}
+.mr-transitionbottom
+  .mr-offcanvas-toggle:not(:checked)
+  + .mr-offcanvas-container
+  .mr-offcanvas-content {
+  -webkit-animation: mrSlideOutBottom var(--transition-duration, 0.5s) forwards;
+  animation: mrSlideOutBottom var(--transition-duration, 0.5s) forwards;
+}
+.mr-transitionbottom
+  .mr-offcanvas-toggle:checked
+  + .mr-offcanvas-container
+  .mr-offcanvas-content {
+  -webkit-animation: mrSlideInBottom var(--transition-duration, 0.5s) forwards;
+  animation: mrSlideInBottom var(--transition-duration, 0.5s) forwards;
+}
+.mr-transitionleft
+  .mr-offcanvas-toggle:not(:checked)
+  + .mr-offcanvas-container
+  .mr-offcanvas-content {
+  -webkit-animation: mrSlideOutLeft var(--transition-duration, 0.5s) forwards;
+  animation: mrSlideOutLeft var(--transition-duration, 0.5s) forwards;
+}
+.mr-transitionleft
+  .mr-offcanvas-toggle:checked
+  + .mr-offcanvas-container
+  .mr-offcanvas-content {
+  -webkit-animation: mrSlideInLeft var(--transition-duration, 0.5s) forwards;
+  animation: mrSlideInLeft var(--transition-duration, 0.5s) forwards;
 }

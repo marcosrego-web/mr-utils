@@ -6,7 +6,7 @@ Stable tag:        0.1.0
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
-Easily use Mr.Utils front-end toolkit with the block editor interface without knowing code, the classes or the functions.
+Add a front-end toolkit to the block editor that allows to change device visibility, mouse hover options, animations, convert into components and more...
 
 == Description ==
 
@@ -26,9 +26,9 @@ You can also apply changes to specific devices/breakpoints: Show/hide blocks dep
 
 = Where can I find more information about Mr.Utils? =
 
-You can find detailed information on the documentation at: https://github.com/marcosrego-web/mr-utils/wiki
-You can also find some tips & tricks on the blog: https://marcosrego.com/blog/
-General information can be found on: https://marcosrego.com/development/mr-utils/
+You can find detailed information on the documentation at: [https://github.com/marcosrego-web/mr-utils/wiki](https://github.com/marcosrego-web/mr-utils/wiki)
+You can also find some tips & tricks on the blog: [https://marcosrego.com/blog/](https://marcosrego.com/blog/)
+General information can be found on: [https://marcosrego.com/development/mr-utils/](https://marcosrego.com/development/mr-utils/)
 
 = How do I contact the developer? =
 
@@ -37,13 +37,18 @@ You can contact me at: https://marcosrego.com/client-area/contact/
 == Screenshots ==
 
 1. Mr.Utils options are found inside the "Utilities" section (closed by default), to not obstruct or confuse with the editor's default options.
-2. Options divided into categories that apply to all devices.
+2. All options are divided into categories.
 3. All options opened (except for breakpoints).
 4. Example of options that will apply when mouse hovering a block.
 5. Example of options that will only apply on phone devices.
 6. Using Mr.Dev.'s Framework allows to select which options will be available (reducing HTTP requests and file size).
 
 == Changelog ==
+
+= 0.1.1 =
+* Improved offcanvas options to not rely on javascript.
+* Fixed: Missing overlay class when not using offcanvas.
+* Fixed: SlideOut animation orientation.
 
 = 0.1.0 =
 * First release
