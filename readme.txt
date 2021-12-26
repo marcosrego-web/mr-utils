@@ -47,6 +47,7 @@ You can contact me at: https://marcosrego.com/client-area/contact/
 
 = 0.1.1 =
 * Improved offcanvas options to not rely on javascript.
+* Change animation orientation (for the options Slide, Scale and Zoom) when using pagination arrows.
 * Fixed: Missing overlay class when not using offcanvas.
 * Fixed: SlideOut animation orientation.
 

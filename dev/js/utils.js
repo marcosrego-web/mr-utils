@@ -175,7 +175,6 @@ document.addEventListener("DOMContentLoaded", function () {
 /*
 DYNAMIC
 */
-
 function mrGetCookie(t) {
   if (t) {
     const e = t + "=",
@@ -636,6 +635,39 @@ function mrNext(t, e) {
     }
   }
   let n = parseInt(e.getAttribute("mr-currentpage")) + 1;
+  if (
+    e.classList.contains("mr-slide") ||
+    e.classList.contains("mr-scale") ||
+    e.classList.contains("mr-zoom")
+  ) {
+    let mrNextTimeOut = getComputedStyle(
+      document.documentElement
+    ).getPropertyValue("--transition-duration");
+    if (mrNextTimeOut) {
+      if (mrNextTimeOut.includes("ms")) {
+        mrNextTimeOut = mrNextTimeOut.replace("ms", "");
+        mrNextTimeOut = parseInt(mrNextTimeOut) + 100;
+      } else if (mrNextTimeOut.includes("s")) {
+        mrNextTimeOut = mrNextTimeOut.replace("s", "");
+        mrNextTimeOut = parseInt(mrNextTimeOut) * 1000 + 100;
+      }
+    } else {
+      mrNextTimeOut = 500 + 100;
+    }
+
+    e.classList.remove(
+      "mr-transtiontop",
+      "mr-transitionright",
+      "mr-transitionbottom",
+      "mr-transitionleft"
+    );
+    e.classList.add("mr-transitionleft");
+
+    setTimeout(function () {
+      e.classList.remove("mr-transitionleft");
+      e.classList.add("mr-transitionright");
+    }, mrNextTimeOut);
+  }
   mrLoadPage(e, n);
 }
 function mrPrev(t, e) {
@@ -653,6 +685,39 @@ function mrPrev(t, e) {
     }
   }
   let n = parseInt(e.getAttribute("mr-currentpage")) - 1;
+  if (
+    e.classList.contains("mr-slide") ||
+    e.classList.contains("mr-scale") ||
+    e.classList.contains("mr-zoom")
+  ) {
+    let mrPrevTimeOut = getComputedStyle(
+      document.documentElement
+    ).getPropertyValue("--transition-duration");
+    if (mrPrevTimeOut) {
+      if (mrPrevTimeOut.includes("ms")) {
+        mrPrevTimeOut = mrPrevTimeOut.replace("ms", "");
+        mrPrevTimeOut = parseInt(mrPrevTimeOut) + 100;
+      } else if (mrPrevTimeOut.includes("s")) {
+        mrPrevTimeOut = mrPrevTimeOut.replace("s", "");
+        mrPrevTimeOut = parseInt(mrPrevTimeOut) * 1000 + 100;
+      }
+    } else {
+      mrPrevTimeOut = 500 + 100;
+    }
+
+    e.classList.remove(
+      "mr-transtiontop",
+      "mr-transitionright",
+      "mr-transitionbottom",
+      "mr-transitionleft"
+    );
+    e.classList.add("mr-transitionright");
+
+    setTimeout(function () {
+      e.classList.remove("mr-transitionright");
+      e.classList.add("mr-transitionleft");
+    }, mrPrevTimeOut);
+  }
   mrLoadPage(e, n);
 }
 function mrSelectPage(t, e) {
@@ -670,6 +735,12 @@ function mrSelectPage(t, e) {
     }
   }
   t.addEventListener("change", function (event) {
+    e.classList.remove(
+      "mr-transtiontop",
+      "mr-transitionright",
+      "mr-transitionbottom",
+      "mr-transitionleft"
+    );
     mrLoadPage(e, event.target.value);
     event.stopPropagation();
   });
@@ -688,6 +759,12 @@ function mrRadioPage(t, e) {
       e = t.parentNode.parentNode.nextElementSibling;
     }
   }
+  e.classList.remove(
+    "mr-transtiontop",
+    "mr-transitionright",
+    "mr-transitionbottom",
+    "mr-transitionleft"
+  );
   mrLoadPage(e, t.value);
 }
 document.addEventListener("click", function (t) {

@@ -303,7 +303,7 @@
   -webkit-animation: mrScaleIn var(--transition-duration, 0.5s) forwards;
   animation: mrScaleIn var(--transition-duration, 0.5s) forwards;
 }
-.mr-transitionleft.mr-scale:not(.mr-active),
+.mr-transitionright.mr-scale:not(.mr-active),
 .mr-scaleleft:not(.mr-active),
 .mr-scaleoutright,
 .mr-transitionright.mr-scale.mr-active,
@@ -314,7 +314,7 @@
 .mr-transitionleft.mr-scale.mr-active,
 .mr-scaleleft.mr-active,
 .mr-scaleinright,
-.mr-transitionright.mr-scale:not(.mr-active),
+.mr-transitionleft.mr-scale:not(.mr-active),
 .mr-scaleright:not(.mr-active),
 .mr-scaleoutleft {
   transform-origin: left center;

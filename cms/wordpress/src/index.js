@@ -1165,6 +1165,13 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																	label: "Fade",
 																},
 																{
+																	value: (" mr-" + tab.name + "-slide").replace(
+																		"--",
+																		"-"
+																	),
+																	label: "Slide",
+																},
+																{
 																	value: (
 																		" mr-" +
 																		tab.name +
