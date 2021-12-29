@@ -25,15 +25,15 @@
 }
 
 .block-editor-block-list__layout
-  .block-editor-block-list__block[class*="mr-"][class*="perpage"]:not(.mr-visible),
+  .block-editor-block-list__block[class*="mr-"][class*="perpage"]:not(.mr-visible):not([class*="-semiopaque"]),
 .block-editor-block-list__layout
-  .block-editor-block-list__block[mr-itemsperpage]:not(.mr-visible),
+  .block-editor-block-list__block[mr-itemsperpage]:not(.mr-visible):not([class*="-semiopaque"]),
 .block-editor-block-list__layout
-  .block-editor-block-list__block.mr-tabs:not(.mr-visible),
+  .block-editor-block-list__block.mr-tabs:not(.mr-visible):not([class*="-semiopaque"]),
 .block-editor-block-list__layout
-  .block-editor-block-list__block.mr-tabsnav:not(.mr-visible),
+  .block-editor-block-list__block.mr-tabsnav:not(.mr-visible):not([class*="-semiopaque"]),
 .block-editor-block-list__layout
-  .block-editor-block-list__block[mr-component]:not(.mr-visible) {
+  .block-editor-block-list__block[mr-component]:not(.mr-visible):not([class*="-semiopaque"]) {
   opacity: 1;
   visibility: visible;
 }

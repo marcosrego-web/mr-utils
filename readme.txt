@@ -2,7 +2,7 @@
 Contributors:      Marcos Rego
 Tags:              block, editor, utilities, frontend, toolkit, utils, dev, developer, bootstrap, tailwind, css, js, breakpoints, devices
 Tested up to:      5.8.2
-Stable tag:        0.1.0
+Stable tag:        0.1.1
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -46,10 +46,13 @@ You can contact me at: https://marcosrego.com/client-area/contact/
 == Changelog ==
 
 = 0.1.1 =
+* Compatibility with Custom Utility Classes added by Mr.Dev.'s Framework.
 * Improved offcanvas options to not rely on javascript.
 * Change animation orientation (for the options Slide, Scale and Zoom) when using pagination arrows.
+* Fixed: Bug when changing back to any default option on breakpoints.
 * Fixed: Missing overlay class when not using offcanvas.
 * Fixed: SlideOut animation orientation.
+* Fixed: Semi-opacity not visible on the backend when combined with Components and Pagination.
 
 = 0.1.0 =
 * First release
