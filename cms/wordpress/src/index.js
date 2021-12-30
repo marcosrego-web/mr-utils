@@ -2024,6 +2024,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																? mrSizeOptionsphone
 																: mrSizeOptions
 														}
+														className="mr-backend-itemsize mr-backend-hascustomoption"
 														options={[
 															{
 																value: "mr-" + tab.name,
@@ -2646,6 +2647,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																		<p></p>
 																		<SelectControl
 																			label={__("Padding Top", "mr-utils")}
+																			className="mr-backend-padding mr-backend-paddingtop mr-backend-hascustomoption"
 																			value={
 																				tab.name === "hover"
 																					? mrPaddingTophover
@@ -2815,6 +2817,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 
 																		<SelectControl
 																			label={__("Padding Right", "mr-utils")}
+																			className="mr-backend-padding mr-backend-paddingright mr-backend-hascustomoption"
 																			value={
 																				tab.name === "hover"
 																					? mrPaddingRighthover
@@ -2986,6 +2989,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 
 																		<SelectControl
 																			label={__("Padding Bottom", "mr-utils")}
+																			className="mr-backend-padding mr-backend-paddingbottom mr-backend-hascustomoption"
 																			value={
 																				tab.name === "hover"
 																					? mrPaddingBottomhover
@@ -3157,6 +3161,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 
 																		<SelectControl
 																			label={__("Padding Left", "mr-utils")}
+																			className="mr-backend-padding mr-backend-paddingleft mr-backend-hascustomoption"
 																			value={
 																				tab.name === "hover"
 																					? mrPaddingLefthover
@@ -3329,6 +3334,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																		<p></p>
 																		<SelectControl
 																			label={__("Margin Top", "mr-utils")}
+																			className="mr-backend-margin mr-backend-margintop mr-backend-hascustomoption"
 																			value={
 																				tab.name === "hover"
 																					? mrMarginTophover
@@ -3498,6 +3504,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 
 																		<SelectControl
 																			label={__("Margin Right", "mr-utils")}
+																			className="mr-backend-margin mr-backend-marginright mr-backend-hascustomoption"
 																			value={
 																				tab.name === "hover"
 																					? mrMarginRighthover
@@ -3667,6 +3674,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 
 																		<SelectControl
 																			label={__("Margin Bottom", "mr-utils")}
+																			className="mr-backend-margin mr-backend-marginbottom mr-backend-hascustomoption"
 																			value={
 																				tab.name === "hover"
 																					? mrMarginBottomhover
@@ -3838,6 +3846,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 
 																		<SelectControl
 																			label={__("Margin Left", "mr-utils")}
+																			className="mr-backend-margin mr-backend-marginleft mr-backend-hascustomoption"
 																			value={
 																				tab.name === "hover"
 																					? mrMarginLefthover
@@ -4037,6 +4046,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																? mrFontSizeOptionsphone
 																: mrFontSizeOptions
 														}
+														className="mr-backend-fontsize mr-backend-hascustomoption"
 														options={[
 															{
 																value: "mr-" + tab.name,
