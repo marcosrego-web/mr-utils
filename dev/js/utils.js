@@ -1,4 +1,6 @@
-/* Components */
+/*
+COMPONENTS
+*/
 function mrTab(t, e, v) {
   if (!t.classList.contains("mr-tab")) {
     if (t.closest(".mr-tab")) {
@@ -170,7 +172,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-/* Dynamic */
+/*
+DYNAMIC
+*/
 function mrGetCookie(t) {
   if (t) {
     const e = t + "=",
@@ -378,99 +382,10 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-/* Offcanvas */
+/*
+PAGINATION
+*/
 
-function mrToggleOffCanvas() {
-  document.querySelector(".mr-offcanvas-container").classList.remove("mr-hide"),
-    document
-      .querySelector(".mr-offcanvas-container")
-      .classList.toggle("mr-active"),
-    document
-      .querySelector(".mr-offcanvas-toggle")
-      .classList.toggle("mr-active"),
-    document.querySelector("body").classList.toggle("mr-offcanvasopened"),
-    document.querySelector("body").classList.toggle("mr-noscroll"),
-    document.querySelector(
-      ".mr-offcanvas.mr-transitionright .mr-offcanvas-container:not(.mr-active)"
-    )
-      ? (document
-          .querySelector(".mr-offcanvas")
-          .classList.remove("mr-transitionright"),
-        document
-          .querySelector(".mr-offcanvas")
-          .classList.add("mr-transitionleft"))
-      : document.querySelector(
-          ".mr-offcanvas.mr-transitionleft .mr-offcanvas-container.mr-active"
-        )
-      ? (document
-          .querySelector(".mr-offcanvas")
-          .classList.remove("mr-transitionleft"),
-        document
-          .querySelector(".mr-offcanvas")
-          .classList.add("mr-transitionright"))
-      : document.querySelector(
-          ".mr-offcanvas.mr-transitionleft .mr-offcanvas-container:not(.mr-active)"
-        )
-      ? (document
-          .querySelector(".mr-offcanvas")
-          .classList.remove("mr-transitionleft"),
-        document
-          .querySelector(".mr-offcanvas")
-          .classList.add("mr-transitionright"))
-      : document.querySelector(
-          ".mr-offcanvas.mr-transitionright .mr-offcanvas-container.mr-active"
-        )
-      ? (document
-          .querySelector(".mr-offcanvas")
-          .classList.remove("mr-transitionright"),
-        document
-          .querySelector(".mr-offcanvas")
-          .classList.add("mr-transitionleft"))
-      : document.querySelector(
-          ".mr-offcanvas.mr-transitiontop .mr-offcanvas-container:not(.mr-active)"
-        )
-      ? (document
-          .querySelector(".mr-offcanvas")
-          .classList.remove("mr-transitiontop"),
-        document
-          .querySelector(".mr-offcanvas")
-          .classList.add("mr-transitionbottom"))
-      : document.querySelector(
-          ".mr-offcanvas.mr-transitionbottom .mr-offcanvas-container.mr-active"
-        )
-      ? (document
-          .querySelector(".mr-offcanvas")
-          .classList.remove("mr-transitionbottom"),
-        document
-          .querySelector(".mr-offcanvas")
-          .classList.add("mr-transitiontop"))
-      : document.querySelector(
-          ".mr-offcanvas.mr-transitionbottom .mr-offcanvas-container:not(.mr-active)"
-        )
-      ? (document
-          .querySelector(".mr-offcanvas")
-          .classList.remove("mr-transitionbottom"),
-        document
-          .querySelector(".mr-offcanvas")
-          .classList.add("mr-transitiontop"))
-      : document.querySelector(
-          ".mr-offcanvas.mr-transitiontop .mr-offcanvas-container.mr-active"
-        ) &&
-        (document
-          .querySelector(".mr-offcanvas")
-          .classList.remove("mr-transitiontop"),
-        document
-          .querySelector(".mr-offcanvas")
-          .classList.add("mr-transitionbottom"));
-}
-document.addEventListener("click", function (t) {
-  if (t.target.matches(".mr-offcanvas-toggle")) {
-    mrToggleOffCanvas();
-  }
-  t.stopPropagation();
-});
-
-/*Pagination*/
 function mrLoadPage(e, n) {
   if (n <= 0) {
     n = e.getAttribute("mr-lastpage");
@@ -720,6 +635,39 @@ function mrNext(t, e) {
     }
   }
   let n = parseInt(e.getAttribute("mr-currentpage")) + 1;
+  if (
+    e.classList.contains("mr-slide") ||
+    e.classList.contains("mr-scale") ||
+    e.classList.contains("mr-zoom")
+  ) {
+    let mrNextTimeOut = getComputedStyle(
+      document.documentElement
+    ).getPropertyValue("--transition-duration");
+    if (mrNextTimeOut) {
+      if (mrNextTimeOut.includes("ms")) {
+        mrNextTimeOut = mrNextTimeOut.replace("ms", "");
+        mrNextTimeOut = parseInt(mrNextTimeOut) + 100;
+      } else if (mrNextTimeOut.includes("s")) {
+        mrNextTimeOut = mrNextTimeOut.replace("s", "");
+        mrNextTimeOut = parseInt(mrNextTimeOut) * 1000 + 100;
+      }
+    } else {
+      mrNextTimeOut = 500 + 100;
+    }
+
+    e.classList.remove(
+      "mr-transtiontop",
+      "mr-transitionright",
+      "mr-transitionbottom",
+      "mr-transitionleft"
+    );
+    e.classList.add("mr-transitionleft");
+
+    setTimeout(function () {
+      e.classList.remove("mr-transitionleft");
+      e.classList.add("mr-transitionright");
+    }, mrNextTimeOut);
+  }
   mrLoadPage(e, n);
 }
 function mrPrev(t, e) {
@@ -737,6 +685,39 @@ function mrPrev(t, e) {
     }
   }
   let n = parseInt(e.getAttribute("mr-currentpage")) - 1;
+  if (
+    e.classList.contains("mr-slide") ||
+    e.classList.contains("mr-scale") ||
+    e.classList.contains("mr-zoom")
+  ) {
+    let mrPrevTimeOut = getComputedStyle(
+      document.documentElement
+    ).getPropertyValue("--transition-duration");
+    if (mrPrevTimeOut) {
+      if (mrPrevTimeOut.includes("ms")) {
+        mrPrevTimeOut = mrPrevTimeOut.replace("ms", "");
+        mrPrevTimeOut = parseInt(mrPrevTimeOut) + 100;
+      } else if (mrPrevTimeOut.includes("s")) {
+        mrPrevTimeOut = mrPrevTimeOut.replace("s", "");
+        mrPrevTimeOut = parseInt(mrPrevTimeOut) * 1000 + 100;
+      }
+    } else {
+      mrPrevTimeOut = 500 + 100;
+    }
+
+    e.classList.remove(
+      "mr-transtiontop",
+      "mr-transitionright",
+      "mr-transitionbottom",
+      "mr-transitionleft"
+    );
+    e.classList.add("mr-transitionright");
+
+    setTimeout(function () {
+      e.classList.remove("mr-transitionright");
+      e.classList.add("mr-transitionleft");
+    }, mrPrevTimeOut);
+  }
   mrLoadPage(e, n);
 }
 function mrSelectPage(t, e) {
@@ -754,6 +735,12 @@ function mrSelectPage(t, e) {
     }
   }
   t.addEventListener("change", function (event) {
+    e.classList.remove(
+      "mr-transtiontop",
+      "mr-transitionright",
+      "mr-transitionbottom",
+      "mr-transitionleft"
+    );
     mrLoadPage(e, event.target.value);
     event.stopPropagation();
   });
@@ -772,6 +759,12 @@ function mrRadioPage(t, e) {
       e = t.parentNode.parentNode.nextElementSibling;
     }
   }
+  e.classList.remove(
+    "mr-transtiontop",
+    "mr-transitionright",
+    "mr-transitionbottom",
+    "mr-transitionleft"
+  );
   mrLoadPage(e, t.value);
 }
 document.addEventListener("click", function (t) {

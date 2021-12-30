@@ -1,4 +1,26 @@
 /*(not used on breakpoints only states such as hover)*/
+@keyframes mrHide {
+  0% {
+    opacity: 1;
+  }
+  99% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes mrShow {
+  0% {
+    opacity: 0;
+  }
+  99% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 @keyframes mrFadeOut {
   0% {
     opacity: 1;
@@ -15,18 +37,6 @@
     opacity: 1;
   }
 }
-@keyframes mrSlideOutTop {
-  0% {
-    -webkit-transform: translateY(0%);
-    -ms-transform: translateY(0%);
-    transform: translateY(0%);
-  }
-  100% {
-    -webkit-transform: translateY(100vh);
-    -ms-transform: translateY(100vh);
-    transform: translateY(100vh);
-  }
-}
 @keyframes mrSlideInTop {
   0% {
     -webkit-transform: translateY(-100vh);
@@ -39,7 +49,7 @@
     transform: translateY(0%);
   }
 }
-@keyframes mrSlideOutBottom {
+@keyframes mrSlideOutTop {
   0% {
     -webkit-transform: translateY(0%);
     -ms-transform: translateY(0%);
@@ -63,16 +73,16 @@
     transform: translateY(0%);
   }
 }
-@keyframes mrSlideOutRight {
+@keyframes mrSlideOutBottom {
   0% {
-    -webkit-transform: translateX(0%);
-    -ms-transform: translateX(0%);
-    transform: translateX(0%);
+    -webkit-transform: translateY(0%);
+    -ms-transform: translateY(0%);
+    transform: translateY(0%);
   }
   100% {
-    -webkit-transform: translateX(-100vw);
-    -ms-transform: translateX(-100vw);
-    transform: translateX(-100vw);
+    -webkit-transform: translateY(100vh);
+    -ms-transform: translateY(100vh);
+    transform: translateY(100vh);
   }
 }
 @keyframes mrSlideInRight {
@@ -87,7 +97,7 @@
     transform: translateX(0%);
   }
 }
-@keyframes mrSlideOutLeft {
+@keyframes mrSlideOutRight {
   0% {
     -webkit-transform: translateX(0%);
     -ms-transform: translateX(0%);
@@ -109,6 +119,18 @@
     -webkit-transform: translateX(0%);
     -ms-transform: translateX(0%);
     transform: translateX(0%);
+  }
+}
+@keyframes mrSlideOutLeft {
+  0% {
+    -webkit-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    transform: translateX(0%);
+  }
+  100% {
+    -webkit-transform: translateX(-100vw);
+    -ms-transform: translateX(-100vw);
+    transform: translateX(-100vw);
   }
 }
 @keyframes mrScaleOut {
@@ -210,7 +232,7 @@
   -webkit-animation: mrSlideInBottom var(--transition-duration, 0.5s) forwards;
   animation: mrSlideInBottom var(--transition-duration, 0.5s) forwards;
 }
-.mr-transitiontop .mr-slide > *,
+.mr-transitiontop.mr-slide > *,
 .mr-slidetop > *,
 .mr-slideouttop > * {
   -webkit-animation: mrSlideOutTop 0.5s forwards;
@@ -218,7 +240,7 @@
   -webkit-animation: mrSlideOutTop var(--transition-duration, 0.5s) forwards;
   animation: mrSlideOutTop var(--transition-duration, 0.5s) forwards;
 }
-.mr-transitiontop .mr-slide.mr-active:not(.mr-inactive) > *,
+.mr-transitiontop.mr-slide.mr-active:not(.mr-inactive) > *,
 .mr-slidetop.mr-active:not(.mr-inactive) > *,
 .mr-slideintop > * {
   -webkit-animation: mrSlideInTop 0.5s forwards;
@@ -226,7 +248,7 @@
   -webkit-animation: mrSlideInTop var(--transition-duration, 0.5s) forwards;
   animation: mrSlideInTop var(--transition-duration, 0.5s) forwards;
 }
-.mr-transitionright .mr-slide > *,
+.mr-transitionright.mr-slide > *,
 .mr-slideright > *,
 .mr-slideoutright > * {
   -webkit-animation: mrSlideOutRight 0.5s forwards;
@@ -234,7 +256,7 @@
   -webkit-animation: mrSlideOutRight var(--transition-duration, 0.5s) forwards;
   animation: mrSlideOutRight var(--transition-duration, 0.5s) forwards;
 }
-.mr-transitionright .mr-slide.mr-active:not(.mr-inactive) > *,
+.mr-transitionright.mr-slide.mr-active:not(.mr-inactive) > *,
 .mr-slideright.mr-active:not(.mr-inactive) > *,
 .mr-slideinright > * {
   -webkit-animation: mrSlideInRight 0.5s forwards;
@@ -242,7 +264,7 @@
   -webkit-animation: mrSlideInRight var(--transition-duration, 0.5s) forwards;
   animation: mrSlideInRight var(--transition-duration, 0.5s) forwards;
 }
-.mr-transitionleft .mr-slide > *,
+.mr-transitionleft.mr-slide > *,
 .mr-slideleft > *,
 .mr-slideoutleft > * {
   -webkit-animation: mrSlideOutLeft 0.5s forwards;
@@ -250,7 +272,7 @@
   -webkit-animation: mrSlideOutLeft var(--transition-duration, 0.5s) forwards;
   animation: mrSlideOutLeft var(--transition-duration, 0.5s) forwards;
 }
-.mr-transitionleft .mr-slide.mr-active:not(.mr-inactive) > *,
+.mr-transitionleft.mr-slide.mr-active:not(.mr-inactive) > *,
 .mr-slideleft.mr-active:not(.mr-inactive) > *,
 .mr-slideinleft > * {
   -webkit-animation: mrSlideInLeft 0.5s forwards;
@@ -281,18 +303,18 @@
   -webkit-animation: mrScaleIn var(--transition-duration, 0.5s) forwards;
   animation: mrScaleIn var(--transition-duration, 0.5s) forwards;
 }
-.mr-transitionleft .mr-scale:not(.mr-active),
+.mr-transitionright.mr-scale:not(.mr-active),
 .mr-scaleleft:not(.mr-active),
 .mr-scaleoutright,
-.mr-transitionright .mr-scale.mr-active,
+.mr-transitionright.mr-scale.mr-active,
 .mr-scaleright.mr-active,
 .mr-scaleoutleft {
   transform-origin: right center;
 }
-.mr-transitionleft .mr-scale.mr-active,
+.mr-transitionleft.mr-scale.mr-active,
 .mr-scaleleft.mr-active,
 .mr-scaleinright,
-.mr-transitionright .mr-scale:not(.mr-active),
+.mr-transitionleft.mr-scale:not(.mr-active),
 .mr-scaleright:not(.mr-active),
 .mr-scaleoutleft {
   transform-origin: left center;
@@ -320,18 +342,18 @@
   -webkit-animation: mrZoomIn var(--transition-duration, 0.5s) forwards;
   animation: mrZoomIn var(--transition-duration, 0.5s) forwards;
 }
-.mr-transitionleft .mr-zoom.mr-active,
+.mr-transitionleft.mr-zoom.mr-active,
 .mr-zoomleft.mr-active,
 .mr-zoominleft,
-.mr-transitionleft .mr-zoom:not(.mr-active),
+.mr-transitionleft.mr-zoom:not(.mr-active),
 .mr-zoomleft:not(.mr-active),
 .mr-zoomoutleft {
   transform-origin: left center;
 }
-.mr-transitionright .mr-zoom.mr-active,
+.mr-transitionright.mr-zoom.mr-active,
 .mr-zoomright.mr-active,
 .mr-zoomoutright,
-.mr-transitionright .mr-zoom:not(.mr-active),
+.mr-transitionright.mr-zoom:not(.mr-active),
 .mr-zoomright:not(.mr-active),
 .mr-zoominright {
   transform-origin: right center;
