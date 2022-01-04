@@ -9,25 +9,32 @@
 }
 .mr-phone-fontsize7,
 .mr-phone-largefontsize {
+  font-size: 2rem;
   font-size: var(--font-size-7, 2rem);
 }
 .mr-phone-fontsize6 {
+  font-size: 1.125rem;
   font-size: var(--font-size-6, 1.125rem);
 }
 .mr-phone-fontsize5,
 .mr-phone-mediumfontsize {
+  font-size: 1.17rem;
   font-size: var(--font-size-5, 1.17rem);
 }
 .mr-phone-fontsize4 {
+  font-size: 1rem;
   font-size: var(--font-size-4, 1rem);
 }
 .mr-phone-fontsize3 {
+  font-size: 0.875rem;
   font-size: var(--font-size-3, 0.875rem);
 }
 .mr-phone-fontsize2 {
+  font-size: 0.75rem;
   font-size: var(--font-size-2, 0.75rem);
 }
 .mr-phone-fontsize1,
 .mr-phone-smallfontsize {
+  font-size: 0.625rem;
   font-size: var(--font-size-1, 0.625rem);
 }

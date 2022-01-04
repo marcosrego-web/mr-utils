@@ -1,3 +1,16 @@
+/*(start not used on breakpoints)*/
+.mr-font1 {
+  font-family: "TimesNewRoman,Times New Roman,Times,Baskerville,Georgia,serif";
+  font-family: var(
+    --font-1,
+    "TimesNewRoman,Times New Roman,Times,Baskerville,Georgia,serif"
+  );
+}
+.mr-font2 {
+  font-family: "Arial,Helvetica Neue,Helvetica";
+  font-family: var(--font-2, "Arial,Helvetica Neue,Helvetica");
+}
+/*(end not used on breakpoints)*/
 .mr-alignleft {
   text-align: left;
 }
@@ -9,25 +22,32 @@
 }
 .mr-fontsize7,
 .mr-largefontsize {
+  font-size: 2rem;
   font-size: var(--font-size-7, 2rem);
 }
 .mr-fontsize6 {
+  font-size: 1.125rem;
   font-size: var(--font-size-6, 1.125rem);
 }
 .mr-fontsize5,
 .mr-mediumfontsize {
+  font-size: 1.17rem;
   font-size: var(--font-size-5, 1.17rem);
 }
 .mr-fontsize4 {
+  font-size: 1rem;
   font-size: var(--font-size-4, 1rem);
 }
 .mr-fontsize3 {
+  font-size: 0.875rem;
   font-size: var(--font-size-3, 0.875rem);
 }
 .mr-fontsize2 {
+  font-size: 0.75rem;
   font-size: var(--font-size-2, 0.75rem);
 }
 .mr-fontsize1,
 .mr-smallfontsize {
+  font-size: 0.625rem;
   font-size: var(--font-size-1, 0.625rem);
 }

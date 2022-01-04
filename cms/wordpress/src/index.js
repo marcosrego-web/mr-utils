@@ -897,6 +897,14 @@ function mrAddAttributes(settings) {
 				type: "string",
 				default: "",
 			},
+			mrFontFamily: {
+				type: "string",
+				default: "mr-",
+			},
+			mrCustomFontFamily: {
+				type: "string",
+				default: "",
+			},
 			mrFontSizeOptions: {
 				type: "string",
 				default: "mr-",
@@ -1208,6 +1216,8 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 			mrCustomSizelaptop,
 			mrCustomSizetablet,
 			mrCustomSizephone,
+			mrFontFamily,
+			mrCustomFontFamily,
 			mrFontSizeOptions,
 			mrFontSizeOptionshover,
 			mrFontSizeOptionsdesktop,
@@ -2028,7 +2038,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 														options={[
 															{
 																value: "mr-" + tab.name,
-																label: "Use a default " + tab.name + " class",
+																label: "Default " + tab.name + " class",
 															},
 															{
 																value: (
@@ -2036,7 +2046,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																	tab.name +
 																	"-sizeoptions"
 																).replace("--", "-"),
-																label: "Use a custom " + tab.name + " class",
+																label: "Custom " + tab.name + " class",
 															},
 														]}
 														onChange={(val) =>
@@ -2761,7 +2771,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																						: mrCustomPaddingTop
 																				}
 																				type="text"
-																				className="mr-backend-custominput mr-backend-customptop"
+																				className="mr-backend-custominput mr-backend-custompadding mr-backend-customptop"
 																				placeHolder={(
 																					"mr-" +
 																					tab.name +
@@ -2933,7 +2943,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																						: mrCustomPaddingRight
 																				}
 																				type="text"
-																				className="mr-backend-custominput mr-backend-customptop"
+																				className="mr-backend-custominput mr-backend-custompadding mr-backend-custompright"
 																				placeHolder={(
 																					"mr-" +
 																					tab.name +
@@ -3105,7 +3115,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																						: mrCustomPaddingBottom
 																				}
 																				type="text"
-																				className="mr-backend-custominput mr-backend-customptop"
+																				className="mr-backend-custominput mr-backend-custompadding mr-backend-custompbottom"
 																				placeHolder={(
 																					"mr-" +
 																					tab.name +
@@ -3275,7 +3285,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																						: mrCustomPaddingLeft
 																				}
 																				type="text"
-																				className="mr-backend-custominput mr-backend-customptop"
+																				className="mr-backend-custominput mr-backend-custompadding mr-backend-custompleft"
 																				placeHolder={(
 																					"mr-" +
 																					tab.name +
@@ -3448,7 +3458,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																						: mrCustomMarginTop
 																				}
 																				type="text"
-																				className="mr-backend-custominput mr-backend-customptop"
+																				className="mr-backend-custominput mr-backend-custommargin mr-backend-custommtop"
 																				placeHolder={(
 																					"mr-" +
 																					tab.name +
@@ -3618,7 +3628,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																						: mrCustomMarginRight
 																				}
 																				type="text"
-																				className="mr-backend-custominput mr-backend-customptop"
+																				className="mr-backend-custominput mr-backend-custommargin mr-backend-custommright"
 																				placeHolder={(
 																					"mr-" +
 																					tab.name +
@@ -3790,7 +3800,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																						: mrCustomMarginBottom
 																				}
 																				type="text"
-																				className="mr-backend-custominput mr-backend-customptop"
+																				className="mr-backend-custominput mr-backend-custommargin mr-backend-custommbottom"
 																				placeHolder={(
 																					"mr-" +
 																					tab.name +
@@ -3960,7 +3970,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																						: mrCustomMarginLeft
 																				}
 																				type="text"
-																				className="mr-backend-custominput mr-backend-customptop"
+																				className="mr-backend-custominput mr-backend-custommargin mr-backend-custommleft"
 																				placeHolder={(
 																					"mr-" +
 																					tab.name +
@@ -4031,6 +4041,80 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 															  "_text"
 													}
 												>
+													{tab.name === "" ? (
+														<SelectControl
+															label={__("Font family", "mr-utils")}
+															className="mr-backend-font mr-backend-hascustomoption"
+															value={mrFontFamily}
+															options={[
+																{
+																	value: "mr-",
+																	label: "Default",
+																},
+																{
+																	value: " mr-headingfont",
+																	label: "Heading font class",
+																},
+																{
+																	value: " mr-textfont",
+																	label: "Text font class",
+																},
+																{
+																	value: " mr-customfont",
+																	label: "Custom font class",
+																},
+															]}
+															onChange={(val) =>
+																setAttributes({
+																	mrFontFamily:
+																		val !== undefined ? val : mrFontFamily,
+																})
+															}
+															help={
+																!mrFontFamily.includes("-customfont") &&
+																mrFontFamily.includes("-headingfont")
+																	? "var(--heading-font) = " +
+																	  getComputedStyle(
+																			document.documentElement
+																	  ).getPropertyValue("--heading-font")
+																	: !mrFontFamily.includes("-customfont") &&
+																	  mrFontFamily.includes("-textfont")
+																	? "var(--text-font) = " +
+																	  getComputedStyle(
+																			document.documentElement
+																	  ).getPropertyValue("--text-font")
+																	: ""
+															}
+														/>
+													) : (
+														""
+													)}
+
+													{tab.name === "" &&
+													mrFontFamily.includes("custom") ? (
+														<TextControl
+															label={__("", "mr-utils")}
+															value={mrCustomFontFamily}
+															type="text"
+															className="mr-backend-custominput mr-backend-customfontfamily"
+															placeHolder={"mr-headingfont"}
+															list={"mrDevUtilsClasses_fontfamily".replace(
+																"__",
+																"_"
+															)}
+															onChange={(val) =>
+																setAttributes({
+																	mrCustomFontFamily:
+																		val !== undefined
+																			? val
+																			: mrCustomFontFamily,
+																})
+															}
+														/>
+													) : (
+														""
+													)}
+
 													<SelectControl
 														label={__("Font size", "mr-utils")}
 														value={
@@ -4050,7 +4134,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 														options={[
 															{
 																value: "mr-" + tab.name,
-																label: "Use a default " + tab.name + " class",
+																label: "Default " + tab.name + " class",
 															},
 															{
 																value: (
@@ -4058,7 +4142,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																	tab.name +
 																	"-fontsizeoptions"
 																).replace("--", "-"),
-																label: "Use a custom " + tab.name + " class",
+																label: "Custom " + tab.name + " class",
 															},
 														]}
 														onChange={(val) =>
@@ -5309,6 +5393,8 @@ const mrApplyWrapperExtraClass = createHigherOrderComponent(
 				mrCustomSizelaptop,
 				mrCustomSizetablet,
 				mrCustomSizephone,
+				mrFontFamily,
+				mrCustomFontFamily,
 				mrFontSizeOptions,
 				mrFontSizeOptionshover,
 				mrFontSizeOptionsdesktop,
@@ -5385,6 +5471,16 @@ const mrApplyWrapperExtraClass = createHigherOrderComponent(
 			}
 
 			if (
+				mrFontFamily &&
+				mrFontFamily.includes("-customfont") &&
+				mrCustomFontFamily
+			) {
+				mrClassNames = mrClassNames + " " + mrCustomFontFamily;
+			} else if (mrFontFamily) {
+				mrClassNames = mrClassNames + " " + mrFontFamily;
+			}
+
+			if (
 				!mrFontSizeOptions ||
 				!mrFontSizeOptions.includes("-fontsizeoptions")
 			) {
@@ -5445,7 +5541,8 @@ const mrApplyWrapperExtraClass = createHigherOrderComponent(
 					mrAttrValue !== "mr-phone" &&
 					!mrAttr.includes("mrCustom") &&
 					!mrAttr.includes("mrFontSize") &&
-					!mrAttr.includes("mrSize")
+					!mrAttr.includes("mrSize") &&
+					!mrAttr.includes("mrFontFamily")
 				) {
 					if (mrAttr == "mrPerPage" && mrAttrValue) {
 						if (mrAttrValue > 0) {
@@ -5818,6 +5915,8 @@ function mrApplyExtraClass(extraProps, blockType, attributes) {
 		mrCustomSizelaptop,
 		mrCustomSizetablet,
 		mrCustomSizephone,
+		mrFontFamily,
+		mrCustomFontFamily,
 		mrFontSizeOptions,
 		mrFontSizeOptionshover,
 		mrFontSizeOptionsdesktop,
@@ -5896,6 +5995,16 @@ function mrApplyExtraClass(extraProps, blockType, attributes) {
 		}
 	}
 
+	if (
+		mrFontFamily &&
+		mrFontFamily.includes("-customfont") &&
+		mrCustomFontFamily
+	) {
+		mrClassNames = mrClassNames + " " + mrCustomFontFamily;
+	} else if (mrFontFamily) {
+		mrClassNames = mrClassNames + " " + mrFontFamily;
+	}
+
 	if (!mrFontSizeOptions || !mrFontSizeOptions.includes("-fontsizeoptions")) {
 		if (mrFontSize) {
 			mrClassNames = mrClassNames + " mr-fontsize" + mrFontSize;
@@ -5951,7 +6060,9 @@ function mrApplyExtraClass(extraProps, blockType, attributes) {
 				mrAttrValue !== "mr-tablet" &&
 				mrAttrValue !== "mr-phone" &&
 				!mrAttr.includes("mrCustom") &&
-				!mrAttr.includes("mrFontSize")
+				!mrAttr.includes("mrFontSize") &&
+				!mrAttr.includes("mrSize") &&
+				!mrAttr.includes("mrFontFamily")
 			) {
 				if (mrAttr == "mrPerPage" && mrAttrValue) {
 					if (mrAttrValue > 0) {

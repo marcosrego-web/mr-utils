@@ -9,25 +9,32 @@
 }
 .mr-portrait-fontsize7,
 .mr-portrait-largefontsize {
+  font-size: 2rem;
   font-size: var(--font-size-7, 2rem);
 }
 .mr-portrait-fontsize6 {
+  font-size: 1.125rem;
   font-size: var(--font-size-6, 1.125rem);
 }
 .mr-portrait-fontsize5,
 .mr-portrait-mediumfontsize {
+  font-size: 1.17rem;
   font-size: var(--font-size-5, 1.17rem);
 }
 .mr-portrait-fontsize4 {
+  font-size: 1rem;
   font-size: var(--font-size-4, 1rem);
 }
 .mr-portrait-fontsize3 {
+  font-size: 0.875rem;
   font-size: var(--font-size-3, 0.875rem);
 }
 .mr-portrait-fontsize2 {
+  font-size: 0.75rem;
   font-size: var(--font-size-2, 0.75rem);
 }
 .mr-portrait-fontsize1,
 .mr-portrait-smallfontsize {
+  font-size: 0.625rem;
   font-size: var(--font-size-1, 0.625rem);
 }
