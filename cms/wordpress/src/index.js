@@ -5476,7 +5476,7 @@ const mrApplyWrapperExtraClass = createHigherOrderComponent(
 				mrCustomFontFamily
 			) {
 				mrClassNames = mrClassNames + " " + mrCustomFontFamily;
-			} else if (mrFontFamily) {
+			} else if (mrFontFamily && mrFontFamily !== "mr-") {
 				mrClassNames = mrClassNames + " " + mrFontFamily;
 			}
 
@@ -6001,7 +6001,7 @@ function mrApplyExtraClass(extraProps, blockType, attributes) {
 		mrCustomFontFamily
 	) {
 		mrClassNames = mrClassNames + " " + mrCustomFontFamily;
-	} else if (mrFontFamily) {
+	} else if (mrFontFamily && mrFontFamily !== "mr-") {
 		mrClassNames = mrClassNames + " " + mrFontFamily;
 	}
 
