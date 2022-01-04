@@ -4052,12 +4052,12 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																	label: "Default",
 																},
 																{
-																	value: " mr-headingfont",
-																	label: "Heading font class",
+																	value: " mr-font1",
+																	label: "Font 1 class",
 																},
 																{
-																	value: " mr-textfont",
-																	label: "Text font class",
+																	value: " mr-font2",
+																	label: "Font 2 class",
 																},
 																{
 																	value: " mr-customfont",
@@ -4072,17 +4072,17 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 															}
 															help={
 																!mrFontFamily.includes("-customfont") &&
-																mrFontFamily.includes("-headingfont")
-																	? "var(--heading-font) = " +
+																mrFontFamily.includes("-font1")
+																	? "var(--font-1) = " +
 																	  getComputedStyle(
 																			document.documentElement
-																	  ).getPropertyValue("--heading-font")
+																	  ).getPropertyValue("--font-1")
 																	: !mrFontFamily.includes("-customfont") &&
-																	  mrFontFamily.includes("-textfont")
-																	? "var(--text-font) = " +
+																	  mrFontFamily.includes("-font2")
+																	? "var(--font-2) = " +
 																	  getComputedStyle(
 																			document.documentElement
-																	  ).getPropertyValue("--text-font")
+																	  ).getPropertyValue("--font-2")
 																	: ""
 															}
 														/>
@@ -4097,7 +4097,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 															value={mrCustomFontFamily}
 															type="text"
 															className="mr-backend-custominput mr-backend-customfontfamily"
-															placeHolder={"mr-headingfont"}
+															placeHolder={"mr-font1"}
 															list={"mrDevUtilsClasses_fontfamily".replace(
 																"__",
 																"_"
