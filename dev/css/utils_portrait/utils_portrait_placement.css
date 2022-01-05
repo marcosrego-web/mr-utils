@@ -25,12 +25,17 @@
 }
 .mr-portrait-top {
   top: 0;
-  top: var(--top-offset, 0);
   bottom: auto;
+}
+.mr-portrait-offsettop {
+  top: var(--offset, 0);
 }
 .mr-portrait-right {
   right: 0;
   left: auto;
+}
+.mr-portrait-offsetright {
+  right: var(--offset, 0);
 }
 .mr-portrait-middle {
   align-items: center;
@@ -40,6 +45,9 @@
 .mr-portrait-left {
   left: 0;
   right: auto;
+}
+.mr-portrait-offsetleft {
+  left: var(--offset, 0);
 }
 .mr-portrait-floatleft {
   float: left;
@@ -54,43 +62,45 @@
 }
 .mr-portrait-bottom {
   bottom: 0;
-  bottom: var(--bottom-offset, 0);
   top: auto;
+}
+.mr-portrait-offsetbottom {
+  bottom: var(--offset, 0);
 }
 .mr-portrait-baseline {
   align-items: baseline;
   vertical-align: baseline;
 }
-.mr-portrait-offsettop:not(.mr-portrait-offsetleft):not(.mr-portrait-offsetright) {
-  transform: translateY(calc(0 - var(--element-offset, 100%)));
+.mr-portrait-offsetelementtop:not(.mr-portrait-offsetelementleft):not(.mr-portrait-offsetelementright) {
+  transform: translateY(calc(0 - var(--offset-element, 100%)));
 }
-.mr-portrait-offsettop.mr-portrait-offsetleft {
+.mr-portrait-offsetelementtop.mr-portrait-offsetelementleft {
   transform: translate(
-    calc(0 - var(--element-offset, 100%)),
-    calc(0 - var(--element-offset, 100%))
+    calc(0 - var(--offset-element, 100%)),
+    calc(0 - var(--offset-element, 100%))
   );
 }
-.mr-portrait-offsettop.mr-portrait-offsetright {
+.mr-portrait-offsetelementtop.mr-portrait-offsetelementright {
   transform: translate(
-    var(--element-offset, 100%),
-    calc(0 - var(--element-offset, 100%))
+    var(--offset-element, 100%),
+    calc(0 - var(--offset-element, 100%))
   );
 }
-.mr-portrait-offsetright:not(.mr-portrait-offsettop):not(.mr-portrait-offsetbottom) {
-  transform: translateX(var(--element-offset, 100%));
+.mr-portrait-offsetelementright:not(.mr-portrait-offsetelementtop):not(.mr-portrait-offsetelementbottom) {
+  transform: translateX(var(--offset-element, 100%));
 }
-.mr-portrait-offsetbottom:not(.mr-portrait-offsetleft):not(.mr-portrait-offsetright) {
-  transform: translateY(var(--element-offset, 100%));
+.mr-portrait-offsetelementbottom:not(.mr-portrait-offsetelementleft):not(.mr-portrait-offsetelementright) {
+  transform: translateY(var(--offset-element, 100%));
 }
-.mr-portrait-offsetbottom.mr-portrait-offsetleft {
-  transform: translate(calc(0 - var(--element-offset, 100%)), 100%);
+.mr-portrait-offsetelementbottom.mr-portrait-offsetelementleft {
+  transform: translate(calc(0 - var(--offset-element, 100%)), 100%);
 }
-.mr-portrait-offsetbottom.mr-portrait-offsetright {
+.mr-portrait-offsetelementbottom.mr-portrait-offsetelementright {
   transform: translate(
-    var(--element-offset, 100%),
-    var(--element-offset, 100%)
+    var(--offset-element, 100%),
+    var(--offset-element, 100%)
   );
 }
-.mr-portrait-offsetleft:not(.mr-portrait-offsettop):not(.mr-portrait-offsetbottom) {
-  transform: translateX(calc(0 - var(--element-offset, 100%)));
+.mr-portrait-offsetelementleft:not(.mr-portrait-offsetelementtop):not(.mr-portrait-offsetelementbottom) {
+  transform: translateX(calc(0 - var(--offset-element, 100%)));
 }

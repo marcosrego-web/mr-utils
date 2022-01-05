@@ -4864,6 +4864,22 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																		value: (
 																			" mr-" +
 																			tab.name +
+																			"-offsetelementtop"
+																		).replace("--", "-"),
+																		label: "Element Top",
+																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-offsetelementbottom"
+																		).replace("--", "-"),
+																		label: "Element Bottom",
+																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
 																			"-offsetbottom"
 																		).replace("--", "-"),
 																		label: "Bottom",
@@ -4925,6 +4941,22 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																			"-offsetleft"
 																		).replace("--", "-"),
 																		label: "Left",
+																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-offsetelementleft"
+																		).replace("--", "-"),
+																		label: "Element Left",
+																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-offsetelementright"
+																		).replace("--", "-"),
+																		label: "Element Right",
 																	},
 																	{
 																		value: (

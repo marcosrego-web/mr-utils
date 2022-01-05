@@ -25,12 +25,17 @@
 }
 .mr-phone-top {
   top: 0;
-  top: var(--top-offset, 0);
   bottom: auto;
+}
+.mr-phone-offsettop {
+  top: var(--offset, 0);
 }
 .mr-phone-right {
   right: 0;
   left: auto;
+}
+.mr-phone-offsetright {
+  right: var(--offset, 0);
 }
 .mr-phone-middle {
   align-items: center;
@@ -40,6 +45,9 @@
 .mr-phone-left {
   left: 0;
   right: auto;
+}
+.mr-phone-offsetleft {
+  left: var(--offset, 0);
 }
 .mr-phone-floatleft {
   float: left;
@@ -54,43 +62,45 @@
 }
 .mr-phone-bottom {
   bottom: 0;
-  bottom: var(--bottom-offset, 0);
   top: auto;
+}
+.mr-phone-offsetbottom {
+  bottom: var(--offset, 0);
 }
 .mr-phone-baseline {
   align-items: baseline;
   vertical-align: baseline;
 }
-.mr-phone-offsettop:not(.mr-phone-offsetleft):not(.mr-phone-offsetright) {
-  transform: translateY(calc(0 - var(--element-offset, 100%)));
+.mr-phone-offsetelementtop:not(.mr-phone-offsetelementleft):not(.mr-phone-offsetelementright) {
+  transform: translateY(calc(0 - var(--offset-element, 100%)));
 }
-.mr-phone-offsettop.mr-phone-offsetleft {
+.mr-phone-offsetelementtop.mr-phone-offsetelementleft {
   transform: translate(
-    calc(0 - var(--element-offset, 100%)),
-    calc(0 - var(--element-offset, 100%))
+    calc(0 - var(--offset-element, 100%)),
+    calc(0 - var(--offset-element, 100%))
   );
 }
-.mr-phone-offsettop.mr-phone-offsetright {
+.mr-phone-offsetelementtop.mr-phone-offsetelementright {
   transform: translate(
-    var(--element-offset, 100%),
-    calc(0 - var(--element-offset, 100%))
+    var(--offset-element, 100%),
+    calc(0 - var(--offset-element, 100%))
   );
 }
-.mr-phone-offsetright:not(.mr-phone-offsettop):not(.mr-phone-offsetbottom) {
-  transform: translateX(var(--element-offset, 100%));
+.mr-phone-offsetelementright:not(.mr-phone-offsetelementtop):not(.mr-phone-offsetelementbottom) {
+  transform: translateX(var(--offset-element, 100%));
 }
-.mr-phone-offsetbottom:not(.mr-phone-offsetleft):not(.mr-phone-offsetright) {
-  transform: translateY(var(--element-offset, 100%));
+.mr-phone-offsetelementbottom:not(.mr-phone-offsetelementleft):not(.mr-phone-offsetelementright) {
+  transform: translateY(var(--offset-element, 100%));
 }
-.mr-phone-offsetbottom.mr-phone-offsetleft {
-  transform: translate(calc(0 - var(--element-offset, 100%)), 100%);
+.mr-phone-offsetelementbottom.mr-phone-offsetelementleft {
+  transform: translate(calc(0 - var(--offset-element, 100%)), 100%);
 }
-.mr-phone-offsetbottom.mr-phone-offsetright {
+.mr-phone-offsetelementbottom.mr-phone-offsetelementright {
   transform: translate(
-    var(--element-offset, 100%),
-    var(--element-offset, 100%)
+    var(--offset-element, 100%),
+    var(--offset-element, 100%)
   );
 }
-.mr-phone-offsetleft:not(.mr-phone-offsettop):not(.mr-phone-offsetbottom) {
-  transform: translateX(calc(0 - var(--element-offset, 100%)));
+.mr-phone-offsetelementleft:not(.mr-phone-offsetelementtop):not(.mr-phone-offsetelementbottom) {
+  transform: translateX(calc(0 - var(--offset-element, 100%)));
 }

@@ -49,7 +49,7 @@ You can contact me at: [https://marcosrego.com/client-area/contact/](https://mar
 = 0.1.2 =
 * Added font-family options (also compatible with custom utility classes added by Mr.Dev.'s Framework).
 * Toolkit: Improvements to offcanvas.
-* Toolkit: Added offset and element-offset variables.
+* Toolkit: Added offset and offset-element classes and variables.
 
 = 0.1.1 =
 * Compatibility with Custom Utility Classes added by Mr.Dev.'s Framework.

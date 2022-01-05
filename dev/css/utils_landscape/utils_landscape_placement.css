@@ -25,12 +25,17 @@
 }
 .mr-landscape-top {
   top: 0;
-  top: var(--top-offset, 0);
   bottom: auto;
+}
+.mr-landscape-offsettop {
+  top: var(--offset, 0);
 }
 .mr-landscape-right {
   right: 0;
   left: auto;
+}
+.mr-landscape-offsetright {
+  right: var(--offset, 0);
 }
 .mr-landscape-middle {
   align-items: center;
@@ -40,6 +45,9 @@
 .mr-landscape-left {
   left: 0;
   right: auto;
+}
+.mr-landscape-offsetleft {
+  left: var(--offset, 0);
 }
 .mr-landscape-floatleft {
   float: left;
@@ -54,43 +62,45 @@
 }
 .mr-landscape-bottom {
   bottom: 0;
-  bottom: var(--bottom-offset, 0);
   top: auto;
+}
+.mr-landscape-offsetbottom {
+  bottom: var(--offset, 0);
 }
 .mr-landscape-baseline {
   align-items: baseline;
   vertical-align: baseline;
 }
-.mr-landscape-offsettop:not(.mr-landscape-offsetleft):not(.mr-landscape-offsetright) {
-  transform: translateY(calc(0 - var(--element-offset, 100%)));
+.mr-landscape-offsetelementtop:not(.mr-landscape-offsetelementleft):not(.mr-landscape-offsetelementright) {
+  transform: translateY(calc(0 - var(--offset-element, 100%)));
 }
-.mr-landscape-offsettop.mr-landscape-offsetleft {
+.mr-landscape-offsetelementtop.mr-landscape-offsetelementleft {
   transform: translate(
-    calc(0 - var(--element-offset, 100%)),
-    calc(0 - var(--element-offset, 100%))
+    calc(0 - var(--offset-element, 100%)),
+    calc(0 - var(--offset-element, 100%))
   );
 }
-.mr-landscape-offsettop.mr-landscape-offsetright {
+.mr-landscape-offsetelementtop.mr-landscape-offsetelementright {
   transform: translate(
-    var(--element-offset, 100%),
-    calc(0 - var(--element-offset, 100%))
+    var(--offset-element, 100%),
+    calc(0 - var(--offset-element, 100%))
   );
 }
-.mr-landscape-offsetright:not(.mr-landscape-offsettop):not(.mr-landscape-offsetbottom) {
-  transform: translateX(var(--element-offset, 100%));
+.mr-landscape-offsetelementright:not(.mr-landscape-offsetelementtop):not(.mr-landscape-offsetelementbottom) {
+  transform: translateX(var(--offset-element, 100%));
 }
-.mr-landscape-offsetbottom:not(.mr-landscape-offsetleft):not(.mr-landscape-offsetright) {
-  transform: translateY(var(--element-offset, 100%));
+.mr-landscape-offsetelementbottom:not(.mr-landscape-offsetelementleft):not(.mr-landscape-offsetelementright) {
+  transform: translateY(var(--offset-element, 100%));
 }
-.mr-landscape-offsetbottom.mr-landscape-offsetleft {
-  transform: translate(calc(0 - var(--element-offset, 100%)), 100%);
+.mr-landscape-offsetelementbottom.mr-landscape-offsetelementleft {
+  transform: translate(calc(0 - var(--offset-element, 100%)), 100%);
 }
-.mr-landscape-offsetbottom.mr-landscape-offsetright {
+.mr-landscape-offsetelementbottom.mr-landscape-offsetelementright {
   transform: translate(
-    var(--element-offset, 100%),
-    var(--element-offset, 100%)
+    var(--offset-element, 100%),
+    var(--offset-element, 100%)
   );
 }
-.mr-landscape-offsetleft:not(.mr-landscape-offsettop):not(.mr-landscape-offsetbottom) {
-  transform: translateX(calc(0 - var(--element-offset, 100%)));
+.mr-landscape-offsetelementleft:not(.mr-landscape-offsetelementtop):not(.mr-landscape-offsetelementbottom) {
+  transform: translateX(calc(0 - var(--offset-element, 100%)));
 }
