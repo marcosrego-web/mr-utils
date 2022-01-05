@@ -6,12 +6,12 @@
 }
 .mr-phone-fixed {
   position: fixed;
-  z-index: 2;
+  z-index: 3;
 }
 .mr-phone-sticky {
   position: -webkit-sticky;
   position: sticky;
-  z-index: 2;
+  z-index: 3;
 }
 .mr-phone-aligntop {
   vertical-align: top;

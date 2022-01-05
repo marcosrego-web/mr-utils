@@ -6,12 +6,12 @@
 }
 .mr-portrait-fixed {
   position: fixed;
-  z-index: 2;
+  z-index: 3;
 }
 .mr-portrait-sticky {
   position: -webkit-sticky;
   position: sticky;
-  z-index: 2;
+  z-index: 3;
 }
 .mr-portrait-aligntop {
   vertical-align: top;

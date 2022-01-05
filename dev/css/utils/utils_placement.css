@@ -6,12 +6,12 @@
 }
 .mr-fixed {
   position: fixed;
-  z-index: 2;
+  z-index: 3;
 }
 .mr-sticky {
   position: -webkit-sticky;
   position: sticky;
-  z-index: 2;
+  z-index: 3;
 }
 .mr-aligntop {
   vertical-align: top;
