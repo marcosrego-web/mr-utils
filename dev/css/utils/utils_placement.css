@@ -6,10 +6,12 @@
 }
 .mr-fixed {
   position: fixed;
+  z-index: 1;
 }
 .mr-sticky {
   position: -webkit-sticky;
   position: sticky;
+  z-index: 1;
 }
 .mr-aligntop {
   vertical-align: top;
@@ -23,6 +25,7 @@
 }
 .mr-top {
   top: 0;
+  top: var(--top-offset, 0);
   bottom: auto;
 }
 .mr-right {
@@ -51,6 +54,7 @@
 }
 .mr-bottom {
   bottom: 0;
+  bottom: var(--bottom-offset, 0);
   top: auto;
 }
 .mr-baseline {
@@ -58,26 +62,35 @@
   vertical-align: baseline;
 }
 .mr-offsettop:not(.mr-offsetleft):not(.mr-offsetright) {
-  transform: translateY(-100%);
+  transform: translateY(calc(0 - var(--element-offset, 100%)));
 }
 .mr-offsettop.mr-offsetleft {
-  transform: translate(-100%, -100%);
+  transform: translate(
+    calc(0 - var(--element-offset, 100%)),
+    calc(0 - var(--element-offset, 100%))
+  );
 }
 .mr-offsettop.mr-offsetright {
-  transform: translate(100%, -100%);
+  transform: translate(
+    var(--element-offset, 100%),
+    calc(0 - var(--element-offset, 100%))
+  );
 }
 .mr-offsetright:not(.mr-offsettop):not(.mr-offsetbottom) {
-  transform: translateX(100%);
+  transform: translateX(var(--element-offset, 100%));
 }
 .mr-offsetbottom:not(.mr-offsetleft):not(.mr-offsetright) {
-  transform: translateY(100%);
+  transform: translateY(var(--element-offset, 100%));
 }
 .mr-offsetbottom.mr-offsetleft {
-  transform: translate(-100%, 100%);
+  transform: translate(calc(0 - var(--element-offset, 100%)), 100%);
 }
 .mr-offsetbottom.mr-offsetright {
-  transform: translate(100%, 100%);
+  transform: translate(
+    var(--element-offset, 100%),
+    var(--element-offset, 100%)
+  );
 }
 .mr-offsetleft:not(.mr-offsettop):not(.mr-offsetbottom) {
-  transform: translateX(-100%);
+  transform: translateX(calc(0 - var(--element-offset, 100%)));
 }

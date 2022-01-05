@@ -1,6 +1,8 @@
 /*(not used on breakpoints)*/
 .mr-offcanvas-container {
   animation: mrShow var(--transition-duration, 0.5s) forwards;
+  position: relative;
+  z-index: 2;
 }
 .mr-offcanvas-content {
   background-color: #fff;
@@ -40,12 +42,6 @@
   height: 100vh;
   overflow: auto;
   z-index: 20;
-}
-.admin-bar .mr-offcanvas-container {
-  padding-top: 46px;
-}
-.admin-bar .mr-offcanvas-toggle {
-  margin-top: 46px;
 }
 .mr-offcanvas-toggle {
   position: fixed;
@@ -159,4 +155,18 @@
   .mr-offcanvas-content {
   -webkit-animation: mrSlideInLeft var(--transition-duration, 0.5s) forwards;
   animation: mrSlideInLeft var(--transition-duration, 0.5s) forwards;
+}
+.admin-bar .mr-offcanvas-toggle:checked + .mr-offcanvas-container {
+  padding-top: 32px;
+}
+.admin-bar .mr-offcanvas-toggle:checked {
+  margin-top: 32px;
+}
+@media screen and (max-width: 782px) {
+  .admin-bar .mr-offcanvas-toggle:checked + .mr-offcanvas-container {
+    padding-top: 46px;
+  }
+  .admin-bar .mr-offcanvas-toggle:checked {
+    margin-top: 46px;
+  }
 }

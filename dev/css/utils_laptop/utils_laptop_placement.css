@@ -6,10 +6,12 @@
 }
 .mr-laptop-fixed {
   position: fixed;
+  z-index: 1;
 }
 .mr-laptop-sticky {
   position: -webkit-sticky;
   position: sticky;
+  z-index: 1;
 }
 .mr-laptop-aligntop {
   vertical-align: top;
@@ -23,6 +25,7 @@
 }
 .mr-laptop-top {
   top: 0;
+  top: var(--top-offset, 0);
   bottom: auto;
 }
 .mr-laptop-right {
@@ -51,6 +54,7 @@
 }
 .mr-laptop-bottom {
   bottom: 0;
+  bottom: var(--bottom-offset, 0);
   top: auto;
 }
 .mr-laptop-baseline {
@@ -58,26 +62,35 @@
   vertical-align: baseline;
 }
 .mr-laptop-offsettop:not(.mr-laptop-offsetleft):not(.mr-laptop-offsetright) {
-  transform: translateY(-100%);
+  transform: translateY(calc(0 - var(--element-offset, 100%)));
 }
 .mr-laptop-offsettop.mr-laptop-offsetleft {
-  transform: translate(-100%, -100%);
+  transform: translate(
+    calc(0 - var(--element-offset, 100%)),
+    calc(0 - var(--element-offset, 100%))
+  );
 }
 .mr-laptop-offsettop.mr-laptop-offsetright {
-  transform: translate(100%, -100%);
+  transform: translate(
+    var(--element-offset, 100%),
+    calc(0 - var(--element-offset, 100%))
+  );
 }
 .mr-laptop-offsetright:not(.mr-laptop-offsettop):not(.mr-laptop-offsetbottom) {
-  transform: translateX(100%);
+  transform: translateX(var(--element-offset, 100%));
 }
 .mr-laptop-offsetbottom:not(.mr-laptop-offsetleft):not(.mr-laptop-offsetright) {
-  transform: translateY(100%);
+  transform: translateY(var(--element-offset, 100%));
 }
 .mr-laptop-offsetbottom.mr-laptop-offsetleft {
-  transform: translate(-100%, 100%);
+  transform: translate(calc(0 - var(--element-offset, 100%)), 100%);
 }
 .mr-laptop-offsetbottom.mr-laptop-offsetright {
-  transform: translate(100%, 100%);
+  transform: translate(
+    var(--element-offset, 100%),
+    var(--element-offset, 100%)
+  );
 }
 .mr-laptop-offsetleft:not(.mr-laptop-offsettop):not(.mr-laptop-offsetbottom) {
-  transform: translateX(-100%);
+  transform: translateX(calc(0 - var(--element-offset, 100%)));
 }

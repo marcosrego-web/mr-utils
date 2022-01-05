@@ -47,16 +47,18 @@ You can contact me at: [https://marcosrego.com/client-area/contact/](https://mar
 == Changelog ==
 
 = 0.1.2 =
-* Added font-family options (also compatible with custom utility classes added by Mr.Dev.'s Framework)
+* Added font-family options (also compatible with custom utility classes added by Mr.Dev.'s Framework).
+* Toolkit: Improvements to offcanvas.
+* Toolkit: Added offset and element-offset variables.
 
 = 0.1.1 =
 * Compatibility with Custom Utility Classes added by Mr.Dev.'s Framework.
-* Improved offcanvas options to not rely on javascript.
 * Change animation orientation (for the options Slide, Scale and Zoom) when using pagination arrows.
 * Fixed: Bug when changing back to any default option on breakpoints.
-* Fixed: Missing overlay class when not using offcanvas.
-* Fixed: SlideOut animation orientation.
 * Fixed: Semi-opacity not visible on the backend when combined with Components and Pagination.
+* Toolkit: Improved offcanvas options to not rely on javascript.
+* Toolkit: Fixed missing overlay class when not using offcanvas.
+* Toolkit: Fixed SlideOut animation orientation.
 
 = 0.1.0 =
 * First release
