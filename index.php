@@ -55,7 +55,7 @@ if (file_exists(dirname(__FILE__).'/../mrdev-framework_wp/mrdev-framework_wp.php
 		.mr-backend-custominput:before {
 			content: "";
 			position: absolute;
-			z-index: 3;
+			z-index: 2;
 			top: 0;
 			left: 0;
 			width: 100%;

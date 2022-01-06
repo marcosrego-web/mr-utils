@@ -6,12 +6,12 @@
 }
 .mr-laptop-fixed {
   position: fixed;
-  z-index: 2;
+  z-index: 1;
 }
 .mr-laptop-sticky {
   position: -webkit-sticky;
   position: sticky;
-  z-index: 2;
+  z-index: 1;
 }
 .mr-laptop-aligntop {
   vertical-align: top;
