@@ -67,6 +67,9 @@
 .mr-width100 {
   width: 100%;
 }
+.mr-perline > *:not([class*="mr-size"]):not([class*="mr-width"]) {
+  width: var(--perline, 100%);
+}
 .mr-size13,
 .mr-largesize {
   width: var(--size-13, 100%);
@@ -148,6 +151,63 @@
 .mr-width10 {
   width: 10%;
 }
+.mr-0columns,
+.mr-columns,
+.mr-2columns {
+  columns: 2 auto;
+}
+.mr-0columns,
+.mr-columns {
+  columns: var(--columns, 2) var(--column-width, auto);
+}
+.mr-1column,
+.mr-1columns {
+  columns: 1 auto;
+  columns: 1 var(--column-width, auto);
+}
+.mr-2columns {
+  columns: 2 var(--column-width, auto);
+}
+.mr-3columns {
+  columns: 3 auto;
+  columns: 3 var(--column-width, auto);
+}
+.mr-4columns {
+  columns: 4 auto;
+  columns: 4 var(--column-width, auto);
+}
+.mr-5columns {
+  columns: 5 auto;
+  columns: 5 var(--column-width, auto);
+}
+.mr-6columns {
+  columns: 6 auto;
+  columns: 6 var(--column-width, auto);
+}
+.mr-7columns {
+  columns: 7 auto;
+  columns: 7 var(--column-width, auto);
+}
+.mr-8columns {
+  columns: 8 auto;
+  columns: 8 var(--column-width, auto);
+}
+.mr-9columns {
+  columns: 9 auto;
+  columns: 9 var(--column-width, auto);
+}
+.mr-10columns {
+  columns: 10 auto;
+  columns: 10 var(--column-width, auto);
+}
+.mr-11columns {
+  columns: 11 auto;
+  columns: 11 var(--column-width, auto);
+}
+.mr-12columns {
+  columns: 12 auto;
+  columns: 12 var(--column-width, auto);
+}
 .mr-size3 {
   width: var(--size-3, 10%);
 }
@@ -165,13 +225,24 @@
   width: 8.333333333333333%;
 }
 .mr-size1,
-.mr-smallsize {
+.mr-shortsize {
   width: var(--size-1, 8.333333333333333%);
 }
 .mr-sizeauto,
 .mr-widthauto {
   width: auto;
 }
+/*
+//In consideration
+.mr-largeheight {
+  height: 100vh;
+}
+.mr-mediumheight {
+  height: 50vh;
+}
+.mr-shortheight {
+  height: 25vh;
+}*/
 .mr-orderfirst,
 .mr-order-1 {
   -ms-flex-order: -1;

@@ -1,6 +1,4 @@
-/*
-COMPONENTS
-*/
+/*COMPONENTS*/
 function mrTab(t, e, v) {
   if (!t.classList.contains("mr-tab")) {
     if (t.closest(".mr-tab")) {
@@ -153,9 +151,164 @@ function mrTabs(t) {
   }
 }
 
+function mrScrollNav(t) {
+  let mrVerticalScrollNav = "";
+  if (
+    t.classList.contains("mr-scrollnav") ||
+    t.classList.contains("mr-verticalscrollnav")
+  ) {
+    mrVerticalScrollNav =
+      '<button class="mr-arrows mr-scrolltop">⇧</button><button class="mr-arrows mr-scrollbottom">⇩</button>';
+  }
+  let mrHorizontalScrollNav = "";
+  if (
+    t.classList.contains("mr-scrollnav") ||
+    t.classList.contains("mr-horizontalscrollnav")
+  ) {
+    mrHorizontalScrollNav =
+      '<button class="mr-arrows mr-scrollright">⇨</button><button class="mr-arrows mr-scrollleft">⇦</button>';
+  }
+  if (t.classList.contains("mr-navtop")) {
+    t.outerHTML =
+      '<div class="mr-scrollpagination">' +
+      mrVerticalScrollNav +
+      mrHorizontalScrollNav +
+      "</div>" +
+      t.outerHTML;
+  } else {
+    t.outerHTML =
+      t.outerHTML +
+      '<div class="mr-scrollpagination">' +
+      mrVerticalScrollNav +
+      mrHorizontalScrollNav +
+      "</div>";
+  }
+}
+
+function mrScrollTop(t, e) {
+  if (!e) {
+    e = t.parentNode.previousElementSibling;
+    if (
+      t.parentNode.classList.contains("mr-navtop") ||
+      t.parentNode.classList.contains("mr-navleft")
+    ) {
+      e = t.parentNode.nextElementSibling;
+    }
+  }
+  e.scroll({
+    top: e.scrollTop - e.offsetHeight,
+    left: e.scrollLeft,
+    behavior: "smooth",
+  });
+}
+
+function mrScrollRight(t, e) {
+  if (!e) {
+    e = t.parentNode.previousElementSibling;
+    if (
+      t.parentNode.classList.contains("mr-navtop") ||
+      t.parentNode.classList.contains("mr-navleft")
+    ) {
+      e = t.parentNode.nextElementSibling;
+    }
+  }
+  e.scroll({
+    top: e.scrollTop,
+    left: e.scrollLeft + e.offsetWidth,
+    behavior: "smooth",
+  });
+}
+
+function mrScrollBottom(t, e) {
+  if (!e) {
+    e = t.parentNode.previousElementSibling;
+    if (
+      t.parentNode.classList.contains("mr-navtop") ||
+      t.parentNode.classList.contains("mr-navleft")
+    ) {
+      e = t.parentNode.nextElementSibling;
+    }
+  }
+  e.scroll({
+    top: e.scrollTop + e.offsetHeight,
+    left: e.scrollLeft,
+    behavior: "smooth",
+  });
+}
+
+function mrScrollLeft(t, e) {
+  if (!e) {
+    e = t.parentNode.previousElementSibling;
+    if (
+      t.parentNode.classList.contains("mr-navtop") ||
+      t.parentNode.classList.contains("mr-navleft")
+    ) {
+      e = t.parentNode.nextElementSibling;
+    }
+  }
+  e.scroll({
+    top: e.scrollTop,
+    left: e.scrollLeft - e.offsetWidth,
+    behavior: "smooth",
+  });
+}
+
+function mrSwipe(t) {
+  t.classList.add("mr-hidescroll");
+  t.classList.add("mr-drag");
+
+  if (!t.classList.contains("mr-horizontalscroll")) {
+    t.style.setProperty("display", "-webkit-inline-box", "important");
+    t.style.setProperty("flex-wrap", "unset", "important");
+    t.style.setProperty("overflow-x", "scroll", "important");
+    t.style.setProperty("-webkit-overflow-scrolling", "touch", "important");
+    t.style.setProperty("overflow-y", "hidden");
+    let mrChildElements = t.querySelectorAll("*");
+    let mrChildElement;
+    for (let id = 0; id < mrChildElements.length; id++) {
+      mrChildElement = mrChildElements[id];
+      if (
+        !mrChildElement.classList.contains("mr-hide") &&
+        !mrChildElement.classList.contains("mr-hidden")
+      ) {
+        mrChildElement.style.setProperty("display", "block");
+      }
+      mrChildElement.style.setProperty("-moz-user-select", "none");
+      mrChildElement.style.setProperty("-webkit-user-drag", "none");
+      mrChildElement.style.setProperty("-webkit-user-select", "none");
+      mrChildElement.style.setProperty("-ms-user-select", "none");
+      mrChildElement.style.setProperty("user-select", "none");
+    }
+  }
+}
+
+function mrSwipeContent(t) {
+  let mrSwipeChildren = t.children;
+  let mrSwipeChild;
+  for (id = 0; id < mrSwipeChildren.length; id++) {
+    mrSwipeChild = mrSwipeChildren[id];
+    mrSwipeChild.classList.add("mr-swipe");
+    if (t.classList.contains("mr-scrollnav")) {
+      mrSwipeChild.classList.add("mr-scrollnav");
+    } else if (t.classList.contains("mr-horizontalscrollnav")) {
+      mrSwipeChild.classList.add("mr-horizontalscrollnav");
+    } else if (t.classList.contains("mr-verticalscrollnav")) {
+      mrSwipeChild.classList.add("mr-verticalscrollnav");
+    }
+  }
+}
+
 document.addEventListener("click", function (t) {
   if (t.target.matches(".mr-tabsnav *")) {
     mrTab(t.target);
+  } else if (t.target.matches(".mr-scrolltop")) {
+    mrScrollTop(t.target);
+  } else if (t.target.matches(".mr-scrollright")) {
+    mrScrollRight(t.target);
+  } else if (t.target.matches(".mr-scrollleft")) {
+    mrScrollLeft(t.target);
+  } else if (t.target.matches(".mr-scrollbottom")) {
+    mrScrollBottom(t.target);
   }
   t.stopPropagation();
 });
@@ -170,11 +323,61 @@ document.addEventListener("DOMContentLoaded", function () {
   for (let id = 0; id < mrTabsEles.length; id++) {
     mrTabs(mrTabsEles[id]);
   }
+
+  const mrSwipeContentEles = document.querySelectorAll(".mr-swipecontent"); //Always run before mr-swipe because it will add the class to child elements
+  for (let id = 0; id < mrSwipeContentEles.length; id++) {
+    mrSwipeContent(mrSwipeContentEles[id]);
+  }
+
+  const mrSwipeEles = document.querySelectorAll(".mr-swipe");
+  for (let id = 0; id < mrSwipeEles.length; id++) {
+    mrSwipe(mrSwipeEles[id]);
+  }
+
+  const mrScrollNavEles = document.querySelectorAll(
+    ".mr-scrollnav:not(.mr-swipecontent):not(.mr-horizontalscrollcontent),.mr-verticalscrollnav:not(.mr-swipecontent):not(.mr-horizontalscrollcontent),.mr-horizontalscrollnav:not(.mr-swipecontent):not(.mr-horizontalscrollcontent)"
+  );
+  for (let id = 0; id < mrScrollNavEles.length; id++) {
+    mrScrollNav(mrScrollNavEles[id]);
+  }
+
+  const mrDragEles = document.querySelectorAll(
+    "[class*='mr-'][class*='-drag']:not([class*='-dragcontent']):not([class*='-draganddrop']),[class*='-dragcontent'] > *, [class*='mr-'][class*='-swipe']:not([class*='-swipecontent']),[class*='mr-'][class*='-swipecontent'] > *"
+  );
+  for (let id = 0; id < mrDragEles.length; id++) {
+    const mrDragEle = mrDragEles[id];
+    mrDragEle.classList.remove("mr-dragging");
+    let pos = { top: 0, left: 0, x: 0, y: 0 };
+    const mouseDownHandler = function (e) {
+      setTimeout(function () {
+        mrDragEle.classList.add("mr-dragging");
+      }, 250);
+      pos = {
+        left: mrDragEle.scrollLeft,
+        top: mrDragEle.scrollTop,
+        x: e.clientX,
+        y: e.clientY,
+      };
+      document.addEventListener("mousemove", mouseMoveHandler);
+      document.addEventListener("mouseup", mouseUpHandler);
+    };
+    const mouseMoveHandler = function (e) {
+      const dx = e.clientX - pos.x;
+      const dy = e.clientY - pos.y;
+      mrDragEle.scrollTop = pos.top - dy;
+      mrDragEle.scrollLeft = pos.left - dx;
+    };
+    const mouseUpHandler = function () {
+      mrDragEle.classList.remove("mr-dragging");
+      mrDragEle.style.removeProperty("user-select");
+      document.removeEventListener("mousemove", mouseMoveHandler);
+      document.removeEventListener("mouseup", mouseUpHandler);
+    };
+    mrDragEle.addEventListener("mousedown", mouseDownHandler);
+  }
 });
 
-/*
-DYNAMIC
-*/
+/*DYNAMIC*/
 function mrGetCookie(t) {
   if (t) {
     const e = t + "=",
@@ -347,45 +550,8 @@ document.addEventListener("DOMContentLoaded", function () {
   } else if (mrGetCookie("mrColors") == "mrColors") {
     mrThemeColors();
   }
-
-  const mrDragEles = document.querySelectorAll(
-    "[class*='mr-'][class*='-drag']:not([class*='-dragcontent']):not([class*='-draganddrop']),[class*='-dragcontent'] > *, [class*='mr-'][class*='-swipe']:not([class*='-swipecontent']),[class*='mr-'][class*='-swipecontent'] > *"
-  );
-  for (let id = 0; id < mrDragEles.length; id++) {
-    const mrDragEle = mrDragEles[id];
-    mrDragEle.classList.remove("mr-dragging");
-    let pos = { top: 0, left: 0, x: 0, y: 0 };
-    const mouseDownHandler = function (e) {
-      mrDragEle.classList.add("mr-dragging");
-      pos = {
-        left: mrDragEle.scrollLeft,
-        top: mrDragEle.scrollTop,
-        x: e.clientX,
-        y: e.clientY,
-      };
-      document.addEventListener("mousemove", mouseMoveHandler);
-      document.addEventListener("mouseup", mouseUpHandler);
-    };
-    const mouseMoveHandler = function (e) {
-      const dx = e.clientX - pos.x;
-      const dy = e.clientY - pos.y;
-      mrDragEle.scrollTop = pos.top - dy;
-      mrDragEle.scrollLeft = pos.left - dx;
-    };
-    const mouseUpHandler = function () {
-      mrDragEle.classList.remove("mr-dragging");
-      mrDragEle.style.removeProperty("user-select");
-      document.removeEventListener("mousemove", mouseMoveHandler);
-      document.removeEventListener("mouseup", mouseUpHandler);
-    };
-    mrDragEle.addEventListener("mousedown", mouseDownHandler);
-  }
 });
-
-/*
-PAGINATION
-*/
-
+/*PAGINATION*/
 function mrLoadPage(e, n) {
   if (n <= 0) {
     n = e.getAttribute("mr-lastpage");
@@ -536,7 +702,7 @@ function mrPagination(t) {
         !t.matches(".mr-radiopagination"))
     ) {
       mrPaginationArrows =
-        '<button class="mr-arrows mr-prev"><</button><button class="mr-arrows mr-next">&gt;</button>';
+        '<button class="mr-arrows mr-prev">⇦</button><button class="mr-arrows mr-next">⇨</button>';
     }
 
     let mrPaginationSelect = "";

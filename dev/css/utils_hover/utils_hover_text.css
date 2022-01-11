@@ -1,5 +1,5 @@
 .mr-hover-fontsize7:hover,
-.mr-hover-largefontsize:hover {
+.mr-hover-bigfontsize:hover {
   font-size: 2rem;
   font-size: var(--font-size-7, 2rem);
 }

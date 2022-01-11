@@ -24,6 +24,13 @@ You can also apply changes to specific devices/breakpoints: Show/hide blocks dep
 
 == Frequently Asked Questions ==
 
+= Does the interface of Mr.Utils support all blocks? =
+
+The interface of Mr.Utils works on the vast majority of core blocks. But you have alternative ways to use them that work on any block:
+1. Do you actually need to apply a style directly on that element? Some styles (such as font-size) when applied on parent blocks, might also apply the style into child blocks. With that in mind, you can wrap/transform the unsupported block with a "Group" and then use the interface of Mr.Utils on that group.
+2. All options use [utility classes](https://github.com/marcosrego-web/mr-utils/wiki/Utility-Classes), so for unsupported blocks you can also go to "Advanced > Additional CSS class(es)" and form the classes there.
+3. Or wait for them to be supported. [Maybe you can help me on that](https://github.com/WordPress/gutenberg/issues/36127).
+
 = Where can I find more information about Mr.Utils? =
 
 You can find detailed information on the documentation at: [https://github.com/marcosrego-web/mr-utils/wiki](https://github.com/marcosrego-web/mr-utils/wiki)
@@ -47,9 +54,15 @@ You can contact me at: [https://marcosrego.com/client-area/contact/](https://mar
 == Changelog ==
 
 = 0.1.2 =
+* Added "Swipe", "Swipe content" and "Scroll Navigation" to the components section.
+* Auto columns option (Layout section).
+* Option for global value on columns and on items per line.
+* Slide animation now works for paragraphs and headings (not only for child elements).
 * Added font-family options (also compatible with custom utility classes added by Mr.Dev.'s Framework).
+* Improvements to swipe and horizontalscroll for better compatibility with blocks.
 * Toolkit: Improvements to offcanvas.
-* Toolkit: Added offset and offset-element classes and variables.
+* Toolkit: Added offset and offsetelement classes and variables.
+* Toolkit: Starting to add classes for appearance and height.
 
 = 0.1.1 =
 * Compatibility with Custom Utility Classes added by Mr.Dev.'s Framework.

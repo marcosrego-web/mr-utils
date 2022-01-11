@@ -8,7 +8,7 @@
   text-align: right;
 }
 .mr-landscape-fontsize7,
-.mr-landscape-largefontsize {
+.mr-landscape-bigfontsize {
   font-size: 2rem;
   font-size: var(--font-size-7, 2rem);
 }

@@ -228,6 +228,14 @@ function mrAddAttributes(settings) {
 				type: "string",
 				default: "mr-",
 			},
+			mrVerticalScrollNavigation: {
+				type: "boolean",
+				default: false,
+			},
+			mrHorizontalScrollNavigation: {
+				type: "boolean",
+				default: false,
+			},
 			mrActiveWhen: {
 				type: "string",
 				default: "mr-",
@@ -253,6 +261,26 @@ function mrAddAttributes(settings) {
 				default: "mr-tablet",
 			},
 			mrPerLinephone: {
+				type: "string",
+				default: "mr-phone",
+			},
+			mrColumns: {
+				type: "string",
+				default: "mr-",
+			},
+			mrColumnsdesktop: {
+				type: "string",
+				default: "mr-desktop",
+			},
+			mrColumnslaptop: {
+				type: "string",
+				default: "mr-laptop",
+			},
+			mrColumnstablet: {
+				type: "string",
+				default: "mr-tablet",
+			},
+			mrColumnsphone: {
 				type: "string",
 				default: "mr-phone",
 			},
@@ -1046,6 +1074,8 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 			mrPerPage,
 			mrPaginationPosition,
 			mrComponent,
+			mrVerticalScrollNavigation,
+			mrHorizontalScrollNavigation,
 			mrActiveWhen,
 			mrNavPosition,
 			mrArrowPagination,
@@ -1056,6 +1086,11 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 			mrPerLinelaptop,
 			mrPerLinetablet,
 			mrPerLinephone,
+			mrColumns,
+			mrColumnsdesktop,
+			mrColumnslaptop,
+			mrColumnstablet,
+			mrColumnsphone,
 			mrOrder,
 			mrOrderdesktop,
 			mrOrderlaptop,
@@ -1321,8 +1356,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																className="mr-backend-perpage"
 																onChange={(val) =>
 																	setAttributes({
-																		mrPerPage:
-																			val === undefined || val === 0 ? "" : val,
+																		mrPerPage: !val ? "" : val,
 																	})
 																}
 																help={
@@ -1348,7 +1382,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																		options={[
 																			{
 																				value: "mr-" + tab.name,
-																				label: "Bottom",
+																				label: "Default",
 																			},
 																			{
 																				value: (
@@ -1358,11 +1392,19 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																				).replace("--", "-"),
 																				label: "Top",
 																			},
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-paginationbottom"
+																				).replace("--", "-"),
+																				label: "Bottom",
+																			},
 																		]}
 																		onChange={(val) =>
 																			setAttributes({
 																				mrPaginationPosition:
-																					val === undefined || val === ""
+																					!val || val === "mr-" + tab.name
 																						? ""
 																						: val.includes("mr-desktop") ||
 																						  val.includes("mr-laptop") ||
@@ -1442,11 +1484,27 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																		).replace("--", "-"),
 																		label: "Tabs Navigation",
 																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-swipe"
+																		).replace("--", "-"),
+																		label: "Swipe",
+																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-swipecontent"
+																		).replace("--", "-"),
+																		label: "Swipe Content",
+																	},
 																]}
 																onChange={(val) =>
 																	setAttributes({
 																		mrComponent:
-																			val === undefined || val === ""
+																			!val || val === "mr-" + tab.name
 																				? ""
 																				: val.includes("mr-desktop") ||
 																				  val.includes("mr-laptop") ||
@@ -1458,24 +1516,45 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																	})
 																}
 																help={
-																	mrComponent
+																	!mrComponent || mrComponent === "mr-"
 																		? __(
+																				"Apply into parent blocks (such as Columns and List blocks) to consider each direct child as a component item.",
+																				"mr-utils"
+																		  )
+																		: mrComponent.includes("scrollnav")
+																		? __(
+																				"Tip: You can combine 'Scroll Navigation' with the scroll options found on the 'Misc.' section.",
+																				"mr-utils"
+																		  ) +
+																		  " " +
+																		  __(
 																				"The component was applied but you need to preview the frontend to see the actual result.",
-																				"mr-utils",
 																				"mr-utils"
 																		  )
 																		: __(
-																				"Apply into parent blocks (such as Columns and List blocks) to consider each direct child as a component item.",
+																				"The component was applied but you need to preview the frontend to see the actual result.",
 																				"mr-utils"
 																		  )
 																}
 															/>
-															{mrComponent.includes("tabs") ? (
+															{mrComponent.includes("tabs") ||
+															mrComponent.includes("swipe") ? (
 																<SelectControl
 																	label={__("Navigation position", "mr-utils")}
 																	value={mrNavPosition}
 																	options={[
-																		{ value: "mr-" + tab.name, label: "Top" },
+																		{
+																			value: "mr-" + tab.name,
+																			label: "Default",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-navtop"
+																			).replace("--", "-"),
+																			label: "Top",
+																		},
 																		{
 																			value: (
 																				" mr-" +
@@ -1488,7 +1567,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																	onChange={(val) =>
 																		setAttributes({
 																			mrNavPosition:
-																				val === undefined || val === ""
+																				!val || val === "mr-" + tab.name
 																					? ""
 																					: val.includes("mr-desktop") ||
 																					  val.includes("mr-laptop") ||
@@ -1503,6 +1582,39 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 															) : (
 																""
 															)}
+															<p>{__("Scroll navigation", "mr-utils")}</p>
+															<ToggleControl
+																label="Vertical Scroll"
+																checked={mrVerticalScrollNavigation}
+																className="mr-backend-scrollnav"
+																onChange={() =>
+																	setAttributes({
+																		mrVerticalScrollNavigation: !mrVerticalScrollNavigation,
+																	})
+																}
+															/>
+															<ToggleControl
+																label="Horizontal Scroll"
+																checked={mrHorizontalScrollNavigation}
+																className="mr-backend-scrollnav"
+																onChange={() =>
+																	setAttributes({
+																		mrHorizontalScrollNavigation: !mrHorizontalScrollNavigation,
+																	})
+																}
+																help={
+																	mrHorizontalScrollNavigation ||
+																	mrVerticalScrollNavigation
+																		? __(
+																				"The navigation was applied but you need to preview the frontend to see the actual result.",
+																				"mr-utils"
+																		  )
+																		: __(
+																				'Add scroll navigation to elements with scroll. Example: The "Swipe" component or "Horizontal Scroll" from the "Misc" section.',
+																				"mr-utils"
+																		  )
+																}
+															/>
 														</PanelBody>
 													</>
 												) : (
@@ -1626,7 +1738,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 															onChange={(val) =>
 																setAttributes({
 																	mrAnimation:
-																		val === undefined || val === ""
+																		!val || val === "mr-" + tab.name
 																			? ""
 																			: val.includes("mr-desktop") ||
 																			  val.includes("mr-laptop") ||
@@ -1745,7 +1857,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																onChange={(val) =>
 																	setAttributes({
 																		mrActiveWhen:
-																			val === undefined || val === ""
+																			!val || val === "mr-" + tab.name
 																				? ""
 																				: val.includes("mr-desktop") ||
 																				  val.includes("mr-laptop") ||
@@ -1757,14 +1869,14 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																	})
 																}
 																help={
-																	mrActiveWhen
+																	!mrActiveWhen || mrActiveWhen === "mr-"
 																		? __(
-																				"The task is ready but you need to preview the frontend to see the actual result.",
-																				"mr-utils",
+																				"Adds the class 'mr-active' depending of the selected situation. You can combine with animations to decide when the animation should start.",
 																				"mr-utils"
 																		  )
 																		: __(
-																				"Adds the class 'mr-active' depending of the selected situation. You can combine with animations to decide when the animation should start.",
+																				"The task is ready but you need to preview the frontend to see the actual result.",
+																				"mr-utils",
 																				"mr-utils"
 																		  )
 																}
@@ -1787,7 +1899,167 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 													}
 												>
 													<SelectControl
-														label={__("Number of items per line", "mr-utils")}
+														label={__(
+															"Number of columns for this item",
+															"mr-utils"
+														)}
+														value={
+															tab.name === "desktop"
+																? mrColumnsdesktop
+																: tab.name === "laptop"
+																? mrColumnslaptop
+																: tab.name === "tablet"
+																? mrColumnstablet
+																: tab.name === "phone"
+																? mrColumnsphone
+																: mrColumns
+														}
+														options={
+															tab.name === "" ||
+															tab.name === "desktop" ||
+															tab.name === "laptop" ||
+															tab.name === "tablet" ||
+															tab.name === "phone"
+																? [
+																		{ value: "mr-" + tab.name, label: "" },
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-columns"
+																			).replace("--", "-"),
+																			label: "Global",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-1column"
+																			).replace("--", "-"),
+																			label: "1",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-2columns"
+																			).replace("--", "-"),
+																			label: "2",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-3columns"
+																			).replace("--", "-"),
+																			label: "3",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-4columns"
+																			).replace("--", "-"),
+																			label: "4",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-5columns"
+																			).replace("--", "-"),
+																			label: "5",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-6columns"
+																			).replace("--", "-"),
+																			label: "6",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-7columns"
+																			).replace("--", "-"),
+																			label: "7",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-8columns"
+																			).replace("--", "-"),
+																			label: "8",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-9columns"
+																			).replace("--", "-"),
+																			label: "9",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-10columns"
+																			).replace("--", "-"),
+																			label: "10",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-11columns"
+																			).replace("--", "-"),
+																			label: "11",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-12columns"
+																			).replace("--", "-"),
+																			label: "12",
+																		},
+																  ]
+																: ""
+														}
+														onChange={(val) =>
+															setAttributes({
+																mrColumns:
+																	val !== undefined &&
+																	!val.includes("mr-hover") &&
+																	!val.includes("mr-desktop") &&
+																	!val.includes("mr-laptop") &&
+																	!val.includes("mr-tablet") &&
+																	!val.includes("mr-phone")
+																		? val
+																		: mrColumns,
+																mrColumnslaptop:
+																	val !== undefined && val.includes("mr-laptop")
+																		? val
+																		: mrColumnslaptop,
+																mrColumnstablet:
+																	val !== undefined && val.includes("mr-tablet")
+																		? val
+																		: mrColumnstablet,
+																mrColumnsphone:
+																	val !== undefined && val.includes("mr-phone")
+																		? val
+																		: mrColumnsphone,
+															})
+														}
+													/>
+													<SelectControl
+														label={__(
+															"Number of child items per line",
+															"mr-utils"
+														)}
 														value={
 															tab.name === "desktop"
 																? mrPerLinedesktop
@@ -1807,6 +2079,14 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 															tab.name === "phone"
 																? [
 																		{ value: "mr-" + tab.name, label: "" },
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-perline"
+																			).replace("--", "-"),
+																			label: "Global",
+																		},
 																		{
 																			value: (
 																				" mr-" +
@@ -1940,7 +2220,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 															})
 														}
 														help={
-															mrPerLine === undefined || mrPerLine === ""
+															!mrPerLine || mrPerLine === "mr-"
 																? "Apply into parent blocks (such as Columns and List blocks) to consider each direct child as a line's item."
 																: ""
 														}
@@ -5078,26 +5358,6 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																		label: "Horizontal scroll content",
 																  }
 																: "",
-															tab.name != "hover"
-																? {
-																		value: (
-																			" mr-" +
-																			tab.name +
-																			"-swipe"
-																		).replace("--", "-"),
-																		label: "Swipe",
-																  }
-																: "",
-															tab.name != "hover"
-																? {
-																		value: (
-																			" mr-" +
-																			tab.name +
-																			"-swipecontent"
-																		).replace("--", "-"),
-																		label: "Swipe content",
-																  }
-																: "",
 														]}
 														onChange={(val) =>
 															setAttributes({
@@ -5255,6 +5515,8 @@ const mrApplyWrapperExtraClass = createHigherOrderComponent(
 				mrPerPage,
 				mrPaginationPosition,
 				mrComponent,
+				mrVerticalScrollNavigation,
+				mrHorizontalScrollNavigation,
 				mrActiveWhen,
 				mrNavPosition,
 				mrArrowPagination,
@@ -5265,6 +5527,11 @@ const mrApplyWrapperExtraClass = createHigherOrderComponent(
 				mrPerLinelaptop,
 				mrPerLinetablet,
 				mrPerLinephone,
+				mrColumns,
+				mrColumnsdesktop,
+				mrColumnslaptop,
+				mrColumnstablet,
+				mrColumnsphone,
 				mrOrder,
 				mrOrderdesktop,
 				mrOrderlaptop,
@@ -5586,6 +5853,10 @@ const mrApplyWrapperExtraClass = createHigherOrderComponent(
 						mrClassNames = mrClassNames + " mr-selectpagination";
 					} else if (mrAttr == "mrRadioPagination" && mrAttrValue) {
 						mrClassNames = mrClassNames + " mr-radiopagination";
+					} else if (mrAttr == "mrVerticalScrollNavigation" && mrAttrValue) {
+						mrClassNames = mrClassNames + " mr-verticalscrollnav";
+					} else if (mrAttr == "mrHorizontalScrollNavigation" && mrAttrValue) {
+						mrClassNames = mrClassNames + " mr-horizontalscrollnav";
 					} else if (mrAttr == "mrAnimation" && mrAttrValue) {
 						mrClassNames = mrClassNames + mrAttrValue + " mr-active";
 					} else if (mrAttr == "mrAnimationhover" && mrAttrValue) {
@@ -5777,6 +6048,9 @@ function mrApplyExtraClass(extraProps, blockType, attributes) {
 		mrAnimationhover,
 		mrTransition,
 		mrTransitionhover,
+		mrComponent,
+		mrVerticalScrollNavigation,
+		mrHorizontalScrollNavigation,
 		mrPerPage,
 		mrPaginationPosition,
 		mrArrowPagination,
@@ -5787,6 +6061,11 @@ function mrApplyExtraClass(extraProps, blockType, attributes) {
 		mrPerLinelaptop,
 		mrPerLinetablet,
 		mrPerLinephone,
+		mrColumns,
+		mrColumnsdesktop,
+		mrColumnslaptop,
+		mrColumnstablet,
+		mrColumnsphone,
 		mrOrder,
 		mrOrderdesktop,
 		mrOrderlaptop,
@@ -6106,6 +6385,10 @@ function mrApplyExtraClass(extraProps, blockType, attributes) {
 					mrClassNames = mrClassNames + " mr-selectpagination";
 				} else if (mrAttr == "mrRadioPagination" && mrAttrValue) {
 					mrClassNames = mrClassNames + " mr-radiopagination";
+				} else if (mrAttr == "mrVerticalScrollNavigation" && mrAttrValue) {
+					mrClassNames = mrClassNames + " mr-verticalscrollnav";
+				} else if (mrAttr == "mrHorizontalScrollNavigation" && mrAttrValue) {
+					mrClassNames = mrClassNames + " mr-horizontalscrollnav";
 				} else if (mrAttr == "mrAnimation" && mrAttrValue) {
 					mrClassNames = mrClassNames + mrAttrValue + " mr-active";
 				} else if (mrAttr == "mrAnimationhover" && mrAttrValue) {

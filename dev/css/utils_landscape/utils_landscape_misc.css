@@ -9,35 +9,26 @@
   width: 0;
 }
 .mr-landscape-horizontalscroll,
-.mr-landscape-horizontalscrollcontent > *,
-.mr-landscape-swipe,
-.mr-landscape-swipecontent > * {
-  display: -webkit-inline-box;
+.mr-landscape-horizontalscrollcontent > * {
+  display: -webkit-inline-box !important;
+  flex-wrap: unset !important;
   overflow-x: auto;
   overflow-y: hidden;
 }
-.mr-landscape-horizontalscroll > *,
-.mr-landscape-horizontalscrollcontent > * > *,
-.mr-landscape-swipe > *,
-.mr-landscape-swipecontent > * > * {
-  display: block;
-}
 .mr-landscape-horizontalscroll img,
 .mr-landscape-horizontalscrollcontent > * img,
-.mr-landscape-swipe img,
-.mr-landscape-swipecontent > * img,
 .mr-landscape-horizontalscroll a,
-.mr-landscape-horizontalscrollcontent > * a,
-.mr-landscape-swipe a,
-.mr-landscape-swipecontent > * a {
+.mr-landscape-horizontalscrollcontent > * a {
   -moz-user-select: none;
   -webkit-user-drag: none;
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
 }
-.mr-landscape-swipe,
-.mr-landscape-swipecontent > *,
+.mr-landscape-horizontalscroll > *,
+.mr-landscape-horizontalscrollcontent > * > * {
+  display: block;
+}
 .mr-landscape-drag,
 .mr-landscape-dragcontent > *,
 .mr-landscape-draganddrop:not([draggable="false"]) {
@@ -52,23 +43,23 @@
   -ms-user-select: none;
   user-select: none;
 }
+.mr-landscape-dragging a,
+.mr-landscape-draggingcontent a {
+  pointer-events: none;
+}
 @supports (-webkit-overflow-scrolling: touch) {
   .mr-landscape-iosscroll,
   .mr-landscape-scroll {
     overflow-y: scroll !important;
   }
   .mr-landscape-horizontalscroll,
-  .mr-landscape-horizontalscrollcontent > *,
-  .mr-landscape-swipe,
-  .mr-landscape-swipecontent > * {
+  .mr-landscape-horizontalscrollcontent > * {
     overflow-x: scroll !important;
   }
   .mr-landscape-iosscroll,
   .mr-landscape-scroll,
   .mr-landscape-horizontalscroll,
-  .mr-landscape-horizontalscrollcontent > *,
-  .mr-landscape-swipe,
-  .mr-landscape-swipecontent > * {
+  .mr-landscape-horizontalscrollcontent > * {
     -webkit-overflow-scrolling: touch !important;
   }
 }

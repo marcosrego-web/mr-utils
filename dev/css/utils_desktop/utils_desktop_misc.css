@@ -9,35 +9,26 @@
   width: 0;
 }
 .mr-desktop-horizontalscroll,
-.mr-desktop-horizontalscrollcontent > *,
-.mr-desktop-swipe,
-.mr-desktop-swipecontent > * {
-  display: -webkit-inline-box;
+.mr-desktop-horizontalscrollcontent > * {
+  display: -webkit-inline-box !important;
+  flex-wrap: unset !important;
   overflow-x: auto;
   overflow-y: hidden;
 }
-.mr-desktop-horizontalscroll > *,
-.mr-desktop-horizontalscrollcontent > * > *,
-.mr-desktop-swipe > *,
-.mr-desktop-swipecontent > * > * {
-  display: block;
-}
 .mr-desktop-horizontalscroll img,
 .mr-desktop-horizontalscrollcontent > * img,
-.mr-desktop-swipe img,
-.mr-desktop-swipecontent > * img,
 .mr-desktop-horizontalscroll a,
-.mr-desktop-horizontalscrollcontent > * a,
-.mr-desktop-swipe a,
-.mr-desktop-swipecontent > * a {
+.mr-desktop-horizontalscrollcontent > * a {
   -moz-user-select: none;
   -webkit-user-drag: none;
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
 }
-.mr-desktop-swipe,
-.mr-desktop-swipecontent > *,
+.mr-desktop-horizontalscroll > *,
+.mr-desktop-horizontalscrollcontent > * > * {
+  display: block;
+}
 .mr-desktop-drag,
 .mr-desktop-dragcontent > *,
 .mr-desktop-draganddrop:not([draggable="false"]) {
@@ -52,23 +43,23 @@
   -ms-user-select: none;
   user-select: none;
 }
+.mr-desktop-dragging a,
+.mr-desktop-draggingcontent a {
+  pointer-events: none;
+}
 @supports (-webkit-overflow-scrolling: touch) {
   .mr-desktop-iosscroll,
   .mr-desktop-scroll {
     overflow-y: scroll !important;
   }
   .mr-desktop-horizontalscroll,
-  .mr-desktop-horizontalscrollcontent > *,
-  .mr-desktop-swipe,
-  .mr-desktop-swipecontent > * {
+  .mr-desktop-horizontalscrollcontent > * {
     overflow-x: scroll !important;
   }
   .mr-desktop-iosscroll,
   .mr-desktop-scroll,
   .mr-desktop-horizontalscroll,
-  .mr-desktop-horizontalscrollcontent > *,
-  .mr-desktop-swipe,
-  .mr-desktop-swipecontent > * {
+  .mr-desktop-horizontalscrollcontent > * {
     -webkit-overflow-scrolling: touch !important;
   }
 }

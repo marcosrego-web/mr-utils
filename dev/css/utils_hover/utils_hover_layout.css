@@ -89,7 +89,7 @@
   width: 8.333333333333333%;
 }
 .mr-hover-size1:hover,
-.mr-hover-smallsize:hover {
+.mr-hover-shortsize:hover {
   width: var(--size-1, 8.333333333333333%);
 }
 .mr-hover-sizeauto:hover,

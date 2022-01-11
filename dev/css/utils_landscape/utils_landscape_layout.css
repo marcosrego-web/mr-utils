@@ -60,12 +60,19 @@
   flex-basis: auto !important;
 }
 .mr-landscape-section,
-.mr-landscape-0perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
-.mr-landscape-1perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
-.mr-landscape-perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
+.mr-landscape-0perline
+  > *:not([class*="mr-landscape-size"]):not([class*="mr-landscape-width"]),
+.mr-landscape-1perline
+  > *:not([class*="mr-landscape-size"]):not([class*="mr-landscape-width"]),
+.mr-landscape-perline
+  > *:not([class*="mr-landscape-size"]):not([class*="mr-landscape-width"]),
 .mr-landscape-size13,
 .mr-landscape-width100 {
   width: 100%;
+}
+.mr-landscape-perline
+  > *:not([class*="mr-landscape-size"]):not([class*="mr-landscape-width"]) {
+  width: var(--perline, 100%);
 }
 .mr-landscape-size13,
 .mr-landscape-largesize {
@@ -78,7 +85,8 @@
 .mr-landscape-size12 {
   width: var(--size-12, 75%);
 }
-.mr-landscape-2perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
+.mr-landscape-2perline
+  > *:not([class*="mr-landscape-size"]):not([class*="mr-landscape-width"]),
 .mr-landscape-size11,
 .mr-landscape-width50 {
   width: 50%;
@@ -86,7 +94,8 @@
 .mr-landscape-size11 {
   width: var(--size-11, 50%);
 }
-.mr-landscape-3perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
+.mr-landscape-3perline
+  > *:not([class*="mr-landscape-size"]):not([class*="mr-landscape-width"]),
 .mr-landscape-size10,
 .mr-landscape-width33 {
   width: 33.33333333333333%;
@@ -94,7 +103,8 @@
 .mr-landscape-size10 {
   width: var(--size-10, 33.33333333333333%);
 }
-.mr-landscape-4perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
+.mr-landscape-4perline
+  > *:not([class*="mr-landscape-size"]):not([class*="mr-landscape-width"]),
 .mr-landscape-size9,
 .mr-landscape-width25 {
   width: 25%;
@@ -102,7 +112,8 @@
 .mr-landscape-size9 {
   width: var(--size-9, 25%);
 }
-.mr-landscape-5perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
+.mr-landscape-5perline
+  > *:not([class*="mr-landscape-size"]):not([class*="mr-landscape-width"]),
 .mr-landscape-size8,
 .mr-landscape-width20 {
   width: 20%;
@@ -110,7 +121,8 @@
 .mr-landscape-size8 {
   width: var(--size-8, 20%);
 }
-.mr-landscape-6perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
+.mr-landscape-6perline
+  > *:not([class*="mr-landscape-size"]):not([class*="mr-landscape-width"]),
 .mr-landscape-size7,
 .mr-landscape-width16 {
   width: 16.66666666666667%;
@@ -118,7 +130,8 @@
 .mr-landscape-size7 {
   width: var(--size-7, 16.66666666666667%);
 }
-.mr-landscape-7perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
+.mr-landscape-7perline
+  > *:not([class*="mr-landscape-size"]):not([class*="mr-landscape-width"]),
 .mr-landscape-size6,
 .mr-landscape-width14 {
   width: 14.28571428571429%;
@@ -127,7 +140,8 @@
 .mr-landscape-mediumsize {
   width: var(--size-6, 14.28571428571429%);
 }
-.mr-landscape-8perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
+.mr-landscape-8perline
+  > *:not([class*="mr-landscape-size"]):not([class*="mr-landscape-width"]),
 .mr-landscape-size5,
 .mr-landscape-width12 {
   width: 12.5%;
@@ -135,7 +149,8 @@
 .mr-landscape-size5 {
   width: var(--size-5, 12.5%);
 }
-.mr-landscape-9perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
+.mr-landscape-9perline
+  > *:not([class*="mr-landscape-size"]):not([class*="mr-landscape-width"]),
 .mr-landscape-size4,
 .mr-landscape-width11 {
   width: 11.11111111111111%;
@@ -143,15 +158,74 @@
 .mr-landscape-size4 {
   width: var(--size-4, 11.11111111111111%);
 }
-.mr-landscape-10perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
+.mr-landscape-10perline
+  > *:not([class*="mr-landscape-size"]):not([class*="mr-landscape-width"]),
 .mr-landscape-size3,
 .mr-landscape-width10 {
   width: 10%;
 }
+.mr-landscape-0columns,
+.mr-landscape-columns,
+.mr-landscape-2columns {
+  columns: 2 auto;
+}
+.mr-landscape-0columns,
+.mr-landscape-columns {
+  columns: var(--columns, 2) var(--column-width, auto);
+}
+.mr-landscape-1column,
+.mr-landscape-1columns {
+  columns: 1 auto;
+  columns: 1 var(--column-width, auto);
+}
+.mr-landscape-2columns {
+  columns: 2 var(--column-width, auto);
+}
+.mr-landscape-3columns {
+  columns: 3 auto;
+  columns: 3 var(--column-width, auto);
+}
+.mr-landscape-4columns {
+  columns: 4 auto;
+  columns: 4 var(--column-width, auto);
+}
+.mr-landscape-5columns {
+  columns: 5 auto;
+  columns: 5 var(--column-width, auto);
+}
+.mr-landscape-6columns {
+  columns: 6 auto;
+  columns: 6 var(--column-width, auto);
+}
+.mr-landscape-7columns {
+  columns: 7 auto;
+  columns: 7 var(--column-width, auto);
+}
+.mr-landscape-8columns {
+  columns: 8 auto;
+  columns: 8 var(--column-width, auto);
+}
+.mr-landscape-9columns {
+  columns: 9 auto;
+  columns: 9 var(--column-width, auto);
+}
+.mr-landscape-10columns {
+  columns: 10 auto;
+  columns: 10 var(--column-width, auto);
+}
+.mr-landscape-11columns {
+  columns: 11 auto;
+  columns: 11 var(--column-width, auto);
+}
+.mr-landscape-12columns {
+  columns: 12 auto;
+  columns: 12 var(--column-width, auto);
+}
 .mr-landscape-size3 {
   width: var(--size-3, 10%);
 }
-.mr-landscape-11perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
+.mr-landscape-11perline
+  > *:not([class*="mr-landscape-size"]):not([class*="mr-landscape-width"]),
 .mr-landscape-size2,
 .mr-landscape-width9 {
   width: 9.090909090909091%;
@@ -159,19 +233,31 @@
 .mr-landscape-size2 {
   width: var(--size-2, 9.090909090909091%);
 }
-.mr-landscape-12perline > *:not([class*="mr-size"]):not([class*="mr-width"]),
+.mr-landscape-12perline
+  > *:not([class*="mr-landscape-size"]):not([class*="mr-landscape-width"]),
 .mr-landscape-size1,
 .mr-landscape-width8 {
   width: 8.333333333333333%;
 }
 .mr-landscape-size1,
-.mr-landscape-smallsize {
+.mr-landscape-shortsize {
   width: var(--size-1, 8.333333333333333%);
 }
 .mr-landscape-sizeauto,
 .mr-landscape-widthauto {
   width: auto;
 }
+/*
+//In consideration
+.mr-landscape-largeheight {
+  height: 100vh;
+}
+.mr-landscape-mediumheight {
+  height: 50vh;
+}
+.mr-landscape-shortheight {
+  height: 25vh;
+}*/
 .mr-landscape-orderfirst,
 .mr-landscape-order-1 {
   -ms-flex-order: -1;

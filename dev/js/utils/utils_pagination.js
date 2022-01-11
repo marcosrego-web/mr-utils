@@ -148,7 +148,7 @@ function mrPagination(t) {
         !t.matches(".mr-radiopagination"))
     ) {
       mrPaginationArrows =
-        '<button class="mr-arrows mr-prev"><</button><button class="mr-arrows mr-next">&gt;</button>';
+        '<button class="mr-arrows mr-prev">⇦</button><button class="mr-arrows mr-next">⇨</button>';
     }
 
     let mrPaginationSelect = "";

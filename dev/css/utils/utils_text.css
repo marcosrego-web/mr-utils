@@ -21,7 +21,7 @@
   text-align: right;
 }
 .mr-fontsize7,
-.mr-largefontsize {
+.mr-bigfontsize {
   font-size: 2rem;
   font-size: var(--font-size-7, 2rem);
 }

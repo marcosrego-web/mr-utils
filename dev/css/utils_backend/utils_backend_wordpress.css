@@ -33,6 +33,8 @@
 .block-editor-block-list__layout
   .block-editor-block-list__block.mr-tabsnav:not(.mr-visible):not([class*="-semiopaque"]),
 .block-editor-block-list__layout
+  .block-editor-block-list__block.mr-scrollnav:not(.mr-visible):not([class*="-semiopaque"]),
+.block-editor-block-list__layout
   .block-editor-block-list__block[mr-component]:not(.mr-visible):not([class*="-semiopaque"]) {
   opacity: 1;
   visibility: visible;
@@ -44,6 +46,8 @@
 .block-editor-block-list__layout .block-editor-block-list__block.mr-tabs:before,
 .block-editor-block-list__layout
   .block-editor-block-list__block.mr-tabsnav:before,
+.block-editor-block-list__layout
+  .block-editor-block-list__block.mr-scrollnav:before,
 .block-editor-block-list__layout
   .block-editor-block-list__block[mr-component]:before,
 .block-editor-block-list__layout
@@ -77,6 +81,8 @@
 .block-editor-block-list__layout
   .block-editor-block-list__block.mr-tabsnav:before,
 .block-editor-block-list__layout
+  .block-editor-block-list__block.mr-scrollnav:before,
+.block-editor-block-list__layout
   .block-editor-block-list__block[mr-component]:before,
 .block-editor-block-list__layout
   .block-editor-block-list__block.mr-activeinview:before,
@@ -85,7 +91,7 @@
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' width='48' height='48' role='img' aria-hidden='true' focusable='false'%3E%3Cpath d='M6 5.5h3a.5.5 0 01.5.5v3a.5.5 0 01-.5.5H6a.5.5 0 01-.5-.5V6a.5.5 0 01.5-.5zM4 6a2 2 0 012-2h3a2 2 0 012 2v3a2 2 0 01-2 2H6a2 2 0 01-2-2V6zm11-.5h3a.5.5 0 01.5.5v3a.5.5 0 01-.5.5h-3a.5.5 0 01-.5-.5V6a.5.5 0 01.5-.5zM13 6a2 2 0 012-2h3a2 2 0 012 2v3a2 2 0 01-2 2h-3a2 2 0 01-2-2V6zm5 8.5h-3a.5.5 0 00-.5.5v3a.5.5 0 00.5.5h3a.5.5 0 00.5-.5v-3a.5.5 0 00-.5-.5zM15 13a2 2 0 00-2 2v3a2 2 0 002 2h3a2 2 0 002-2v-3a2 2 0 00-2-2h-3zm-9 1.5h3a.5.5 0 01.5.5v3a.5.5 0 01-.5.5H6a.5.5 0 01-.5-.5v-3a.5.5 0 01.5-.5zM4 15a2 2 0 012-2h3a2 2 0 012 2v3a2 2 0 01-2 2H6a2 2 0 01-2-2v-3z' fill-rule='evenodd' clip-rule='evenodd'%3E%3C/path%3E%3C/svg%3E");
 }
 .block-editor-block-list__layout
-  .block-editor-block-list__block[class*="mr-"][class*="perpage"]:not(.mr-tabs):not(.mr-tabsnav):not(.mr-activeinview):before,
+  .block-editor-block-list__block[class*="mr-"][class*="perpage"]:not(.mr-tabs):not(.mr-tabsnav):not(.mr-scrollnav):not(.mr-activeinview):before,
 .block-editor-block-list__layout
   .block-editor-block-list__block[mr-itemsperpage]:not([mr-dynamic]):not([mr-component]):before {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='36' height='36' role='img' aria-hidden='true' focusable='false'%3E%3Cpath d='M7 13.8h6v-1.5H7v1.5zM18 16V4c0-1.1-.9-2-2-2H6c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2zM5.5 16V4c0-.3.2-.5.5-.5h10c.3 0 .5.2.5.5v12c0 .3-.2.5-.5.5H6c-.3 0-.5-.2-.5-.5zM7 10.5h8V9H7v1.5zm0-3.3h8V5.8H7v1.4zM20.2 6v13c0 .7-.6 1.2-1.2 1.2H8v1.5h11c1.5 0 2.7-1.2 2.7-2.8V6h-1.5z'%3E%3C/path%3E%3C/svg%3E");
@@ -96,12 +102,14 @@
 .block-editor-block-list__layout
   .block-editor-block-list__block.mr-tabsnav:not([class*="mr-"][class*="perpage"]):not(.mr-activeinview):before,
 .block-editor-block-list__layout
+  .block-editor-block-list__block.mr-scrollnav:not([class*="mr-"][class*="perpage"]):not(.mr-activeinview):before,
+.block-editor-block-list__layout
   .block-editor-block-list__block[mr-component]:not([mr-dynamic]):not([mr-itemsperpage]):before {
   background-image: url("data:image/svg+xml,%3Csvg width='36' height='36' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' class='components-panel__icon' role='img' aria-hidden='true' focusable='false'%3E%3Cpath d='M19 8h-1V6h-5v2h-2V6H6v2H5c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-8c0-1.1-.9-2-2-2zm.5 10c0 .3-.2.5-.5.5H5c-.3 0-.5-.2-.5-.5v-8c0-.3.2-.5.5-.5h14c.3 0 .5.2.5.5v8z'%3E%3C/path%3E%3C/svg%3E");
 }
 
 .block-editor-block-list__layout
-  .block-editor-block-list__block.mr-activeinview:not([class*="mr-"][class*="perpage"]):not(.mr-tabs):not(.mr-tabsnav):before,
+  .block-editor-block-list__block.mr-activeinview:not([class*="mr-"][class*="perpage"]):not(.mr-tabs):not(.mr-tabsnav):not(.mr-scrollnav):before,
 .block-editor-block-list__layout
   .block-editor-block-list__block[mr-dynamic]:not([mr-component]):not([mr-itemsperpage]):before {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='48' height='48' role='img' aria-hidden='true' focusable='false'%3E%3Cpath d='M16 10h4c.6 0 1-.4 1-1V5c0-.6-.4-1-1-1h-4c-.6 0-1 .4-1 1v4c0 .6.4 1 1 1zm-8 4H4c-.6 0-1 .4-1 1v4c0 .6.4 1 1 1h4c.6 0 1-.4 1-1v-4c0-.6-.4-1-1-1zm10-2.6L14.5 15l1.1 1.1 1.7-1.7c-.1 1.1-.3 2.3-.9 2.9-.3.3-.7.5-1.3.5h-4.5v1.5H15c.9 0 1.7-.3 2.3-.9 1-1 1.3-2.7 1.4-4l1.8 1.8 1.1-1.1-3.6-3.7zM6.8 9.7c.1-1.1.3-2.3.9-2.9.4-.4.8-.6 1.3-.6h4.5V4.8H9c-.9 0-1.7.3-2.3.9-1 1-1.3 2.7-1.4 4L3.5 8l-1 1L6 12.6 9.5 9l-1-1-1.7 1.7z'%3E%3C/path%3E%3C/svg%3E");

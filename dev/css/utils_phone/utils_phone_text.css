@@ -8,7 +8,7 @@
   text-align: right;
 }
 .mr-phone-fontsize7,
-.mr-phone-largefontsize {
+.mr-phone-bigfontsize {
   font-size: 2rem;
   font-size: var(--font-size-7, 2rem);
 }

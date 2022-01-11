@@ -27,15 +27,9 @@
   top: 0;
   bottom: auto;
 }
-.mr-offsettop {
-  top: var(--offset, 0);
-}
 .mr-right {
   right: 0;
   left: auto;
-}
-.mr-offsetright {
-  right: var(--offset, 0);
 }
 .mr-middle {
   align-items: center;
@@ -45,9 +39,6 @@
 .mr-left {
   left: 0;
   right: auto;
-}
-.mr-offsetleft {
-  left: var(--offset, 0);
 }
 .mr-floatleft {
   float: left;
@@ -64,12 +55,21 @@
   bottom: 0;
   top: auto;
 }
-.mr-offsetbottom {
-  bottom: var(--offset, 0);
-}
 .mr-baseline {
   align-items: baseline;
   vertical-align: baseline;
+}
+.mr-offsettop {
+  top: var(--offset, 0);
+}
+.mr-offsetright {
+  right: var(--offset, 0);
+}
+.mr-offsetleft {
+  left: var(--offset, 0);
+}
+.mr-offsetbottom {
+  bottom: var(--offset, 0);
 }
 .mr-offsetelementtop:not(.mr-offsetelementleft):not(.mr-offsetelementright) {
   transform: translateY(calc(0 - var(--offset-element, 100%)));

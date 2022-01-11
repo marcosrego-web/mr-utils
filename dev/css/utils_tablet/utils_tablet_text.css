@@ -8,7 +8,7 @@
   text-align: right;
 }
 .mr-tablet-fontsize7,
-.mr-tablet-largefontsize {
+.mr-tablet-bigfontsize {
   font-size: 2rem;
   font-size: var(--font-size-7, 2rem);
 }
