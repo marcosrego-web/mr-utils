@@ -287,6 +287,12 @@ function mrSwipeContent(t) {
   for (id = 0; id < mrSwipeChildren.length; id++) {
     mrSwipeChild = mrSwipeChildren[id];
     mrSwipeChild.classList.add("mr-swipe");
+    if (
+      t.classList.contains("mr-horizontalscroll") ||
+      t.classList.contains("mr-horizontalscrollcontent")
+    ) {
+      mrSwipeChild.classList.add("mr-horizontalscroll");
+    }
     if (t.classList.contains("mr-scrollnav")) {
       mrSwipeChild.classList.add("mr-scrollnav");
     } else if (t.classList.contains("mr-horizontalscrollnav")) {

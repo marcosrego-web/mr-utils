@@ -154,6 +154,12 @@ document.addEventListener("click", function (t) {
     mrCopy(t.target);
   } else if (t.target.matches(".mr-togglecolors")) {
     mrToggleColors();
+  } else if (t.target.closest(".mr-activeonclick")) {
+    t.target.closest(".mr-activeonclick").classList.toggle("mr-active");
+    document.body.classList.toggle("mr-hasactive");
+    document.body.classList.toggle(
+      "mr-hasactive_" + t.target.closest(".mr-activeonclick").classList[0]
+    );
   }
   t.stopPropagation();
 });

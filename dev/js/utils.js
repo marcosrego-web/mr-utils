@@ -288,6 +288,12 @@ function mrSwipeContent(t) {
   for (id = 0; id < mrSwipeChildren.length; id++) {
     mrSwipeChild = mrSwipeChildren[id];
     mrSwipeChild.classList.add("mr-swipe");
+    if (
+      t.classList.contains("mr-horizontalscroll") ||
+      t.classList.contains("mr-horizontalscrollcontent")
+    ) {
+      mrSwipeChild.classList.add("mr-horizontalscroll");
+    }
     if (t.classList.contains("mr-scrollnav")) {
       mrSwipeChild.classList.add("mr-scrollnav");
     } else if (t.classList.contains("mr-horizontalscrollnav")) {
@@ -534,6 +540,12 @@ document.addEventListener("click", function (t) {
     mrCopy(t.target);
   } else if (t.target.matches(".mr-togglecolors")) {
     mrToggleColors();
+  } else if (t.target.closest(".mr-activeonclick")) {
+    t.target.closest(".mr-activeonclick").classList.toggle("mr-active");
+    document.body.classList.toggle("mr-hasactive");
+    document.body.classList.toggle(
+      "mr-hasactive_" + t.target.closest(".mr-activeonclick").classList[0]
+    );
   }
   t.stopPropagation();
 });
@@ -551,6 +563,7 @@ document.addEventListener("DOMContentLoaded", function () {
     mrThemeColors();
   }
 });
+
 /*PAGINATION*/
 function mrLoadPage(e, n) {
   if (n <= 0) {

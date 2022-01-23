@@ -1293,6 +1293,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 							<PanelBody
 								title={__("Utilities", "mr-utils")}
 								initialOpen={false}
+								className="utilities_panelbody"
 							>
 								<TabPanel
 									className="mr-backend-tabs"
@@ -1610,7 +1611,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																				"mr-utils"
 																		  )
 																		: __(
-																				'Add scroll navigation to elements with scroll. Example: The "Swipe" component or "Horizontal Scroll" from the "Misc" section.',
+																				'Add scroll navigation to elements with scroll. You can add an horizontal scroll using the "Swipe" component or "Horizontal Scroll" from the "Misc" section.',
 																				"mr-utils"
 																		  )
 																}
@@ -1852,6 +1853,14 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																			"-activeinview"
 																		).replace("--", "-"),
 																		label: "In view",
+																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-activeonclick"
+																		).replace("--", "-"),
+																		label: "Clicked",
 																	},
 																]}
 																onChange={(val) =>
