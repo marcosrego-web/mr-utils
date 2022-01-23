@@ -1,0 +1,126 @@
+/*(start not used on breakpoints)*/
+.mr-font-custom {
+  font-family: "Arial,Helvetica Neue,Helvetica";
+  font-family: var(--custom, var(--font-2, "Arial,Helvetica Neue,Helvetica"));
+}
+/*(end not used on breakpoints)*/
+.mr-fontsize-custom {
+  font-size: 2rem;
+  font-size: var(--custom, var(--font-size-7, 2rem));
+}
+
+.mr-animationduration-custom {
+  animation-duration: 0.5s !important;
+  animation-duration: var(
+    --custom,
+    var(--transition-duration, 0.5s)
+  ) !important;
+}
+.mr-semiopaque-custom {
+  opacity: 0.5;
+  opacity: var(--custom, var(--opacity, 0.5));
+}
+.mr-size-custom,
+.mr-width-custom {
+  width: 100%;
+  width: var(--custom, var(--size-13, 100%));
+}
+.mr-container-custom {
+  max-width: var(--custom, var(--container, 75rem));
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-left: var(--custom, var(--padding, 0.75rem));
+  padding-right: var(--custom, var(--padding, 0.75rem));
+}
+
+.mr-offsettop-custom {
+  top: var(--custom, var(--offset, 0));
+}
+.mr-offsetright-custom {
+  right: var(--custom, var(--offset, 0));
+}
+.mr-offsetleft-custom {
+  left: var(--custom, var(--offset, 0));
+}
+.mr-offsetbottom-custom {
+  bottom: var(--custom, var(--offset, 0));
+}
+.mr-offsetelementtop-custom:not(.mr-offsetelementleft-custom):not(.mr-offsetelementright-custom) {
+  transform: translateY(calc(0 - var(--custom, var(--offset-element, 100%))));
+}
+.mr-offsetelementtop-custom.mr-offsetelementleft-custom {
+  transform: translate(
+    calc(0 - var(--custom, var(--offset-element, 100%))),
+    calc(0 - var(--custom, var(--offset-element, 100%)))
+  );
+}
+.mr-offsetelementtop-custom.mr-offsetelementright-custom {
+  transform: translate(
+    var(--custom, var(--offset-element, 100%)),
+    calc(0 - var(--custom, var(--offset-element, 100%)))
+  );
+}
+.mr-offsetelementright-custom:not(.mr-offsetelementtop-custom):not(.mr-offsetelementbottom-custom) {
+  transform: translateX(var(--custom, var(--offset-element, 100%)));
+}
+.mr-offsetelementbottom-custom:not(.mr-offsetelementleft-custom):not(.mr-offsetelementright-custom) {
+  transform: translateY(var(--custom, var(--offset-element, 100%)));
+}
+.mr-offsetelementbottom-custom.mr-offsetelementleft-custom {
+  transform: translate(
+    calc(0 - var(--custom, var(--offset-element, 100%))),
+    100%
+  );
+}
+.mr-offsetelementbottom-custom.mr-offsetelementright-custom {
+  transform: translate(
+    var(--custom, var(--offset-element, 100%)),
+    var(--custom, var(--offset-element, 100%))
+  );
+}
+.mr-offsetelementleft:not(.mr-offsetelementtop):not(.mr-offsetelementbottom) {
+  transform: translateX(calc(0 - var(--custom, var(--offset-element, 100%))));
+}
+
+.mr-margin-custom {
+  margin: 0.75rem;
+  margin: var(--custom, var(--margin, 0.75rem));
+}
+.mr-margintop-custom {
+  margin-top: 0.75rem;
+  margin-top: var(--custom, var(--margin, 0.75rem));
+}
+.mr-marginright-custom {
+  margin-right: 0.75rem;
+  margin-right: var(--custom, var(--margin, 0.75rem));
+}
+.mr-marginbottom-custom {
+  margin-bottom: 0.75rem;
+  margin-bottom: var(--custom, var(--margin, 0.75rem));
+}
+.mr-marginleft-custom {
+  margin-left: 0.75rem;
+  margin-left: var(--custom, var(--margin, 0.75rem));
+}
+.mr-padding-custom {
+  padding: 0.75rem;
+  padding: var(--custom, var(--padding, 0.75rem));
+}
+.mr-paddingtop-custom {
+  padding-top: 0.75rem;
+  padding-top: var(--custom, var(--padding, 0.75rem));
+}
+.mr-paddingright-custom {
+  padding-right: 0.75rem;
+  padding-right: var(--custom, var(--padding, 0.75rem));
+}
+.mr-paddingbottom-custom {
+  padding-bottom: 0.75rem;
+  padding-bottom: var(--custom, var(--padding, 0.75rem));
+}
+.mr-paddingleft-custom {
+  padding-left: 0.75rem;
+  padding-left: var(--custom, var(--padding, 0.75rem));
+}

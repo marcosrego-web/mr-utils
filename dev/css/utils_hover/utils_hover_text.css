@@ -1,24 +1,31 @@
 .mr-hover-fontsize7:hover,
-.mr-hover-largefontsize:hover {
+.mr-hover-bigfontsize:hover {
+  font-size: 2rem;
   font-size: var(--font-size-7, 2rem);
 }
 .mr-hover-fontsize6:hover {
+  font-size: 1.125rem;
   font-size: var(--font-size-6, 1.125rem);
 }
 .mr-hover-fontsize5:hover,
 .mr-hover-mediumfontsize:hover {
+  font-size: 1.17rem;
   font-size: var(--font-size-5, 1.17rem);
 }
 .mr-hover-fontsize4:hover {
+  font-size: 1rem;
   font-size: var(--font-size-4, 1rem);
 }
 .mr-hover-fontsize3:hover {
+  font-size: 0.875rem;
   font-size: var(--font-size-3, 0.875rem);
 }
 .mr-hover-fontsize2:hover {
+  font-size: 0.75rem;
   font-size: var(--font-size-2, 0.75rem);
 }
 .mr-hover-fontsize1:hover,
 .mr-hover-smallfontsize:hover {
+  font-size: 0.625rem;
   font-size: var(--font-size-1, 0.625rem);
 }

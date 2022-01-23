@@ -1,17 +1,36 @@
 /*(not used on breakpoints)*/
 .mr-offcanvas-container {
   animation: mrShow var(--transition-duration, 0.5s) forwards;
+  position: relative;
+  z-index: 2;
 }
 .mr-offcanvas-content {
   background-color: #fff;
   background-color: var(--offcanvas-background-color, #fff);
 }
-.mr-transitionleft .mr-offcanvas-content,
-.mr-transitionright .mr-offcanvas-content {
+.mr-offcanvas-toggle:not(:checked)
+  + .mr-offcanvas-container
+  .mr-offcanvas-content {
+  height: 100vh;
+}
+.mr-transitionleft
+  .mr-offcanvas-toggle:checked
+  + .mr-offcanvas-container
+  .mr-offcanvas-content,
+.mr-transitionright
+  .mr-offcanvas-toggle:checked
+  + .mr-offcanvas-container
+  .mr-offcanvas-content {
   width: var(--offcanvas-size, 100%);
 }
-.mr-transitiontop .mr-offcanvas-content,
-.mr-transitionbottom .mr-offcanvas-content {
+.mr-transitiontop
+  .mr-offcanvas-toggle:checked
+  + .mr-offcanvas-container
+  .mr-offcanvas-content,
+.mr-transitionbottom
+  .mr-offcanvas-toggle:checked
+  + .mr-offcanvas-container
+  .mr-offcanvas-content {
   height: var(--offcanvas-size, 100%);
 }
 .mr-offcanvas-container,
@@ -37,15 +56,8 @@
   left: 0;
   right: 0;
   bottom: 0;
-  height: 100vh;
   overflow: auto;
   z-index: 20;
-}
-.admin-bar .mr-offcanvas-container {
-  padding-top: 46px;
-}
-.admin-bar .mr-offcanvas-toggle {
-  margin-top: 46px;
 }
 .mr-offcanvas-toggle {
   position: fixed;
@@ -76,7 +88,11 @@
   bottom: var(--padding, 0.75rem);
 }
 .mr-offcanvas-toggle {
+  -webkit-appearance: none;
+  -moz-appearance: none;
   appearance: none;
+  border: 0;
+  background: none;
 }
 .mr-offcanvas-toggle:before,
 .mr-offcanvas-toggle:after {
@@ -159,4 +175,18 @@
   .mr-offcanvas-content {
   -webkit-animation: mrSlideInLeft var(--transition-duration, 0.5s) forwards;
   animation: mrSlideInLeft var(--transition-duration, 0.5s) forwards;
+}
+.admin-bar .mr-offcanvas-toggle:checked + .mr-offcanvas-container {
+  padding-top: 32px;
+}
+.admin-bar .mr-offcanvas-toggle:checked {
+  margin-top: 32px;
+}
+@media screen and (max-width: 782px) {
+  .admin-bar .mr-offcanvas-toggle:checked + .mr-offcanvas-container {
+    padding-top: 46px;
+  }
+  .admin-bar .mr-offcanvas-toggle:checked {
+    margin-top: 46px;
+  }
 }

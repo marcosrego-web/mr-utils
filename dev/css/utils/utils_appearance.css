@@ -1,0 +1,31 @@
+.mr-coverimage,
+.mr-coverimage > img,
+.mr-containimage,
+.mr-containimage > img {
+  width: 100%;
+  max-width: inherit;
+  height: 100%;
+}
+
+.mr-cover,
+.mr-coverimage,
+.mr-coverimage > img {
+  object-fit: cover;
+  background-size: cover;
+}
+
+.mr-contain,
+.mr-containimage,
+.mr-containimage > img {
+  object-fit: contain;
+  background-size: contain;
+}
+
+.mr-nolines,
+.mr-noborders {
+  text-decoration: none !important;
+}
+
+.mr-noborders {
+  border: 0;
+}

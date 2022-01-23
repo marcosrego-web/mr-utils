@@ -5,7 +5,7 @@
  * Description:       Easily use Mr.Utils front-end toolkit with the block editor interface without knowing code, the classes or the functions.
  * Requires at least: 5.8
  * Requires PHP:      7.0
- * Version:           0.1.1
+ * Version:           0.1.2
  * Author:            Marcos Rego
  * Author uri:		 	https://marcosrego.com
  * License:           GPL-2.0-or-later
@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-$mrutils_version = '0.1.1';
+$mrutils_version = '0.1.2';
 
 //CMS - WORDPRESS
 if (file_exists(dirname(__FILE__).'/../mrdev-framework_wp/mrdev-framework_wp.php')) {
@@ -55,7 +55,7 @@ if (file_exists(dirname(__FILE__).'/../mrdev-framework_wp/mrdev-framework_wp.php
 		.mr-backend-custominput:before {
 			content: "";
 			position: absolute;
-			z-index: 3;
+			z-index: 2;
 			top: 0;
 			left: 0;
 			width: 100%;

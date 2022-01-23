@@ -9,35 +9,26 @@
   width: 0;
 }
 .mr-portrait-horizontalscroll,
-.mr-portrait-horizontalscrollcontent > *,
-.mr-portrait-swipe,
-.mr-portrait-swipecontent > * {
-  display: -webkit-inline-box;
+.mr-portrait-horizontalscrollcontent > * {
+  display: -webkit-inline-box !important;
+  flex-wrap: unset !important;
   overflow-x: auto;
   overflow-y: hidden;
 }
-.mr-portrait-horizontalscroll > *,
-.mr-portrait-horizontalscrollcontent > * > *,
-.mr-portrait-swipe > *,
-.mr-portrait-swipecontent > * > * {
-  display: block;
-}
 .mr-portrait-horizontalscroll img,
 .mr-portrait-horizontalscrollcontent > * img,
-.mr-portrait-swipe img,
-.mr-portrait-swipecontent > * img,
 .mr-portrait-horizontalscroll a,
-.mr-portrait-horizontalscrollcontent > * a,
-.mr-portrait-swipe a,
-.mr-portrait-swipecontent > * a {
+.mr-portrait-horizontalscrollcontent > * a {
   -moz-user-select: none;
   -webkit-user-drag: none;
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
 }
-.mr-portrait-swipe,
-.mr-portrait-swipecontent > *,
+.mr-portrait-horizontalscroll > *,
+.mr-portrait-horizontalscrollcontent > * > * {
+  display: block;
+}
 .mr-portrait-drag,
 .mr-portrait-dragcontent > *,
 .mr-portrait-draganddrop:not([draggable="false"]) {
@@ -52,23 +43,23 @@
   -ms-user-select: none;
   user-select: none;
 }
+.mr-portrait-dragging a,
+.mr-portrait-draggingcontent a {
+  pointer-events: none;
+}
 @supports (-webkit-overflow-scrolling: touch) {
   .mr-portrait-iosscroll,
   .mr-portrait-scroll {
     overflow-y: scroll !important;
   }
   .mr-portrait-horizontalscroll,
-  .mr-portrait-horizontalscrollcontent > *,
-  .mr-portrait-swipe,
-  .mr-portrait-swipecontent > * {
+  .mr-portrait-horizontalscrollcontent > * {
     overflow-x: scroll !important;
   }
   .mr-portrait-iosscroll,
   .mr-portrait-scroll,
   .mr-portrait-horizontalscroll,
-  .mr-portrait-horizontalscrollcontent > *,
-  .mr-portrait-swipe,
-  .mr-portrait-swipecontent > * {
+  .mr-portrait-horizontalscrollcontent > * {
     -webkit-overflow-scrolling: touch !important;
   }
 }

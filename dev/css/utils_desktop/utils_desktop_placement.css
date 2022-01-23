@@ -6,10 +6,12 @@
 }
 .mr-desktop-fixed {
   position: fixed;
+  z-index: 1;
 }
 .mr-desktop-sticky {
   position: -webkit-sticky;
   position: sticky;
+  z-index: 1;
 }
 .mr-desktop-aligntop {
   vertical-align: top;
@@ -25,9 +27,15 @@
   top: 0;
   bottom: auto;
 }
+.mr-desktop-offsettop {
+  top: var(--offset, 0);
+}
 .mr-desktop-right {
   right: 0;
   left: auto;
+}
+.mr-desktop-offsetright {
+  right: var(--offset, 0);
 }
 .mr-desktop-middle {
   align-items: center;
@@ -37,6 +45,9 @@
 .mr-desktop-left {
   left: 0;
   right: auto;
+}
+.mr-desktop-offsetleft {
+  left: var(--offset, 0);
 }
 .mr-desktop-floatleft {
   float: left;
@@ -53,31 +64,43 @@
   bottom: 0;
   top: auto;
 }
+.mr-desktop-offsetbottom {
+  bottom: var(--offset, 0);
+}
 .mr-desktop-baseline {
   align-items: baseline;
   vertical-align: baseline;
 }
-.mr-desktop-offsettop:not(.mr-desktop-offsetleft):not(.mr-desktop-offsetright) {
-  transform: translateY(-100%);
+.mr-desktop-offsetelementtop:not(.mr-desktop-offsetelementleft):not(.mr-desktop-offsetelementright) {
+  transform: translateY(calc(0 - var(--offset-element, 100%)));
 }
-.mr-desktop-offsettop.mr-desktop-offsetleft {
-  transform: translate(-100%, -100%);
+.mr-desktop-offsetelementtop.mr-desktop-offsetelementleft {
+  transform: translate(
+    calc(0 - var(--offset-element, 100%)),
+    calc(0 - var(--offset-element, 100%))
+  );
 }
-.mr-desktop-offsettop.mr-desktop-offsetright {
-  transform: translate(100%, -100%);
+.mr-desktop-offsetelementtop.mr-desktop-offsetelementright {
+  transform: translate(
+    var(--offset-element, 100%),
+    calc(0 - var(--offset-element, 100%))
+  );
 }
-.mr-desktop-offsetright:not(.mr-desktop-offsettop):not(.mr-desktop-offsetbottom) {
-  transform: translateX(100%);
+.mr-desktop-offsetelementright:not(.mr-desktop-offsetelementtop):not(.mr-desktop-offsetelementbottom) {
+  transform: translateX(var(--offset-element, 100%));
 }
-.mr-desktop-offsetbottom:not(.mr-desktop-offsetleft):not(.mr-desktop-offsetright) {
-  transform: translateY(100%);
+.mr-desktop-offsetelementbottom:not(.mr-desktop-offsetelementleft):not(.mr-desktop-offsetelementright) {
+  transform: translateY(var(--offset-element, 100%));
 }
-.mr-desktop-offsetbottom.mr-desktop-offsetleft {
-  transform: translate(-100%, 100%);
+.mr-desktop-offsetelementbottom.mr-desktop-offsetelementleft {
+  transform: translate(calc(0 - var(--offset-element, 100%)), 100%);
 }
-.mr-desktop-offsetbottom.mr-desktop-offsetright {
-  transform: translate(100%, 100%);
+.mr-desktop-offsetelementbottom.mr-desktop-offsetelementright {
+  transform: translate(
+    var(--offset-element, 100%),
+    var(--offset-element, 100%)
+  );
 }
-.mr-desktop-offsetleft:not(.mr-desktop-offsettop):not(.mr-desktop-offsetbottom) {
-  transform: translateX(-100%);
+.mr-desktop-offsetelementleft:not(.mr-desktop-offsetelementtop):not(.mr-desktop-offsetelementbottom) {
+  transform: translateX(calc(0 - var(--offset-element, 100%)));
 }

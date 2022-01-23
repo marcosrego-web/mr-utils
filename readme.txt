@@ -2,7 +2,7 @@
 Contributors:      Marcos Rego
 Tags:              block, editor, utilities, frontend, toolkit, utils, dev, developer, bootstrap, tailwind, css, js, breakpoints, devices
 Tested up to:      5.8.2
-Stable tag:        0.1.1
+Stable tag:        0.1.2
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -10,7 +10,7 @@ Add a front-end toolkit to the block editor that allows to change device visibil
 
 == Description ==
 
-Easily use Mr.Utils front-end toolkit with the block editor interface without knowing code, the classes or the functions.
+Easily use [Mr.Utils](https://marcosrego.com/development/mr-utils/) front-end toolkit with the block editor interface without knowing code, the classes or the functions.
 
 You can transform parent blocks (such as Columns or Groups) into components such as Tabs, Swiper or Sliders (with pagination).
 
@@ -24,6 +24,13 @@ You can also apply changes to specific devices/breakpoints: Show/hide blocks dep
 
 == Frequently Asked Questions ==
 
+= Does the interface of Mr.Utils support all blocks? =
+
+The interface of Mr.Utils works on the vast majority of core blocks. But you have alternative ways to use them that work on any block:
+1. Do you actually need to apply the style directly on the element? Some styles (such as font-size) when applied on parent blocks, might also apply the style into child blocks. With that in mind, you can wrap/transform the unsupported block with a "Group" and then use the interface of Mr.Utils on that group.
+2. All options use [utility classes](https://github.com/marcosrego-web/mr-utils/wiki/Utility-Classes), so for unsupported blocks you can also go to "Advanced > Additional CSS class(es)" and form the classes there.
+3. Or wait for them to be supported. [Maybe you can help me on that](https://github.com/WordPress/gutenberg/issues/36127).
+
 = Where can I find more information about Mr.Utils? =
 
 You can find detailed information on the documentation at: [https://github.com/marcosrego-web/mr-utils/wiki](https://github.com/marcosrego-web/mr-utils/wiki)
@@ -32,7 +39,7 @@ General information can be found on: [https://marcosrego.com/development/mr-util
 
 = How do I contact the developer? =
 
-You can contact me at: https://marcosrego.com/client-area/contact/
+You can contact me at: [https://marcosrego.com/client-area/contact/](https://marcosrego.com/development/mr-utils/)
 
 == Screenshots ==
 
@@ -42,17 +49,30 @@ You can contact me at: https://marcosrego.com/client-area/contact/
 4. Example of options that will apply when mouse hovering a block.
 5. Example of options that will only apply on phone devices.
 6. Using Mr.Dev.'s Framework allows to select which options will be available (reducing HTTP requests and file size).
+7. Mr.Dev.'s Framework allows to create custom utilities to select on the block editor.
 
 == Changelog ==
 
+= 0.1.2 =
+* Added "Swipe", "Swipe content" and "Scroll Navigation" to the components section.
+* Auto columns option (Layout section).
+* Option for global value on columns and on items per line.
+* "Active when clicked" option on the "Dynamic" section (adds the class "mr-active").
+* Slide animation now works for paragraphs and headings (not only for child elements).
+* Added font-family options (also compatible with custom utility classes added by Mr.Dev.'s Framework).
+* Improvements to horizontalscroll for better compatibility with blocks.
+* Toolkit: Improvements to offcanvas.
+* Toolkit: Added offset and offsetelement classes and variables.
+* Toolkit: Starting to add classes for appearance and height.
+
 = 0.1.1 =
 * Compatibility with Custom Utility Classes added by Mr.Dev.'s Framework.
-* Improved offcanvas options to not rely on javascript.
 * Change animation orientation (for the options Slide, Scale and Zoom) when using pagination arrows.
 * Fixed: Bug when changing back to any default option on breakpoints.
-* Fixed: Missing overlay class when not using offcanvas.
-* Fixed: SlideOut animation orientation.
 * Fixed: Semi-opacity not visible on the backend when combined with Components and Pagination.
+* Toolkit: Improved offcanvas options to not rely on javascript.
+* Toolkit: Fixed missing overlay class when not using offcanvas.
+* Toolkit: Fixed SlideOut animation orientation.
 
 = 0.1.0 =
 * First release

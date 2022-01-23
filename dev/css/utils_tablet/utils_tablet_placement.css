@@ -6,10 +6,12 @@
 }
 .mr-tablet-fixed {
   position: fixed;
+  z-index: 1;
 }
 .mr-tablet-sticky {
   position: -webkit-sticky;
   position: sticky;
+  z-index: 1;
 }
 .mr-tablet-aligntop {
   vertical-align: top;
@@ -25,9 +27,15 @@
   top: 0;
   bottom: auto;
 }
+.mr-tablet-offsettop {
+  top: var(--offset, 0);
+}
 .mr-tablet-right {
   right: 0;
   left: auto;
+}
+.mr-tablet-offsetright {
+  right: var(--offset, 0);
 }
 .mr-tablet-middle {
   align-items: center;
@@ -37,6 +45,9 @@
 .mr-tablet-left {
   left: 0;
   right: auto;
+}
+.mr-tablet-offsetleft {
+  left: var(--offset, 0);
 }
 .mr-tablet-floatleft {
   float: left;
@@ -53,31 +64,43 @@
   bottom: 0;
   top: auto;
 }
+.mr-tablet-offsetbottom {
+  bottom: var(--offset, 0);
+}
 .mr-tablet-baseline {
   align-items: baseline;
   vertical-align: baseline;
 }
-.mr-tablet-offsettop:not(.mr-tablet-offsetleft):not(.mr-tablet-offsetright) {
-  transform: translateY(-100%);
+.mr-tablet-offsetelementtop:not(.mr-tablet-offsetelementleft):not(.mr-tablet-offsetelementright) {
+  transform: translateY(calc(0 - var(--offset-element, 100%)));
 }
-.mr-tablet-offsettop.mr-tablet-offsetleft {
-  transform: translate(-100%, -100%);
+.mr-tablet-offsetelementtop.mr-tablet-offsetelementleft {
+  transform: translate(
+    calc(0 - var(--offset-element, 100%)),
+    calc(0 - var(--offset-element, 100%))
+  );
 }
-.mr-tablet-offsettop.mr-tablet-offsetright {
-  transform: translate(100%, -100%);
+.mr-tablet-offsetelementtop.mr-tablet-offsetelementright {
+  transform: translate(
+    var(--offset-element, 100%),
+    calc(0 - var(--offset-element, 100%))
+  );
 }
-.mr-tablet-offsetright:not(.mr-tablet-offsettop):not(.mr-tablet-offsetbottom) {
-  transform: translateX(100%);
+.mr-tablet-offsetelementright:not(.mr-tablet-offsetelementtop):not(.mr-tablet-offsetelementbottom) {
+  transform: translateX(var(--offset-element, 100%));
 }
-.mr-tablet-offsetbottom:not(.mr-tablet-offsetleft):not(.mr-tablet-offsetright) {
-  transform: translateY(100%);
+.mr-tablet-offsetelementbottom:not(.mr-tablet-offsetelementleft):not(.mr-tablet-offsetelementright) {
+  transform: translateY(var(--offset-element, 100%));
 }
-.mr-tablet-offsetbottom.mr-tablet-offsetleft {
-  transform: translate(-100%, 100%);
+.mr-tablet-offsetelementbottom.mr-tablet-offsetelementleft {
+  transform: translate(calc(0 - var(--offset-element, 100%)), 100%);
 }
-.mr-tablet-offsetbottom.mr-tablet-offsetright {
-  transform: translate(100%, 100%);
+.mr-tablet-offsetelementbottom.mr-tablet-offsetelementright {
+  transform: translate(
+    var(--offset-element, 100%),
+    var(--offset-element, 100%)
+  );
 }
-.mr-tablet-offsetleft:not(.mr-tablet-offsettop):not(.mr-tablet-offsetbottom) {
-  transform: translateX(-100%);
+.mr-tablet-offsetelementleft:not(.mr-tablet-offsetelementtop):not(.mr-tablet-offsetelementbottom) {
+  transform: translateX(calc(0 - var(--offset-element, 100%)));
 }

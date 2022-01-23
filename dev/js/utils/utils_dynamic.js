@@ -154,6 +154,12 @@ document.addEventListener("click", function (t) {
     mrCopy(t.target);
   } else if (t.target.matches(".mr-togglecolors")) {
     mrToggleColors();
+  } else if (t.target.closest(".mr-activeonclick")) {
+    t.target.closest(".mr-activeonclick").classList.toggle("mr-active");
+    document.body.classList.toggle("mr-hasactive");
+    document.body.classList.toggle(
+      "mr-hasactive_" + t.target.closest(".mr-activeonclick").classList[0]
+    );
   }
   t.stopPropagation();
 });
@@ -169,38 +175,5 @@ document.addEventListener("DOMContentLoaded", function () {
     mrDarkColors();
   } else if (mrGetCookie("mrColors") == "mrColors") {
     mrThemeColors();
-  }
-
-  const mrDragEles = document.querySelectorAll(
-    "[class*='mr-'][class*='-drag']:not([class*='-dragcontent']):not([class*='-draganddrop']),[class*='-dragcontent'] > *, [class*='mr-'][class*='-swipe']:not([class*='-swipecontent']),[class*='mr-'][class*='-swipecontent'] > *"
-  );
-  for (let id = 0; id < mrDragEles.length; id++) {
-    const mrDragEle = mrDragEles[id];
-    mrDragEle.classList.remove("mr-dragging");
-    let pos = { top: 0, left: 0, x: 0, y: 0 };
-    const mouseDownHandler = function (e) {
-      mrDragEle.classList.add("mr-dragging");
-      pos = {
-        left: mrDragEle.scrollLeft,
-        top: mrDragEle.scrollTop,
-        x: e.clientX,
-        y: e.clientY,
-      };
-      document.addEventListener("mousemove", mouseMoveHandler);
-      document.addEventListener("mouseup", mouseUpHandler);
-    };
-    const mouseMoveHandler = function (e) {
-      const dx = e.clientX - pos.x;
-      const dy = e.clientY - pos.y;
-      mrDragEle.scrollTop = pos.top - dy;
-      mrDragEle.scrollLeft = pos.left - dx;
-    };
-    const mouseUpHandler = function () {
-      mrDragEle.classList.remove("mr-dragging");
-      mrDragEle.style.removeProperty("user-select");
-      document.removeEventListener("mousemove", mouseMoveHandler);
-      document.removeEventListener("mouseup", mouseUpHandler);
-    };
-    mrDragEle.addEventListener("mousedown", mouseDownHandler);
   }
 });
