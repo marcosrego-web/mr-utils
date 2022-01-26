@@ -45,6 +45,7 @@ import {
 	moveTo,
 	blockDefault,
 	replace,
+	brush,
 } from "@wordpress/icons";
 
 const mrAllowedBlocks = [
@@ -925,6 +926,22 @@ function mrAddAttributes(settings) {
 				type: "string",
 				default: "",
 			},
+			mrBackgroundColor: {
+				type: "string",
+				default: "mr-",
+			},
+			mrCustomBackgroundColor: {
+				type: "string",
+				default: "",
+			},
+			mrColor: {
+				type: "string",
+				default: "mr-",
+			},
+			mrCustomColor: {
+				type: "string",
+				default: "",
+			},
 			mrFontFamily: {
 				type: "string",
 				default: "mr-",
@@ -1251,6 +1268,10 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 			mrCustomSizelaptop,
 			mrCustomSizetablet,
 			mrCustomSizephone,
+			mrBackgroundColor,
+			mrCustomBackgroundColor,
+			mrColor,
+			mrCustomColor,
 			mrFontFamily,
 			mrCustomFontFamily,
 			mrFontSizeOptions,
@@ -2909,6 +2930,131 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 														}
 													/>
 												</PanelBody>
+												{tab.name === "" ? (
+													<PanelBody
+														icon={brush}
+														title={tab.name + __(" Appearance", "mr-utils")}
+														initialOpen={false}
+														className="mr-backend-option mr-backend-option_utils_appearance"
+													>
+														<SelectControl
+															label={__("Background Color", "mr-utils")}
+															className="mr-backend-bgcolor mr-backend-hascustomoption"
+															value={mrBackgroundColor}
+															options={[
+																{
+																	value: "mr-",
+																	label: "Default",
+																},
+																{
+																	value: " mr-backgroundcolor",
+																	label: "Background color class",
+																},
+																{
+																	value: " mr-custombackgroundcolor",
+																	label: "Custom background color class",
+																},
+															]}
+															onChange={(val) =>
+																setAttributes({
+																	mrBackgroundColor:
+																		val !== undefined ? val : mrBackgroundColor,
+																})
+															}
+															help={
+																!mrBackgroundColor.includes(
+																	"-custombackgroundcolor"
+																) &&
+																mrBackgroundColor.includes("-backgroundcolor")
+																	? "var(--background-color) = " +
+																	  getComputedStyle(
+																			document.documentElement
+																	  ).getPropertyValue("--background-color")
+																	: ""
+															}
+														/>
+														{tab.name === "" &&
+														mrBackgroundColor.includes("custom") ? (
+															<TextControl
+																label={__("", "mr-utils")}
+																value={mrCustomBackgroundColor}
+																type="text"
+																className="mr-backend-custominput mr-backend-custombackgroundcolor"
+																placeHolder={"mr-backgroundcolor"}
+																list={"mrDevUtilsClasses_backgroundcolor".replace(
+																	"__",
+																	"_"
+																)}
+																onChange={(val) =>
+																	setAttributes({
+																		mrCustomBackgroundColor:
+																			val !== undefined
+																				? val
+																				: mrCustomBackgroundColor,
+																	})
+																}
+															/>
+														) : (
+															""
+														)}
+														<SelectControl
+															label={__("Color", "mr-utils")}
+															className="mr-backend-color mr-backend-hascustomoption"
+															value={mrColor}
+															options={[
+																{
+																	value: "mr-",
+																	label: "Default",
+																},
+																{
+																	value: " mr-textcolor",
+																	label: "Text color class",
+																},
+																{
+																	value: " mr-customcolor",
+																	label: "Custom color class",
+																},
+															]}
+															onChange={(val) =>
+																setAttributes({
+																	mrColor: val !== undefined ? val : mrColor,
+																})
+															}
+															help={
+																!mrColor.includes("-customcolor") &&
+																mrColor.includes("-textcolor")
+																	? "var(--text-color) = " +
+																	  getComputedStyle(
+																			document.documentElement
+																	  ).getPropertyValue("--text-color")
+																	: ""
+															}
+														/>
+														{tab.name === "" && mrColor.includes("custom") ? (
+															<TextControl
+																label={__("", "mr-utils")}
+																value={mrCustomColor}
+																type="text"
+																className="mr-backend-custominput mr-backend-customcolor"
+																placeHolder={"mr-textcolor"}
+																list={"mrDevUtilsClasses_color".replace(
+																	"__",
+																	"_"
+																)}
+																onChange={(val) =>
+																	setAttributes({
+																		mrCustomColor:
+																			val !== undefined ? val : mrCustomColor,
+																	})
+																}
+															/>
+														) : (
+															""
+														)}
+													</PanelBody>
+												) : (
+													""
+												)}
 												<PanelBody
 													icon={resizeCornerNE}
 													title={tab.name + __(" Spacing", "mr-utils")}
@@ -5701,6 +5847,10 @@ const mrApplyWrapperExtraClass = createHigherOrderComponent(
 				mrCustomSizelaptop,
 				mrCustomSizetablet,
 				mrCustomSizephone,
+				mrBackgroundColor,
+				mrCustomBackgroundColor,
+				mrColor,
+				mrCustomColor,
 				mrFontFamily,
 				mrCustomFontFamily,
 				mrFontSizeOptions,
@@ -5779,6 +5929,22 @@ const mrApplyWrapperExtraClass = createHigherOrderComponent(
 			}
 
 			if (
+				mrBackgroundColor &&
+				mrBackgroundColor.includes("-custombackgroundcolor") &&
+				mrCustomBackgroundColor
+			) {
+				mrClassNames = mrClassNames + " " + mrCustomBackgroundColor;
+			} else if (mrBackgroundColor && mrBackgroundColor !== "mr-") {
+				mrClassNames = mrClassNames + " " + mrBackgroundColor;
+			}
+
+			if (mrColor && mrColor.includes("-customcolor") && mrCustomColor) {
+				mrClassNames = mrClassNames + " " + mrCustomColor;
+			} else if (mrColor && mrColor !== "mr-") {
+				mrClassNames = mrClassNames + " " + mrColor;
+			}
+
+			if (
 				mrFontFamily &&
 				mrFontFamily.includes("-customfont") &&
 				mrCustomFontFamily
@@ -5818,22 +5984,22 @@ const mrApplyWrapperExtraClass = createHigherOrderComponent(
 				mrFontSizeOptions.includes("-fontsizeoptions")
 			) {
 				if (mrCustomFontSize) {
-					mrClassNames = mrClassNames + mrCustomFontSize;
+					mrClassNames = mrClassNames + " " + mrCustomFontSize;
 				}
 				if (mrCustomFontSizehover) {
-					mrClassNames = mrClassNames + mrCustomFontSizehover;
+					mrClassNames = mrClassNames + " " + mrCustomFontSizehover;
 				}
 				if (mrCustomFontSizedesktop) {
-					mrClassNames = mrClassNames + mrCustomFontSizedesktop;
+					mrClassNames = mrClassNames + " " + mrCustomFontSizedesktop;
 				}
 				if (mrCustomFontSizelaptop) {
-					mrClassNames = mrClassNames + mrCustomFontSizelaptop;
+					mrClassNames = mrClassNames + " " + mrCustomFontSizelaptop;
 				}
 				if (mrCustomFontSizetablet) {
-					mrClassNames = mrClassNames + mrCustomFontSizetablet;
+					mrClassNames = mrClassNames + " " + mrCustomFontSizetablet;
 				}
 				if (mrCustomFontSizephone) {
-					mrClassNames = mrClassNames + mrCustomFontSizephone;
+					mrClassNames = mrClassNames + " " + mrCustomFontSizephone;
 				}
 			}
 
@@ -5850,7 +6016,9 @@ const mrApplyWrapperExtraClass = createHigherOrderComponent(
 					!mrAttr.includes("mrCustom") &&
 					!mrAttr.includes("mrFontSize") &&
 					!mrAttr.includes("mrSize") &&
-					!mrAttr.includes("mrFontFamily")
+					!mrAttr.includes("mrFontFamily") &&
+					!mrAttr.includes("mrBackgroundColor") &&
+					!mrAttr.includes("mrColor")
 				) {
 					if (mrAttr == "mrPerPage" && mrAttrValue) {
 						if (mrAttrValue > 0) {
@@ -6235,6 +6403,10 @@ function mrApplyExtraClass(extraProps, blockType, attributes) {
 		mrCustomSizelaptop,
 		mrCustomSizetablet,
 		mrCustomSizephone,
+		mrBackgroundColor,
+		mrCustomBackgroundColor,
+		mrColor,
+		mrCustomColor,
 		mrFontFamily,
 		mrCustomFontFamily,
 		mrFontSizeOptions,
@@ -6316,6 +6488,22 @@ function mrApplyExtraClass(extraProps, blockType, attributes) {
 	}
 
 	if (
+		mrBackgroundColor &&
+		mrBackgroundColor.includes("-custombackgroundcolor") &&
+		mrCustomBackgroundColor
+	) {
+		mrClassNames = mrClassNames + " " + mrCustomBackgroundColor;
+	} else if (mrBackgroundColor && mrBackgroundColor !== "mr-") {
+		mrClassNames = mrClassNames + " " + mrBackgroundColor;
+	}
+
+	if (mrColor && mrColor.includes("-customcolor") && mrCustomColor) {
+		mrClassNames = mrClassNames + " " + mrCustomColor;
+	} else if (mrColor && mrColor !== "mr-") {
+		mrClassNames = mrClassNames + " " + mrColor;
+	}
+
+	if (
 		mrFontFamily &&
 		mrFontFamily.includes("-customfont") &&
 		mrCustomFontFamily
@@ -6349,22 +6537,22 @@ function mrApplyExtraClass(extraProps, blockType, attributes) {
 		mrFontSizeOptions.includes("-fontsizeoptions")
 	) {
 		if (mrCustomFontSize) {
-			mrClassNames = mrClassNames + mrCustomFontSize;
+			mrClassNames = mrClassNames + " " + mrCustomFontSize;
 		}
 		if (mrCustomFontSizehover) {
-			mrClassNames = mrClassNames + mrCustomFontSizehover;
+			mrClassNames = mrClassNames + " " + mrCustomFontSizehover;
 		}
 		if (mrCustomFontSizedesktop) {
-			mrClassNames = mrClassNames + mrCustomFontSizedesktop;
+			mrClassNames = mrClassNames + " " + mrCustomFontSizedesktop;
 		}
 		if (mrCustomFontSizelaptop) {
-			mrClassNames = mrClassNames + mrCustomFontSizelaptop;
+			mrClassNames = mrClassNames + " " + mrCustomFontSizelaptop;
 		}
 		if (mrCustomFontSizetablet) {
-			mrClassNames = mrClassNames + mrCustomFontSizetablet;
+			mrClassNames = mrClassNames + " " + mrCustomFontSizetablet;
 		}
 		if (mrCustomFontSizephone) {
-			mrClassNames = mrClassNames + mrCustomFontSizephone;
+			mrClassNames = mrClassNames + " " + mrCustomFontSizephone;
 		}
 	}
 
@@ -6382,7 +6570,9 @@ function mrApplyExtraClass(extraProps, blockType, attributes) {
 				!mrAttr.includes("mrCustom") &&
 				!mrAttr.includes("mrFontSize") &&
 				!mrAttr.includes("mrSize") &&
-				!mrAttr.includes("mrFontFamily")
+				!mrAttr.includes("mrFontFamily") &&
+				!mrAttr.includes("mrBackgroundColor") &&
+				!mrAttr.includes("mrColor")
 			) {
 				if (mrAttr == "mrPerPage" && mrAttrValue) {
 					if (mrAttrValue > 0) {

@@ -1,10 +1,16 @@
+.mr-backgroundcolor {
+  background-color: var(--background-color, #fff);
+}
+
+.mr-textcolor {
+  color: var(--text-color, #000);
+}
+
 .mr-coverimage,
-.mr-coverimage > img,
-.mr-containimage,
-.mr-containimage > img {
-  width: 100%;
+.mr-coverimage > img {
   max-width: inherit;
-  height: 100%;
+  /*width: 100%;
+  height: 100%;*/
 }
 
 .mr-cover,
@@ -21,11 +27,11 @@
   background-size: contain;
 }
 
-.mr-nolines,
-.mr-noborders {
+.mr-nounderline {
   text-decoration: none !important;
 }
 
+.mr-nolines,
 .mr-noborders {
   border: 0;
 }

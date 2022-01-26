@@ -2,7 +2,7 @@
 Contributors:      Marcos Rego
 Tags:              block, editor, utilities, frontend, toolkit, utils, dev, developer, bootstrap, tailwind, css, js, breakpoints, devices
 Tested up to:      5.8.2
-Stable tag:        0.1.2
+Stable tag:        0.1.3
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -52,6 +52,10 @@ You can contact me at: [https://marcosrego.com/client-area/contact/](https://mar
 7. Mr.Dev.'s Framework allows to create custom utilities to select on the block editor.
 
 == Changelog ==
+
+= 0.1.3 =
+* Added some appearance options to the interface (Background Color and Color).
+* Fixed bug when using custom font-sizes.
 
 = 0.1.2 =
 * Added "Swipe", "Swipe content" and "Scroll Navigation" to the components section.
