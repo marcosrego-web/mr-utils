@@ -14,8 +14,8 @@ function mrutils_assets_backend() {
     );
 
     if(!isset($mrdev_version)) {
-        /*
         //CODE TEMPORARY COMMENTEND - While Wordpress does not fix the enqueue of multiple assets inside block template iframes
+        /*
         wp_enqueue_style(
             'mrutils_backend-css',
                 esc_url( plugins_url( '../../css/utils_backend.css', __FILE__ ) ),
@@ -27,7 +27,7 @@ function mrutils_assets_backend() {
         //TEMPORARY CODE - While Wordpress does not fix the enqueue of multiple assets inside block template iframes
         wp_enqueue_style(
             'mrutils_backend-css',
-                esc_url( plugins_url( 'utils_backend_custom.css', __FILE__ ) ),
+                esc_url( plugins_url( 'assets/css/utils_backend_custom.css', __FILE__ ) ),
                 array( ),
                 $mrutils_version
         );
