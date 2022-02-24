@@ -5890,44 +5890,59 @@ const mrApplyWrapperExtraClass = createHigherOrderComponent(
 			let mrAttr = "";
 			let mrAttrValue = "";
 
-			if (!mrSizeOptions || !mrSizeOptions.includes("-sizeoptions")) {
-				if (mrSize) {
-					mrClassNames = mrClassNames + " mr-size" + mrSize;
-				}
-				if (mrSizehover) {
-					mrClassNames = mrClassNames + " mr-hover-size" + mrSizehover;
-				}
-				if (mrSizedesktop) {
-					mrClassNames = mrClassNames + " mr-desktop-size" + mrSizedesktop;
-				}
-				if (mrSizelaptop) {
-					mrClassNames = mrClassNames + " mr-laptop-size" + mrSizelaptop;
-				}
-				if (mrSizetablet) {
-					mrClassNames = mrClassNames + " mr-tablet-size" + mrSizetablet;
-				}
-				if (mrSizephone) {
-					mrClassNames = mrClassNames + " mr-phone-size" + mrSizephone;
-				}
-			} else if (mrSizeOptions && mrSizeOptions.includes("-sizeoptions")) {
-				if (mrCustomSize) {
-					mrClassNames = mrClassNames + mrCustomSize;
-				}
-				if (mrCustomSizehover) {
-					mrClassNames = mrClassNames + mrCustomSizehover;
-				}
-				if (mrCustomSizedesktop) {
-					mrClassNames = mrClassNames + mrCustomSizedesktop;
-				}
-				if (mrCustomSizelaptop) {
-					mrClassNames = mrClassNames + mrCustomSizelaptop;
-				}
-				if (mrCustomSizetablet) {
-					mrClassNames = mrClassNames + mrCustomSizetablet;
-				}
-				if (mrCustomSizephone) {
-					mrClassNames = mrClassNames + mrCustomSizephone;
-				}
+			if (
+				mrCustomSize &&
+				mrSizeOptions &&
+				mrSizeOptions.includes("-sizeoptions")
+			) {
+				mrClassNames = mrClassNames + " " + mrCustomSize;
+			} else if (mrSize) {
+				mrClassNames = mrClassNames + " mr-size" + mrSize;
+			}
+			if (
+				mrCustomSizehover &&
+				mrSizeOptionshover &&
+				mrSizeOptionshover.includes("-sizeoptions")
+			) {
+				mrClassNames = mrClassNames + " " + mrCustomSizehover;
+			} else if (mrSizehover) {
+				mrClassNames = mrClassNames + " mr-hover-size" + mrSizehover;
+			}
+			if (
+				mrCustomSizedesktop &&
+				mrSizeOptionsdesktop &&
+				mrSizeOptionsdesktop.includes("-sizeoptions")
+			) {
+				mrClassNames = mrClassNames + " " + mrCustomSizedesktop;
+			} else if (mrSizedesktop) {
+				mrClassNames = mrClassNames + " mr-desktop-size" + mrSizedesktop;
+			}
+			if (
+				mrCustomSizelaptop &&
+				mrSizeOptionslaptop &&
+				mrSizeOptionslaptop.includes("-sizeoptions")
+			) {
+				mrClassNames = mrClassNames + " " + mrCustomSizelaptop;
+			} else if (mrSizelaptop) {
+				mrClassNames = mrClassNames + " mr-laptop-size" + mrSizelaptop;
+			}
+			if (
+				mrCustomSizetablet &&
+				mrSizeOptionstablet &&
+				mrSizeOptionstablet.includes("-sizeoptions")
+			) {
+				mrClassNames = mrClassNames + " " + mrCustomSizetablet;
+			} else if (mrSizetablet) {
+				mrClassNames = mrClassNames + " mr-tablet-size" + mrSizetablet;
+			}
+			if (
+				mrCustomSizephone &&
+				mrSizeOptionsphone &&
+				mrSizeOptionsphone.includes("-sizeoptions")
+			) {
+				mrClassNames = mrClassNames + " " + mrCustomSizephone;
+			} else if (mrSizephone) {
+				mrClassNames = mrClassNames + " mr-phone-size" + mrSizephone;
 			}
 
 			if (
@@ -5957,52 +5972,59 @@ const mrApplyWrapperExtraClass = createHigherOrderComponent(
 			}
 
 			if (
-				!mrFontSizeOptions ||
-				!mrFontSizeOptions.includes("-fontsizeoptions")
-			) {
-				if (mrFontSize) {
-					mrClassNames = mrClassNames + " mr-fontsize" + mrFontSize;
-				}
-				if (mrFontSizehover) {
-					mrClassNames = mrClassNames + " mr-hover-fontsize" + mrFontSizehover;
-				}
-				if (mrFontSizedesktop) {
-					mrClassNames =
-						mrClassNames + " mr-desktop-fontsize" + mrFontSizedesktop;
-				}
-				if (mrFontSizelaptop) {
-					mrClassNames =
-						mrClassNames + " mr-laptop-fontsize" + mrFontSizelaptop;
-				}
-				if (mrFontSizetablet) {
-					mrClassNames =
-						mrClassNames + " mr-tablet-fontsize" + mrFontSizetablet;
-				}
-				if (mrFontSizephone) {
-					mrClassNames = mrClassNames + " mr-phone-fontsize" + mrFontSizephone;
-				}
-			} else if (
+				mrCustomFontSize &&
 				mrFontSizeOptions &&
 				mrFontSizeOptions.includes("-fontsizeoptions")
 			) {
-				if (mrCustomFontSize) {
-					mrClassNames = mrClassNames + " " + mrCustomFontSize;
-				}
-				if (mrCustomFontSizehover) {
-					mrClassNames = mrClassNames + " " + mrCustomFontSizehover;
-				}
-				if (mrCustomFontSizedesktop) {
-					mrClassNames = mrClassNames + " " + mrCustomFontSizedesktop;
-				}
-				if (mrCustomFontSizelaptop) {
-					mrClassNames = mrClassNames + " " + mrCustomFontSizelaptop;
-				}
-				if (mrCustomFontSizetablet) {
-					mrClassNames = mrClassNames + " " + mrCustomFontSizetablet;
-				}
-				if (mrCustomFontSizephone) {
-					mrClassNames = mrClassNames + " " + mrCustomFontSizephone;
-				}
+				mrClassNames = mrClassNames + " " + mrCustomFontSize;
+			} else if (mrFontSize) {
+				mrClassNames = mrClassNames + " mr-fontsize" + mrFontSize;
+			}
+			if (
+				mrCustomFontSizehover &&
+				mrFontSizeOptionshover &&
+				mrFontSizeOptionshover.includes("-fontsizeoptions")
+			) {
+				mrClassNames = mrClassNames + " " + mrCustomFontSizehover;
+			} else if (mrFontSizehover) {
+				mrClassNames = mrClassNames + " mr-hover-fontsize" + mrFontSizehover;
+			}
+			if (
+				mrCustomFontSizedesktop &&
+				mrFontSizeOptionsdesktop &&
+				mrFontSizeOptionsdesktop.includes("-fontsizeoptions")
+			) {
+				mrClassNames = mrClassNames + " " + mrCustomFontSizedesktop;
+			} else if (mrFontSizedesktop) {
+				mrClassNames =
+					mrClassNames + " mr-desktop-fontsize" + mrFontSizedesktop;
+			}
+			if (
+				mrCustomFontSizelaptop &&
+				mrFontSizeOptionslaptop &&
+				mrFontSizeOptionslaptop.includes("-fontsizeoptions")
+			) {
+				mrClassNames = mrClassNames + " " + mrCustomFontSizelaptop;
+			} else if (mrFontSizelaptop) {
+				mrClassNames = mrClassNames + " mr-laptop-fontsize" + mrFontSizelaptop;
+			}
+			if (
+				mrCustomFontSizetablet &&
+				mrFontSizeOptionstablet &&
+				mrFontSizeOptionstablet.includes("-fontsizeoptions")
+			) {
+				mrClassNames = mrClassNames + " " + mrCustomFontSizetablet;
+			} else if (mrFontSizetablet) {
+				mrClassNames = mrClassNames + " mr-tablet-fontsize" + mrFontSizetablet;
+			}
+			if (
+				mrCustomFontSizephone &&
+				mrFontSizeOptionsphone &&
+				mrFontSizeOptionsphone.includes("-fontsizeoptions")
+			) {
+				mrClassNames = mrClassNames + " " + mrCustomFontSizephone;
+			} else if (mrFontSizephone) {
+				mrClassNames = mrClassNames + " mr-phone-fontsize" + mrFontSizephone;
 			}
 
 			Object.keys(attributes).forEach(function (value) {
@@ -6449,44 +6471,55 @@ function mrApplyExtraClass(extraProps, blockType, attributes) {
 	let mrAttr = "";
 	let mrAttrValue = "";
 
-	if (!mrSizeOptions || !mrSizeOptions.includes("-sizeoptions")) {
-		if (mrSize) {
-			mrClassNames = mrClassNames + " mr-size" + mrSize;
-		}
-		if (mrSizehover) {
-			mrClassNames = mrClassNames + " mr-hover-size" + mrSizehover;
-		}
-		if (mrSizedesktop) {
-			mrClassNames = mrClassNames + " mr-desktop-size" + mrSizedesktop;
-		}
-		if (mrSizelaptop) {
-			mrClassNames = mrClassNames + " mr-laptop-size" + mrSizelaptop;
-		}
-		if (mrSizetablet) {
-			mrClassNames = mrClassNames + " mr-tablet-size" + mrSizetablet;
-		}
-		if (mrSizephone) {
-			mrClassNames = mrClassNames + " mr-phone-size" + mrSizephone;
-		}
-	} else if (mrSizeOptions && mrSizeOptions.includes("-sizeoptions")) {
-		if (mrCustomSize) {
-			mrClassNames = mrClassNames + mrCustomSize;
-		}
-		if (mrCustomSizehover) {
-			mrClassNames = mrClassNames + mrCustomSizehover;
-		}
-		if (mrCustomSizedesktop) {
-			mrClassNames = mrClassNames + mrCustomSizedesktop;
-		}
-		if (mrCustomSizelaptop) {
-			mrClassNames = mrClassNames + mrCustomSizelaptop;
-		}
-		if (mrCustomSizetablet) {
-			mrClassNames = mrClassNames + mrCustomSizetablet;
-		}
-		if (mrCustomSizephone) {
-			mrClassNames = mrClassNames + mrCustomSizephone;
-		}
+	if (mrCustomSize && mrSizeOptions && mrSizeOptions.includes("-sizeoptions")) {
+		mrClassNames = mrClassNames + " " + mrCustomSize;
+	} else if (mrSize) {
+		mrClassNames = mrClassNames + " mr-size" + mrSize;
+	}
+	if (
+		mrCustomSizehover &&
+		mrSizeOptionshover &&
+		mrSizeOptionshover.includes("-sizeoptions")
+	) {
+		mrClassNames = mrClassNames + " " + mrCustomSizehover;
+	} else if (mrSizehover) {
+		mrClassNames = mrClassNames + " mr-hover-size" + mrSizehover;
+	}
+	if (
+		mrCustomSizedesktop &&
+		mrSizeOptionsdesktop &&
+		mrSizeOptionsdesktop.includes("-sizeoptions")
+	) {
+		mrClassNames = mrClassNames + " " + mrCustomSizedesktop;
+	} else if (mrSizedesktop) {
+		mrClassNames = mrClassNames + " mr-desktop-size" + mrSizedesktop;
+	}
+	if (
+		mrCustomSizelaptop &&
+		mrSizeOptionslaptop &&
+		mrSizeOptionslaptop.includes("-sizeoptions")
+	) {
+		mrClassNames = mrClassNames + " " + mrCustomSizelaptop;
+	} else if (mrSizelaptop) {
+		mrClassNames = mrClassNames + " mr-laptop-size" + mrSizelaptop;
+	}
+	if (
+		mrCustomSizetablet &&
+		mrSizeOptionstablet &&
+		mrSizeOptionstablet.includes("-sizeoptions")
+	) {
+		mrClassNames = mrClassNames + " " + mrCustomSizetablet;
+	} else if (mrSizetablet) {
+		mrClassNames = mrClassNames + " mr-tablet-size" + mrSizetablet;
+	}
+	if (
+		mrCustomSizephone &&
+		mrSizeOptionsphone &&
+		mrSizeOptionsphone.includes("-sizeoptions")
+	) {
+		mrClassNames = mrClassNames + " " + mrCustomSizephone;
+	} else if (mrSizephone) {
+		mrClassNames = mrClassNames + " mr-phone-size" + mrSizephone;
 	}
 
 	if (
@@ -6515,47 +6548,59 @@ function mrApplyExtraClass(extraProps, blockType, attributes) {
 		mrClassNames = mrClassNames + " " + mrFontFamily;
 	}
 
-	if (!mrFontSizeOptions || !mrFontSizeOptions.includes("-fontsizeoptions")) {
-		if (mrFontSize) {
-			mrClassNames = mrClassNames + " mr-fontsize" + mrFontSize;
-		}
-		if (mrFontSizehover) {
-			mrClassNames = mrClassNames + " mr-hover-fontsize" + mrFontSizehover;
-		}
-		if (mrFontSizedesktop) {
-			mrClassNames = mrClassNames + " mr-desktop-fontsize" + mrFontSizedesktop;
-		}
-		if (mrFontSizelaptop) {
-			mrClassNames = mrClassNames + " mr-laptop-fontsize" + mrFontSizelaptop;
-		}
-		if (mrFontSizetablet) {
-			mrClassNames = mrClassNames + " mr-tablet-fontsize" + mrFontSizetablet;
-		}
-		if (mrFontSizephone) {
-			mrClassNames = mrClassNames + " mr-phone-fontsize" + mrFontSizephone;
-		}
-	} else if (
+	if (
+		mrCustomFontSize &&
 		mrFontSizeOptions &&
 		mrFontSizeOptions.includes("-fontsizeoptions")
 	) {
-		if (mrCustomFontSize) {
-			mrClassNames = mrClassNames + " " + mrCustomFontSize;
-		}
-		if (mrCustomFontSizehover) {
-			mrClassNames = mrClassNames + " " + mrCustomFontSizehover;
-		}
-		if (mrCustomFontSizedesktop) {
-			mrClassNames = mrClassNames + " " + mrCustomFontSizedesktop;
-		}
-		if (mrCustomFontSizelaptop) {
-			mrClassNames = mrClassNames + " " + mrCustomFontSizelaptop;
-		}
-		if (mrCustomFontSizetablet) {
-			mrClassNames = mrClassNames + " " + mrCustomFontSizetablet;
-		}
-		if (mrCustomFontSizephone) {
-			mrClassNames = mrClassNames + " " + mrCustomFontSizephone;
-		}
+		mrClassNames = mrClassNames + " " + mrCustomFontSize;
+	} else if (mrFontSize) {
+		mrClassNames = mrClassNames + " mr-fontsize" + mrFontSize;
+	}
+	if (
+		mrCustomFontSizehover &&
+		mrFontSizeOptionshover &&
+		mrFontSizeOptionshover.includes("-fontsizeoptions")
+	) {
+		mrClassNames = mrClassNames + " " + mrCustomFontSizehover;
+	} else if (mrFontSizehover) {
+		mrClassNames = mrClassNames + " mr-hover-fontsize" + mrFontSizehover;
+	}
+	if (
+		mrCustomFontSizedesktop &&
+		mrFontSizeOptionsdesktop &&
+		mrFontSizeOptionsdesktop.includes("-fontsizeoptions")
+	) {
+		mrClassNames = mrClassNames + " " + mrCustomFontSizedesktop;
+	} else if (mrFontSizedesktop) {
+		mrClassNames = mrClassNames + " mr-desktop-fontsize" + mrFontSizedesktop;
+	}
+	if (
+		mrCustomFontSizelaptop &&
+		mrFontSizeOptionslaptop &&
+		mrFontSizeOptionslaptop.includes("-fontsizeoptions")
+	) {
+		mrClassNames = mrClassNames + " " + mrCustomFontSizelaptop;
+	} else if (mrFontSizelaptop) {
+		mrClassNames = mrClassNames + " mr-laptop-fontsize" + mrFontSizelaptop;
+	}
+	if (
+		mrCustomFontSizetablet &&
+		mrFontSizeOptionstablet &&
+		mrFontSizeOptionstablet.includes("-fontsizeoptions")
+	) {
+		mrClassNames = mrClassNames + " " + mrCustomFontSizetablet;
+	} else if (mrFontSizetablet) {
+		mrClassNames = mrClassNames + " mr-tablet-fontsize" + mrFontSizetablet;
+	}
+	if (
+		mrCustomFontSizephone &&
+		mrFontSizeOptionsphone &&
+		mrFontSizeOptionsphone.includes("-fontsizeoptions")
+	) {
+		mrClassNames = mrClassNames + " " + mrCustomFontSizephone;
+	} else if (mrFontSizephone) {
+		mrClassNames = mrClassNames + " mr-phone-fontsize" + mrFontSizephone;
 	}
 
 	if (mrAllowedBlocks.includes(blockType.name)) {

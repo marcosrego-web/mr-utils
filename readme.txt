@@ -56,6 +56,7 @@ You can contact me at: [https://marcosrego.com/client-area/contact/](https://mar
 = 0.1.4 =
 * Fix preview not working inside block templates and full site editor.
 * Fix indication of variable value when using breakpoints (when defined).
+* Fix size/font-size on breakpoints not working without a global size/font-size.
 * Change the way assets are enqueued following new block functions.
 * Toolkit: Added -webkit-animation on offcanvas for better compatibility.
 * Toolkit: Added optional properties to the "mrActiveInView" javascript function.
