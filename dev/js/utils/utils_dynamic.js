@@ -23,7 +23,7 @@ function mrActiveInView(t, e, p) {
     t = document.querySelectorAll(".mr-activeinview");
   }
   if (!e) {
-    e = 0;
+    e = window.screen.height;
   }
   if (!p) {
     p = 0;
