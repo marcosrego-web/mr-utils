@@ -1,5 +1,6 @@
 /*(not used on breakpoints)*/
 .mr-offcanvas-container {
+  -webkit-animation: mrShow var(--transition-duration, 0.5s) forwards;
   animation: mrShow var(--transition-duration, 0.5s) forwards;
   position: relative;
   z-index: 2;

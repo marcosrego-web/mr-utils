@@ -3,7 +3,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-function mrutils_enqueue_block_editor_assets() {
+function mrutils_assets_backend() {
     global $mrutils_version,$mrdev_version;
     wp_enqueue_script(
         'mrutils-js',
@@ -14,17 +14,28 @@ function mrutils_enqueue_block_editor_assets() {
     );
 
     if(!isset($mrdev_version)) {
+        /*
+        //CODE TEMPORARY COMMENTEND - While Wordpress does not fix the enqueue of multiple assets inside block template iframes
         wp_enqueue_style(
             'mrutils_backend-css',
                 esc_url( plugins_url( '../../css/utils_backend.css', __FILE__ ) ),
                 array( ),
                 $mrutils_version
         );
+        */
+        
+        //TEMPORARY CODE - While Wordpress does not fix the enqueue of multiple assets inside block template iframes
+        wp_enqueue_style(
+            'mrutils_backend-css',
+                esc_url( plugins_url( 'utils_backend_custom.css', __FILE__ ) ),
+                array( ),
+                $mrutils_version
+        );
     }
 }
-add_action( 'enqueue_block_editor_assets', 'mrutils_enqueue_block_editor_assets' );
+add_action( 'enqueue_block_editor_assets', 'mrutils_assets_backend' );
 
-function mrutils_enqueue_mrutils_assets() {
+function mrutils_assets() {
     global $mrutils_version,$mrdev_version;
     if(!isset($mrdev_version)) {
         wp_enqueue_style(
@@ -90,5 +101,4 @@ function mrutils_enqueue_mrutils_assets() {
         );
     }
 }
-add_action( 'wp_enqueue_scripts', 'mrutils_enqueue_mrutils_assets');
-add_action('admin_enqueue_scripts', 'mrutils_enqueue_mrutils_assets');
+add_action( 'enqueue_block_assets', 'mrutils_assets' );

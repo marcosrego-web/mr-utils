@@ -2475,39 +2475,41 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																	  ).getPropertyValue("--size-" + mrSize)
 																	: tab.name == "hover" && mrSizehover > 0
 																	? "mr-hover-size" +
-																	  mrSize +
+																	  mrSizehover +
 																	  " = " +
 																	  getComputedStyle(
 																			document.documentElement
-																	  ).getPropertyValue("--size-" + mrSize)
+																	  ).getPropertyValue("--size-" + mrSizehover)
 																	: tab.name == "desktop" && mrSizedesktop > 0
 																	? "mr-desktop-size" +
-																	  mrSize +
+																	  mrSizedesktop +
 																	  " = " +
 																	  getComputedStyle(
 																			document.documentElement
-																	  ).getPropertyValue("--size-" + mrSize)
+																	  ).getPropertyValue(
+																			"--size-" + mrSizedesktop
+																	  )
 																	: tab.name == "laptop" && mrSizelaptop > 0
 																	? "mr-laptop-size" +
-																	  mrSize +
+																	  mrSizelaptop +
 																	  " = " +
 																	  getComputedStyle(
 																			document.documentElement
-																	  ).getPropertyValue("--size-" + mrSize)
+																	  ).getPropertyValue("--size-" + mrSizelaptop)
 																	: tab.name == "tablet" && mrSizetablet
 																	? "mr-tablet-size" +
-																	  mrSize +
+																	  mrSizetablet +
 																	  " = " +
 																	  getComputedStyle(
 																			document.documentElement
-																	  ).getPropertyValue("--size-" + mrSize)
+																	  ).getPropertyValue("--size-" + mrSizetablet)
 																	: tab.name == "phone" && mrSizephone > 0
 																	? "mr-phone-size" +
-																	  mrSize +
+																	  mrSizephone +
 																	  " = " +
 																	  getComputedStyle(
 																			document.documentElement
-																	  ).getPropertyValue("--size-" + mrSize)
+																	  ).getPropertyValue("--size-" + mrSizephone)
 																	: ""
 															}
 														/>
@@ -4698,49 +4700,49 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																	  )
 																	: tab.name == "hover" && mrFontSizehover > 0
 																	? "mr-hover-fontsize" +
-																	  mrFontSize +
+																	  mrFontSizehover +
 																	  " = " +
 																	  getComputedStyle(
 																			document.documentElement
 																	  ).getPropertyValue(
-																			"--font-size-" + mrFontSize
+																			"--font-size-" + mrFontSizehover
 																	  )
 																	: tab.name == "desktop" &&
 																	  mrFontSizedesktop > 0
 																	? "mr-desktop-fontsize" +
-																	  mrFontSize +
+																	  mrFontSizedesktop +
 																	  " = " +
 																	  getComputedStyle(
 																			document.documentElement
 																	  ).getPropertyValue(
-																			"--font-size-" + mrFontSize
+																			"--font-size-" + mrFontSizedesktop
 																	  )
 																	: tab.name == "laptop" && mrFontSizelaptop > 0
 																	? "mr-laptop-fontsize" +
-																	  mrFontSize +
+																	  mrFontSizelaptop +
 																	  " = " +
 																	  getComputedStyle(
 																			document.documentElement
 																	  ).getPropertyValue(
-																			"--font-size-" + mrFontSize
+																			"--font-size-" + mrFontSizelaptop
 																	  )
 																	: tab.name == "tablet" && mrFontSizetablet
 																	? "mr-tablet-fontsize" +
-																	  mrFontSize +
+																	  mrFontSizetablet +
 																	  " = " +
 																	  getComputedStyle(
 																			document.documentElement
 																	  ).getPropertyValue(
-																			"--font-size-" + mrFontSize
+																			"--font-size-" + mrFontSizetablet
 																	  )
 																	: tab.name == "phone" && mrFontSizephone > 0
 																	? "mr-phone-fontsize" +
-																	  mrFontSize +
+																	  mrFontSizephone +
 																	  " = " +
 																	  getComputedStyle(
 																			document.documentElement
 																	  ).getPropertyValue(
-																			"--font-size-" + mrFontSize
+																			"--font-size-" + mrFontSizephone
 																	  )
 																	: ""
 															}
