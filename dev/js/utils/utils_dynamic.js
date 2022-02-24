@@ -10,24 +10,30 @@ function mrGetCookie(t) {
     return "";
   }
 }
-function mrIsInView(t, e, o) {
+function mrIsInView(t, e, p) {
   if (t) {
-    void 0 === e && (e = window.screen.height), void 0 === o && (o = 0);
+    void 0 === e && (e = window.screen.height), void 0 === p && (p = 0);
     let r = t.getBoundingClientRect().top - e,
-      n = t.getBoundingClientRect().top + t.offsetHeight - o;
+      n = t.getBoundingClientRect().top + t.offsetHeight - p;
     if (r < 0 && n > 0) return !0;
   }
 }
-function mrActiveInView() {
-  const t = document.querySelectorAll(".mr-activeinview");
-  if (t) {
-    for (let id = 0; id < t.length; id++) {
-      let o = t[id];
-      if (mrIsInView(o) && !o.classList.contains("mr-active")) {
-        o.classList.add("mr-active");
-      } else if (!mrIsInView(o) && o.classList.contains("mr-active")) {
-        o.classList.remove("mr-active");
-      }
+function mrActiveInView(t, e, p) {
+  if (!t) {
+    t = document.querySelectorAll(".mr-activeinview");
+  }
+  if (!e) {
+    e = window.screen.height;
+  }
+  if (!p) {
+    p = 0;
+  }
+  for (let id = 0; id < t.length; id++) {
+    let o = t[id];
+    if (mrIsInView(o, e, p) && !o.classList.contains("mr-active")) {
+      o.classList.add("mr-active");
+    } else if (!mrIsInView(o, e, p) && o.classList.contains("mr-active")) {
+      o.classList.remove("mr-active");
     }
   }
 }

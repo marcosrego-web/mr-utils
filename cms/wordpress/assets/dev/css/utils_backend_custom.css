@@ -1,0 +1,3 @@
+/*TEMPORARY FILE - While Wordpress does not fix the enqueue of multiple assets inside block template iframes*/
+@import url(../../../../../css/utils.css);
+@import url(../../../../../css/utils_backend.css);

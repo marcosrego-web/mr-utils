@@ -5,7 +5,7 @@
  * Description:       Easily use Mr.Utils front-end toolkit with the block editor interface without knowing code, the classes or the functions.
  * Requires at least: 5.8
  * Requires PHP:      7.0
- * Version:           0.1.3
+ * Version:           0.1.4
  * Author:            Marcos Rego
  * Author uri:		 	https://marcosrego.com
  * License:           GPL-2.0-or-later
@@ -20,7 +20,11 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-$mrutils_version = '0.1.3';
+$mrutils_version = '0.1.4';
+
+if(!isset($mrdev_utils_blocks_url)) {
+    $mrdev_utils_blocks_url = plugins_url( __FILE__ );
+}
 
 //CMS - WORDPRESS
 if (file_exists(dirname(__FILE__).'/../mrdev-framework_wp/mrdev-framework_wp.php')) {
@@ -32,12 +36,14 @@ if (file_exists(dirname(__FILE__).'/../mrdev-framework_wp/mrdev-framework_wp.php
         <?php
         deactivate_plugins( 'mr-utils/index.php' );
         if(!is_plugin_active('mrdev-framework_wp/mrdev-framework_wp.php')) {
-            ?>
-            <div class="notice notice-success is-dismissible">
-                <p><?php _e( "Mr.Dev.'s Framework was activated.", 'mr-utils' ); ?></p>
-            </div>
-            <?php
             activate_plugin( 'mrdev-framework_wp/mrdev-framework_wp.php' );
+			if(is_plugin_active('mrdev-framework_wp/mrdev-framework_wp.php')) {
+				?>
+				<div class="notice notice-success is-dismissible">
+					<p><?php _e( "Mr.Dev.'s Framework was activated.", 'mr-utils' ); ?></p>
+				</div>
+				<?php
+			}
         }
     }
     add_action( 'admin_notices', 'mrutils_plugin_notice' );

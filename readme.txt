@@ -1,8 +1,8 @@
 === MR.Utils ===
 Contributors:      Marcos Rego
 Tags:              block, editor, utilities, frontend, toolkit, utils, dev, developer, bootstrap, tailwind, css, js, breakpoints, devices
-Tested up to:      5.8.2
-Stable tag:        0.1.3
+Tested up to:      5.9
+Stable tag:        0.1.4
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -39,7 +39,7 @@ General information can be found on: [https://marcosrego.com/development/mr-util
 
 = How do I contact the developer? =
 
-You can contact me at: [https://marcosrego.com/client-area/contact/](https://marcosrego.com/development/mr-utils/)
+You can contact me at: [https://marcosrego.com/client-area/contact/](https://marcosrego.com/client-area/contact/)
 
 == Screenshots ==
 
@@ -52,6 +52,14 @@ You can contact me at: [https://marcosrego.com/client-area/contact/](https://mar
 7. Mr.Dev.'s Framework allows to create custom utilities to select on the block editor.
 
 == Changelog ==
+
+= 0.1.4 =
+* Fix preview not working inside block templates and full site editor.
+* Fix indication of variable value when using breakpoints (when defined).
+* Change the way assets are enqueued following new block functions.
+* Toolkit: Added -webkit-animation on offcanvas for better compatibility.
+* Toolkit: Added optional properties to the "mrActiveInView" javascript function.
+* Fix contact link on plugin description.
 
 = 0.1.3 =
 * Added some appearance options to the interface (Background Color and Color).
