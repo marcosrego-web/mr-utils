@@ -53,6 +53,9 @@ You can contact me at: [https://marcosrego.com/client-area/contact/](https://mar
 
 == Changelog ==
 
+= 0.1.5 =
+* Toolkit: Change utility classes from Other to Appearance.
+
 = 0.1.4 =
 * Fix preview not working inside block templates and full site editor.
 * Fix indication of variable value when using breakpoints (when defined).
