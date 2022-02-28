@@ -54,7 +54,8 @@ You can contact me at: [https://marcosrego.com/client-area/contact/](https://mar
 == Changelog ==
 
 = 0.1.5 =
-* Toolkit: Change utility classes from Other to Appearance.
+* Toolkit: Change the utility classes from Other to Appearance.
+* Toolkit: If no colors are set for offcanvas background/text/toogle fallback to default background and text colors.
 
 = 0.1.4 =
 * Fix preview not working inside block templates and full site editor.

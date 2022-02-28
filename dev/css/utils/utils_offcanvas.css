@@ -7,7 +7,10 @@
 }
 .mr-offcanvas-content {
   background-color: #fff;
-  background-color: var(--offcanvas-background-color, #fff);
+  background-color: var(
+    --offcanvas-background-color,
+    var(--background-color, #fff)
+  );
 }
 .mr-offcanvas-toggle:not(:checked)
   + .mr-offcanvas-container
@@ -45,11 +48,11 @@
 .mr-offcanvas-container h5,
 .mr-offcanvas-container h6 {
   color: #000;
-  color: var(--offcanvas-text-color, #000);
+  color: var(--offcanvas-text-color, var(--text-color, #000));
 }
 .mr-offcanvas-toggle {
   color: #000;
-  color: var(--offcanvas-toggle-color, #000);
+  color: var(--offcanvas-toggle-color, var(--text-color, #000));
 }
 .mr-offcanvas-content {
   position: fixed;
