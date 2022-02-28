@@ -6,6 +6,34 @@
   color: var(--text-color, #000);
 }
 
+.mr-unset {
+  all: unset;
+}
+.mr-nobullets {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mr-container {
+  max-width: var(--container, 75rem);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-left: var(--padding, 0.75rem);
+  padding-right: var(--padding, 0.75rem);
+}
+
+.mr-boxsize {
+  box-sizing: border-box;
+}
+.mr-boxsize *,
+.mr-boxsize ::after,
+.mr-boxsize ::before {
+  box-sizing: inherit;
+}
+
 .mr-coverimage,
 .mr-coverimage > img {
   max-width: inherit;
@@ -27,6 +55,7 @@
   background-size: contain;
 }
 
+.mr-nolines,
 .mr-nounderline {
   text-decoration: none !important;
 }
@@ -34,4 +63,15 @@
 .mr-nolines,
 .mr-noborders {
   border: 0;
+}
+
+.mr-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100vh;
+  overflow: auto;
+  z-index: 20;
 }

@@ -1,30 +1,5 @@
 /*(not used on breakpoints)*/
 /* OTHER CLASSES */
-.mr-container {
-  max-width: var(--container, 75rem);
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  padding-left: var(--padding, 0.75rem);
-  padding-right: var(--padding, 0.75rem);
-}
-.mr-boxsize {
-  box-sizing: border-box;
-}
-.mr-boxsize *,
-.mr-boxsize ::after,
-.mr-boxsize ::before {
-  box-sizing: inherit;
-}
-.mr-unset {
-  all: unset;
-}
-.mr-nobullets {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
 .mr-copy {
   cursor: copy;
   transition: all 0.3s ease-in-out;
@@ -34,14 +9,4 @@
   -webkit-transform: scale(0.95);
   -ms-transform: scale(0.95);
   transform: scale(0.95);
-}
-.mr-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 100vh;
-  overflow: auto;
-  z-index: 20;
 }
