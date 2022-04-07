@@ -1,3 +1,24 @@
+.mr-landscape-gap {
+  gap: 0.75rem;
+  gap: var(--gap, 0.75rem);
+}
+.mr-landscape-nogap {
+  gap: 0 !important;
+}
+.mr-landscape-rowgap {
+  row-gap: 0.75rem;
+  row-gap: var(--gap, 0.75rem);
+}
+.mr-landscape-norowgap {
+  row-gap: 0 !important;
+}
+.mr-landscape-columngap {
+  column-gap: 0.75rem;
+  column-gap: var(--gap, 0.75rem);
+}
+.mr-landscape-nocolumngap {
+  column-gap: 0 !important;
+}
 .mr-landscape-margin {
   margin: 0.75rem;
   margin: var(--margin, 0.75rem);
@@ -18,6 +39,21 @@
   margin-left: 0.75rem;
   margin-left: var(--margin, 0.75rem);
 }
+.mr-landscape-nomargin {
+  margin: 0 !important;
+}
+.mr-landscape-nomargintop {
+  margin-top: 0 !important;
+}
+.mr-landscape-nomarginright {
+  margin-right: 0 !important;
+}
+.mr-landscape-nomarginbottom {
+  margin-bottom: 0 !important;
+}
+.mr-landscape-nomarginleft {
+  margin-left: 0 !important;
+}
 .mr-landscape-padding {
   padding: 0.75rem;
   padding: var(--padding, 0.75rem);
@@ -37,21 +73,6 @@
 .mr-landscape-paddingleft {
   padding-left: 0.75rem;
   padding-left: var(--padding, 0.75rem);
-}
-.mr-landscape-nomargin {
-  margin: 0 !important;
-}
-.mr-landscape-nomargintop {
-  margin-top: 0 !important;
-}
-.mr-landscape-nomarginright {
-  margin-right: 0 !important;
-}
-.mr-landscape-nomarginbottom {
-  margin-bottom: 0 !important;
-}
-.mr-landscape-nomarginleft {
-  margin-left: 0 !important;
 }
 .mr-landscape-nopadding {
   padding: 0 !important;

@@ -733,6 +733,102 @@ function mrAddAttributes(settings) {
 				type: "string",
 				default: "mr-phone-marginleft",
 			},
+			mrRowGap: {
+				type: "string",
+				default: "mr-",
+			},
+			mrRowGaphover: {
+				type: "string",
+				default: "mr-hover",
+			},
+			mrRowGapdesktop: {
+				type: "string",
+				default: "mr-desktop",
+			},
+			mrRowGaplaptop: {
+				type: "string",
+				default: "mr-laptop",
+			},
+			mrRowGaptablet: {
+				type: "string",
+				default: "mr-tablet",
+			},
+			mrRowGapphone: {
+				type: "string",
+				default: "mr-phone",
+			},
+			mrCustomRowGap: {
+				type: "string",
+				default: "mr-rowgap",
+			},
+			mrCustomRowGaphover: {
+				type: "string",
+				default: "mr-hover-rowgap",
+			},
+			mrCustomRowGapdesktop: {
+				type: "string",
+				default: "mr-desktop-rowgap",
+			},
+			mrCustomRowGaplaptop: {
+				type: "string",
+				default: "mr-laptop-rowgap",
+			},
+			mrCustomRowGaptablet: {
+				type: "string",
+				default: "mr-tablet-rowgap",
+			},
+			mrCustomRowGapphone: {
+				type: "string",
+				default: "mr-phone-rowgap",
+			},
+			mrColumnGap: {
+				type: "string",
+				default: "mr-",
+			},
+			mrColumnGaphover: {
+				type: "string",
+				default: "mr-hover",
+			},
+			mrColumnGapdesktop: {
+				type: "string",
+				default: "mr-desktop",
+			},
+			mrColumnGaplaptop: {
+				type: "string",
+				default: "mr-laptop",
+			},
+			mrColumnGaptablet: {
+				type: "string",
+				default: "mr-tablet",
+			},
+			mrColumnGapphone: {
+				type: "string",
+				default: "mr-phone",
+			},
+			mrCustomColumnGap: {
+				type: "string",
+				default: "mr-columngap",
+			},
+			mrCustomColumnGaphover: {
+				type: "string",
+				default: "mr-hover-columngap",
+			},
+			mrCustomColumnGapdesktop: {
+				type: "string",
+				default: "mr-desktop-columngap",
+			},
+			mrCustomColumnGaplaptop: {
+				type: "string",
+				default: "mr-laptop-columngap",
+			},
+			mrCustomColumnGaptablet: {
+				type: "string",
+				default: "mr-tablet-columngap",
+			},
+			mrCustomColumnGapphone: {
+				type: "string",
+				default: "mr-phone-columngap",
+			},
 			mrPosition: {
 				type: "string",
 				default: "mr-",
@@ -1172,6 +1268,30 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 			mrCustomPaddingLeftlaptop,
 			mrCustomPaddingLefttablet,
 			mrCustomPaddingLeftphone,
+			mrRowGap,
+			mrRowGaphover,
+			mrRowGapdesktop,
+			mrRowGaplaptop,
+			mrRowGaptablet,
+			mrRowGapphone,
+			mrColumnGap,
+			mrColumnGaphover,
+			mrColumnGapdesktop,
+			mrColumnGaplaptop,
+			mrColumnGaptablet,
+			mrColumnGapphone,
+			mrCustomRowGap,
+			mrCustomRowGaphover,
+			mrCustomRowGapdesktop,
+			mrCustomRowGaplaptop,
+			mrCustomRowGaptablet,
+			mrCustomRowGapphone,
+			mrCustomColumnGap,
+			mrCustomColumnGaphover,
+			mrCustomColumnGapdesktop,
+			mrCustomColumnGaplaptop,
+			mrCustomColumnGaptablet,
+			mrCustomColumnGapphone,
 			mrMarginTop,
 			mrMarginTophover,
 			mrMarginTopdesktop,
@@ -3086,10 +3206,348 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																	className:
 																		"mr-backend-tab_margins mr-width100",
 																},
+																{
+																	name: "gaps",
+																	title: "Gaps",
+																	className: "mr-backend-tab_gaps mr-width100",
+																},
 															]}
 														>
 															{(tab2) =>
-																tab2.name === "paddings" ? (
+																tab2.name === "gaps" ? (
+																	<>
+																		<p></p>
+																		<SelectControl
+																			label={__("Row Gap", "mr-utils")}
+																			className="mr-backend-rowgap mr-backend-rowgap mr-backend-hascustomoption"
+																			value={
+																				tab.name === "hover"
+																					? mrRowGaphover
+																					: tab.name === "desktop"
+																					? mrRowGapdesktop
+																					: tab.name === "laptop"
+																					? mrRowGaplaptop
+																					: tab.name === "tablet"
+																					? mrRowGaptablet
+																					: tab.name === "phone"
+																					? mrRowGapphone
+																					: mrRowGap
+																			}
+																			options={[
+																				{
+																					value: "mr-" + tab.name,
+																					label: "Default row gap",
+																				},
+																				{
+																					value: (
+																						" mr-" +
+																						tab.name +
+																						"-norowgap"
+																					).replace("--", "-"),
+																					label: "Remove row gap",
+																				},
+																				{
+																					value: (
+																						" mr-" +
+																						tab.name +
+																						"-rowgap"
+																					).replace("--", "-"),
+																					label: "Use " + tab.name + " class",
+																				},
+																			]}
+																			onChange={(val) =>
+																				setAttributes({
+																					mrRowGap:
+																						val !== undefined &&
+																						!val.includes("mr-hover") &&
+																						!val.includes("mr-desktop") &&
+																						!val.includes("mr-laptop") &&
+																						!val.includes("mr-tablet") &&
+																						!val.includes("mr-phone")
+																							? val
+																							: mrRowGap,
+																					mrRowGaphover:
+																						val !== undefined &&
+																						val.includes("mr-hover")
+																							? val
+																							: mrRowGaphover,
+																					mrRowGapdesktop:
+																						val !== undefined &&
+																						val.includes("mr-desktop")
+																							? val
+																							: mrRowGapdesktop,
+																					mrRowGaplaptop:
+																						val !== undefined &&
+																						val.includes("mr-laptop")
+																							? val
+																							: mrRowGaplaptop,
+																					mrRowGaptablet:
+																						val !== undefined &&
+																						val.includes("mr-tablet")
+																							? val
+																							: mrRowGaptablet,
+																					mrRowGapphone:
+																						val !== undefined &&
+																						val.includes("mr-phone")
+																							? val
+																							: mrRowGapphone,
+																				})
+																			}
+																		/>
+
+																		{(tab.name === "" &&
+																			mrRowGap.includes("-rowgap")) ||
+																		(tab.name === "hover" &&
+																			mrRowGaphover.includes("-rowgap")) ||
+																		(tab.name === "desktop" &&
+																			mrRowGapdesktop.includes("-rowgap")) ||
+																		(tab.name === "laptop" &&
+																			mrRowGaplaptop.includes("-rowgap")) ||
+																		(tab.name === "tablet" &&
+																			mrRowGaptablet.includes("-rowgap")) ||
+																		(tab.name === "phone" &&
+																			mrRowGapphone.includes("-rowgap")) ? (
+																			<TextControl
+																				label={__("", "mr-utils")}
+																				value={
+																					tab.name === "hover"
+																						? mrCustomRowGaphover
+																						: tab.name === "desktop"
+																						? mrCustomRowGapdesktop
+																						: tab.name === "laptop"
+																						? mrCustomRowGaplaptop
+																						: tab.name === "tablet"
+																						? mrCustomRowGaptablet
+																						: tab.name === "phone"
+																						? mrCustomRowGapphone
+																						: mrCustomRowGap
+																				}
+																				type="text"
+																				className="mr-backend-custominput mr-backend-customrowgap mr-backend-customptop"
+																				placeHolder={(
+																					"mr-" +
+																					tab.name +
+																					"-rowgap"
+																				).replace("--", "-")}
+																				list={(
+																					"mrDevUtilsClasses_" +
+																					tab.name +
+																					"_rowgap"
+																				).replace("__", "_")}
+																				onChange={(val) =>
+																					setAttributes({
+																						mrCustomRowGap:
+																							val !== undefined &&
+																							!val.includes("mr-hover") &&
+																							!val.includes("mr-desktop") &&
+																							!val.includes("mr-laptop") &&
+																							!val.includes("mr-tablet") &&
+																							!val.includes("mr-phone")
+																								? val
+																								: mrCustomRowGap,
+																						mrCustomRowGaphover:
+																							val !== undefined &&
+																							val.includes("mr-hover")
+																								? val
+																								: mrCustomRowGaphover,
+																						mrCustomRowGapdesktop:
+																							val !== undefined &&
+																							val.includes("mr-desktop")
+																								? val
+																								: mrCustomRowGapdesktop,
+																						mrCustomRowGaplaptop:
+																							val !== undefined &&
+																							val.includes("mr-laptop")
+																								? val
+																								: mrCustomRowGaplaptop,
+																						mrCustomRowGaptablet:
+																							val !== undefined &&
+																							val.includes("mr-tablet")
+																								? val
+																								: mrCustomRowGaptablet,
+																						mrCustomRowGapphone:
+																							val !== undefined &&
+																							val.includes("mr-phone")
+																								? val
+																								: mrCustomRowGapphone,
+																					})
+																				}
+																			/>
+																		) : (
+																			""
+																		)}
+
+																		<SelectControl
+																			label={__("Column Gap", "mr-utils")}
+																			className="mr-backend-columngap mr-backend-columngap mr-backend-hascustomoption"
+																			value={
+																				tab.name === "hover"
+																					? mrColumnGaphover
+																					: tab.name === "desktop"
+																					? mrColumnGapdesktop
+																					: tab.name === "laptop"
+																					? mrColumnGaplaptop
+																					: tab.name === "tablet"
+																					? mrColumnGaptablet
+																					: tab.name === "phone"
+																					? mrColumnGapphone
+																					: mrColumnGap
+																			}
+																			options={[
+																				{
+																					value: "mr-" + tab.name,
+																					label: "Default column gap",
+																				},
+																				{
+																					value: (
+																						" mr-" +
+																						tab.name +
+																						"-nocolumngap"
+																					).replace("--", "-"),
+																					label: "Remove column gap",
+																				},
+																				{
+																					value: (
+																						" mr-" +
+																						tab.name +
+																						"-columngap"
+																					).replace("--", "-"),
+																					label: "Use " + tab.name + " class",
+																				},
+																			]}
+																			onChange={(val) =>
+																				setAttributes({
+																					mrColumnGap:
+																						val !== undefined &&
+																						!val.includes("mr-hover") &&
+																						!val.includes("mr-desktop") &&
+																						!val.includes("mr-laptop") &&
+																						!val.includes("mr-tablet") &&
+																						!val.includes("mr-phone")
+																							? val
+																							: mrColumnGap,
+																					mrColumnGaphover:
+																						val !== undefined &&
+																						val.includes("mr-hover")
+																							? val
+																							: mrColumnGaphover,
+																					mrColumnGapdesktop:
+																						val !== undefined &&
+																						val.includes("mr-desktop")
+																							? val
+																							: mrColumnGapdesktop,
+																					mrColumnGaplaptop:
+																						val !== undefined &&
+																						val.includes("mr-laptop")
+																							? val
+																							: mrColumnGaplaptop,
+																					mrColumnGaptablet:
+																						val !== undefined &&
+																						val.includes("mr-tablet")
+																							? val
+																							: mrColumnGaptablet,
+																					mrColumnGapphone:
+																						val !== undefined &&
+																						val.includes("mr-phone")
+																							? val
+																							: mrColumnGapphone,
+																				})
+																			}
+																		/>
+
+																		{(tab.name === "" &&
+																			mrColumnGap.includes("-columngap")) ||
+																		(tab.name === "hover" &&
+																			mrColumnGaphover.includes(
+																				"-columngap"
+																			)) ||
+																		(tab.name === "desktop" &&
+																			mrColumnGapdesktop.includes(
+																				"-columngap"
+																			)) ||
+																		(tab.name === "laptop" &&
+																			mrColumnGaplaptop.includes(
+																				"-columngap"
+																			)) ||
+																		(tab.name === "tablet" &&
+																			mrColumnGaptablet.includes(
+																				"-columngap"
+																			)) ||
+																		(tab.name === "phone" &&
+																			mrColumnGapphone.includes(
+																				"-columngap"
+																			)) ? (
+																			<TextControl
+																				label={__("", "mr-utils")}
+																				value={
+																					tab.name === "hover"
+																						? mrCustomColumnGaphover
+																						: tab.name === "desktop"
+																						? mrCustomColumnGapdesktop
+																						: tab.name === "laptop"
+																						? mrCustomColumnGaplaptop
+																						: tab.name === "tablet"
+																						? mrCustomColumnGaptablet
+																						: tab.name === "phone"
+																						? mrCustomColumnGapphone
+																						: mrCustomColumnGap
+																				}
+																				type="text"
+																				className="mr-backend-custominput mr-backend-customcolumngap mr-backend-customptop"
+																				placeHolder={(
+																					"mr-" +
+																					tab.name +
+																					"-columngap"
+																				).replace("--", "-")}
+																				list={(
+																					"mrDevUtilsClasses_" +
+																					tab.name +
+																					"_columngap"
+																				).replace("__", "_")}
+																				onChange={(val) =>
+																					setAttributes({
+																						mrCustomColumnGap:
+																							val !== undefined &&
+																							!val.includes("mr-hover") &&
+																							!val.includes("mr-desktop") &&
+																							!val.includes("mr-laptop") &&
+																							!val.includes("mr-tablet") &&
+																							!val.includes("mr-phone")
+																								? val
+																								: mrCustomColumnGap,
+																						mrCustomColumnGaphover:
+																							val !== undefined &&
+																							val.includes("mr-hover")
+																								? val
+																								: mrCustomColumnGaphover,
+																						mrCustomColumnGapdesktop:
+																							val !== undefined &&
+																							val.includes("mr-desktop")
+																								? val
+																								: mrCustomColumnGapdesktop,
+																						mrCustomColumnGaplaptop:
+																							val !== undefined &&
+																							val.includes("mr-laptop")
+																								? val
+																								: mrCustomColumnGaplaptop,
+																						mrCustomColumnGaptablet:
+																							val !== undefined &&
+																							val.includes("mr-tablet")
+																								? val
+																								: mrCustomColumnGaptablet,
+																						mrCustomColumnGapphone:
+																							val !== undefined &&
+																							val.includes("mr-phone")
+																								? val
+																								: mrCustomColumnGapphone,
+																					})
+																				}
+																			/>
+																		) : (
+																			""
+																		)}
+																	</>
+																) : tab2.name === "paddings" ? (
 																	<>
 																		<p></p>
 																		<SelectControl
@@ -5801,6 +6259,10 @@ const mrApplyWrapperExtraClass = createHigherOrderComponent(
 				mrCustomMarginLeftlaptop,
 				mrCustomMarginLefttablet,
 				mrCustomMarginLeftphone,
+				mrRowGap,
+				mrCustomRowGap,
+				mrColumnGap,
+				mrCustomColumnGap,
 				mrPosition,
 				mrPositiondesktop,
 				mrPositionlaptop,
@@ -6379,6 +6841,10 @@ function mrApplyExtraClass(extraProps, blockType, attributes) {
 		mrCustomMarginLeftlaptop,
 		mrCustomMarginLefttablet,
 		mrCustomMarginLeftphone,
+		mrRowGap,
+		mrCustomRowGap,
+		mrColumnGap,
+		mrCustomColumnGap,
 		mrPosition,
 		mrPositiondesktop,
 		mrPositionlaptop,

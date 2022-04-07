@@ -184,7 +184,7 @@ function mrScrollNav(t) {
   }
 }
 
-function mrScrollTop(t, e) {
+function mrScrollTop(t, e, v) {
   if (!e) {
     e = t.parentNode.previousElementSibling;
     if (
@@ -194,14 +194,17 @@ function mrScrollTop(t, e) {
       e = t.parentNode.nextElementSibling;
     }
   }
+  if (!v) {
+    v = e.scrollTop - e.offsetHeight;
+  }
   e.scroll({
-    top: e.scrollTop - e.offsetHeight,
+    top: v,
     left: e.scrollLeft,
     behavior: "smooth",
   });
 }
 
-function mrScrollRight(t, e) {
+function mrScrollRight(t, e, v) {
   if (!e) {
     e = t.parentNode.previousElementSibling;
     if (
@@ -209,16 +212,36 @@ function mrScrollRight(t, e) {
       t.parentNode.classList.contains("mr-navleft")
     ) {
       e = t.parentNode.nextElementSibling;
+    }
+  }
+  if (!v) {
+    //v = e.scrollLeft + e.offsetWidth;
+    let is = e.scrollLeft;
+    let ee = e.children;
+    if (e.offsetWidth + is >= e.scrollWidth) {
+      v = 0;
+    } else {
+      for (id = 0; id < ee.length; id++) {
+        e.scrollLeft = 0;
+        let es = parseInt(
+          ee[id].getBoundingClientRect().left - e.getBoundingClientRect().left
+        );
+        e.scrollLeft = is;
+        if (is < es) {
+          v = es;
+          break;
+        }
+      }
     }
   }
   e.scroll({
     top: e.scrollTop,
-    left: e.scrollLeft + e.offsetWidth,
+    left: v,
     behavior: "smooth",
   });
 }
 
-function mrScrollBottom(t, e) {
+function mrScrollBottom(t, e, v) {
   if (!e) {
     e = t.parentNode.previousElementSibling;
     if (
@@ -228,14 +251,17 @@ function mrScrollBottom(t, e) {
       e = t.parentNode.nextElementSibling;
     }
   }
+  if (!v) {
+    v = e.scrollTop + e.offsetHeight;
+  }
   e.scroll({
-    top: e.scrollTop + e.offsetHeight,
+    top: v,
     left: e.scrollLeft,
     behavior: "smooth",
   });
 }
 
-function mrScrollLeft(t, e) {
+function mrScrollLeft(t, e, v) {
   if (!e) {
     e = t.parentNode.previousElementSibling;
     if (
@@ -245,9 +271,29 @@ function mrScrollLeft(t, e) {
       e = t.parentNode.nextElementSibling;
     }
   }
+  if (!v) {
+    //v = e.scrollLeft - e.offsetWidth;
+    let is = e.scrollLeft;
+    let ee = e.children;
+    if (is === 0) {
+      v = e.scrollWidth;
+    } else {
+      for (id = ee.length - 1; id >= 0; id--) {
+        e.scrollLeft = 0;
+        let es = parseInt(
+          ee[id].getBoundingClientRect().left - e.getBoundingClientRect().left
+        );
+        e.scrollLeft = is;
+        if (is > es) {
+          v = es;
+          break;
+        }
+      }
+    }
+  }
   e.scroll({
     top: e.scrollTop,
-    left: e.scrollLeft - e.offsetWidth,
+    left: v,
     behavior: "smooth",
   });
 }

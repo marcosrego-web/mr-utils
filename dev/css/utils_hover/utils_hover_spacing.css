@@ -1,70 +1,91 @@
-.mr-hover-margin:hover {
+.mr-hover-gap {
+  gap: 0.75rem;
+  gap: var(--gap, 0.75rem);
+}
+.mr-hover-nogap {
+  gap: 0 !important;
+}
+.mr-hover-rowgap {
+  row-gap: 0.75rem;
+  row-gap: var(--gap, 0.75rem);
+}
+.mr-hover-norowgap {
+  row-gap: 0 !important;
+}
+.mr-hover-columngap {
+  column-gap: 0.75rem;
+  column-gap: var(--gap, 0.75rem);
+}
+.mr-hover-nocolumngap {
+  column-gap: 0 !important;
+}
+.mr-hover-margin {
   margin: 0.75rem;
   margin: var(--margin, 0.75rem);
 }
-.mr-hover-margintop:hover {
+.mr-hover-margintop {
   margin-top: 0.75rem;
   margin-top: var(--margin, 0.75rem);
 }
-.mr-hover-marginright:hover {
+.mr-hover-marginright {
   margin-right: 0.75rem;
   margin-right: var(--margin, 0.75rem);
 }
-.mr-hover-marginbottom:hover {
+.mr-hover-marginbottom {
   margin-bottom: 0.75rem;
   margin-bottom: var(--margin, 0.75rem);
 }
-.mr-hover-marginleft:hover {
+.mr-hover-marginleft {
   margin-left: 0.75rem;
   margin-left: var(--margin, 0.75rem);
 }
-.mr-hover-padding:hover {
+.mr-hover-nomargin {
+  margin: 0 !important;
+}
+.mr-hover-nomargintop {
+  margin-top: 0 !important;
+}
+.mr-hover-nomarginright {
+  margin-right: 0 !important;
+}
+.mr-hover-nomarginbottom {
+  margin-bottom: 0 !important;
+}
+.mr-hover-nomarginleft {
+  margin-left: 0 !important;
+}
+.mr-hover-padding {
   padding: 0.75rem;
   padding: var(--padding, 0.75rem);
 }
-.mr-hover-paddingtop:hover {
+.mr-hover-paddingtop {
   padding-top: 0.75rem;
   padding-top: var(--padding, 0.75rem);
 }
-.mr-hover-paddingright:hover {
+.mr-hover-paddingright {
   padding-right: 0.75rem;
   padding-right: var(--padding, 0.75rem);
 }
-.mr-hover-paddingbottom:hover {
+.mr-hover-paddingbottom {
   padding-bottom: 0.75rem;
   padding-bottom: var(--padding, 0.75rem);
 }
-.mr-hover-paddingleft:hover {
+.mr-hover-paddingleft {
   padding-left: 0.75rem;
   padding-left: var(--padding, 0.75rem);
 }
-.mr-hover-nomargin:hover {
-  margin: 0 !important;
-}
-.mr-hover-nomargintop:hover {
-  margin-top: 0 !important;
-}
-.mr-hover-nomarginright:hover {
-  margin-right: 0 !important;
-}
-.mr-hover-nomarginbottom:hover {
-  margin-bottom: 0 !important;
-}
-.mr-hover-nomarginleft:hover {
-  margin-left: 0 !important;
-}
-.mr-hover-nopadding:hover {
+.mr-hover-nopadding {
   padding: 0 !important;
 }
-.mr-hover-nopaddingtop:hover {
+.mr-hover-nopaddingtop {
   padding-top: 0 !important;
 }
-.mr-hover-nopaddingright:hover {
+.mr-hover-nopaddingright {
   padding-right: 0 !important;
 }
-.mr-hover-nopaddingbottom:hover {
+.mr-hover-nopaddingbottom {
   padding-bottom: 0 !important;
 }
-.mr-hover-nopaddingleft:hover {
+.mr-hover-nopaddingleft {
   padding-left: 0 !important;
 }
