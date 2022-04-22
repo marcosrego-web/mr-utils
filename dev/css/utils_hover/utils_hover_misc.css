@@ -1,6 +1,10 @@
 .mr-hover-scroll:hover {
   overflow: auto;
 }
+.mr-hover-scroll:hover::-webkit-scrollbar {
+  height: auto;
+  width: auto;
+}
 .mr-hover-noscroll:hover {
   overflow: hidden !important;
 }

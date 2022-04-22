@@ -1,9 +1,15 @@
 .mr-backgroundcolor {
-  background-color: var(--background-color, #fff);
+  background-color: var(
+    --background-color,
+    rgba(var(--red, 255), var(--green, 255), var(--blue, 255), var(--alpha, 1))
+  );
 }
 
 .mr-textcolor {
-  color: var(--text-color, #000);
+  color: var(
+    --text-color,
+    rgba(var(--red, 0), var(--green, 0), var(--blue, 0), var(--alpha, 1))
+  );
 }
 
 .mr-unset {
