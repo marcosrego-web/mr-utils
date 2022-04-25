@@ -2,7 +2,7 @@
 Contributors:      Marcos Rego
 Tags:              block, editor, utilities, frontend, toolkit, utils, dev, developer, bootstrap, tailwind, css, js, breakpoints, devices
 Tested up to:      5.9
-Stable tag:        0.1.4
+Stable tag:        0.1.5
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -54,7 +54,12 @@ You can contact me at: [https://marcosrego.com/client-area/contact/](https://mar
 == Changelog ==
 
 = 0.1.5 =
-* Toolkit: Change utility classes from Other to Appearance.
+* Added spacing options to remove or add Gaps.
+* Small changes to the icons indicating use of components/pagination.
+* Toolkit: Possibility to change red, green, blue and alpha values as an alternative way to set background and text colors.
+* Toolkit: Different scroll behaviour when using scroll navigation (arrows).
+* Toolkit: Change the utility classes from Other to Appearance.
+* Toolkit: If no colors are set for offcanvas background/text/toogle fallback to default background and text colors.
 
 = 0.1.4 =
 * Fix preview not working inside block templates and full site editor.

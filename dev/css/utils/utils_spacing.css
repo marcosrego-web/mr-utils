@@ -1,3 +1,24 @@
+.mr-gap {
+  gap: 0.75rem;
+  gap: var(--gap, 0.75rem);
+}
+.mr-nogap {
+  gap: 0 !important;
+}
+.mr-rowgap {
+  row-gap: 0.75rem;
+  row-gap: var(--gap, 0.75rem);
+}
+.mr-norowgap {
+  row-gap: 0 !important;
+}
+.mr-columngap {
+  column-gap: 0.75rem;
+  column-gap: var(--gap, 0.75rem);
+}
+.mr-nocolumngap {
+  column-gap: 0 !important;
+}
 .mr-margin {
   margin: 0.75rem;
   margin: var(--margin, 0.75rem);
@@ -18,6 +39,21 @@
   margin-left: 0.75rem;
   margin-left: var(--margin, 0.75rem);
 }
+.mr-nomargin {
+  margin: 0 !important;
+}
+.mr-nomargintop {
+  margin-top: 0 !important;
+}
+.mr-nomarginright {
+  margin-right: 0 !important;
+}
+.mr-nomarginbottom {
+  margin-bottom: 0 !important;
+}
+.mr-nomarginleft {
+  margin-left: 0 !important;
+}
 .mr-padding {
   padding: 0.75rem;
   padding: var(--padding, 0.75rem);
@@ -37,21 +73,6 @@
 .mr-paddingleft {
   padding-left: 0.75rem;
   padding-left: var(--padding, 0.75rem);
-}
-.mr-nomargin {
-  margin: 0 !important;
-}
-.mr-nomargintop {
-  margin-top: 0 !important;
-}
-.mr-nomarginright {
-  margin-right: 0 !important;
-}
-.mr-nomarginbottom {
-  margin-bottom: 0 !important;
-}
-.mr-nomarginleft {
-  margin-left: 0 !important;
 }
 .mr-nopadding {
   padding: 0 !important;

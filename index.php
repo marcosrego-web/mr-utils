@@ -50,7 +50,7 @@ if (file_exists(dirname(__FILE__).'/../mrdev-framework_wp/mrdev-framework_wp.php
 } else {
 	function mrutils_hide_mrdev_dependencies() {
 		echo '<style>
-		.mr-backend-hascustomoption:not(.mr-backend-padding):not(.mr-backend-margin) option:last-child,
+		.mr-backend-hascustomoption:not(.mr-backend-padding):not(.mr-backend-margin):not(.mr-backend-gap) option:last-child,
 		.mr-backend-itemsize .components-input-control__container,
 		.mr-backend-fontsize .components-input-control__container {
 			display: none !important;
