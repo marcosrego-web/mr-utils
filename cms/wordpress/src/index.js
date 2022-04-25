@@ -1726,7 +1726,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 															)}
 															<p>{__("Scroll navigation", "mr-utils")}</p>
 															<ToggleControl
-																label="Vertical Scroll"
+																label="Vertical Arrows"
 																checked={mrVerticalScrollNavigation}
 																className="mr-backend-scrollnav"
 																onChange={() =>
@@ -1736,7 +1736,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																}
 															/>
 															<ToggleControl
-																label="Horizontal Scroll"
+																label="Horizontal Arrows"
 																checked={mrHorizontalScrollNavigation}
 																className="mr-backend-scrollnav"
 																onChange={() =>
@@ -1752,7 +1752,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																				"mr-utils"
 																		  )
 																		: __(
-																				'Add scroll navigation to elements with scroll. You can add an horizontal scroll using the "Swipe" component or "Horizontal Scroll" from the "Misc" section.',
+																				"Add an alternative navigation to elements with scroll.",
 																				"mr-utils"
 																		  )
 																}

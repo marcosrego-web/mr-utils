@@ -56,6 +56,7 @@ You can contact me at: [https://marcosrego.com/client-area/contact/](https://mar
 = 0.1.5 =
 * Added spacing options to remove or add Gaps.
 * Small changes to the icons indicating use of components/pagination.
+* Toolkit: Possibility to change red, green, blue and alpha values as an alternative way to set background and text colors.
 * Toolkit: Different scroll behaviour when using scroll navigation (arrows).
 * Toolkit: Change the utility classes from Other to Appearance.
 * Toolkit: If no colors are set for offcanvas background/text/toogle fallback to default background and text colors.

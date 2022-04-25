@@ -9,7 +9,12 @@
   background-color: #fff;
   background-color: var(
     --offcanvas-background-color,
-    var(--background-color, #fff)
+    var(
+      --background-color,
+      var(--green, 255),
+      var(--blue, 255),
+      var(--alpha, 1)
+    )
   );
 }
 .mr-offcanvas-toggle:not(:checked)
@@ -48,11 +53,23 @@
 .mr-offcanvas-container h5,
 .mr-offcanvas-container h6 {
   color: #000;
-  color: var(--offcanvas-text-color, var(--text-color, #000));
+  color: var(
+    --offcanvas-text-color,
+    var(
+      --text-color,
+      rgba(var(--red, 0), var(--green, 0), var(--blue, 0), var(--alpha, 1))
+    )
+  );
 }
 .mr-offcanvas-toggle {
   color: #000;
-  color: var(--offcanvas-toggle-color, var(--text-color, #000));
+  color: var(
+    --offcanvas-toggle-color,
+    var(
+      --text-color,
+      rgba(var(--red, 0), var(--green, 0), var(--blue, 0), var(--alpha, 1))
+    )
+  );
 }
 .mr-offcanvas-content {
   position: fixed;
