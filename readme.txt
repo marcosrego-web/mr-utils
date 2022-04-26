@@ -2,7 +2,7 @@
 Contributors:      Marcos Rego
 Tags:              block, editor, utilities, frontend, toolkit, utils, dev, developer, bootstrap, tailwind, css, js, breakpoints, devices
 Tested up to:      5.9
-Stable tag:        0.1.5
+Stable tag:        0.1.6
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,10 +26,7 @@ You can also apply changes to specific devices/breakpoints: Show/hide blocks dep
 
 = Does the interface of Mr.Utils support all blocks? =
 
-The interface of Mr.Utils works on the vast majority of core blocks. But you have alternative ways to use them that work on any block:
-1. Do you actually need to apply the style directly on the element? Some styles (such as font-size) when applied on parent blocks, might also apply the style into child blocks. With that in mind, you can wrap/transform the unsupported block with a "Group" and then use the interface of Mr.Utils on that group.
-2. All options use [utility classes](https://github.com/marcosrego-web/mr-utils/wiki/Utility-Classes), so for unsupported blocks you can also go to "Advanced > Additional CSS class(es)" and form the classes there.
-3. Or wait for them to be supported. [Maybe you can help me on that](https://github.com/WordPress/gutenberg/issues/36127).
+Since version 0.1.6, that the interface of Mr.Utils works with all blocks. If it's not working for you please [report the issue](https://github.com/marcosrego-web/mr-utils/issues) or [contact me](https://marcosrego.com/client-area/contact/), do let me know which block you are using.
 
 = Where can I find more information about Mr.Utils? =
 
@@ -52,6 +49,11 @@ You can contact me at: [https://marcosrego.com/client-area/contact/](https://mar
 7. Mr.Dev.'s Framework allows to create custom utilities to select on the block editor.
 
 == Changelog ==
+
+= 0.1.6 =
+* Dynamically add classes (instead of using *blocks.getSaveContent.extraProps*) for the interface to work with all types of blocks, as suggested [here](https://github.com/WordPress/gutenberg/issues/36127#issuecomment-1106645202).
+* When using an automatic tabs navigation: Added fallback when the item does not contain child elements.
+* Fixed bug when changing number of columns or items per line on the 'Desktop' breakpoint.
 
 = 0.1.5 =
 * Added spacing options to remove or add Gaps.

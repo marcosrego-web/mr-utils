@@ -5,7 +5,7 @@
  * Description:       Easily use Mr.Utils front-end toolkit with the block editor interface without knowing code, the classes or the functions.
  * Requires at least: 5.8
  * Requires PHP:      7.0
- * Version:           0.1.5
+ * Version:           0.1.6
  * Author:            Marcos Rego
  * Author uri:		 	https://marcosrego.com
  * License:           GPL-2.0-or-later
@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-$mrutils_version = '0.1.5';
+$mrutils_version = '0.1.6';
 
 if(!isset($mrdev_utils_blocks_url)) {
     $mrdev_utils_blocks_url = plugins_url( __FILE__ );

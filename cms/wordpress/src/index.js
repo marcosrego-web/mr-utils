@@ -48,7 +48,7 @@ import {
 	brush,
 } from "@wordpress/icons";
 
-const mrAllowedBlocks = [
+/*const mrAllowedBlocks = [
 	"core/audio",
 	"core/buttons",
 	"core/button",
@@ -79,7 +79,7 @@ const mrAllowedBlocks = [
 	"core/video",
 	"core/query-title",
 	"core/site-title",
-	/*
+	"core/latest-posts",
 	  //NOT FULLY SUPPORTED : https://github.com/WordPress/gutenberg/issues/36127
 	  "core/categories",
 	  "core/archives",
@@ -109,7 +109,6 @@ const mrAllowedBlocks = [
 	  "core/template-part",
 	  "core/term-description",
 	  "core/post-navigation-link",
-	  //WooCommerce
 	  "woocommerce/handpicked-products",
 	  "woocommerce/all-reviews",
 	  "woocommerce/featured-category",
@@ -130,8 +129,7 @@ const mrAllowedBlocks = [
 	  "woocommerce/attribute-filter",
 	  "woocommerce/stock-filter",
 	  "woocommerce/active-filters",
-	  */
-];
+];*/
 
 const mrUtilsBreakpoints = ["hover", "desktop", "laptop", "tablet", "phone"];
 
@@ -181,12 +179,13 @@ const mrDevIcon = wp.element.createElement(
  *
  * @return {Object} settings Modified settings.
  */
-function mrAddAttributes(settings) {
+function mrAttributes(settings) {
 	//check if object exists for old Gutenberg version compatibility
 	//add mrAllowedBlocks restriction
 	if (
-		typeof settings.attributes !== "undefined" &&
-		mrAllowedBlocks.includes(settings.name)
+		typeof settings.attributes !==
+		"undefined" /*&&
+		mrAllowedBlocks.includes(settings.name)*/
 	) {
 		settings.attributes = Object.assign(settings.attributes, {
 			mrAnimation: {
@@ -206,11 +205,11 @@ function mrAddAttributes(settings) {
 				default: "mr-hover",
 			},
 			mrPerPage: {
-				type: "int",
+				type: "string",
 				default: "",
 			},
 			mrPaginationPosition: {
-				type: "int",
+				type: "string",
 				default: "",
 			},
 			mrArrowPagination: {
@@ -1428,7 +1427,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 		return (
 			<Fragment>
 				<BlockEdit {...props} />
-				{isSelected && mrAllowedBlocks.includes(name) && (
+				{isSelected /*&& mrAllowedBlocks.includes(name)*/ && (
 					<InspectorControls key="setting">
 						<Panel header="">
 							<PanelBody
@@ -1513,85 +1512,77 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																		  )
 																}
 															/>
-															{mrPerPage > 0 ? (
-																<>
-																	<SelectControl
-																		label={__(
-																			"Pagination position",
-																			"mr-utils"
-																		)}
-																		value={mrPaginationPosition}
-																		options={[
-																			{
-																				value: "mr-" + tab.name,
-																				label: "Default",
-																			},
-																			{
-																				value: (
-																					" mr-" +
-																					tab.name +
-																					"-paginationtop"
-																				).replace("--", "-"),
-																				label: "Top",
-																			},
-																			{
-																				value: (
-																					" mr-" +
-																					tab.name +
-																					"-paginationbottom"
-																				).replace("--", "-"),
-																				label: "Bottom",
-																			},
-																		]}
-																		onChange={(val) =>
-																			setAttributes({
-																				mrPaginationPosition:
-																					!val || val === "mr-" + tab.name
-																						? ""
-																						: val.includes("mr-desktop") ||
-																						  val.includes("mr-laptop") ||
-																						  val.includes("mr-tablet") ||
-																						  val.includes("mr-phone") ||
-																						  val.includes("-hover-")
-																						? mrPaginationPosition
-																						: val.replace("--", "-"),
-																			})
-																		}
-																	/>
-																	<ToggleControl
-																		label="Arrows"
-																		checked={mrArrowPagination}
-																		className="mr-backend-perpage"
-																		onChange={() =>
-																			setAttributes({
-																				mrArrowPagination: !mrArrowPagination,
-																			})
-																		}
-																	/>
-																	<ToggleControl
-																		label="Select dropdown"
-																		checked={mrSelectPagination}
-																		className="mr-backend-perpage"
-																		onChange={() =>
-																			setAttributes({
-																				mrSelectPagination: !mrSelectPagination,
-																			})
-																		}
-																	/>
-																	<ToggleControl
-																		label="Radio buttons"
-																		checked={mrRadioPagination}
-																		className="mr-backend-perpage"
-																		onChange={() =>
-																			setAttributes({
-																				mrRadioPagination: !mrRadioPagination,
-																			})
-																		}
-																	/>
-																</>
-															) : (
-																""
-															)}
+
+															<SelectControl
+																label={__("Pagination position", "mr-utils")}
+																value={mrPaginationPosition}
+																options={[
+																	{
+																		value: "mr-" + tab.name,
+																		label: "Default",
+																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-paginationtop"
+																		).replace("--", "-"),
+																		label: "Top",
+																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-paginationbottom"
+																		).replace("--", "-"),
+																		label: "Bottom",
+																	},
+																]}
+																onChange={(val) =>
+																	setAttributes({
+																		mrPaginationPosition:
+																			!val || val === "mr-" + tab.name
+																				? ""
+																				: val.includes("mr-desktop") ||
+																				  val.includes("mr-laptop") ||
+																				  val.includes("mr-tablet") ||
+																				  val.includes("mr-phone") ||
+																				  val.includes("-hover-")
+																				? mrPaginationPosition
+																				: val.replace("--", "-"),
+																	})
+																}
+															/>
+															<ToggleControl
+																label="Arrows"
+																checked={mrArrowPagination}
+																className="mr-backend-perpage"
+																onChange={() =>
+																	setAttributes({
+																		mrArrowPagination: !mrArrowPagination,
+																	})
+																}
+															/>
+															<ToggleControl
+																label="Select dropdown"
+																checked={mrSelectPagination}
+																className="mr-backend-perpage"
+																onChange={() =>
+																	setAttributes({
+																		mrSelectPagination: !mrSelectPagination,
+																	})
+																}
+															/>
+															<ToggleControl
+																label="Radio buttons"
+																checked={mrRadioPagination}
+																className="mr-backend-perpage"
+																onChange={() =>
+																	setAttributes({
+																		mrRadioPagination: !mrRadioPagination,
+																	})
+																}
+															/>
 														</PanelBody>
 														<PanelBody
 															icon={blockDefault}
@@ -2190,6 +2181,11 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																	!val.includes("mr-phone")
 																		? val
 																		: mrColumns,
+																mrColumnsdesktop:
+																	val !== undefined &&
+																	val.includes("mr-desktop")
+																		? val
+																		: mrColumnsdesktop,
 																mrColumnslaptop:
 																	val !== undefined && val.includes("mr-laptop")
 																		? val
@@ -2355,6 +2351,11 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																	!val.includes("mr-phone")
 																		? val
 																		: mrPerLine,
+																mrPerLinedesktop:
+																	val !== undefined &&
+																	val.includes("mr-desktop")
+																		? val
+																		: mrPerLinedesktop,
 																mrPerLinelaptop:
 																	val !== undefined && val.includes("mr-laptop")
 																		? val
@@ -5315,43 +5316,36 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																		? mrTextAlignmentphone
 																		: mrTextAlignment
 																}
-																options={
-																	(isSelected &&
-																		mrAllowedBlocks.name != "core/paragraph") ||
-																	(isSelected &&
-																		mrAllowedBlocks.name != "core/heading")
-																		? __([
-																				{
-																					value: "mr-" + tab.name,
-																					label: "Default",
-																				},
-																				{
-																					value: (
-																						" mr-" +
-																						tab.name +
-																						"-alignleft"
-																					).replace("--", "-"),
-																					label: "Left",
-																				},
-																				{
-																					value: (
-																						" mr-" +
-																						tab.name +
-																						"-aligncenter"
-																					).replace("--", "-"),
-																					label: "Center",
-																				},
-																				{
-																					value: (
-																						" mr-" +
-																						tab.name +
-																						"-alignright"
-																					).replace("--", "-"),
-																					label: "Right",
-																				},
-																		  ])
-																		: ""
-																}
+																options={__([
+																	{
+																		value: "mr-" + tab.name,
+																		label: "Default",
+																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-alignleft"
+																		).replace("--", "-"),
+																		label: "Left",
+																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-aligncenter"
+																		).replace("--", "-"),
+																		label: "Center",
+																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-alignright"
+																		).replace("--", "-"),
+																		label: "Right",
+																	},
+																])}
 																onChange={(val) =>
 																	setAttributes({
 																		mrTextAlignment:
@@ -6117,959 +6111,376 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
  * @return {function} BlockListBlock Modified block edit component.
  *
  */
-const mrApplyWrapperExtraClass = createHigherOrderComponent(
-	(BlockListBlock) => {
-		return (props) => {
-			const { attributes, blockType } = props;
+const mrBackendExtraClasses = createHigherOrderComponent((BlockListBlock) => {
+	return (props) => {
+		const { attributes, blockType } = props;
 
-			const {
-				mrAnimation,
-				mrAnimationhover,
-				mrTransition,
-				mrTransitionhover,
-				mrPerPage,
-				mrPaginationPosition,
-				mrComponent,
-				mrVerticalScrollNavigation,
-				mrHorizontalScrollNavigation,
-				mrActiveWhen,
-				mrNavPosition,
-				mrArrowPagination,
-				mrSelectPagination,
-				mrRadioPagination,
-				mrPerLine,
-				mrPerLinedesktop,
-				mrPerLinelaptop,
-				mrPerLinetablet,
-				mrPerLinephone,
-				mrColumns,
-				mrColumnsdesktop,
-				mrColumnslaptop,
-				mrColumnstablet,
-				mrColumnsphone,
-				mrOrder,
-				mrOrderdesktop,
-				mrOrderlaptop,
-				mrOrdertablet,
-				mrOrderphone,
-				mrDisplay,
-				mrDisplayhover,
-				mrDisplaydesktop,
-				mrDisplaylaptop,
-				mrDisplaytablet,
-				mrDisplayphone,
-				mrWrap,
-				mrWrapdesktop,
-				mrWraplaptop,
-				mrWraptablet,
-				mrWrapphone,
-				mrPaddingTop,
-				mrPaddingTophover,
-				mrPaddingTopdesktop,
-				mrPaddingToplaptop,
-				mrPaddingToptablet,
-				mrPaddingTopphone,
-				mrCustomPaddingTop,
-				mrCustomPaddingTophover,
-				mrCustomPaddingTopdesktop,
-				mrCustomPaddingToplaptop,
-				mrCustomPaddingToptablet,
-				mrCustomPaddingTopphone,
-				mrPaddingRight,
-				mrPaddingRighthover,
-				mrPaddingRightdesktop,
-				mrPaddingRightlaptop,
-				mrPaddingRighttablet,
-				mrPaddingRightphone,
-				mrCustomPaddingRight,
-				mrCustomPaddingRighthover,
-				mrCustomPaddingRightdesktop,
-				mrCustomPaddingRightlaptop,
-				mrCustomPaddingRighttablet,
-				mrCustomPaddingRightphone,
-				mrPaddingBottom,
-				mrPaddingBottomhover,
-				mrPaddingBottomdesktop,
-				mrPaddingBottomlaptop,
-				mrPaddingBottomtablet,
-				mrPaddingBottomphone,
-				mrCustomPaddingBottom,
-				mrCustomPaddingBottomhover,
-				mrCustomPaddingBottomdesktop,
-				mrCustomPaddingBottomlaptop,
-				mrCustomPaddingBottomtablet,
-				mrCustomPaddingBottomphone,
-				mrPaddingLeft,
-				mrPaddingLefthover,
-				mrPaddingLeftdesktop,
-				mrPaddingLeftlaptop,
-				mrPaddingLefttablet,
-				mrPaddingLeftphone,
-				mrCustomPaddingLeft,
-				mrCustomPaddingLefthover,
-				mrCustomPaddingLeftdesktop,
-				mrCustomPaddingLeftlaptop,
-				mrCustomPaddingLefttablet,
-				mrCustomPaddingLeftphone,
-				mrMarginTop,
-				mrMarginTophover,
-				mrMarginTopdesktop,
-				mrMarginToplaptop,
-				mrMarginToptablet,
-				mrMarginTopphone,
-				mrCustomMarginTop,
-				mrCustomMarginTophover,
-				mrCustomMarginTopdesktop,
-				mrCustomMarginToplaptop,
-				mrCustomMarginToptablet,
-				mrCustomMarginTopphone,
-				mrMarginRight,
-				mrMarginRighthover,
-				mrMarginRightdesktop,
-				mrMarginRightlaptop,
-				mrMarginRighttablet,
-				mrMarginRightphone,
-				mrCustomMarginRight,
-				mrCustomMarginRighthover,
-				mrCustomMarginRightdesktop,
-				mrCustomMarginRightlaptop,
-				mrCustomMarginRighttablet,
-				mrCustomMarginRightphone,
-				mrMarginBottom,
-				mrMarginBottomhover,
-				mrMarginBottomdesktop,
-				mrMarginBottomlaptop,
-				mrMarginBottomtablet,
-				mrMarginBottomphone,
-				mrCustomMarginBottom,
-				mrCustomMarginBottomhover,
-				mrCustomMarginBottomdesktop,
-				mrCustomMarginBottomlaptop,
-				mrCustomMarginBottomtablet,
-				mrCustomMarginBottomphone,
-				mrMarginLeft,
-				mrMarginLefthover,
-				mrMarginLeftdesktop,
-				mrMarginLeftlaptop,
-				mrMarginLefttablet,
-				mrMarginLeftphone,
-				mrCustomMarginLeft,
-				mrCustomMarginLefthover,
-				mrCustomMarginLeftdesktop,
-				mrCustomMarginLeftlaptop,
-				mrCustomMarginLefttablet,
-				mrCustomMarginLeftphone,
-				mrRowGap,
-				mrCustomRowGap,
-				mrColumnGap,
-				mrCustomColumnGap,
-				mrPosition,
-				mrPositiondesktop,
-				mrPositionlaptop,
-				mrPositiontablet,
-				mrPositionphone,
-				mrPositionAlignment,
-				mrPositionAlignmentdesktop,
-				mrPositionAlignmentlaptop,
-				mrPositionAlignmenttablet,
-				mrPositionAlignmentphone,
-				mrPositionSides,
-				mrPositionSidesdesktop,
-				mrPositionSideslaptop,
-				mrPositionSidestablet,
-				mrPositionSidesphone,
-				mrContentAlignment,
-				mrContentAlignmentdesktop,
-				mrContentAlignmentlaptop,
-				mrContentAlignmenttablet,
-				mrContentAlignmentphone,
-				mrVerticalOffset,
-				mrVerticalOffsetdesktop,
-				mrVerticalOffsetlaptop,
-				mrVerticalOffsettablet,
-				mrVerticalOffsetphone,
-				mrHorizontalOffset,
-				mrHorizontalOffsetdesktop,
-				mrHorizontalOffsetlaptop,
-				mrHorizontalOffsettablet,
-				mrHorizontalOffsetphone,
-				mrSizeOptions,
-				mrSizeOptionshover,
-				mrSizeOptionsdesktop,
-				mrSizeOptionslaptop,
-				mrSizeOptionstablet,
-				mrSizeOptionsphone,
-				mrSize,
-				mrSizehover,
-				mrSizedesktop,
-				mrSizelaptop,
-				mrSizetablet,
-				mrSizephone,
-				mrCustomSize,
-				mrCustomSizehover,
-				mrCustomSizedesktop,
-				mrCustomSizelaptop,
-				mrCustomSizetablet,
-				mrCustomSizephone,
-				mrBackgroundColor,
-				mrCustomBackgroundColor,
-				mrColor,
-				mrCustomColor,
-				mrFontFamily,
-				mrCustomFontFamily,
-				mrFontSizeOptions,
-				mrFontSizeOptionshover,
-				mrFontSizeOptionsdesktop,
-				mrFontSizeOptionslaptop,
-				mrFontSizeOptionstablet,
-				mrFontSizeOptionsphone,
-				mrFontSize,
-				mrFontSizehover,
-				mrFontSizedesktop,
-				mrFontSizelaptop,
-				mrFontSizetablet,
-				mrFontSizephone,
-				mrCustomFontSize,
-				mrCustomFontSizehover,
-				mrCustomFontSizedesktop,
-				mrCustomFontSizelaptop,
-				mrCustomFontSizetablet,
-				mrCustomFontSizephone,
-				mrTextAlignment,
-				mrTextAlignmentdesktop,
-				mrTextAlignmentlaptop,
-				mrTextAlignmenttablet,
-				mrTextAlignmentphone,
-				mrScroll,
-				mrScrollhover,
-				mrScrolldesktop,
-				mrScrolllaptop,
-				mrScrolltablet,
-				mrScrollphone,
-			} = attributes;
+		const {
+			mrAnimation,
+			mrAnimationhover,
+			mrTransition,
+			mrTransitionhover,
+			mrPerPage,
+			mrPaginationPosition,
+			mrComponent,
+			mrVerticalScrollNavigation,
+			mrHorizontalScrollNavigation,
+			mrActiveWhen,
+			mrNavPosition,
+			mrArrowPagination,
+			mrSelectPagination,
+			mrRadioPagination,
+			mrPerLine,
+			mrPerLinedesktop,
+			mrPerLinelaptop,
+			mrPerLinetablet,
+			mrPerLinephone,
+			mrColumns,
+			mrColumnsdesktop,
+			mrColumnslaptop,
+			mrColumnstablet,
+			mrColumnsphone,
+			mrOrder,
+			mrOrderdesktop,
+			mrOrderlaptop,
+			mrOrdertablet,
+			mrOrderphone,
+			mrDisplay,
+			mrDisplayhover,
+			mrDisplaydesktop,
+			mrDisplaylaptop,
+			mrDisplaytablet,
+			mrDisplayphone,
+			mrWrap,
+			mrWrapdesktop,
+			mrWraplaptop,
+			mrWraptablet,
+			mrWrapphone,
+			mrPaddingTop,
+			mrPaddingTophover,
+			mrPaddingTopdesktop,
+			mrPaddingToplaptop,
+			mrPaddingToptablet,
+			mrPaddingTopphone,
+			mrCustomPaddingTop,
+			mrCustomPaddingTophover,
+			mrCustomPaddingTopdesktop,
+			mrCustomPaddingToplaptop,
+			mrCustomPaddingToptablet,
+			mrCustomPaddingTopphone,
+			mrPaddingRight,
+			mrPaddingRighthover,
+			mrPaddingRightdesktop,
+			mrPaddingRightlaptop,
+			mrPaddingRighttablet,
+			mrPaddingRightphone,
+			mrCustomPaddingRight,
+			mrCustomPaddingRighthover,
+			mrCustomPaddingRightdesktop,
+			mrCustomPaddingRightlaptop,
+			mrCustomPaddingRighttablet,
+			mrCustomPaddingRightphone,
+			mrPaddingBottom,
+			mrPaddingBottomhover,
+			mrPaddingBottomdesktop,
+			mrPaddingBottomlaptop,
+			mrPaddingBottomtablet,
+			mrPaddingBottomphone,
+			mrCustomPaddingBottom,
+			mrCustomPaddingBottomhover,
+			mrCustomPaddingBottomdesktop,
+			mrCustomPaddingBottomlaptop,
+			mrCustomPaddingBottomtablet,
+			mrCustomPaddingBottomphone,
+			mrPaddingLeft,
+			mrPaddingLefthover,
+			mrPaddingLeftdesktop,
+			mrPaddingLeftlaptop,
+			mrPaddingLefttablet,
+			mrPaddingLeftphone,
+			mrCustomPaddingLeft,
+			mrCustomPaddingLefthover,
+			mrCustomPaddingLeftdesktop,
+			mrCustomPaddingLeftlaptop,
+			mrCustomPaddingLefttablet,
+			mrCustomPaddingLeftphone,
+			mrMarginTop,
+			mrMarginTophover,
+			mrMarginTopdesktop,
+			mrMarginToplaptop,
+			mrMarginToptablet,
+			mrMarginTopphone,
+			mrCustomMarginTop,
+			mrCustomMarginTophover,
+			mrCustomMarginTopdesktop,
+			mrCustomMarginToplaptop,
+			mrCustomMarginToptablet,
+			mrCustomMarginTopphone,
+			mrMarginRight,
+			mrMarginRighthover,
+			mrMarginRightdesktop,
+			mrMarginRightlaptop,
+			mrMarginRighttablet,
+			mrMarginRightphone,
+			mrCustomMarginRight,
+			mrCustomMarginRighthover,
+			mrCustomMarginRightdesktop,
+			mrCustomMarginRightlaptop,
+			mrCustomMarginRighttablet,
+			mrCustomMarginRightphone,
+			mrMarginBottom,
+			mrMarginBottomhover,
+			mrMarginBottomdesktop,
+			mrMarginBottomlaptop,
+			mrMarginBottomtablet,
+			mrMarginBottomphone,
+			mrCustomMarginBottom,
+			mrCustomMarginBottomhover,
+			mrCustomMarginBottomdesktop,
+			mrCustomMarginBottomlaptop,
+			mrCustomMarginBottomtablet,
+			mrCustomMarginBottomphone,
+			mrMarginLeft,
+			mrMarginLefthover,
+			mrMarginLeftdesktop,
+			mrMarginLeftlaptop,
+			mrMarginLefttablet,
+			mrMarginLeftphone,
+			mrCustomMarginLeft,
+			mrCustomMarginLefthover,
+			mrCustomMarginLeftdesktop,
+			mrCustomMarginLeftlaptop,
+			mrCustomMarginLefttablet,
+			mrCustomMarginLeftphone,
+			mrRowGap,
+			mrCustomRowGap,
+			mrColumnGap,
+			mrCustomColumnGap,
+			mrPosition,
+			mrPositiondesktop,
+			mrPositionlaptop,
+			mrPositiontablet,
+			mrPositionphone,
+			mrPositionAlignment,
+			mrPositionAlignmentdesktop,
+			mrPositionAlignmentlaptop,
+			mrPositionAlignmenttablet,
+			mrPositionAlignmentphone,
+			mrPositionSides,
+			mrPositionSidesdesktop,
+			mrPositionSideslaptop,
+			mrPositionSidestablet,
+			mrPositionSidesphone,
+			mrContentAlignment,
+			mrContentAlignmentdesktop,
+			mrContentAlignmentlaptop,
+			mrContentAlignmenttablet,
+			mrContentAlignmentphone,
+			mrVerticalOffset,
+			mrVerticalOffsetdesktop,
+			mrVerticalOffsetlaptop,
+			mrVerticalOffsettablet,
+			mrVerticalOffsetphone,
+			mrHorizontalOffset,
+			mrHorizontalOffsetdesktop,
+			mrHorizontalOffsetlaptop,
+			mrHorizontalOffsettablet,
+			mrHorizontalOffsetphone,
+			mrSizeOptions,
+			mrSizeOptionshover,
+			mrSizeOptionsdesktop,
+			mrSizeOptionslaptop,
+			mrSizeOptionstablet,
+			mrSizeOptionsphone,
+			mrSize,
+			mrSizehover,
+			mrSizedesktop,
+			mrSizelaptop,
+			mrSizetablet,
+			mrSizephone,
+			mrCustomSize,
+			mrCustomSizehover,
+			mrCustomSizedesktop,
+			mrCustomSizelaptop,
+			mrCustomSizetablet,
+			mrCustomSizephone,
+			mrBackgroundColor,
+			mrCustomBackgroundColor,
+			mrColor,
+			mrCustomColor,
+			mrFontFamily,
+			mrCustomFontFamily,
+			mrFontSizeOptions,
+			mrFontSizeOptionshover,
+			mrFontSizeOptionsdesktop,
+			mrFontSizeOptionslaptop,
+			mrFontSizeOptionstablet,
+			mrFontSizeOptionsphone,
+			mrFontSize,
+			mrFontSizehover,
+			mrFontSizedesktop,
+			mrFontSizelaptop,
+			mrFontSizetablet,
+			mrFontSizephone,
+			mrCustomFontSize,
+			mrCustomFontSizehover,
+			mrCustomFontSizedesktop,
+			mrCustomFontSizelaptop,
+			mrCustomFontSizetablet,
+			mrCustomFontSizephone,
+			mrTextAlignment,
+			mrTextAlignmentdesktop,
+			mrTextAlignmentlaptop,
+			mrTextAlignmenttablet,
+			mrTextAlignmentphone,
+			mrScroll,
+			mrScrollhover,
+			mrScrolldesktop,
+			mrScrolllaptop,
+			mrScrolltablet,
+			mrScrollphone,
+		} = attributes;
 
-			let mrClassNames = "";
-			let mrAttr = "";
-			let mrAttrValue = "";
+		let mrClassNames = "";
+		let mrAttr = "";
+		let mrAttrValue = "";
 
-			if (
-				mrCustomSize &&
-				mrSizeOptions &&
-				mrSizeOptions.includes("-sizeoptions")
-			) {
-				mrClassNames = mrClassNames + " " + mrCustomSize;
-			} else if (mrSize) {
-				mrClassNames = mrClassNames + " mr-size" + mrSize;
-			}
-			if (
-				mrCustomSizehover &&
-				mrSizeOptionshover &&
-				mrSizeOptionshover.includes("-sizeoptions")
-			) {
-				mrClassNames = mrClassNames + " " + mrCustomSizehover;
-			} else if (mrSizehover) {
-				mrClassNames = mrClassNames + " mr-hover-size" + mrSizehover;
-			}
-			if (
-				mrCustomSizedesktop &&
-				mrSizeOptionsdesktop &&
-				mrSizeOptionsdesktop.includes("-sizeoptions")
-			) {
-				mrClassNames = mrClassNames + " " + mrCustomSizedesktop;
-			} else if (mrSizedesktop) {
-				mrClassNames = mrClassNames + " mr-desktop-size" + mrSizedesktop;
-			}
-			if (
-				mrCustomSizelaptop &&
-				mrSizeOptionslaptop &&
-				mrSizeOptionslaptop.includes("-sizeoptions")
-			) {
-				mrClassNames = mrClassNames + " " + mrCustomSizelaptop;
-			} else if (mrSizelaptop) {
-				mrClassNames = mrClassNames + " mr-laptop-size" + mrSizelaptop;
-			}
-			if (
-				mrCustomSizetablet &&
-				mrSizeOptionstablet &&
-				mrSizeOptionstablet.includes("-sizeoptions")
-			) {
-				mrClassNames = mrClassNames + " " + mrCustomSizetablet;
-			} else if (mrSizetablet) {
-				mrClassNames = mrClassNames + " mr-tablet-size" + mrSizetablet;
-			}
-			if (
-				mrCustomSizephone &&
-				mrSizeOptionsphone &&
-				mrSizeOptionsphone.includes("-sizeoptions")
-			) {
-				mrClassNames = mrClassNames + " " + mrCustomSizephone;
-			} else if (mrSizephone) {
-				mrClassNames = mrClassNames + " mr-phone-size" + mrSizephone;
-			}
+		if (
+			mrCustomSize &&
+			mrSizeOptions &&
+			mrSizeOptions.includes("-sizeoptions")
+		) {
+			mrClassNames = mrClassNames + " " + mrCustomSize;
+		} else if (mrSize) {
+			mrClassNames = mrClassNames + " mr-size" + mrSize;
+		}
+		if (
+			mrCustomSizehover &&
+			mrSizeOptionshover &&
+			mrSizeOptionshover.includes("-sizeoptions")
+		) {
+			mrClassNames = mrClassNames + " " + mrCustomSizehover;
+		} else if (mrSizehover) {
+			mrClassNames = mrClassNames + " mr-hover-size" + mrSizehover;
+		}
+		if (
+			mrCustomSizedesktop &&
+			mrSizeOptionsdesktop &&
+			mrSizeOptionsdesktop.includes("-sizeoptions")
+		) {
+			mrClassNames = mrClassNames + " " + mrCustomSizedesktop;
+		} else if (mrSizedesktop) {
+			mrClassNames = mrClassNames + " mr-desktop-size" + mrSizedesktop;
+		}
+		if (
+			mrCustomSizelaptop &&
+			mrSizeOptionslaptop &&
+			mrSizeOptionslaptop.includes("-sizeoptions")
+		) {
+			mrClassNames = mrClassNames + " " + mrCustomSizelaptop;
+		} else if (mrSizelaptop) {
+			mrClassNames = mrClassNames + " mr-laptop-size" + mrSizelaptop;
+		}
+		if (
+			mrCustomSizetablet &&
+			mrSizeOptionstablet &&
+			mrSizeOptionstablet.includes("-sizeoptions")
+		) {
+			mrClassNames = mrClassNames + " " + mrCustomSizetablet;
+		} else if (mrSizetablet) {
+			mrClassNames = mrClassNames + " mr-tablet-size" + mrSizetablet;
+		}
+		if (
+			mrCustomSizephone &&
+			mrSizeOptionsphone &&
+			mrSizeOptionsphone.includes("-sizeoptions")
+		) {
+			mrClassNames = mrClassNames + " " + mrCustomSizephone;
+		} else if (mrSizephone) {
+			mrClassNames = mrClassNames + " mr-phone-size" + mrSizephone;
+		}
 
-			if (
-				mrBackgroundColor &&
-				mrBackgroundColor.includes("-custombackgroundcolor") &&
-				mrCustomBackgroundColor
-			) {
-				mrClassNames = mrClassNames + " " + mrCustomBackgroundColor;
-			} else if (mrBackgroundColor && mrBackgroundColor !== "mr-") {
-				mrClassNames = mrClassNames + " " + mrBackgroundColor;
-			}
+		if (
+			mrBackgroundColor &&
+			mrBackgroundColor.includes("-custombackgroundcolor") &&
+			mrCustomBackgroundColor
+		) {
+			mrClassNames = mrClassNames + " " + mrCustomBackgroundColor;
+		} else if (mrBackgroundColor && mrBackgroundColor !== "mr-") {
+			mrClassNames = mrClassNames + " " + mrBackgroundColor;
+		}
 
-			if (mrColor && mrColor.includes("-customcolor") && mrCustomColor) {
-				mrClassNames = mrClassNames + " " + mrCustomColor;
-			} else if (mrColor && mrColor !== "mr-") {
-				mrClassNames = mrClassNames + " " + mrColor;
-			}
+		if (mrColor && mrColor.includes("-customcolor") && mrCustomColor) {
+			mrClassNames = mrClassNames + " " + mrCustomColor;
+		} else if (mrColor && mrColor !== "mr-") {
+			mrClassNames = mrClassNames + " " + mrColor;
+		}
 
-			if (
-				mrFontFamily &&
-				mrFontFamily.includes("-customfont") &&
-				mrCustomFontFamily
-			) {
-				mrClassNames = mrClassNames + " " + mrCustomFontFamily;
-			} else if (mrFontFamily && mrFontFamily !== "mr-") {
-				mrClassNames = mrClassNames + " " + mrFontFamily;
-			}
+		if (
+			mrFontFamily &&
+			mrFontFamily.includes("-customfont") &&
+			mrCustomFontFamily
+		) {
+			mrClassNames = mrClassNames + " " + mrCustomFontFamily;
+		} else if (mrFontFamily && mrFontFamily !== "mr-") {
+			mrClassNames = mrClassNames + " " + mrFontFamily;
+		}
 
-			if (
-				mrCustomFontSize &&
-				mrFontSizeOptions &&
-				mrFontSizeOptions.includes("-fontsizeoptions")
-			) {
-				mrClassNames = mrClassNames + " " + mrCustomFontSize;
-			} else if (mrFontSize) {
-				mrClassNames = mrClassNames + " mr-fontsize" + mrFontSize;
-			}
-			if (
-				mrCustomFontSizehover &&
-				mrFontSizeOptionshover &&
-				mrFontSizeOptionshover.includes("-fontsizeoptions")
-			) {
-				mrClassNames = mrClassNames + " " + mrCustomFontSizehover;
-			} else if (mrFontSizehover) {
-				mrClassNames = mrClassNames + " mr-hover-fontsize" + mrFontSizehover;
-			}
-			if (
-				mrCustomFontSizedesktop &&
-				mrFontSizeOptionsdesktop &&
-				mrFontSizeOptionsdesktop.includes("-fontsizeoptions")
-			) {
-				mrClassNames = mrClassNames + " " + mrCustomFontSizedesktop;
-			} else if (mrFontSizedesktop) {
-				mrClassNames =
-					mrClassNames + " mr-desktop-fontsize" + mrFontSizedesktop;
-			}
-			if (
-				mrCustomFontSizelaptop &&
-				mrFontSizeOptionslaptop &&
-				mrFontSizeOptionslaptop.includes("-fontsizeoptions")
-			) {
-				mrClassNames = mrClassNames + " " + mrCustomFontSizelaptop;
-			} else if (mrFontSizelaptop) {
-				mrClassNames = mrClassNames + " mr-laptop-fontsize" + mrFontSizelaptop;
-			}
-			if (
-				mrCustomFontSizetablet &&
-				mrFontSizeOptionstablet &&
-				mrFontSizeOptionstablet.includes("-fontsizeoptions")
-			) {
-				mrClassNames = mrClassNames + " " + mrCustomFontSizetablet;
-			} else if (mrFontSizetablet) {
-				mrClassNames = mrClassNames + " mr-tablet-fontsize" + mrFontSizetablet;
-			}
-			if (
-				mrCustomFontSizephone &&
-				mrFontSizeOptionsphone &&
-				mrFontSizeOptionsphone.includes("-fontsizeoptions")
-			) {
-				mrClassNames = mrClassNames + " " + mrCustomFontSizephone;
-			} else if (mrFontSizephone) {
-				mrClassNames = mrClassNames + " mr-phone-fontsize" + mrFontSizephone;
-			}
+		if (
+			mrCustomFontSize &&
+			mrFontSizeOptions &&
+			mrFontSizeOptions.includes("-fontsizeoptions")
+		) {
+			mrClassNames = mrClassNames + " " + mrCustomFontSize;
+		} else if (mrFontSize) {
+			mrClassNames = mrClassNames + " mr-fontsize" + mrFontSize;
+		}
+		if (
+			mrCustomFontSizehover &&
+			mrFontSizeOptionshover &&
+			mrFontSizeOptionshover.includes("-fontsizeoptions")
+		) {
+			mrClassNames = mrClassNames + " " + mrCustomFontSizehover;
+		} else if (mrFontSizehover) {
+			mrClassNames = mrClassNames + " mr-hover-fontsize" + mrFontSizehover;
+		}
+		if (
+			mrCustomFontSizedesktop &&
+			mrFontSizeOptionsdesktop &&
+			mrFontSizeOptionsdesktop.includes("-fontsizeoptions")
+		) {
+			mrClassNames = mrClassNames + " " + mrCustomFontSizedesktop;
+		} else if (mrFontSizedesktop) {
+			mrClassNames = mrClassNames + " mr-desktop-fontsize" + mrFontSizedesktop;
+		}
+		if (
+			mrCustomFontSizelaptop &&
+			mrFontSizeOptionslaptop &&
+			mrFontSizeOptionslaptop.includes("-fontsizeoptions")
+		) {
+			mrClassNames = mrClassNames + " " + mrCustomFontSizelaptop;
+		} else if (mrFontSizelaptop) {
+			mrClassNames = mrClassNames + " mr-laptop-fontsize" + mrFontSizelaptop;
+		}
+		if (
+			mrCustomFontSizetablet &&
+			mrFontSizeOptionstablet &&
+			mrFontSizeOptionstablet.includes("-fontsizeoptions")
+		) {
+			mrClassNames = mrClassNames + " " + mrCustomFontSizetablet;
+		} else if (mrFontSizetablet) {
+			mrClassNames = mrClassNames + " mr-tablet-fontsize" + mrFontSizetablet;
+		}
+		if (
+			mrCustomFontSizephone &&
+			mrFontSizeOptionsphone &&
+			mrFontSizeOptionsphone.includes("-fontsizeoptions")
+		) {
+			mrClassNames = mrClassNames + " " + mrCustomFontSizephone;
+		} else if (mrFontSizephone) {
+			mrClassNames = mrClassNames + " mr-phone-fontsize" + mrFontSizephone;
+		}
 
-			Object.keys(attributes).forEach(function (value) {
-				mrAttr = value;
-				mrAttrValue = attributes[value];
-				if (
-					mrAttrValue !== "mr-" &&
-					mrAttrValue !== "mr-hover" &&
-					mrAttrValue !== "mr-desktop" &&
-					mrAttrValue !== "mr-laptop" &&
-					mrAttrValue !== "mr-tablet" &&
-					mrAttrValue !== "mr-phone" &&
-					!mrAttr.includes("mrCustom") &&
-					!mrAttr.includes("mrFontSize") &&
-					!mrAttr.includes("mrSize") &&
-					!mrAttr.includes("mrFontFamily") &&
-					!mrAttr.includes("mrBackgroundColor") &&
-					!mrAttr.includes("mrColor")
-				) {
-					if (mrAttr == "mrPerPage" && mrAttrValue) {
-						if (mrAttrValue > 0) {
-							mrClassNames = mrClassNames + " mr-" + mrAttrValue + "perpage";
-						}
-					} else if (mrAttr == "mrArrowPagination" && mrAttrValue) {
-						mrClassNames = mrClassNames + " mr-arrowpagination";
-					} else if (mrAttr == "mrSelectPagination" && mrAttrValue) {
-						mrClassNames = mrClassNames + " mr-selectpagination";
-					} else if (mrAttr == "mrRadioPagination" && mrAttrValue) {
-						mrClassNames = mrClassNames + " mr-radiopagination";
-					} else if (mrAttr == "mrVerticalScrollNavigation" && mrAttrValue) {
-						mrClassNames = mrClassNames + " mr-verticalscrollnav";
-					} else if (mrAttr == "mrHorizontalScrollNavigation" && mrAttrValue) {
-						mrClassNames = mrClassNames + " mr-horizontalscrollnav";
-					} else if (mrAttr == "mrAnimation" && mrAttrValue) {
-						mrClassNames = mrClassNames + mrAttrValue + " mr-active";
-					} else if (mrAttr == "mrAnimationhover" && mrAttrValue) {
-						mrClassNames = mrClassNames + mrAttrValue + " mr-active";
-					} else if (mrAttr == "mrActiveWhen" && mrAttrValue) {
-						//mrClassNames = mrClassNames.replace(" mr-active", "");
-						mrClassNames = mrClassNames + mrAttrValue;
-					} else if (
-						mrAttr.includes("mrPadding") &&
-						mrAttrValue &&
-						mrAttrValue.includes("-padding")
-					) {
-						if (mrAttr == "mrPaddingTop" && mrCustomPaddingTop) {
-							mrClassNames = mrClassNames + " " + mrCustomPaddingTop;
-						} else if (
-							mrAttr == "mrPaddingTophover" &&
-							mrCustomPaddingTophover
-						) {
-							mrClassNames = mrClassNames + " " + mrCustomPaddingTophover;
-						} else if (
-							mrAttr == "mrPaddingTopdesktop" &&
-							mrCustomPaddingTopdesktop
-						) {
-							mrClassNames = mrClassNames + " " + mrCustomPaddingTopdesktop;
-						} else if (
-							mrAttr == "mrPaddingToplaptop" &&
-							mrCustomPaddingToplaptop
-						) {
-							mrClassNames = mrClassNames + " " + mrCustomPaddingToplaptop;
-						} else if (
-							mrAttr == "mrPaddingToplaptablet" &&
-							mrCustomPaddingToptablet
-						) {
-							mrClassNames = mrClassNames + " " + mrCustomPaddingToptablet;
-						} else if (
-							mrAttr == "mrPaddingToplapphone" &&
-							mrCustomPaddingTopphone
-						) {
-							mrClassNames = mrClassNames + " " + mrCustomPaddingTopphone;
-						} else if (mrAttr == "mrPaddingRight" && mrCustomPaddingRight) {
-							mrClassNames = mrClassNames + " " + mrCustomPaddingRight;
-						} else if (
-							mrAttr == "mrPaddingRighthover" &&
-							mrCustomPaddingRighthover
-						) {
-							mrClassNames = mrClassNames + " " + mrCustomPaddingRighthover;
-						} else if (
-							mrAttr == "mrPaddingRightdesktop" &&
-							mrCustomPaddingRightdesktop
-						) {
-							mrClassNames = mrClassNames + " " + mrCustomPaddingRightdesktop;
-						} else if (
-							mrAttr == "mrPaddingRightlaptop" &&
-							mrCustomPaddingRightlaptop
-						) {
-							mrClassNames = mrClassNames + " " + mrCustomPaddingRightlaptop;
-						} else if (
-							mrAttr == "mrPaddingRightlaptablet" &&
-							mrCustomPaddingRighttablet
-						) {
-							mrClassNames = mrClassNames + " " + mrCustomPaddingRighttablet;
-						} else if (
-							mrAttr == "mrPaddingRightlapphone" &&
-							mrCustomPaddingRightphone
-						) {
-							mrClassNames = mrClassNames + " " + mrCustomPaddingRightphone;
-						} else if (mrAttr == "mrPaddingBottom" && mrCustomPaddingBottom) {
-							mrClassNames = mrClassNames + " " + mrCustomPaddingBottom;
-						} else if (
-							mrAttr == "mrPaddingBottomhover" &&
-							mrCustomPaddingBottomhover
-						) {
-							mrClassNames = mrClassNames + " " + mrCustomPaddingBottomhover;
-						} else if (
-							mrAttr == "mrPaddingBottomdesktop" &&
-							mrCustomPaddingBottomdesktop
-						) {
-							mrClassNames = mrClassNames + " " + mrCustomPaddingBottomdesktop;
-						} else if (
-							mrAttr == "mrPaddingBottomlaptop" &&
-							mrCustomPaddingBottomlaptop
-						) {
-							mrClassNames = mrClassNames + " " + mrCustomPaddingBottomlaptop;
-						} else if (
-							mrAttr == "mrPaddingBottomlaptablet" &&
-							mrCustomPaddingBottomtablet
-						) {
-							mrClassNames = mrClassNames + " " + mrCustomPaddingBottomtablet;
-						} else if (
-							mrAttr == "mrPaddingBottomlapphone" &&
-							mrCustomPaddingBottomphone
-						) {
-							mrClassNames = mrClassNames + " " + mrCustomPaddingBottomphone;
-						} else if (mrAttr == "mrPaddingLeft" && mrCustomPaddingLeft) {
-							mrClassNames = mrClassNames + " " + mrCustomPaddingLeft;
-						} else if (
-							mrAttr == "mrPaddingLefthover" &&
-							mrCustomPaddingLefthover
-						) {
-							mrClassNames = mrClassNames + " " + mrCustomPaddingLefthover;
-						} else if (
-							mrAttr == "mrPaddingLeftdesktop" &&
-							mrCustomPaddingLeftdesktop
-						) {
-							mrClassNames = mrClassNames + " " + mrCustomPaddingLeftdesktop;
-						} else if (
-							mrAttr == "mrPaddingLeftlaptop" &&
-							mrCustomPaddingLeftlaptop
-						) {
-							mrClassNames = mrClassNames + " " + mrCustomPaddingLeftlaptop;
-						} else if (
-							mrAttr == "mrPaddingLeftlaptablet" &&
-							mrCustomPaddingLefttablet
-						) {
-							mrClassNames = mrClassNames + " " + mrCustomPaddingLefttablet;
-						} else if (
-							mrAttr == "mrPaddingLeftlapphone" &&
-							mrCustomPaddingLeftphone
-						) {
-							mrClassNames = mrClassNames + " " + mrCustomPaddingLeftphone;
-						} else {
-							mrClassNames = mrClassNames + mrAttrValue;
-						}
-					} else if (
-						mrAttr.startsWith("mr") &&
-						mrAttrValue &&
-						mrAttrValue.startsWith("mr")
-					) {
-						mrClassNames = mrClassNames + " " + mrAttrValue;
-					} else if (mrAttr.startsWith("mr") && mrAttrValue) {
-						mrClassNames = mrClassNames + mrAttrValue;
-					}
-				}
-			});
-
-			//}
-
-			/*let mrInlineStyles = "";
-			  mrAttr = "";
-			  mrAttrValue = "";
-			  if (mrAllowedBlocks.includes(blockType.name)) {
-			  Object.keys(attributes).forEach(function (value) {
-				  mrAttr = value;
-				  mrAttrValue = attributes[value];
-				  if (
-					  mrAttrValue !== "mr-" &&
-					  mrAttrValue !== "mr-desktop" &&
-					  mrAttrValue !== "mr-laptop" &&
-					  mrAttrValue !== "mr-tablet" &&
-					  mrAttrValue !== "mr-phone" &&
-					  mrAttr.includes("mrCustom")
-				  ) {
-					  if (
-						  mrPaddingTop.includes("-custom") &&
-						  mrAttr == "mrCustomPaddingTop" &&
-						  mrAttrValue
-					  ) {
-						  mrInlineStyles =
-							  mrInlineStyles + "padding-top:" + mrAttrValue + ";";
-					  }
-				  }
-			  });
-			  }*/
-
-			return (
-				<BlockListBlock
-					{...props}
-					className={mrClassNames}
-					/*style={mrInlineStyles}*/
-				/>
-			);
-		};
-	},
-	"mrApplyWrapperExtraClass"
-);
-
-/**
- * Add custom mrAttrValue class in save mrAttrValue.
- *
- * @param {Object} extraProps     Block mrAttrValue.
- * @param {Object} blockType      Blocks object.
- * @param {Object} attributes     Blocks attributes.
- *
- * @return {Object} extraProps Modified block mrAttrValue.
- */
-function mrApplyExtraClass(extraProps, blockType, attributes) {
-	const {
-		mrAnimation,
-		mrAnimationhover,
-		mrTransition,
-		mrTransitionhover,
-		mrComponent,
-		mrVerticalScrollNavigation,
-		mrHorizontalScrollNavigation,
-		mrPerPage,
-		mrPaginationPosition,
-		mrArrowPagination,
-		mrSelectPagination,
-		mrRadioPagination,
-		mrPerLine,
-		mrPerLinedesktop,
-		mrPerLinelaptop,
-		mrPerLinetablet,
-		mrPerLinephone,
-		mrColumns,
-		mrColumnsdesktop,
-		mrColumnslaptop,
-		mrColumnstablet,
-		mrColumnsphone,
-		mrOrder,
-		mrOrderdesktop,
-		mrOrderlaptop,
-		mrOrdertablet,
-		mrOrderphone,
-		mrDisplay,
-		mrDisplayhover,
-		mrDisplaydesktop,
-		mrDisplaylaptop,
-		mrDisplaytablet,
-		mrDisplayphone,
-		mrWrap,
-		mrWrapdesktop,
-		mrWraplaptop,
-		mrWraptablet,
-		mrWrapphone,
-		mrPaddingTop,
-		mrPaddingTophover,
-		mrPaddingTopdesktop,
-		mrPaddingToplaptop,
-		mrPaddingToptablet,
-		mrPaddingTopphone,
-		mrCustomPaddingTop,
-		mrCustomPaddingTophover,
-		mrCustomPaddingTopdesktop,
-		mrCustomPaddingToplaptop,
-		mrCustomPaddingToptablet,
-		mrCustomPaddingTopphone,
-		mrPaddingRight,
-		mrPaddingRighthover,
-		mrPaddingRightdesktop,
-		mrPaddingRightlaptop,
-		mrPaddingRighttablet,
-		mrPaddingRightphone,
-		mrCustomPaddingRight,
-		mrCustomPaddingRighthover,
-		mrCustomPaddingRightdesktop,
-		mrCustomPaddingRightlaptop,
-		mrCustomPaddingRighttablet,
-		mrCustomPaddingRightphone,
-		mrPaddingBottom,
-		mrPaddingBottomhover,
-		mrPaddingBottomdesktop,
-		mrPaddingBottomlaptop,
-		mrPaddingBottomtablet,
-		mrPaddingBottomphone,
-		mrCustomPaddingBottom,
-		mrCustomPaddingBottomhover,
-		mrCustomPaddingBottomdesktop,
-		mrCustomPaddingBottomlaptop,
-		mrCustomPaddingBottomtablet,
-		mrCustomPaddingBottomphone,
-		mrPaddingLeft,
-		mrPaddingLefthover,
-		mrPaddingLeftdesktop,
-		mrPaddingLeftlaptop,
-		mrPaddingLefttablet,
-		mrPaddingLeftphone,
-		mrCustomPaddingLeft,
-		mrCustomPaddingLefthover,
-		mrCustomPaddingLeftdesktop,
-		mrCustomPaddingLeftlaptop,
-		mrCustomPaddingLefttablet,
-		mrCustomPaddingLeftphone,
-		mrMarginTop,
-		mrMarginTophover,
-		mrMarginTopdesktop,
-		mrMarginToplaptop,
-		mrMarginToptablet,
-		mrMarginTopphone,
-		mrCustomMarginTop,
-		mrCustomMarginTophover,
-		mrCustomMarginTopdesktop,
-		mrCustomMarginToplaptop,
-		mrCustomMarginToptablet,
-		mrCustomMarginTopphone,
-		mrMarginRight,
-		mrMarginRighthover,
-		mrMarginRightdesktop,
-		mrMarginRightlaptop,
-		mrMarginRighttablet,
-		mrMarginRightphone,
-		mrCustomMarginRight,
-		mrCustomMarginRighthover,
-		mrCustomMarginRightdesktop,
-		mrCustomMarginRightlaptop,
-		mrCustomMarginRighttablet,
-		mrCustomMarginRightphone,
-		mrMarginBottom,
-		mrMarginBottomhover,
-		mrMarginBottomdesktop,
-		mrMarginBottomlaptop,
-		mrMarginBottomtablet,
-		mrMarginBottomphone,
-		mrCustomMarginBottom,
-		mrCustomMarginBottomhover,
-		mrCustomMarginBottomdesktop,
-		mrCustomMarginBottomlaptop,
-		mrCustomMarginBottomtablet,
-		mrCustomMarginBottomphone,
-		mrMarginLeft,
-		mrMarginLefthover,
-		mrMarginLeftdesktop,
-		mrMarginLeftlaptop,
-		mrMarginLefttablet,
-		mrMarginLeftphone,
-		mrCustomMarginLeft,
-		mrCustomMarginLefthover,
-		mrCustomMarginLeftdesktop,
-		mrCustomMarginLeftlaptop,
-		mrCustomMarginLefttablet,
-		mrCustomMarginLeftphone,
-		mrRowGap,
-		mrCustomRowGap,
-		mrColumnGap,
-		mrCustomColumnGap,
-		mrPosition,
-		mrPositiondesktop,
-		mrPositionlaptop,
-		mrPositiontablet,
-		mrPositionphone,
-		mrPositionAlignment,
-		mrPositionAlignmentdesktop,
-		mrPositionAlignmentlaptop,
-		mrPositionAlignmenttablet,
-		mrPositionAlignmentphone,
-		mrPositionSides,
-		mrPositionSidesdesktop,
-		mrPositionSideslaptop,
-		mrPositionSidestablet,
-		mrPositionSidesphone,
-		mrContentAlignment,
-		mrContentAlignmentdesktop,
-		mrContentAlignmentlaptop,
-		mrContentAlignmenttablet,
-		mrContentAlignmentphone,
-		mrVerticalOffset,
-		mrVerticalOffsetdesktop,
-		mrVerticalOffsetlaptop,
-		mrVerticalOffsettablet,
-		mrVerticalOffsetphone,
-		mrHorizontalOffset,
-		mrHorizontalOffsetdesktop,
-		mrHorizontalOffsetlaptop,
-		mrHorizontalOffsettablet,
-		mrHorizontalOffsetphone,
-		mrSizeOptions,
-		mrSizeOptionshover,
-		mrSizeOptionsdesktop,
-		mrSizeOptionslaptop,
-		mrSizeOptionstablet,
-		mrSizeOptionsphone,
-		mrSize,
-		mrSizehover,
-		mrSizedesktop,
-		mrSizelaptop,
-		mrSizetablet,
-		mrSizephone,
-		mrCustomSize,
-		mrCustomSizehover,
-		mrCustomSizedesktop,
-		mrCustomSizelaptop,
-		mrCustomSizetablet,
-		mrCustomSizephone,
-		mrBackgroundColor,
-		mrCustomBackgroundColor,
-		mrColor,
-		mrCustomColor,
-		mrFontFamily,
-		mrCustomFontFamily,
-		mrFontSizeOptions,
-		mrFontSizeOptionshover,
-		mrFontSizeOptionsdesktop,
-		mrFontSizeOptionslaptop,
-		mrFontSizeOptionstablet,
-		mrFontSizeOptionsphone,
-		mrFontSize,
-		mrFontSizehover,
-		mrFontSizedesktop,
-		mrFontSizelaptop,
-		mrFontSizetablet,
-		mrFontSizephone,
-		mrCustomFontSize,
-		mrCustomFontSizehover,
-		mrCustomFontSizedesktop,
-		mrCustomFontSizelaptop,
-		mrCustomFontSizetablet,
-		mrCustomFontSizephone,
-		mrTextAlignment,
-		mrTextAlignmentdesktop,
-		mrTextAlignmentlaptop,
-		mrTextAlignmenttablet,
-		mrTextAlignmentphone,
-		mrScroll,
-		mrScrollhover,
-		mrScrolldesktop,
-		mrScrolllaptop,
-		mrScrolltablet,
-		mrScrollphone,
-	} = attributes;
-
-	//check if attribute exists for old Gutenberg version compatibility
-	//add mrAllowedBlocks restriction
-
-	let mrClassNames = "";
-	let mrAttr = "";
-	let mrAttrValue = "";
-
-	if (mrCustomSize && mrSizeOptions && mrSizeOptions.includes("-sizeoptions")) {
-		mrClassNames = mrClassNames + " " + mrCustomSize;
-	} else if (mrSize) {
-		mrClassNames = mrClassNames + " mr-size" + mrSize;
-	}
-	if (
-		mrCustomSizehover &&
-		mrSizeOptionshover &&
-		mrSizeOptionshover.includes("-sizeoptions")
-	) {
-		mrClassNames = mrClassNames + " " + mrCustomSizehover;
-	} else if (mrSizehover) {
-		mrClassNames = mrClassNames + " mr-hover-size" + mrSizehover;
-	}
-	if (
-		mrCustomSizedesktop &&
-		mrSizeOptionsdesktop &&
-		mrSizeOptionsdesktop.includes("-sizeoptions")
-	) {
-		mrClassNames = mrClassNames + " " + mrCustomSizedesktop;
-	} else if (mrSizedesktop) {
-		mrClassNames = mrClassNames + " mr-desktop-size" + mrSizedesktop;
-	}
-	if (
-		mrCustomSizelaptop &&
-		mrSizeOptionslaptop &&
-		mrSizeOptionslaptop.includes("-sizeoptions")
-	) {
-		mrClassNames = mrClassNames + " " + mrCustomSizelaptop;
-	} else if (mrSizelaptop) {
-		mrClassNames = mrClassNames + " mr-laptop-size" + mrSizelaptop;
-	}
-	if (
-		mrCustomSizetablet &&
-		mrSizeOptionstablet &&
-		mrSizeOptionstablet.includes("-sizeoptions")
-	) {
-		mrClassNames = mrClassNames + " " + mrCustomSizetablet;
-	} else if (mrSizetablet) {
-		mrClassNames = mrClassNames + " mr-tablet-size" + mrSizetablet;
-	}
-	if (
-		mrCustomSizephone &&
-		mrSizeOptionsphone &&
-		mrSizeOptionsphone.includes("-sizeoptions")
-	) {
-		mrClassNames = mrClassNames + " " + mrCustomSizephone;
-	} else if (mrSizephone) {
-		mrClassNames = mrClassNames + " mr-phone-size" + mrSizephone;
-	}
-
-	if (
-		mrBackgroundColor &&
-		mrBackgroundColor.includes("-custombackgroundcolor") &&
-		mrCustomBackgroundColor
-	) {
-		mrClassNames = mrClassNames + " " + mrCustomBackgroundColor;
-	} else if (mrBackgroundColor && mrBackgroundColor !== "mr-") {
-		mrClassNames = mrClassNames + " " + mrBackgroundColor;
-	}
-
-	if (mrColor && mrColor.includes("-customcolor") && mrCustomColor) {
-		mrClassNames = mrClassNames + " " + mrCustomColor;
-	} else if (mrColor && mrColor !== "mr-") {
-		mrClassNames = mrClassNames + " " + mrColor;
-	}
-
-	if (
-		mrFontFamily &&
-		mrFontFamily.includes("-customfont") &&
-		mrCustomFontFamily
-	) {
-		mrClassNames = mrClassNames + " " + mrCustomFontFamily;
-	} else if (mrFontFamily && mrFontFamily !== "mr-") {
-		mrClassNames = mrClassNames + " " + mrFontFamily;
-	}
-
-	if (
-		mrCustomFontSize &&
-		mrFontSizeOptions &&
-		mrFontSizeOptions.includes("-fontsizeoptions")
-	) {
-		mrClassNames = mrClassNames + " " + mrCustomFontSize;
-	} else if (mrFontSize) {
-		mrClassNames = mrClassNames + " mr-fontsize" + mrFontSize;
-	}
-	if (
-		mrCustomFontSizehover &&
-		mrFontSizeOptionshover &&
-		mrFontSizeOptionshover.includes("-fontsizeoptions")
-	) {
-		mrClassNames = mrClassNames + " " + mrCustomFontSizehover;
-	} else if (mrFontSizehover) {
-		mrClassNames = mrClassNames + " mr-hover-fontsize" + mrFontSizehover;
-	}
-	if (
-		mrCustomFontSizedesktop &&
-		mrFontSizeOptionsdesktop &&
-		mrFontSizeOptionsdesktop.includes("-fontsizeoptions")
-	) {
-		mrClassNames = mrClassNames + " " + mrCustomFontSizedesktop;
-	} else if (mrFontSizedesktop) {
-		mrClassNames = mrClassNames + " mr-desktop-fontsize" + mrFontSizedesktop;
-	}
-	if (
-		mrCustomFontSizelaptop &&
-		mrFontSizeOptionslaptop &&
-		mrFontSizeOptionslaptop.includes("-fontsizeoptions")
-	) {
-		mrClassNames = mrClassNames + " " + mrCustomFontSizelaptop;
-	} else if (mrFontSizelaptop) {
-		mrClassNames = mrClassNames + " mr-laptop-fontsize" + mrFontSizelaptop;
-	}
-	if (
-		mrCustomFontSizetablet &&
-		mrFontSizeOptionstablet &&
-		mrFontSizeOptionstablet.includes("-fontsizeoptions")
-	) {
-		mrClassNames = mrClassNames + " " + mrCustomFontSizetablet;
-	} else if (mrFontSizetablet) {
-		mrClassNames = mrClassNames + " mr-tablet-fontsize" + mrFontSizetablet;
-	}
-	if (
-		mrCustomFontSizephone &&
-		mrFontSizeOptionsphone &&
-		mrFontSizeOptionsphone.includes("-fontsizeoptions")
-	) {
-		mrClassNames = mrClassNames + " " + mrCustomFontSizephone;
-	} else if (mrFontSizephone) {
-		mrClassNames = mrClassNames + " mr-phone-fontsize" + mrFontSizephone;
-	}
-
-	if (mrAllowedBlocks.includes(blockType.name)) {
 		Object.keys(attributes).forEach(function (value) {
 			mrAttr = value;
 			mrAttrValue = attributes[value];
@@ -7106,7 +6517,7 @@ function mrApplyExtraClass(extraProps, blockType, attributes) {
 				} else if (mrAttr == "mrAnimationhover" && mrAttrValue) {
 					mrClassNames = mrClassNames + mrAttrValue + " mr-active";
 				} else if (mrAttr == "mrActiveWhen" && mrAttrValue) {
-					mrClassNames = mrClassNames.replace(" mr-active", "");
+					//mrClassNames = mrClassNames.replace(" mr-active", "");
 					mrClassNames = mrClassNames + mrAttrValue;
 				} else if (
 					mrAttr.includes("mrPadding") &&
@@ -7232,71 +6643,58 @@ function mrApplyExtraClass(extraProps, blockType, attributes) {
 				}
 			}
 		});
-	}
 
-	extraProps.className = classnames(extraProps.className, mrClassNames);
+		//}
 
-	return extraProps;
-}
-
-/*function mrApplyExtraStyles(extraProps, blockType, attributes) {
-	  const { mrPaddingTop, mrCustomPaddingTop } = attributes;
-  
-	  let mrInlineStyles = "";
-	  let mrAttr = "";
-	  let mrAttrValue = "";
-	  if (mrAllowedBlocks.includes(blockType.name)) {
-		  Object.keys(attributes).forEach(function (value) {
-			  mrAttr = value;
-			  mrAttrValue = attributes[value];
-			  if (
-				  mrAttrValue !== "mr-" &&
-				  mrAttrValue !== "mr-desktop" &&
-				  mrAttrValue !== "mr-laptop" &&
-				  mrAttrValue !== "mr-tablet" &&
-				  mrAttrValue !== "mr-phone" &&
-				  mrAttr.includes("mrCustom")
-			  ) {
+		/*let mrInlineStyles = "";
+			  mrAttr = "";
+			  mrAttrValue = "";
+			  if (mrAllowedBlocks.includes(blockType.name)) {
+			  Object.keys(attributes).forEach(function (value) {
+				  mrAttr = value;
+				  mrAttrValue = attributes[value];
 				  if (
-					  mrPaddingTop.includes("-custom") &&
-					  mrAttr == "mrCustomPaddingTop" &&
-					  mrAttrValue
+					  mrAttrValue !== "mr-" &&
+					  mrAttrValue !== "mr-desktop" &&
+					  mrAttrValue !== "mr-laptop" &&
+					  mrAttrValue !== "mr-tablet" &&
+					  mrAttrValue !== "mr-phone" &&
+					  mrAttr.includes("mrCustom")
 				  ) {
-					  mrInlineStyles = mrInlineStyles + "padding-top:" + mrAttrValue + ";";
+					  if (
+						  mrPaddingTop.includes("-custom") &&
+						  mrAttr == "mrCustomPaddingTop" &&
+						  mrAttrValue
+					  ) {
+						  mrInlineStyles =
+							  mrInlineStyles + "padding-top:" + mrAttrValue + ";";
+					  }
 				  }
-			  }
-		  });
-	  }
-  
-	  if (mrInlineStyles) {
-		  return lodash.assign(extraProps, { style: mrInlineStyles });
-	  }
-  }*/
+			  });
+			  }*/
 
-//add filters
+		return (
+			<BlockListBlock
+				{...props}
+				className={mrClassNames}
+				/*style={mrInlineStyles}*/
+			/>
+		);
+	};
+}, "mrBackendExtraClasses");
+
+//Add filters
 
 addFilter(
 	"blocks.registerBlockType",
 	"mr-utils/custom-attributes",
-	mrAddAttributes
+	mrAttributes
 );
 
 addFilter("editor.BlockEdit", "mr-utils/custom-control", mrInspectorControls);
 
 addFilter(
-	"blocks.getSaveContent.extraProps",
-	"mr-utils/mrApplyExtraClass",
-	mrApplyExtraClass
-);
-
-/*addFilter(
-	  "blocks.getSaveContent.extraProps",
-	  "mr-utils/mrApplyExtraStyles",
-	  mrApplyExtraStyles
-  );*/
-
-addFilter(
 	"editor.BlockListBlock",
-	"mr-utils/mrApplyWrapperExtraClass",
-	mrApplyWrapperExtraClass
+	"mr-utils/mrBackendExtraClasses",
+	mrBackendExtraClasses
 );

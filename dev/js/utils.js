@@ -122,10 +122,14 @@ function mrTabs(t) {
         if (id === 0) {
           mrtab += " mr-active";
         }
-        mrtab +=
-          '">' +
-          mrChildCount[id].querySelector("*:first-child").innerText +
-          "</button>";
+        if (mrChildCount[id].querySelector("*:first-child")) {
+          mrtab +=
+            '">' +
+            mrChildCount[id].querySelector("*:first-child").innerText +
+            "</button>";
+        } else {
+          mrtab += '">' + mrChildCount[id].innerText + "</button>";
+        }
       }
     }
     if (
