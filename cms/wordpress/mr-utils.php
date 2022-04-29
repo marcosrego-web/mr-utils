@@ -136,6 +136,8 @@ function mrutils_render_block( $block_content, $block ) {
                     $block = str_replace("mr","mr-tablet-",str_replace("tablet","",$block));
                 } else if(strpos($block, 'phone')) {
                     $block = str_replace("mr","mr-phone-",str_replace("phone","",$block));
+                } else if(strpos($block, 'hover')) {
+                    $block = str_replace("mr","mr-hover-",str_replace("hover","",$block));
                 } else {
                     $block = str_replace("mr","mr-",$block);
                 }

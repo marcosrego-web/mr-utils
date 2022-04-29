@@ -26,7 +26,7 @@ You can also apply changes to specific devices/breakpoints: Show/hide blocks dep
 
 = Does the interface of Mr.Utils support all blocks? =
 
-Since version 0.1.6, that the interface of Mr.Utils works with all blocks. If it's not working for you please [report the issue](https://github.com/marcosrego-web/mr-utils/issues) or [contact me](https://marcosrego.com/client-area/contact/), do let me know which block you are using.
+Since version 0.1.6, that the interface of Mr.Utils works with all core blocks and supports third-party ones. If a block is not working for you, please [report the issue](https://github.com/marcosrego-web/mr-utils/issues) or [contact me](https://marcosrego.com/client-area/contact/), do let me know which block you are using. If a specific block is not showing the "Utilities" section, you can still use the [utility classes](https://github.com/marcosrego-web/mr-utils/wiki/Utility-Classes) on the "Advanced" section > "Additional CSS class(es)".
 
 = Where can I find more information about Mr.Utils? =
 
@@ -51,8 +51,7 @@ You can contact me at: [https://marcosrego.com/client-area/contact/](https://mar
 == Changelog ==
 
 = 0.1.6 =
-* Dynamically add classes (instead of using *blocks.getSaveContent.extraProps*) for the interface to work with all types of blocks, as suggested [here](https://github.com/WordPress/gutenberg/issues/36127#issuecomment-1106645202).
-* Reformat code for the classes added inside de block editor via React JS.
+* Dynamically add classes (instead of using *blocks.getSaveContent.extraProps*) for the interface to work with all core blocks, as suggested [here](https://github.com/WordPress/gutenberg/issues/36127#issuecomment-1106645202).
 * When using an automatic tabs navigation: Added fallback when the item does not contain child elements.
 * Fixed bug when changing number of columns or items per line on the 'Desktop' breakpoint.
 
