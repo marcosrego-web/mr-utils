@@ -2041,168 +2041,6 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 												>
 													<SelectControl
 														label={__(
-															"Number of columns for this item",
-															"mr-utils"
-														)}
-														value={
-															tab.name === "desktop"
-																? mrColumnsdesktop
-																: tab.name === "laptop"
-																? mrColumnslaptop
-																: tab.name === "tablet"
-																? mrColumnstablet
-																: tab.name === "phone"
-																? mrColumnsphone
-																: mrColumns
-														}
-														options={
-															tab.name === "" ||
-															tab.name === "desktop" ||
-															tab.name === "laptop" ||
-															tab.name === "tablet" ||
-															tab.name === "phone"
-																? [
-																		{ value: "mr-" + tab.name, label: "" },
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-columns"
-																			).replace("--", "-"),
-																			label: "Global",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-1column"
-																			).replace("--", "-"),
-																			label: "1",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-2columns"
-																			).replace("--", "-"),
-																			label: "2",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-3columns"
-																			).replace("--", "-"),
-																			label: "3",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-4columns"
-																			).replace("--", "-"),
-																			label: "4",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-5columns"
-																			).replace("--", "-"),
-																			label: "5",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-6columns"
-																			).replace("--", "-"),
-																			label: "6",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-7columns"
-																			).replace("--", "-"),
-																			label: "7",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-8columns"
-																			).replace("--", "-"),
-																			label: "8",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-9columns"
-																			).replace("--", "-"),
-																			label: "9",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-10columns"
-																			).replace("--", "-"),
-																			label: "10",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-11columns"
-																			).replace("--", "-"),
-																			label: "11",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-12columns"
-																			).replace("--", "-"),
-																			label: "12",
-																		},
-																  ]
-																: ""
-														}
-														onChange={(val) =>
-															setAttributes({
-																mrColumns:
-																	val !== undefined &&
-																	!val.includes("mr-hover") &&
-																	!val.includes("mr-desktop") &&
-																	!val.includes("mr-laptop") &&
-																	!val.includes("mr-tablet") &&
-																	!val.includes("mr-phone")
-																		? val
-																		: mrColumns,
-																mrColumnsdesktop:
-																	val !== undefined &&
-																	val.includes("mr-desktop")
-																		? val
-																		: mrColumnsdesktop,
-																mrColumnslaptop:
-																	val !== undefined && val.includes("mr-laptop")
-																		? val
-																		: mrColumnslaptop,
-																mrColumnstablet:
-																	val !== undefined && val.includes("mr-tablet")
-																		? val
-																		: mrColumnstablet,
-																mrColumnsphone:
-																	val !== undefined && val.includes("mr-phone")
-																		? val
-																		: mrColumnsphone,
-															})
-														}
-													/>
-													<SelectControl
-														label={__(
 															"Number of child items per line",
 															"mr-utils"
 														)}
@@ -2447,6 +2285,168 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																	val !== undefined && val.includes("mr-phone")
 																		? val
 																		: mrWrapphone,
+															})
+														}
+													/>
+													<SelectControl
+														label={__(
+															"Number of columns for this item",
+															"mr-utils"
+														)}
+														value={
+															tab.name === "desktop"
+																? mrColumnsdesktop
+																: tab.name === "laptop"
+																? mrColumnslaptop
+																: tab.name === "tablet"
+																? mrColumnstablet
+																: tab.name === "phone"
+																? mrColumnsphone
+																: mrColumns
+														}
+														options={
+															tab.name === "" ||
+															tab.name === "desktop" ||
+															tab.name === "laptop" ||
+															tab.name === "tablet" ||
+															tab.name === "phone"
+																? [
+																		{ value: "mr-" + tab.name, label: "" },
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-columns"
+																			).replace("--", "-"),
+																			label: "Global",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-1column"
+																			).replace("--", "-"),
+																			label: "1",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-2columns"
+																			).replace("--", "-"),
+																			label: "2",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-3columns"
+																			).replace("--", "-"),
+																			label: "3",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-4columns"
+																			).replace("--", "-"),
+																			label: "4",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-5columns"
+																			).replace("--", "-"),
+																			label: "5",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-6columns"
+																			).replace("--", "-"),
+																			label: "6",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-7columns"
+																			).replace("--", "-"),
+																			label: "7",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-8columns"
+																			).replace("--", "-"),
+																			label: "8",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-9columns"
+																			).replace("--", "-"),
+																			label: "9",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-10columns"
+																			).replace("--", "-"),
+																			label: "10",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-11columns"
+																			).replace("--", "-"),
+																			label: "11",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-12columns"
+																			).replace("--", "-"),
+																			label: "12",
+																		},
+																  ]
+																: ""
+														}
+														onChange={(val) =>
+															setAttributes({
+																mrColumns:
+																	val !== undefined &&
+																	!val.includes("mr-hover") &&
+																	!val.includes("mr-desktop") &&
+																	!val.includes("mr-laptop") &&
+																	!val.includes("mr-tablet") &&
+																	!val.includes("mr-phone")
+																		? val
+																		: mrColumns,
+																mrColumnsdesktop:
+																	val !== undefined &&
+																	val.includes("mr-desktop")
+																		? val
+																		: mrColumnsdesktop,
+																mrColumnslaptop:
+																	val !== undefined && val.includes("mr-laptop")
+																		? val
+																		: mrColumnslaptop,
+																mrColumnstablet:
+																	val !== undefined && val.includes("mr-tablet")
+																		? val
+																		: mrColumnstablet,
+																mrColumnsphone:
+																	val !== undefined && val.includes("mr-phone")
+																		? val
+																		: mrColumnsphone,
 															})
 														}
 													/>
@@ -6345,346 +6345,63 @@ const mrBackendExtraClasses = createHigherOrderComponent((BlockListBlock) => {
 		let mrAttr = "";
 		let mrAttrValue = "";
 
-		if (
-			mrCustomSize &&
-			mrSizeOptions &&
-			mrSizeOptions.includes("-sizeoptions")
-		) {
-			mrClassNames = mrClassNames + " " + mrCustomSize;
-		} else if (mrSize) {
-			mrClassNames = mrClassNames + " mr-size" + mrSize;
-		}
-		if (
-			mrCustomSizehover &&
-			mrSizeOptionshover &&
-			mrSizeOptionshover.includes("-sizeoptions")
-		) {
-			mrClassNames = mrClassNames + " " + mrCustomSizehover;
-		} else if (mrSizehover) {
-			mrClassNames = mrClassNames + " mr-hover-size" + mrSizehover;
-		}
-		if (
-			mrCustomSizedesktop &&
-			mrSizeOptionsdesktop &&
-			mrSizeOptionsdesktop.includes("-sizeoptions")
-		) {
-			mrClassNames = mrClassNames + " " + mrCustomSizedesktop;
-		} else if (mrSizedesktop) {
-			mrClassNames = mrClassNames + " mr-desktop-size" + mrSizedesktop;
-		}
-		if (
-			mrCustomSizelaptop &&
-			mrSizeOptionslaptop &&
-			mrSizeOptionslaptop.includes("-sizeoptions")
-		) {
-			mrClassNames = mrClassNames + " " + mrCustomSizelaptop;
-		} else if (mrSizelaptop) {
-			mrClassNames = mrClassNames + " mr-laptop-size" + mrSizelaptop;
-		}
-		if (
-			mrCustomSizetablet &&
-			mrSizeOptionstablet &&
-			mrSizeOptionstablet.includes("-sizeoptions")
-		) {
-			mrClassNames = mrClassNames + " " + mrCustomSizetablet;
-		} else if (mrSizetablet) {
-			mrClassNames = mrClassNames + " mr-tablet-size" + mrSizetablet;
-		}
-		if (
-			mrCustomSizephone &&
-			mrSizeOptionsphone &&
-			mrSizeOptionsphone.includes("-sizeoptions")
-		) {
-			mrClassNames = mrClassNames + " " + mrCustomSizephone;
-		} else if (mrSizephone) {
-			mrClassNames = mrClassNames + " mr-phone-size" + mrSizephone;
-		}
-
-		if (
-			mrBackgroundColor &&
-			mrBackgroundColor.includes("-custombackgroundcolor") &&
-			mrCustomBackgroundColor
-		) {
-			mrClassNames = mrClassNames + " " + mrCustomBackgroundColor;
-		} else if (mrBackgroundColor && mrBackgroundColor !== "mr-") {
-			mrClassNames = mrClassNames + " " + mrBackgroundColor;
-		}
-
-		if (mrColor && mrColor.includes("-customcolor") && mrCustomColor) {
-			mrClassNames = mrClassNames + " " + mrCustomColor;
-		} else if (mrColor && mrColor !== "mr-") {
-			mrClassNames = mrClassNames + " " + mrColor;
-		}
-
-		if (
-			mrFontFamily &&
-			mrFontFamily.includes("-customfont") &&
-			mrCustomFontFamily
-		) {
-			mrClassNames = mrClassNames + " " + mrCustomFontFamily;
-		} else if (mrFontFamily && mrFontFamily !== "mr-") {
-			mrClassNames = mrClassNames + " " + mrFontFamily;
-		}
-
-		if (
-			mrCustomFontSize &&
-			mrFontSizeOptions &&
-			mrFontSizeOptions.includes("-fontsizeoptions")
-		) {
-			mrClassNames = mrClassNames + " " + mrCustomFontSize;
-		} else if (mrFontSize) {
-			mrClassNames = mrClassNames + " mr-fontsize" + mrFontSize;
-		}
-		if (
-			mrCustomFontSizehover &&
-			mrFontSizeOptionshover &&
-			mrFontSizeOptionshover.includes("-fontsizeoptions")
-		) {
-			mrClassNames = mrClassNames + " " + mrCustomFontSizehover;
-		} else if (mrFontSizehover) {
-			mrClassNames = mrClassNames + " mr-hover-fontsize" + mrFontSizehover;
-		}
-		if (
-			mrCustomFontSizedesktop &&
-			mrFontSizeOptionsdesktop &&
-			mrFontSizeOptionsdesktop.includes("-fontsizeoptions")
-		) {
-			mrClassNames = mrClassNames + " " + mrCustomFontSizedesktop;
-		} else if (mrFontSizedesktop) {
-			mrClassNames = mrClassNames + " mr-desktop-fontsize" + mrFontSizedesktop;
-		}
-		if (
-			mrCustomFontSizelaptop &&
-			mrFontSizeOptionslaptop &&
-			mrFontSizeOptionslaptop.includes("-fontsizeoptions")
-		) {
-			mrClassNames = mrClassNames + " " + mrCustomFontSizelaptop;
-		} else if (mrFontSizelaptop) {
-			mrClassNames = mrClassNames + " mr-laptop-fontsize" + mrFontSizelaptop;
-		}
-		if (
-			mrCustomFontSizetablet &&
-			mrFontSizeOptionstablet &&
-			mrFontSizeOptionstablet.includes("-fontsizeoptions")
-		) {
-			mrClassNames = mrClassNames + " " + mrCustomFontSizetablet;
-		} else if (mrFontSizetablet) {
-			mrClassNames = mrClassNames + " mr-tablet-fontsize" + mrFontSizetablet;
-		}
-		if (
-			mrCustomFontSizephone &&
-			mrFontSizeOptionsphone &&
-			mrFontSizeOptionsphone.includes("-fontsizeoptions")
-		) {
-			mrClassNames = mrClassNames + " " + mrCustomFontSizephone;
-		} else if (mrFontSizephone) {
-			mrClassNames = mrClassNames + " mr-phone-fontsize" + mrFontSizephone;
-		}
+		mrClassNames = "";
 
 		Object.keys(attributes).forEach(function (value) {
-			mrAttr = value;
-			mrAttrValue = attributes[value];
-			if (
-				mrAttrValue !== "mr-" &&
-				mrAttrValue !== "mr-hover" &&
-				mrAttrValue !== "mr-desktop" &&
-				mrAttrValue !== "mr-laptop" &&
-				mrAttrValue !== "mr-tablet" &&
-				mrAttrValue !== "mr-phone" &&
-				!mrAttr.includes("mrCustom") &&
-				!mrAttr.includes("mrFontSize") &&
-				!mrAttr.includes("mrSize") &&
-				!mrAttr.includes("mrFontFamily") &&
-				!mrAttr.includes("mrBackgroundColor") &&
-				!mrAttr.includes("mrColor")
-			) {
-				if (mrAttr == "mrPerPage" && mrAttrValue) {
-					if (mrAttrValue > 0) {
-						mrClassNames = mrClassNames + " mr-" + mrAttrValue + "perpage";
-					}
-				} else if (mrAttr == "mrArrowPagination" && mrAttrValue) {
-					mrClassNames = mrClassNames + " mr-arrowpagination";
-				} else if (mrAttr == "mrSelectPagination" && mrAttrValue) {
-					mrClassNames = mrClassNames + " mr-selectpagination";
-				} else if (mrAttr == "mrRadioPagination" && mrAttrValue) {
-					mrClassNames = mrClassNames + " mr-radiopagination";
-				} else if (mrAttr == "mrVerticalScrollNavigation" && mrAttrValue) {
-					mrClassNames = mrClassNames + " mr-verticalscrollnav";
-				} else if (mrAttr == "mrHorizontalScrollNavigation" && mrAttrValue) {
-					mrClassNames = mrClassNames + " mr-horizontalscrollnav";
-				} else if (mrAttr == "mrAnimation" && mrAttrValue) {
-					mrClassNames = mrClassNames + mrAttrValue + " mr-active";
-				} else if (mrAttr == "mrAnimationhover" && mrAttrValue) {
-					mrClassNames = mrClassNames + mrAttrValue + " mr-active";
-				} else if (mrAttr == "mrActiveWhen" && mrAttrValue) {
-					//mrClassNames = mrClassNames.replace(" mr-active", "");
-					mrClassNames = mrClassNames + mrAttrValue;
+			mrAttr = value ? value.toString() : "";
+			mrAttrValue =
+				attributes && attributes[value] ? attributes[value].toString() : "";
+
+			if (mrAttr && mrAttrValue) {
+				if (mrAttrValue.includes("mr-")) {
+					mrClassNames += mrAttrValue;
 				} else if (
-					mrAttr.includes("mrPadding") &&
-					mrAttrValue &&
-					mrAttrValue.includes("-padding")
+					(mrAttr.includes("mr") && mrAttr.includes("Pagination")) ||
+					(mrAttr.includes("mr") && mrAttr.includes("ScrollNavigation"))
 				) {
-					if (mrAttr == "mrPaddingTop" && mrCustomPaddingTop) {
-						mrClassNames = mrClassNames + " " + mrCustomPaddingTop;
-					} else if (mrAttr == "mrPaddingTophover" && mrCustomPaddingTophover) {
-						mrClassNames = mrClassNames + " " + mrCustomPaddingTophover;
-					} else if (
-						mrAttr == "mrPaddingTopdesktop" &&
-						mrCustomPaddingTopdesktop
-					) {
-						mrClassNames = mrClassNames + " " + mrCustomPaddingTopdesktop;
-					} else if (
-						mrAttr == "mrPaddingToplaptop" &&
-						mrCustomPaddingToplaptop
-					) {
-						mrClassNames = mrClassNames + " " + mrCustomPaddingToplaptop;
-					} else if (
-						mrAttr == "mrPaddingToplaptablet" &&
-						mrCustomPaddingToptablet
-					) {
-						mrClassNames = mrClassNames + " " + mrCustomPaddingToptablet;
-					} else if (
-						mrAttr == "mrPaddingToplapphone" &&
-						mrCustomPaddingTopphone
-					) {
-						mrClassNames = mrClassNames + " " + mrCustomPaddingTopphone;
-					} else if (mrAttr == "mrPaddingRight" && mrCustomPaddingRight) {
-						mrClassNames = mrClassNames + " " + mrCustomPaddingRight;
-					} else if (
-						mrAttr == "mrPaddingRighthover" &&
-						mrCustomPaddingRighthover
-					) {
-						mrClassNames = mrClassNames + " " + mrCustomPaddingRighthover;
-					} else if (
-						mrAttr == "mrPaddingRightdesktop" &&
-						mrCustomPaddingRightdesktop
-					) {
-						mrClassNames = mrClassNames + " " + mrCustomPaddingRightdesktop;
-					} else if (
-						mrAttr == "mrPaddingRightlaptop" &&
-						mrCustomPaddingRightlaptop
-					) {
-						mrClassNames = mrClassNames + " " + mrCustomPaddingRightlaptop;
-					} else if (
-						mrAttr == "mrPaddingRightlaptablet" &&
-						mrCustomPaddingRighttablet
-					) {
-						mrClassNames = mrClassNames + " " + mrCustomPaddingRighttablet;
-					} else if (
-						mrAttr == "mrPaddingRightlapphone" &&
-						mrCustomPaddingRightphone
-					) {
-						mrClassNames = mrClassNames + " " + mrCustomPaddingRightphone;
-					} else if (mrAttr == "mrPaddingBottom" && mrCustomPaddingBottom) {
-						mrClassNames = mrClassNames + " " + mrCustomPaddingBottom;
-					} else if (
-						mrAttr == "mrPaddingBottomhover" &&
-						mrCustomPaddingBottomhover
-					) {
-						mrClassNames = mrClassNames + " " + mrCustomPaddingBottomhover;
-					} else if (
-						mrAttr == "mrPaddingBottomdesktop" &&
-						mrCustomPaddingBottomdesktop
-					) {
-						mrClassNames = mrClassNames + " " + mrCustomPaddingBottomdesktop;
-					} else if (
-						mrAttr == "mrPaddingBottomlaptop" &&
-						mrCustomPaddingBottomlaptop
-					) {
-						mrClassNames = mrClassNames + " " + mrCustomPaddingBottomlaptop;
-					} else if (
-						mrAttr == "mrPaddingBottomlaptablet" &&
-						mrCustomPaddingBottomtablet
-					) {
-						mrClassNames = mrClassNames + " " + mrCustomPaddingBottomtablet;
-					} else if (
-						mrAttr == "mrPaddingBottomlapphone" &&
-						mrCustomPaddingBottomphone
-					) {
-						mrClassNames = mrClassNames + " " + mrCustomPaddingBottomphone;
-					} else if (mrAttr == "mrPaddingLeft" && mrCustomPaddingLeft) {
-						mrClassNames = mrClassNames + " " + mrCustomPaddingLeft;
-					} else if (
-						mrAttr == "mrPaddingLefthover" &&
-						mrCustomPaddingLefthover
-					) {
-						mrClassNames = mrClassNames + " " + mrCustomPaddingLefthover;
-					} else if (
-						mrAttr == "mrPaddingLeftdesktop" &&
-						mrCustomPaddingLeftdesktop
-					) {
-						mrClassNames = mrClassNames + " " + mrCustomPaddingLeftdesktop;
-					} else if (
-						mrAttr == "mrPaddingLeftlaptop" &&
-						mrCustomPaddingLeftlaptop
-					) {
-						mrClassNames = mrClassNames + " " + mrCustomPaddingLeftlaptop;
-					} else if (
-						mrAttr == "mrPaddingLeftlaptablet" &&
-						mrCustomPaddingLefttablet
-					) {
-						mrClassNames = mrClassNames + " " + mrCustomPaddingLefttablet;
-					} else if (
-						mrAttr == "mrPaddingLeftlapphone" &&
-						mrCustomPaddingLeftphone
-					) {
-						mrClassNames = mrClassNames + " " + mrCustomPaddingLeftphone;
+					//Handle checkboxes and other boolean inputs.
+					mrAttr = mrAttr.toLowerCase().replace("mr", "mr-");
+					mrAttr = mrAttr.replace("navigation", "nav");
+					mrClassNames += mrAttr;
+				} else if (mrAttr.includes("mrPerPage")) {
+					//Handle numeric input with a different syntax order.
+					mrClassNames += "mr-" + mrAttrValue + "perpage";
+				} else if (
+					mrAttrValue.includes("mrFontSize") ||
+					mrAttrValue.includes("mrSize")
+				) {
+					//Handle numeric and range inputs + breakpoints.
+					mrAttr = mrAttr.toLowerCase();
+					if (mrAttr.includes("desktop")) {
+						mrAttr = mrAttr.replace("desktop", "");
+						mrAttr = mrAttr.replace("mr", "mr-desktop-");
+					} else if (mrAttr.includes("laptop")) {
+						mrAttr = mrAttr.replace("laptop", "");
+						mrAttr = mrAttr.replace("mr", "mr-desktop-");
+					} else if (mrAttr.includes("tablet")) {
+						mrAttr = mrAttr.replace("tablet", "");
+						mrAttr = mrAttr.replace("mr", "mr-tablet-");
+					} else if (mrAttr.includes("phone")) {
+						mrAttr = mrAttr.replace("phone", "");
+						mrAttr = mrAttr.replace("mr", "mr-phone-");
 					} else {
-						mrClassNames = mrClassNames + mrAttrValue;
+						mrAttr = mrAttr.replace("mr", "mr-");
 					}
-				} else if (
-					mrAttr.startsWith("mr") &&
-					mrAttrValue &&
-					mrAttrValue.startsWith("mr")
-				) {
-					mrClassNames = mrClassNames + " " + mrAttrValue;
-				} else if (mrAttr.startsWith("mr") && mrAttrValue) {
-					mrClassNames = mrClassNames + mrAttrValue;
+					mrClassNames += mrAttr + mrAttrValue;
+				}
+
+				mrClassNames += " ";
+
+				if (mrAttr.includes("mrAnimation")) {
+					mrClassNames += "mr-active ";
 				}
 			}
 		});
-
-		//}
-
-		/*let mrInlineStyles = "";
-			  mrAttr = "";
-			  mrAttrValue = "";
-			  if (mrAllowedBlocks.includes(blockType.name)) {
-			  Object.keys(attributes).forEach(function (value) {
-				  mrAttr = value;
-				  mrAttrValue = attributes[value];
-				  if (
-					  mrAttrValue !== "mr-" &&
-					  mrAttrValue !== "mr-desktop" &&
-					  mrAttrValue !== "mr-laptop" &&
-					  mrAttrValue !== "mr-tablet" &&
-					  mrAttrValue !== "mr-phone" &&
-					  mrAttr.includes("mrCustom")
-				  ) {
-					  if (
-						  mrPaddingTop.includes("-custom") &&
-						  mrAttr == "mrCustomPaddingTop" &&
-						  mrAttrValue
-					  ) {
-						  mrInlineStyles =
-							  mrInlineStyles + "padding-top:" + mrAttrValue + ";";
-					  }
-				  }
-			  });
-			  }*/
-
-		return (
-			<BlockListBlock
-				{...props}
-				className={mrClassNames}
-				/*style={mrInlineStyles}*/
-			/>
-		);
+		return <BlockListBlock {...props} className={mrClassNames} />;
 	};
 }, "mrBackendExtraClasses");
 
 //Add filters
-
 addFilter(
 	"blocks.registerBlockType",
 	"mr-utils/custom-attributes",

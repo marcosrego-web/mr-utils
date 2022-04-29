@@ -52,6 +52,7 @@ You can contact me at: [https://marcosrego.com/client-area/contact/](https://mar
 
 = 0.1.6 =
 * Dynamically add classes (instead of using *blocks.getSaveContent.extraProps*) for the interface to work with all types of blocks, as suggested [here](https://github.com/WordPress/gutenberg/issues/36127#issuecomment-1106645202).
+* Reformat code for the classes added inside de block editor via React JS.
 * When using an automatic tabs navigation: Added fallback when the item does not contain child elements.
 * Fixed bug when changing number of columns or items per line on the 'Desktop' breakpoint.
 
