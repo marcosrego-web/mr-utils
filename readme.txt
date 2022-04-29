@@ -26,7 +26,7 @@ You can also apply changes to specific devices/breakpoints: Show/hide blocks dep
 
 = Does the interface of Mr.Utils support all blocks? =
 
-Since version 0.1.6, that the interface of Mr.Utils works with all core blocks and supports third-party ones. If a block is not working for you, please [report the issue](https://github.com/marcosrego-web/mr-utils/issues) or [contact me](https://marcosrego.com/client-area/contact/), do let me know which block you are using. If a specific block is not showing the "Utilities" section, you can still use the [utility classes](https://github.com/marcosrego-web/mr-utils/wiki/Utility-Classes) on the "Advanced" section > "Additional CSS class(es)".
+Since version 0.1.6, that the interface of Mr.Utils works with all core blocks. For third-party blocks or if a specific block is not showing the "Utilities" section, you can still use the [utility classes](https://github.com/marcosrego-web/mr-utils/wiki/Utility-Classes) on the "Advanced" section > "Additional CSS class(es)". If a block is not working for you because of Mr.Utils, please [report the issue](https://github.com/marcosrego-web/mr-utils/issues) or [contact me](https://marcosrego.com/client-area/contact/), do let me know which block you are using. 
 
 = Where can I find more information about Mr.Utils? =
 

@@ -48,58 +48,6 @@ import {
 	brush,
 } from "@wordpress/icons";
 
-const mrDisallowedBlocks = [
-	"core/archives",
-	"woocommerce/handpicked-products",
-	"woocommerce/all-reviews",
-	"woocommerce/featured-category",
-	"woocommerce/featured-product",
-	"woocommerce/product-best-sellers",
-	"woocommerce/product-categories",
-	"woocommerce/product-category",
-	"woocommerce/product-new",
-	"woocommerce/product-on-sale",
-	"woocommerce/products-by-attribute",
-	"woocommerce/product-top-rated",
-	"woocommerce/reviews-by-product",
-	"woocommerce/reviews-by-category",
-	"woocommerce/product-search",
-	"woocommerce/products-by-tag",
-	"woocommerce/all-products",
-	"woocommerce/price-filter",
-	"woocommerce/attribute-filter",
-	"woocommerce/stock-filter",
-	"woocommerce/active-filters",
-];
-
-const mrUtilsBreakpoints = ["hover", "desktop", "laptop", "tablet", "phone"];
-
-const mrUtilsGlobalFeatures = [
-	"animations",
-	"pagination",
-	"offcanvas",
-	"dynamic",
-	"other",
-];
-
-const mrUtilsBreakpointsFeatures = [
-	"display",
-	"layout",
-	"placement",
-	"spacing",
-	"text",
-	"misc",
-];
-
-const mrUtilsStateFeatures = [
-	"animations",
-	"display",
-	"layout",
-	"spacing",
-	"text",
-	"misc",
-];
-
 /**
  * Adds custom icon
  */
@@ -125,7 +73,8 @@ function mrAttributes(settings) {
 	//add mrDisallowedBlocks restriction
 	if (
 		typeof settings.attributes !== "undefined" &&
-		!mrDisallowedBlocks.includes(settings.name)
+		settings.name.includes("core/") &&
+		settings.name !== "core/archives"
 	) {
 		settings.attributes = Object.assign(settings.attributes, {
 			mrAnimation: {
@@ -1367,7 +1316,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 		return (
 			<Fragment>
 				<BlockEdit {...props} />
-				{isSelected && !mrDisallowedBlocks.includes(name) && (
+				{isSelected && name.includes("core/") && name !== "core/archives" && (
 					<InspectorControls key="setting">
 						<Panel header="">
 							<PanelBody
