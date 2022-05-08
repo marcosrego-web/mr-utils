@@ -114,7 +114,7 @@ function mrutils_render_block( $block_content, $block ) {
 
     $mrutils_class_names = '';
     foreach($block['attrs'] as $block=>$attr) {
-        if(!is_array($attr)) {
+        if(!empty($attr) && !is_array($attr)) {
             if(strpos($attr, 'mr-') !== false) {
                 $mrutils_class_names .= $attr;
             } else if(strpos($block, 'mr') !== false && strpos($block, 'Pagination') !== false || strpos($block, 'mr') !== false && strpos($block, 'ScrollNavigation') !== false) {
