@@ -239,483 +239,243 @@ function mrAttributes(settings) {
 			},
 			mrPaddingTop: {
 				type: "string",
-				default: "mr-",
+				default: "",
 			},
 			mrPaddingTophover: {
 				type: "string",
-				default: "mr-hover",
+				default: "",
 			},
 			mrPaddingTopdesktop: {
 				type: "string",
-				default: "mr-desktop",
+				default: "",
 			},
 			mrPaddingToplaptop: {
 				type: "string",
-				default: "mr-laptop",
+				default: "",
 			},
 			mrPaddingToptablet: {
 				type: "string",
-				default: "mr-tablet",
+				default: "",
 			},
 			mrPaddingTopphone: {
 				type: "string",
-				default: "mr-phone",
-			},
-			mrCustomPaddingTop: {
-				type: "string",
-				default: "mr-paddingtop",
-			},
-			mrCustomPaddingTophover: {
-				type: "string",
-				default: "mr-hover-paddingtop",
-			},
-			mrCustomPaddingTopdesktop: {
-				type: "string",
-				default: "mr-desktop-paddingtop",
-			},
-			mrCustomPaddingToplaptop: {
-				type: "string",
-				default: "mr-laptop-paddingtop",
-			},
-			mrCustomPaddingToptablet: {
-				type: "string",
-				default: "mr-tablet-paddingtop",
-			},
-			mrCustomPaddingTopphone: {
-				type: "string",
-				default: "mr-phone-paddingtop",
+				default: "",
 			},
 			mrPaddingRight: {
 				type: "string",
-				default: "mr-",
+				default: "",
 			},
 			mrPaddingRighthover: {
 				type: "string",
-				default: "mr-hover",
+				default: "",
 			},
 			mrPaddingRightdesktop: {
 				type: "string",
-				default: "mr-desktop",
+				default: "",
 			},
 			mrPaddingRightlaptop: {
 				type: "string",
-				default: "mr-laptop",
+				default: "",
 			},
 			mrPaddingRighttablet: {
 				type: "string",
-				default: "mr-tablet",
+				default: "",
 			},
 			mrPaddingRightphone: {
 				type: "string",
-				default: "mr-phone",
-			},
-			mrCustomPaddingRight: {
-				type: "string",
-				default: "mr-paddingright",
-			},
-			mrCustomPaddingRighthover: {
-				type: "string",
-				default: "mr-hover-paddingright",
-			},
-			mrCustomPaddingRightdesktop: {
-				type: "string",
-				default: "mr-desktop-paddingright",
-			},
-			mrCustomPaddingRightlaptop: {
-				type: "string",
-				default: "mr-laptop-paddingright",
-			},
-			mrCustomPaddingRighttablet: {
-				type: "string",
-				default: "mr-tablet-paddingright",
-			},
-			mrCustomPaddingRightphone: {
-				type: "string",
-				default: "mr-phone-paddingright",
+				default: "",
 			},
 			mrPaddingBottom: {
 				type: "string",
-				default: "mr-",
+				default: "",
 			},
 			mrPaddingBottomhover: {
 				type: "string",
-				default: "mr-hover",
+				default: "",
 			},
 			mrPaddingBottomdesktop: {
 				type: "string",
-				default: "mr-desktop",
+				default: "",
 			},
 			mrPaddingBottomlaptop: {
 				type: "string",
-				default: "mr-laptop",
+				default: "",
 			},
 			mrPaddingBottomtablet: {
 				type: "string",
-				default: "mr-tablet",
+				default: "",
 			},
 			mrPaddingBottomphone: {
 				type: "string",
-				default: "mr-phone",
-			},
-			mrCustomPaddingBottom: {
-				type: "string",
-				default: "mr-paddingbottom",
-			},
-			mrCustomPaddingBottomhover: {
-				type: "string",
-				default: "mr-hover-paddingbottom",
-			},
-			mrCustomPaddingBottomdesktop: {
-				type: "string",
-				default: "mr-desktop-paddingbottom",
-			},
-			mrCustomPaddingBottomlaptop: {
-				type: "string",
-				default: "mr-laptop-paddingbottom",
-			},
-			mrCustomPaddingBottomtablet: {
-				type: "string",
-				default: "mr-tablet-paddingbottom",
-			},
-			mrCustomPaddingBottomphone: {
-				type: "string",
-				default: "mr-phone-paddingbottom",
+				default: "",
 			},
 			mrPaddingLeft: {
 				type: "string",
-				default: "mr-",
+				default: "",
 			},
 			mrPaddingLefthover: {
 				type: "string",
-				default: "mr-hover",
+				default: "",
 			},
 			mrPaddingLeftdesktop: {
 				type: "string",
-				default: "mr-desktop",
+				default: "",
 			},
 			mrPaddingLeftlaptop: {
 				type: "string",
-				default: "mr-laptop",
+				default: "",
 			},
 			mrPaddingLefttablet: {
 				type: "string",
-				default: "mr-tablet",
+				default: "",
 			},
 			mrPaddingLeftphone: {
 				type: "string",
-				default: "mr-phone",
-			},
-			mrCustomPaddingLeft: {
-				type: "string",
-				default: "mr-paddingleft",
-			},
-			mrCustomPaddingLefthover: {
-				type: "string",
-				default: "mr-hover-paddingleft",
-			},
-			mrCustomPaddingLeftdesktop: {
-				type: "string",
-				default: "mr-desktop-paddingleft",
-			},
-			mrCustomPaddingLeftlaptop: {
-				type: "string",
-				default: "mr-laptop-paddingleft",
-			},
-			mrCustomPaddingLefttablet: {
-				type: "string",
-				default: "mr-tablet-paddingleft",
-			},
-			mrCustomPaddingLeftphone: {
-				type: "string",
-				default: "mr-phone-paddingleft",
+				default: "",
 			},
 			mrMarginTop: {
 				type: "string",
-				default: "mr-",
+				default: "",
 			},
 			mrMarginTophover: {
 				type: "string",
-				default: "mr-hover",
+				default: "",
 			},
 			mrMarginTopdesktop: {
 				type: "string",
-				default: "mr-desktop",
+				default: "",
 			},
 			mrMarginToplaptop: {
 				type: "string",
-				default: "mr-laptop",
+				default: "",
 			},
 			mrMarginToptablet: {
 				type: "string",
-				default: "mr-tablet",
+				default: "",
 			},
 			mrMarginTopphone: {
 				type: "string",
-				default: "mr-phone",
-			},
-			mrCustomMarginTop: {
-				type: "string",
-				default: "mr-margintop",
-			},
-			mrCustomMarginTophover: {
-				type: "string",
-				default: "mr-hover-margintop",
-			},
-			mrCustomMarginTopdesktop: {
-				type: "string",
-				default: "mr-desktop-margintop",
-			},
-			mrCustomMarginToplaptop: {
-				type: "string",
-				default: "mr-laptop-margintop",
-			},
-			mrCustomMarginToptablet: {
-				type: "string",
-				default: "mr-tablet-margintop",
-			},
-			mrCustomMarginTopphone: {
-				type: "string",
-				default: "mr-phone-margintop",
+				default: "",
 			},
 			mrMarginRight: {
 				type: "string",
-				default: "mr-",
+				default: "",
 			},
 			mrMarginRighthover: {
 				type: "string",
-				default: "mr-hover",
+				default: "",
 			},
 			mrMarginRightdesktop: {
 				type: "string",
-				default: "mr-desktop",
+				default: "",
 			},
 			mrMarginRightlaptop: {
 				type: "string",
-				default: "mr-laptop",
+				default: "",
 			},
 			mrMarginRighttablet: {
 				type: "string",
-				default: "mr-tablet",
+				default: "",
 			},
 			mrMarginRightphone: {
 				type: "string",
-				default: "mr-phone",
-			},
-			mrCustomMarginRight: {
-				type: "string",
-				default: "mr-marginright",
-			},
-			mrCustomMarginRighthover: {
-				type: "string",
-				default: "mr-hover-marginright",
-			},
-			mrCustomMarginRightdesktop: {
-				type: "string",
-				default: "mr-desktop-marginright",
-			},
-			mrCustomMarginRightlaptop: {
-				type: "string",
-				default: "mr-laptop-marginright",
-			},
-			mrCustomMarginRighttablet: {
-				type: "string",
-				default: "mr-tablet-marginright",
-			},
-			mrCustomMarginRightphone: {
-				type: "string",
-				default: "mr-phone-marginright",
+				default: "",
 			},
 			mrMarginBottom: {
 				type: "string",
-				default: "mr-",
+				default: "",
 			},
 			mrMarginBottomhover: {
 				type: "string",
-				default: "mr-hover",
+				default: "",
 			},
 			mrMarginBottomdesktop: {
 				type: "string",
-				default: "mr-desktop",
+				default: "",
 			},
 			mrMarginBottomlaptop: {
 				type: "string",
-				default: "mr-laptop",
+				default: "",
 			},
 			mrMarginBottomtablet: {
 				type: "string",
-				default: "mr-tablet",
+				default: "",
 			},
 			mrMarginBottomphone: {
 				type: "string",
-				default: "mr-phone",
-			},
-			mrCustomMarginBottom: {
-				type: "string",
-				default: "mr-marginbottom",
-			},
-			mrCustomMarginBottomhover: {
-				type: "string",
-				default: "mr-hover-marginbottom",
-			},
-			mrCustomMarginBottomdesktop: {
-				type: "string",
-				default: "mr-desktop-marginbottom",
-			},
-			mrCustomMarginBottomlaptop: {
-				type: "string",
-				default: "mr-laptop-marginbottom",
-			},
-			mrCustomMarginBottomtablet: {
-				type: "string",
-				default: "mr-tablet-marginbottom",
-			},
-			mrCustomMarginBottomphone: {
-				type: "string",
-				default: "mr-phone-marginbottom",
+				default: "",
 			},
 			mrMarginLeft: {
 				type: "string",
-				default: "mr-",
+				default: "",
 			},
 			mrMarginLefthover: {
 				type: "string",
-				default: "mr-hover",
+				default: "",
 			},
 			mrMarginLeftdesktop: {
 				type: "string",
-				default: "mr-desktop",
+				default: "",
 			},
 			mrMarginLeftlaptop: {
 				type: "string",
-				default: "mr-laptop",
+				default: "",
 			},
 			mrMarginLefttablet: {
 				type: "string",
-				default: "mr-tablet",
+				default: "",
 			},
 			mrMarginLeftphone: {
 				type: "string",
-				default: "mr-phone",
-			},
-			mrCustomMarginLeft: {
-				type: "string",
-				default: "mr-marginleft",
-			},
-			mrCustomMarginLefthover: {
-				type: "string",
-				default: "mr-hover-marginleft",
-			},
-			mrCustomMarginLeftdesktop: {
-				type: "string",
-				default: "mr-desktop-marginleft",
-			},
-			mrCustomMarginLeftlaptop: {
-				type: "string",
-				default: "mr-laptop-marginleft",
-			},
-			mrCustomMarginLefttablet: {
-				type: "string",
-				default: "mr-tablet-marginleft",
-			},
-			mrCustomMarginLeftphone: {
-				type: "string",
-				default: "mr-phone-marginleft",
+				default: "",
 			},
 			mrRowGap: {
 				type: "string",
-				default: "mr-",
+				default: "",
 			},
 			mrRowGaphover: {
 				type: "string",
-				default: "mr-hover",
+				default: "",
 			},
 			mrRowGapdesktop: {
 				type: "string",
-				default: "mr-desktop",
+				default: "",
 			},
 			mrRowGaplaptop: {
 				type: "string",
-				default: "mr-laptop",
+				default: "",
 			},
 			mrRowGaptablet: {
 				type: "string",
-				default: "mr-tablet",
+				default: "",
 			},
 			mrRowGapphone: {
 				type: "string",
-				default: "mr-phone",
-			},
-			mrCustomRowGap: {
-				type: "string",
-				default: "mr-rowgap",
-			},
-			mrCustomRowGaphover: {
-				type: "string",
-				default: "mr-hover-rowgap",
-			},
-			mrCustomRowGapdesktop: {
-				type: "string",
-				default: "mr-desktop-rowgap",
-			},
-			mrCustomRowGaplaptop: {
-				type: "string",
-				default: "mr-laptop-rowgap",
-			},
-			mrCustomRowGaptablet: {
-				type: "string",
-				default: "mr-tablet-rowgap",
-			},
-			mrCustomRowGapphone: {
-				type: "string",
-				default: "mr-phone-rowgap",
+				default: "",
 			},
 			mrColumnGap: {
 				type: "string",
-				default: "mr-",
+				default: "",
 			},
 			mrColumnGaphover: {
 				type: "string",
-				default: "mr-hover",
+				default: "",
 			},
 			mrColumnGapdesktop: {
 				type: "string",
-				default: "mr-desktop",
+				default: "",
 			},
 			mrColumnGaplaptop: {
 				type: "string",
-				default: "mr-laptop",
+				default: "",
 			},
 			mrColumnGaptablet: {
 				type: "string",
-				default: "mr-tablet",
+				default: "",
 			},
 			mrColumnGapphone: {
 				type: "string",
-				default: "mr-phone",
-			},
-			mrCustomColumnGap: {
-				type: "string",
-				default: "mr-columngap",
-			},
-			mrCustomColumnGaphover: {
-				type: "string",
-				default: "mr-hover-columngap",
-			},
-			mrCustomColumnGapdesktop: {
-				type: "string",
-				default: "mr-desktop-columngap",
-			},
-			mrCustomColumnGaplaptop: {
-				type: "string",
-				default: "mr-laptop-columngap",
-			},
-			mrCustomColumnGaptablet: {
-				type: "string",
-				default: "mr-tablet-columngap",
-			},
-			mrCustomColumnGapphone: {
-				type: "string",
-				default: "mr-phone-columngap",
+				default: "",
 			},
 			mrPosition: {
 				type: "string",
@@ -797,7 +557,6 @@ function mrAttributes(settings) {
 				type: "string",
 				default: "mr-phone",
 			},
-
 			mrVerticalOffset: {
 				type: "string",
 				default: "mr-",
@@ -838,171 +597,63 @@ function mrAttributes(settings) {
 				type: "string",
 				default: "mr-phone",
 			},
-			mrSizeOptions: {
-				type: "string",
-				default: "mr-",
-			},
-			mrSizeOptionshover: {
-				type: "string",
-				default: "mr-hover",
-			},
-			mrSizeOptionsdesktop: {
-				type: "string",
-				default: "mr-desktop",
-			},
-			mrSizeOptionslaptop: {
-				type: "string",
-				default: "mr-laptop",
-			},
-			mrSizeOptionstablet: {
-				type: "string",
-				default: "mr-tablet",
-			},
-			mrSizeOptionsphone: {
-				type: "string",
-				default: "mr-phone",
-			},
 			mrSize: {
-				type: "int",
-				default: 0,
+				type: "string",
+				default: "",
 			},
 			mrSizehover: {
-				type: "int",
-				default: 0,
+				type: "string",
+				default: "",
 			},
 			mrSizedesktop: {
-				type: "int",
-				default: 0,
+				type: "string",
+				default: "",
 			},
 			mrSizelaptop: {
-				type: "int",
-				default: 0,
+				type: "string",
+				default: "",
 			},
 			mrSizetablet: {
-				type: "int",
-				default: 0,
+				type: "string",
+				default: "",
 			},
 			mrSizephone: {
-				type: "int",
-				default: 0,
-			},
-			mrCustomSize: {
-				type: "string",
-				default: "",
-			},
-			mrCustomSizehover: {
-				type: "string",
-				default: "",
-			},
-			mrCustomSizedesktop: {
-				type: "string",
-				default: "",
-			},
-			mrCustomSizelaptop: {
-				type: "string",
-				default: "",
-			},
-			mrCustomSizetablet: {
-				type: "string",
-				default: "",
-			},
-			mrCustomSizephone: {
 				type: "string",
 				default: "",
 			},
 			mrBackgroundColor: {
 				type: "string",
-				default: "mr-",
-			},
-			mrCustomBackgroundColor: {
-				type: "string",
 				default: "",
 			},
 			mrColor: {
-				type: "string",
-				default: "mr-",
-			},
-			mrCustomColor: {
 				type: "string",
 				default: "",
 			},
 			mrFontFamily: {
 				type: "string",
-				default: "mr-",
-			},
-			mrCustomFontFamily: {
-				type: "string",
 				default: "",
-			},
-			mrFontSizeOptions: {
-				type: "string",
-				default: "mr-",
-			},
-			mrFontSizeOptionshover: {
-				type: "string",
-				default: "mr-hover",
-			},
-			mrFontSizeOptionsdesktop: {
-				type: "string",
-				default: "mr-desktop",
-			},
-			mrFontSizeOptionslaptop: {
-				type: "string",
-				default: "mr-laptop",
-			},
-			mrFontSizeOptionstablet: {
-				type: "string",
-				default: "mr-tablet",
-			},
-			mrFontSizeOptionsphone: {
-				type: "string",
-				default: "mr-phone",
 			},
 			mrFontSize: {
-				type: "int",
-				default: 0,
+				type: "string",
+				default: "",
 			},
 			mrFontSizehover: {
-				type: "int",
-				default: 0,
+				type: "string",
+				default: "",
 			},
 			mrFontSizedesktop: {
-				type: "int",
-				default: 0,
+				type: "string",
+				default: "",
 			},
 			mrFontSizelaptop: {
-				type: "int",
-				default: 0,
+				type: "string",
+				default: "",
 			},
 			mrFontSizetablet: {
-				type: "int",
-				default: 0,
+				type: "string",
+				default: "",
 			},
 			mrFontSizephone: {
-				type: "int",
-				default: 0,
-			},
-			mrCustomFontSize: {
-				type: "string",
-				default: "",
-			},
-			mrCustomFontSizehover: {
-				type: "string",
-				default: "",
-			},
-			mrCustomFontSizedesktop: {
-				type: "string",
-				default: "",
-			},
-			mrCustomFontSizelaptop: {
-				type: "string",
-				default: "",
-			},
-			mrCustomFontSizetablet: {
-				type: "string",
-				default: "",
-			},
-			mrCustomFontSizephone: {
 				type: "string",
 				default: "",
 			},
@@ -1114,48 +765,24 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 			mrPaddingToplaptop,
 			mrPaddingToptablet,
 			mrPaddingTopphone,
-			mrCustomPaddingTop,
-			mrCustomPaddingTophover,
-			mrCustomPaddingTopdesktop,
-			mrCustomPaddingToplaptop,
-			mrCustomPaddingToptablet,
-			mrCustomPaddingTopphone,
 			mrPaddingRight,
 			mrPaddingRighthover,
 			mrPaddingRightdesktop,
 			mrPaddingRightlaptop,
 			mrPaddingRighttablet,
 			mrPaddingRightphone,
-			mrCustomPaddingRight,
-			mrCustomPaddingRighthover,
-			mrCustomPaddingRightdesktop,
-			mrCustomPaddingRightlaptop,
-			mrCustomPaddingRighttablet,
-			mrCustomPaddingRightphone,
 			mrPaddingBottom,
 			mrPaddingBottomhover,
 			mrPaddingBottomdesktop,
 			mrPaddingBottomlaptop,
 			mrPaddingBottomtablet,
 			mrPaddingBottomphone,
-			mrCustomPaddingBottom,
-			mrCustomPaddingBottomhover,
-			mrCustomPaddingBottomdesktop,
-			mrCustomPaddingBottomlaptop,
-			mrCustomPaddingBottomtablet,
-			mrCustomPaddingBottomphone,
 			mrPaddingLeft,
 			mrPaddingLefthover,
 			mrPaddingLeftdesktop,
 			mrPaddingLeftlaptop,
 			mrPaddingLefttablet,
 			mrPaddingLeftphone,
-			mrCustomPaddingLeft,
-			mrCustomPaddingLefthover,
-			mrCustomPaddingLeftdesktop,
-			mrCustomPaddingLeftlaptop,
-			mrCustomPaddingLefttablet,
-			mrCustomPaddingLeftphone,
 			mrRowGap,
 			mrRowGaphover,
 			mrRowGapdesktop,
@@ -1168,66 +795,30 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 			mrColumnGaplaptop,
 			mrColumnGaptablet,
 			mrColumnGapphone,
-			mrCustomRowGap,
-			mrCustomRowGaphover,
-			mrCustomRowGapdesktop,
-			mrCustomRowGaplaptop,
-			mrCustomRowGaptablet,
-			mrCustomRowGapphone,
-			mrCustomColumnGap,
-			mrCustomColumnGaphover,
-			mrCustomColumnGapdesktop,
-			mrCustomColumnGaplaptop,
-			mrCustomColumnGaptablet,
-			mrCustomColumnGapphone,
 			mrMarginTop,
 			mrMarginTophover,
 			mrMarginTopdesktop,
 			mrMarginToplaptop,
 			mrMarginToptablet,
 			mrMarginTopphone,
-			mrCustomMarginTop,
-			mrCustomMarginTophover,
-			mrCustomMarginTopdesktop,
-			mrCustomMarginToplaptop,
-			mrCustomMarginToptablet,
-			mrCustomMarginTopphone,
 			mrMarginRight,
 			mrMarginRighthover,
 			mrMarginRightdesktop,
 			mrMarginRightlaptop,
 			mrMarginRighttablet,
 			mrMarginRightphone,
-			mrCustomMarginRight,
-			mrCustomMarginRighthover,
-			mrCustomMarginRightdesktop,
-			mrCustomMarginRightlaptop,
-			mrCustomMarginRighttablet,
-			mrCustomMarginRightphone,
 			mrMarginBottom,
 			mrMarginBottomhover,
 			mrMarginBottomdesktop,
 			mrMarginBottomlaptop,
 			mrMarginBottomtablet,
 			mrMarginBottomphone,
-			mrCustomMarginBottom,
-			mrCustomMarginBottomhover,
-			mrCustomMarginBottomdesktop,
-			mrCustomMarginBottomlaptop,
-			mrCustomMarginBottomtablet,
-			mrCustomMarginBottomphone,
 			mrMarginLeft,
 			mrMarginLefthover,
 			mrMarginLeftdesktop,
 			mrMarginLeftlaptop,
 			mrMarginLefttablet,
 			mrMarginLeftphone,
-			mrCustomMarginLeft,
-			mrCustomMarginLefthover,
-			mrCustomMarginLeftdesktop,
-			mrCustomMarginLeftlaptop,
-			mrCustomMarginLefttablet,
-			mrCustomMarginLeftphone,
 			mrPosition,
 			mrPositiondesktop,
 			mrPositionlaptop,
@@ -1258,48 +849,21 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 			mrHorizontalOffsetlaptop,
 			mrHorizontalOffsettablet,
 			mrHorizontalOffsetphone,
-			mrSizeOptions,
-			mrSizeOptionshover,
-			mrSizeOptionsdesktop,
-			mrSizeOptionslaptop,
-			mrSizeOptionstablet,
-			mrSizeOptionsphone,
 			mrSize,
 			mrSizehover,
 			mrSizedesktop,
 			mrSizelaptop,
 			mrSizetablet,
 			mrSizephone,
-			mrCustomSize,
-			mrCustomSizehover,
-			mrCustomSizedesktop,
-			mrCustomSizelaptop,
-			mrCustomSizetablet,
-			mrCustomSizephone,
 			mrBackgroundColor,
-			mrCustomBackgroundColor,
 			mrColor,
-			mrCustomColor,
 			mrFontFamily,
-			mrCustomFontFamily,
-			mrFontSizeOptions,
-			mrFontSizeOptionshover,
-			mrFontSizeOptionsdesktop,
-			mrFontSizeOptionslaptop,
-			mrFontSizeOptionstablet,
-			mrFontSizeOptionsphone,
 			mrFontSize,
 			mrFontSizehover,
 			mrFontSizedesktop,
 			mrFontSizelaptop,
 			mrFontSizetablet,
 			mrFontSizephone,
-			mrCustomFontSize,
-			mrCustomFontSizehover,
-			mrCustomFontSizedesktop,
-			mrCustomFontSizelaptop,
-			mrCustomFontSizetablet,
-			mrCustomFontSizephone,
 			mrTextAlignment,
 			mrTextAlignmentdesktop,
 			mrTextAlignmentlaptop,
@@ -1377,10 +941,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 															className="mr-backend-option mr-backend-option_utils_pagination"
 														>
 															<TextControl
-																label={__(
-																	"Number of items per page",
-																	"mr-utils"
-																)}
+																label={__("Items per page", "mr-utils")}
 																value={mrPerPage}
 																type="number"
 																className="mr-backend-perpage"
@@ -1929,10 +1490,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 													}
 												>
 													<SelectControl
-														label={__(
-															"Number of child items per line",
-															"mr-utils"
-														)}
+														label={__("Items per line", "mr-utils")}
 														value={
 															tab.name === "desktop"
 																? mrPerLinedesktop
@@ -2099,10 +1657,11 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 														}
 														help={
 															!mrPerLine || mrPerLine === "mr-"
-																? "Apply into parent blocks (such as Columns and List blocks) to consider each direct child as a line's item."
+																? "Apply into parent blocks (such as Columns and List blocks) to organize the set number of direct childs on different lines."
 																: ""
 														}
 													/>
+
 													<SelectControl
 														label={__("Wrap", "mr-utils")}
 														value={
@@ -2177,9 +1736,10 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 															})
 														}
 													/>
+
 													<SelectControl
 														label={__(
-															"Number of columns for this item",
+															"Columns to create on this item",
 															"mr-utils"
 														)}
 														value={
@@ -2192,6 +1752,11 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																: tab.name === "phone"
 																? mrColumnsphone
 																: mrColumns
+														}
+														help={
+															!mrColumns || mrColumns === "mr-"
+																? "Divide the current item into a set number of new columns automatically."
+																: ""
 														}
 														options={
 															tab.name === "" ||
@@ -2339,85 +1904,15 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 															})
 														}
 													/>
-													<SelectControl
-														label={__("Item Size", "mr-utils")}
-														value={
-															tab.name === "hover"
-																? mrSizeOptionshover
-																: tab.name === "desktop"
-																? mrSizeOptionsdesktop
-																: tab.name === "laptop"
-																? mrSizeOptionslaptop
-																: tab.name === "tablet"
-																? mrSizeOptionstablet
-																: tab.name === "phone"
-																? mrSizeOptionsphone
-																: mrSizeOptions
-														}
-														className="mr-backend-itemsize mr-backend-hascustomoption"
-														options={[
-															{
-																value: "mr-" + tab.name,
-																label: "Default " + tab.name + " class",
-															},
-															{
-																value: (
-																	" mr-" +
-																	tab.name +
-																	"-sizeoptions"
-																).replace("--", "-"),
-																label: "Custom " + tab.name + " class",
-															},
-														]}
-														onChange={(val) =>
-															setAttributes({
-																mrSizeOptions:
-																	val !== undefined &&
-																	!val.includes("mr-hover") &&
-																	!val.includes("mr-desktop") &&
-																	!val.includes("mr-laptop") &&
-																	!val.includes("mr-tablet") &&
-																	!val.includes("mr-phone")
-																		? val
-																		: mrSizeOptions,
-																mrSizeOptionshover:
-																	val !== undefined && val.includes("mr-hover")
-																		? val
-																		: mrSizeOptionshover,
-																mrSizeOptionsdesktop:
-																	val !== undefined &&
-																	val.includes("mr-desktop")
-																		? val
-																		: mrSizeOptionsdesktop,
-																mrSizeOptionslaptop:
-																	val !== undefined && val.includes("mr-laptop")
-																		? val
-																		: mrSizeOptionslaptop,
-																mrSizeOptionstablet:
-																	val !== undefined && val.includes("mr-tablet")
-																		? val
-																		: mrSizeOptionstablet,
-																mrSizeOptionsphone:
-																	val !== undefined && val.includes("mr-phone")
-																		? val
-																		: mrSizeOptionsphone,
-															})
-														}
-													/>
 
-													{(tab.name === "" && mrSizeOptions === "mr-") ||
-													(tab.name === "hover" &&
-														mrSizeOptionshover === "mr-hover") ||
-													(tab.name === "desktop" &&
-														mrSizeOptionsdesktop === "mr-desktop") ||
-													(tab.name === "laptop" &&
-														mrSizeOptionslaptop === "mr-laptop") ||
-													(tab.name === "tablet" &&
-														mrSizeOptionstablet === "mr-tablet") ||
-													(tab.name === "phone" &&
-														mrSizeOptionsphone === "mr-phone") ? (
-														<RangeControl
-															label={__("", "mr-utils")}
+													{tab.name === "" ||
+													tab.name === "hover" ||
+													tab.name === "desktop" ||
+													tab.name === "laptop" ||
+													tab.name === "tablet" ||
+													tab.name === "phone" ? (
+														<TextControl
+															label={__("Item Size", "mr-utils")}
 															value={
 																tab.name === "hover"
 																	? mrSizehover
@@ -2430,128 +1925,6 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																	: tab.name === "phone"
 																	? mrSizephone
 																	: mrSize
-															}
-															initialPosition={0}
-															allowReset={true}
-															min={0}
-															max={13}
-															onChange={(val) =>
-																setAttributes({
-																	mrSize:
-																		tab.name === ""
-																			? val === 0 || val === undefined
-																				? ""
-																				: val
-																			: mrSize,
-																	mrSizehover:
-																		tab.name === "hover"
-																			? val === 0 || val === undefined
-																				? ""
-																				: val
-																			: mrSizehover,
-																	mrSizedesktop:
-																		tab.name === "desktop"
-																			? val === 0 || val === undefined
-																				? ""
-																				: val
-																			: mrSizedesktop,
-																	mrSizelaptop:
-																		tab.name === "laptop"
-																			? val === 0 || val === undefined
-																				? ""
-																				: val
-																			: mrSizelaptop,
-																	mrSizetablet:
-																		tab.name === "tablet"
-																			? val === 0 || val === undefined
-																				? ""
-																				: val
-																			: mrSizetablet,
-																	mrSizephone:
-																		tab.name === "phone"
-																			? val === 0 || val === undefined
-																				? ""
-																				: val
-																			: mrSizephone,
-																})
-															}
-															help={
-																tab.name == "" && mrSize > 0
-																	? "mr-size" +
-																	  mrSize +
-																	  " = " +
-																	  getComputedStyle(
-																			document.documentElement
-																	  ).getPropertyValue("--size-" + mrSize)
-																	: tab.name == "hover" && mrSizehover > 0
-																	? "mr-hover-size" +
-																	  mrSizehover +
-																	  " = " +
-																	  getComputedStyle(
-																			document.documentElement
-																	  ).getPropertyValue("--size-" + mrSizehover)
-																	: tab.name == "desktop" && mrSizedesktop > 0
-																	? "mr-desktop-size" +
-																	  mrSizedesktop +
-																	  " = " +
-																	  getComputedStyle(
-																			document.documentElement
-																	  ).getPropertyValue(
-																			"--size-" + mrSizedesktop
-																	  )
-																	: tab.name == "laptop" && mrSizelaptop > 0
-																	? "mr-laptop-size" +
-																	  mrSizelaptop +
-																	  " = " +
-																	  getComputedStyle(
-																			document.documentElement
-																	  ).getPropertyValue("--size-" + mrSizelaptop)
-																	: tab.name == "tablet" && mrSizetablet
-																	? "mr-tablet-size" +
-																	  mrSizetablet +
-																	  " = " +
-																	  getComputedStyle(
-																			document.documentElement
-																	  ).getPropertyValue("--size-" + mrSizetablet)
-																	: tab.name == "phone" && mrSizephone > 0
-																	? "mr-phone-size" +
-																	  mrSizephone +
-																	  " = " +
-																	  getComputedStyle(
-																			document.documentElement
-																	  ).getPropertyValue("--size-" + mrSizephone)
-																	: ""
-															}
-														/>
-													) : (
-														""
-													)}
-													{(tab.name === "" &&
-														mrSizeOptions.includes("-sizeoptions")) ||
-													(tab.name === "hover" &&
-														mrSizeOptionshover.includes("-sizeoptions")) ||
-													(tab.name === "desktop" &&
-														mrSizeOptionsdesktop.includes("-sizeoptions")) ||
-													(tab.name === "laptop" &&
-														mrSizeOptionslaptop.includes("-sizeoptions")) ||
-													(tab.name === "tablet" &&
-														mrSizeOptionstablet.includes("-sizeoptions")) ||
-													(tab.name === "phone" &&
-														mrSizeOptionsphone.includes("-sizeoptions")) ? (
-														<TextControl
-															label={__("", "mr-utils")}
-															value={
-																tab.name === "hover"
-																	? mrCustomSizehover
-																	: tab.name === "desktop"
-																	? mrCustomSizedesktop
-																	: tab.name === "laptop"
-																	? mrCustomSizelaptop
-																	: tab.name === "tablet"
-																	? mrCustomSizetablet
-																	: tab.name === "phone"
-																	? mrCustomSizephone
-																	: mrCustomSize
 															}
 															type="text"
 															className="mr-backend-custominput mr-backend-customptop"
@@ -2567,7 +1940,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 															).replace("__", "_")}
 															onChange={(val) =>
 																setAttributes({
-																	mrCustomSize:
+																	mrSize:
 																		val !== undefined &&
 																		!val.includes("mr-hover") &&
 																		!val.includes("mr-desktop") &&
@@ -2575,32 +1948,32 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																		!val.includes("mr-tablet") &&
 																		!val.includes("mr-phone")
 																			? val
-																			: mrCustomSize,
-																	mrCustomSizehover:
+																			: mrSize,
+																	mrSizehover:
 																		val !== undefined &&
 																		val.includes("mr-hover")
 																			? val
-																			: mrCustomSizehover,
-																	mrCustomSizedesktop:
+																			: mrSizehover,
+																	mrSizedesktop:
 																		val !== undefined &&
 																		val.includes("mr-desktop")
 																			? val
-																			: mrCustomSizedesktop,
-																	mrCustomSizelaptop:
+																			: mrSizedesktop,
+																	mrSizelaptop:
 																		val !== undefined &&
 																		val.includes("mr-laptop")
 																			? val
-																			: mrCustomSizelaptop,
-																	mrCustomSizetablet:
+																			: mrSizelaptop,
+																	mrSizetablet:
 																		val !== undefined &&
 																		val.includes("mr-tablet")
 																			? val
-																			: mrCustomSizetablet,
-																	mrCustomSizephone:
+																			: mrSizetablet,
+																	mrSizephone:
 																		val !== undefined &&
 																		val.includes("mr-phone")
 																			? val
-																			: mrCustomSizephone,
+																			: mrSizephone,
 																})
 															}
 														/>
@@ -2608,7 +1981,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 														""
 													)}
 													<SelectControl
-														label={__("Item order", "mr-utils")}
+														label={__("Item Order", "mr-utils")}
 														value={
 															tab.name === "desktop"
 																? mrOrderdesktop
@@ -2949,47 +2322,10 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 														initialOpen={false}
 														className="mr-backend-option mr-backend-option_utils_appearance"
 													>
-														<SelectControl
-															label={__("Background Color", "mr-utils")}
-															className="mr-backend-bgcolor mr-backend-hascustomoption"
-															value={mrBackgroundColor}
-															options={[
-																{
-																	value: "mr-",
-																	label: "Default",
-																},
-																{
-																	value: " mr-backgroundcolor",
-																	label: "Background color class",
-																},
-																{
-																	value: " mr-custombackgroundcolor",
-																	label: "Custom background color class",
-																},
-															]}
-															onChange={(val) =>
-																setAttributes({
-																	mrBackgroundColor:
-																		val !== undefined ? val : mrBackgroundColor,
-																})
-															}
-															help={
-																!mrBackgroundColor.includes(
-																	"-custombackgroundcolor"
-																) &&
-																mrBackgroundColor.includes("-backgroundcolor")
-																	? "var(--background-color) = " +
-																	  getComputedStyle(
-																			document.documentElement
-																	  ).getPropertyValue("--background-color")
-																	: ""
-															}
-														/>
-														{tab.name === "" &&
-														mrBackgroundColor.includes("custom") ? (
+														{tab.name === "" ? (
 															<TextControl
-																label={__("", "mr-utils")}
-																value={mrCustomBackgroundColor}
+																label={__("Background Color", "mr-utils")}
+																value={mrBackgroundColor}
 																type="text"
 																className="mr-backend-custominput mr-backend-custombackgroundcolor"
 																placeHolder={"mr-backgroundcolor"}
@@ -2999,53 +2335,21 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																)}
 																onChange={(val) =>
 																	setAttributes({
-																		mrCustomBackgroundColor:
+																		mrBackgroundColor:
 																			val !== undefined
 																				? val
-																				: mrCustomBackgroundColor,
+																				: mrBackgroundColor,
 																	})
 																}
 															/>
 														) : (
 															""
 														)}
-														<SelectControl
-															label={__("Color", "mr-utils")}
-															className="mr-backend-color mr-backend-hascustomoption"
-															value={mrColor}
-															options={[
-																{
-																	value: "mr-",
-																	label: "Default",
-																},
-																{
-																	value: " mr-textcolor",
-																	label: "Text color class",
-																},
-																{
-																	value: " mr-customcolor",
-																	label: "Custom color class",
-																},
-															]}
-															onChange={(val) =>
-																setAttributes({
-																	mrColor: val !== undefined ? val : mrColor,
-																})
-															}
-															help={
-																!mrColor.includes("-customcolor") &&
-																mrColor.includes("-textcolor")
-																	? "var(--text-color) = " +
-																	  getComputedStyle(
-																			document.documentElement
-																	  ).getPropertyValue("--text-color")
-																	: ""
-															}
-														/>
-														{tab.name === "" && mrColor.includes("custom") ? (
+
+														{tab.name === "" ? (
 															<TextControl
-																label={__("", "mr-utils")}
-																value={mrCustomColor}
+																label={__("Color", "mr-utils")}
+																value={mrColor}
 																type="text"
 																className="mr-backend-custominput mr-backend-customcolor"
 																placeHolder={"mr-textcolor"}
@@ -3055,8 +2359,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																)}
 																onChange={(val) =>
 																	setAttributes({
-																		mrCustomColor:
-																			val !== undefined ? val : mrCustomColor,
+																		mrColor: val !== undefined ? val : mrColor,
 																	})
 																}
 															/>
@@ -3107,118 +2410,41 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																tab2.name === "gaps" ? (
 																	<>
 																		<p></p>
-																		<SelectControl
-																			label={__("Row Gap", "mr-utils")}
-																			className="mr-backend-rowgap mr-backend-rowgap mr-backend-hascustomoption"
-																			value={
-																				tab.name === "hover"
-																					? mrRowGaphover
-																					: tab.name === "desktop"
-																					? mrRowGapdesktop
-																					: tab.name === "laptop"
-																					? mrRowGaplaptop
-																					: tab.name === "tablet"
-																					? mrRowGaptablet
-																					: tab.name === "phone"
-																					? mrRowGapphone
-																					: mrRowGap
-																			}
-																			options={[
-																				{
-																					value: "mr-" + tab.name,
-																					label: "Default row gap",
-																				},
-																				{
-																					value: (
-																						" mr-" +
-																						tab.name +
-																						"-norowgap"
-																					).replace("--", "-"),
-																					label: "Remove row gap",
-																				},
-																				{
-																					value: (
-																						" mr-" +
-																						tab.name +
-																						"-rowgap"
-																					).replace("--", "-"),
-																					label: "Use " + tab.name + " class",
-																				},
-																			]}
-																			onChange={(val) =>
-																				setAttributes({
-																					mrRowGap:
-																						val !== undefined &&
-																						!val.includes("mr-hover") &&
-																						!val.includes("mr-desktop") &&
-																						!val.includes("mr-laptop") &&
-																						!val.includes("mr-tablet") &&
-																						!val.includes("mr-phone")
-																							? val
-																							: mrRowGap,
-																					mrRowGaphover:
-																						val !== undefined &&
-																						val.includes("mr-hover")
-																							? val
-																							: mrRowGaphover,
-																					mrRowGapdesktop:
-																						val !== undefined &&
-																						val.includes("mr-desktop")
-																							? val
-																							: mrRowGapdesktop,
-																					mrRowGaplaptop:
-																						val !== undefined &&
-																						val.includes("mr-laptop")
-																							? val
-																							: mrRowGaplaptop,
-																					mrRowGaptablet:
-																						val !== undefined &&
-																						val.includes("mr-tablet")
-																							? val
-																							: mrRowGaptablet,
-																					mrRowGapphone:
-																						val !== undefined &&
-																						val.includes("mr-phone")
-																							? val
-																							: mrRowGapphone,
-																				})
-																			}
-																		/>
 
-																		{(tab.name === "" &&
-																			mrRowGap.includes("-rowgap")) ||
-																		(tab.name === "hover" &&
-																			mrRowGaphover.includes("-rowgap")) ||
-																		(tab.name === "desktop" &&
-																			mrRowGapdesktop.includes("-rowgap")) ||
-																		(tab.name === "laptop" &&
-																			mrRowGaplaptop.includes("-rowgap")) ||
-																		(tab.name === "tablet" &&
-																			mrRowGaptablet.includes("-rowgap")) ||
-																		(tab.name === "phone" &&
-																			mrRowGapphone.includes("-rowgap")) ? (
+																		{tab.name === "" ||
+																		tab.name === "hover" ||
+																		tab.name === "desktop" ||
+																		tab.name === "laptop" ||
+																		tab.name === "tablet" ||
+																		tab.name === "phone" ? (
 																			<TextControl
-																				label={__("", "mr-utils")}
+																				label={__("Row Gap", "mr-utils")}
 																				value={
 																					tab.name === "hover"
-																						? mrCustomRowGaphover
+																						? mrRowGaphover
 																						: tab.name === "desktop"
-																						? mrCustomRowGapdesktop
+																						? mrRowGapdesktop
 																						: tab.name === "laptop"
-																						? mrCustomRowGaplaptop
+																						? mrRowGaplaptop
 																						: tab.name === "tablet"
-																						? mrCustomRowGaptablet
+																						? mrRowGaptablet
 																						: tab.name === "phone"
-																						? mrCustomRowGapphone
-																						: mrCustomRowGap
+																						? mrRowGapphone
+																						: mrRowGap
 																				}
 																				type="text"
-																				className="mr-backend-custominput mr-backend-customrowgap mr-backend-customptop"
-																				placeHolder={(
-																					"mr-" +
-																					tab.name +
-																					"-rowgap"
-																				).replace("--", "-")}
+																				placeHolder={
+																					(
+																						"mr-" +
+																						tab.name +
+																						"-rowgap"
+																					).replace("--", "-") +
+																					(
+																						" | mr-" +
+																						tab.name +
+																						"-norowgap"
+																					).replace("--", "-")
+																				}
 																				list={(
 																					"mrDevUtilsClasses_" +
 																					tab.name +
@@ -3226,7 +2452,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																				).replace("__", "_")}
 																				onChange={(val) =>
 																					setAttributes({
-																						mrCustomRowGap:
+																						mrRowGap:
 																							val !== undefined &&
 																							!val.includes("mr-hover") &&
 																							!val.includes("mr-desktop") &&
@@ -3234,32 +2460,32 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																							!val.includes("mr-tablet") &&
 																							!val.includes("mr-phone")
 																								? val
-																								: mrCustomRowGap,
-																						mrCustomRowGaphover:
+																								: mrRowGap,
+																						mrRowGaphover:
 																							val !== undefined &&
 																							val.includes("mr-hover")
 																								? val
-																								: mrCustomRowGaphover,
-																						mrCustomRowGapdesktop:
+																								: mrRowGaphover,
+																						mrRowGapdesktop:
 																							val !== undefined &&
 																							val.includes("mr-desktop")
 																								? val
-																								: mrCustomRowGapdesktop,
-																						mrCustomRowGaplaptop:
+																								: mrRowGapdesktop,
+																						mrRowGaplaptop:
 																							val !== undefined &&
 																							val.includes("mr-laptop")
 																								? val
-																								: mrCustomRowGaplaptop,
-																						mrCustomRowGaptablet:
+																								: mrRowGaplaptop,
+																						mrRowGaptablet:
 																							val !== undefined &&
 																							val.includes("mr-tablet")
 																								? val
-																								: mrCustomRowGaptablet,
-																						mrCustomRowGapphone:
+																								: mrRowGaptablet,
+																						mrRowGapphone:
 																							val !== undefined &&
 																							val.includes("mr-phone")
 																								? val
-																								: mrCustomRowGapphone,
+																								: mrRowGapphone,
 																					})
 																				}
 																			/>
@@ -3267,128 +2493,40 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																			""
 																		)}
 
-																		<SelectControl
-																			label={__("Column Gap", "mr-utils")}
-																			className="mr-backend-columngap mr-backend-columngap mr-backend-hascustomoption"
-																			value={
-																				tab.name === "hover"
-																					? mrColumnGaphover
-																					: tab.name === "desktop"
-																					? mrColumnGapdesktop
-																					: tab.name === "laptop"
-																					? mrColumnGaplaptop
-																					: tab.name === "tablet"
-																					? mrColumnGaptablet
-																					: tab.name === "phone"
-																					? mrColumnGapphone
-																					: mrColumnGap
-																			}
-																			options={[
-																				{
-																					value: "mr-" + tab.name,
-																					label: "Default column gap",
-																				},
-																				{
-																					value: (
-																						" mr-" +
-																						tab.name +
-																						"-nocolumngap"
-																					).replace("--", "-"),
-																					label: "Remove column gap",
-																				},
-																				{
-																					value: (
-																						" mr-" +
-																						tab.name +
-																						"-columngap"
-																					).replace("--", "-"),
-																					label: "Use " + tab.name + " class",
-																				},
-																			]}
-																			onChange={(val) =>
-																				setAttributes({
-																					mrColumnGap:
-																						val !== undefined &&
-																						!val.includes("mr-hover") &&
-																						!val.includes("mr-desktop") &&
-																						!val.includes("mr-laptop") &&
-																						!val.includes("mr-tablet") &&
-																						!val.includes("mr-phone")
-																							? val
-																							: mrColumnGap,
-																					mrColumnGaphover:
-																						val !== undefined &&
-																						val.includes("mr-hover")
-																							? val
-																							: mrColumnGaphover,
-																					mrColumnGapdesktop:
-																						val !== undefined &&
-																						val.includes("mr-desktop")
-																							? val
-																							: mrColumnGapdesktop,
-																					mrColumnGaplaptop:
-																						val !== undefined &&
-																						val.includes("mr-laptop")
-																							? val
-																							: mrColumnGaplaptop,
-																					mrColumnGaptablet:
-																						val !== undefined &&
-																						val.includes("mr-tablet")
-																							? val
-																							: mrColumnGaptablet,
-																					mrColumnGapphone:
-																						val !== undefined &&
-																						val.includes("mr-phone")
-																							? val
-																							: mrColumnGapphone,
-																				})
-																			}
-																		/>
-
-																		{(tab.name === "" &&
-																			mrColumnGap.includes("-columngap")) ||
-																		(tab.name === "hover" &&
-																			mrColumnGaphover.includes(
-																				"-columngap"
-																			)) ||
-																		(tab.name === "desktop" &&
-																			mrColumnGapdesktop.includes(
-																				"-columngap"
-																			)) ||
-																		(tab.name === "laptop" &&
-																			mrColumnGaplaptop.includes(
-																				"-columngap"
-																			)) ||
-																		(tab.name === "tablet" &&
-																			mrColumnGaptablet.includes(
-																				"-columngap"
-																			)) ||
-																		(tab.name === "phone" &&
-																			mrColumnGapphone.includes(
-																				"-columngap"
-																			)) ? (
+																		{tab.name === "" ||
+																		tab.name === "hover" ||
+																		tab.name === "desktop" ||
+																		tab.name === "laptop" ||
+																		tab.name === "tablet" ||
+																		tab.name === "phone" ? (
 																			<TextControl
-																				label={__("", "mr-utils")}
+																				label={__("Column Gap", "mr-utils")}
 																				value={
 																					tab.name === "hover"
-																						? mrCustomColumnGaphover
+																						? mrColumnGaphover
 																						: tab.name === "desktop"
-																						? mrCustomColumnGapdesktop
+																						? mrColumnGapdesktop
 																						: tab.name === "laptop"
-																						? mrCustomColumnGaplaptop
+																						? mrColumnGaplaptop
 																						: tab.name === "tablet"
-																						? mrCustomColumnGaptablet
+																						? mrColumnGaptablet
 																						: tab.name === "phone"
-																						? mrCustomColumnGapphone
-																						: mrCustomColumnGap
+																						? mrColumnGapphone
+																						: mrColumnGap
 																				}
 																				type="text"
-																				className="mr-backend-custominput mr-backend-customcolumngap mr-backend-customptop"
-																				placeHolder={(
-																					"mr-" +
-																					tab.name +
-																					"-columngap"
-																				).replace("--", "-")}
+																				placeHolder={
+																					(
+																						"mr-" +
+																						tab.name +
+																						"-columngap"
+																					).replace("--", "-") +
+																					(
+																						" | mr-" +
+																						tab.name +
+																						"-nocolumngap"
+																					).replace("--", "-")
+																				}
 																				list={(
 																					"mrDevUtilsClasses_" +
 																					tab.name +
@@ -3396,7 +2534,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																				).replace("__", "_")}
 																				onChange={(val) =>
 																					setAttributes({
-																						mrCustomColumnGap:
+																						mrColumnGap:
 																							val !== undefined &&
 																							!val.includes("mr-hover") &&
 																							!val.includes("mr-desktop") &&
@@ -3404,32 +2542,32 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																							!val.includes("mr-tablet") &&
 																							!val.includes("mr-phone")
 																								? val
-																								: mrCustomColumnGap,
-																						mrCustomColumnGaphover:
+																								: mrColumnGap,
+																						mrColumnGaphover:
 																							val !== undefined &&
 																							val.includes("mr-hover")
 																								? val
-																								: mrCustomColumnGaphover,
-																						mrCustomColumnGapdesktop:
+																								: mrColumnGaphover,
+																						mrColumnGapdesktop:
 																							val !== undefined &&
 																							val.includes("mr-desktop")
 																								? val
-																								: mrCustomColumnGapdesktop,
-																						mrCustomColumnGaplaptop:
+																								: mrColumnGapdesktop,
+																						mrColumnGaplaptop:
 																							val !== undefined &&
 																							val.includes("mr-laptop")
 																								? val
-																								: mrCustomColumnGaplaptop,
-																						mrCustomColumnGaptablet:
+																								: mrColumnGaplaptop,
+																						mrColumnGaptablet:
 																							val !== undefined &&
 																							val.includes("mr-tablet")
 																								? val
-																								: mrCustomColumnGaptablet,
-																						mrCustomColumnGapphone:
+																								: mrColumnGaptablet,
+																						mrColumnGapphone:
 																							val !== undefined &&
 																							val.includes("mr-phone")
 																								? val
-																								: mrCustomColumnGapphone,
+																								: mrColumnGapphone,
 																					})
 																				}
 																			/>
@@ -3440,128 +2578,40 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																) : tab2.name === "paddings" ? (
 																	<>
 																		<p></p>
-																		<SelectControl
-																			label={__("Padding Top", "mr-utils")}
-																			className="mr-backend-padding mr-backend-paddingtop mr-backend-hascustomoption"
-																			value={
-																				tab.name === "hover"
-																					? mrPaddingTophover
-																					: tab.name === "desktop"
-																					? mrPaddingTopdesktop
-																					: tab.name === "laptop"
-																					? mrPaddingToplaptop
-																					: tab.name === "tablet"
-																					? mrPaddingToptablet
-																					: tab.name === "phone"
-																					? mrPaddingTopphone
-																					: mrPaddingTop
-																			}
-																			options={[
-																				{
-																					value: "mr-" + tab.name,
-																					label: "Default padding",
-																				},
-																				{
-																					value: (
-																						" mr-" +
-																						tab.name +
-																						"-nopaddingtop"
-																					).replace("--", "-"),
-																					label: "Remove padding",
-																				},
-																				{
-																					value: (
-																						" mr-" +
-																						tab.name +
-																						"-paddingtop"
-																					).replace("--", "-"),
-																					label: "Use " + tab.name + " class",
-																				},
-																			]}
-																			onChange={(val) =>
-																				setAttributes({
-																					mrPaddingTop:
-																						val !== undefined &&
-																						!val.includes("mr-hover") &&
-																						!val.includes("mr-desktop") &&
-																						!val.includes("mr-laptop") &&
-																						!val.includes("mr-tablet") &&
-																						!val.includes("mr-phone")
-																							? val
-																							: mrPaddingTop,
-																					mrPaddingTophover:
-																						val !== undefined &&
-																						val.includes("mr-hover")
-																							? val
-																							: mrPaddingTophover,
-																					mrPaddingTopdesktop:
-																						val !== undefined &&
-																						val.includes("mr-desktop")
-																							? val
-																							: mrPaddingTopdesktop,
-																					mrPaddingToplaptop:
-																						val !== undefined &&
-																						val.includes("mr-laptop")
-																							? val
-																							: mrPaddingToplaptop,
-																					mrPaddingToptablet:
-																						val !== undefined &&
-																						val.includes("mr-tablet")
-																							? val
-																							: mrPaddingToptablet,
-																					mrPaddingTopphone:
-																						val !== undefined &&
-																						val.includes("mr-phone")
-																							? val
-																							: mrPaddingTopphone,
-																				})
-																			}
-																		/>
-
-																		{(tab.name === "" &&
-																			mrPaddingTop.includes("-paddingtop")) ||
-																		(tab.name === "hover" &&
-																			mrPaddingTophover.includes(
-																				"-paddingtop"
-																			)) ||
-																		(tab.name === "desktop" &&
-																			mrPaddingTopdesktop.includes(
-																				"-paddingtop"
-																			)) ||
-																		(tab.name === "laptop" &&
-																			mrPaddingToplaptop.includes(
-																				"-paddingtop"
-																			)) ||
-																		(tab.name === "tablet" &&
-																			mrPaddingToptablet.includes(
-																				"-paddingtop"
-																			)) ||
-																		(tab.name === "phone" &&
-																			mrPaddingTopphone.includes(
-																				"-paddingtop"
-																			)) ? (
+																		{tab.name === "" ||
+																		tab.name === "hover" ||
+																		tab.name === "desktop" ||
+																		tab.name === "laptop" ||
+																		tab.name === "tablet" ||
+																		tab.name === "phone" ? (
 																			<TextControl
-																				label={__("", "mr-utils")}
+																				label={__("Padding Top", "mr-utils")}
 																				value={
 																					tab.name === "hover"
-																						? mrCustomPaddingTophover
+																						? mrPaddingTophover
 																						: tab.name === "desktop"
-																						? mrCustomPaddingTopdesktop
+																						? mrPaddingTopdesktop
 																						: tab.name === "laptop"
-																						? mrCustomPaddingToplaptop
+																						? mrPaddingToplaptop
 																						: tab.name === "tablet"
-																						? mrCustomPaddingToptablet
+																						? mrPaddingToptablet
 																						: tab.name === "phone"
-																						? mrCustomPaddingTopphone
-																						: mrCustomPaddingTop
+																						? mrPaddingTopphone
+																						: mrPaddingTop
 																				}
 																				type="text"
-																				className="mr-backend-custominput mr-backend-custompadding mr-backend-customptop"
-																				placeHolder={(
-																					"mr-" +
-																					tab.name +
-																					"-paddingtop"
-																				).replace("--", "-")}
+																				placeHolder={
+																					(
+																						"mr-" +
+																						tab.name +
+																						"-paddingtop"
+																					).replace("--", "-") +
+																					(
+																						" | mr-" +
+																						tab.name +
+																						"-nopaddingtop"
+																					).replace("--", "-")
+																				}
 																				list={(
 																					"mrDevUtilsClasses_" +
 																					tab.name +
@@ -3569,7 +2619,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																				).replace("__", "_")}
 																				onChange={(val) =>
 																					setAttributes({
-																						mrCustomPaddingTop:
+																						mrPaddingTop:
 																							val !== undefined &&
 																							!val.includes("mr-hover") &&
 																							!val.includes("mr-desktop") &&
@@ -3577,32 +2627,32 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																							!val.includes("mr-tablet") &&
 																							!val.includes("mr-phone")
 																								? val
-																								: mrCustomPaddingTop,
-																						mrCustomPaddingTophover:
+																								: mrPaddingTop,
+																						mrPaddingTophover:
 																							val !== undefined &&
 																							val.includes("mr-hover")
 																								? val
-																								: mrCustomPaddingTophover,
-																						mrCustomPaddingTopdesktop:
+																								: mrPaddingTophover,
+																						mrPaddingTopdesktop:
 																							val !== undefined &&
 																							val.includes("mr-desktop")
 																								? val
-																								: mrCustomPaddingTopdesktop,
-																						mrCustomPaddingToplaptop:
+																								: mrPaddingTopdesktop,
+																						mrPaddingToplaptop:
 																							val !== undefined &&
 																							val.includes("mr-laptop")
 																								? val
-																								: mrCustomPaddingToplaptop,
-																						mrCustomPaddingToptablet:
+																								: mrPaddingToplaptop,
+																						mrPaddingToptablet:
 																							val !== undefined &&
 																							val.includes("mr-tablet")
 																								? val
-																								: mrCustomPaddingToptablet,
-																						mrCustomPaddingTopphone:
+																								: mrPaddingToptablet,
+																						mrPaddingTopphone:
 																							val !== undefined &&
 																							val.includes("mr-phone")
 																								? val
-																								: mrCustomPaddingTopphone,
+																								: mrPaddingTopphone,
 																					})
 																				}
 																			/>
@@ -3610,130 +2660,40 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																			""
 																		)}
 
-																		<SelectControl
-																			label={__("Padding Right", "mr-utils")}
-																			className="mr-backend-padding mr-backend-paddingright mr-backend-hascustomoption"
-																			value={
-																				tab.name === "hover"
-																					? mrPaddingRighthover
-																					: tab.name === "desktop"
-																					? mrPaddingRightdesktop
-																					: tab.name === "laptop"
-																					? mrPaddingRightlaptop
-																					: tab.name === "tablet"
-																					? mrPaddingRighttablet
-																					: tab.name === "phone"
-																					? mrPaddingRightphone
-																					: mrPaddingRight
-																			}
-																			options={[
-																				{
-																					value: "mr-" + tab.name,
-																					label: "Default padding",
-																				},
-																				{
-																					value: (
-																						" mr-" +
-																						tab.name +
-																						"-nopaddingright"
-																					).replace("--", "-"),
-																					label: "Remove padding",
-																				},
-																				{
-																					value: (
-																						" mr-" +
-																						tab.name +
-																						"-paddingright"
-																					).replace("--", "-"),
-																					label: "Use " + tab.name + " class",
-																				},
-																			]}
-																			onChange={(val) =>
-																				setAttributes({
-																					mrPaddingRight:
-																						val !== undefined &&
-																						!val.includes("mr-hover") &&
-																						!val.includes("mr-desktop") &&
-																						!val.includes("mr-laptop") &&
-																						!val.includes("mr-tablet") &&
-																						!val.includes("mr-phone")
-																							? val
-																							: mrPaddingRight,
-																					mrPaddingRighthover:
-																						val !== undefined &&
-																						val.includes("mr-hover")
-																							? val
-																							: mrPaddingRighthover,
-																					mrPaddingRightdesktop:
-																						val !== undefined &&
-																						val.includes("mr-desktop")
-																							? val
-																							: mrPaddingRightdesktop,
-																					mrPaddingRightlaptop:
-																						val !== undefined &&
-																						val.includes("mr-laptop")
-																							? val
-																							: mrPaddingRightlaptop,
-																					mrPaddingRighttablet:
-																						val !== undefined &&
-																						val.includes("mr-tablet")
-																							? val
-																							: mrPaddingRighttablet,
-																					mrPaddingRightphone:
-																						val !== undefined &&
-																						val.includes("mr-phone")
-																							? val
-																							: mrPaddingRightphone,
-																				})
-																			}
-																		/>
-
-																		{(tab.name === "" &&
-																			mrPaddingRight.includes(
-																				"-paddingright"
-																			)) ||
-																		(tab.name === "hover" &&
-																			mrPaddingRighthover.includes(
-																				"-paddingright"
-																			)) ||
-																		(tab.name === "desktop" &&
-																			mrPaddingRightdesktop.includes(
-																				"-paddingright"
-																			)) ||
-																		(tab.name === "laptop" &&
-																			mrPaddingRightlaptop.includes(
-																				"-paddingright"
-																			)) ||
-																		(tab.name === "tablet" &&
-																			mrPaddingRighttablet.includes(
-																				"-paddingright"
-																			)) ||
-																		(tab.name === "phone" &&
-																			mrPaddingRightphone.includes(
-																				"-paddingright"
-																			)) ? (
+																		{tab.name === "" ||
+																		tab.name === "hover" ||
+																		tab.name === "desktop" ||
+																		tab.name === "laptop" ||
+																		tab.name === "tablet" ||
+																		tab.name === "phone" ? (
 																			<TextControl
-																				label={__("", "mr-utils")}
+																				label={__("Padding right", "mr-utils")}
 																				value={
 																					tab.name === "hover"
-																						? mrCustomPaddingRighthover
+																						? mrPaddingRighthover
 																						: tab.name === "desktop"
-																						? mrCustomPaddingRightdesktop
+																						? mrPaddingRightdesktop
 																						: tab.name === "laptop"
-																						? mrCustomPaddingRightlaptop
+																						? mrPaddingRightlaptop
 																						: tab.name === "tablet"
-																						? mrCustomPaddingRighttablet
+																						? mrPaddingRighttablet
 																						: tab.name === "phone"
-																						? mrCustomPaddingRightphone
-																						: mrCustomPaddingRight
+																						? mrPaddingRightphone
+																						: mrPaddingRight
 																				}
 																				type="text"
-																				className="mr-backend-custominput mr-backend-custompadding mr-backend-custompright"
-																				placeHolder={(
-																					"mr-" +
-																					tab.name +
-																					"-paddingright"
-																				).replace("--", "-")}
+																				placeHolder={
+																					(
+																						"mr-" +
+																						tab.name +
+																						"-paddingright"
+																					).replace("--", "-") +
+																					(
+																						" | mr-" +
+																						tab.name +
+																						"-nopaddingright"
+																					).replace("--", "-")
+																				}
 																				list={(
 																					"mrDevUtilsClasses_" +
 																					tab.name +
@@ -3741,7 +2701,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																				).replace("__", "_")}
 																				onChange={(val) =>
 																					setAttributes({
-																						mrCustomPaddingRight:
+																						mrPaddingRight:
 																							val !== undefined &&
 																							!val.includes("mr-hover") &&
 																							!val.includes("mr-desktop") &&
@@ -3749,32 +2709,32 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																							!val.includes("mr-tablet") &&
 																							!val.includes("mr-phone")
 																								? val
-																								: mrCustomPaddingRight,
-																						mrCustomPaddingRighthover:
+																								: mrPaddingRight,
+																						mrPaddingRighthover:
 																							val !== undefined &&
 																							val.includes("mr-hover")
 																								? val
-																								: mrCustomPaddingRighthover,
-																						mrCustomPaddingRightdesktop:
+																								: mrPaddingRighthover,
+																						mrPaddingRightdesktop:
 																							val !== undefined &&
 																							val.includes("mr-desktop")
 																								? val
-																								: mrCustomPaddingRightdesktop,
-																						mrCustomPaddingRightlaptop:
+																								: mrPaddingRightdesktop,
+																						mrPaddingRightlaptop:
 																							val !== undefined &&
 																							val.includes("mr-laptop")
 																								? val
-																								: mrCustomPaddingRightlaptop,
-																						mrCustomPaddingRighttablet:
+																								: mrPaddingRightlaptop,
+																						mrPaddingRighttablet:
 																							val !== undefined &&
 																							val.includes("mr-tablet")
 																								? val
-																								: mrCustomPaddingRighttablet,
-																						mrCustomPaddingRightphone:
+																								: mrPaddingRighttablet,
+																						mrPaddingRightphone:
 																							val !== undefined &&
 																							val.includes("mr-phone")
 																								? val
-																								: mrCustomPaddingRightphone,
+																								: mrPaddingRightphone,
 																					})
 																				}
 																			/>
@@ -3782,130 +2742,40 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																			""
 																		)}
 
-																		<SelectControl
-																			label={__("Padding Bottom", "mr-utils")}
-																			className="mr-backend-padding mr-backend-paddingbottom mr-backend-hascustomoption"
-																			value={
-																				tab.name === "hover"
-																					? mrPaddingBottomhover
-																					: tab.name === "desktop"
-																					? mrPaddingBottomdesktop
-																					: tab.name === "laptop"
-																					? mrPaddingBottomlaptop
-																					: tab.name === "tablet"
-																					? mrPaddingBottomtablet
-																					: tab.name === "phone"
-																					? mrPaddingBottomphone
-																					: mrPaddingBottom
-																			}
-																			options={[
-																				{
-																					value: "mr-" + tab.name,
-																					label: "Default padding",
-																				},
-																				{
-																					value: (
-																						" mr-" +
-																						tab.name +
-																						"-nopaddingbottom"
-																					).replace("--", "-"),
-																					label: "Remove padding",
-																				},
-																				{
-																					value: (
-																						" mr-" +
-																						tab.name +
-																						"-paddingbottom"
-																					).replace("--", "-"),
-																					label: "Use " + tab.name + " class",
-																				},
-																			]}
-																			onChange={(val) =>
-																				setAttributes({
-																					mrPaddingBottom:
-																						val !== undefined &&
-																						!val.includes("mr-hover") &&
-																						!val.includes("mr-desktop") &&
-																						!val.includes("mr-laptop") &&
-																						!val.includes("mr-tablet") &&
-																						!val.includes("mr-phone")
-																							? val
-																							: mrPaddingBottom,
-																					mrPaddingBottomhover:
-																						val !== undefined &&
-																						val.includes("mr-hover")
-																							? val
-																							: mrPaddingBottomhover,
-																					mrPaddingBottomdesktop:
-																						val !== undefined &&
-																						val.includes("mr-desktop")
-																							? val
-																							: mrPaddingBottomdesktop,
-																					mrPaddingBottomlaptop:
-																						val !== undefined &&
-																						val.includes("mr-laptop")
-																							? val
-																							: mrPaddingBottomlaptop,
-																					mrPaddingBottomtablet:
-																						val !== undefined &&
-																						val.includes("mr-tablet")
-																							? val
-																							: mrPaddingBottomtablet,
-																					mrPaddingBottomphone:
-																						val !== undefined &&
-																						val.includes("mr-phone")
-																							? val
-																							: mrPaddingBottomphone,
-																				})
-																			}
-																		/>
-
-																		{(tab.name === "" &&
-																			mrPaddingBottom.includes(
-																				"-paddingbottom"
-																			)) ||
-																		(tab.name === "hover" &&
-																			mrPaddingBottomhover.includes(
-																				"-paddingbottom"
-																			)) ||
-																		(tab.name === "desktop" &&
-																			mrPaddingBottomdesktop.includes(
-																				"-paddingbottom"
-																			)) ||
-																		(tab.name === "laptop" &&
-																			mrPaddingBottomlaptop.includes(
-																				"-paddingbottom"
-																			)) ||
-																		(tab.name === "tablet" &&
-																			mrPaddingBottomtablet.includes(
-																				"-paddingbottom"
-																			)) ||
-																		(tab.name === "phone" &&
-																			mrPaddingBottomphone.includes(
-																				"-paddingbottom"
-																			)) ? (
+																		{tab.name === "" ||
+																		tab.name === "hover" ||
+																		tab.name === "desktop" ||
+																		tab.name === "laptop" ||
+																		tab.name === "tablet" ||
+																		tab.name === "phone" ? (
 																			<TextControl
-																				label={__("", "mr-utils")}
+																				label={__("Padding Bottom", "mr-utils")}
 																				value={
 																					tab.name === "hover"
-																						? mrCustomPaddingBottomhover
+																						? mrPaddingBottomhover
 																						: tab.name === "desktop"
-																						? mrCustomPaddingBottomdesktop
+																						? mrPaddingBottomdesktop
 																						: tab.name === "laptop"
-																						? mrCustomPaddingBottomlaptop
+																						? mrPaddingBottomlaptop
 																						: tab.name === "tablet"
-																						? mrCustomPaddingBottomtablet
+																						? mrPaddingBottomtablet
 																						: tab.name === "phone"
-																						? mrCustomPaddingBottomphone
-																						: mrCustomPaddingBottom
+																						? mrPaddingBottomphone
+																						: mrPaddingBottom
 																				}
 																				type="text"
-																				className="mr-backend-custominput mr-backend-custompadding mr-backend-custompbottom"
-																				placeHolder={(
-																					"mr-" +
-																					tab.name +
-																					"-paddingbottom"
-																				).replace("--", "-")}
+																				placeHolder={
+																					(
+																						"mr-" +
+																						tab.name +
+																						"-paddingbottom"
+																					).replace("--", "-") +
+																					(
+																						" | mr-" +
+																						tab.name +
+																						"-nopaddingbottom"
+																					).replace("--", "-")
+																				}
 																				list={(
 																					"mrDevUtilsClasses_" +
 																					tab.name +
@@ -3913,7 +2783,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																				).replace("__", "_")}
 																				onChange={(val) =>
 																					setAttributes({
-																						mrCustomPaddingBottom:
+																						mrPaddingBottom:
 																							val !== undefined &&
 																							!val.includes("mr-hover") &&
 																							!val.includes("mr-desktop") &&
@@ -3921,32 +2791,32 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																							!val.includes("mr-tablet") &&
 																							!val.includes("mr-phone")
 																								? val
-																								: mrCustomPaddingBottom,
-																						mrCustomPaddingBottomhover:
+																								: mrPaddingBottom,
+																						mrPaddingBottomhover:
 																							val !== undefined &&
 																							val.includes("mr-hover")
 																								? val
-																								: mrCustomPaddingBottomhover,
-																						mrCustomPaddingBottomdesktop:
+																								: mrPaddingBottomhover,
+																						mrPaddingBottomdesktop:
 																							val !== undefined &&
 																							val.includes("mr-desktop")
 																								? val
-																								: mrCustomPaddingBottomdesktop,
-																						mrCustomPaddingBottomlaptop:
+																								: mrPaddingBottomdesktop,
+																						mrPaddingBottomlaptop:
 																							val !== undefined &&
 																							val.includes("mr-laptop")
 																								? val
-																								: mrCustomPaddingBottomlaptop,
-																						mrCustomPaddingBottomtablet:
+																								: mrPaddingBottomlaptop,
+																						mrPaddingBottomtablet:
 																							val !== undefined &&
 																							val.includes("mr-tablet")
 																								? val
-																								: mrCustomPaddingBottomtablet,
-																						mrCustomPaddingBottomphone:
+																								: mrPaddingBottomtablet,
+																						mrPaddingBottomphone:
 																							val !== undefined &&
 																							val.includes("mr-phone")
 																								? val
-																								: mrCustomPaddingBottomphone,
+																								: mrPaddingBottomphone,
 																					})
 																				}
 																			/>
@@ -3954,128 +2824,40 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																			""
 																		)}
 
-																		<SelectControl
-																			label={__("Padding Left", "mr-utils")}
-																			className="mr-backend-padding mr-backend-paddingleft mr-backend-hascustomoption"
-																			value={
-																				tab.name === "hover"
-																					? mrPaddingLefthover
-																					: tab.name === "desktop"
-																					? mrPaddingLeftdesktop
-																					: tab.name === "laptop"
-																					? mrPaddingLeftlaptop
-																					: tab.name === "tablet"
-																					? mrPaddingLefttablet
-																					: tab.name === "phone"
-																					? mrPaddingLeftphone
-																					: mrPaddingLeft
-																			}
-																			options={[
-																				{
-																					value: "mr-" + tab.name,
-																					label: "Default padding",
-																				},
-																				{
-																					value: (
-																						" mr-" +
-																						tab.name +
-																						"-nopaddingleft"
-																					).replace("--", "-"),
-																					label: "Remove padding",
-																				},
-																				{
-																					value: (
-																						" mr-" +
-																						tab.name +
-																						"-paddingleft"
-																					).replace("--", "-"),
-																					label: "Use " + tab.name + " class",
-																				},
-																			]}
-																			onChange={(val) =>
-																				setAttributes({
-																					mrPaddingLeft:
-																						val !== undefined &&
-																						!val.includes("mr-hover") &&
-																						!val.includes("mr-desktop") &&
-																						!val.includes("mr-laptop") &&
-																						!val.includes("mr-tablet") &&
-																						!val.includes("mr-phone")
-																							? val
-																							: mrPaddingLeft,
-																					mrPaddingLefthover:
-																						val !== undefined &&
-																						val.includes("mr-hover")
-																							? val
-																							: mrPaddingLefthover,
-																					mrPaddingLeftdesktop:
-																						val !== undefined &&
-																						val.includes("mr-desktop")
-																							? val
-																							: mrPaddingLeftdesktop,
-																					mrPaddingLeftlaptop:
-																						val !== undefined &&
-																						val.includes("mr-laptop")
-																							? val
-																							: mrPaddingLeftlaptop,
-																					mrPaddingLefttablet:
-																						val !== undefined &&
-																						val.includes("mr-tablet")
-																							? val
-																							: mrPaddingLefttablet,
-																					mrPaddingLeftphone:
-																						val !== undefined &&
-																						val.includes("mr-phone")
-																							? val
-																							: mrPaddingLeftphone,
-																				})
-																			}
-																		/>
-
-																		{(tab.name === "" &&
-																			mrPaddingLeft.includes("-paddingleft")) ||
-																		(tab.name === "hover" &&
-																			mrPaddingLefthover.includes(
-																				"-paddingleft"
-																			)) ||
-																		(tab.name === "desktop" &&
-																			mrPaddingLeftdesktop.includes(
-																				"-paddingleft"
-																			)) ||
-																		(tab.name === "laptop" &&
-																			mrPaddingLeftlaptop.includes(
-																				"-paddingleft"
-																			)) ||
-																		(tab.name === "tablet" &&
-																			mrPaddingLefttablet.includes(
-																				"-paddingleft"
-																			)) ||
-																		(tab.name === "phone" &&
-																			mrPaddingLeftphone.includes(
-																				"-paddingleft"
-																			)) ? (
+																		{tab.name === "" ||
+																		tab.name === "hover" ||
+																		tab.name === "desktop" ||
+																		tab.name === "laptop" ||
+																		tab.name === "tablet" ||
+																		tab.name === "phone" ? (
 																			<TextControl
-																				label={__("", "mr-utils")}
+																				label={__("Padding Left", "mr-utils")}
 																				value={
 																					tab.name === "hover"
-																						? mrCustomPaddingLefthover
+																						? mrPaddingLefthover
 																						: tab.name === "desktop"
-																						? mrCustomPaddingLeftdesktop
+																						? mrPaddingLeftdesktop
 																						: tab.name === "laptop"
-																						? mrCustomPaddingLeftlaptop
+																						? mrPaddingLeftlaptop
 																						: tab.name === "tablet"
-																						? mrCustomPaddingLefttablet
+																						? mrPaddingLefttablet
 																						: tab.name === "phone"
-																						? mrCustomPaddingLeftphone
-																						: mrCustomPaddingLeft
+																						? mrPaddingLeftphone
+																						: mrPaddingLeft
 																				}
 																				type="text"
-																				className="mr-backend-custominput mr-backend-custompadding mr-backend-custompleft"
-																				placeHolder={(
-																					"mr-" +
-																					tab.name +
-																					"-paddingleft"
-																				).replace("--", "-")}
+																				placeHolder={
+																					(
+																						"mr-" +
+																						tab.name +
+																						"-paddingleft"
+																					).replace("--", "-") +
+																					(
+																						" | mr-" +
+																						tab.name +
+																						"-nopaddingleft"
+																					).replace("--", "-")
+																				}
 																				list={(
 																					"mrDevUtilsClasses_" +
 																					tab.name +
@@ -4083,7 +2865,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																				).replace("__", "_")}
 																				onChange={(val) =>
 																					setAttributes({
-																						mrCustomPaddingLeft:
+																						mrPaddingLeft:
 																							val !== undefined &&
 																							!val.includes("mr-hover") &&
 																							!val.includes("mr-desktop") &&
@@ -4091,32 +2873,32 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																							!val.includes("mr-tablet") &&
 																							!val.includes("mr-phone")
 																								? val
-																								: mrCustomPaddingLeft,
-																						mrCustomPaddingLefthover:
+																								: mrPaddingLeft,
+																						mrPaddingLefthover:
 																							val !== undefined &&
 																							val.includes("mr-hover")
 																								? val
-																								: mrCustomPaddingLefthover,
-																						mrCustomPaddingLeftdesktop:
+																								: mrPaddingLefthover,
+																						mrPaddingLeftdesktop:
 																							val !== undefined &&
 																							val.includes("mr-desktop")
 																								? val
-																								: mrCustomPaddingLeftdesktop,
-																						mrCustomPaddingLeftlaptop:
+																								: mrPaddingLeftdesktop,
+																						mrPaddingLeftlaptop:
 																							val !== undefined &&
 																							val.includes("mr-laptop")
 																								? val
-																								: mrCustomPaddingLeftlaptop,
-																						mrCustomPaddingLefttablet:
+																								: mrPaddingLeftlaptop,
+																						mrPaddingLefttablet:
 																							val !== undefined &&
 																							val.includes("mr-tablet")
 																								? val
-																								: mrCustomPaddingLefttablet,
-																						mrCustomPaddingLeftphone:
+																								: mrPaddingLefttablet,
+																						mrPaddingLeftphone:
 																							val !== undefined &&
 																							val.includes("mr-phone")
 																								? val
-																								: mrCustomPaddingLeftphone,
+																								: mrPaddingLeftphone,
 																					})
 																				}
 																			/>
@@ -4127,128 +2909,41 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																) : (
 																	<>
 																		<p></p>
-																		<SelectControl
-																			label={__("Margin Top", "mr-utils")}
-																			className="mr-backend-margin mr-backend-margintop mr-backend-hascustomoption"
-																			value={
-																				tab.name === "hover"
-																					? mrMarginTophover
-																					: tab.name === "desktop"
-																					? mrMarginTopdesktop
-																					: tab.name === "laptop"
-																					? mrMarginToplaptop
-																					: tab.name === "tablet"
-																					? mrMarginToptablet
-																					: tab.name === "phone"
-																					? mrMarginTopphone
-																					: mrMarginTop
-																			}
-																			options={[
-																				{
-																					value: "mr-" + tab.name,
-																					label: "Default margin",
-																				},
-																				{
-																					value: (
-																						" mr-" +
-																						tab.name +
-																						"-nomargintop"
-																					).replace("--", "-"),
-																					label: "Remove margin",
-																				},
-																				{
-																					value: (
-																						" mr-" +
-																						tab.name +
-																						"-margintop"
-																					).replace("--", "-"),
-																					label: "Use " + tab.name + " class",
-																				},
-																			]}
-																			onChange={(val) =>
-																				setAttributes({
-																					mrMarginTop:
-																						val !== undefined &&
-																						!val.includes("mr-hover") &&
-																						!val.includes("mr-desktop") &&
-																						!val.includes("mr-laptop") &&
-																						!val.includes("mr-tablet") &&
-																						!val.includes("mr-phone")
-																							? val
-																							: mrMarginTop,
-																					mrMarginTophover:
-																						val !== undefined &&
-																						val.includes("mr-hover")
-																							? val
-																							: mrMarginTophover,
-																					mrMarginTopdesktop:
-																						val !== undefined &&
-																						val.includes("mr-desktop")
-																							? val
-																							: mrMarginTopdesktop,
-																					mrMarginToplaptop:
-																						val !== undefined &&
-																						val.includes("mr-laptop")
-																							? val
-																							: mrMarginToplaptop,
-																					mrMarginToptablet:
-																						val !== undefined &&
-																						val.includes("mr-tablet")
-																							? val
-																							: mrMarginToptablet,
-																					mrMarginTopphone:
-																						val !== undefined &&
-																						val.includes("mr-phone")
-																							? val
-																							: mrMarginTopphone,
-																				})
-																			}
-																		/>
 
-																		{(tab.name === "" &&
-																			mrMarginTop.includes("-margintop")) ||
-																		(tab.name === "hover" &&
-																			mrMarginTophover.includes(
-																				"-margintop"
-																			)) ||
-																		(tab.name === "desktop" &&
-																			mrMarginTopdesktop.includes(
-																				"-margintop"
-																			)) ||
-																		(tab.name === "laptop" &&
-																			mrMarginToplaptop.includes(
-																				"-margintop"
-																			)) ||
-																		(tab.name === "tablet" &&
-																			mrMarginToptablet.includes(
-																				"-margintop"
-																			)) ||
-																		(tab.name === "phone" &&
-																			mrMarginTopphone.includes(
-																				"-margintop"
-																			)) ? (
+																		{tab.name === "" ||
+																		tab.name === "hover" ||
+																		tab.name === "desktop" ||
+																		tab.name === "laptop" ||
+																		tab.name === "tablet" ||
+																		tab.name === "phone" ? (
 																			<TextControl
-																				label={__("", "mr-utils")}
+																				label={__("Margin Top", "mr-utils")}
 																				value={
 																					tab.name === "hover"
-																						? mrCustomMarginTophover
+																						? mrMarginTophover
 																						: tab.name === "desktop"
-																						? mrCustomMarginTopdesktop
+																						? mrMarginTopdesktop
 																						: tab.name === "laptop"
-																						? mrCustomMarginToplaptop
+																						? mrMarginToplaptop
 																						: tab.name === "tablet"
-																						? mrCustomMarginToptablet
+																						? mrMarginToptablet
 																						: tab.name === "phone"
-																						? mrCustomMarginTopphone
-																						: mrCustomMarginTop
+																						? mrMarginTopphone
+																						: mrMarginTop
 																				}
 																				type="text"
-																				className="mr-backend-custominput mr-backend-custommargin mr-backend-custommtop"
-																				placeHolder={(
-																					"mr-" +
-																					tab.name +
-																					"-margintop"
-																				).replace("--", "-")}
+																				placeHolder={
+																					(
+																						"mr-" +
+																						tab.name +
+																						"-margintop"
+																					).replace("--", "-") +
+																					(
+																						" | mr-" +
+																						tab.name +
+																						"-nomargintop"
+																					).replace("--", "-")
+																				}
 																				list={(
 																					"mrDevUtilsClasses_" +
 																					tab.name +
@@ -4256,7 +2951,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																				).replace("__", "_")}
 																				onChange={(val) =>
 																					setAttributes({
-																						mrCustomMarginTop:
+																						mrMarginTop:
 																							val !== undefined &&
 																							!val.includes("mr-hover") &&
 																							!val.includes("mr-desktop") &&
@@ -4264,32 +2959,32 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																							!val.includes("mr-tablet") &&
 																							!val.includes("mr-phone")
 																								? val
-																								: mrCustomMarginTop,
-																						mrCustomMarginTophover:
+																								: mrMarginTop,
+																						mrMarginTophover:
 																							val !== undefined &&
 																							val.includes("mr-hover")
 																								? val
-																								: mrCustomMarginTophover,
-																						mrCustomMarginTopdesktop:
+																								: mrMarginTophover,
+																						mrMarginTopdesktop:
 																							val !== undefined &&
 																							val.includes("mr-desktop")
 																								? val
-																								: mrCustomMarginTopdesktop,
-																						mrCustomMarginToplaptop:
+																								: mrMarginTopdesktop,
+																						mrMarginToplaptop:
 																							val !== undefined &&
 																							val.includes("mr-laptop")
 																								? val
-																								: mrCustomMarginToplaptop,
-																						mrCustomMarginToptablet:
+																								: mrMarginToplaptop,
+																						mrMarginToptablet:
 																							val !== undefined &&
 																							val.includes("mr-tablet")
 																								? val
-																								: mrCustomMarginToptablet,
-																						mrCustomMarginTopphone:
+																								: mrMarginToptablet,
+																						mrMarginTopphone:
 																							val !== undefined &&
 																							val.includes("mr-phone")
 																								? val
-																								: mrCustomMarginTopphone,
+																								: mrMarginTopphone,
 																					})
 																				}
 																			/>
@@ -4297,128 +2992,40 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																			""
 																		)}
 
-																		<SelectControl
-																			label={__("Margin Right", "mr-utils")}
-																			className="mr-backend-margin mr-backend-marginright mr-backend-hascustomoption"
-																			value={
-																				tab.name === "hover"
-																					? mrMarginRighthover
-																					: tab.name === "desktop"
-																					? mrMarginRightdesktop
-																					: tab.name === "laptop"
-																					? mrMarginRightlaptop
-																					: tab.name === "tablet"
-																					? mrMarginRighttablet
-																					: tab.name === "phone"
-																					? mrMarginRightphone
-																					: mrMarginRight
-																			}
-																			options={[
-																				{
-																					value: "mr-" + tab.name,
-																					label: "Default margin",
-																				},
-																				{
-																					value: (
-																						" mr-" +
-																						tab.name +
-																						"-nomarginright"
-																					).replace("--", "-"),
-																					label: "Remove margin",
-																				},
-																				{
-																					value: (
-																						" mr-" +
-																						tab.name +
-																						"-marginright"
-																					).replace("--", "-"),
-																					label: "Use " + tab.name + " class",
-																				},
-																			]}
-																			onChange={(val) =>
-																				setAttributes({
-																					mrMarginRight:
-																						val !== undefined &&
-																						!val.includes("mr-hover") &&
-																						!val.includes("mr-desktop") &&
-																						!val.includes("mr-laptop") &&
-																						!val.includes("mr-tablet") &&
-																						!val.includes("mr-phone")
-																							? val
-																							: mrMarginRight,
-																					mrMarginRighthover:
-																						val !== undefined &&
-																						val.includes("mr-hover")
-																							? val
-																							: mrMarginRighthover,
-																					mrMarginRightdesktop:
-																						val !== undefined &&
-																						val.includes("mr-desktop")
-																							? val
-																							: mrMarginRightdesktop,
-																					mrMarginRightlaptop:
-																						val !== undefined &&
-																						val.includes("mr-laptop")
-																							? val
-																							: mrMarginRightlaptop,
-																					mrMarginRighttablet:
-																						val !== undefined &&
-																						val.includes("mr-tablet")
-																							? val
-																							: mrMarginRighttablet,
-																					mrMarginRightphone:
-																						val !== undefined &&
-																						val.includes("mr-phone")
-																							? val
-																							: mrMarginRightphone,
-																				})
-																			}
-																		/>
-
-																		{(tab.name === "" &&
-																			mrMarginRight.includes("-marginright")) ||
-																		(tab.name === "hover" &&
-																			mrMarginRighthover.includes(
-																				"-marginright"
-																			)) ||
-																		(tab.name === "desktop" &&
-																			mrMarginRightdesktop.includes(
-																				"-marginright"
-																			)) ||
-																		(tab.name === "laptop" &&
-																			mrMarginRightlaptop.includes(
-																				"-marginright"
-																			)) ||
-																		(tab.name === "tablet" &&
-																			mrMarginRighttablet.includes(
-																				"-marginright"
-																			)) ||
-																		(tab.name === "phone" &&
-																			mrMarginRightphone.includes(
-																				"-marginright"
-																			)) ? (
+																		{tab.name === "" ||
+																		tab.name === "hover" ||
+																		tab.name === "desktop" ||
+																		tab.name === "laptop" ||
+																		tab.name === "tablet" ||
+																		tab.name === "phone" ? (
 																			<TextControl
-																				label={__("", "mr-utils")}
+																				label={__("Margin Right", "mr-utils")}
 																				value={
 																					tab.name === "hover"
-																						? mrCustomMarginRighthover
+																						? mrMarginRighthover
 																						: tab.name === "desktop"
-																						? mrCustomMarginRightdesktop
+																						? mrMarginRightdesktop
 																						: tab.name === "laptop"
-																						? mrCustomMarginRightlaptop
+																						? mrMarginRightlaptop
 																						: tab.name === "tablet"
-																						? mrCustomMarginRighttablet
+																						? mrMarginRighttablet
 																						: tab.name === "phone"
-																						? mrCustomMarginRightphone
-																						: mrCustomMarginRight
+																						? mrMarginRightphone
+																						: mrMarginRight
 																				}
 																				type="text"
-																				className="mr-backend-custominput mr-backend-custommargin mr-backend-custommright"
-																				placeHolder={(
-																					"mr-" +
-																					tab.name +
-																					"-marginright"
-																				).replace("--", "-")}
+																				placeHolder={
+																					(
+																						"mr-" +
+																						tab.name +
+																						"-marginright"
+																					).replace("--", "-") +
+																					(
+																						" | mr-" +
+																						tab.name +
+																						"-nomarginright"
+																					).replace("--", "-")
+																				}
 																				list={(
 																					"mrDevUtilsClasses_" +
 																					tab.name +
@@ -4426,7 +3033,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																				).replace("__", "_")}
 																				onChange={(val) =>
 																					setAttributes({
-																						mrCustomMarginRight:
+																						mrMarginRight:
 																							val !== undefined &&
 																							!val.includes("mr-hover") &&
 																							!val.includes("mr-desktop") &&
@@ -4434,32 +3041,32 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																							!val.includes("mr-tablet") &&
 																							!val.includes("mr-phone")
 																								? val
-																								: mrCustomMarginRight,
-																						mrCustomMarginRighthover:
+																								: mrMarginRight,
+																						mrMarginRighthover:
 																							val !== undefined &&
 																							val.includes("mr-hover")
 																								? val
-																								: mrCustomMarginRighthover,
-																						mrCustomMarginRightdesktop:
+																								: mrMarginRighthover,
+																						mrMarginRightdesktop:
 																							val !== undefined &&
 																							val.includes("mr-desktop")
 																								? val
-																								: mrCustomMarginRightdesktop,
-																						mrCustomMarginRightlaptop:
+																								: mrMarginRightdesktop,
+																						mrMarginRightlaptop:
 																							val !== undefined &&
 																							val.includes("mr-laptop")
 																								? val
-																								: mrCustomMarginRightlaptop,
-																						mrCustomMarginRighttablet:
+																								: mrMarginRightlaptop,
+																						mrMarginRighttablet:
 																							val !== undefined &&
 																							val.includes("mr-tablet")
 																								? val
-																								: mrCustomMarginRighttablet,
-																						mrCustomMarginRightphone:
+																								: mrMarginRighttablet,
+																						mrMarginRightphone:
 																							val !== undefined &&
 																							val.includes("mr-phone")
 																								? val
-																								: mrCustomMarginRightphone,
+																								: mrMarginRightphone,
 																					})
 																				}
 																			/>
@@ -4467,130 +3074,40 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																			""
 																		)}
 
-																		<SelectControl
-																			label={__("Margin Bottom", "mr-utils")}
-																			className="mr-backend-margin mr-backend-marginbottom mr-backend-hascustomoption"
-																			value={
-																				tab.name === "hover"
-																					? mrMarginBottomhover
-																					: tab.name === "desktop"
-																					? mrMarginBottomdesktop
-																					: tab.name === "laptop"
-																					? mrMarginBottomlaptop
-																					: tab.name === "tablet"
-																					? mrMarginBottomtablet
-																					: tab.name === "phone"
-																					? mrMarginBottomphone
-																					: mrMarginBottom
-																			}
-																			options={[
-																				{
-																					value: "mr-" + tab.name,
-																					label: "Default margin",
-																				},
-																				{
-																					value: (
-																						" mr-" +
-																						tab.name +
-																						"-nomarginbottom"
-																					).replace("--", "-"),
-																					label: "Remove margin",
-																				},
-																				{
-																					value: (
-																						" mr-" +
-																						tab.name +
-																						"-marginbottom"
-																					).replace("--", "-"),
-																					label: "Use " + tab.name + " class",
-																				},
-																			]}
-																			onChange={(val) =>
-																				setAttributes({
-																					mrMarginBottom:
-																						val !== undefined &&
-																						!val.includes("mr-hover") &&
-																						!val.includes("mr-desktop") &&
-																						!val.includes("mr-laptop") &&
-																						!val.includes("mr-tablet") &&
-																						!val.includes("mr-phone")
-																							? val
-																							: mrMarginBottom,
-																					mrMarginBottomhover:
-																						val !== undefined &&
-																						val.includes("mr-hover")
-																							? val
-																							: mrMarginBottomhover,
-																					mrMarginBottomdesktop:
-																						val !== undefined &&
-																						val.includes("mr-desktop")
-																							? val
-																							: mrMarginBottomdesktop,
-																					mrMarginBottomlaptop:
-																						val !== undefined &&
-																						val.includes("mr-laptop")
-																							? val
-																							: mrMarginBottomlaptop,
-																					mrMarginBottomtablet:
-																						val !== undefined &&
-																						val.includes("mr-tablet")
-																							? val
-																							: mrMarginBottomtablet,
-																					mrMarginBottomphone:
-																						val !== undefined &&
-																						val.includes("mr-phone")
-																							? val
-																							: mrMarginBottomphone,
-																				})
-																			}
-																		/>
-
-																		{(tab.name === "" &&
-																			mrMarginBottom.includes(
-																				"-marginbottom"
-																			)) ||
-																		(tab.name === "hover" &&
-																			mrMarginBottomhover.includes(
-																				"-marginbottom"
-																			)) ||
-																		(tab.name === "desktop" &&
-																			mrMarginBottomdesktop.includes(
-																				"-marginbottom"
-																			)) ||
-																		(tab.name === "laptop" &&
-																			mrMarginBottomlaptop.includes(
-																				"-marginbottom"
-																			)) ||
-																		(tab.name === "tablet" &&
-																			mrMarginBottomtablet.includes(
-																				"-marginbottom"
-																			)) ||
-																		(tab.name === "phone" &&
-																			mrMarginBottomphone.includes(
-																				"-marginbottom"
-																			)) ? (
+																		{tab.name === "" ||
+																		tab.name === "hover" ||
+																		tab.name === "desktop" ||
+																		tab.name === "laptop" ||
+																		tab.name === "tablet" ||
+																		tab.name === "phone" ? (
 																			<TextControl
-																				label={__("", "mr-utils")}
+																				label={__("Margin Bottom", "mr-utils")}
 																				value={
 																					tab.name === "hover"
-																						? mrCustomMarginBottomhover
+																						? mrMarginBottomhover
 																						: tab.name === "desktop"
-																						? mrCustomMarginBottomdesktop
+																						? mrMarginBottomdesktop
 																						: tab.name === "laptop"
-																						? mrCustomMarginBottomlaptop
+																						? mrMarginBottomlaptop
 																						: tab.name === "tablet"
-																						? mrCustomMarginBottomtablet
+																						? mrMarginBottomtablet
 																						: tab.name === "phone"
-																						? mrCustomMarginBottomphone
-																						: mrCustomMarginBottom
+																						? mrMarginBottomphone
+																						: mrMarginBottom
 																				}
 																				type="text"
-																				className="mr-backend-custominput mr-backend-custommargin mr-backend-custommbottom"
-																				placeHolder={(
-																					"mr-" +
-																					tab.name +
-																					"-marginbottom"
-																				).replace("--", "-")}
+																				placeHolder={
+																					(
+																						"mr-" +
+																						tab.name +
+																						"-marginbottom"
+																					).replace("--", "-") +
+																					(
+																						" | mr-" +
+																						tab.name +
+																						"-nomarginbottom"
+																					).replace("--", "-")
+																				}
 																				list={(
 																					"mrDevUtilsClasses_" +
 																					tab.name +
@@ -4598,7 +3115,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																				).replace("__", "_")}
 																				onChange={(val) =>
 																					setAttributes({
-																						mrCustomMarginBottom:
+																						mrMarginBottom:
 																							val !== undefined &&
 																							!val.includes("mr-hover") &&
 																							!val.includes("mr-desktop") &&
@@ -4606,32 +3123,32 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																							!val.includes("mr-tablet") &&
 																							!val.includes("mr-phone")
 																								? val
-																								: mrCustomMarginBottom,
-																						mrCustomMarginBottomhover:
+																								: mrMarginBottom,
+																						mrMarginBottomhover:
 																							val !== undefined &&
 																							val.includes("mr-hover")
 																								? val
-																								: mrCustomMarginBottomhover,
-																						mrCustomMarginBottomdesktop:
+																								: mrMarginBottomhover,
+																						mrMarginBottomdesktop:
 																							val !== undefined &&
 																							val.includes("mr-desktop")
 																								? val
-																								: mrCustomMarginBottomdesktop,
-																						mrCustomMarginBottomlaptop:
+																								: mrMarginBottomdesktop,
+																						mrMarginBottomlaptop:
 																							val !== undefined &&
 																							val.includes("mr-laptop")
 																								? val
-																								: mrCustomMarginBottomlaptop,
-																						mrCustomMarginBottomtablet:
+																								: mrMarginBottomlaptop,
+																						mrMarginBottomtablet:
 																							val !== undefined &&
 																							val.includes("mr-tablet")
 																								? val
-																								: mrCustomMarginBottomtablet,
-																						mrCustomMarginBottomphone:
+																								: mrMarginBottomtablet,
+																						mrMarginBottomphone:
 																							val !== undefined &&
 																							val.includes("mr-phone")
 																								? val
-																								: mrCustomMarginBottomphone,
+																								: mrMarginBottomphone,
 																					})
 																				}
 																			/>
@@ -4639,128 +3156,40 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																			""
 																		)}
 
-																		<SelectControl
-																			label={__("Margin Left", "mr-utils")}
-																			className="mr-backend-margin mr-backend-marginleft mr-backend-hascustomoption"
-																			value={
-																				tab.name === "hover"
-																					? mrMarginLefthover
-																					: tab.name === "desktop"
-																					? mrMarginLeftdesktop
-																					: tab.name === "laptop"
-																					? mrMarginLeftlaptop
-																					: tab.name === "tablet"
-																					? mrMarginLefttablet
-																					: tab.name === "phone"
-																					? mrMarginLeftphone
-																					: mrMarginLeft
-																			}
-																			options={[
-																				{
-																					value: "mr-" + tab.name,
-																					label: "Default margin",
-																				},
-																				{
-																					value: (
-																						" mr-" +
-																						tab.name +
-																						"-nomarginleft"
-																					).replace("--", "-"),
-																					label: "Remove margin",
-																				},
-																				{
-																					value: (
-																						" mr-" +
-																						tab.name +
-																						"-marginleft"
-																					).replace("--", "-"),
-																					label: "Use " + tab.name + " class",
-																				},
-																			]}
-																			onChange={(val) =>
-																				setAttributes({
-																					mrMarginLeft:
-																						val !== undefined &&
-																						!val.includes("mr-hover") &&
-																						!val.includes("mr-desktop") &&
-																						!val.includes("mr-laptop") &&
-																						!val.includes("mr-tablet") &&
-																						!val.includes("mr-phone")
-																							? val
-																							: mrMarginLeft,
-																					mrMarginLefthover:
-																						val !== undefined &&
-																						val.includes("mr-hover")
-																							? val
-																							: mrMarginLefthover,
-																					mrMarginLeftdesktop:
-																						val !== undefined &&
-																						val.includes("mr-desktop")
-																							? val
-																							: mrMarginLeftdesktop,
-																					mrMarginLeftlaptop:
-																						val !== undefined &&
-																						val.includes("mr-laptop")
-																							? val
-																							: mrMarginLeftlaptop,
-																					mrMarginLefttablet:
-																						val !== undefined &&
-																						val.includes("mr-tablet")
-																							? val
-																							: mrMarginLefttablet,
-																					mrMarginLeftphone:
-																						val !== undefined &&
-																						val.includes("mr-phone")
-																							? val
-																							: mrMarginLeftphone,
-																				})
-																			}
-																		/>
-
-																		{(tab.name === "" &&
-																			mrMarginLeft.includes("-marginleft")) ||
-																		(tab.name === "hover" &&
-																			mrMarginLefthover.includes(
-																				"-marginleft"
-																			)) ||
-																		(tab.name === "desktop" &&
-																			mrMarginLeftdesktop.includes(
-																				"-marginleft"
-																			)) ||
-																		(tab.name === "laptop" &&
-																			mrMarginLeftlaptop.includes(
-																				"-marginleft"
-																			)) ||
-																		(tab.name === "tablet" &&
-																			mrMarginLefttablet.includes(
-																				"-marginleft"
-																			)) ||
-																		(tab.name === "phone" &&
-																			mrMarginLeftphone.includes(
-																				"-marginleft"
-																			)) ? (
+																		{tab.name === "" ||
+																		tab.name === "hover" ||
+																		tab.name === "desktop" ||
+																		tab.name === "laptop" ||
+																		tab.name === "tablet" ||
+																		tab.name === "phone" ? (
 																			<TextControl
-																				label={__("", "mr-utils")}
+																				label={__("Margin Left", "mr-utils")}
 																				value={
 																					tab.name === "hover"
-																						? mrCustomMarginLefthover
+																						? mrMarginLefthover
 																						: tab.name === "desktop"
-																						? mrCustomMarginLeftdesktop
+																						? mrMarginLeftdesktop
 																						: tab.name === "laptop"
-																						? mrCustomMarginLeftlaptop
+																						? mrMarginLeftlaptop
 																						: tab.name === "tablet"
-																						? mrCustomMarginLefttablet
+																						? mrMarginLefttablet
 																						: tab.name === "phone"
-																						? mrCustomMarginLeftphone
-																						: mrCustomMarginLeft
+																						? mrMarginLeftphone
+																						: mrMarginLeft
 																				}
 																				type="text"
-																				className="mr-backend-custominput mr-backend-custommargin mr-backend-custommleft"
-																				placeHolder={(
-																					"mr-" +
-																					tab.name +
-																					"-marginleft"
-																				).replace("--", "-")}
+																				placeHolder={
+																					(
+																						"mr-" +
+																						tab.name +
+																						"-marginleft"
+																					).replace("--", "-") +
+																					(
+																						" | mr-" +
+																						tab.name +
+																						"-nomarginleft"
+																					).replace("--", "-")
+																				}
 																				list={(
 																					"mrDevUtilsClasses_" +
 																					tab.name +
@@ -4768,7 +3197,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																				).replace("__", "_")}
 																				onChange={(val) =>
 																					setAttributes({
-																						mrCustomMarginLeft:
+																						mrMarginLeft:
 																							val !== undefined &&
 																							!val.includes("mr-hover") &&
 																							!val.includes("mr-desktop") &&
@@ -4776,32 +3205,32 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																							!val.includes("mr-tablet") &&
 																							!val.includes("mr-phone")
 																								? val
-																								: mrCustomMarginLeft,
-																						mrCustomMarginLefthover:
+																								: mrMarginLeft,
+																						mrMarginLefthover:
 																							val !== undefined &&
 																							val.includes("mr-hover")
 																								? val
-																								: mrCustomMarginLefthover,
-																						mrCustomMarginLeftdesktop:
+																								: mrMarginLefthover,
+																						mrMarginLeftdesktop:
 																							val !== undefined &&
 																							val.includes("mr-desktop")
 																								? val
-																								: mrCustomMarginLeftdesktop,
-																						mrCustomMarginLeftlaptop:
+																								: mrMarginLeftdesktop,
+																						mrMarginLeftlaptop:
 																							val !== undefined &&
 																							val.includes("mr-laptop")
 																								? val
-																								: mrCustomMarginLeftlaptop,
-																						mrCustomMarginLefttablet:
+																								: mrMarginLeftlaptop,
+																						mrMarginLefttablet:
 																							val !== undefined &&
 																							val.includes("mr-tablet")
 																								? val
-																								: mrCustomMarginLefttablet,
-																						mrCustomMarginLeftphone:
+																								: mrMarginLefttablet,
+																						mrMarginLeftphone:
 																							val !== undefined &&
 																							val.includes("mr-phone")
 																								? val
-																								: mrCustomMarginLeftphone,
+																								: mrMarginLeftphone,
 																					})
 																				}
 																			/>
@@ -4827,59 +3256,9 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 													}
 												>
 													{tab.name === "" ? (
-														<SelectControl
-															label={__("Font family", "mr-utils")}
-															className="mr-backend-font mr-backend-hascustomoption"
-															value={mrFontFamily}
-															options={[
-																{
-																	value: "mr-",
-																	label: "Default",
-																},
-																{
-																	value: " mr-font1",
-																	label: "Font 1 class",
-																},
-																{
-																	value: " mr-font2",
-																	label: "Font 2 class",
-																},
-																{
-																	value: " mr-customfont",
-																	label: "Custom font class",
-																},
-															]}
-															onChange={(val) =>
-																setAttributes({
-																	mrFontFamily:
-																		val !== undefined ? val : mrFontFamily,
-																})
-															}
-															help={
-																!mrFontFamily.includes("-customfont") &&
-																mrFontFamily.includes("-font1")
-																	? "var(--font-1) = " +
-																	  getComputedStyle(
-																			document.documentElement
-																	  ).getPropertyValue("--font-1")
-																	: !mrFontFamily.includes("-customfont") &&
-																	  mrFontFamily.includes("-font2")
-																	? "var(--font-2) = " +
-																	  getComputedStyle(
-																			document.documentElement
-																	  ).getPropertyValue("--font-2")
-																	: ""
-															}
-														/>
-													) : (
-														""
-													)}
-
-													{tab.name === "" &&
-													mrFontFamily.includes("custom") ? (
 														<TextControl
-															label={__("", "mr-utils")}
-															value={mrCustomFontFamily}
+															label={__("Font Family", "mr-utils")}
+															value={mrFontFamily}
 															type="text"
 															className="mr-backend-custominput mr-backend-customfontfamily"
 															placeHolder={"mr-font1"}
@@ -4889,10 +3268,8 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 															)}
 															onChange={(val) =>
 																setAttributes({
-																	mrCustomFontFamily:
-																		val !== undefined
-																			? val
-																			: mrCustomFontFamily,
+																	mrFontFamily:
+																		val !== undefined ? val : mrFontFamily,
 																})
 															}
 														/>
@@ -4900,85 +3277,14 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 														""
 													)}
 
-													<SelectControl
-														label={__("Font size", "mr-utils")}
-														value={
-															tab.name === "hover"
-																? mrFontSizeOptionshover
-																: tab.name === "desktop"
-																? mrFontSizeOptionsdesktop
-																: tab.name === "laptop"
-																? mrFontSizeOptionslaptop
-																: tab.name === "tablet"
-																? mrFontSizeOptionstablet
-																: tab.name === "phone"
-																? mrFontSizeOptionsphone
-																: mrFontSizeOptions
-														}
-														className="mr-backend-fontsize mr-backend-hascustomoption"
-														options={[
-															{
-																value: "mr-" + tab.name,
-																label: "Default " + tab.name + " class",
-															},
-															{
-																value: (
-																	" mr-" +
-																	tab.name +
-																	"-fontsizeoptions"
-																).replace("--", "-"),
-																label: "Custom " + tab.name + " class",
-															},
-														]}
-														onChange={(val) =>
-															setAttributes({
-																mrFontSizeOptions:
-																	val !== undefined &&
-																	!val.includes("mr-hover") &&
-																	!val.includes("mr-desktop") &&
-																	!val.includes("mr-laptop") &&
-																	!val.includes("mr-tablet") &&
-																	!val.includes("mr-phone")
-																		? val
-																		: mrFontSizeOptions,
-																mrFontSizeOptionshover:
-																	val !== undefined && val.includes("mr-hover")
-																		? val
-																		: mrFontSizeOptionshover,
-																mrFontSizeOptionsdesktop:
-																	val !== undefined &&
-																	val.includes("mr-desktop")
-																		? val
-																		: mrFontSizeOptionsdesktop,
-																mrFontSizeOptionslaptop:
-																	val !== undefined && val.includes("mr-laptop")
-																		? val
-																		: mrFontSizeOptionslaptop,
-																mrFontSizeOptionstablet:
-																	val !== undefined && val.includes("mr-tablet")
-																		? val
-																		: mrFontSizeOptionstablet,
-																mrFontSizeOptionsphone:
-																	val !== undefined && val.includes("mr-phone")
-																		? val
-																		: mrFontSizeOptionsphone,
-															})
-														}
-													/>
-
-													{(tab.name === "" && mrFontSizeOptions === "mr-") ||
-													(tab.name === "hover" &&
-														mrFontSizeOptionshover === "mr-hover") ||
-													(tab.name === "desktop" &&
-														mrFontSizeOptionsdesktop === "mr-desktop") ||
-													(tab.name === "laptop" &&
-														mrFontSizeOptionslaptop === "mr-laptop") ||
-													(tab.name === "tablet" &&
-														mrFontSizeOptionstablet === "mr-tablet") ||
-													(tab.name === "phone" &&
-														mrFontSizeOptionsphone === "mr-phone") ? (
-														<RangeControl
-															label={__("", "mr-utils")}
+													{tab.name === "" ||
+													tab.name === "hover" ||
+													tab.name === "desktop" ||
+													tab.name === "laptop" ||
+													tab.name === "tablet" ||
+													tab.name === "phone" ? (
+														<TextControl
+															label={__("Font Size", "mr-utils")}
 															value={
 																tab.name === "hover"
 																	? mrFontSizehover
@@ -4991,149 +3297,6 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																	: tab.name === "phone"
 																	? mrFontSizephone
 																	: mrFontSize
-															}
-															initialPosition={0}
-															allowReset={true}
-															min={0}
-															max={7}
-															onChange={(val) =>
-																setAttributes({
-																	mrFontSize:
-																		tab.name === ""
-																			? val === 0 || val === undefined
-																				? ""
-																				: val
-																			: mrFontSize,
-																	mrFontSizehover:
-																		tab.name === "hover"
-																			? val === 0 || val === undefined
-																				? ""
-																				: val
-																			: mrFontSizehover,
-																	mrFontSizedesktop:
-																		tab.name === "desktop"
-																			? val === 0 || val === undefined
-																				? ""
-																				: val
-																			: mrFontSizedesktop,
-																	mrFontSizelaptop:
-																		tab.name === "laptop"
-																			? val === 0 || val === undefined
-																				? ""
-																				: val
-																			: mrFontSizelaptop,
-																	mrFontSizetablet:
-																		tab.name === "tablet"
-																			? val === 0 || val === undefined
-																				? ""
-																				: val
-																			: mrFontSizetablet,
-																	mrFontSizephone:
-																		tab.name === "phone"
-																			? val === 0 || val === undefined
-																				? ""
-																				: val
-																			: mrFontSizephone,
-																})
-															}
-															help={
-																tab.name == "" && mrFontSize > 0
-																	? "mr-fontsize" +
-																	  mrFontSize +
-																	  " = " +
-																	  getComputedStyle(
-																			document.documentElement
-																	  ).getPropertyValue(
-																			"--font-size-" + mrFontSize
-																	  )
-																	: tab.name == "hover" && mrFontSizehover > 0
-																	? "mr-hover-fontsize" +
-																	  mrFontSizehover +
-																	  " = " +
-																	  getComputedStyle(
-																			document.documentElement
-																	  ).getPropertyValue(
-																			"--font-size-" + mrFontSizehover
-																	  )
-																	: tab.name == "desktop" &&
-																	  mrFontSizedesktop > 0
-																	? "mr-desktop-fontsize" +
-																	  mrFontSizedesktop +
-																	  " = " +
-																	  getComputedStyle(
-																			document.documentElement
-																	  ).getPropertyValue(
-																			"--font-size-" + mrFontSizedesktop
-																	  )
-																	: tab.name == "laptop" && mrFontSizelaptop > 0
-																	? "mr-laptop-fontsize" +
-																	  mrFontSizelaptop +
-																	  " = " +
-																	  getComputedStyle(
-																			document.documentElement
-																	  ).getPropertyValue(
-																			"--font-size-" + mrFontSizelaptop
-																	  )
-																	: tab.name == "tablet" && mrFontSizetablet
-																	? "mr-tablet-fontsize" +
-																	  mrFontSizetablet +
-																	  " = " +
-																	  getComputedStyle(
-																			document.documentElement
-																	  ).getPropertyValue(
-																			"--font-size-" + mrFontSizetablet
-																	  )
-																	: tab.name == "phone" && mrFontSizephone > 0
-																	? "mr-phone-fontsize" +
-																	  mrFontSizephone +
-																	  " = " +
-																	  getComputedStyle(
-																			document.documentElement
-																	  ).getPropertyValue(
-																			"--font-size-" + mrFontSizephone
-																	  )
-																	: ""
-															}
-														/>
-													) : (
-														""
-													)}
-													{(tab.name === "" &&
-														mrFontSizeOptions.includes("-fontsizeoptions")) ||
-													(tab.name === "hover" &&
-														mrFontSizeOptionshover.includes(
-															"-fontsizeoptions"
-														)) ||
-													(tab.name === "desktop" &&
-														mrFontSizeOptionsdesktop.includes(
-															"-fontsizeoptions"
-														)) ||
-													(tab.name === "laptop" &&
-														mrFontSizeOptionslaptop.includes(
-															"-fontsizeoptions"
-														)) ||
-													(tab.name === "tablet" &&
-														mrFontSizeOptionstablet.includes(
-															"-fontsizeoptions"
-														)) ||
-													(tab.name === "phone" &&
-														mrFontSizeOptionsphone.includes(
-															"-fontsizeoptions"
-														)) ? (
-														<TextControl
-															label={__("", "mr-utils")}
-															value={
-																tab.name === "hover"
-																	? mrCustomFontSizehover
-																	: tab.name === "desktop"
-																	? mrCustomFontSizedesktop
-																	: tab.name === "laptop"
-																	? mrCustomFontSizelaptop
-																	: tab.name === "tablet"
-																	? mrCustomFontSizetablet
-																	: tab.name === "phone"
-																	? mrCustomFontSizephone
-																	: mrCustomFontSize
 															}
 															type="text"
 															className="mr-backend-custominput mr-backend-customptop"
@@ -5149,7 +3312,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 															).replace("__", "_")}
 															onChange={(val) =>
 																setAttributes({
-																	mrCustomFontSize:
+																	mrFontSize:
 																		val !== undefined &&
 																		!val.includes("mr-hover") &&
 																		!val.includes("mr-desktop") &&
@@ -5157,32 +3320,32 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																		!val.includes("mr-tablet") &&
 																		!val.includes("mr-phone")
 																			? val
-																			: mrCustomFontSize,
-																	mrCustomFontSizehover:
+																			: mrFontSize,
+																	mrFontSizehover:
 																		val !== undefined &&
 																		val.includes("mr-hover")
 																			? val
-																			: mrCustomFontSizehover,
-																	mrCustomFontSizedesktop:
+																			: mrFontSizehover,
+																	mrFontSizedesktop:
 																		val !== undefined &&
 																		val.includes("mr-desktop")
 																			? val
-																			: mrCustomFontSizedesktop,
-																	mrCustomFontSizelaptop:
+																			: mrFontSizedesktop,
+																	mrFontSizelaptop:
 																		val !== undefined &&
 																		val.includes("mr-laptop")
 																			? val
-																			: mrCustomFontSizelaptop,
-																	mrCustomFontSizetablet:
+																			: mrFontSizelaptop,
+																	mrFontSizetablet:
 																		val !== undefined &&
 																		val.includes("mr-tablet")
 																			? val
-																			: mrCustomFontSizetablet,
-																	mrCustomFontSizephone:
+																			: mrFontSizetablet,
+																	mrFontSizephone:
 																		val !== undefined &&
 																		val.includes("mr-phone")
 																			? val
-																			: mrCustomFontSizephone,
+																			: mrFontSizephone,
 																})
 															}
 														/>
@@ -5944,6 +4107,10 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 											</p>
 											<ul>
 												<li>
+													- Select classes/options on text fields besides
+													writting them (for spacing, sizes, colors and more).
+												</li>
+												<li>
 													- Select only the device breakpoints that you want to
 													use, avoiding the load of all styles and scripts.
 												</li>
@@ -6051,100 +4218,50 @@ const mrBackendExtraClasses = createHigherOrderComponent((BlockListBlock) => {
 			mrPaddingToplaptop,
 			mrPaddingToptablet,
 			mrPaddingTopphone,
-			mrCustomPaddingTop,
-			mrCustomPaddingTophover,
-			mrCustomPaddingTopdesktop,
-			mrCustomPaddingToplaptop,
-			mrCustomPaddingToptablet,
-			mrCustomPaddingTopphone,
 			mrPaddingRight,
 			mrPaddingRighthover,
 			mrPaddingRightdesktop,
 			mrPaddingRightlaptop,
 			mrPaddingRighttablet,
 			mrPaddingRightphone,
-			mrCustomPaddingRight,
-			mrCustomPaddingRighthover,
-			mrCustomPaddingRightdesktop,
-			mrCustomPaddingRightlaptop,
-			mrCustomPaddingRighttablet,
-			mrCustomPaddingRightphone,
 			mrPaddingBottom,
 			mrPaddingBottomhover,
 			mrPaddingBottomdesktop,
 			mrPaddingBottomlaptop,
 			mrPaddingBottomtablet,
 			mrPaddingBottomphone,
-			mrCustomPaddingBottom,
-			mrCustomPaddingBottomhover,
-			mrCustomPaddingBottomdesktop,
-			mrCustomPaddingBottomlaptop,
-			mrCustomPaddingBottomtablet,
-			mrCustomPaddingBottomphone,
 			mrPaddingLeft,
 			mrPaddingLefthover,
 			mrPaddingLeftdesktop,
 			mrPaddingLeftlaptop,
 			mrPaddingLefttablet,
 			mrPaddingLeftphone,
-			mrCustomPaddingLeft,
-			mrCustomPaddingLefthover,
-			mrCustomPaddingLeftdesktop,
-			mrCustomPaddingLeftlaptop,
-			mrCustomPaddingLefttablet,
-			mrCustomPaddingLeftphone,
 			mrMarginTop,
 			mrMarginTophover,
 			mrMarginTopdesktop,
 			mrMarginToplaptop,
 			mrMarginToptablet,
 			mrMarginTopphone,
-			mrCustomMarginTop,
-			mrCustomMarginTophover,
-			mrCustomMarginTopdesktop,
-			mrCustomMarginToplaptop,
-			mrCustomMarginToptablet,
-			mrCustomMarginTopphone,
 			mrMarginRight,
 			mrMarginRighthover,
 			mrMarginRightdesktop,
 			mrMarginRightlaptop,
 			mrMarginRighttablet,
 			mrMarginRightphone,
-			mrCustomMarginRight,
-			mrCustomMarginRighthover,
-			mrCustomMarginRightdesktop,
-			mrCustomMarginRightlaptop,
-			mrCustomMarginRighttablet,
-			mrCustomMarginRightphone,
 			mrMarginBottom,
 			mrMarginBottomhover,
 			mrMarginBottomdesktop,
 			mrMarginBottomlaptop,
 			mrMarginBottomtablet,
 			mrMarginBottomphone,
-			mrCustomMarginBottom,
-			mrCustomMarginBottomhover,
-			mrCustomMarginBottomdesktop,
-			mrCustomMarginBottomlaptop,
-			mrCustomMarginBottomtablet,
-			mrCustomMarginBottomphone,
 			mrMarginLeft,
 			mrMarginLefthover,
 			mrMarginLeftdesktop,
 			mrMarginLeftlaptop,
 			mrMarginLefttablet,
 			mrMarginLeftphone,
-			mrCustomMarginLeft,
-			mrCustomMarginLefthover,
-			mrCustomMarginLeftdesktop,
-			mrCustomMarginLeftlaptop,
-			mrCustomMarginLefttablet,
-			mrCustomMarginLeftphone,
 			mrRowGap,
-			mrCustomRowGap,
 			mrColumnGap,
-			mrCustomColumnGap,
 			mrPosition,
 			mrPositiondesktop,
 			mrPositionlaptop,
@@ -6175,48 +4292,21 @@ const mrBackendExtraClasses = createHigherOrderComponent((BlockListBlock) => {
 			mrHorizontalOffsetlaptop,
 			mrHorizontalOffsettablet,
 			mrHorizontalOffsetphone,
-			mrSizeOptions,
-			mrSizeOptionshover,
-			mrSizeOptionsdesktop,
-			mrSizeOptionslaptop,
-			mrSizeOptionstablet,
-			mrSizeOptionsphone,
 			mrSize,
 			mrSizehover,
 			mrSizedesktop,
 			mrSizelaptop,
 			mrSizetablet,
 			mrSizephone,
-			mrCustomSize,
-			mrCustomSizehover,
-			mrCustomSizedesktop,
-			mrCustomSizelaptop,
-			mrCustomSizetablet,
-			mrCustomSizephone,
 			mrBackgroundColor,
-			mrCustomBackgroundColor,
 			mrColor,
-			mrCustomColor,
 			mrFontFamily,
-			mrCustomFontFamily,
-			mrFontSizeOptions,
-			mrFontSizeOptionshover,
-			mrFontSizeOptionsdesktop,
-			mrFontSizeOptionslaptop,
-			mrFontSizeOptionstablet,
-			mrFontSizeOptionsphone,
 			mrFontSize,
 			mrFontSizehover,
 			mrFontSizedesktop,
 			mrFontSizelaptop,
 			mrFontSizetablet,
 			mrFontSizephone,
-			mrCustomFontSize,
-			mrCustomFontSizehover,
-			mrCustomFontSizedesktop,
-			mrCustomFontSizelaptop,
-			mrCustomFontSizetablet,
-			mrCustomFontSizephone,
 			mrTextAlignment,
 			mrTextAlignmentdesktop,
 			mrTextAlignmentlaptop,
@@ -6234,142 +4324,6 @@ const mrBackendExtraClasses = createHigherOrderComponent((BlockListBlock) => {
 		let mrAttr = "";
 		let mrAttrValue = "";
 
-		if (
-			mrCustomSize &&
-			mrSizeOptions &&
-			mrSizeOptions.includes("-sizeoptions")
-		) {
-			mrClassNames = mrClassNames + " " + mrCustomSize;
-		} else if (mrSize) {
-			mrClassNames = mrClassNames + " mr-size" + mrSize;
-		}
-		if (
-			mrCustomSizehover &&
-			mrSizeOptionshover &&
-			mrSizeOptionshover.includes("-sizeoptions")
-		) {
-			mrClassNames = mrClassNames + " " + mrCustomSizehover;
-		} else if (mrSizehover) {
-			mrClassNames = mrClassNames + " mr-hover-size" + mrSizehover;
-		}
-		if (
-			mrCustomSizedesktop &&
-			mrSizeOptionsdesktop &&
-			mrSizeOptionsdesktop.includes("-sizeoptions")
-		) {
-			mrClassNames = mrClassNames + " " + mrCustomSizedesktop;
-		} else if (mrSizedesktop) {
-			mrClassNames = mrClassNames + " mr-desktop-size" + mrSizedesktop;
-		}
-		if (
-			mrCustomSizelaptop &&
-			mrSizeOptionslaptop &&
-			mrSizeOptionslaptop.includes("-sizeoptions")
-		) {
-			mrClassNames = mrClassNames + " " + mrCustomSizelaptop;
-		} else if (mrSizelaptop) {
-			mrClassNames = mrClassNames + " mr-laptop-size" + mrSizelaptop;
-		}
-		if (
-			mrCustomSizetablet &&
-			mrSizeOptionstablet &&
-			mrSizeOptionstablet.includes("-sizeoptions")
-		) {
-			mrClassNames = mrClassNames + " " + mrCustomSizetablet;
-		} else if (mrSizetablet) {
-			mrClassNames = mrClassNames + " mr-tablet-size" + mrSizetablet;
-		}
-		if (
-			mrCustomSizephone &&
-			mrSizeOptionsphone &&
-			mrSizeOptionsphone.includes("-sizeoptions")
-		) {
-			mrClassNames = mrClassNames + " " + mrCustomSizephone;
-		} else if (mrSizephone) {
-			mrClassNames = mrClassNames + " mr-phone-size" + mrSizephone;
-		}
-
-		if (
-			mrBackgroundColor &&
-			mrBackgroundColor.includes("-custombackgroundcolor") &&
-			mrCustomBackgroundColor
-		) {
-			mrClassNames = mrClassNames + " " + mrCustomBackgroundColor;
-		} else if (mrBackgroundColor && mrBackgroundColor !== "mr-") {
-			mrClassNames = mrClassNames + " " + mrBackgroundColor;
-		}
-
-		if (mrColor && mrColor.includes("-customcolor") && mrCustomColor) {
-			mrClassNames = mrClassNames + " " + mrCustomColor;
-		} else if (mrColor && mrColor !== "mr-") {
-			mrClassNames = mrClassNames + " " + mrColor;
-		}
-
-		if (
-			mrFontFamily &&
-			mrFontFamily.includes("-customfont") &&
-			mrCustomFontFamily
-		) {
-			mrClassNames = mrClassNames + " " + mrCustomFontFamily;
-		} else if (mrFontFamily && mrFontFamily !== "mr-") {
-			mrClassNames = mrClassNames + " " + mrFontFamily;
-		}
-
-		if (
-			mrCustomFontSize &&
-			mrFontSizeOptions &&
-			mrFontSizeOptions.includes("-fontsizeoptions")
-		) {
-			mrClassNames = mrClassNames + " " + mrCustomFontSize;
-		} else if (mrFontSize) {
-			mrClassNames = mrClassNames + " mr-fontsize" + mrFontSize;
-		}
-		if (
-			mrCustomFontSizehover &&
-			mrFontSizeOptionshover &&
-			mrFontSizeOptionshover.includes("-fontsizeoptions")
-		) {
-			mrClassNames = mrClassNames + " " + mrCustomFontSizehover;
-		} else if (mrFontSizehover) {
-			mrClassNames = mrClassNames + " mr-hover-fontsize" + mrFontSizehover;
-		}
-		if (
-			mrCustomFontSizedesktop &&
-			mrFontSizeOptionsdesktop &&
-			mrFontSizeOptionsdesktop.includes("-fontsizeoptions")
-		) {
-			mrClassNames = mrClassNames + " " + mrCustomFontSizedesktop;
-		} else if (mrFontSizedesktop) {
-			mrClassNames = mrClassNames + " mr-desktop-fontsize" + mrFontSizedesktop;
-		}
-		if (
-			mrCustomFontSizelaptop &&
-			mrFontSizeOptionslaptop &&
-			mrFontSizeOptionslaptop.includes("-fontsizeoptions")
-		) {
-			mrClassNames = mrClassNames + " " + mrCustomFontSizelaptop;
-		} else if (mrFontSizelaptop) {
-			mrClassNames = mrClassNames + " mr-laptop-fontsize" + mrFontSizelaptop;
-		}
-		if (
-			mrCustomFontSizetablet &&
-			mrFontSizeOptionstablet &&
-			mrFontSizeOptionstablet.includes("-fontsizeoptions")
-		) {
-			mrClassNames = mrClassNames + " " + mrCustomFontSizetablet;
-		} else if (mrFontSizetablet) {
-			mrClassNames = mrClassNames + " mr-tablet-fontsize" + mrFontSizetablet;
-		}
-		if (
-			mrCustomFontSizephone &&
-			mrFontSizeOptionsphone &&
-			mrFontSizeOptionsphone.includes("-fontsizeoptions")
-		) {
-			mrClassNames = mrClassNames + " " + mrCustomFontSizephone;
-		} else if (mrFontSizephone) {
-			mrClassNames = mrClassNames + " mr-phone-fontsize" + mrFontSizephone;
-		}
-
 		Object.keys(attributes).forEach(function (value) {
 			mrAttr = value;
 			mrAttrValue = attributes[value];
@@ -6380,12 +4334,7 @@ const mrBackendExtraClasses = createHigherOrderComponent((BlockListBlock) => {
 				mrAttrValue !== "mr-laptop" &&
 				mrAttrValue !== "mr-tablet" &&
 				mrAttrValue !== "mr-phone" &&
-				!mrAttr.includes("mrCustom") &&
-				!mrAttr.includes("mrFontSize") &&
-				!mrAttr.includes("mrSize") &&
-				!mrAttr.includes("mrFontFamily") &&
-				!mrAttr.includes("mrBackgroundColor") &&
-				!mrAttr.includes("mrColor")
+				!mrAttr.includes("mrCustom")
 			) {
 				if (mrAttr == "mrPerPage" && mrAttrValue) {
 					if (mrAttrValue > 0) {
@@ -6413,111 +4362,78 @@ const mrBackendExtraClasses = createHigherOrderComponent((BlockListBlock) => {
 					mrAttrValue &&
 					mrAttrValue.includes("-padding")
 				) {
-					if (mrAttr == "mrPaddingTop" && mrCustomPaddingTop) {
-						mrClassNames = mrClassNames + " " + mrCustomPaddingTop;
-					} else if (mrAttr == "mrPaddingTophover" && mrCustomPaddingTophover) {
-						mrClassNames = mrClassNames + " " + mrCustomPaddingTophover;
-					} else if (
-						mrAttr == "mrPaddingTopdesktop" &&
-						mrCustomPaddingTopdesktop
-					) {
-						mrClassNames = mrClassNames + " " + mrCustomPaddingTopdesktop;
-					} else if (
-						mrAttr == "mrPaddingToplaptop" &&
-						mrCustomPaddingToplaptop
-					) {
-						mrClassNames = mrClassNames + " " + mrCustomPaddingToplaptop;
-					} else if (
-						mrAttr == "mrPaddingToplaptablet" &&
-						mrCustomPaddingToptablet
-					) {
-						mrClassNames = mrClassNames + " " + mrCustomPaddingToptablet;
-					} else if (
-						mrAttr == "mrPaddingToplapphone" &&
-						mrCustomPaddingTopphone
-					) {
-						mrClassNames = mrClassNames + " " + mrCustomPaddingTopphone;
-					} else if (mrAttr == "mrPaddingRight" && mrCustomPaddingRight) {
-						mrClassNames = mrClassNames + " " + mrCustomPaddingRight;
-					} else if (
-						mrAttr == "mrPaddingRighthover" &&
-						mrCustomPaddingRighthover
-					) {
-						mrClassNames = mrClassNames + " " + mrCustomPaddingRighthover;
+					if (mrAttr == "mrPaddingTop" && mrPaddingTop) {
+						mrClassNames = mrClassNames + " " + mrPaddingTop;
+					} else if (mrAttr == "mrPaddingTophover" && mrPaddingTophover) {
+						mrClassNames = mrClassNames + " " + mrPaddingTophover;
+					} else if (mrAttr == "mrPaddingTopdesktop" && mrPaddingTopdesktop) {
+						mrClassNames = mrClassNames + " " + mrPaddingTopdesktop;
+					} else if (mrAttr == "mrPaddingToplaptop" && mrPaddingToplaptop) {
+						mrClassNames = mrClassNames + " " + mrPaddingToplaptop;
+					} else if (mrAttr == "mrPaddingToplaptablet" && mrPaddingToptablet) {
+						mrClassNames = mrClassNames + " " + mrPaddingToptablet;
+					} else if (mrAttr == "mrPaddingToplapphone" && mrPaddingTopphone) {
+						mrClassNames = mrClassNames + " " + mrPaddingTopphone;
+					} else if (mrAttr == "mrPaddingRight" && mrPaddingRight) {
+						mrClassNames = mrClassNames + " " + mrPaddingRight;
+					} else if (mrAttr == "mrPaddingRighthover" && mrPaddingRighthover) {
+						mrClassNames = mrClassNames + " " + mrPaddingRighthover;
 					} else if (
 						mrAttr == "mrPaddingRightdesktop" &&
-						mrCustomPaddingRightdesktop
+						mrPaddingRightdesktop
 					) {
-						mrClassNames = mrClassNames + " " + mrCustomPaddingRightdesktop;
-					} else if (
-						mrAttr == "mrPaddingRightlaptop" &&
-						mrCustomPaddingRightlaptop
-					) {
-						mrClassNames = mrClassNames + " " + mrCustomPaddingRightlaptop;
+						mrClassNames = mrClassNames + " " + mrPaddingRightdesktop;
+					} else if (mrAttr == "mrPaddingRightlaptop" && mrPaddingRightlaptop) {
+						mrClassNames = mrClassNames + " " + mrPaddingRightlaptop;
 					} else if (
 						mrAttr == "mrPaddingRightlaptablet" &&
-						mrCustomPaddingRighttablet
+						mrPaddingRighttablet
 					) {
-						mrClassNames = mrClassNames + " " + mrCustomPaddingRighttablet;
+						mrClassNames = mrClassNames + " " + mrPaddingRighttablet;
 					} else if (
 						mrAttr == "mrPaddingRightlapphone" &&
-						mrCustomPaddingRightphone
+						mrPaddingRightphone
 					) {
-						mrClassNames = mrClassNames + " " + mrCustomPaddingRightphone;
-					} else if (mrAttr == "mrPaddingBottom" && mrCustomPaddingBottom) {
-						mrClassNames = mrClassNames + " " + mrCustomPaddingBottom;
-					} else if (
-						mrAttr == "mrPaddingBottomhover" &&
-						mrCustomPaddingBottomhover
-					) {
-						mrClassNames = mrClassNames + " " + mrCustomPaddingBottomhover;
+						mrClassNames = mrClassNames + " " + mrPaddingRightphone;
+					} else if (mrAttr == "mrPaddingBottom" && mrPaddingBottom) {
+						mrClassNames = mrClassNames + " " + mrPaddingBottom;
+					} else if (mrAttr == "mrPaddingBottomhover" && mrPaddingBottomhover) {
+						mrClassNames = mrClassNames + " " + mrPaddingBottomhover;
 					} else if (
 						mrAttr == "mrPaddingBottomdesktop" &&
-						mrCustomPaddingBottomdesktop
+						mrPaddingBottomdesktop
 					) {
-						mrClassNames = mrClassNames + " " + mrCustomPaddingBottomdesktop;
+						mrClassNames = mrClassNames + " " + mrPaddingBottomdesktop;
 					} else if (
 						mrAttr == "mrPaddingBottomlaptop" &&
-						mrCustomPaddingBottomlaptop
+						mrPaddingBottomlaptop
 					) {
-						mrClassNames = mrClassNames + " " + mrCustomPaddingBottomlaptop;
+						mrClassNames = mrClassNames + " " + mrPaddingBottomlaptop;
 					} else if (
 						mrAttr == "mrPaddingBottomlaptablet" &&
-						mrCustomPaddingBottomtablet
+						mrPaddingBottomtablet
 					) {
-						mrClassNames = mrClassNames + " " + mrCustomPaddingBottomtablet;
+						mrClassNames = mrClassNames + " " + mrPaddingBottomtablet;
 					} else if (
 						mrAttr == "mrPaddingBottomlapphone" &&
-						mrCustomPaddingBottomphone
+						mrPaddingBottomphone
 					) {
-						mrClassNames = mrClassNames + " " + mrCustomPaddingBottomphone;
-					} else if (mrAttr == "mrPaddingLeft" && mrCustomPaddingLeft) {
-						mrClassNames = mrClassNames + " " + mrCustomPaddingLeft;
-					} else if (
-						mrAttr == "mrPaddingLefthover" &&
-						mrCustomPaddingLefthover
-					) {
-						mrClassNames = mrClassNames + " " + mrCustomPaddingLefthover;
-					} else if (
-						mrAttr == "mrPaddingLeftdesktop" &&
-						mrCustomPaddingLeftdesktop
-					) {
-						mrClassNames = mrClassNames + " " + mrCustomPaddingLeftdesktop;
-					} else if (
-						mrAttr == "mrPaddingLeftlaptop" &&
-						mrCustomPaddingLeftlaptop
-					) {
-						mrClassNames = mrClassNames + " " + mrCustomPaddingLeftlaptop;
+						mrClassNames = mrClassNames + " " + mrPaddingBottomphone;
+					} else if (mrAttr == "mrPaddingLeft" && mrPaddingLeft) {
+						mrClassNames = mrClassNames + " " + mrPaddingLeft;
+					} else if (mrAttr == "mrPaddingLefthover" && mrPaddingLefthover) {
+						mrClassNames = mrClassNames + " " + mrPaddingLefthover;
+					} else if (mrAttr == "mrPaddingLeftdesktop" && mrPaddingLeftdesktop) {
+						mrClassNames = mrClassNames + " " + mrPaddingLeftdesktop;
+					} else if (mrAttr == "mrPaddingLeftlaptop" && mrPaddingLeftlaptop) {
+						mrClassNames = mrClassNames + " " + mrPaddingLeftlaptop;
 					} else if (
 						mrAttr == "mrPaddingLeftlaptablet" &&
-						mrCustomPaddingLefttablet
+						mrPaddingLefttablet
 					) {
-						mrClassNames = mrClassNames + " " + mrCustomPaddingLefttablet;
-					} else if (
-						mrAttr == "mrPaddingLeftlapphone" &&
-						mrCustomPaddingLeftphone
-					) {
-						mrClassNames = mrClassNames + " " + mrCustomPaddingLeftphone;
+						mrClassNames = mrClassNames + " " + mrPaddingLefttablet;
+					} else if (mrAttr == "mrPaddingLeftlapphone" && mrPaddingLeftphone) {
+						mrClassNames = mrClassNames + " " + mrPaddingLeftphone;
 					} else {
 						mrClassNames = mrClassNames + mrAttrValue;
 					}
@@ -6552,7 +4468,7 @@ const mrBackendExtraClasses = createHigherOrderComponent((BlockListBlock) => {
 				  ) {
 					  if (
 						  mrPaddingTop.includes("-custom") &&
-						  mrAttr == "mrCustomPaddingTop" &&
+						  mrAttr == "mrPaddingTop" &&
 						  mrAttrValue
 					  ) {
 						  mrInlineStyles =

@@ -1,1 +1,2899 @@
-!function(){var e={184:function(e,t){var a;!function(){"use strict";var n={}.hasOwnProperty;function o(){for(var e=[],t=0;t<arguments.length;t++){var a=arguments[t];if(a){var r=typeof a;if("string"===r||"number"===r)e.push(a);else if(Array.isArray(a)){if(a.length){var m=o.apply(null,a);m&&e.push(m)}}else if("object"===r)if(a.toString===Object.prototype.toString)for(var l in a)n.call(a,l)&&a[l]&&e.push(l);else e.push(a.toString())}}return e.join(" ")}e.exports?(o.default=o,e.exports=o):void 0===(a=function(){return o}.apply(t,[]))||(e.exports=a)}()}},t={};function a(n){var o=t[n];if(void 0!==o)return o.exports;var r=t[n]={exports:{}};return e[n](r,r.exports,a),r.exports}!function(){"use strict";function e(){return e=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var a=arguments[t];for(var n in a)Object.prototype.hasOwnProperty.call(a,n)&&(e[n]=a[n])}return e},e.apply(this,arguments)}var t=window.wp.element,n=(a(184),window.wp.i18n),o=window.wp.hooks,r=window.wp.compose,m=window.wp.blockEditor,l=window.wp.components,i=window.wp.primitives,p=(0,t.createElement)(i.SVG,{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 24 24"},(0,t.createElement)(i.Path,{d:"M14.5 13.8c-1.1 0-2.1.7-2.4 1.8H4V17h8.1c.3 1 1.3 1.8 2.4 1.8s2.1-.7 2.4-1.8H20v-1.5h-3.1c-.3-1-1.3-1.7-2.4-1.7zM11.9 7c-.3-1-1.3-1.8-2.4-1.8S7.4 6 7.1 7H4v1.5h3.1c.3 1 1.3 1.8 2.4 1.8s2.1-.7 2.4-1.8H20V7h-8.1z"})),s=(0,t.createElement)(i.SVG,{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 24 24"},(0,t.createElement)(i.Path,{d:"M19.75 9c0-1.257-.565-2.197-1.39-2.858-.797-.64-1.827-1.017-2.815-1.247-1.802-.42-3.703-.403-4.383-.396L11 4.5V6l.177-.001c.696-.006 2.416-.02 4.028.356.887.207 1.67.518 2.216.957.52.416.829.945.829 1.688 0 .592-.167.966-.407 1.23-.255.281-.656.508-1.236.674-1.19.34-2.82.346-4.607.346h-.077c-1.692 0-3.527 0-4.942.404-.732.209-1.424.545-1.935 1.108-.526.579-.796 1.33-.796 2.238 0 1.257.565 2.197 1.39 2.858.797.64 1.827 1.017 2.815 1.247 1.802.42 3.703.403 4.383.396L13 19.5h.714V22L18 18.5 13.714 15v3H13l-.177.001c-.696.006-2.416.02-4.028-.356-.887-.207-1.67-.518-2.216-.957-.52-.416-.829-.945-.829-1.688 0-.592.167-.966.407-1.23.255-.281.656-.508 1.237-.674 1.189-.34 2.819-.346 4.606-.346h.077c1.692 0 3.527 0 4.941-.404.732-.209 1.425-.545 1.936-1.108.526-.579.796-1.33.796-2.238z"})),d=(0,t.createElement)(i.SVG,{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 24 24"},(0,t.createElement)(i.Path,{d:"M18.5 5.5h-13c-1.1 0-2 .9-2 2v9c0 1.1.9 2 2 2h13c1.1 0 2-.9 2-2v-9c0-1.1-.9-2-2-2zm.5 11c0 .3-.2.5-.5.5h-13c-.3 0-.5-.2-.5-.5v-9c0-.3.2-.5.5-.5h13c.3 0 .5.2.5.5v9zM6.5 12H8v-2h2V8.5H6.5V12zm9.5 2h-2v1.5h3.5V12H16v2z"})),u=(0,t.createElement)(i.SVG,{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 24 24"},(0,t.createElement)(i.Path,{d:"M20.5 16h-.7V8c0-1.1-.9-2-2-2H6.2c-1.1 0-2 .9-2 2v8h-.7c-.8 0-1.5.7-1.5 1.5h20c0-.8-.7-1.5-1.5-1.5zM5.7 8c0-.3.2-.5.5-.5h11.6c.3 0 .5.2.5.5v7.6H5.7V8z"})),c=(0,t.createElement)(i.SVG,{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 24 24"},(0,t.createElement)(i.Path,{d:"M17 4H7c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm.5 14c0 .3-.2.5-.5.5H7c-.3 0-.5-.2-.5-.5V6c0-.3.2-.5.5-.5h10c.3 0 .5.2.5.5v12zm-7.5-.5h4V16h-4v1.5z"})),g=(0,t.createElement)(i.SVG,{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 24 24"},(0,t.createElement)(i.Path,{d:"M15 4H9c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm.5 14c0 .3-.2.5-.5.5H9c-.3 0-.5-.2-.5-.5V6c0-.3.2-.5.5-.5h6c.3 0 .5.2.5.5v12zm-4.5-.5h2V16h-2v1.5z"})),h=(0,t.createElement)(i.SVG,{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 24 24"},(0,t.createElement)(i.Path,{d:"M18 11.2h-5.2V6h-1.6v5.2H6v1.6h5.2V18h1.6v-5.2H18z"})),v=(0,t.createElement)(i.SVG,{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 24 24"},(0,t.createElement)(i.Path,{d:"M7 13.8h6v-1.5H7v1.5zM18 16V4c0-1.1-.9-2-2-2H6c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2zM5.5 16V4c0-.3.2-.5.5-.5h10c.3 0 .5.2.5.5v12c0 .3-.2.5-.5.5H6c-.3 0-.5-.2-.5-.5zM7 10.5h8V9H7v1.5zm0-3.3h8V5.8H7v1.4zM20.2 6v13c0 .7-.6 1.2-1.2 1.2H8v1.5h11c1.5 0 2.7-1.2 2.7-2.8V6h-1.5z"})),b=(0,t.createElement)(i.SVG,{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 24 24"},(0,t.createElement)(i.Path,{d:"M19 8h-1V6h-5v2h-2V6H6v2H5c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-8c0-1.1-.9-2-2-2zm.5 10c0 .3-.2.5-.5.5H5c-.3 0-.5-.2-.5-.5v-8c0-.3.2-.5.5-.5h14c.3 0 .5.2.5.5v8z"})),f=(0,t.createElement)(i.SVG,{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 24 24"},(0,t.createElement)(i.Path,{d:"M21.3 10.8l-5.6-5.6c-.7-.7-1.8-.7-2.5 0l-5.6 5.6c-.7.7-.7 1.8 0 2.5l5.6 5.6c.3.3.8.5 1.2.5s.9-.2 1.2-.5l5.6-5.6c.8-.7.8-1.9.1-2.5zm-1 1.4l-5.6 5.6c-.1.1-.3.1-.4 0l-5.6-5.6c-.1-.1-.1-.3 0-.4l5.6-5.6s.1-.1.2-.1.1 0 .2.1l5.6 5.6c.1.1.1.3 0 .4zm-16.6-.4L10 5.5l-1-1-6.3 6.3c-.7.7-.7 1.8 0 2.5L9 19.5l1.1-1.1-6.3-6.3c-.2 0-.2-.2-.1-.3z"})),C=(0,t.createElement)(i.SVG,{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 24 24"},(0,t.createElement)(i.Path,{d:"M16 10h4c.6 0 1-.4 1-1V5c0-.6-.4-1-1-1h-4c-.6 0-1 .4-1 1v4c0 .6.4 1 1 1zm-8 4H4c-.6 0-1 .4-1 1v4c0 .6.4 1 1 1h4c.6 0 1-.4 1-1v-4c0-.6-.4-1-1-1zm10-2.6L14.5 15l1.1 1.1 1.7-1.7c-.1 1.1-.3 2.3-.9 2.9-.3.3-.7.5-1.3.5h-4.5v1.5H15c.9 0 1.7-.3 2.3-.9 1-1 1.3-2.7 1.4-4l1.8 1.8 1.1-1.1-3.6-3.7zM6.8 9.7c.1-1.1.3-2.3.9-2.9.4-.4.8-.6 1.3-.6h4.5V4.8H9c-.9 0-1.7.3-2.3.9-1 1-1.3 2.7-1.4 4L3.5 8l-1 1L6 12.6 9.5 9l-1-1-1.7 1.7z"})),k=(0,t.createElement)(i.SVG,{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 24 24"},(0,t.createElement)(i.Path,{d:"M18 5.5H6a.5.5 0 00-.5.5v3h13V6a.5.5 0 00-.5-.5zm.5 5H10v8h8a.5.5 0 00.5-.5v-7.5zm-10 0h-3V18a.5.5 0 00.5.5h2.5v-8zM6 4h12a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2z"})),P=(0,t.createElement)(i.SVG,{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 24 24"},(0,t.createElement)(i.Path,{d:"M5 17.7c.4.5.8.9 1.2 1.2l1.1-1.4c-.4-.3-.7-.6-1-1L5 17.7zM5 6.3l1.4 1.1c.3-.4.6-.7 1-1L6.3 5c-.5.4-.9.8-1.3 1.3zm.1 7.8l-1.7.5c.2.6.4 1.1.7 1.6l1.5-.8c-.2-.4-.4-.8-.5-1.3zM4.8 12v-.7L3 11.1v1.8l1.7-.2c.1-.2.1-.5.1-.7zm3 7.9c.5.3 1.1.5 1.6.7l.5-1.7c-.5-.1-.9-.3-1.3-.5l-.8 1.5zM19 6.3c-.4-.5-.8-.9-1.2-1.2l-1.1 1.4c.4.3.7.6 1 1L19 6.3zm-.1 3.6l1.7-.5c-.2-.6-.4-1.1-.7-1.6l-1.5.8c.2.4.4.8.5 1.3zM5.6 8.6l-1.5-.8c-.3.5-.5 1-.7 1.6l1.7.5c.1-.5.3-.9.5-1.3zm2.2-4.5l.8 1.5c.4-.2.8-.4 1.3-.5l-.5-1.7c-.6.2-1.1.4-1.6.7zm8.8 13.5l1.1 1.4c.5-.4.9-.8 1.2-1.2l-1.4-1.1c-.2.3-.5.6-.9.9zm1.8-2.2l1.5.8c.3-.5.5-1.1.7-1.6l-1.7-.5c-.1.5-.3.9-.5 1.3zm2.6-4.3l-1.7.2v1.4l1.7.2V12v-.9zM11.1 3l.2 1.7h1.4l.2-1.7h-1.8zm3 2.1c.5.1.9.3 1.3.5l.8-1.5c-.5-.3-1.1-.5-1.6-.7l-.5 1.7zM12 19.2h-.7l-.2 1.8h1.8l-.2-1.7c-.2-.1-.5-.1-.7-.1zm2.1-.3l.5 1.7c.6-.2 1.1-.4 1.6-.7l-.8-1.5c-.4.2-.8.4-1.3.5z"})),y=(0,t.createElement)(i.SVG,{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 24 24"},(0,t.createElement)(i.Path,{d:"M4 20h8v-1.5H4V20zM18.9 3.5c-.6-.6-1.5-.6-2.1 0l-7.2 7.2c-.4-.1-.7 0-1.1.1-.5.2-1.5.7-1.9 2.2-.4 1.7-.8 2.2-1.1 2.7-.1.1-.2.3-.3.4l-.6 1.1H6c2 0 3.4-.4 4.7-1.4.8-.6 1.2-1.4 1.3-2.3 0-.3 0-.5-.1-.7L19 5.7c.5-.6.5-1.6-.1-2.2zM9.7 14.7c-.7.5-1.5.8-2.4 1 .2-.5.5-1.2.8-2.3.2-.6.4-1 .8-1.1.5-.1 1 .1 1.3.3.2.2.3.5.2.8 0 .3-.1.9-.7 1.3z"})),z=(0,t.createElement)(i.SVG,{viewBox:"0 0 24 24",xmlns:"http://www.w3.org/2000/svg"},(0,t.createElement)(i.Path,{d:"M12.5 4.2v1.6h4.7L5.8 17.2V12H4.2v7.8H12v-1.6H6.8L18.2 6.8v4.7h1.6V4.2z"})),S=(0,t.createElement)(i.SVG,{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 24 24"},(0,t.createElement)(i.Path,{d:"M6.9 7L3 17.8h1.7l1-2.8h4.1l1 2.8h1.7L8.6 7H6.9zm-.7 6.6l1.5-4.3 1.5 4.3h-3zM21.6 17c-.1.1-.2.2-.3.2-.1.1-.2.1-.4.1s-.3-.1-.4-.2c-.1-.1-.1-.3-.1-.6V12c0-.5 0-1-.1-1.4-.1-.4-.3-.7-.5-1-.2-.2-.5-.4-.9-.5-.4 0-.8-.1-1.3-.1s-1 .1-1.4.2c-.4.1-.7.3-1 .4-.2.2-.4.3-.6.5-.1.2-.2.4-.2.7 0 .3.1.5.2.8.2.2.4.3.8.3.3 0 .6-.1.8-.3.2-.2.3-.4.3-.7 0-.3-.1-.5-.2-.7-.2-.2-.4-.3-.6-.4.2-.2.4-.3.7-.4.3-.1.6-.1.8-.1.3 0 .6 0 .8.1.2.1.4.3.5.5.1.2.2.5.2.9v1.1c0 .3-.1.5-.3.6-.2.2-.5.3-.9.4-.3.1-.7.3-1.1.4-.4.1-.8.3-1.1.5-.3.2-.6.4-.8.7-.2.3-.3.7-.3 1.2 0 .6.2 1.1.5 1.4.3.4.9.5 1.6.5.5 0 1-.1 1.4-.3.4-.2.8-.6 1.1-1.1 0 .4.1.7.3 1 .2.3.6.4 1.2.4.4 0 .7-.1.9-.2.2-.1.5-.3.7-.4h-.3zm-3-.9c-.2.4-.5.7-.8.8-.3.2-.6.2-.8.2-.4 0-.6-.1-.9-.3-.2-.2-.3-.6-.3-1.1 0-.5.1-.9.3-1.2s.5-.5.8-.7c.3-.2.7-.3 1-.5.3-.1.6-.3.7-.6v3.4z"})),_=(0,t.createElement)(i.SVG,{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 24 24"},(0,t.createElement)(i.Path,{d:"M4 18h6V6H4v12zm9-9.5V10h7V8.5h-7zm0 7h7V14h-7v1.5z"})),M=(0,t.createElement)(i.SVG,{xmlns:"http://www.w3.org/2000/svg",viewBox:"-2 -2 24 24"},(0,t.createElement)(i.Path,{d:"M10 1c-5 0-9 4-9 9s4 9 9 9 9-4 9-9-4-9-9-9zm0 16c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7zm1-11H9v3H6v2h3v3h2v-3h3V9h-3V6zM10 1c-5 0-9 4-9 9s4 9 9 9 9-4 9-9-4-9-9-9zm0 16c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7zm1-11H9v3H6v2h3v3h2v-3h3V9h-3V6z"}));const w=wp.element.createElement("svg",{width:20,height:20},wp.element.createElement("path",{d:"M11.361,13.455c0,0.252-0.51,0.456-1.141,0.456s-1.141-0.204-1.141-0.456c0-0.252,0.51-0.457,1.141-0.457   S11.361,13.203,11.361,13.455z M20.029,12.448c0,1.34-0.843,2.479-2.002,2.859c-1.487,2.854-4.476,4.697-7.792,4.697   c-3.313,0-6.299-1.837-7.786-4.686c-1.177-0.368-2.037-1.515-2.037-2.87c0-0.828,0.325-1.577,0.844-2.12   C0.89,9.954,0.612,9.477,0.451,8.916C0.177,7.969,0.26,6.904,0.686,5.918C1.194,4.739,2.13,3.852,3.18,3.485   c0.237-2.627,4.676-3.569,7.611-3.478c4.147,0.13,5.12,2.016,5.292,3.322c1.331,0.148,2.594,1.146,3.215,2.589   c0.424,0.986,0.509,2.051,0.236,2.998c-0.129,0.449-0.334,0.845-0.597,1.177C19.6,10.639,20.029,11.493,20.029,12.448z    M11.434,17.606l-0.216-0.967H9.236l-0.222,0.964c0.304-0.136,0.73-0.223,1.207-0.223C10.7,17.38,11.129,17.468,11.434,17.606z    M18.203,12.448c0-0.646-0.454-1.169-1.021-1.169c0,0-0.001,0-0.002,0c-0.155,0.25-0.333,0.489-0.534,0.718   c0.126-0.409,0.21-0.826,0.256-1.244c0-0.006-0.001-0.012-0.001-0.018c-0.595-0.317-1.205-1-1.625-1.901   c-0.438-0.939-0.562-1.886-0.395-2.549c-1.687,1.07-4.545,0.562-4.545,0.562c-1.71,0.114-2.167,2.281-2.167,2.281   C7.374,8.952,6.549,8.401,5.831,7.79C5.754,8.129,5.635,8.482,5.47,8.834c-0.489,1.05-1.237,1.805-1.917,2.026   c0.047,0.382,0.127,0.762,0.242,1.135c-0.202-0.229-0.379-0.468-0.534-0.718c-0.001,0-0.001-0.001-0.002-0.001   c-0.568,0-1.022,0.523-1.022,1.17c0,0.646,0.455,1.168,1.022,1.168c0.142,0,0.276-0.032,0.399-0.091   c0.124,0.361,0.279,0.708,0.459,1.038c1.016,0.359,2.496,1.069,3.199,2.279l0.304-1.321c0.095-0.414,0.464-0.708,0.889-0.708h3.44   c0.428,0,0.799,0.296,0.891,0.714l0.291,1.301c0.713-1.216,2.214-1.925,3.227-2.279c0.177-0.324,0.329-0.663,0.449-1.016   c0.115,0.051,0.241,0.083,0.373,0.083C17.749,13.616,18.203,13.092,18.203,12.448z M7.121,9.929c-0.566,0-1.027,0.46-1.027,1.026   s0.461,1.026,1.027,1.026s1.026-0.461,1.026-1.026S7.687,9.929,7.121,9.929z M13.32,9.929c-0.566,0-1.027,0.46-1.027,1.026   s0.461,1.026,1.027,1.026c0.565,0,1.026-0.461,1.026-1.026S13.885,9.929,13.32,9.929z"})),E=(0,r.createHigherOrderComponent)((e=>a=>{const{name:o,attributes:r,setAttributes:i,isSelected:E}=a,{mrAnimation:T,mrAnimationhover:R,mrTransition:B,mrTransitionhover:L,mrPerPage:O,mrPaginationPosition:x,mrComponent:F,mrVerticalScrollNavigation:V,mrHorizontalScrollNavigation:A,mrActiveWhen:G,mrNavPosition:H,mrArrowPagination:N,mrSelectPagination:D,mrRadioPagination:W,mrPerLine:U,mrPerLinedesktop:I,mrPerLinelaptop:j,mrPerLinetablet:q,mrPerLinephone:K,mrColumns:Y,mrColumnsdesktop:Z,mrColumnslaptop:J,mrColumnstablet:Q,mrColumnsphone:X,mrOrder:$,mrOrderdesktop:ee,mrOrderlaptop:te,mrOrdertablet:ae,mrOrderphone:ne,mrDisplay:oe,mrDisplayhover:re,mrDisplaydesktop:me,mrDisplaylaptop:le,mrDisplaytablet:ie,mrDisplayphone:pe,mrWrap:se,mrWrapdesktop:de,mrWraplaptop:ue,mrWraptablet:ce,mrWrapphone:ge,mrPaddingTop:he,mrPaddingTophover:ve,mrPaddingTopdesktop:be,mrPaddingToplaptop:fe,mrPaddingToptablet:Ce,mrPaddingTopphone:ke,mrCustomPaddingTop:Pe,mrCustomPaddingTophover:ye,mrCustomPaddingTopdesktop:ze,mrCustomPaddingToplaptop:Se,mrCustomPaddingToptablet:_e,mrCustomPaddingTopphone:Me,mrPaddingRight:we,mrPaddingRighthover:Ee,mrPaddingRightdesktop:Te,mrPaddingRightlaptop:Re,mrPaddingRighttablet:Be,mrPaddingRightphone:Le,mrCustomPaddingRight:Oe,mrCustomPaddingRighthover:xe,mrCustomPaddingRightdesktop:Fe,mrCustomPaddingRightlaptop:Ve,mrCustomPaddingRighttablet:Ae,mrCustomPaddingRightphone:Ge,mrPaddingBottom:He,mrPaddingBottomhover:Ne,mrPaddingBottomdesktop:De,mrPaddingBottomlaptop:We,mrPaddingBottomtablet:Ue,mrPaddingBottomphone:Ie,mrCustomPaddingBottom:je,mrCustomPaddingBottomhover:qe,mrCustomPaddingBottomdesktop:Ke,mrCustomPaddingBottomlaptop:Ye,mrCustomPaddingBottomtablet:Ze,mrCustomPaddingBottomphone:Je,mrPaddingLeft:Qe,mrPaddingLefthover:Xe,mrPaddingLeftdesktop:$e,mrPaddingLeftlaptop:et,mrPaddingLefttablet:tt,mrPaddingLeftphone:at,mrCustomPaddingLeft:nt,mrCustomPaddingLefthover:ot,mrCustomPaddingLeftdesktop:rt,mrCustomPaddingLeftlaptop:mt,mrCustomPaddingLefttablet:lt,mrCustomPaddingLeftphone:it,mrRowGap:pt,mrRowGaphover:st,mrRowGapdesktop:dt,mrRowGaplaptop:ut,mrRowGaptablet:ct,mrRowGapphone:gt,mrColumnGap:ht,mrColumnGaphover:vt,mrColumnGapdesktop:bt,mrColumnGaplaptop:ft,mrColumnGaptablet:Ct,mrColumnGapphone:kt,mrCustomRowGap:Pt,mrCustomRowGaphover:yt,mrCustomRowGapdesktop:zt,mrCustomRowGaplaptop:St,mrCustomRowGaptablet:_t,mrCustomRowGapphone:Mt,mrCustomColumnGap:wt,mrCustomColumnGaphover:Et,mrCustomColumnGapdesktop:Tt,mrCustomColumnGaplaptop:Rt,mrCustomColumnGaptablet:Bt,mrCustomColumnGapphone:Lt,mrMarginTop:Ot,mrMarginTophover:xt,mrMarginTopdesktop:Ft,mrMarginToplaptop:Vt,mrMarginToptablet:At,mrMarginTopphone:Gt,mrCustomMarginTop:Ht,mrCustomMarginTophover:Nt,mrCustomMarginTopdesktop:Dt,mrCustomMarginToplaptop:Wt,mrCustomMarginToptablet:Ut,mrCustomMarginTopphone:It,mrMarginRight:jt,mrMarginRighthover:qt,mrMarginRightdesktop:Kt,mrMarginRightlaptop:Yt,mrMarginRighttablet:Zt,mrMarginRightphone:Jt,mrCustomMarginRight:Qt,mrCustomMarginRighthover:Xt,mrCustomMarginRightdesktop:$t,mrCustomMarginRightlaptop:ea,mrCustomMarginRighttablet:ta,mrCustomMarginRightphone:aa,mrMarginBottom:na,mrMarginBottomhover:oa,mrMarginBottomdesktop:ra,mrMarginBottomlaptop:ma,mrMarginBottomtablet:la,mrMarginBottomphone:ia,mrCustomMarginBottom:pa,mrCustomMarginBottomhover:sa,mrCustomMarginBottomdesktop:da,mrCustomMarginBottomlaptop:ua,mrCustomMarginBottomtablet:ca,mrCustomMarginBottomphone:ga,mrMarginLeft:ha,mrMarginLefthover:va,mrMarginLeftdesktop:ba,mrMarginLeftlaptop:fa,mrMarginLefttablet:Ca,mrMarginLeftphone:ka,mrCustomMarginLeft:Pa,mrCustomMarginLefthover:ya,mrCustomMarginLeftdesktop:za,mrCustomMarginLeftlaptop:Sa,mrCustomMarginLefttablet:_a,mrCustomMarginLeftphone:Ma,mrPosition:wa,mrPositiondesktop:Ea,mrPositionlaptop:Ta,mrPositiontablet:Ra,mrPositionphone:Ba,mrPositionAlignment:La,mrPositionAlignmentdesktop:Oa,mrPositionAlignmentlaptop:xa,mrPositionAlignmenttablet:Fa,mrPositionAlignmentphone:Va,mrPositionSides:Aa,mrPositionSidesdesktop:Ga,mrPositionSideslaptop:Ha,mrPositionSidestablet:Na,mrPositionSidesphone:Da,mrContentAlignment:Wa,mrContentAlignmentdesktop:Ua,mrContentAlignmentlaptop:Ia,mrContentAlignmenttablet:ja,mrContentAlignmentphone:qa,mrVerticalOffset:Ka,mrVerticalOffsetdesktop:Ya,mrVerticalOffsetlaptop:Za,mrVerticalOffsettablet:Ja,mrVerticalOffsetphone:Qa,mrHorizontalOffset:Xa,mrHorizontalOffsetdesktop:$a,mrHorizontalOffsetlaptop:en,mrHorizontalOffsettablet:tn,mrHorizontalOffsetphone:an,mrSizeOptions:nn,mrSizeOptionshover:on,mrSizeOptionsdesktop:rn,mrSizeOptionslaptop:mn,mrSizeOptionstablet:ln,mrSizeOptionsphone:pn,mrSize:sn,mrSizehover:dn,mrSizedesktop:un,mrSizelaptop:cn,mrSizetablet:gn,mrSizephone:hn,mrCustomSize:vn,mrCustomSizehover:bn,mrCustomSizedesktop:fn,mrCustomSizelaptop:Cn,mrCustomSizetablet:kn,mrCustomSizephone:Pn,mrBackgroundColor:yn,mrCustomBackgroundColor:zn,mrColor:Sn,mrCustomColor:Mn,mrFontFamily:wn,mrCustomFontFamily:En,mrFontSizeOptions:Tn,mrFontSizeOptionshover:Rn,mrFontSizeOptionsdesktop:Bn,mrFontSizeOptionslaptop:Ln,mrFontSizeOptionstablet:On,mrFontSizeOptionsphone:xn,mrFontSize:Fn,mrFontSizehover:Vn,mrFontSizedesktop:An,mrFontSizelaptop:Gn,mrFontSizetablet:Hn,mrFontSizephone:Nn,mrCustomFontSize:Dn,mrCustomFontSizehover:Wn,mrCustomFontSizedesktop:Un,mrCustomFontSizelaptop:In,mrCustomFontSizetablet:jn,mrCustomFontSizephone:qn,mrTextAlignment:Kn,mrTextAlignmentdesktop:Yn,mrTextAlignmentlaptop:Zn,mrTextAlignmenttablet:Jn,mrTextAlignmentphone:Qn,mrScroll:Xn,mrScrollhover:$n,mrScrolldesktop:eo,mrScrolllaptop:to,mrScrolltablet:ao,mrScrollphone:no}=r;return(0,t.createElement)(t.Fragment,null,(0,t.createElement)(e,a),E&&o.includes("core/")&&"core/archives"!==o&&(0,t.createElement)(m.InspectorControls,{key:"setting"},(0,t.createElement)(l.Panel,{header:""},(0,t.createElement)(l.PanelBody,{title:(0,n.__)("Utilities","mr-utils"),initialOpen:!1,className:"utilities_panelbody"},(0,t.createElement)(l.TabPanel,{className:"mr-backend-tabs",activeClass:"is-active",tabs:[{name:"",title:p,className:"mr-backend-tab mr-backend-tab_all"},{name:"hover",title:s,className:"mr-backend-tab mr-backend-tab_hover"},{name:"desktop",title:d,className:"mr-backend-tab mr-backend-tab_desktop"},{name:"laptop",title:u,className:"mr-backend-tab mr-backend-tab_laptop"},{name:"tablet",title:c,className:"mr-backend-tab mr-backend-tab_tablet"},{name:"phone",title:g,className:"mr-backend-tab mr-backend-tab_phone"},{name:"more",title:h,className:"mr-backend-tab mr-backend-tab_more"}]},(e=>"more"!==e.name?(0,t.createElement)(t.Fragment,null,""===e.name?(0,t.createElement)(t.Fragment,null,(0,t.createElement)(l.PanelBody,{icon:v,title:e.name+(0,n.__)(" Pagination","mr-utils"),initialOpen:!1,className:"mr-backend-option mr-backend-option_utils_pagination"},(0,t.createElement)(l.TextControl,{label:(0,n.__)("Number of items per page","mr-utils"),value:O,type:"number",className:"mr-backend-perpage",onChange:e=>i({mrPerPage:e||""}),help:O>0?(0,n.__)("Pagination was applied but you need to preview the frontend to see the actual result.","mr-utils"):(0,n.__)("Apply into parent blocks (such as Columns and List blocks) to consider each direct child as a page's item.","mr-utils")}),(0,t.createElement)(l.SelectControl,{label:(0,n.__)("Pagination position","mr-utils"),value:x,options:[{value:"mr-"+e.name,label:"Default"},{value:(" mr-"+e.name+"-paginationtop").replace("--","-"),label:"Top"},{value:(" mr-"+e.name+"-paginationbottom").replace("--","-"),label:"Bottom"}],onChange:t=>i({mrPaginationPosition:t&&t!=="mr-"+e.name?t.includes("mr-desktop")||t.includes("mr-laptop")||t.includes("mr-tablet")||t.includes("mr-phone")||t.includes("-hover-")?x:t.replace("--","-"):""})}),(0,t.createElement)(l.ToggleControl,{label:"Arrows",checked:N,className:"mr-backend-perpage",onChange:()=>i({mrArrowPagination:!N})}),(0,t.createElement)(l.ToggleControl,{label:"Select dropdown",checked:D,className:"mr-backend-perpage",onChange:()=>i({mrSelectPagination:!D})}),(0,t.createElement)(l.ToggleControl,{label:"Radio buttons",checked:W,className:"mr-backend-perpage",onChange:()=>i({mrRadioPagination:!W})})),(0,t.createElement)(l.PanelBody,{icon:b,title:e.name+(0,n.__)(" Components","mr-utils"),initialOpen:!1,className:""===e.name?"mr-backend-option mr-backend-option_utils_components":"mr-backend-option mr-backend-option_utils_"+e.name+"_components"},(0,t.createElement)(l.SelectControl,{label:(0,n.__)("Component","mr-utils"),value:F,options:[{value:"mr-"+e.name,label:"Default"},{value:(" mr-"+e.name+"-tabs").replace("--","-"),label:"Tabs"},{value:(" mr-"+e.name+"-tabsnav").replace("--","-"),label:"Tabs Navigation"},{value:(" mr-"+e.name+"-swipe").replace("--","-"),label:"Swipe"},{value:(" mr-"+e.name+"-swipecontent").replace("--","-"),label:"Swipe Content"}],onChange:t=>i({mrComponent:t&&t!=="mr-"+e.name?t.includes("mr-desktop")||t.includes("mr-laptop")||t.includes("mr-tablet")||t.includes("mr-phone")||t.includes("-hover-")?F:t.replace("--","-"):""}),help:F&&"mr-"!==F?F.includes("scrollnav")?(0,n.__)("Tip: You can combine 'Scroll Navigation' with the scroll options found on the 'Misc.' section.","mr-utils")+" "+(0,n.__)("The component was applied but you need to preview the frontend to see the actual result.","mr-utils"):(0,n.__)("The component was applied but you need to preview the frontend to see the actual result.","mr-utils"):(0,n.__)("Apply into parent blocks (such as Columns and List blocks) to consider each direct child as a component item.","mr-utils")}),F.includes("tabs")||F.includes("swipe")?(0,t.createElement)(l.SelectControl,{label:(0,n.__)("Navigation position","mr-utils"),value:H,options:[{value:"mr-"+e.name,label:"Default"},{value:(" mr-"+e.name+"-navtop").replace("--","-"),label:"Top"},{value:(" mr-"+e.name+"-navbottom").replace("--","-"),label:"Bottom"}],onChange:t=>i({mrNavPosition:t&&t!=="mr-"+e.name?t.includes("mr-desktop")||t.includes("mr-laptop")||t.includes("mr-tablet")||t.includes("mr-phone")||t.includes("-hover-")?H:t.replace("--","-"):""})}):"",(0,t.createElement)("p",null,(0,n.__)("Scroll navigation","mr-utils")),(0,t.createElement)(l.ToggleControl,{label:"Vertical Arrows",checked:V,className:"mr-backend-scrollnav",onChange:()=>i({mrVerticalScrollNavigation:!V})}),(0,t.createElement)(l.ToggleControl,{label:"Horizontal Arrows",checked:A,className:"mr-backend-scrollnav",onChange:()=>i({mrHorizontalScrollNavigation:!A}),help:A||V?(0,n.__)("The navigation was applied but you need to preview the frontend to see the actual result.","mr-utils"):(0,n.__)("Add an alternative navigation to elements with scroll.","mr-utils")}))):"",""===e.name||"hover"===e.name?(0,t.createElement)(l.PanelBody,{icon:f,title:e.name+(0,n.__)(" Animations","mr-utils"),initialOpen:!1,className:""===e.name?"mr-backend-option mr-backend-option_utils_animations":"mr-backend-option mr-backend-option_utils_"+e.name+"_animations"},(0,t.createElement)(l.SelectControl,{label:(0,n.__)("Animation","mr-utils"),value:"hover"===e.name?R:T,options:[{value:"mr-"+e.name,label:"Default"},{value:(" mr-"+e.name+"-fade").replace("--","-"),label:"Fade"},{value:(" mr-"+e.name+"-slide").replace("--","-"),label:"Slide"},{value:(" mr-"+e.name+"-slidetop").replace("--","-"),label:"Slide Top"},{value:(" mr-"+e.name+"-slideright").replace("--","-"),label:"Slide Right"},{value:(" mr-"+e.name+"-slidebottom").replace("--","-"),label:"Slide Bottom"},{value:(" mr-"+e.name+"-slideleft").replace("--","-"),label:"Slide Left"},{value:(" mr-"+e.name+"-scale").replace("--","-"),label:"Scale"},{value:(" mr-"+e.name+"-scaleright").replace("--","-"),label:"Scale Right"},{value:(" mr-"+e.name+"-scaleleft").replace("--","-"),label:"Scale Left"},{value:(" mr-"+e.name+"-zoom").replace("--","-"),label:"Zoom"},{value:(" mr-"+e.name+"-zoomright").replace("--","-"),label:"Zoom Right"},{value:(" mr-"+e.name+"-zoomleft").replace("--","-"),label:"Zoom Left"}],onChange:t=>i({mrAnimation:t&&t!=="mr-"+e.name?t.includes("mr-desktop")||t.includes("mr-laptop")||t.includes("mr-tablet")||t.includes("mr-phone")||t.includes("-hover-")?T:t.replace("--","-"):"",mrAnimationhover:void 0!==t&&t.includes("-hover-")?t:R})}),(0,t.createElement)(l.SelectControl,{label:(0,n.__)("Transition","mr-utils"),value:"hover"===e.name?L:B,options:[{value:"mr-"+e.name,label:"Default"},{value:(" mr-"+e.name+"-transition").replace("--","-"),label:"Ease"},{value:(" mr-"+e.name+"-easeinout").replace("--","-"),label:"Ease In Out"},{value:(" mr-"+e.name+"-easein").replace("--","-"),label:"Ease In"},{value:(" mr-"+e.name+"-easeout").replace("--","-"),label:"Ease Out"},{value:(" mr-"+e.name+"-linear").replace("--","-"),label:"Linear"}],onChange:e=>i({mrTransition:void 0===e||e.includes("mr-hover")||e.includes("mr-desktop")||e.includes("mr-laptop")||e.includes("mr-tablet")||e.includes("mr-phone")?B:e,mrTransitionhover:void 0!==e&&e.includes("-hover-")?e:L})})):"",""===e.name?(0,t.createElement)(t.Fragment,null,(0,t.createElement)(l.PanelBody,{icon:C,title:e.name+(0,n.__)(" Dynamic","mr-utils"),initialOpen:!1,className:""===e.name?"mr-backend-option mr-backend-option_utils_dynamic":"mr-backend-option mr-backend-option_utils_"+e.name+"_dynamic"},(0,t.createElement)(l.SelectControl,{label:(0,n.__)("Active when:","mr-utils"),value:G,options:[{value:"mr-"+e.name,label:"Default"},{value:(" mr-"+e.name+"-activeinview").replace("--","-"),label:"In view"},{value:(" mr-"+e.name+"-activeonclick").replace("--","-"),label:"Clicked"}],onChange:t=>i({mrActiveWhen:t&&t!=="mr-"+e.name?t.includes("mr-desktop")||t.includes("mr-laptop")||t.includes("mr-tablet")||t.includes("mr-phone")||t.includes("-hover-")?G:t.replace("--","-"):""}),help:G&&"mr-"!==G?(0,n.__)("The task is ready but you need to preview the frontend to see the actual result.","mr-utils","mr-utils"):(0,n.__)("Adds the class 'mr-active' depending of the selected situation. You can combine with animations to decide when the animation should start.","mr-utils")}))):"",(0,t.createElement)(l.PanelBody,{icon:k,title:e.name+(0,n.__)(" Layout","mr-utils"),initialOpen:!1,className:""===e.name?"mr-backend-option mr-backend-option_utils_layout":"mr-backend-option mr-backend-option_utils_"+e.name+"_layout"},(0,t.createElement)(l.SelectControl,{label:(0,n.__)("Number of child items per line","mr-utils"),value:"desktop"===e.name?I:"laptop"===e.name?j:"tablet"===e.name?q:"phone"===e.name?K:U,options:""===e.name||"desktop"===e.name||"laptop"===e.name||"tablet"===e.name||"phone"===e.name?[{value:"mr-"+e.name,label:""},{value:(" mr-"+e.name+"-perline").replace("--","-"),label:"Global"},{value:(" mr-"+e.name+"-1perline").replace("--","-"),label:"1"},{value:(" mr-"+e.name+"-2perline").replace("--","-"),label:"2"},{value:(" mr-"+e.name+"-3perline").replace("--","-"),label:"3"},{value:(" mr-"+e.name+"-4perline").replace("--","-"),label:"4"},{value:(" mr-"+e.name+"-5perline").replace("--","-"),label:"5"},{value:(" mr-"+e.name+"-6perline").replace("--","-"),label:"6"},{value:(" mr-"+e.name+"-7perline").replace("--","-"),label:"7"},{value:(" mr-"+e.name+"-8perline").replace("--","-"),label:"8"},{value:(" mr-"+e.name+"-9perline").replace("--","-"),label:"9"},{value:(" mr-"+e.name+"-10perline").replace("--","-"),label:"10"},{value:(" mr-"+e.name+"-11perline").replace("--","-"),label:"11"},{value:(" mr-"+e.name+"-12perline").replace("--","-"),label:"12"},{value:(" mr-"+e.name+"-0perline").replace("--","-"),label:"∞"}]:"",onChange:e=>i({mrPerLine:void 0===e||e.includes("mr-hover")||e.includes("mr-desktop")||e.includes("mr-laptop")||e.includes("mr-tablet")||e.includes("mr-phone")?U:e,mrPerLinedesktop:void 0!==e&&e.includes("mr-desktop")?e:I,mrPerLinelaptop:void 0!==e&&e.includes("mr-laptop")?e:j,mrPerLinetablet:void 0!==e&&e.includes("mr-tablet")?e:q,mrPerLinephone:void 0!==e&&e.includes("mr-phone")?e:K}),help:U&&"mr-"!==U?"":"Apply into parent blocks (such as Columns and List blocks) to consider each direct child as a line's item."}),(0,t.createElement)(l.SelectControl,{label:(0,n.__)("Wrap","mr-utils"),value:"desktop"===e.name?de:"laptop"===e.name?ue:"tablet"===e.name?ce:"phone"===e.name?ge:se,options:""===e.name||"desktop"===e.name||"laptop"===e.name||"tablet"===e.name||"phone"===e.name?[{value:"mr-"+e.name,label:"Default"},{value:(" mr-"+e.name+"-wrap").replace("--","-"),label:"Wrap"},{value:(" mr-"+e.name+"-nowrap").replace("--","-"),label:"No Wrap"}]:"",onChange:e=>i({mrWrap:void 0===e||e.includes("mr-hover")||e.includes("mr-desktop")||e.includes("mr-laptop")||e.includes("mr-tablet")||e.includes("mr-phone")?se:e,mrWrapdesktop:void 0!==e&&e.includes("mr-desktop")?e:de,mrWraplaptop:void 0!==e&&e.includes("mr-laptop")?e:ue,mrWraptablet:void 0!==e&&e.includes("mr-tablet")?e:ce,mrWrapphone:void 0!==e&&e.includes("mr-phone")?e:ge})}),(0,t.createElement)(l.SelectControl,{label:(0,n.__)("Number of columns for this item","mr-utils"),value:"desktop"===e.name?Z:"laptop"===e.name?J:"tablet"===e.name?Q:"phone"===e.name?X:Y,options:""===e.name||"desktop"===e.name||"laptop"===e.name||"tablet"===e.name||"phone"===e.name?[{value:"mr-"+e.name,label:""},{value:(" mr-"+e.name+"-columns").replace("--","-"),label:"Global"},{value:(" mr-"+e.name+"-1column").replace("--","-"),label:"1"},{value:(" mr-"+e.name+"-2columns").replace("--","-"),label:"2"},{value:(" mr-"+e.name+"-3columns").replace("--","-"),label:"3"},{value:(" mr-"+e.name+"-4columns").replace("--","-"),label:"4"},{value:(" mr-"+e.name+"-5columns").replace("--","-"),label:"5"},{value:(" mr-"+e.name+"-6columns").replace("--","-"),label:"6"},{value:(" mr-"+e.name+"-7columns").replace("--","-"),label:"7"},{value:(" mr-"+e.name+"-8columns").replace("--","-"),label:"8"},{value:(" mr-"+e.name+"-9columns").replace("--","-"),label:"9"},{value:(" mr-"+e.name+"-10columns").replace("--","-"),label:"10"},{value:(" mr-"+e.name+"-11columns").replace("--","-"),label:"11"},{value:(" mr-"+e.name+"-12columns").replace("--","-"),label:"12"}]:"",onChange:e=>i({mrColumns:void 0===e||e.includes("mr-hover")||e.includes("mr-desktop")||e.includes("mr-laptop")||e.includes("mr-tablet")||e.includes("mr-phone")?Y:e,mrColumnsdesktop:void 0!==e&&e.includes("mr-desktop")?e:Z,mrColumnslaptop:void 0!==e&&e.includes("mr-laptop")?e:J,mrColumnstablet:void 0!==e&&e.includes("mr-tablet")?e:Q,mrColumnsphone:void 0!==e&&e.includes("mr-phone")?e:X})}),(0,t.createElement)(l.SelectControl,{label:(0,n.__)("Item Size","mr-utils"),value:"hover"===e.name?on:"desktop"===e.name?rn:"laptop"===e.name?mn:"tablet"===e.name?ln:"phone"===e.name?pn:nn,className:"mr-backend-itemsize mr-backend-hascustomoption",options:[{value:"mr-"+e.name,label:"Default "+e.name+" class"},{value:(" mr-"+e.name+"-sizeoptions").replace("--","-"),label:"Custom "+e.name+" class"}],onChange:e=>i({mrSizeOptions:void 0===e||e.includes("mr-hover")||e.includes("mr-desktop")||e.includes("mr-laptop")||e.includes("mr-tablet")||e.includes("mr-phone")?nn:e,mrSizeOptionshover:void 0!==e&&e.includes("mr-hover")?e:on,mrSizeOptionsdesktop:void 0!==e&&e.includes("mr-desktop")?e:rn,mrSizeOptionslaptop:void 0!==e&&e.includes("mr-laptop")?e:mn,mrSizeOptionstablet:void 0!==e&&e.includes("mr-tablet")?e:ln,mrSizeOptionsphone:void 0!==e&&e.includes("mr-phone")?e:pn})}),""===e.name&&"mr-"===nn||"hover"===e.name&&"mr-hover"===on||"desktop"===e.name&&"mr-desktop"===rn||"laptop"===e.name&&"mr-laptop"===mn||"tablet"===e.name&&"mr-tablet"===ln||"phone"===e.name&&"mr-phone"===pn?(0,t.createElement)(l.RangeControl,{label:(0,n.__)("","mr-utils"),value:"hover"===e.name?dn:"desktop"===e.name?un:"laptop"===e.name?cn:"tablet"===e.name?gn:"phone"===e.name?hn:sn,initialPosition:0,allowReset:!0,min:0,max:13,onChange:t=>i({mrSize:""===e.name?0===t||void 0===t?"":t:sn,mrSizehover:"hover"===e.name?0===t||void 0===t?"":t:dn,mrSizedesktop:"desktop"===e.name?0===t||void 0===t?"":t:un,mrSizelaptop:"laptop"===e.name?0===t||void 0===t?"":t:cn,mrSizetablet:"tablet"===e.name?0===t||void 0===t?"":t:gn,mrSizephone:"phone"===e.name?0===t||void 0===t?"":t:hn}),help:""==e.name&&sn>0?"mr-size"+sn+" = "+getComputedStyle(document.documentElement).getPropertyValue("--size-"+sn):"hover"==e.name&&dn>0?"mr-hover-size"+dn+" = "+getComputedStyle(document.documentElement).getPropertyValue("--size-"+dn):"desktop"==e.name&&un>0?"mr-desktop-size"+un+" = "+getComputedStyle(document.documentElement).getPropertyValue("--size-"+un):"laptop"==e.name&&cn>0?"mr-laptop-size"+cn+" = "+getComputedStyle(document.documentElement).getPropertyValue("--size-"+cn):"tablet"==e.name&&gn?"mr-tablet-size"+gn+" = "+getComputedStyle(document.documentElement).getPropertyValue("--size-"+gn):"phone"==e.name&&hn>0?"mr-phone-size"+hn+" = "+getComputedStyle(document.documentElement).getPropertyValue("--size-"+hn):""}):"",""===e.name&&nn.includes("-sizeoptions")||"hover"===e.name&&on.includes("-sizeoptions")||"desktop"===e.name&&rn.includes("-sizeoptions")||"laptop"===e.name&&mn.includes("-sizeoptions")||"tablet"===e.name&&ln.includes("-sizeoptions")||"phone"===e.name&&pn.includes("-sizeoptions")?(0,t.createElement)(l.TextControl,{label:(0,n.__)("","mr-utils"),value:"hover"===e.name?bn:"desktop"===e.name?fn:"laptop"===e.name?Cn:"tablet"===e.name?kn:"phone"===e.name?Pn:vn,type:"text",className:"mr-backend-custominput mr-backend-customptop",placeHolder:("mr-"+e.name+"-size{1/13}").replace("--","-"),list:("mrDevUtilsClasses_"+e.name+"_size").replace("__","_"),onChange:e=>i({mrCustomSize:void 0===e||e.includes("mr-hover")||e.includes("mr-desktop")||e.includes("mr-laptop")||e.includes("mr-tablet")||e.includes("mr-phone")?vn:e,mrCustomSizehover:void 0!==e&&e.includes("mr-hover")?e:bn,mrCustomSizedesktop:void 0!==e&&e.includes("mr-desktop")?e:fn,mrCustomSizelaptop:void 0!==e&&e.includes("mr-laptop")?e:Cn,mrCustomSizetablet:void 0!==e&&e.includes("mr-tablet")?e:kn,mrCustomSizephone:void 0!==e&&e.includes("mr-phone")?e:Pn})}):"",(0,t.createElement)(l.SelectControl,{label:(0,n.__)("Item order","mr-utils"),value:"desktop"===e.name?ee:"laptop"===e.name?te:"tablet"===e.name?ae:"phone"===e.name?ne:$,options:""===e.name||"desktop"===e.name||"laptop"===e.name||"tablet"===e.name||"phone"===e.name?[{value:"mr-"+e.name,label:""},{value:(" mr-"+e.name+"-order-1").replace("--","-"),label:"-1"},{value:(" mr-"+e.name+"-order1").replace("--","-"),label:"1"},{value:(" mr-"+e.name+"-order2").replace("--","-"),label:"2"},{value:(" mr-"+e.name+"-order3").replace("--","-"),label:"3"},{value:(" mr-"+e.name+"-order4").replace("--","-"),label:"4"},{value:(" mr-"+e.name+"-order5").replace("--","-"),label:"5"},{value:(" mr-"+e.name+"-order6").replace("--","-"),label:"6"},{value:(" mr-"+e.name+"-order7").replace("--","-"),label:"7"},{value:(" mr-"+e.name+"-order8").replace("--","-"),label:"8"},{value:(" mr-"+e.name+"-order9").replace("--","-"),label:"9"},{value:(" mr-"+e.name+"-order10").replace("--","-"),label:"10"},{value:(" mr-"+e.name+"-order11").replace("--","-"),label:"11"},{value:(" mr-"+e.name+"-order12").replace("--","-"),label:"12"}]:"",onChange:e=>i({mrOrder:void 0===e||e.includes("mr-hover")||e.includes("mr-desktop")||e.includes("mr-laptop")||e.includes("mr-tablet")||e.includes("mr-phone")?$:e,mrOrderdesktop:void 0!==e&&e.includes("mr-desktop")?e:ee,mrOrderlaptop:void 0!==e&&e.includes("mr-laptop")?e:te,mrOrdertablet:void 0!==e&&e.includes("mr-tablet")?e:ae,mrOrderphone:void 0!==e&&e.includes("mr-phone")?e:ne})})),(0,t.createElement)(l.PanelBody,{icon:P,title:e.name+(0,n.__)(" Display","mr-utils"),initialOpen:!1,className:""===e.name?"mr-backend-option mr-backend-option_utils_display":"mr-backend-option mr-backend-option_utils_"+e.name+"_display"},(0,t.createElement)(l.SelectControl,{label:(0,n.__)("Visibility","mr-utils"),value:"hover"===e.name?re:"desktop"===e.name?me:"laptop"===e.name?le:"tablet"===e.name?ie:"phone"===e.name?pe:oe,options:[{value:"mr-"+e.name,label:"Default"},{value:(" mr-"+e.name+"-hide").replace("--","-"),label:"Hide"},{value:(" mr-"+e.name+"-show").replace("--","-"),label:"Show"},{value:(" mr-"+e.name+"-none").replace("--","-"),label:"None"},{value:(" mr-"+e.name+"-flex").replace("--","-"),label:"Flex"},{value:(" mr-"+e.name+"-block").replace("--","-"),label:"Block"},{value:(" mr-"+e.name+"-visible").replace("--","-"),label:"Visible"},{value:(" mr-"+e.name+"-hidden").replace("--","-"),label:"Hidden"},{value:(" mr-"+e.name+"-transparent").replace("--","-"),label:"Transparent"},{value:(" mr-"+e.name+"-semiopaque").replace("--","-"),label:"Semi-opaque"},{value:(" mr-"+e.name+"-opaque").replace("--","-"),label:"Opaque"}],onChange:e=>i({mrDisplay:void 0===e||e.includes("mr-hover")||e.includes("mr-desktop")||e.includes("mr-laptop")||e.includes("mr-tablet")||e.includes("mr-phone")?oe:e,mrDisplayhover:void 0!==e&&e.includes("-hover-")?e:re,mrDisplaydesktop:void 0!==e&&e.includes("mr-desktop")?e:me,mrDisplaylaptop:void 0!==e&&e.includes("mr-laptop")?e:le,mrDisplaytablet:void 0!==e&&e.includes("mr-tablet")?e:ie,mrDisplayphone:void 0!==e&&e.includes("mr-phone")?e:pe}),help:" mr-hidden"===oe||" mr-hide"===oe||" mr-none"===oe||" mr-transparent"===oe||" mr-hover-hidden"===re||" mr-hover-hide"===re||" mr-hover-none"===re||" mr-desktop-hidden"===me||" mr-desktop-hide"===me||" mr-desktop-none"===me||" mr-desktop-transparent"===me||" mr-laptop-hidden"===le||" mr-laptop-hide"===le||" mr-laptop-none"===le||" mr-laptop-transparent"===le||" mr-tablet-hidden"===ie||" mr-tablet-hide"===ie||" mr-tablet-none"===ie||" mr-tablet-transparent"===ie||" mr-phone-hidden"===pe||" mr-phone-hide"===pe||" mr-phone-none"===pe||" mr-phone-transparent"===pe?(0,n.__)("An opacity is applied to the block in the backend so you can still see and select it. Preview the frontend to see the actual result.","mr-utils"):(0,t.createElement)("a",{href:"https://github.com/marcosrego-web/mr-utils/wiki/Utility-Classes#display",target:"_blank"},"Know the differences between visibilities")})),""===e.name?(0,t.createElement)(l.PanelBody,{icon:y,title:e.name+(0,n.__)(" Appearance","mr-utils"),initialOpen:!1,className:"mr-backend-option mr-backend-option_utils_appearance"},(0,t.createElement)(l.SelectControl,{label:(0,n.__)("Background Color","mr-utils"),className:"mr-backend-bgcolor mr-backend-hascustomoption",value:yn,options:[{value:"mr-",label:"Default"},{value:" mr-backgroundcolor",label:"Background color class"},{value:" mr-custombackgroundcolor",label:"Custom background color class"}],onChange:e=>i({mrBackgroundColor:void 0!==e?e:yn}),help:!yn.includes("-custombackgroundcolor")&&yn.includes("-backgroundcolor")?"var(--background-color) = "+getComputedStyle(document.documentElement).getPropertyValue("--background-color"):""}),""===e.name&&yn.includes("custom")?(0,t.createElement)(l.TextControl,{label:(0,n.__)("","mr-utils"),value:zn,type:"text",className:"mr-backend-custominput mr-backend-custombackgroundcolor",placeHolder:"mr-backgroundcolor",list:"mrDevUtilsClasses_backgroundcolor".replace("__","_"),onChange:e=>i({mrCustomBackgroundColor:void 0!==e?e:zn})}):"",(0,t.createElement)(l.SelectControl,{label:(0,n.__)("Color","mr-utils"),className:"mr-backend-color mr-backend-hascustomoption",value:Sn,options:[{value:"mr-",label:"Default"},{value:" mr-textcolor",label:"Text color class"},{value:" mr-customcolor",label:"Custom color class"}],onChange:e=>i({mrColor:void 0!==e?e:Sn}),help:!Sn.includes("-customcolor")&&Sn.includes("-textcolor")?"var(--text-color) = "+getComputedStyle(document.documentElement).getPropertyValue("--text-color"):""}),""===e.name&&Sn.includes("custom")?(0,t.createElement)(l.TextControl,{label:(0,n.__)("","mr-utils"),value:Mn,type:"text",className:"mr-backend-custominput mr-backend-customcolor",placeHolder:"mr-textcolor",list:"mrDevUtilsClasses_color".replace("__","_"),onChange:e=>i({mrCustomColor:void 0!==e?e:Mn})}):""):"",(0,t.createElement)(l.PanelBody,{icon:z,title:e.name+(0,n.__)(" Spacing","mr-utils"),initialOpen:!1,className:""===e.name?"mr-backend-option mr-backend-option_utils_spacing":"mr-backend-option mr-backend-option_utils_"+e.name+"_spacing"},(0,t.createElement)(l.PanelRow,null,(0,t.createElement)(l.TabPanel,{className:"mr-width100",activeClass:"is-active",tabs:[{name:"paddings",title:"Paddings",className:"mr-backend-tab_paddings mr-width100"},{name:"margins",title:"Margins",className:"mr-backend-tab_margins mr-width100"},{name:"gaps",title:"Gaps",className:"mr-backend-tab_gaps mr-width100"}]},(a=>"gaps"===a.name?(0,t.createElement)(t.Fragment,null,(0,t.createElement)("p",null),(0,t.createElement)(l.SelectControl,{label:(0,n.__)("Row Gap","mr-utils"),className:"mr-backend-rowgap mr-backend-rowgap mr-backend-hascustomoption",value:"hover"===e.name?st:"desktop"===e.name?dt:"laptop"===e.name?ut:"tablet"===e.name?ct:"phone"===e.name?gt:pt,options:[{value:"mr-"+e.name,label:"Default row gap"},{value:(" mr-"+e.name+"-norowgap").replace("--","-"),label:"Remove row gap"},{value:(" mr-"+e.name+"-rowgap").replace("--","-"),label:"Use "+e.name+" class"}],onChange:e=>i({mrRowGap:void 0===e||e.includes("mr-hover")||e.includes("mr-desktop")||e.includes("mr-laptop")||e.includes("mr-tablet")||e.includes("mr-phone")?pt:e,mrRowGaphover:void 0!==e&&e.includes("mr-hover")?e:st,mrRowGapdesktop:void 0!==e&&e.includes("mr-desktop")?e:dt,mrRowGaplaptop:void 0!==e&&e.includes("mr-laptop")?e:ut,mrRowGaptablet:void 0!==e&&e.includes("mr-tablet")?e:ct,mrRowGapphone:void 0!==e&&e.includes("mr-phone")?e:gt})}),""===e.name&&pt.includes("-rowgap")||"hover"===e.name&&st.includes("-rowgap")||"desktop"===e.name&&dt.includes("-rowgap")||"laptop"===e.name&&ut.includes("-rowgap")||"tablet"===e.name&&ct.includes("-rowgap")||"phone"===e.name&&gt.includes("-rowgap")?(0,t.createElement)(l.TextControl,{label:(0,n.__)("","mr-utils"),value:"hover"===e.name?yt:"desktop"===e.name?zt:"laptop"===e.name?St:"tablet"===e.name?_t:"phone"===e.name?Mt:Pt,type:"text",className:"mr-backend-custominput mr-backend-customrowgap mr-backend-customptop",placeHolder:("mr-"+e.name+"-rowgap").replace("--","-"),list:("mrDevUtilsClasses_"+e.name+"_rowgap").replace("__","_"),onChange:e=>i({mrCustomRowGap:void 0===e||e.includes("mr-hover")||e.includes("mr-desktop")||e.includes("mr-laptop")||e.includes("mr-tablet")||e.includes("mr-phone")?Pt:e,mrCustomRowGaphover:void 0!==e&&e.includes("mr-hover")?e:yt,mrCustomRowGapdesktop:void 0!==e&&e.includes("mr-desktop")?e:zt,mrCustomRowGaplaptop:void 0!==e&&e.includes("mr-laptop")?e:St,mrCustomRowGaptablet:void 0!==e&&e.includes("mr-tablet")?e:_t,mrCustomRowGapphone:void 0!==e&&e.includes("mr-phone")?e:Mt})}):"",(0,t.createElement)(l.SelectControl,{label:(0,n.__)("Column Gap","mr-utils"),className:"mr-backend-columngap mr-backend-columngap mr-backend-hascustomoption",value:"hover"===e.name?vt:"desktop"===e.name?bt:"laptop"===e.name?ft:"tablet"===e.name?Ct:"phone"===e.name?kt:ht,options:[{value:"mr-"+e.name,label:"Default column gap"},{value:(" mr-"+e.name+"-nocolumngap").replace("--","-"),label:"Remove column gap"},{value:(" mr-"+e.name+"-columngap").replace("--","-"),label:"Use "+e.name+" class"}],onChange:e=>i({mrColumnGap:void 0===e||e.includes("mr-hover")||e.includes("mr-desktop")||e.includes("mr-laptop")||e.includes("mr-tablet")||e.includes("mr-phone")?ht:e,mrColumnGaphover:void 0!==e&&e.includes("mr-hover")?e:vt,mrColumnGapdesktop:void 0!==e&&e.includes("mr-desktop")?e:bt,mrColumnGaplaptop:void 0!==e&&e.includes("mr-laptop")?e:ft,mrColumnGaptablet:void 0!==e&&e.includes("mr-tablet")?e:Ct,mrColumnGapphone:void 0!==e&&e.includes("mr-phone")?e:kt})}),""===e.name&&ht.includes("-columngap")||"hover"===e.name&&vt.includes("-columngap")||"desktop"===e.name&&bt.includes("-columngap")||"laptop"===e.name&&ft.includes("-columngap")||"tablet"===e.name&&Ct.includes("-columngap")||"phone"===e.name&&kt.includes("-columngap")?(0,t.createElement)(l.TextControl,{label:(0,n.__)("","mr-utils"),value:"hover"===e.name?Et:"desktop"===e.name?Tt:"laptop"===e.name?Rt:"tablet"===e.name?Bt:"phone"===e.name?Lt:wt,type:"text",className:"mr-backend-custominput mr-backend-customcolumngap mr-backend-customptop",placeHolder:("mr-"+e.name+"-columngap").replace("--","-"),list:("mrDevUtilsClasses_"+e.name+"_columngap").replace("__","_"),onChange:e=>i({mrCustomColumnGap:void 0===e||e.includes("mr-hover")||e.includes("mr-desktop")||e.includes("mr-laptop")||e.includes("mr-tablet")||e.includes("mr-phone")?wt:e,mrCustomColumnGaphover:void 0!==e&&e.includes("mr-hover")?e:Et,mrCustomColumnGapdesktop:void 0!==e&&e.includes("mr-desktop")?e:Tt,mrCustomColumnGaplaptop:void 0!==e&&e.includes("mr-laptop")?e:Rt,mrCustomColumnGaptablet:void 0!==e&&e.includes("mr-tablet")?e:Bt,mrCustomColumnGapphone:void 0!==e&&e.includes("mr-phone")?e:Lt})}):""):"paddings"===a.name?(0,t.createElement)(t.Fragment,null,(0,t.createElement)("p",null),(0,t.createElement)(l.SelectControl,{label:(0,n.__)("Padding Top","mr-utils"),className:"mr-backend-padding mr-backend-paddingtop mr-backend-hascustomoption",value:"hover"===e.name?ve:"desktop"===e.name?be:"laptop"===e.name?fe:"tablet"===e.name?Ce:"phone"===e.name?ke:he,options:[{value:"mr-"+e.name,label:"Default padding"},{value:(" mr-"+e.name+"-nopaddingtop").replace("--","-"),label:"Remove padding"},{value:(" mr-"+e.name+"-paddingtop").replace("--","-"),label:"Use "+e.name+" class"}],onChange:e=>i({mrPaddingTop:void 0===e||e.includes("mr-hover")||e.includes("mr-desktop")||e.includes("mr-laptop")||e.includes("mr-tablet")||e.includes("mr-phone")?he:e,mrPaddingTophover:void 0!==e&&e.includes("mr-hover")?e:ve,mrPaddingTopdesktop:void 0!==e&&e.includes("mr-desktop")?e:be,mrPaddingToplaptop:void 0!==e&&e.includes("mr-laptop")?e:fe,mrPaddingToptablet:void 0!==e&&e.includes("mr-tablet")?e:Ce,mrPaddingTopphone:void 0!==e&&e.includes("mr-phone")?e:ke})}),""===e.name&&he.includes("-paddingtop")||"hover"===e.name&&ve.includes("-paddingtop")||"desktop"===e.name&&be.includes("-paddingtop")||"laptop"===e.name&&fe.includes("-paddingtop")||"tablet"===e.name&&Ce.includes("-paddingtop")||"phone"===e.name&&ke.includes("-paddingtop")?(0,t.createElement)(l.TextControl,{label:(0,n.__)("","mr-utils"),value:"hover"===e.name?ye:"desktop"===e.name?ze:"laptop"===e.name?Se:"tablet"===e.name?_e:"phone"===e.name?Me:Pe,type:"text",className:"mr-backend-custominput mr-backend-custompadding mr-backend-customptop",placeHolder:("mr-"+e.name+"-paddingtop").replace("--","-"),list:("mrDevUtilsClasses_"+e.name+"_paddingtop").replace("__","_"),onChange:e=>i({mrCustomPaddingTop:void 0===e||e.includes("mr-hover")||e.includes("mr-desktop")||e.includes("mr-laptop")||e.includes("mr-tablet")||e.includes("mr-phone")?Pe:e,mrCustomPaddingTophover:void 0!==e&&e.includes("mr-hover")?e:ye,mrCustomPaddingTopdesktop:void 0!==e&&e.includes("mr-desktop")?e:ze,mrCustomPaddingToplaptop:void 0!==e&&e.includes("mr-laptop")?e:Se,mrCustomPaddingToptablet:void 0!==e&&e.includes("mr-tablet")?e:_e,mrCustomPaddingTopphone:void 0!==e&&e.includes("mr-phone")?e:Me})}):"",(0,t.createElement)(l.SelectControl,{label:(0,n.__)("Padding Right","mr-utils"),className:"mr-backend-padding mr-backend-paddingright mr-backend-hascustomoption",value:"hover"===e.name?Ee:"desktop"===e.name?Te:"laptop"===e.name?Re:"tablet"===e.name?Be:"phone"===e.name?Le:we,options:[{value:"mr-"+e.name,label:"Default padding"},{value:(" mr-"+e.name+"-nopaddingright").replace("--","-"),label:"Remove padding"},{value:(" mr-"+e.name+"-paddingright").replace("--","-"),label:"Use "+e.name+" class"}],onChange:e=>i({mrPaddingRight:void 0===e||e.includes("mr-hover")||e.includes("mr-desktop")||e.includes("mr-laptop")||e.includes("mr-tablet")||e.includes("mr-phone")?we:e,mrPaddingRighthover:void 0!==e&&e.includes("mr-hover")?e:Ee,mrPaddingRightdesktop:void 0!==e&&e.includes("mr-desktop")?e:Te,mrPaddingRightlaptop:void 0!==e&&e.includes("mr-laptop")?e:Re,mrPaddingRighttablet:void 0!==e&&e.includes("mr-tablet")?e:Be,mrPaddingRightphone:void 0!==e&&e.includes("mr-phone")?e:Le})}),""===e.name&&we.includes("-paddingright")||"hover"===e.name&&Ee.includes("-paddingright")||"desktop"===e.name&&Te.includes("-paddingright")||"laptop"===e.name&&Re.includes("-paddingright")||"tablet"===e.name&&Be.includes("-paddingright")||"phone"===e.name&&Le.includes("-paddingright")?(0,t.createElement)(l.TextControl,{label:(0,n.__)("","mr-utils"),value:"hover"===e.name?xe:"desktop"===e.name?Fe:"laptop"===e.name?Ve:"tablet"===e.name?Ae:"phone"===e.name?Ge:Oe,type:"text",className:"mr-backend-custominput mr-backend-custompadding mr-backend-custompright",placeHolder:("mr-"+e.name+"-paddingright").replace("--","-"),list:("mrDevUtilsClasses_"+e.name+"_paddingright").replace("__","_"),onChange:e=>i({mrCustomPaddingRight:void 0===e||e.includes("mr-hover")||e.includes("mr-desktop")||e.includes("mr-laptop")||e.includes("mr-tablet")||e.includes("mr-phone")?Oe:e,mrCustomPaddingRighthover:void 0!==e&&e.includes("mr-hover")?e:xe,mrCustomPaddingRightdesktop:void 0!==e&&e.includes("mr-desktop")?e:Fe,mrCustomPaddingRightlaptop:void 0!==e&&e.includes("mr-laptop")?e:Ve,mrCustomPaddingRighttablet:void 0!==e&&e.includes("mr-tablet")?e:Ae,mrCustomPaddingRightphone:void 0!==e&&e.includes("mr-phone")?e:Ge})}):"",(0,t.createElement)(l.SelectControl,{label:(0,n.__)("Padding Bottom","mr-utils"),className:"mr-backend-padding mr-backend-paddingbottom mr-backend-hascustomoption",value:"hover"===e.name?Ne:"desktop"===e.name?De:"laptop"===e.name?We:"tablet"===e.name?Ue:"phone"===e.name?Ie:He,options:[{value:"mr-"+e.name,label:"Default padding"},{value:(" mr-"+e.name+"-nopaddingbottom").replace("--","-"),label:"Remove padding"},{value:(" mr-"+e.name+"-paddingbottom").replace("--","-"),label:"Use "+e.name+" class"}],onChange:e=>i({mrPaddingBottom:void 0===e||e.includes("mr-hover")||e.includes("mr-desktop")||e.includes("mr-laptop")||e.includes("mr-tablet")||e.includes("mr-phone")?He:e,mrPaddingBottomhover:void 0!==e&&e.includes("mr-hover")?e:Ne,mrPaddingBottomdesktop:void 0!==e&&e.includes("mr-desktop")?e:De,mrPaddingBottomlaptop:void 0!==e&&e.includes("mr-laptop")?e:We,mrPaddingBottomtablet:void 0!==e&&e.includes("mr-tablet")?e:Ue,mrPaddingBottomphone:void 0!==e&&e.includes("mr-phone")?e:Ie})}),""===e.name&&He.includes("-paddingbottom")||"hover"===e.name&&Ne.includes("-paddingbottom")||"desktop"===e.name&&De.includes("-paddingbottom")||"laptop"===e.name&&We.includes("-paddingbottom")||"tablet"===e.name&&Ue.includes("-paddingbottom")||"phone"===e.name&&Ie.includes("-paddingbottom")?(0,t.createElement)(l.TextControl,{label:(0,n.__)("","mr-utils"),value:"hover"===e.name?qe:"desktop"===e.name?Ke:"laptop"===e.name?Ye:"tablet"===e.name?Ze:"phone"===e.name?Je:je,type:"text",className:"mr-backend-custominput mr-backend-custompadding mr-backend-custompbottom",placeHolder:("mr-"+e.name+"-paddingbottom").replace("--","-"),list:("mrDevUtilsClasses_"+e.name+"_paddingbottom").replace("__","_"),onChange:e=>i({mrCustomPaddingBottom:void 0===e||e.includes("mr-hover")||e.includes("mr-desktop")||e.includes("mr-laptop")||e.includes("mr-tablet")||e.includes("mr-phone")?je:e,mrCustomPaddingBottomhover:void 0!==e&&e.includes("mr-hover")?e:qe,mrCustomPaddingBottomdesktop:void 0!==e&&e.includes("mr-desktop")?e:Ke,mrCustomPaddingBottomlaptop:void 0!==e&&e.includes("mr-laptop")?e:Ye,mrCustomPaddingBottomtablet:void 0!==e&&e.includes("mr-tablet")?e:Ze,mrCustomPaddingBottomphone:void 0!==e&&e.includes("mr-phone")?e:Je})}):"",(0,t.createElement)(l.SelectControl,{label:(0,n.__)("Padding Left","mr-utils"),className:"mr-backend-padding mr-backend-paddingleft mr-backend-hascustomoption",value:"hover"===e.name?Xe:"desktop"===e.name?$e:"laptop"===e.name?et:"tablet"===e.name?tt:"phone"===e.name?at:Qe,options:[{value:"mr-"+e.name,label:"Default padding"},{value:(" mr-"+e.name+"-nopaddingleft").replace("--","-"),label:"Remove padding"},{value:(" mr-"+e.name+"-paddingleft").replace("--","-"),label:"Use "+e.name+" class"}],onChange:e=>i({mrPaddingLeft:void 0===e||e.includes("mr-hover")||e.includes("mr-desktop")||e.includes("mr-laptop")||e.includes("mr-tablet")||e.includes("mr-phone")?Qe:e,mrPaddingLefthover:void 0!==e&&e.includes("mr-hover")?e:Xe,mrPaddingLeftdesktop:void 0!==e&&e.includes("mr-desktop")?e:$e,mrPaddingLeftlaptop:void 0!==e&&e.includes("mr-laptop")?e:et,mrPaddingLefttablet:void 0!==e&&e.includes("mr-tablet")?e:tt,mrPaddingLeftphone:void 0!==e&&e.includes("mr-phone")?e:at})}),""===e.name&&Qe.includes("-paddingleft")||"hover"===e.name&&Xe.includes("-paddingleft")||"desktop"===e.name&&$e.includes("-paddingleft")||"laptop"===e.name&&et.includes("-paddingleft")||"tablet"===e.name&&tt.includes("-paddingleft")||"phone"===e.name&&at.includes("-paddingleft")?(0,t.createElement)(l.TextControl,{label:(0,n.__)("","mr-utils"),value:"hover"===e.name?ot:"desktop"===e.name?rt:"laptop"===e.name?mt:"tablet"===e.name?lt:"phone"===e.name?it:nt,type:"text",className:"mr-backend-custominput mr-backend-custompadding mr-backend-custompleft",placeHolder:("mr-"+e.name+"-paddingleft").replace("--","-"),list:("mrDevUtilsClasses_"+e.name+"_paddingleft").replace("__","_"),onChange:e=>i({mrCustomPaddingLeft:void 0===e||e.includes("mr-hover")||e.includes("mr-desktop")||e.includes("mr-laptop")||e.includes("mr-tablet")||e.includes("mr-phone")?nt:e,mrCustomPaddingLefthover:void 0!==e&&e.includes("mr-hover")?e:ot,mrCustomPaddingLeftdesktop:void 0!==e&&e.includes("mr-desktop")?e:rt,mrCustomPaddingLeftlaptop:void 0!==e&&e.includes("mr-laptop")?e:mt,mrCustomPaddingLefttablet:void 0!==e&&e.includes("mr-tablet")?e:lt,mrCustomPaddingLeftphone:void 0!==e&&e.includes("mr-phone")?e:it})}):""):(0,t.createElement)(t.Fragment,null,(0,t.createElement)("p",null),(0,t.createElement)(l.SelectControl,{label:(0,n.__)("Margin Top","mr-utils"),className:"mr-backend-margin mr-backend-margintop mr-backend-hascustomoption",value:"hover"===e.name?xt:"desktop"===e.name?Ft:"laptop"===e.name?Vt:"tablet"===e.name?At:"phone"===e.name?Gt:Ot,options:[{value:"mr-"+e.name,label:"Default margin"},{value:(" mr-"+e.name+"-nomargintop").replace("--","-"),label:"Remove margin"},{value:(" mr-"+e.name+"-margintop").replace("--","-"),label:"Use "+e.name+" class"}],onChange:e=>i({mrMarginTop:void 0===e||e.includes("mr-hover")||e.includes("mr-desktop")||e.includes("mr-laptop")||e.includes("mr-tablet")||e.includes("mr-phone")?Ot:e,mrMarginTophover:void 0!==e&&e.includes("mr-hover")?e:xt,mrMarginTopdesktop:void 0!==e&&e.includes("mr-desktop")?e:Ft,mrMarginToplaptop:void 0!==e&&e.includes("mr-laptop")?e:Vt,mrMarginToptablet:void 0!==e&&e.includes("mr-tablet")?e:At,mrMarginTopphone:void 0!==e&&e.includes("mr-phone")?e:Gt})}),""===e.name&&Ot.includes("-margintop")||"hover"===e.name&&xt.includes("-margintop")||"desktop"===e.name&&Ft.includes("-margintop")||"laptop"===e.name&&Vt.includes("-margintop")||"tablet"===e.name&&At.includes("-margintop")||"phone"===e.name&&Gt.includes("-margintop")?(0,t.createElement)(l.TextControl,{label:(0,n.__)("","mr-utils"),value:"hover"===e.name?Nt:"desktop"===e.name?Dt:"laptop"===e.name?Wt:"tablet"===e.name?Ut:"phone"===e.name?It:Ht,type:"text",className:"mr-backend-custominput mr-backend-custommargin mr-backend-custommtop",placeHolder:("mr-"+e.name+"-margintop").replace("--","-"),list:("mrDevUtilsClasses_"+e.name+"_margintop").replace("__","_"),onChange:e=>i({mrCustomMarginTop:void 0===e||e.includes("mr-hover")||e.includes("mr-desktop")||e.includes("mr-laptop")||e.includes("mr-tablet")||e.includes("mr-phone")?Ht:e,mrCustomMarginTophover:void 0!==e&&e.includes("mr-hover")?e:Nt,mrCustomMarginTopdesktop:void 0!==e&&e.includes("mr-desktop")?e:Dt,mrCustomMarginToplaptop:void 0!==e&&e.includes("mr-laptop")?e:Wt,mrCustomMarginToptablet:void 0!==e&&e.includes("mr-tablet")?e:Ut,mrCustomMarginTopphone:void 0!==e&&e.includes("mr-phone")?e:It})}):"",(0,t.createElement)(l.SelectControl,{label:(0,n.__)("Margin Right","mr-utils"),className:"mr-backend-margin mr-backend-marginright mr-backend-hascustomoption",value:"hover"===e.name?qt:"desktop"===e.name?Kt:"laptop"===e.name?Yt:"tablet"===e.name?Zt:"phone"===e.name?Jt:jt,options:[{value:"mr-"+e.name,label:"Default margin"},{value:(" mr-"+e.name+"-nomarginright").replace("--","-"),label:"Remove margin"},{value:(" mr-"+e.name+"-marginright").replace("--","-"),label:"Use "+e.name+" class"}],onChange:e=>i({mrMarginRight:void 0===e||e.includes("mr-hover")||e.includes("mr-desktop")||e.includes("mr-laptop")||e.includes("mr-tablet")||e.includes("mr-phone")?jt:e,mrMarginRighthover:void 0!==e&&e.includes("mr-hover")?e:qt,mrMarginRightdesktop:void 0!==e&&e.includes("mr-desktop")?e:Kt,mrMarginRightlaptop:void 0!==e&&e.includes("mr-laptop")?e:Yt,mrMarginRighttablet:void 0!==e&&e.includes("mr-tablet")?e:Zt,mrMarginRightphone:void 0!==e&&e.includes("mr-phone")?e:Jt})}),""===e.name&&jt.includes("-marginright")||"hover"===e.name&&qt.includes("-marginright")||"desktop"===e.name&&Kt.includes("-marginright")||"laptop"===e.name&&Yt.includes("-marginright")||"tablet"===e.name&&Zt.includes("-marginright")||"phone"===e.name&&Jt.includes("-marginright")?(0,t.createElement)(l.TextControl,{label:(0,n.__)("","mr-utils"),value:"hover"===e.name?Xt:"desktop"===e.name?$t:"laptop"===e.name?ea:"tablet"===e.name?ta:"phone"===e.name?aa:Qt,type:"text",className:"mr-backend-custominput mr-backend-custommargin mr-backend-custommright",placeHolder:("mr-"+e.name+"-marginright").replace("--","-"),list:("mrDevUtilsClasses_"+e.name+"_marginright").replace("__","_"),onChange:e=>i({mrCustomMarginRight:void 0===e||e.includes("mr-hover")||e.includes("mr-desktop")||e.includes("mr-laptop")||e.includes("mr-tablet")||e.includes("mr-phone")?Qt:e,mrCustomMarginRighthover:void 0!==e&&e.includes("mr-hover")?e:Xt,mrCustomMarginRightdesktop:void 0!==e&&e.includes("mr-desktop")?e:$t,mrCustomMarginRightlaptop:void 0!==e&&e.includes("mr-laptop")?e:ea,mrCustomMarginRighttablet:void 0!==e&&e.includes("mr-tablet")?e:ta,mrCustomMarginRightphone:void 0!==e&&e.includes("mr-phone")?e:aa})}):"",(0,t.createElement)(l.SelectControl,{label:(0,n.__)("Margin Bottom","mr-utils"),className:"mr-backend-margin mr-backend-marginbottom mr-backend-hascustomoption",value:"hover"===e.name?oa:"desktop"===e.name?ra:"laptop"===e.name?ma:"tablet"===e.name?la:"phone"===e.name?ia:na,options:[{value:"mr-"+e.name,label:"Default margin"},{value:(" mr-"+e.name+"-nomarginbottom").replace("--","-"),label:"Remove margin"},{value:(" mr-"+e.name+"-marginbottom").replace("--","-"),label:"Use "+e.name+" class"}],onChange:e=>i({mrMarginBottom:void 0===e||e.includes("mr-hover")||e.includes("mr-desktop")||e.includes("mr-laptop")||e.includes("mr-tablet")||e.includes("mr-phone")?na:e,mrMarginBottomhover:void 0!==e&&e.includes("mr-hover")?e:oa,mrMarginBottomdesktop:void 0!==e&&e.includes("mr-desktop")?e:ra,mrMarginBottomlaptop:void 0!==e&&e.includes("mr-laptop")?e:ma,mrMarginBottomtablet:void 0!==e&&e.includes("mr-tablet")?e:la,mrMarginBottomphone:void 0!==e&&e.includes("mr-phone")?e:ia})}),""===e.name&&na.includes("-marginbottom")||"hover"===e.name&&oa.includes("-marginbottom")||"desktop"===e.name&&ra.includes("-marginbottom")||"laptop"===e.name&&ma.includes("-marginbottom")||"tablet"===e.name&&la.includes("-marginbottom")||"phone"===e.name&&ia.includes("-marginbottom")?(0,t.createElement)(l.TextControl,{label:(0,n.__)("","mr-utils"),value:"hover"===e.name?sa:"desktop"===e.name?da:"laptop"===e.name?ua:"tablet"===e.name?ca:"phone"===e.name?ga:pa,type:"text",className:"mr-backend-custominput mr-backend-custommargin mr-backend-custommbottom",placeHolder:("mr-"+e.name+"-marginbottom").replace("--","-"),list:("mrDevUtilsClasses_"+e.name+"_marginbottom").replace("__","_"),onChange:e=>i({mrCustomMarginBottom:void 0===e||e.includes("mr-hover")||e.includes("mr-desktop")||e.includes("mr-laptop")||e.includes("mr-tablet")||e.includes("mr-phone")?pa:e,mrCustomMarginBottomhover:void 0!==e&&e.includes("mr-hover")?e:sa,mrCustomMarginBottomdesktop:void 0!==e&&e.includes("mr-desktop")?e:da,mrCustomMarginBottomlaptop:void 0!==e&&e.includes("mr-laptop")?e:ua,mrCustomMarginBottomtablet:void 0!==e&&e.includes("mr-tablet")?e:ca,mrCustomMarginBottomphone:void 0!==e&&e.includes("mr-phone")?e:ga})}):"",(0,t.createElement)(l.SelectControl,{label:(0,n.__)("Margin Left","mr-utils"),className:"mr-backend-margin mr-backend-marginleft mr-backend-hascustomoption",value:"hover"===e.name?va:"desktop"===e.name?ba:"laptop"===e.name?fa:"tablet"===e.name?Ca:"phone"===e.name?ka:ha,options:[{value:"mr-"+e.name,label:"Default margin"},{value:(" mr-"+e.name+"-nomarginleft").replace("--","-"),label:"Remove margin"},{value:(" mr-"+e.name+"-marginleft").replace("--","-"),label:"Use "+e.name+" class"}],onChange:e=>i({mrMarginLeft:void 0===e||e.includes("mr-hover")||e.includes("mr-desktop")||e.includes("mr-laptop")||e.includes("mr-tablet")||e.includes("mr-phone")?ha:e,mrMarginLefthover:void 0!==e&&e.includes("mr-hover")?e:va,mrMarginLeftdesktop:void 0!==e&&e.includes("mr-desktop")?e:ba,mrMarginLeftlaptop:void 0!==e&&e.includes("mr-laptop")?e:fa,mrMarginLefttablet:void 0!==e&&e.includes("mr-tablet")?e:Ca,mrMarginLeftphone:void 0!==e&&e.includes("mr-phone")?e:ka})}),""===e.name&&ha.includes("-marginleft")||"hover"===e.name&&va.includes("-marginleft")||"desktop"===e.name&&ba.includes("-marginleft")||"laptop"===e.name&&fa.includes("-marginleft")||"tablet"===e.name&&Ca.includes("-marginleft")||"phone"===e.name&&ka.includes("-marginleft")?(0,t.createElement)(l.TextControl,{label:(0,n.__)("","mr-utils"),value:"hover"===e.name?ya:"desktop"===e.name?za:"laptop"===e.name?Sa:"tablet"===e.name?_a:"phone"===e.name?Ma:Pa,type:"text",className:"mr-backend-custominput mr-backend-custommargin mr-backend-custommleft",placeHolder:("mr-"+e.name+"-marginleft").replace("--","-"),list:("mrDevUtilsClasses_"+e.name+"_marginleft").replace("__","_"),onChange:e=>i({mrCustomMarginLeft:void 0===e||e.includes("mr-hover")||e.includes("mr-desktop")||e.includes("mr-laptop")||e.includes("mr-tablet")||e.includes("mr-phone")?Pa:e,mrCustomMarginLefthover:void 0!==e&&e.includes("mr-hover")?e:ya,mrCustomMarginLeftdesktop:void 0!==e&&e.includes("mr-desktop")?e:za,mrCustomMarginLeftlaptop:void 0!==e&&e.includes("mr-laptop")?e:Sa,mrCustomMarginLefttablet:void 0!==e&&e.includes("mr-tablet")?e:_a,mrCustomMarginLeftphone:void 0!==e&&e.includes("mr-phone")?e:Ma})}):""))))),(0,t.createElement)(l.PanelBody,{icon:S,title:e.name+(0,n.__)(" Text","mr-utils"),initialOpen:!1,className:""===e.name?"mr-backend-option mr-backend-option_utils_text":"mr-backend-option mr-backend-option_utils_"+e.name+"_text"},""===e.name?(0,t.createElement)(l.SelectControl,{label:(0,n.__)("Font family","mr-utils"),className:"mr-backend-font mr-backend-hascustomoption",value:wn,options:[{value:"mr-",label:"Default"},{value:" mr-font1",label:"Font 1 class"},{value:" mr-font2",label:"Font 2 class"},{value:" mr-customfont",label:"Custom font class"}],onChange:e=>i({mrFontFamily:void 0!==e?e:wn}),help:!wn.includes("-customfont")&&wn.includes("-font1")?"var(--font-1) = "+getComputedStyle(document.documentElement).getPropertyValue("--font-1"):!wn.includes("-customfont")&&wn.includes("-font2")?"var(--font-2) = "+getComputedStyle(document.documentElement).getPropertyValue("--font-2"):""}):"",""===e.name&&wn.includes("custom")?(0,t.createElement)(l.TextControl,{label:(0,n.__)("","mr-utils"),value:En,type:"text",className:"mr-backend-custominput mr-backend-customfontfamily",placeHolder:"mr-font1",list:"mrDevUtilsClasses_fontfamily".replace("__","_"),onChange:e=>i({mrCustomFontFamily:void 0!==e?e:En})}):"",(0,t.createElement)(l.SelectControl,{label:(0,n.__)("Font size","mr-utils"),value:"hover"===e.name?Rn:"desktop"===e.name?Bn:"laptop"===e.name?Ln:"tablet"===e.name?On:"phone"===e.name?xn:Tn,className:"mr-backend-fontsize mr-backend-hascustomoption",options:[{value:"mr-"+e.name,label:"Default "+e.name+" class"},{value:(" mr-"+e.name+"-fontsizeoptions").replace("--","-"),label:"Custom "+e.name+" class"}],onChange:e=>i({mrFontSizeOptions:void 0===e||e.includes("mr-hover")||e.includes("mr-desktop")||e.includes("mr-laptop")||e.includes("mr-tablet")||e.includes("mr-phone")?Tn:e,mrFontSizeOptionshover:void 0!==e&&e.includes("mr-hover")?e:Rn,mrFontSizeOptionsdesktop:void 0!==e&&e.includes("mr-desktop")?e:Bn,mrFontSizeOptionslaptop:void 0!==e&&e.includes("mr-laptop")?e:Ln,mrFontSizeOptionstablet:void 0!==e&&e.includes("mr-tablet")?e:On,mrFontSizeOptionsphone:void 0!==e&&e.includes("mr-phone")?e:xn})}),""===e.name&&"mr-"===Tn||"hover"===e.name&&"mr-hover"===Rn||"desktop"===e.name&&"mr-desktop"===Bn||"laptop"===e.name&&"mr-laptop"===Ln||"tablet"===e.name&&"mr-tablet"===On||"phone"===e.name&&"mr-phone"===xn?(0,t.createElement)(l.RangeControl,{label:(0,n.__)("","mr-utils"),value:"hover"===e.name?Vn:"desktop"===e.name?An:"laptop"===e.name?Gn:"tablet"===e.name?Hn:"phone"===e.name?Nn:Fn,initialPosition:0,allowReset:!0,min:0,max:7,onChange:t=>i({mrFontSize:""===e.name?0===t||void 0===t?"":t:Fn,mrFontSizehover:"hover"===e.name?0===t||void 0===t?"":t:Vn,mrFontSizedesktop:"desktop"===e.name?0===t||void 0===t?"":t:An,mrFontSizelaptop:"laptop"===e.name?0===t||void 0===t?"":t:Gn,mrFontSizetablet:"tablet"===e.name?0===t||void 0===t?"":t:Hn,mrFontSizephone:"phone"===e.name?0===t||void 0===t?"":t:Nn}),help:""==e.name&&Fn>0?"mr-fontsize"+Fn+" = "+getComputedStyle(document.documentElement).getPropertyValue("--font-size-"+Fn):"hover"==e.name&&Vn>0?"mr-hover-fontsize"+Vn+" = "+getComputedStyle(document.documentElement).getPropertyValue("--font-size-"+Vn):"desktop"==e.name&&An>0?"mr-desktop-fontsize"+An+" = "+getComputedStyle(document.documentElement).getPropertyValue("--font-size-"+An):"laptop"==e.name&&Gn>0?"mr-laptop-fontsize"+Gn+" = "+getComputedStyle(document.documentElement).getPropertyValue("--font-size-"+Gn):"tablet"==e.name&&Hn?"mr-tablet-fontsize"+Hn+" = "+getComputedStyle(document.documentElement).getPropertyValue("--font-size-"+Hn):"phone"==e.name&&Nn>0?"mr-phone-fontsize"+Nn+" = "+getComputedStyle(document.documentElement).getPropertyValue("--font-size-"+Nn):""}):"",""===e.name&&Tn.includes("-fontsizeoptions")||"hover"===e.name&&Rn.includes("-fontsizeoptions")||"desktop"===e.name&&Bn.includes("-fontsizeoptions")||"laptop"===e.name&&Ln.includes("-fontsizeoptions")||"tablet"===e.name&&On.includes("-fontsizeoptions")||"phone"===e.name&&xn.includes("-fontsizeoptions")?(0,t.createElement)(l.TextControl,{label:(0,n.__)("","mr-utils"),value:"hover"===e.name?Wn:"desktop"===e.name?Un:"laptop"===e.name?In:"tablet"===e.name?jn:"phone"===e.name?qn:Dn,type:"text",className:"mr-backend-custominput mr-backend-customptop",placeHolder:("mr-"+e.name+"-fontsize{1/7}").replace("--","-"),list:("mrDevUtilsClasses_"+e.name+"_fontsize").replace("__","_"),onChange:e=>i({mrCustomFontSize:void 0===e||e.includes("mr-hover")||e.includes("mr-desktop")||e.includes("mr-laptop")||e.includes("mr-tablet")||e.includes("mr-phone")?Dn:e,mrCustomFontSizehover:void 0!==e&&e.includes("mr-hover")?e:Wn,mrCustomFontSizedesktop:void 0!==e&&e.includes("mr-desktop")?e:Un,mrCustomFontSizelaptop:void 0!==e&&e.includes("mr-laptop")?e:In,mrCustomFontSizetablet:void 0!==e&&e.includes("mr-tablet")?e:jn,mrCustomFontSizephone:void 0!==e&&e.includes("mr-phone")?e:qn})}):"","hover"!==e.name?(0,t.createElement)(t.Fragment,null,(0,t.createElement)(l.SelectControl,{label:(0,n.__)("Text Alignment","mr-utils"),value:"desktop"===e.name?Yn:"laptop"===e.name?Zn:"tablet"===e.name?Jn:"phone"===e.name?Qn:Kn,options:(0,n.__)([{value:"mr-"+e.name,label:"Default"},{value:(" mr-"+e.name+"-alignleft").replace("--","-"),label:"Left"},{value:(" mr-"+e.name+"-aligncenter").replace("--","-"),label:"Center"},{value:(" mr-"+e.name+"-alignright").replace("--","-"),label:"Right"}]),onChange:e=>i({mrTextAlignment:void 0===e||e.includes("mr-hover")||e.includes("mr-desktop")||e.includes("mr-laptop")||e.includes("mr-tablet")||e.includes("mr-phone")?Kn:e,mrTextAlignmentdesktop:void 0!==e&&e.includes("mr-desktop")?e:Yn,mrTextAlignmentlaptop:void 0!==e&&e.includes("mr-laptop")?e:Zn,mrTextAlignmenttablet:void 0!==e&&e.includes("mr-tablet")?e:Jn,mrTextAlignmentphone:void 0!==e&&e.includes("mr-phone")?e:Qn})})):""),"hover"!==e.name?(0,t.createElement)(t.Fragment,null,(0,t.createElement)(l.PanelBody,{icon:_,title:e.name+(0,n.__)(" Placement","mr-utils"),initialOpen:!1,className:""===e.name?"mr-backend-option mr-backend-option_utils_placement":"mr-backend-option mr-backend-option_utils_"+e.name+"_placement"},(0,t.createElement)(l.SelectControl,{label:(0,n.__)("Position Type","mr-utils"),value:"desktop"===e.name?Ea:"laptop"===e.name?Ta:"tablet"===e.name?Ra:"phone"===e.name?Ba:wa,options:[{value:"mr-"+e.name,label:"Default"},{value:(" mr-"+e.name+"-relative").replace("--","-"),label:"Relative"},{value:(" mr-"+e.name+"-absolute").replace("--","-"),label:"Absolute"},{value:(" mr-"+e.name+"-fixed").replace("--","-"),label:"Fixed"},{value:(" mr-"+e.name+"-sticky").replace("--","-"),label:"Sticky"}],onChange:e=>i({mrPosition:void 0===e||e.includes("mr-hover")||e.includes("mr-desktop")||e.includes("mr-laptop")||e.includes("mr-tablet")||e.includes("mr-phone")?wa:e,mrPositiondesktop:void 0!==e&&e.includes("mr-desktop")?e:Ea,mrPositionlaptop:void 0!==e&&e.includes("mr-laptop")?e:Ta,mrPositiontablet:void 0!==e&&e.includes("mr-tablet")?e:Ra,mrPositionphone:void 0!==e&&e.includes("mr-phone")?e:Ba})}),(0,t.createElement)(l.SelectControl,{label:(0,n.__)("Vertical Alignment","mr-utils"),value:"desktop"===e.name?Oa:"laptop"===e.name?xa:"tablet"===e.name?Fa:"phone"===e.name?Va:La,options:(wa+e.name).includes("absolute")||(wa+e.name).includes("fixed")||(wa+e.name).includes("sticky")?(0,n.__)([{value:"mr-"+e.name,label:"Default"},{value:(" mr-"+e.name+"-top").replace("--","-"),label:"Top"},{value:(" mr-"+e.name+"-bottom").replace("--","-"),label:"Bottom"}]):"",onChange:e=>i({mrPositionAlignment:void 0===e||e.includes("mr-hover")||e.includes("mr-desktop")||e.includes("mr-laptop")||e.includes("mr-tablet")||e.includes("mr-phone")?La:e,mrPositionAlignmentdesktop:void 0!==e&&e.includes("mr-desktop")?e:Oa,mrPositionAlignmentlaptop:void 0!==e&&e.includes("mr-laptop")?e:xa,mrPositionAlignmenttablet:void 0!==e&&e.includes("mr-tablet")?e:Fa,mrPositionAlignmentphone:void 0!==e&&e.includes("mr-phone")?e:Va})}),(0,t.createElement)(l.SelectControl,{label:(0,n.__)("Horizontal Alignment","mr-utils"),value:"desktop"===e.name?Ga:"laptop"===e.name?Ha:"tablet"===e.name?Na:"phone"===e.name?Da:Aa,options:(wa+e.name).includes("absolute")||(wa+e.name).includes("fixed")||(wa+e.name).includes("sticky")?(0,n.__)([{value:"mr-"+e.name,label:"Default"},{value:(" mr-"+e.name+"-right").replace("--","-"),label:"Right"},{value:(" mr-"+e.name+"-left").replace("--","-"),label:"Left"}]):"",onChange:e=>i({mrPositionSides:void 0===e||e.includes("mr-hover")||e.includes("mr-desktop")||e.includes("mr-laptop")||e.includes("mr-tablet")||e.includes("mr-phone")?Aa:e,mrPositionSidesdesktop:void 0!==e&&e.includes("mr-desktop")?e:Ga,mrPositionSideslaptop:void 0!==e&&e.includes("mr-laptop")?e:Ha,mrPositionSidestablet:void 0!==e&&e.includes("mr-tablet")?e:Na,mrPositionSidesphone:void 0!==e&&e.includes("mr-phone")?e:Da})}),(0,t.createElement)(l.SelectControl,{label:(0,n.__)("Content Alignment","mr-utils"),value:"desktop"===e.name?Ua:"laptop"===e.name?Ia:"tablet"===e.name?ja:"phone"===e.name?qa:Wa,options:(0,n.__)([{value:"mr-"+e.name,label:"Default"},{value:(" mr-"+e.name+"-aligntop").replace("--","-"),label:"Top"},{value:(" mr-"+e.name+"-floatright").replace("--","-"),label:"Right"},{value:(" mr-"+e.name+"-alignbottom").replace("--","-"),label:"Bottom"},{value:(" mr-"+e.name+"-floatleft").replace("--","-"),label:"Left"},{value:(" mr-"+e.name+"-middle").replace("--","-"),label:"Middle"}]),onChange:e=>i({mrContentAlignment:void 0===e||e.includes("mr-hover")||e.includes("mr-desktop")||e.includes("mr-laptop")||e.includes("mr-tablet")||e.includes("mr-phone")?Wa:e,mrContentAlignmentdesktop:void 0!==e&&e.includes("mr-desktop")?e:Ua,mrContentAlignmentlaptop:void 0!==e&&e.includes("mr-laptop")?e:Ia,mrContentAlignmenttablet:void 0!==e&&e.includes("mr-tablet")?e:ja,mrContentAlignmentphone:void 0!==e&&e.includes("mr-phone")?e:qa})}),(0,t.createElement)(l.SelectControl,{label:(0,n.__)("Vertical Offset","mr-utils"),value:"desktop"===e.name?Ya:"laptop"===e.name?Za:"tablet"===e.name?Ja:"phone"===e.name?Qa:Ka,options:(0,n.__)([{value:"mr-"+e.name,label:"Default"},{value:(" mr-"+e.name+"-offsettop").replace("--","-"),label:"Top"},{value:(" mr-"+e.name+"-offsetelementtop").replace("--","-"),label:"Element Top"},{value:(" mr-"+e.name+"-offsetelementbottom").replace("--","-"),label:"Element Bottom"},{value:(" mr-"+e.name+"-offsetbottom").replace("--","-"),label:"Bottom"}]),onChange:e=>i({mrVerticalOffset:void 0===e||e.includes("mr-hover")||e.includes("mr-desktop")||e.includes("mr-laptop")||e.includes("mr-tablet")||e.includes("mr-phone")?Ka:e,mrVerticalOffsetdesktop:void 0!==e&&e.includes("mr-desktop")?e:Ya,mrVerticalOffsetlaptop:void 0!==e&&e.includes("mr-laptop")?e:Za,mrVerticalOffsettablet:void 0!==e&&e.includes("mr-tablet")?e:Ja,mrVerticalOffsetphone:void 0!==e&&e.includes("mr-phone")?e:Qa})}),(0,t.createElement)(l.SelectControl,{label:(0,n.__)("Horizontal Offset","mr-utils"),value:"desktop"===e.name?$a:"laptop"===e.name?en:"tablet"===e.name?tn:"phone"===e.name?an:Xa,options:(0,n.__)([{value:"mr-"+e.name,label:"Default"},{value:(" mr-"+e.name+"-offsetleft").replace("--","-"),label:"Left"},{value:(" mr-"+e.name+"-offsetelementleft").replace("--","-"),label:"Element Left"},{value:(" mr-"+e.name+"-offsetelementright").replace("--","-"),label:"Element Right"},{value:(" mr-"+e.name+"-offsetright").replace("--","-"),label:"Right"}]),onChange:e=>i({mrHorizontalOffset:void 0===e||e.includes("mr-hover")||e.includes("mr-desktop")||e.includes("mr-laptop")||e.includes("mr-tablet")||e.includes("mr-phone")?Xa:e,mrHorizontalOffsetdesktop:void 0!==e&&e.includes("mr-desktop")?e:$a,mrHorizontalOffsetlaptop:void 0!==e&&e.includes("mr-laptop")?e:en,mrHorizontalOffsettablet:void 0!==e&&e.includes("mr-tablet")?e:tn,mrHorizontalOffsetphone:void 0!==e&&e.includes("mr-phone")?e:an})}))):"",(0,t.createElement)(l.PanelBody,{icon:M,title:e.name+(0,n.__)(" Misc.","mr-utils"),initialOpen:!1,className:""===e.name?"mr-backend-option mr-backend-option_utils_misc":"mr-backend-option mr-backend-option_utils_"+e.name+"_misc"},(0,t.createElement)(l.SelectControl,{label:(0,n.__)("Scroll","mr-utils"),value:"hover"===e.name?$n:"desktop"===e.name?eo:"laptop"===e.name?to:"tablet"===e.name?ao:"phone"===e.name?no:Xn,options:[{value:"mr-"+e.name,label:"Default"},{value:(" mr-"+e.name+"-noscroll").replace("--","-"),label:"No scroll"},{value:(" mr-"+e.name+"-hidescroll").replace("--","-"),label:"Hide scroll"},{value:(" mr-"+e.name+"-scroll").replace("--","-"),label:"Scroll"},"hover"!=e.name?{value:(" mr-"+e.name+"-horizontalscroll").replace("--","-"),label:"Horizontal scroll"}:"","hover"!=e.name?{value:(" mr-"+e.name+"-horizontalscrollcontent").replace("--","-"),label:"Horizontal scroll content"}:""],onChange:e=>i({mrScroll:void 0===e||e.includes("mr-hover")||e.includes("mr-desktop")||e.includes("mr-laptop")||e.includes("mr-tablet")||e.includes("mr-phone")?Xn:e,mrScrollhover:void 0!==e&&e.includes("-hover-")?e:$n,mrScrolldesktop:void 0!==e&&e.includes("mr-desktop")?e:eo,mrScrolllaptop:void 0!==e&&e.includes("mr-laptop")?e:to,mrScrolltablet:void 0!==e&&e.includes("mr-tablet")?e:ao,mrScrollphone:void 0!==e&&e.includes("mr-phone")?e:no})}))):(0,t.createElement)(t.Fragment,null,(0,t.createElement)("h4",null,"Other breakpoints"),(0,t.createElement)("p",null,"You also have the following device breakpoints available:"),(0,t.createElement)("p",{class:"mr-backend-other_breakpoints"},(0,t.createElement)("b",null,"landscape, portrait")),(0,t.createElement)("p",null,"However you cannot select them with the interface. In alternative, you can use"," ",(0,t.createElement)("a",{href:"https://github.com/marcosrego-web/mr-utils/wiki/Utility-Classes",target:"_blank"},"utility classes")," ","in ",(0,t.createElement)("b",null,"Advanced - Additional CSS class(es)"),"."),(0,t.createElement)("p",null,(0,t.createElement)("a",{href:"https://github.com/marcosrego-web/mr-utils/wiki/Utility-Classes",target:"_blank"},"Know more"))))),(0,t.createElement)(l.PanelBody,{icon:w,title:(0,n.__)("Need more features?","mr-utils"),initialOpen:!1,className:"mr-backend-more_features"},(0,t.createElement)(l.PanelRow,null,(0,t.createElement)("div",null,(0,t.createElement)("p",null,(0,t.createElement)("b",null,"Then you need Mr.Dev.'s Framework!")),(0,t.createElement)("p",null,"The framework will give you an interface to optionally:"),(0,t.createElement)("ul",null,(0,t.createElement)("li",null,"- Select only the device breakpoints that you want to use, avoiding the load of all styles and scripts."),(0,t.createElement)("li",null,"- Enable only the components and features that you want to use, avoiding unused CSS and JS."),(0,t.createElement)("li",null,"- Change the value of each variable (for margin, padding, transition-duration, size, font-size and more)."),(0,t.createElement)("li",null,"- Change the media query values of each device breakpoint."),(0,t.createElement)("li",null,"- Create custom breakpoints."),(0,t.createElement)("li",null,"- Create custom variables."),(0,t.createElement)("li",null,"- Create custom utility classes with CSS properties + variables and select them within the interface."),(0,t.createElement)("li",null,"- Toggle a offcanvas section with reusable blocks using a hamburger menu."),(0,t.createElement)("li",null,"- And more framework features...")),(0,t.createElement)("p",null,(0,t.createElement)("a",{href:"https://marcosrego.com/development/mrdev-framework/",target:"_blank"},"Know more")))))))))}),"mrInspectorControls"),T=(0,r.createHigherOrderComponent)((a=>n=>{const{attributes:o,blockType:r}=n,{mrAnimation:m,mrAnimationhover:l,mrTransition:i,mrTransitionhover:p,mrPerPage:s,mrPaginationPosition:d,mrComponent:u,mrVerticalScrollNavigation:c,mrHorizontalScrollNavigation:g,mrActiveWhen:h,mrNavPosition:v,mrArrowPagination:b,mrSelectPagination:f,mrRadioPagination:C,mrPerLine:k,mrPerLinedesktop:P,mrPerLinelaptop:y,mrPerLinetablet:z,mrPerLinephone:S,mrColumns:_,mrColumnsdesktop:M,mrColumnslaptop:w,mrColumnstablet:E,mrColumnsphone:T,mrOrder:R,mrOrderdesktop:B,mrOrderlaptop:L,mrOrdertablet:O,mrOrderphone:x,mrDisplay:F,mrDisplayhover:V,mrDisplaydesktop:A,mrDisplaylaptop:G,mrDisplaytablet:H,mrDisplayphone:N,mrWrap:D,mrWrapdesktop:W,mrWraplaptop:U,mrWraptablet:I,mrWrapphone:j,mrPaddingTop:q,mrPaddingTophover:K,mrPaddingTopdesktop:Y,mrPaddingToplaptop:Z,mrPaddingToptablet:J,mrPaddingTopphone:Q,mrCustomPaddingTop:X,mrCustomPaddingTophover:$,mrCustomPaddingTopdesktop:ee,mrCustomPaddingToplaptop:te,mrCustomPaddingToptablet:ae,mrCustomPaddingTopphone:ne,mrPaddingRight:oe,mrPaddingRighthover:re,mrPaddingRightdesktop:me,mrPaddingRightlaptop:le,mrPaddingRighttablet:ie,mrPaddingRightphone:pe,mrCustomPaddingRight:se,mrCustomPaddingRighthover:de,mrCustomPaddingRightdesktop:ue,mrCustomPaddingRightlaptop:ce,mrCustomPaddingRighttablet:ge,mrCustomPaddingRightphone:he,mrPaddingBottom:ve,mrPaddingBottomhover:be,mrPaddingBottomdesktop:fe,mrPaddingBottomlaptop:Ce,mrPaddingBottomtablet:ke,mrPaddingBottomphone:Pe,mrCustomPaddingBottom:ye,mrCustomPaddingBottomhover:ze,mrCustomPaddingBottomdesktop:Se,mrCustomPaddingBottomlaptop:_e,mrCustomPaddingBottomtablet:Me,mrCustomPaddingBottomphone:we,mrPaddingLeft:Ee,mrPaddingLefthover:Te,mrPaddingLeftdesktop:Re,mrPaddingLeftlaptop:Be,mrPaddingLefttablet:Le,mrPaddingLeftphone:Oe,mrCustomPaddingLeft:xe,mrCustomPaddingLefthover:Fe,mrCustomPaddingLeftdesktop:Ve,mrCustomPaddingLeftlaptop:Ae,mrCustomPaddingLefttablet:Ge,mrCustomPaddingLeftphone:He,mrMarginTop:Ne,mrMarginTophover:De,mrMarginTopdesktop:We,mrMarginToplaptop:Ue,mrMarginToptablet:Ie,mrMarginTopphone:je,mrCustomMarginTop:qe,mrCustomMarginTophover:Ke,mrCustomMarginTopdesktop:Ye,mrCustomMarginToplaptop:Ze,mrCustomMarginToptablet:Je,mrCustomMarginTopphone:Qe,mrMarginRight:Xe,mrMarginRighthover:$e,mrMarginRightdesktop:et,mrMarginRightlaptop:tt,mrMarginRighttablet:at,mrMarginRightphone:nt,mrCustomMarginRight:ot,mrCustomMarginRighthover:rt,mrCustomMarginRightdesktop:mt,mrCustomMarginRightlaptop:lt,mrCustomMarginRighttablet:it,mrCustomMarginRightphone:pt,mrMarginBottom:st,mrMarginBottomhover:dt,mrMarginBottomdesktop:ut,mrMarginBottomlaptop:ct,mrMarginBottomtablet:gt,mrMarginBottomphone:ht,mrCustomMarginBottom:vt,mrCustomMarginBottomhover:bt,mrCustomMarginBottomdesktop:ft,mrCustomMarginBottomlaptop:Ct,mrCustomMarginBottomtablet:kt,mrCustomMarginBottomphone:Pt,mrMarginLeft:yt,mrMarginLefthover:zt,mrMarginLeftdesktop:St,mrMarginLeftlaptop:_t,mrMarginLefttablet:Mt,mrMarginLeftphone:wt,mrCustomMarginLeft:Et,mrCustomMarginLefthover:Tt,mrCustomMarginLeftdesktop:Rt,mrCustomMarginLeftlaptop:Bt,mrCustomMarginLefttablet:Lt,mrCustomMarginLeftphone:Ot,mrRowGap:xt,mrCustomRowGap:Ft,mrColumnGap:Vt,mrCustomColumnGap:At,mrPosition:Gt,mrPositiondesktop:Ht,mrPositionlaptop:Nt,mrPositiontablet:Dt,mrPositionphone:Wt,mrPositionAlignment:Ut,mrPositionAlignmentdesktop:It,mrPositionAlignmentlaptop:jt,mrPositionAlignmenttablet:qt,mrPositionAlignmentphone:Kt,mrPositionSides:Yt,mrPositionSidesdesktop:Zt,mrPositionSideslaptop:Jt,mrPositionSidestablet:Qt,mrPositionSidesphone:Xt,mrContentAlignment:$t,mrContentAlignmentdesktop:ea,mrContentAlignmentlaptop:ta,mrContentAlignmenttablet:aa,mrContentAlignmentphone:na,mrVerticalOffset:oa,mrVerticalOffsetdesktop:ra,mrVerticalOffsetlaptop:ma,mrVerticalOffsettablet:la,mrVerticalOffsetphone:ia,mrHorizontalOffset:pa,mrHorizontalOffsetdesktop:sa,mrHorizontalOffsetlaptop:da,mrHorizontalOffsettablet:ua,mrHorizontalOffsetphone:ca,mrSizeOptions:ga,mrSizeOptionshover:ha,mrSizeOptionsdesktop:va,mrSizeOptionslaptop:ba,mrSizeOptionstablet:fa,mrSizeOptionsphone:Ca,mrSize:ka,mrSizehover:Pa,mrSizedesktop:ya,mrSizelaptop:za,mrSizetablet:Sa,mrSizephone:_a,mrCustomSize:Ma,mrCustomSizehover:wa,mrCustomSizedesktop:Ea,mrCustomSizelaptop:Ta,mrCustomSizetablet:Ra,mrCustomSizephone:Ba,mrBackgroundColor:La,mrCustomBackgroundColor:Oa,mrColor:xa,mrCustomColor:Fa,mrFontFamily:Va,mrCustomFontFamily:Aa,mrFontSizeOptions:Ga,mrFontSizeOptionshover:Ha,mrFontSizeOptionsdesktop:Na,mrFontSizeOptionslaptop:Da,mrFontSizeOptionstablet:Wa,mrFontSizeOptionsphone:Ua,mrFontSize:Ia,mrFontSizehover:ja,mrFontSizedesktop:qa,mrFontSizelaptop:Ka,mrFontSizetablet:Ya,mrFontSizephone:Za,mrCustomFontSize:Ja,mrCustomFontSizehover:Qa,mrCustomFontSizedesktop:Xa,mrCustomFontSizelaptop:$a,mrCustomFontSizetablet:en,mrCustomFontSizephone:tn,mrTextAlignment:an,mrTextAlignmentdesktop:nn,mrTextAlignmentlaptop:on,mrTextAlignmenttablet:rn,mrTextAlignmentphone:mn,mrScroll:ln,mrScrollhover:pn,mrScrolldesktop:sn,mrScrolllaptop:dn,mrScrolltablet:un,mrScrollphone:cn}=o;let gn="",hn="",vn="";return Ma&&ga&&ga.includes("-sizeoptions")?gn=gn+" "+Ma:ka&&(gn=gn+" mr-size"+ka),wa&&ha&&ha.includes("-sizeoptions")?gn=gn+" "+wa:Pa&&(gn=gn+" mr-hover-size"+Pa),Ea&&va&&va.includes("-sizeoptions")?gn=gn+" "+Ea:ya&&(gn=gn+" mr-desktop-size"+ya),Ta&&ba&&ba.includes("-sizeoptions")?gn=gn+" "+Ta:za&&(gn=gn+" mr-laptop-size"+za),Ra&&fa&&fa.includes("-sizeoptions")?gn=gn+" "+Ra:Sa&&(gn=gn+" mr-tablet-size"+Sa),Ba&&Ca&&Ca.includes("-sizeoptions")?gn=gn+" "+Ba:_a&&(gn=gn+" mr-phone-size"+_a),La&&La.includes("-custombackgroundcolor")&&Oa?gn=gn+" "+Oa:La&&"mr-"!==La&&(gn=gn+" "+La),xa&&xa.includes("-customcolor")&&Fa?gn=gn+" "+Fa:xa&&"mr-"!==xa&&(gn=gn+" "+xa),Va&&Va.includes("-customfont")&&Aa?gn=gn+" "+Aa:Va&&"mr-"!==Va&&(gn=gn+" "+Va),Ja&&Ga&&Ga.includes("-fontsizeoptions")?gn=gn+" "+Ja:Ia&&(gn=gn+" mr-fontsize"+Ia),Qa&&Ha&&Ha.includes("-fontsizeoptions")?gn=gn+" "+Qa:ja&&(gn=gn+" mr-hover-fontsize"+ja),Xa&&Na&&Na.includes("-fontsizeoptions")?gn=gn+" "+Xa:qa&&(gn=gn+" mr-desktop-fontsize"+qa),$a&&Da&&Da.includes("-fontsizeoptions")?gn=gn+" "+$a:Ka&&(gn=gn+" mr-laptop-fontsize"+Ka),en&&Wa&&Wa.includes("-fontsizeoptions")?gn=gn+" "+en:Ya&&(gn=gn+" mr-tablet-fontsize"+Ya),tn&&Ua&&Ua.includes("-fontsizeoptions")?gn=gn+" "+tn:Za&&(gn=gn+" mr-phone-fontsize"+Za),Object.keys(o).forEach((function(e){hn=e,vn=o[e],"mr-"===vn||"mr-hover"===vn||"mr-desktop"===vn||"mr-laptop"===vn||"mr-tablet"===vn||"mr-phone"===vn||hn.includes("mrCustom")||hn.includes("mrFontSize")||hn.includes("mrSize")||hn.includes("mrFontFamily")||hn.includes("mrBackgroundColor")||hn.includes("mrColor")||("mrPerPage"==hn&&vn?vn>0&&(gn=gn+" mr-"+vn+"perpage"):"mrArrowPagination"==hn&&vn?gn+=" mr-arrowpagination":"mrSelectPagination"==hn&&vn?gn+=" mr-selectpagination":"mrRadioPagination"==hn&&vn?gn+=" mr-radiopagination":"mrVerticalScrollNavigation"==hn&&vn?gn+=" mr-verticalscrollnav":"mrHorizontalScrollNavigation"==hn&&vn?gn+=" mr-horizontalscrollnav":"mrAnimation"==hn&&vn||"mrAnimationhover"==hn&&vn?gn=gn+vn+" mr-active":"mrActiveWhen"==hn&&vn?gn+=vn:hn.includes("mrPadding")&&vn&&vn.includes("-padding")?"mrPaddingTop"==hn&&X?gn=gn+" "+X:"mrPaddingTophover"==hn&&$?gn=gn+" "+$:"mrPaddingTopdesktop"==hn&&ee?gn=gn+" "+ee:"mrPaddingToplaptop"==hn&&te?gn=gn+" "+te:"mrPaddingToplaptablet"==hn&&ae?gn=gn+" "+ae:"mrPaddingToplapphone"==hn&&ne?gn=gn+" "+ne:"mrPaddingRight"==hn&&se?gn=gn+" "+se:"mrPaddingRighthover"==hn&&de?gn=gn+" "+de:"mrPaddingRightdesktop"==hn&&ue?gn=gn+" "+ue:"mrPaddingRightlaptop"==hn&&ce?gn=gn+" "+ce:"mrPaddingRightlaptablet"==hn&&ge?gn=gn+" "+ge:"mrPaddingRightlapphone"==hn&&he?gn=gn+" "+he:"mrPaddingBottom"==hn&&ye?gn=gn+" "+ye:"mrPaddingBottomhover"==hn&&ze?gn=gn+" "+ze:"mrPaddingBottomdesktop"==hn&&Se?gn=gn+" "+Se:"mrPaddingBottomlaptop"==hn&&_e?gn=gn+" "+_e:"mrPaddingBottomlaptablet"==hn&&Me?gn=gn+" "+Me:"mrPaddingBottomlapphone"==hn&&we?gn=gn+" "+we:"mrPaddingLeft"==hn&&xe?gn=gn+" "+xe:"mrPaddingLefthover"==hn&&Fe?gn=gn+" "+Fe:"mrPaddingLeftdesktop"==hn&&Ve?gn=gn+" "+Ve:"mrPaddingLeftlaptop"==hn&&Ae?gn=gn+" "+Ae:"mrPaddingLeftlaptablet"==hn&&Ge?gn=gn+" "+Ge:"mrPaddingLeftlapphone"==hn&&He?gn=gn+" "+He:gn+=vn:hn.startsWith("mr")&&vn&&vn.startsWith("mr")?gn=gn+" "+vn:hn.startsWith("mr")&&vn&&(gn+=vn))})),(0,t.createElement)(a,e({},n,{className:gn}))}),"mrBackendExtraClasses");(0,o.addFilter)("blocks.registerBlockType","mr-utils/custom-attributes",(function(e){return void 0!==e.attributes&&e.name.includes("core/")&&"core/archives"!==e.name&&(e.attributes=Object.assign(e.attributes,{mrAnimation:{type:"string",default:"mr-"},mrAnimationhover:{type:"string",default:"mr-hover"},mrTransition:{type:"string",default:"mr-"},mrTransitionhover:{type:"string",default:"mr-hover"},mrPerPage:{type:"string",default:""},mrPaginationPosition:{type:"string",default:""},mrArrowPagination:{type:"boolean",default:!1},mrSelectPagination:{type:"boolean",default:!1},mrRadioPagination:{type:"boolean",default:!1},mrComponent:{type:"string",default:"mr-"},mrVerticalScrollNavigation:{type:"boolean",default:!1},mrHorizontalScrollNavigation:{type:"boolean",default:!1},mrActiveWhen:{type:"string",default:"mr-"},mrNavPosition:{type:"string",default:"mr-"},mrPerLine:{type:"string",default:"mr-"},mrPerLinedesktop:{type:"string",default:"mr-desktop"},mrPerLinelaptop:{type:"string",default:"mr-laptop"},mrPerLinetablet:{type:"string",default:"mr-tablet"},mrPerLinephone:{type:"string",default:"mr-phone"},mrColumns:{type:"string",default:"mr-"},mrColumnsdesktop:{type:"string",default:"mr-desktop"},mrColumnslaptop:{type:"string",default:"mr-laptop"},mrColumnstablet:{type:"string",default:"mr-tablet"},mrColumnsphone:{type:"string",default:"mr-phone"},mrOrder:{type:"string",default:"mr-"},mrOrderdesktop:{type:"string",default:"mr-desktop"},mrOrderlaptop:{type:"string",default:"mr-laptop"},mrOrdertablet:{type:"string",default:"mr-tablet"},mrOrderphone:{type:"string",default:"mr-phone"},mrDisplay:{type:"string",default:"mr-"},mrDisplayhover:{type:"string",default:"mr-hover"},mrDisplaydesktop:{type:"string",default:"mr-desktop"},mrDisplaylaptop:{type:"string",default:"mr-laptop"},mrDisplaytablet:{type:"string",default:"mr-tablet"},mrDisplayphone:{type:"string",default:"mr-phone"},mrWrap:{type:"string",default:"mr-"},mrWrapdesktop:{type:"string",default:"mr-desktop"},mrWraplaptop:{type:"string",default:"mr-laptop"},mrWraptablet:{type:"string",default:"mr-tablet"},mrWrapphone:{type:"string",default:"mr-phone"},mrPaddingTop:{type:"string",default:"mr-"},mrPaddingTophover:{type:"string",default:"mr-hover"},mrPaddingTopdesktop:{type:"string",default:"mr-desktop"},mrPaddingToplaptop:{type:"string",default:"mr-laptop"},mrPaddingToptablet:{type:"string",default:"mr-tablet"},mrPaddingTopphone:{type:"string",default:"mr-phone"},mrCustomPaddingTop:{type:"string",default:"mr-paddingtop"},mrCustomPaddingTophover:{type:"string",default:"mr-hover-paddingtop"},mrCustomPaddingTopdesktop:{type:"string",default:"mr-desktop-paddingtop"},mrCustomPaddingToplaptop:{type:"string",default:"mr-laptop-paddingtop"},mrCustomPaddingToptablet:{type:"string",default:"mr-tablet-paddingtop"},mrCustomPaddingTopphone:{type:"string",default:"mr-phone-paddingtop"},mrPaddingRight:{type:"string",default:"mr-"},mrPaddingRighthover:{type:"string",default:"mr-hover"},mrPaddingRightdesktop:{type:"string",default:"mr-desktop"},mrPaddingRightlaptop:{type:"string",default:"mr-laptop"},mrPaddingRighttablet:{type:"string",default:"mr-tablet"},mrPaddingRightphone:{type:"string",default:"mr-phone"},mrCustomPaddingRight:{type:"string",default:"mr-paddingright"},mrCustomPaddingRighthover:{type:"string",default:"mr-hover-paddingright"},mrCustomPaddingRightdesktop:{type:"string",default:"mr-desktop-paddingright"},mrCustomPaddingRightlaptop:{type:"string",default:"mr-laptop-paddingright"},mrCustomPaddingRighttablet:{type:"string",default:"mr-tablet-paddingright"},mrCustomPaddingRightphone:{type:"string",default:"mr-phone-paddingright"},mrPaddingBottom:{type:"string",default:"mr-"},mrPaddingBottomhover:{type:"string",default:"mr-hover"},mrPaddingBottomdesktop:{type:"string",default:"mr-desktop"},mrPaddingBottomlaptop:{type:"string",default:"mr-laptop"},mrPaddingBottomtablet:{type:"string",default:"mr-tablet"},mrPaddingBottomphone:{type:"string",default:"mr-phone"},mrCustomPaddingBottom:{type:"string",default:"mr-paddingbottom"},mrCustomPaddingBottomhover:{type:"string",default:"mr-hover-paddingbottom"},mrCustomPaddingBottomdesktop:{type:"string",default:"mr-desktop-paddingbottom"},mrCustomPaddingBottomlaptop:{type:"string",default:"mr-laptop-paddingbottom"},mrCustomPaddingBottomtablet:{type:"string",default:"mr-tablet-paddingbottom"},mrCustomPaddingBottomphone:{type:"string",default:"mr-phone-paddingbottom"},mrPaddingLeft:{type:"string",default:"mr-"},mrPaddingLefthover:{type:"string",default:"mr-hover"},mrPaddingLeftdesktop:{type:"string",default:"mr-desktop"},mrPaddingLeftlaptop:{type:"string",default:"mr-laptop"},mrPaddingLefttablet:{type:"string",default:"mr-tablet"},mrPaddingLeftphone:{type:"string",default:"mr-phone"},mrCustomPaddingLeft:{type:"string",default:"mr-paddingleft"},mrCustomPaddingLefthover:{type:"string",default:"mr-hover-paddingleft"},mrCustomPaddingLeftdesktop:{type:"string",default:"mr-desktop-paddingleft"},mrCustomPaddingLeftlaptop:{type:"string",default:"mr-laptop-paddingleft"},mrCustomPaddingLefttablet:{type:"string",default:"mr-tablet-paddingleft"},mrCustomPaddingLeftphone:{type:"string",default:"mr-phone-paddingleft"},mrMarginTop:{type:"string",default:"mr-"},mrMarginTophover:{type:"string",default:"mr-hover"},mrMarginTopdesktop:{type:"string",default:"mr-desktop"},mrMarginToplaptop:{type:"string",default:"mr-laptop"},mrMarginToptablet:{type:"string",default:"mr-tablet"},mrMarginTopphone:{type:"string",default:"mr-phone"},mrCustomMarginTop:{type:"string",default:"mr-margintop"},mrCustomMarginTophover:{type:"string",default:"mr-hover-margintop"},mrCustomMarginTopdesktop:{type:"string",default:"mr-desktop-margintop"},mrCustomMarginToplaptop:{type:"string",default:"mr-laptop-margintop"},mrCustomMarginToptablet:{type:"string",default:"mr-tablet-margintop"},mrCustomMarginTopphone:{type:"string",default:"mr-phone-margintop"},mrMarginRight:{type:"string",default:"mr-"},mrMarginRighthover:{type:"string",default:"mr-hover"},mrMarginRightdesktop:{type:"string",default:"mr-desktop"},mrMarginRightlaptop:{type:"string",default:"mr-laptop"},mrMarginRighttablet:{type:"string",default:"mr-tablet"},mrMarginRightphone:{type:"string",default:"mr-phone"},mrCustomMarginRight:{type:"string",default:"mr-marginright"},mrCustomMarginRighthover:{type:"string",default:"mr-hover-marginright"},mrCustomMarginRightdesktop:{type:"string",default:"mr-desktop-marginright"},mrCustomMarginRightlaptop:{type:"string",default:"mr-laptop-marginright"},mrCustomMarginRighttablet:{type:"string",default:"mr-tablet-marginright"},mrCustomMarginRightphone:{type:"string",default:"mr-phone-marginright"},mrMarginBottom:{type:"string",default:"mr-"},mrMarginBottomhover:{type:"string",default:"mr-hover"},mrMarginBottomdesktop:{type:"string",default:"mr-desktop"},mrMarginBottomlaptop:{type:"string",default:"mr-laptop"},mrMarginBottomtablet:{type:"string",default:"mr-tablet"},mrMarginBottomphone:{type:"string",default:"mr-phone"},mrCustomMarginBottom:{type:"string",default:"mr-marginbottom"},mrCustomMarginBottomhover:{type:"string",default:"mr-hover-marginbottom"},mrCustomMarginBottomdesktop:{type:"string",default:"mr-desktop-marginbottom"},mrCustomMarginBottomlaptop:{type:"string",default:"mr-laptop-marginbottom"},mrCustomMarginBottomtablet:{type:"string",default:"mr-tablet-marginbottom"},mrCustomMarginBottomphone:{type:"string",default:"mr-phone-marginbottom"},mrMarginLeft:{type:"string",default:"mr-"},mrMarginLefthover:{type:"string",default:"mr-hover"},mrMarginLeftdesktop:{type:"string",default:"mr-desktop"},mrMarginLeftlaptop:{type:"string",default:"mr-laptop"},mrMarginLefttablet:{type:"string",default:"mr-tablet"},mrMarginLeftphone:{type:"string",default:"mr-phone"},mrCustomMarginLeft:{type:"string",default:"mr-marginleft"},mrCustomMarginLefthover:{type:"string",default:"mr-hover-marginleft"},mrCustomMarginLeftdesktop:{type:"string",default:"mr-desktop-marginleft"},mrCustomMarginLeftlaptop:{type:"string",default:"mr-laptop-marginleft"},mrCustomMarginLefttablet:{type:"string",default:"mr-tablet-marginleft"},mrCustomMarginLeftphone:{type:"string",default:"mr-phone-marginleft"},mrRowGap:{type:"string",default:"mr-"},mrRowGaphover:{type:"string",default:"mr-hover"},mrRowGapdesktop:{type:"string",default:"mr-desktop"},mrRowGaplaptop:{type:"string",default:"mr-laptop"},mrRowGaptablet:{type:"string",default:"mr-tablet"},mrRowGapphone:{type:"string",default:"mr-phone"},mrCustomRowGap:{type:"string",default:"mr-rowgap"},mrCustomRowGaphover:{type:"string",default:"mr-hover-rowgap"},mrCustomRowGapdesktop:{type:"string",default:"mr-desktop-rowgap"},mrCustomRowGaplaptop:{type:"string",default:"mr-laptop-rowgap"},mrCustomRowGaptablet:{type:"string",default:"mr-tablet-rowgap"},mrCustomRowGapphone:{type:"string",default:"mr-phone-rowgap"},mrColumnGap:{type:"string",default:"mr-"},mrColumnGaphover:{type:"string",default:"mr-hover"},mrColumnGapdesktop:{type:"string",default:"mr-desktop"},mrColumnGaplaptop:{type:"string",default:"mr-laptop"},mrColumnGaptablet:{type:"string",default:"mr-tablet"},mrColumnGapphone:{type:"string",default:"mr-phone"},mrCustomColumnGap:{type:"string",default:"mr-columngap"},mrCustomColumnGaphover:{type:"string",default:"mr-hover-columngap"},mrCustomColumnGapdesktop:{type:"string",default:"mr-desktop-columngap"},mrCustomColumnGaplaptop:{type:"string",default:"mr-laptop-columngap"},mrCustomColumnGaptablet:{type:"string",default:"mr-tablet-columngap"},mrCustomColumnGapphone:{type:"string",default:"mr-phone-columngap"},mrPosition:{type:"string",default:"mr-"},mrPositiondesktop:{type:"string",default:"mr-desktop"},mrPositionlaptop:{type:"string",default:"mr-laptop"},mrPositiontablet:{type:"string",default:"mr-tablet"},mrPositionphone:{type:"string",default:"mr-phone"},mrPositionAlignment:{type:"string",default:"mr-"},mrPositionAlignmentdesktop:{type:"string",default:"mr-desktop"},mrPositionAlignmentlaptop:{type:"string",default:"mr-laptop"},mrPositionAlignmenttablet:{type:"string",default:"mr-tablet"},mrPositionAlignmentphone:{type:"string",default:"mr-phone"},mrPositionSides:{type:"string",default:"mr-"},mrPositionSidesdesktop:{type:"string",default:"mr-desktop"},mrPositionSideslaptop:{type:"string",default:"mr-laptop"},mrPositionSidestablet:{type:"string",default:"mr-tablet"},mrPositionSidesphone:{type:"string",default:"mr-phone"},mrContentAlignment:{type:"string",default:"mr-"},mrContentAlignmentdesktop:{type:"string",default:"mr-desktop"},mrContentAlignmentlaptop:{type:"string",default:"mr-laptop"},mrContentAlignmenttablet:{type:"string",default:"mr-tablet"},mrContentAlignmentphone:{type:"string",default:"mr-phone"},mrVerticalOffset:{type:"string",default:"mr-"},mrVerticalOffsetdesktop:{type:"string",default:"mr-desktop"},mrVerticalOffsetlaptop:{type:"string",default:"mr-laptop"},mrVerticalOffsettablet:{type:"string",default:"mr-tablet"},mrVerticalOffsetphone:{type:"string",default:"mr-phone"},mrHorizontalOffset:{type:"string",default:"mr-"},mrHorizontalOffsetdesktop:{type:"string",default:"mr-desktop"},mrHorizontalOffsetlaptop:{type:"string",default:"mr-laptop"},mrHorizontalOffsettablet:{type:"string",default:"mr-tablet"},mrHorizontalOffsetphone:{type:"string",default:"mr-phone"},mrSizeOptions:{type:"string",default:"mr-"},mrSizeOptionshover:{type:"string",default:"mr-hover"},mrSizeOptionsdesktop:{type:"string",default:"mr-desktop"},mrSizeOptionslaptop:{type:"string",default:"mr-laptop"},mrSizeOptionstablet:{type:"string",default:"mr-tablet"},mrSizeOptionsphone:{type:"string",default:"mr-phone"},mrSize:{type:"int",default:0},mrSizehover:{type:"int",default:0},mrSizedesktop:{type:"int",default:0},mrSizelaptop:{type:"int",default:0},mrSizetablet:{type:"int",default:0},mrSizephone:{type:"int",default:0},mrCustomSize:{type:"string",default:""},mrCustomSizehover:{type:"string",default:""},mrCustomSizedesktop:{type:"string",default:""},mrCustomSizelaptop:{type:"string",default:""},mrCustomSizetablet:{type:"string",default:""},mrCustomSizephone:{type:"string",default:""},mrBackgroundColor:{type:"string",default:"mr-"},mrCustomBackgroundColor:{type:"string",default:""},mrColor:{type:"string",default:"mr-"},mrCustomColor:{type:"string",default:""},mrFontFamily:{type:"string",default:"mr-"},mrCustomFontFamily:{type:"string",default:""},mrFontSizeOptions:{type:"string",default:"mr-"},mrFontSizeOptionshover:{type:"string",default:"mr-hover"},mrFontSizeOptionsdesktop:{type:"string",default:"mr-desktop"},mrFontSizeOptionslaptop:{type:"string",default:"mr-laptop"},mrFontSizeOptionstablet:{type:"string",default:"mr-tablet"},mrFontSizeOptionsphone:{type:"string",default:"mr-phone"},mrFontSize:{type:"int",default:0},mrFontSizehover:{type:"int",default:0},mrFontSizedesktop:{type:"int",default:0},mrFontSizelaptop:{type:"int",default:0},mrFontSizetablet:{type:"int",default:0},mrFontSizephone:{type:"int",default:0},mrCustomFontSize:{type:"string",default:""},mrCustomFontSizehover:{type:"string",default:""},mrCustomFontSizedesktop:{type:"string",default:""},mrCustomFontSizelaptop:{type:"string",default:""},mrCustomFontSizetablet:{type:"string",default:""},mrCustomFontSizephone:{type:"string",default:""},mrTextAlignment:{type:"string",default:"mr-"},mrTextAlignmentdesktop:{type:"string",default:"mr-desktop"},mrTextAlignmentlaptop:{type:"string",default:"mr-laptop"},mrTextAlignmenttablet:{type:"string",default:"mr-tablet"},mrTextAlignmentphone:{type:"string",default:"mr-phone"},mrScroll:{type:"string",default:"mr-"},mrScrollhover:{type:"string",default:"mr-hover"},mrScrolldesktop:{type:"string",default:"mr-desktop"},mrScrolllaptop:{type:"string",default:"mr-laptop"},mrScrolltablet:{type:"string",default:"mr-tablet"},mrScrollphone:{type:"string",default:"mr-phone"}})),e})),(0,o.addFilter)("editor.BlockEdit","mr-utils/custom-control",E),(0,o.addFilter)("editor.BlockListBlock","mr-utils/mrBackendExtraClasses",T)}()}();
+/******/ (function() { // webpackBootstrap
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./node_modules/@wordpress/icons/build-module/library/aspect-ratio.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/@wordpress/icons/build-module/library/aspect-ratio.js ***!
+  \****************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/primitives */ "@wordpress/primitives");
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * WordPress dependencies
+ */
+
+const aspectRatio = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.SVG, {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 24 24"
+}, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.Path, {
+  d: "M18.5 5.5h-13c-1.1 0-2 .9-2 2v9c0 1.1.9 2 2 2h13c1.1 0 2-.9 2-2v-9c0-1.1-.9-2-2-2zm.5 11c0 .3-.2.5-.5.5h-13c-.3 0-.5-.2-.5-.5v-9c0-.3.2-.5.5-.5h13c.3 0 .5.2.5.5v9zM6.5 12H8v-2h2V8.5H6.5V12zm9.5 2h-2v1.5h3.5V12H16v2z"
+}));
+/* harmony default export */ __webpack_exports__["default"] = (aspectRatio);
+//# sourceMappingURL=aspect-ratio.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@wordpress/icons/build-module/library/block-default.js":
+/*!*****************************************************************************!*\
+  !*** ./node_modules/@wordpress/icons/build-module/library/block-default.js ***!
+  \*****************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/primitives */ "@wordpress/primitives");
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * WordPress dependencies
+ */
+
+const blockDefault = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.SVG, {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 24 24"
+}, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.Path, {
+  d: "M19 8h-1V6h-5v2h-2V6H6v2H5c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-8c0-1.1-.9-2-2-2zm.5 10c0 .3-.2.5-.5.5H5c-.3 0-.5-.2-.5-.5v-8c0-.3.2-.5.5-.5h14c.3 0 .5.2.5.5v8z"
+}));
+/* harmony default export */ __webpack_exports__["default"] = (blockDefault);
+//# sourceMappingURL=block-default.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@wordpress/icons/build-module/library/brush.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/@wordpress/icons/build-module/library/brush.js ***!
+  \*********************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/primitives */ "@wordpress/primitives");
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * WordPress dependencies
+ */
+
+const brush = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.SVG, {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 24 24"
+}, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.Path, {
+  d: "M4 20h8v-1.5H4V20zM18.9 3.5c-.6-.6-1.5-.6-2.1 0l-7.2 7.2c-.4-.1-.7 0-1.1.1-.5.2-1.5.7-1.9 2.2-.4 1.7-.8 2.2-1.1 2.7-.1.1-.2.3-.3.4l-.6 1.1H6c2 0 3.4-.4 4.7-1.4.8-.6 1.2-1.4 1.3-2.3 0-.3 0-.5-.1-.7L19 5.7c.5-.6.5-1.6-.1-2.2zM9.7 14.7c-.7.5-1.5.8-2.4 1 .2-.5.5-1.2.8-2.3.2-.6.4-1 .8-1.1.5-.1 1 .1 1.3.3.2.2.3.5.2.8 0 .3-.1.9-.7 1.3z"
+}));
+/* harmony default export */ __webpack_exports__["default"] = (brush);
+//# sourceMappingURL=brush.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@wordpress/icons/build-module/library/desktop.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/@wordpress/icons/build-module/library/desktop.js ***!
+  \***********************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/primitives */ "@wordpress/primitives");
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * WordPress dependencies
+ */
+
+const desktop = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.SVG, {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 24 24"
+}, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.Path, {
+  d: "M20.5 16h-.7V8c0-1.1-.9-2-2-2H6.2c-1.1 0-2 .9-2 2v8h-.7c-.8 0-1.5.7-1.5 1.5h20c0-.8-.7-1.5-1.5-1.5zM5.7 8c0-.3.2-.5.5-.5h11.6c.3 0 .5.2.5.5v7.6H5.7V8z"
+}));
+/* harmony default export */ __webpack_exports__["default"] = (desktop);
+//# sourceMappingURL=desktop.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@wordpress/icons/build-module/library/layout.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@wordpress/icons/build-module/library/layout.js ***!
+  \**********************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/primitives */ "@wordpress/primitives");
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * WordPress dependencies
+ */
+
+const layout = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.SVG, {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 24 24"
+}, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.Path, {
+  d: "M18 5.5H6a.5.5 0 00-.5.5v3h13V6a.5.5 0 00-.5-.5zm.5 5H10v8h8a.5.5 0 00.5-.5v-7.5zm-10 0h-3V18a.5.5 0 00.5.5h2.5v-8zM6 4h12a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2z"
+}));
+/* harmony default export */ __webpack_exports__["default"] = (layout);
+//# sourceMappingURL=layout.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@wordpress/icons/build-module/library/mobile.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@wordpress/icons/build-module/library/mobile.js ***!
+  \**********************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/primitives */ "@wordpress/primitives");
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * WordPress dependencies
+ */
+
+const desktop = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.SVG, {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 24 24"
+}, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.Path, {
+  d: "M15 4H9c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm.5 14c0 .3-.2.5-.5.5H9c-.3 0-.5-.2-.5-.5V6c0-.3.2-.5.5-.5h6c.3 0 .5.2.5.5v12zm-4.5-.5h2V16h-2v1.5z"
+}));
+/* harmony default export */ __webpack_exports__["default"] = (desktop);
+//# sourceMappingURL=mobile.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@wordpress/icons/build-module/library/move-to.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/@wordpress/icons/build-module/library/move-to.js ***!
+  \***********************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/primitives */ "@wordpress/primitives");
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * WordPress dependencies
+ */
+
+const moveTo = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.SVG, {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 24 24"
+}, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.Path, {
+  d: "M19.75 9c0-1.257-.565-2.197-1.39-2.858-.797-.64-1.827-1.017-2.815-1.247-1.802-.42-3.703-.403-4.383-.396L11 4.5V6l.177-.001c.696-.006 2.416-.02 4.028.356.887.207 1.67.518 2.216.957.52.416.829.945.829 1.688 0 .592-.167.966-.407 1.23-.255.281-.656.508-1.236.674-1.19.34-2.82.346-4.607.346h-.077c-1.692 0-3.527 0-4.942.404-.732.209-1.424.545-1.935 1.108-.526.579-.796 1.33-.796 2.238 0 1.257.565 2.197 1.39 2.858.797.64 1.827 1.017 2.815 1.247 1.802.42 3.703.403 4.383.396L13 19.5h.714V22L18 18.5 13.714 15v3H13l-.177.001c-.696.006-2.416.02-4.028-.356-.887-.207-1.67-.518-2.216-.957-.52-.416-.829-.945-.829-1.688 0-.592.167-.966.407-1.23.255-.281.656-.508 1.237-.674 1.189-.34 2.819-.346 4.606-.346h.077c1.692 0 3.527 0 4.941-.404.732-.209 1.425-.545 1.936-1.108.526-.579.796-1.33.796-2.238z"
+}));
+/* harmony default export */ __webpack_exports__["default"] = (moveTo);
+//# sourceMappingURL=move-to.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@wordpress/icons/build-module/library/pages.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/@wordpress/icons/build-module/library/pages.js ***!
+  \*********************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/primitives */ "@wordpress/primitives");
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * WordPress dependencies
+ */
+
+const pages = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.SVG, {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 24 24"
+}, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.Path, {
+  d: "M7 13.8h6v-1.5H7v1.5zM18 16V4c0-1.1-.9-2-2-2H6c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2zM5.5 16V4c0-.3.2-.5.5-.5h10c.3 0 .5.2.5.5v12c0 .3-.2.5-.5.5H6c-.3 0-.5-.2-.5-.5zM7 10.5h8V9H7v1.5zm0-3.3h8V5.8H7v1.4zM20.2 6v13c0 .7-.6 1.2-1.2 1.2H8v1.5h11c1.5 0 2.7-1.2 2.7-2.8V6h-1.5z"
+}));
+/* harmony default export */ __webpack_exports__["default"] = (pages);
+//# sourceMappingURL=pages.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@wordpress/icons/build-module/library/plus-circle.js":
+/*!***************************************************************************!*\
+  !*** ./node_modules/@wordpress/icons/build-module/library/plus-circle.js ***!
+  \***************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/primitives */ "@wordpress/primitives");
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * WordPress dependencies
+ */
+
+const plusCircle = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.SVG, {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "-2 -2 24 24"
+}, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.Path, {
+  d: "M10 1c-5 0-9 4-9 9s4 9 9 9 9-4 9-9-4-9-9-9zm0 16c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7zm1-11H9v3H6v2h3v3h2v-3h3V9h-3V6zM10 1c-5 0-9 4-9 9s4 9 9 9 9-4 9-9-4-9-9-9zm0 16c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7zm1-11H9v3H6v2h3v3h2v-3h3V9h-3V6z"
+}));
+/* harmony default export */ __webpack_exports__["default"] = (plusCircle);
+//# sourceMappingURL=plus-circle.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@wordpress/icons/build-module/library/plus.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/@wordpress/icons/build-module/library/plus.js ***!
+  \********************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/primitives */ "@wordpress/primitives");
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * WordPress dependencies
+ */
+
+const plus = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.SVG, {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 24 24"
+}, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.Path, {
+  d: "M18 11.2h-5.2V6h-1.6v5.2H6v1.6h5.2V18h1.6v-5.2H18z"
+}));
+/* harmony default export */ __webpack_exports__["default"] = (plus);
+//# sourceMappingURL=plus.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@wordpress/icons/build-module/library/pull-left.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/@wordpress/icons/build-module/library/pull-left.js ***!
+  \*************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/primitives */ "@wordpress/primitives");
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * WordPress dependencies
+ */
+
+const pullLeft = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.SVG, {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 24 24"
+}, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.Path, {
+  d: "M4 18h6V6H4v12zm9-9.5V10h7V8.5h-7zm0 7h7V14h-7v1.5z"
+}));
+/* harmony default export */ __webpack_exports__["default"] = (pullLeft);
+//# sourceMappingURL=pull-left.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@wordpress/icons/build-module/library/replace.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/@wordpress/icons/build-module/library/replace.js ***!
+  \***********************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/primitives */ "@wordpress/primitives");
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * WordPress dependencies
+ */
+
+const replace = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.SVG, {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 24 24"
+}, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.Path, {
+  d: "M16 10h4c.6 0 1-.4 1-1V5c0-.6-.4-1-1-1h-4c-.6 0-1 .4-1 1v4c0 .6.4 1 1 1zm-8 4H4c-.6 0-1 .4-1 1v4c0 .6.4 1 1 1h4c.6 0 1-.4 1-1v-4c0-.6-.4-1-1-1zm10-2.6L14.5 15l1.1 1.1 1.7-1.7c-.1 1.1-.3 2.3-.9 2.9-.3.3-.7.5-1.3.5h-4.5v1.5H15c.9 0 1.7-.3 2.3-.9 1-1 1.3-2.7 1.4-4l1.8 1.8 1.1-1.1-3.6-3.7zM6.8 9.7c.1-1.1.3-2.3.9-2.9.4-.4.8-.6 1.3-.6h4.5V4.8H9c-.9 0-1.7.3-2.3.9-1 1-1.3 2.7-1.4 4L3.5 8l-1 1L6 12.6 9.5 9l-1-1-1.7 1.7z"
+}));
+/* harmony default export */ __webpack_exports__["default"] = (replace);
+//# sourceMappingURL=replace.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@wordpress/icons/build-module/library/resize-corner-n-e.js":
+/*!*********************************************************************************!*\
+  !*** ./node_modules/@wordpress/icons/build-module/library/resize-corner-n-e.js ***!
+  \*********************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/primitives */ "@wordpress/primitives");
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * WordPress dependencies
+ */
+
+const resizeCornerNE = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.SVG, {
+  viewBox: "0 0 24 24",
+  xmlns: "http://www.w3.org/2000/svg"
+}, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.Path, {
+  d: "M12.5 4.2v1.6h4.7L5.8 17.2V12H4.2v7.8H12v-1.6H6.8L18.2 6.8v4.7h1.6V4.2z"
+}));
+/* harmony default export */ __webpack_exports__["default"] = (resizeCornerNE);
+//# sourceMappingURL=resize-corner-n-e.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@wordpress/icons/build-module/library/settings.js":
+/*!************************************************************************!*\
+  !*** ./node_modules/@wordpress/icons/build-module/library/settings.js ***!
+  \************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/primitives */ "@wordpress/primitives");
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * WordPress dependencies
+ */
+
+const settings = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.SVG, {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 24 24"
+}, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.Path, {
+  d: "M14.5 13.8c-1.1 0-2.1.7-2.4 1.8H4V17h8.1c.3 1 1.3 1.8 2.4 1.8s2.1-.7 2.4-1.8H20v-1.5h-3.1c-.3-1-1.3-1.7-2.4-1.7zM11.9 7c-.3-1-1.3-1.8-2.4-1.8S7.4 6 7.1 7H4v1.5h3.1c.3 1 1.3 1.8 2.4 1.8s2.1-.7 2.4-1.8H20V7h-8.1z"
+}));
+/* harmony default export */ __webpack_exports__["default"] = (settings);
+//# sourceMappingURL=settings.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@wordpress/icons/build-module/library/swatch.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@wordpress/icons/build-module/library/swatch.js ***!
+  \**********************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/primitives */ "@wordpress/primitives");
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * WordPress dependencies
+ */
+
+const swatch = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.SVG, {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 24 24"
+}, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.Path, {
+  d: "M5 17.7c.4.5.8.9 1.2 1.2l1.1-1.4c-.4-.3-.7-.6-1-1L5 17.7zM5 6.3l1.4 1.1c.3-.4.6-.7 1-1L6.3 5c-.5.4-.9.8-1.3 1.3zm.1 7.8l-1.7.5c.2.6.4 1.1.7 1.6l1.5-.8c-.2-.4-.4-.8-.5-1.3zM4.8 12v-.7L3 11.1v1.8l1.7-.2c.1-.2.1-.5.1-.7zm3 7.9c.5.3 1.1.5 1.6.7l.5-1.7c-.5-.1-.9-.3-1.3-.5l-.8 1.5zM19 6.3c-.4-.5-.8-.9-1.2-1.2l-1.1 1.4c.4.3.7.6 1 1L19 6.3zm-.1 3.6l1.7-.5c-.2-.6-.4-1.1-.7-1.6l-1.5.8c.2.4.4.8.5 1.3zM5.6 8.6l-1.5-.8c-.3.5-.5 1-.7 1.6l1.7.5c.1-.5.3-.9.5-1.3zm2.2-4.5l.8 1.5c.4-.2.8-.4 1.3-.5l-.5-1.7c-.6.2-1.1.4-1.6.7zm8.8 13.5l1.1 1.4c.5-.4.9-.8 1.2-1.2l-1.4-1.1c-.2.3-.5.6-.9.9zm1.8-2.2l1.5.8c.3-.5.5-1.1.7-1.6l-1.7-.5c-.1.5-.3.9-.5 1.3zm2.6-4.3l-1.7.2v1.4l1.7.2V12v-.9zM11.1 3l.2 1.7h1.4l.2-1.7h-1.8zm3 2.1c.5.1.9.3 1.3.5l.8-1.5c-.5-.3-1.1-.5-1.6-.7l-.5 1.7zM12 19.2h-.7l-.2 1.8h1.8l-.2-1.7c-.2-.1-.5-.1-.7-.1zm2.1-.3l.5 1.7c.6-.2 1.1-.4 1.6-.7l-.8-1.5c-.4.2-.8.4-1.3.5z"
+}));
+/* harmony default export */ __webpack_exports__["default"] = (swatch);
+//# sourceMappingURL=swatch.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@wordpress/icons/build-module/library/symbol.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@wordpress/icons/build-module/library/symbol.js ***!
+  \**********************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/primitives */ "@wordpress/primitives");
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * WordPress dependencies
+ */
+
+const symbol = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.SVG, {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 24 24"
+}, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.Path, {
+  d: "M21.3 10.8l-5.6-5.6c-.7-.7-1.8-.7-2.5 0l-5.6 5.6c-.7.7-.7 1.8 0 2.5l5.6 5.6c.3.3.8.5 1.2.5s.9-.2 1.2-.5l5.6-5.6c.8-.7.8-1.9.1-2.5zm-1 1.4l-5.6 5.6c-.1.1-.3.1-.4 0l-5.6-5.6c-.1-.1-.1-.3 0-.4l5.6-5.6s.1-.1.2-.1.1 0 .2.1l5.6 5.6c.1.1.1.3 0 .4zm-16.6-.4L10 5.5l-1-1-6.3 6.3c-.7.7-.7 1.8 0 2.5L9 19.5l1.1-1.1-6.3-6.3c-.2 0-.2-.2-.1-.3z"
+}));
+/* harmony default export */ __webpack_exports__["default"] = (symbol);
+//# sourceMappingURL=symbol.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@wordpress/icons/build-module/library/tablet.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@wordpress/icons/build-module/library/tablet.js ***!
+  \**********************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/primitives */ "@wordpress/primitives");
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * WordPress dependencies
+ */
+
+const tablet = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.SVG, {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 24 24"
+}, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.Path, {
+  d: "M17 4H7c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm.5 14c0 .3-.2.5-.5.5H7c-.3 0-.5-.2-.5-.5V6c0-.3.2-.5.5-.5h10c.3 0 .5.2.5.5v12zm-7.5-.5h4V16h-4v1.5z"
+}));
+/* harmony default export */ __webpack_exports__["default"] = (tablet);
+//# sourceMappingURL=tablet.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@wordpress/icons/build-module/library/typography.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/@wordpress/icons/build-module/library/typography.js ***!
+  \**************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/primitives */ "@wordpress/primitives");
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * WordPress dependencies
+ */
+
+const typography = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.SVG, {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 24 24"
+}, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.Path, {
+  d: "M6.9 7L3 17.8h1.7l1-2.8h4.1l1 2.8h1.7L8.6 7H6.9zm-.7 6.6l1.5-4.3 1.5 4.3h-3zM21.6 17c-.1.1-.2.2-.3.2-.1.1-.2.1-.4.1s-.3-.1-.4-.2c-.1-.1-.1-.3-.1-.6V12c0-.5 0-1-.1-1.4-.1-.4-.3-.7-.5-1-.2-.2-.5-.4-.9-.5-.4 0-.8-.1-1.3-.1s-1 .1-1.4.2c-.4.1-.7.3-1 .4-.2.2-.4.3-.6.5-.1.2-.2.4-.2.7 0 .3.1.5.2.8.2.2.4.3.8.3.3 0 .6-.1.8-.3.2-.2.3-.4.3-.7 0-.3-.1-.5-.2-.7-.2-.2-.4-.3-.6-.4.2-.2.4-.3.7-.4.3-.1.6-.1.8-.1.3 0 .6 0 .8.1.2.1.4.3.5.5.1.2.2.5.2.9v1.1c0 .3-.1.5-.3.6-.2.2-.5.3-.9.4-.3.1-.7.3-1.1.4-.4.1-.8.3-1.1.5-.3.2-.6.4-.8.7-.2.3-.3.7-.3 1.2 0 .6.2 1.1.5 1.4.3.4.9.5 1.6.5.5 0 1-.1 1.4-.3.4-.2.8-.6 1.1-1.1 0 .4.1.7.3 1 .2.3.6.4 1.2.4.4 0 .7-.1.9-.2.2-.1.5-.3.7-.4h-.3zm-3-.9c-.2.4-.5.7-.8.8-.3.2-.6.2-.8.2-.4 0-.6-.1-.9-.3-.2-.2-.3-.6-.3-1.1 0-.5.1-.9.3-1.2s.5-.5.8-.7c.3-.2.7-.3 1-.5.3-.1.6-.3.7-.6v3.4z"
+}));
+/* harmony default export */ __webpack_exports__["default"] = (typography);
+//# sourceMappingURL=typography.js.map
+
+/***/ }),
+
+/***/ "./node_modules/classnames/index.js":
+/*!******************************************!*\
+  !*** ./node_modules/classnames/index.js ***!
+  \******************************************/
+/***/ (function(module, exports) {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+  Copyright (c) 2018 Jed Watson.
+  Licensed under the MIT License (MIT), see
+  http://jedwatson.github.io/classnames
+*/
+/* global define */
+
+(function () {
+	'use strict';
+
+	var hasOwn = {}.hasOwnProperty;
+
+	function classNames() {
+		var classes = [];
+
+		for (var i = 0; i < arguments.length; i++) {
+			var arg = arguments[i];
+			if (!arg) continue;
+
+			var argType = typeof arg;
+
+			if (argType === 'string' || argType === 'number') {
+				classes.push(arg);
+			} else if (Array.isArray(arg)) {
+				if (arg.length) {
+					var inner = classNames.apply(null, arg);
+					if (inner) {
+						classes.push(inner);
+					}
+				}
+			} else if (argType === 'object') {
+				if (arg.toString === Object.prototype.toString) {
+					for (var key in arg) {
+						if (hasOwn.call(arg, key) && arg[key]) {
+							classes.push(key);
+						}
+					}
+				} else {
+					classes.push(arg.toString());
+				}
+			}
+		}
+
+		return classes.join(' ');
+	}
+
+	if ( true && module.exports) {
+		classNames.default = classNames;
+		module.exports = classNames;
+	} else if (true) {
+		// register as 'classnames', consistent with npm package name
+		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
+			return classNames;
+		}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	} else {}
+}());
+
+
+/***/ }),
+
+/***/ "@wordpress/block-editor":
+/*!*************************************!*\
+  !*** external ["wp","blockEditor"] ***!
+  \*************************************/
+/***/ (function(module) {
+
+"use strict";
+module.exports = window["wp"]["blockEditor"];
+
+/***/ }),
+
+/***/ "@wordpress/components":
+/*!************************************!*\
+  !*** external ["wp","components"] ***!
+  \************************************/
+/***/ (function(module) {
+
+"use strict";
+module.exports = window["wp"]["components"];
+
+/***/ }),
+
+/***/ "@wordpress/compose":
+/*!*********************************!*\
+  !*** external ["wp","compose"] ***!
+  \*********************************/
+/***/ (function(module) {
+
+"use strict";
+module.exports = window["wp"]["compose"];
+
+/***/ }),
+
+/***/ "@wordpress/element":
+/*!*********************************!*\
+  !*** external ["wp","element"] ***!
+  \*********************************/
+/***/ (function(module) {
+
+"use strict";
+module.exports = window["wp"]["element"];
+
+/***/ }),
+
+/***/ "@wordpress/hooks":
+/*!*******************************!*\
+  !*** external ["wp","hooks"] ***!
+  \*******************************/
+/***/ (function(module) {
+
+"use strict";
+module.exports = window["wp"]["hooks"];
+
+/***/ }),
+
+/***/ "@wordpress/i18n":
+/*!******************************!*\
+  !*** external ["wp","i18n"] ***!
+  \******************************/
+/***/ (function(module) {
+
+"use strict";
+module.exports = window["wp"]["i18n"];
+
+/***/ }),
+
+/***/ "@wordpress/primitives":
+/*!************************************!*\
+  !*** external ["wp","primitives"] ***!
+  \************************************/
+/***/ (function(module) {
+
+"use strict";
+module.exports = window["wp"]["primitives"];
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/esm/extends.js":
+/*!************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/extends.js ***!
+  \************************************************************/
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ _extends; }
+/* harmony export */ });
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	!function() {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = function(module) {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				function() { return module['default']; } :
+/******/ 				function() { return module; };
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	!function() {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = function(exports, definition) {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	!function() {
+/******/ 		__webpack_require__.o = function(obj, prop) { return Object.prototype.hasOwnProperty.call(obj, prop); }
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	!function() {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = function(exports) {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	}();
+/******/ 	
+/************************************************************************/
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
+!function() {
+"use strict";
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_hooks__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/hooks */ "@wordpress/hooks");
+/* harmony import */ var _wordpress_hooks__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_hooks__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/compose */ "@wordpress/compose");
+/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_compose__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/settings.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/move-to.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/aspect-ratio.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/desktop.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/tablet.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/mobile.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/plus.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/pages.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/block-default.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/symbol.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/replace.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/layout.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/swatch.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/brush.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/resize-corner-n-e.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/typography.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/pull-left.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/plus-circle.js");
+
+
+
+/**
+ * External Dependencies
+ */
+
+/**
+ * WordPress Dependencies
+ */
+
+
+
+
+
+
+
+
+/**
+ * Adds custom icon
+ */
+
+const mrDevIcon = wp.element.createElement("svg", {
+  width: 20,
+  height: 20
+}, wp.element.createElement("path", {
+  d: "M11.361,13.455c0,0.252-0.51,0.456-1.141,0.456s-1.141-0.204-1.141-0.456c0-0.252,0.51-0.457,1.141-0.457   S11.361,13.203,11.361,13.455z M20.029,12.448c0,1.34-0.843,2.479-2.002,2.859c-1.487,2.854-4.476,4.697-7.792,4.697   c-3.313,0-6.299-1.837-7.786-4.686c-1.177-0.368-2.037-1.515-2.037-2.87c0-0.828,0.325-1.577,0.844-2.12   C0.89,9.954,0.612,9.477,0.451,8.916C0.177,7.969,0.26,6.904,0.686,5.918C1.194,4.739,2.13,3.852,3.18,3.485   c0.237-2.627,4.676-3.569,7.611-3.478c4.147,0.13,5.12,2.016,5.292,3.322c1.331,0.148,2.594,1.146,3.215,2.589   c0.424,0.986,0.509,2.051,0.236,2.998c-0.129,0.449-0.334,0.845-0.597,1.177C19.6,10.639,20.029,11.493,20.029,12.448z    M11.434,17.606l-0.216-0.967H9.236l-0.222,0.964c0.304-0.136,0.73-0.223,1.207-0.223C10.7,17.38,11.129,17.468,11.434,17.606z    M18.203,12.448c0-0.646-0.454-1.169-1.021-1.169c0,0-0.001,0-0.002,0c-0.155,0.25-0.333,0.489-0.534,0.718   c0.126-0.409,0.21-0.826,0.256-1.244c0-0.006-0.001-0.012-0.001-0.018c-0.595-0.317-1.205-1-1.625-1.901   c-0.438-0.939-0.562-1.886-0.395-2.549c-1.687,1.07-4.545,0.562-4.545,0.562c-1.71,0.114-2.167,2.281-2.167,2.281   C7.374,8.952,6.549,8.401,5.831,7.79C5.754,8.129,5.635,8.482,5.47,8.834c-0.489,1.05-1.237,1.805-1.917,2.026   c0.047,0.382,0.127,0.762,0.242,1.135c-0.202-0.229-0.379-0.468-0.534-0.718c-0.001,0-0.001-0.001-0.002-0.001   c-0.568,0-1.022,0.523-1.022,1.17c0,0.646,0.455,1.168,1.022,1.168c0.142,0,0.276-0.032,0.399-0.091   c0.124,0.361,0.279,0.708,0.459,1.038c1.016,0.359,2.496,1.069,3.199,2.279l0.304-1.321c0.095-0.414,0.464-0.708,0.889-0.708h3.44   c0.428,0,0.799,0.296,0.891,0.714l0.291,1.301c0.713-1.216,2.214-1.925,3.227-2.279c0.177-0.324,0.329-0.663,0.449-1.016   c0.115,0.051,0.241,0.083,0.373,0.083C17.749,13.616,18.203,13.092,18.203,12.448z M7.121,9.929c-0.566,0-1.027,0.46-1.027,1.026   s0.461,1.026,1.027,1.026s1.026-0.461,1.026-1.026S7.687,9.929,7.121,9.929z M13.32,9.929c-0.566,0-1.027,0.46-1.027,1.026   s0.461,1.026,1.027,1.026c0.565,0,1.026-0.461,1.026-1.026S13.885,9.929,13.32,9.929z"
+}));
+/**
+ * @param {Object} settings Settings for the block.
+ *
+ * @return {Object} settings Modified settings.
+ */
+
+function mrAttributes(settings) {
+  //check if object exists for old Gutenberg version compatibility
+  //add mrDisallowedBlocks restriction
+  if (typeof settings.attributes !== "undefined" && settings.name.includes("core/") && settings.name !== "core/archives") {
+    settings.attributes = Object.assign(settings.attributes, {
+      mrAnimation: {
+        type: "string",
+        default: "mr-"
+      },
+      mrAnimationhover: {
+        type: "string",
+        default: "mr-hover"
+      },
+      mrTransition: {
+        type: "string",
+        default: "mr-"
+      },
+      mrTransitionhover: {
+        type: "string",
+        default: "mr-hover"
+      },
+      mrPerPage: {
+        type: "string",
+        default: ""
+      },
+      mrPaginationPosition: {
+        type: "string",
+        default: ""
+      },
+      mrArrowPagination: {
+        type: "boolean",
+        default: false
+      },
+      mrSelectPagination: {
+        type: "boolean",
+        default: false
+      },
+      mrRadioPagination: {
+        type: "boolean",
+        default: false
+      },
+      mrComponent: {
+        type: "string",
+        default: "mr-"
+      },
+      mrVerticalScrollNavigation: {
+        type: "boolean",
+        default: false
+      },
+      mrHorizontalScrollNavigation: {
+        type: "boolean",
+        default: false
+      },
+      mrActiveWhen: {
+        type: "string",
+        default: "mr-"
+      },
+      mrNavPosition: {
+        type: "string",
+        default: "mr-"
+      },
+      mrPerLine: {
+        type: "string",
+        default: "mr-"
+      },
+      mrPerLinedesktop: {
+        type: "string",
+        default: "mr-desktop"
+      },
+      mrPerLinelaptop: {
+        type: "string",
+        default: "mr-laptop"
+      },
+      mrPerLinetablet: {
+        type: "string",
+        default: "mr-tablet"
+      },
+      mrPerLinephone: {
+        type: "string",
+        default: "mr-phone"
+      },
+      mrColumns: {
+        type: "string",
+        default: "mr-"
+      },
+      mrColumnsdesktop: {
+        type: "string",
+        default: "mr-desktop"
+      },
+      mrColumnslaptop: {
+        type: "string",
+        default: "mr-laptop"
+      },
+      mrColumnstablet: {
+        type: "string",
+        default: "mr-tablet"
+      },
+      mrColumnsphone: {
+        type: "string",
+        default: "mr-phone"
+      },
+      mrOrder: {
+        type: "string",
+        default: "mr-"
+      },
+      mrOrderdesktop: {
+        type: "string",
+        default: "mr-desktop"
+      },
+      mrOrderlaptop: {
+        type: "string",
+        default: "mr-laptop"
+      },
+      mrOrdertablet: {
+        type: "string",
+        default: "mr-tablet"
+      },
+      mrOrderphone: {
+        type: "string",
+        default: "mr-phone"
+      },
+      mrDisplay: {
+        type: "string",
+        default: "mr-"
+      },
+      mrDisplayhover: {
+        type: "string",
+        default: "mr-hover"
+      },
+      mrDisplaydesktop: {
+        type: "string",
+        default: "mr-desktop"
+      },
+      mrDisplaylaptop: {
+        type: "string",
+        default: "mr-laptop"
+      },
+      mrDisplaytablet: {
+        type: "string",
+        default: "mr-tablet"
+      },
+      mrDisplayphone: {
+        type: "string",
+        default: "mr-phone"
+      },
+      mrWrap: {
+        type: "string",
+        default: "mr-"
+      },
+      mrWrapdesktop: {
+        type: "string",
+        default: "mr-desktop"
+      },
+      mrWraplaptop: {
+        type: "string",
+        default: "mr-laptop"
+      },
+      mrWraptablet: {
+        type: "string",
+        default: "mr-tablet"
+      },
+      mrWrapphone: {
+        type: "string",
+        default: "mr-phone"
+      },
+      mrPaddingTop: {
+        type: "string",
+        default: ""
+      },
+      mrPaddingTophover: {
+        type: "string",
+        default: ""
+      },
+      mrPaddingTopdesktop: {
+        type: "string",
+        default: ""
+      },
+      mrPaddingToplaptop: {
+        type: "string",
+        default: ""
+      },
+      mrPaddingToptablet: {
+        type: "string",
+        default: ""
+      },
+      mrPaddingTopphone: {
+        type: "string",
+        default: ""
+      },
+      mrPaddingRight: {
+        type: "string",
+        default: ""
+      },
+      mrPaddingRighthover: {
+        type: "string",
+        default: ""
+      },
+      mrPaddingRightdesktop: {
+        type: "string",
+        default: ""
+      },
+      mrPaddingRightlaptop: {
+        type: "string",
+        default: ""
+      },
+      mrPaddingRighttablet: {
+        type: "string",
+        default: ""
+      },
+      mrPaddingRightphone: {
+        type: "string",
+        default: ""
+      },
+      mrPaddingBottom: {
+        type: "string",
+        default: ""
+      },
+      mrPaddingBottomhover: {
+        type: "string",
+        default: ""
+      },
+      mrPaddingBottomdesktop: {
+        type: "string",
+        default: ""
+      },
+      mrPaddingBottomlaptop: {
+        type: "string",
+        default: ""
+      },
+      mrPaddingBottomtablet: {
+        type: "string",
+        default: ""
+      },
+      mrPaddingBottomphone: {
+        type: "string",
+        default: ""
+      },
+      mrPaddingLeft: {
+        type: "string",
+        default: ""
+      },
+      mrPaddingLefthover: {
+        type: "string",
+        default: ""
+      },
+      mrPaddingLeftdesktop: {
+        type: "string",
+        default: ""
+      },
+      mrPaddingLeftlaptop: {
+        type: "string",
+        default: ""
+      },
+      mrPaddingLefttablet: {
+        type: "string",
+        default: ""
+      },
+      mrPaddingLeftphone: {
+        type: "string",
+        default: ""
+      },
+      mrMarginTop: {
+        type: "string",
+        default: ""
+      },
+      mrMarginTophover: {
+        type: "string",
+        default: ""
+      },
+      mrMarginTopdesktop: {
+        type: "string",
+        default: ""
+      },
+      mrMarginToplaptop: {
+        type: "string",
+        default: ""
+      },
+      mrMarginToptablet: {
+        type: "string",
+        default: ""
+      },
+      mrMarginTopphone: {
+        type: "string",
+        default: ""
+      },
+      mrMarginRight: {
+        type: "string",
+        default: ""
+      },
+      mrMarginRighthover: {
+        type: "string",
+        default: ""
+      },
+      mrMarginRightdesktop: {
+        type: "string",
+        default: ""
+      },
+      mrMarginRightlaptop: {
+        type: "string",
+        default: ""
+      },
+      mrMarginRighttablet: {
+        type: "string",
+        default: ""
+      },
+      mrMarginRightphone: {
+        type: "string",
+        default: ""
+      },
+      mrMarginBottom: {
+        type: "string",
+        default: ""
+      },
+      mrMarginBottomhover: {
+        type: "string",
+        default: ""
+      },
+      mrMarginBottomdesktop: {
+        type: "string",
+        default: ""
+      },
+      mrMarginBottomlaptop: {
+        type: "string",
+        default: ""
+      },
+      mrMarginBottomtablet: {
+        type: "string",
+        default: ""
+      },
+      mrMarginBottomphone: {
+        type: "string",
+        default: ""
+      },
+      mrMarginLeft: {
+        type: "string",
+        default: ""
+      },
+      mrMarginLefthover: {
+        type: "string",
+        default: ""
+      },
+      mrMarginLeftdesktop: {
+        type: "string",
+        default: ""
+      },
+      mrMarginLeftlaptop: {
+        type: "string",
+        default: ""
+      },
+      mrMarginLefttablet: {
+        type: "string",
+        default: ""
+      },
+      mrMarginLeftphone: {
+        type: "string",
+        default: ""
+      },
+      mrRowGap: {
+        type: "string",
+        default: ""
+      },
+      mrRowGaphover: {
+        type: "string",
+        default: ""
+      },
+      mrRowGapdesktop: {
+        type: "string",
+        default: ""
+      },
+      mrRowGaplaptop: {
+        type: "string",
+        default: ""
+      },
+      mrRowGaptablet: {
+        type: "string",
+        default: ""
+      },
+      mrRowGapphone: {
+        type: "string",
+        default: ""
+      },
+      mrColumnGap: {
+        type: "string",
+        default: ""
+      },
+      mrColumnGaphover: {
+        type: "string",
+        default: ""
+      },
+      mrColumnGapdesktop: {
+        type: "string",
+        default: ""
+      },
+      mrColumnGaplaptop: {
+        type: "string",
+        default: ""
+      },
+      mrColumnGaptablet: {
+        type: "string",
+        default: ""
+      },
+      mrColumnGapphone: {
+        type: "string",
+        default: ""
+      },
+      mrPosition: {
+        type: "string",
+        default: "mr-"
+      },
+      mrPositiondesktop: {
+        type: "string",
+        default: "mr-desktop"
+      },
+      mrPositionlaptop: {
+        type: "string",
+        default: "mr-laptop"
+      },
+      mrPositiontablet: {
+        type: "string",
+        default: "mr-tablet"
+      },
+      mrPositionphone: {
+        type: "string",
+        default: "mr-phone"
+      },
+      mrPositionAlignment: {
+        type: "string",
+        default: "mr-"
+      },
+      mrPositionAlignmentdesktop: {
+        type: "string",
+        default: "mr-desktop"
+      },
+      mrPositionAlignmentlaptop: {
+        type: "string",
+        default: "mr-laptop"
+      },
+      mrPositionAlignmenttablet: {
+        type: "string",
+        default: "mr-tablet"
+      },
+      mrPositionAlignmentphone: {
+        type: "string",
+        default: "mr-phone"
+      },
+      mrPositionSides: {
+        type: "string",
+        default: "mr-"
+      },
+      mrPositionSidesdesktop: {
+        type: "string",
+        default: "mr-desktop"
+      },
+      mrPositionSideslaptop: {
+        type: "string",
+        default: "mr-laptop"
+      },
+      mrPositionSidestablet: {
+        type: "string",
+        default: "mr-tablet"
+      },
+      mrPositionSidesphone: {
+        type: "string",
+        default: "mr-phone"
+      },
+      mrContentAlignment: {
+        type: "string",
+        default: "mr-"
+      },
+      mrContentAlignmentdesktop: {
+        type: "string",
+        default: "mr-desktop"
+      },
+      mrContentAlignmentlaptop: {
+        type: "string",
+        default: "mr-laptop"
+      },
+      mrContentAlignmenttablet: {
+        type: "string",
+        default: "mr-tablet"
+      },
+      mrContentAlignmentphone: {
+        type: "string",
+        default: "mr-phone"
+      },
+      mrVerticalOffset: {
+        type: "string",
+        default: "mr-"
+      },
+      mrVerticalOffsetdesktop: {
+        type: "string",
+        default: "mr-desktop"
+      },
+      mrVerticalOffsetlaptop: {
+        type: "string",
+        default: "mr-laptop"
+      },
+      mrVerticalOffsettablet: {
+        type: "string",
+        default: "mr-tablet"
+      },
+      mrVerticalOffsetphone: {
+        type: "string",
+        default: "mr-phone"
+      },
+      mrHorizontalOffset: {
+        type: "string",
+        default: "mr-"
+      },
+      mrHorizontalOffsetdesktop: {
+        type: "string",
+        default: "mr-desktop"
+      },
+      mrHorizontalOffsetlaptop: {
+        type: "string",
+        default: "mr-laptop"
+      },
+      mrHorizontalOffsettablet: {
+        type: "string",
+        default: "mr-tablet"
+      },
+      mrHorizontalOffsetphone: {
+        type: "string",
+        default: "mr-phone"
+      },
+      mrSize: {
+        type: "string",
+        default: ""
+      },
+      mrSizehover: {
+        type: "string",
+        default: ""
+      },
+      mrSizedesktop: {
+        type: "string",
+        default: ""
+      },
+      mrSizelaptop: {
+        type: "string",
+        default: ""
+      },
+      mrSizetablet: {
+        type: "string",
+        default: ""
+      },
+      mrSizephone: {
+        type: "string",
+        default: ""
+      },
+      mrBackgroundColor: {
+        type: "string",
+        default: ""
+      },
+      mrColor: {
+        type: "string",
+        default: ""
+      },
+      mrFontFamily: {
+        type: "string",
+        default: ""
+      },
+      mrFontSize: {
+        type: "string",
+        default: ""
+      },
+      mrFontSizehover: {
+        type: "string",
+        default: ""
+      },
+      mrFontSizedesktop: {
+        type: "string",
+        default: ""
+      },
+      mrFontSizelaptop: {
+        type: "string",
+        default: ""
+      },
+      mrFontSizetablet: {
+        type: "string",
+        default: ""
+      },
+      mrFontSizephone: {
+        type: "string",
+        default: ""
+      },
+      mrTextAlignment: {
+        type: "string",
+        default: "mr-"
+      },
+      mrTextAlignmentdesktop: {
+        type: "string",
+        default: "mr-desktop"
+      },
+      mrTextAlignmentlaptop: {
+        type: "string",
+        default: "mr-laptop"
+      },
+      mrTextAlignmenttablet: {
+        type: "string",
+        default: "mr-tablet"
+      },
+      mrTextAlignmentphone: {
+        type: "string",
+        default: "mr-phone"
+      },
+      mrScroll: {
+        type: "string",
+        default: "mr-"
+      },
+      mrScrollhover: {
+        type: "string",
+        default: "mr-hover"
+      },
+      mrScrolldesktop: {
+        type: "string",
+        default: "mr-desktop"
+      },
+      mrScrolllaptop: {
+        type: "string",
+        default: "mr-laptop"
+      },
+      mrScrolltablet: {
+        type: "string",
+        default: "mr-tablet"
+      },
+      mrScrollphone: {
+        type: "string",
+        default: "mr-phone"
+      }
+    });
+  }
+
+  return settings;
+}
+/**
+ * Add Utilities controls.
+ *
+ * @param {function} BlockEdit Block edit component.
+ *
+ * @return {function} BlockEdit Modified block edit component.
+ */
+
+
+const mrInspectorControls = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_5__.createHigherOrderComponent)(BlockEdit => {
+  return props => {
+    const {
+      name,
+      attributes,
+      setAttributes,
+      isSelected
+    } = props;
+    const {
+      mrAnimation,
+      mrAnimationhover,
+      mrTransition,
+      mrTransitionhover,
+      mrPerPage,
+      mrPaginationPosition,
+      mrComponent,
+      mrVerticalScrollNavigation,
+      mrHorizontalScrollNavigation,
+      mrActiveWhen,
+      mrNavPosition,
+      mrArrowPagination,
+      mrSelectPagination,
+      mrRadioPagination,
+      mrPerLine,
+      mrPerLinedesktop,
+      mrPerLinelaptop,
+      mrPerLinetablet,
+      mrPerLinephone,
+      mrColumns,
+      mrColumnsdesktop,
+      mrColumnslaptop,
+      mrColumnstablet,
+      mrColumnsphone,
+      mrOrder,
+      mrOrderdesktop,
+      mrOrderlaptop,
+      mrOrdertablet,
+      mrOrderphone,
+      mrDisplay,
+      mrDisplayhover,
+      mrDisplaydesktop,
+      mrDisplaylaptop,
+      mrDisplaytablet,
+      mrDisplayphone,
+      mrWrap,
+      mrWrapdesktop,
+      mrWraplaptop,
+      mrWraptablet,
+      mrWrapphone,
+      mrPaddingTop,
+      mrPaddingTophover,
+      mrPaddingTopdesktop,
+      mrPaddingToplaptop,
+      mrPaddingToptablet,
+      mrPaddingTopphone,
+      mrPaddingRight,
+      mrPaddingRighthover,
+      mrPaddingRightdesktop,
+      mrPaddingRightlaptop,
+      mrPaddingRighttablet,
+      mrPaddingRightphone,
+      mrPaddingBottom,
+      mrPaddingBottomhover,
+      mrPaddingBottomdesktop,
+      mrPaddingBottomlaptop,
+      mrPaddingBottomtablet,
+      mrPaddingBottomphone,
+      mrPaddingLeft,
+      mrPaddingLefthover,
+      mrPaddingLeftdesktop,
+      mrPaddingLeftlaptop,
+      mrPaddingLefttablet,
+      mrPaddingLeftphone,
+      mrRowGap,
+      mrRowGaphover,
+      mrRowGapdesktop,
+      mrRowGaplaptop,
+      mrRowGaptablet,
+      mrRowGapphone,
+      mrColumnGap,
+      mrColumnGaphover,
+      mrColumnGapdesktop,
+      mrColumnGaplaptop,
+      mrColumnGaptablet,
+      mrColumnGapphone,
+      mrMarginTop,
+      mrMarginTophover,
+      mrMarginTopdesktop,
+      mrMarginToplaptop,
+      mrMarginToptablet,
+      mrMarginTopphone,
+      mrMarginRight,
+      mrMarginRighthover,
+      mrMarginRightdesktop,
+      mrMarginRightlaptop,
+      mrMarginRighttablet,
+      mrMarginRightphone,
+      mrMarginBottom,
+      mrMarginBottomhover,
+      mrMarginBottomdesktop,
+      mrMarginBottomlaptop,
+      mrMarginBottomtablet,
+      mrMarginBottomphone,
+      mrMarginLeft,
+      mrMarginLefthover,
+      mrMarginLeftdesktop,
+      mrMarginLeftlaptop,
+      mrMarginLefttablet,
+      mrMarginLeftphone,
+      mrPosition,
+      mrPositiondesktop,
+      mrPositionlaptop,
+      mrPositiontablet,
+      mrPositionphone,
+      mrPositionAlignment,
+      mrPositionAlignmentdesktop,
+      mrPositionAlignmentlaptop,
+      mrPositionAlignmenttablet,
+      mrPositionAlignmentphone,
+      mrPositionSides,
+      mrPositionSidesdesktop,
+      mrPositionSideslaptop,
+      mrPositionSidestablet,
+      mrPositionSidesphone,
+      mrContentAlignment,
+      mrContentAlignmentdesktop,
+      mrContentAlignmentlaptop,
+      mrContentAlignmenttablet,
+      mrContentAlignmentphone,
+      mrVerticalOffset,
+      mrVerticalOffsetdesktop,
+      mrVerticalOffsetlaptop,
+      mrVerticalOffsettablet,
+      mrVerticalOffsetphone,
+      mrHorizontalOffset,
+      mrHorizontalOffsetdesktop,
+      mrHorizontalOffsetlaptop,
+      mrHorizontalOffsettablet,
+      mrHorizontalOffsetphone,
+      mrSize,
+      mrSizehover,
+      mrSizedesktop,
+      mrSizelaptop,
+      mrSizetablet,
+      mrSizephone,
+      mrBackgroundColor,
+      mrColor,
+      mrFontFamily,
+      mrFontSize,
+      mrFontSizehover,
+      mrFontSizedesktop,
+      mrFontSizelaptop,
+      mrFontSizetablet,
+      mrFontSizephone,
+      mrTextAlignment,
+      mrTextAlignmentdesktop,
+      mrTextAlignmentlaptop,
+      mrTextAlignmenttablet,
+      mrTextAlignmentphone,
+      mrScroll,
+      mrScrollhover,
+      mrScrolldesktop,
+      mrScrolllaptop,
+      mrScrolltablet,
+      mrScrollphone
+    } = attributes;
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(BlockEdit, props), isSelected && name.includes("core/") && name !== "core/archives" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__.InspectorControls, {
+      key: "setting"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.Panel, {
+      header: ""
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.PanelBody, {
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Utilities", "mr-utils"),
+      initialOpen: false,
+      className: "utilities_panelbody"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.TabPanel, {
+      className: "mr-backend-tabs",
+      activeClass: "is-active",
+      tabs: [{
+        name: "",
+        title: _wordpress_icons__WEBPACK_IMPORTED_MODULE_8__["default"],
+        className: "mr-backend-tab mr-backend-tab_all"
+      }, {
+        name: "hover",
+        title: _wordpress_icons__WEBPACK_IMPORTED_MODULE_9__["default"],
+        className: "mr-backend-tab mr-backend-tab_hover"
+      }, {
+        name: "desktop",
+        title: _wordpress_icons__WEBPACK_IMPORTED_MODULE_10__["default"],
+        className: "mr-backend-tab mr-backend-tab_desktop"
+      }, {
+        name: "laptop",
+        title: _wordpress_icons__WEBPACK_IMPORTED_MODULE_11__["default"],
+        className: "mr-backend-tab mr-backend-tab_laptop"
+      }, {
+        name: "tablet",
+        title: _wordpress_icons__WEBPACK_IMPORTED_MODULE_12__["default"],
+        className: "mr-backend-tab mr-backend-tab_tablet"
+      }, {
+        name: "phone",
+        title: _wordpress_icons__WEBPACK_IMPORTED_MODULE_13__["default"],
+        className: "mr-backend-tab mr-backend-tab_phone"
+      }, {
+        name: "more",
+        title: _wordpress_icons__WEBPACK_IMPORTED_MODULE_14__["default"],
+        className: "mr-backend-tab mr-backend-tab_more"
+      }]
+    }, tab => tab.name !== "more" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, tab.name === "" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.PanelBody, {
+      icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_15__["default"],
+      title: tab.name + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)(" Pagination", "mr-utils"),
+      initialOpen: false,
+      className: "mr-backend-option mr-backend-option_utils_pagination"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.TextControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Items per page", "mr-utils"),
+      value: mrPerPage,
+      type: "number",
+      className: "mr-backend-perpage",
+      onChange: val => setAttributes({
+        mrPerPage: !val ? "" : val
+      }),
+      help: mrPerPage > 0 ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Pagination was applied but you need to preview the frontend to see the actual result.", "mr-utils") : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Apply into parent blocks (such as Columns and List blocks) to consider each direct child as a page's item.", "mr-utils")
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.SelectControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Pagination position", "mr-utils"),
+      value: mrPaginationPosition,
+      options: [{
+        value: "mr-" + tab.name,
+        label: "Default"
+      }, {
+        value: (" mr-" + tab.name + "-paginationtop").replace("--", "-"),
+        label: "Top"
+      }, {
+        value: (" mr-" + tab.name + "-paginationbottom").replace("--", "-"),
+        label: "Bottom"
+      }],
+      onChange: val => setAttributes({
+        mrPaginationPosition: !val || val === "mr-" + tab.name ? "" : val.includes("mr-desktop") || val.includes("mr-laptop") || val.includes("mr-tablet") || val.includes("mr-phone") || val.includes("-hover-") ? mrPaginationPosition : val.replace("--", "-")
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.ToggleControl, {
+      label: "Arrows",
+      checked: mrArrowPagination,
+      className: "mr-backend-perpage",
+      onChange: () => setAttributes({
+        mrArrowPagination: !mrArrowPagination
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.ToggleControl, {
+      label: "Select dropdown",
+      checked: mrSelectPagination,
+      className: "mr-backend-perpage",
+      onChange: () => setAttributes({
+        mrSelectPagination: !mrSelectPagination
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.ToggleControl, {
+      label: "Radio buttons",
+      checked: mrRadioPagination,
+      className: "mr-backend-perpage",
+      onChange: () => setAttributes({
+        mrRadioPagination: !mrRadioPagination
+      })
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.PanelBody, {
+      icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_16__["default"],
+      title: tab.name + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)(" Components", "mr-utils"),
+      initialOpen: false,
+      className: tab.name === "" ? "mr-backend-option mr-backend-option_utils_components" : "mr-backend-option mr-backend-option_utils_" + tab.name + "_components"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.SelectControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Component", "mr-utils"),
+      value: mrComponent,
+      options: [{
+        value: "mr-" + tab.name,
+        label: "Default"
+      }, {
+        value: (" mr-" + tab.name + "-tabs").replace("--", "-"),
+        label: "Tabs"
+      }, {
+        value: (" mr-" + tab.name + "-tabsnav").replace("--", "-"),
+        label: "Tabs Navigation"
+      }, {
+        value: (" mr-" + tab.name + "-swipe").replace("--", "-"),
+        label: "Swipe"
+      }, {
+        value: (" mr-" + tab.name + "-swipecontent").replace("--", "-"),
+        label: "Swipe Content"
+      }],
+      onChange: val => setAttributes({
+        mrComponent: !val || val === "mr-" + tab.name ? "" : val.includes("mr-desktop") || val.includes("mr-laptop") || val.includes("mr-tablet") || val.includes("mr-phone") || val.includes("-hover-") ? mrComponent : val.replace("--", "-")
+      }),
+      help: !mrComponent || mrComponent === "mr-" ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Apply into parent blocks (such as Columns and List blocks) to consider each direct child as a component item.", "mr-utils") : mrComponent.includes("scrollnav") ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Tip: You can combine 'Scroll Navigation' with the scroll options found on the 'Misc.' section.", "mr-utils") + " " + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("The component was applied but you need to preview the frontend to see the actual result.", "mr-utils") : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("The component was applied but you need to preview the frontend to see the actual result.", "mr-utils")
+    }), mrComponent.includes("tabs") || mrComponent.includes("swipe") ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.SelectControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Navigation position", "mr-utils"),
+      value: mrNavPosition,
+      options: [{
+        value: "mr-" + tab.name,
+        label: "Default"
+      }, {
+        value: (" mr-" + tab.name + "-navtop").replace("--", "-"),
+        label: "Top"
+      }, {
+        value: (" mr-" + tab.name + "-navbottom").replace("--", "-"),
+        label: "Bottom"
+      }],
+      onChange: val => setAttributes({
+        mrNavPosition: !val || val === "mr-" + tab.name ? "" : val.includes("mr-desktop") || val.includes("mr-laptop") || val.includes("mr-tablet") || val.includes("mr-phone") || val.includes("-hover-") ? mrNavPosition : val.replace("--", "-")
+      })
+    }) : "", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Scroll navigation", "mr-utils")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.ToggleControl, {
+      label: "Vertical Arrows",
+      checked: mrVerticalScrollNavigation,
+      className: "mr-backend-scrollnav",
+      onChange: () => setAttributes({
+        mrVerticalScrollNavigation: !mrVerticalScrollNavigation
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.ToggleControl, {
+      label: "Horizontal Arrows",
+      checked: mrHorizontalScrollNavigation,
+      className: "mr-backend-scrollnav",
+      onChange: () => setAttributes({
+        mrHorizontalScrollNavigation: !mrHorizontalScrollNavigation
+      }),
+      help: mrHorizontalScrollNavigation || mrVerticalScrollNavigation ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("The navigation was applied but you need to preview the frontend to see the actual result.", "mr-utils") : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Add an alternative navigation to elements with scroll.", "mr-utils")
+    }))) : "", tab.name === "" || tab.name === "hover" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.PanelBody, {
+      icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_17__["default"],
+      title: tab.name + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)(" Animations", "mr-utils"),
+      initialOpen: false,
+      className: tab.name === "" ? "mr-backend-option mr-backend-option_utils_animations" : "mr-backend-option mr-backend-option_utils_" + tab.name + "_animations"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.SelectControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Animation", "mr-utils"),
+      value: tab.name === "hover" ? mrAnimationhover : mrAnimation,
+      options: [{
+        value: "mr-" + tab.name,
+        label: "Default"
+      }, {
+        value: (" mr-" + tab.name + "-fade").replace("--", "-"),
+        label: "Fade"
+      }, {
+        value: (" mr-" + tab.name + "-slide").replace("--", "-"),
+        label: "Slide"
+      }, {
+        value: (" mr-" + tab.name + "-slidetop").replace("--", "-"),
+        label: "Slide Top"
+      }, {
+        value: (" mr-" + tab.name + "-slideright").replace("--", "-"),
+        label: "Slide Right"
+      }, {
+        value: (" mr-" + tab.name + "-slidebottom").replace("--", "-"),
+        label: "Slide Bottom"
+      }, {
+        value: (" mr-" + tab.name + "-slideleft").replace("--", "-"),
+        label: "Slide Left"
+      }, {
+        value: (" mr-" + tab.name + "-scale").replace("--", "-"),
+        label: "Scale"
+      }, {
+        value: (" mr-" + tab.name + "-scaleright").replace("--", "-"),
+        label: "Scale Right"
+      }, {
+        value: (" mr-" + tab.name + "-scaleleft").replace("--", "-"),
+        label: "Scale Left"
+      }, {
+        value: (" mr-" + tab.name + "-zoom").replace("--", "-"),
+        label: "Zoom"
+      }, {
+        value: (" mr-" + tab.name + "-zoomright").replace("--", "-"),
+        label: "Zoom Right"
+      }, {
+        value: (" mr-" + tab.name + "-zoomleft").replace("--", "-"),
+        label: "Zoom Left"
+      }],
+      onChange: val => setAttributes({
+        mrAnimation: !val || val === "mr-" + tab.name ? "" : val.includes("mr-desktop") || val.includes("mr-laptop") || val.includes("mr-tablet") || val.includes("mr-phone") || val.includes("-hover-") ? mrAnimation : val.replace("--", "-"),
+        mrAnimationhover: val !== undefined && val.includes("-hover-") ? val : mrAnimationhover
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.SelectControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Transition", "mr-utils"),
+      value: tab.name === "hover" ? mrTransitionhover : mrTransition,
+      options: [{
+        value: "mr-" + tab.name,
+        label: "Default"
+      }, {
+        value: (" mr-" + tab.name + "-transition").replace("--", "-"),
+        label: "Ease"
+      }, {
+        value: (" mr-" + tab.name + "-easeinout").replace("--", "-"),
+        label: "Ease In Out"
+      }, {
+        value: (" mr-" + tab.name + "-easein").replace("--", "-"),
+        label: "Ease In"
+      }, {
+        value: (" mr-" + tab.name + "-easeout").replace("--", "-"),
+        label: "Ease Out"
+      }, {
+        value: (" mr-" + tab.name + "-linear").replace("--", "-"),
+        label: "Linear"
+      }],
+      onChange: val => setAttributes({
+        mrTransition: val !== undefined && !val.includes("mr-hover") && !val.includes("mr-desktop") && !val.includes("mr-laptop") && !val.includes("mr-tablet") && !val.includes("mr-phone") ? val : mrTransition,
+        mrTransitionhover: val !== undefined && val.includes("-hover-") ? val : mrTransitionhover
+      })
+    })) : "", tab.name === "" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.PanelBody, {
+      icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_18__["default"],
+      title: tab.name + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)(" Dynamic", "mr-utils"),
+      initialOpen: false,
+      className: tab.name === "" ? "mr-backend-option mr-backend-option_utils_dynamic" : "mr-backend-option mr-backend-option_utils_" + tab.name + "_dynamic"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.SelectControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Active when:", "mr-utils"),
+      value: mrActiveWhen,
+      options: [{
+        value: "mr-" + tab.name,
+        label: "Default"
+      }, {
+        value: (" mr-" + tab.name + "-activeinview").replace("--", "-"),
+        label: "In view"
+      }, {
+        value: (" mr-" + tab.name + "-activeonclick").replace("--", "-"),
+        label: "Clicked"
+      }],
+      onChange: val => setAttributes({
+        mrActiveWhen: !val || val === "mr-" + tab.name ? "" : val.includes("mr-desktop") || val.includes("mr-laptop") || val.includes("mr-tablet") || val.includes("mr-phone") || val.includes("-hover-") ? mrActiveWhen : val.replace("--", "-")
+      }),
+      help: !mrActiveWhen || mrActiveWhen === "mr-" ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Adds the class 'mr-active' depending of the selected situation. You can combine with animations to decide when the animation should start.", "mr-utils") : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("The task is ready but you need to preview the frontend to see the actual result.", "mr-utils", "mr-utils")
+    }))) : "", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.PanelBody, {
+      icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_19__["default"],
+      title: tab.name + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)(" Layout", "mr-utils"),
+      initialOpen: false,
+      className: tab.name === "" ? "mr-backend-option mr-backend-option_utils_layout" : "mr-backend-option mr-backend-option_utils_" + tab.name + "_layout"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.SelectControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Items per line", "mr-utils"),
+      value: tab.name === "desktop" ? mrPerLinedesktop : tab.name === "laptop" ? mrPerLinelaptop : tab.name === "tablet" ? mrPerLinetablet : tab.name === "phone" ? mrPerLinephone : mrPerLine,
+      options: tab.name === "" || tab.name === "desktop" || tab.name === "laptop" || tab.name === "tablet" || tab.name === "phone" ? [{
+        value: "mr-" + tab.name,
+        label: ""
+      }, {
+        value: (" mr-" + tab.name + "-perline").replace("--", "-"),
+        label: "Global"
+      }, {
+        value: (" mr-" + tab.name + "-1perline").replace("--", "-"),
+        label: "1"
+      }, {
+        value: (" mr-" + tab.name + "-2perline").replace("--", "-"),
+        label: "2"
+      }, {
+        value: (" mr-" + tab.name + "-3perline").replace("--", "-"),
+        label: "3"
+      }, {
+        value: (" mr-" + tab.name + "-4perline").replace("--", "-"),
+        label: "4"
+      }, {
+        value: (" mr-" + tab.name + "-5perline").replace("--", "-"),
+        label: "5"
+      }, {
+        value: (" mr-" + tab.name + "-6perline").replace("--", "-"),
+        label: "6"
+      }, {
+        value: (" mr-" + tab.name + "-7perline").replace("--", "-"),
+        label: "7"
+      }, {
+        value: (" mr-" + tab.name + "-8perline").replace("--", "-"),
+        label: "8"
+      }, {
+        value: (" mr-" + tab.name + "-9perline").replace("--", "-"),
+        label: "9"
+      }, {
+        value: (" mr-" + tab.name + "-10perline").replace("--", "-"),
+        label: "10"
+      }, {
+        value: (" mr-" + tab.name + "-11perline").replace("--", "-"),
+        label: "11"
+      }, {
+        value: (" mr-" + tab.name + "-12perline").replace("--", "-"),
+        label: "12"
+      }, {
+        value: (" mr-" + tab.name + "-0perline").replace("--", "-"),
+        label: "∞"
+      }] : "",
+      onChange: val => setAttributes({
+        mrPerLine: val !== undefined && !val.includes("mr-hover") && !val.includes("mr-desktop") && !val.includes("mr-laptop") && !val.includes("mr-tablet") && !val.includes("mr-phone") ? val : mrPerLine,
+        mrPerLinedesktop: val !== undefined && val.includes("mr-desktop") ? val : mrPerLinedesktop,
+        mrPerLinelaptop: val !== undefined && val.includes("mr-laptop") ? val : mrPerLinelaptop,
+        mrPerLinetablet: val !== undefined && val.includes("mr-tablet") ? val : mrPerLinetablet,
+        mrPerLinephone: val !== undefined && val.includes("mr-phone") ? val : mrPerLinephone
+      }),
+      help: !mrPerLine || mrPerLine === "mr-" ? "Apply into parent blocks (such as Columns and List blocks) to organize the set number of direct childs on different lines." : ""
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.SelectControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Wrap", "mr-utils"),
+      value: tab.name === "desktop" ? mrWrapdesktop : tab.name === "laptop" ? mrWraplaptop : tab.name === "tablet" ? mrWraptablet : tab.name === "phone" ? mrWrapphone : mrWrap,
+      options: tab.name === "" || tab.name === "desktop" || tab.name === "laptop" || tab.name === "tablet" || tab.name === "phone" ? [{
+        value: "mr-" + tab.name,
+        label: "Default"
+      }, {
+        value: (" mr-" + tab.name + "-wrap").replace("--", "-"),
+        label: "Wrap"
+      }, {
+        value: (" mr-" + tab.name + "-nowrap").replace("--", "-"),
+        label: "No Wrap"
+      }] : "",
+      onChange: val => setAttributes({
+        mrWrap: val !== undefined && !val.includes("mr-hover") && !val.includes("mr-desktop") && !val.includes("mr-laptop") && !val.includes("mr-tablet") && !val.includes("mr-phone") ? val : mrWrap,
+        mrWrapdesktop: val !== undefined && val.includes("mr-desktop") ? val : mrWrapdesktop,
+        mrWraplaptop: val !== undefined && val.includes("mr-laptop") ? val : mrWraplaptop,
+        mrWraptablet: val !== undefined && val.includes("mr-tablet") ? val : mrWraptablet,
+        mrWrapphone: val !== undefined && val.includes("mr-phone") ? val : mrWrapphone
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.SelectControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Columns to create on this item", "mr-utils"),
+      value: tab.name === "desktop" ? mrColumnsdesktop : tab.name === "laptop" ? mrColumnslaptop : tab.name === "tablet" ? mrColumnstablet : tab.name === "phone" ? mrColumnsphone : mrColumns,
+      help: !mrColumns || mrColumns === "mr-" ? "Divide the current item into a set number of new columns automatically." : "",
+      options: tab.name === "" || tab.name === "desktop" || tab.name === "laptop" || tab.name === "tablet" || tab.name === "phone" ? [{
+        value: "mr-" + tab.name,
+        label: ""
+      }, {
+        value: (" mr-" + tab.name + "-columns").replace("--", "-"),
+        label: "Global"
+      }, {
+        value: (" mr-" + tab.name + "-1column").replace("--", "-"),
+        label: "1"
+      }, {
+        value: (" mr-" + tab.name + "-2columns").replace("--", "-"),
+        label: "2"
+      }, {
+        value: (" mr-" + tab.name + "-3columns").replace("--", "-"),
+        label: "3"
+      }, {
+        value: (" mr-" + tab.name + "-4columns").replace("--", "-"),
+        label: "4"
+      }, {
+        value: (" mr-" + tab.name + "-5columns").replace("--", "-"),
+        label: "5"
+      }, {
+        value: (" mr-" + tab.name + "-6columns").replace("--", "-"),
+        label: "6"
+      }, {
+        value: (" mr-" + tab.name + "-7columns").replace("--", "-"),
+        label: "7"
+      }, {
+        value: (" mr-" + tab.name + "-8columns").replace("--", "-"),
+        label: "8"
+      }, {
+        value: (" mr-" + tab.name + "-9columns").replace("--", "-"),
+        label: "9"
+      }, {
+        value: (" mr-" + tab.name + "-10columns").replace("--", "-"),
+        label: "10"
+      }, {
+        value: (" mr-" + tab.name + "-11columns").replace("--", "-"),
+        label: "11"
+      }, {
+        value: (" mr-" + tab.name + "-12columns").replace("--", "-"),
+        label: "12"
+      }] : "",
+      onChange: val => setAttributes({
+        mrColumns: val !== undefined && !val.includes("mr-hover") && !val.includes("mr-desktop") && !val.includes("mr-laptop") && !val.includes("mr-tablet") && !val.includes("mr-phone") ? val : mrColumns,
+        mrColumnsdesktop: val !== undefined && val.includes("mr-desktop") ? val : mrColumnsdesktop,
+        mrColumnslaptop: val !== undefined && val.includes("mr-laptop") ? val : mrColumnslaptop,
+        mrColumnstablet: val !== undefined && val.includes("mr-tablet") ? val : mrColumnstablet,
+        mrColumnsphone: val !== undefined && val.includes("mr-phone") ? val : mrColumnsphone
+      })
+    }), tab.name === "" || tab.name === "hover" || tab.name === "desktop" || tab.name === "laptop" || tab.name === "tablet" || tab.name === "phone" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.TextControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Item Size", "mr-utils"),
+      value: tab.name === "hover" ? mrSizehover : tab.name === "desktop" ? mrSizedesktop : tab.name === "laptop" ? mrSizelaptop : tab.name === "tablet" ? mrSizetablet : tab.name === "phone" ? mrSizephone : mrSize,
+      type: "text",
+      className: "mr-backend-custominput mr-backend-customptop",
+      placeHolder: ("mr-" + tab.name + "-size{1/13}").replace("--", "-"),
+      list: ("mrDevUtilsClasses_" + tab.name + "_size").replace("__", "_"),
+      onChange: val => setAttributes({
+        mrSize: val !== undefined && !val.includes("mr-hover") && !val.includes("mr-desktop") && !val.includes("mr-laptop") && !val.includes("mr-tablet") && !val.includes("mr-phone") ? val : mrSize,
+        mrSizehover: val !== undefined && val.includes("mr-hover") ? val : mrSizehover,
+        mrSizedesktop: val !== undefined && val.includes("mr-desktop") ? val : mrSizedesktop,
+        mrSizelaptop: val !== undefined && val.includes("mr-laptop") ? val : mrSizelaptop,
+        mrSizetablet: val !== undefined && val.includes("mr-tablet") ? val : mrSizetablet,
+        mrSizephone: val !== undefined && val.includes("mr-phone") ? val : mrSizephone
+      })
+    }) : "", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.SelectControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Item Order", "mr-utils"),
+      value: tab.name === "desktop" ? mrOrderdesktop : tab.name === "laptop" ? mrOrderlaptop : tab.name === "tablet" ? mrOrdertablet : tab.name === "phone" ? mrOrderphone : mrOrder,
+      options: tab.name === "" || tab.name === "desktop" || tab.name === "laptop" || tab.name === "tablet" || tab.name === "phone" ? [{
+        value: "mr-" + tab.name,
+        label: ""
+      }, {
+        value: (" mr-" + tab.name + "-order-1").replace("--", "-"),
+        label: "-1"
+      }, {
+        value: (" mr-" + tab.name + "-order1").replace("--", "-"),
+        label: "1"
+      }, {
+        value: (" mr-" + tab.name + "-order2").replace("--", "-"),
+        label: "2"
+      }, {
+        value: (" mr-" + tab.name + "-order3").replace("--", "-"),
+        label: "3"
+      }, {
+        value: (" mr-" + tab.name + "-order4").replace("--", "-"),
+        label: "4"
+      }, {
+        value: (" mr-" + tab.name + "-order5").replace("--", "-"),
+        label: "5"
+      }, {
+        value: (" mr-" + tab.name + "-order6").replace("--", "-"),
+        label: "6"
+      }, {
+        value: (" mr-" + tab.name + "-order7").replace("--", "-"),
+        label: "7"
+      }, {
+        value: (" mr-" + tab.name + "-order8").replace("--", "-"),
+        label: "8"
+      }, {
+        value: (" mr-" + tab.name + "-order9").replace("--", "-"),
+        label: "9"
+      }, {
+        value: (" mr-" + tab.name + "-order10").replace("--", "-"),
+        label: "10"
+      }, {
+        value: (" mr-" + tab.name + "-order11").replace("--", "-"),
+        label: "11"
+      }, {
+        value: (" mr-" + tab.name + "-order12").replace("--", "-"),
+        label: "12"
+      }] : "",
+      onChange: val => setAttributes({
+        mrOrder: val !== undefined && !val.includes("mr-hover") && !val.includes("mr-desktop") && !val.includes("mr-laptop") && !val.includes("mr-tablet") && !val.includes("mr-phone") ? val : mrOrder,
+        mrOrderdesktop: val !== undefined && val.includes("mr-desktop") ? val : mrOrderdesktop,
+        mrOrderlaptop: val !== undefined && val.includes("mr-laptop") ? val : mrOrderlaptop,
+        mrOrdertablet: val !== undefined && val.includes("mr-tablet") ? val : mrOrdertablet,
+        mrOrderphone: val !== undefined && val.includes("mr-phone") ? val : mrOrderphone
+      })
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.PanelBody, {
+      icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_20__["default"],
+      title: tab.name + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)(" Display", "mr-utils"),
+      initialOpen: false,
+      className: tab.name === "" ? "mr-backend-option mr-backend-option_utils_display" : "mr-backend-option mr-backend-option_utils_" + tab.name + "_display"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.SelectControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Visibility", "mr-utils"),
+      value: tab.name === "hover" ? mrDisplayhover : tab.name === "desktop" ? mrDisplaydesktop : tab.name === "laptop" ? mrDisplaylaptop : tab.name === "tablet" ? mrDisplaytablet : tab.name === "phone" ? mrDisplayphone : mrDisplay,
+      options: [{
+        value: "mr-" + tab.name,
+        label: "Default"
+      }, {
+        value: (" mr-" + tab.name + "-hide").replace("--", "-"),
+        label: "Hide"
+      }, {
+        value: (" mr-" + tab.name + "-show").replace("--", "-"),
+        label: "Show"
+      }, {
+        value: (" mr-" + tab.name + "-none").replace("--", "-"),
+        label: "None"
+      }, {
+        value: (" mr-" + tab.name + "-flex").replace("--", "-"),
+        label: "Flex"
+      }, {
+        value: (" mr-" + tab.name + "-block").replace("--", "-"),
+        label: "Block"
+      }, {
+        value: (" mr-" + tab.name + "-visible").replace("--", "-"),
+        label: "Visible"
+      }, {
+        value: (" mr-" + tab.name + "-hidden").replace("--", "-"),
+        label: "Hidden"
+      }, {
+        value: (" mr-" + tab.name + "-transparent").replace("--", "-"),
+        label: "Transparent"
+      }, {
+        value: (" mr-" + tab.name + "-semiopaque").replace("--", "-"),
+        label: "Semi-opaque"
+      }, {
+        value: (" mr-" + tab.name + "-opaque").replace("--", "-"),
+        label: "Opaque"
+      }],
+      onChange: val => setAttributes({
+        mrDisplay: val !== undefined && !val.includes("mr-hover") && !val.includes("mr-desktop") && !val.includes("mr-laptop") && !val.includes("mr-tablet") && !val.includes("mr-phone") ? val : mrDisplay,
+        mrDisplayhover: val !== undefined && val.includes("-hover-") ? val : mrDisplayhover,
+        mrDisplaydesktop: val !== undefined && val.includes("mr-desktop") ? val : mrDisplaydesktop,
+        mrDisplaylaptop: val !== undefined && val.includes("mr-laptop") ? val : mrDisplaylaptop,
+        mrDisplaytablet: val !== undefined && val.includes("mr-tablet") ? val : mrDisplaytablet,
+        mrDisplayphone: val !== undefined && val.includes("mr-phone") ? val : mrDisplayphone
+      }),
+      help: mrDisplay === " mr-hidden" || mrDisplay === " mr-hide" || mrDisplay === " mr-none" || mrDisplay === " mr-transparent" || mrDisplayhover === " mr-hover-hidden" || mrDisplayhover === " mr-hover-hide" || mrDisplayhover === " mr-hover-none" || mrDisplaydesktop === " mr-desktop-hidden" || mrDisplaydesktop === " mr-desktop-hide" || mrDisplaydesktop === " mr-desktop-none" || mrDisplaydesktop === " mr-desktop-transparent" || mrDisplaylaptop === " mr-laptop-hidden" || mrDisplaylaptop === " mr-laptop-hide" || mrDisplaylaptop === " mr-laptop-none" || mrDisplaylaptop === " mr-laptop-transparent" || mrDisplaytablet === " mr-tablet-hidden" || mrDisplaytablet === " mr-tablet-hide" || mrDisplaytablet === " mr-tablet-none" || mrDisplaytablet === " mr-tablet-transparent" || mrDisplayphone === " mr-phone-hidden" || mrDisplayphone === " mr-phone-hide" || mrDisplayphone === " mr-phone-none" || mrDisplayphone === " mr-phone-transparent" ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("An opacity is applied to the block in the backend so you can still see and select it. Preview the frontend to see the actual result.", "mr-utils") : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("a", {
+        href: "https://github.com/marcosrego-web/mr-utils/wiki/Utility-Classes#display",
+        target: "_blank"
+      }, "Know the differences between visibilities")
+    })), tab.name === "" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.PanelBody, {
+      icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_21__["default"],
+      title: tab.name + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)(" Appearance", "mr-utils"),
+      initialOpen: false,
+      className: "mr-backend-option mr-backend-option_utils_appearance"
+    }, tab.name === "" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.TextControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Background Color", "mr-utils"),
+      value: mrBackgroundColor,
+      type: "text",
+      className: "mr-backend-custominput mr-backend-custombackgroundcolor",
+      placeHolder: "mr-backgroundcolor",
+      list: "mrDevUtilsClasses_backgroundcolor".replace("__", "_"),
+      onChange: val => setAttributes({
+        mrBackgroundColor: val !== undefined ? val : mrBackgroundColor
+      })
+    }) : "", tab.name === "" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.TextControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Color", "mr-utils"),
+      value: mrColor,
+      type: "text",
+      className: "mr-backend-custominput mr-backend-customcolor",
+      placeHolder: "mr-textcolor",
+      list: "mrDevUtilsClasses_color".replace("__", "_"),
+      onChange: val => setAttributes({
+        mrColor: val !== undefined ? val : mrColor
+      })
+    }) : "") : "", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.PanelBody, {
+      icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_22__["default"],
+      title: tab.name + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)(" Spacing", "mr-utils"),
+      initialOpen: false,
+      className: tab.name === "" ? "mr-backend-option mr-backend-option_utils_spacing" : "mr-backend-option mr-backend-option_utils_" + tab.name + "_spacing"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.TabPanel, {
+      className: "mr-width100",
+      activeClass: "is-active",
+      tabs: [{
+        name: "paddings",
+        title: "Paddings",
+        className: "mr-backend-tab_paddings mr-width100"
+      }, {
+        name: "margins",
+        title: "Margins",
+        className: "mr-backend-tab_margins mr-width100"
+      }, {
+        name: "gaps",
+        title: "Gaps",
+        className: "mr-backend-tab_gaps mr-width100"
+      }]
+    }, tab2 => tab2.name === "gaps" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null), tab.name === "" || tab.name === "hover" || tab.name === "desktop" || tab.name === "laptop" || tab.name === "tablet" || tab.name === "phone" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.TextControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Row Gap", "mr-utils"),
+      value: tab.name === "hover" ? mrRowGaphover : tab.name === "desktop" ? mrRowGapdesktop : tab.name === "laptop" ? mrRowGaplaptop : tab.name === "tablet" ? mrRowGaptablet : tab.name === "phone" ? mrRowGapphone : mrRowGap,
+      type: "text",
+      placeHolder: ("mr-" + tab.name + "-rowgap").replace("--", "-") + (" | mr-" + tab.name + "-norowgap").replace("--", "-"),
+      list: ("mrDevUtilsClasses_" + tab.name + "_rowgap").replace("__", "_"),
+      onChange: val => setAttributes({
+        mrRowGap: val !== undefined && !val.includes("mr-hover") && !val.includes("mr-desktop") && !val.includes("mr-laptop") && !val.includes("mr-tablet") && !val.includes("mr-phone") ? val : mrRowGap,
+        mrRowGaphover: val !== undefined && val.includes("mr-hover") ? val : mrRowGaphover,
+        mrRowGapdesktop: val !== undefined && val.includes("mr-desktop") ? val : mrRowGapdesktop,
+        mrRowGaplaptop: val !== undefined && val.includes("mr-laptop") ? val : mrRowGaplaptop,
+        mrRowGaptablet: val !== undefined && val.includes("mr-tablet") ? val : mrRowGaptablet,
+        mrRowGapphone: val !== undefined && val.includes("mr-phone") ? val : mrRowGapphone
+      })
+    }) : "", tab.name === "" || tab.name === "hover" || tab.name === "desktop" || tab.name === "laptop" || tab.name === "tablet" || tab.name === "phone" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.TextControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Column Gap", "mr-utils"),
+      value: tab.name === "hover" ? mrColumnGaphover : tab.name === "desktop" ? mrColumnGapdesktop : tab.name === "laptop" ? mrColumnGaplaptop : tab.name === "tablet" ? mrColumnGaptablet : tab.name === "phone" ? mrColumnGapphone : mrColumnGap,
+      type: "text",
+      placeHolder: ("mr-" + tab.name + "-columngap").replace("--", "-") + (" | mr-" + tab.name + "-nocolumngap").replace("--", "-"),
+      list: ("mrDevUtilsClasses_" + tab.name + "_columngap").replace("__", "_"),
+      onChange: val => setAttributes({
+        mrColumnGap: val !== undefined && !val.includes("mr-hover") && !val.includes("mr-desktop") && !val.includes("mr-laptop") && !val.includes("mr-tablet") && !val.includes("mr-phone") ? val : mrColumnGap,
+        mrColumnGaphover: val !== undefined && val.includes("mr-hover") ? val : mrColumnGaphover,
+        mrColumnGapdesktop: val !== undefined && val.includes("mr-desktop") ? val : mrColumnGapdesktop,
+        mrColumnGaplaptop: val !== undefined && val.includes("mr-laptop") ? val : mrColumnGaplaptop,
+        mrColumnGaptablet: val !== undefined && val.includes("mr-tablet") ? val : mrColumnGaptablet,
+        mrColumnGapphone: val !== undefined && val.includes("mr-phone") ? val : mrColumnGapphone
+      })
+    }) : "") : tab2.name === "paddings" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null), tab.name === "" || tab.name === "hover" || tab.name === "desktop" || tab.name === "laptop" || tab.name === "tablet" || tab.name === "phone" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.TextControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Padding Top", "mr-utils"),
+      value: tab.name === "hover" ? mrPaddingTophover : tab.name === "desktop" ? mrPaddingTopdesktop : tab.name === "laptop" ? mrPaddingToplaptop : tab.name === "tablet" ? mrPaddingToptablet : tab.name === "phone" ? mrPaddingTopphone : mrPaddingTop,
+      type: "text",
+      placeHolder: ("mr-" + tab.name + "-paddingtop").replace("--", "-") + (" | mr-" + tab.name + "-nopaddingtop").replace("--", "-"),
+      list: ("mrDevUtilsClasses_" + tab.name + "_paddingtop").replace("__", "_"),
+      onChange: val => setAttributes({
+        mrPaddingTop: val !== undefined && !val.includes("mr-hover") && !val.includes("mr-desktop") && !val.includes("mr-laptop") && !val.includes("mr-tablet") && !val.includes("mr-phone") ? val : mrPaddingTop,
+        mrPaddingTophover: val !== undefined && val.includes("mr-hover") ? val : mrPaddingTophover,
+        mrPaddingTopdesktop: val !== undefined && val.includes("mr-desktop") ? val : mrPaddingTopdesktop,
+        mrPaddingToplaptop: val !== undefined && val.includes("mr-laptop") ? val : mrPaddingToplaptop,
+        mrPaddingToptablet: val !== undefined && val.includes("mr-tablet") ? val : mrPaddingToptablet,
+        mrPaddingTopphone: val !== undefined && val.includes("mr-phone") ? val : mrPaddingTopphone
+      })
+    }) : "", tab.name === "" || tab.name === "hover" || tab.name === "desktop" || tab.name === "laptop" || tab.name === "tablet" || tab.name === "phone" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.TextControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Padding right", "mr-utils"),
+      value: tab.name === "hover" ? mrPaddingRighthover : tab.name === "desktop" ? mrPaddingRightdesktop : tab.name === "laptop" ? mrPaddingRightlaptop : tab.name === "tablet" ? mrPaddingRighttablet : tab.name === "phone" ? mrPaddingRightphone : mrPaddingRight,
+      type: "text",
+      placeHolder: ("mr-" + tab.name + "-paddingright").replace("--", "-") + (" | mr-" + tab.name + "-nopaddingright").replace("--", "-"),
+      list: ("mrDevUtilsClasses_" + tab.name + "_paddingright").replace("__", "_"),
+      onChange: val => setAttributes({
+        mrPaddingRight: val !== undefined && !val.includes("mr-hover") && !val.includes("mr-desktop") && !val.includes("mr-laptop") && !val.includes("mr-tablet") && !val.includes("mr-phone") ? val : mrPaddingRight,
+        mrPaddingRighthover: val !== undefined && val.includes("mr-hover") ? val : mrPaddingRighthover,
+        mrPaddingRightdesktop: val !== undefined && val.includes("mr-desktop") ? val : mrPaddingRightdesktop,
+        mrPaddingRightlaptop: val !== undefined && val.includes("mr-laptop") ? val : mrPaddingRightlaptop,
+        mrPaddingRighttablet: val !== undefined && val.includes("mr-tablet") ? val : mrPaddingRighttablet,
+        mrPaddingRightphone: val !== undefined && val.includes("mr-phone") ? val : mrPaddingRightphone
+      })
+    }) : "", tab.name === "" || tab.name === "hover" || tab.name === "desktop" || tab.name === "laptop" || tab.name === "tablet" || tab.name === "phone" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.TextControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Padding Bottom", "mr-utils"),
+      value: tab.name === "hover" ? mrPaddingBottomhover : tab.name === "desktop" ? mrPaddingBottomdesktop : tab.name === "laptop" ? mrPaddingBottomlaptop : tab.name === "tablet" ? mrPaddingBottomtablet : tab.name === "phone" ? mrPaddingBottomphone : mrPaddingBottom,
+      type: "text",
+      placeHolder: ("mr-" + tab.name + "-paddingbottom").replace("--", "-") + (" | mr-" + tab.name + "-nopaddingbottom").replace("--", "-"),
+      list: ("mrDevUtilsClasses_" + tab.name + "_paddingbottom").replace("__", "_"),
+      onChange: val => setAttributes({
+        mrPaddingBottom: val !== undefined && !val.includes("mr-hover") && !val.includes("mr-desktop") && !val.includes("mr-laptop") && !val.includes("mr-tablet") && !val.includes("mr-phone") ? val : mrPaddingBottom,
+        mrPaddingBottomhover: val !== undefined && val.includes("mr-hover") ? val : mrPaddingBottomhover,
+        mrPaddingBottomdesktop: val !== undefined && val.includes("mr-desktop") ? val : mrPaddingBottomdesktop,
+        mrPaddingBottomlaptop: val !== undefined && val.includes("mr-laptop") ? val : mrPaddingBottomlaptop,
+        mrPaddingBottomtablet: val !== undefined && val.includes("mr-tablet") ? val : mrPaddingBottomtablet,
+        mrPaddingBottomphone: val !== undefined && val.includes("mr-phone") ? val : mrPaddingBottomphone
+      })
+    }) : "", tab.name === "" || tab.name === "hover" || tab.name === "desktop" || tab.name === "laptop" || tab.name === "tablet" || tab.name === "phone" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.TextControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Padding Left", "mr-utils"),
+      value: tab.name === "hover" ? mrPaddingLefthover : tab.name === "desktop" ? mrPaddingLeftdesktop : tab.name === "laptop" ? mrPaddingLeftlaptop : tab.name === "tablet" ? mrPaddingLefttablet : tab.name === "phone" ? mrPaddingLeftphone : mrPaddingLeft,
+      type: "text",
+      placeHolder: ("mr-" + tab.name + "-paddingleft").replace("--", "-") + (" | mr-" + tab.name + "-nopaddingleft").replace("--", "-"),
+      list: ("mrDevUtilsClasses_" + tab.name + "_paddingleft").replace("__", "_"),
+      onChange: val => setAttributes({
+        mrPaddingLeft: val !== undefined && !val.includes("mr-hover") && !val.includes("mr-desktop") && !val.includes("mr-laptop") && !val.includes("mr-tablet") && !val.includes("mr-phone") ? val : mrPaddingLeft,
+        mrPaddingLefthover: val !== undefined && val.includes("mr-hover") ? val : mrPaddingLefthover,
+        mrPaddingLeftdesktop: val !== undefined && val.includes("mr-desktop") ? val : mrPaddingLeftdesktop,
+        mrPaddingLeftlaptop: val !== undefined && val.includes("mr-laptop") ? val : mrPaddingLeftlaptop,
+        mrPaddingLefttablet: val !== undefined && val.includes("mr-tablet") ? val : mrPaddingLefttablet,
+        mrPaddingLeftphone: val !== undefined && val.includes("mr-phone") ? val : mrPaddingLeftphone
+      })
+    }) : "") : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null), tab.name === "" || tab.name === "hover" || tab.name === "desktop" || tab.name === "laptop" || tab.name === "tablet" || tab.name === "phone" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.TextControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Margin Top", "mr-utils"),
+      value: tab.name === "hover" ? mrMarginTophover : tab.name === "desktop" ? mrMarginTopdesktop : tab.name === "laptop" ? mrMarginToplaptop : tab.name === "tablet" ? mrMarginToptablet : tab.name === "phone" ? mrMarginTopphone : mrMarginTop,
+      type: "text",
+      placeHolder: ("mr-" + tab.name + "-margintop").replace("--", "-") + (" | mr-" + tab.name + "-nomargintop").replace("--", "-"),
+      list: ("mrDevUtilsClasses_" + tab.name + "_margintop").replace("__", "_"),
+      onChange: val => setAttributes({
+        mrMarginTop: val !== undefined && !val.includes("mr-hover") && !val.includes("mr-desktop") && !val.includes("mr-laptop") && !val.includes("mr-tablet") && !val.includes("mr-phone") ? val : mrMarginTop,
+        mrMarginTophover: val !== undefined && val.includes("mr-hover") ? val : mrMarginTophover,
+        mrMarginTopdesktop: val !== undefined && val.includes("mr-desktop") ? val : mrMarginTopdesktop,
+        mrMarginToplaptop: val !== undefined && val.includes("mr-laptop") ? val : mrMarginToplaptop,
+        mrMarginToptablet: val !== undefined && val.includes("mr-tablet") ? val : mrMarginToptablet,
+        mrMarginTopphone: val !== undefined && val.includes("mr-phone") ? val : mrMarginTopphone
+      })
+    }) : "", tab.name === "" || tab.name === "hover" || tab.name === "desktop" || tab.name === "laptop" || tab.name === "tablet" || tab.name === "phone" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.TextControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Margin Right", "mr-utils"),
+      value: tab.name === "hover" ? mrMarginRighthover : tab.name === "desktop" ? mrMarginRightdesktop : tab.name === "laptop" ? mrMarginRightlaptop : tab.name === "tablet" ? mrMarginRighttablet : tab.name === "phone" ? mrMarginRightphone : mrMarginRight,
+      type: "text",
+      placeHolder: ("mr-" + tab.name + "-marginright").replace("--", "-") + (" | mr-" + tab.name + "-nomarginright").replace("--", "-"),
+      list: ("mrDevUtilsClasses_" + tab.name + "_marginright").replace("__", "_"),
+      onChange: val => setAttributes({
+        mrMarginRight: val !== undefined && !val.includes("mr-hover") && !val.includes("mr-desktop") && !val.includes("mr-laptop") && !val.includes("mr-tablet") && !val.includes("mr-phone") ? val : mrMarginRight,
+        mrMarginRighthover: val !== undefined && val.includes("mr-hover") ? val : mrMarginRighthover,
+        mrMarginRightdesktop: val !== undefined && val.includes("mr-desktop") ? val : mrMarginRightdesktop,
+        mrMarginRightlaptop: val !== undefined && val.includes("mr-laptop") ? val : mrMarginRightlaptop,
+        mrMarginRighttablet: val !== undefined && val.includes("mr-tablet") ? val : mrMarginRighttablet,
+        mrMarginRightphone: val !== undefined && val.includes("mr-phone") ? val : mrMarginRightphone
+      })
+    }) : "", tab.name === "" || tab.name === "hover" || tab.name === "desktop" || tab.name === "laptop" || tab.name === "tablet" || tab.name === "phone" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.TextControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Margin Bottom", "mr-utils"),
+      value: tab.name === "hover" ? mrMarginBottomhover : tab.name === "desktop" ? mrMarginBottomdesktop : tab.name === "laptop" ? mrMarginBottomlaptop : tab.name === "tablet" ? mrMarginBottomtablet : tab.name === "phone" ? mrMarginBottomphone : mrMarginBottom,
+      type: "text",
+      placeHolder: ("mr-" + tab.name + "-marginbottom").replace("--", "-") + (" | mr-" + tab.name + "-nomarginbottom").replace("--", "-"),
+      list: ("mrDevUtilsClasses_" + tab.name + "_marginbottom").replace("__", "_"),
+      onChange: val => setAttributes({
+        mrMarginBottom: val !== undefined && !val.includes("mr-hover") && !val.includes("mr-desktop") && !val.includes("mr-laptop") && !val.includes("mr-tablet") && !val.includes("mr-phone") ? val : mrMarginBottom,
+        mrMarginBottomhover: val !== undefined && val.includes("mr-hover") ? val : mrMarginBottomhover,
+        mrMarginBottomdesktop: val !== undefined && val.includes("mr-desktop") ? val : mrMarginBottomdesktop,
+        mrMarginBottomlaptop: val !== undefined && val.includes("mr-laptop") ? val : mrMarginBottomlaptop,
+        mrMarginBottomtablet: val !== undefined && val.includes("mr-tablet") ? val : mrMarginBottomtablet,
+        mrMarginBottomphone: val !== undefined && val.includes("mr-phone") ? val : mrMarginBottomphone
+      })
+    }) : "", tab.name === "" || tab.name === "hover" || tab.name === "desktop" || tab.name === "laptop" || tab.name === "tablet" || tab.name === "phone" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.TextControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Margin Left", "mr-utils"),
+      value: tab.name === "hover" ? mrMarginLefthover : tab.name === "desktop" ? mrMarginLeftdesktop : tab.name === "laptop" ? mrMarginLeftlaptop : tab.name === "tablet" ? mrMarginLefttablet : tab.name === "phone" ? mrMarginLeftphone : mrMarginLeft,
+      type: "text",
+      placeHolder: ("mr-" + tab.name + "-marginleft").replace("--", "-") + (" | mr-" + tab.name + "-nomarginleft").replace("--", "-"),
+      list: ("mrDevUtilsClasses_" + tab.name + "_marginleft").replace("__", "_"),
+      onChange: val => setAttributes({
+        mrMarginLeft: val !== undefined && !val.includes("mr-hover") && !val.includes("mr-desktop") && !val.includes("mr-laptop") && !val.includes("mr-tablet") && !val.includes("mr-phone") ? val : mrMarginLeft,
+        mrMarginLefthover: val !== undefined && val.includes("mr-hover") ? val : mrMarginLefthover,
+        mrMarginLeftdesktop: val !== undefined && val.includes("mr-desktop") ? val : mrMarginLeftdesktop,
+        mrMarginLeftlaptop: val !== undefined && val.includes("mr-laptop") ? val : mrMarginLeftlaptop,
+        mrMarginLefttablet: val !== undefined && val.includes("mr-tablet") ? val : mrMarginLefttablet,
+        mrMarginLeftphone: val !== undefined && val.includes("mr-phone") ? val : mrMarginLeftphone
+      })
+    }) : "")))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.PanelBody, {
+      icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_23__["default"],
+      title: tab.name + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)(" Text", "mr-utils"),
+      initialOpen: false,
+      className: tab.name === "" ? "mr-backend-option mr-backend-option_utils_text" : "mr-backend-option mr-backend-option_utils_" + tab.name + "_text"
+    }, tab.name === "" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.TextControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Font Family", "mr-utils"),
+      value: mrFontFamily,
+      type: "text",
+      className: "mr-backend-custominput mr-backend-customfontfamily",
+      placeHolder: "mr-font1",
+      list: "mrDevUtilsClasses_fontfamily".replace("__", "_"),
+      onChange: val => setAttributes({
+        mrFontFamily: val !== undefined ? val : mrFontFamily
+      })
+    }) : "", tab.name === "" || tab.name === "hover" || tab.name === "desktop" || tab.name === "laptop" || tab.name === "tablet" || tab.name === "phone" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.TextControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Font Size", "mr-utils"),
+      value: tab.name === "hover" ? mrFontSizehover : tab.name === "desktop" ? mrFontSizedesktop : tab.name === "laptop" ? mrFontSizelaptop : tab.name === "tablet" ? mrFontSizetablet : tab.name === "phone" ? mrFontSizephone : mrFontSize,
+      type: "text",
+      className: "mr-backend-custominput mr-backend-customptop",
+      placeHolder: ("mr-" + tab.name + "-fontsize{1/7}").replace("--", "-"),
+      list: ("mrDevUtilsClasses_" + tab.name + "_fontsize").replace("__", "_"),
+      onChange: val => setAttributes({
+        mrFontSize: val !== undefined && !val.includes("mr-hover") && !val.includes("mr-desktop") && !val.includes("mr-laptop") && !val.includes("mr-tablet") && !val.includes("mr-phone") ? val : mrFontSize,
+        mrFontSizehover: val !== undefined && val.includes("mr-hover") ? val : mrFontSizehover,
+        mrFontSizedesktop: val !== undefined && val.includes("mr-desktop") ? val : mrFontSizedesktop,
+        mrFontSizelaptop: val !== undefined && val.includes("mr-laptop") ? val : mrFontSizelaptop,
+        mrFontSizetablet: val !== undefined && val.includes("mr-tablet") ? val : mrFontSizetablet,
+        mrFontSizephone: val !== undefined && val.includes("mr-phone") ? val : mrFontSizephone
+      })
+    }) : "", tab.name !== "hover" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.SelectControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Text Alignment", "mr-utils"),
+      value: tab.name === "desktop" ? mrTextAlignmentdesktop : tab.name === "laptop" ? mrTextAlignmentlaptop : tab.name === "tablet" ? mrTextAlignmenttablet : tab.name === "phone" ? mrTextAlignmentphone : mrTextAlignment,
+      options: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)([{
+        value: "mr-" + tab.name,
+        label: "Default"
+      }, {
+        value: (" mr-" + tab.name + "-alignleft").replace("--", "-"),
+        label: "Left"
+      }, {
+        value: (" mr-" + tab.name + "-aligncenter").replace("--", "-"),
+        label: "Center"
+      }, {
+        value: (" mr-" + tab.name + "-alignright").replace("--", "-"),
+        label: "Right"
+      }]),
+      onChange: val => setAttributes({
+        mrTextAlignment: val !== undefined && !val.includes("mr-hover") && !val.includes("mr-desktop") && !val.includes("mr-laptop") && !val.includes("mr-tablet") && !val.includes("mr-phone") ? val : mrTextAlignment,
+        mrTextAlignmentdesktop: val !== undefined && val.includes("mr-desktop") ? val : mrTextAlignmentdesktop,
+        mrTextAlignmentlaptop: val !== undefined && val.includes("mr-laptop") ? val : mrTextAlignmentlaptop,
+        mrTextAlignmenttablet: val !== undefined && val.includes("mr-tablet") ? val : mrTextAlignmenttablet,
+        mrTextAlignmentphone: val !== undefined && val.includes("mr-phone") ? val : mrTextAlignmentphone
+      })
+    })) : ""), tab.name !== "hover" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.PanelBody, {
+      icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_24__["default"],
+      title: tab.name + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)(" Placement", "mr-utils"),
+      initialOpen: false,
+      className: tab.name === "" ? "mr-backend-option mr-backend-option_utils_placement" : "mr-backend-option mr-backend-option_utils_" + tab.name + "_placement"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.SelectControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Position Type", "mr-utils"),
+      value: tab.name === "desktop" ? mrPositiondesktop : tab.name === "laptop" ? mrPositionlaptop : tab.name === "tablet" ? mrPositiontablet : tab.name === "phone" ? mrPositionphone : mrPosition,
+      options: [{
+        value: "mr-" + tab.name,
+        label: "Default"
+      }, {
+        value: (" mr-" + tab.name + "-relative").replace("--", "-"),
+        label: "Relative"
+      }, {
+        value: (" mr-" + tab.name + "-absolute").replace("--", "-"),
+        label: "Absolute"
+      }, {
+        value: (" mr-" + tab.name + "-fixed").replace("--", "-"),
+        label: "Fixed"
+      }, {
+        value: (" mr-" + tab.name + "-sticky").replace("--", "-"),
+        label: "Sticky"
+      }],
+      onChange: val => setAttributes({
+        mrPosition: val !== undefined && !val.includes("mr-hover") && !val.includes("mr-desktop") && !val.includes("mr-laptop") && !val.includes("mr-tablet") && !val.includes("mr-phone") ? val : mrPosition,
+        mrPositiondesktop: val !== undefined && val.includes("mr-desktop") ? val : mrPositiondesktop,
+        mrPositionlaptop: val !== undefined && val.includes("mr-laptop") ? val : mrPositionlaptop,
+        mrPositiontablet: val !== undefined && val.includes("mr-tablet") ? val : mrPositiontablet,
+        mrPositionphone: val !== undefined && val.includes("mr-phone") ? val : mrPositionphone
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.SelectControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Vertical Alignment", "mr-utils"),
+      value: tab.name === "desktop" ? mrPositionAlignmentdesktop : tab.name === "laptop" ? mrPositionAlignmentlaptop : tab.name === "tablet" ? mrPositionAlignmenttablet : tab.name === "phone" ? mrPositionAlignmentphone : mrPositionAlignment,
+      options: (mrPosition + tab.name).includes("absolute") || (mrPosition + tab.name).includes("fixed") || (mrPosition + tab.name).includes("sticky") ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)([{
+        value: "mr-" + tab.name,
+        label: "Default"
+      }, {
+        value: (" mr-" + tab.name + "-top").replace("--", "-"),
+        label: "Top"
+      }, {
+        value: (" mr-" + tab.name + "-bottom").replace("--", "-"),
+        label: "Bottom"
+      }]) : "",
+      onChange: val => setAttributes({
+        mrPositionAlignment: val !== undefined && !val.includes("mr-hover") && !val.includes("mr-desktop") && !val.includes("mr-laptop") && !val.includes("mr-tablet") && !val.includes("mr-phone") ? val : mrPositionAlignment,
+        mrPositionAlignmentdesktop: val !== undefined && val.includes("mr-desktop") ? val : mrPositionAlignmentdesktop,
+        mrPositionAlignmentlaptop: val !== undefined && val.includes("mr-laptop") ? val : mrPositionAlignmentlaptop,
+        mrPositionAlignmenttablet: val !== undefined && val.includes("mr-tablet") ? val : mrPositionAlignmenttablet,
+        mrPositionAlignmentphone: val !== undefined && val.includes("mr-phone") ? val : mrPositionAlignmentphone
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.SelectControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Horizontal Alignment", "mr-utils"),
+      value: tab.name === "desktop" ? mrPositionSidesdesktop : tab.name === "laptop" ? mrPositionSideslaptop : tab.name === "tablet" ? mrPositionSidestablet : tab.name === "phone" ? mrPositionSidesphone : mrPositionSides,
+      options: (mrPosition + tab.name).includes("absolute") || (mrPosition + tab.name).includes("fixed") || (mrPosition + tab.name).includes("sticky") ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)([{
+        value: "mr-" + tab.name,
+        label: "Default"
+      }, {
+        value: (" mr-" + tab.name + "-right").replace("--", "-"),
+        label: "Right"
+      }, {
+        value: (" mr-" + tab.name + "-left").replace("--", "-"),
+        label: "Left"
+      }]) : "",
+      onChange: val => setAttributes({
+        mrPositionSides: val !== undefined && !val.includes("mr-hover") && !val.includes("mr-desktop") && !val.includes("mr-laptop") && !val.includes("mr-tablet") && !val.includes("mr-phone") ? val : mrPositionSides,
+        mrPositionSidesdesktop: val !== undefined && val.includes("mr-desktop") ? val : mrPositionSidesdesktop,
+        mrPositionSideslaptop: val !== undefined && val.includes("mr-laptop") ? val : mrPositionSideslaptop,
+        mrPositionSidestablet: val !== undefined && val.includes("mr-tablet") ? val : mrPositionSidestablet,
+        mrPositionSidesphone: val !== undefined && val.includes("mr-phone") ? val : mrPositionSidesphone
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.SelectControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Content Alignment", "mr-utils"),
+      value: tab.name === "desktop" ? mrContentAlignmentdesktop : tab.name === "laptop" ? mrContentAlignmentlaptop : tab.name === "tablet" ? mrContentAlignmenttablet : tab.name === "phone" ? mrContentAlignmentphone : mrContentAlignment,
+      options: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)([{
+        value: "mr-" + tab.name,
+        label: "Default"
+      }, {
+        value: (" mr-" + tab.name + "-aligntop").replace("--", "-"),
+        label: "Top"
+      }, {
+        value: (" mr-" + tab.name + "-floatright").replace("--", "-"),
+        label: "Right"
+      }, {
+        value: (" mr-" + tab.name + "-alignbottom").replace("--", "-"),
+        label: "Bottom"
+      }, {
+        value: (" mr-" + tab.name + "-floatleft").replace("--", "-"),
+        label: "Left"
+      }, {
+        value: (" mr-" + tab.name + "-middle").replace("--", "-"),
+        label: "Middle"
+      }]),
+      onChange: val => setAttributes({
+        mrContentAlignment: val !== undefined && !val.includes("mr-hover") && !val.includes("mr-desktop") && !val.includes("mr-laptop") && !val.includes("mr-tablet") && !val.includes("mr-phone") ? val : mrContentAlignment,
+        mrContentAlignmentdesktop: val !== undefined && val.includes("mr-desktop") ? val : mrContentAlignmentdesktop,
+        mrContentAlignmentlaptop: val !== undefined && val.includes("mr-laptop") ? val : mrContentAlignmentlaptop,
+        mrContentAlignmenttablet: val !== undefined && val.includes("mr-tablet") ? val : mrContentAlignmenttablet,
+        mrContentAlignmentphone: val !== undefined && val.includes("mr-phone") ? val : mrContentAlignmentphone
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.SelectControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Vertical Offset", "mr-utils"),
+      value: tab.name === "desktop" ? mrVerticalOffsetdesktop : tab.name === "laptop" ? mrVerticalOffsetlaptop : tab.name === "tablet" ? mrVerticalOffsettablet : tab.name === "phone" ? mrVerticalOffsetphone : mrVerticalOffset,
+      options: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)([{
+        value: "mr-" + tab.name,
+        label: "Default"
+      }, {
+        value: (" mr-" + tab.name + "-offsettop").replace("--", "-"),
+        label: "Top"
+      }, {
+        value: (" mr-" + tab.name + "-offsetelementtop").replace("--", "-"),
+        label: "Element Top"
+      }, {
+        value: (" mr-" + tab.name + "-offsetelementbottom").replace("--", "-"),
+        label: "Element Bottom"
+      }, {
+        value: (" mr-" + tab.name + "-offsetbottom").replace("--", "-"),
+        label: "Bottom"
+      }]),
+      onChange: val => setAttributes({
+        mrVerticalOffset: val !== undefined && !val.includes("mr-hover") && !val.includes("mr-desktop") && !val.includes("mr-laptop") && !val.includes("mr-tablet") && !val.includes("mr-phone") ? val : mrVerticalOffset,
+        mrVerticalOffsetdesktop: val !== undefined && val.includes("mr-desktop") ? val : mrVerticalOffsetdesktop,
+        mrVerticalOffsetlaptop: val !== undefined && val.includes("mr-laptop") ? val : mrVerticalOffsetlaptop,
+        mrVerticalOffsettablet: val !== undefined && val.includes("mr-tablet") ? val : mrVerticalOffsettablet,
+        mrVerticalOffsetphone: val !== undefined && val.includes("mr-phone") ? val : mrVerticalOffsetphone
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.SelectControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Horizontal Offset", "mr-utils"),
+      value: tab.name === "desktop" ? mrHorizontalOffsetdesktop : tab.name === "laptop" ? mrHorizontalOffsetlaptop : tab.name === "tablet" ? mrHorizontalOffsettablet : tab.name === "phone" ? mrHorizontalOffsetphone : mrHorizontalOffset,
+      options: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)([{
+        value: "mr-" + tab.name,
+        label: "Default"
+      }, {
+        value: (" mr-" + tab.name + "-offsetleft").replace("--", "-"),
+        label: "Left"
+      }, {
+        value: (" mr-" + tab.name + "-offsetelementleft").replace("--", "-"),
+        label: "Element Left"
+      }, {
+        value: (" mr-" + tab.name + "-offsetelementright").replace("--", "-"),
+        label: "Element Right"
+      }, {
+        value: (" mr-" + tab.name + "-offsetright").replace("--", "-"),
+        label: "Right"
+      }]),
+      onChange: val => setAttributes({
+        mrHorizontalOffset: val !== undefined && !val.includes("mr-hover") && !val.includes("mr-desktop") && !val.includes("mr-laptop") && !val.includes("mr-tablet") && !val.includes("mr-phone") ? val : mrHorizontalOffset,
+        mrHorizontalOffsetdesktop: val !== undefined && val.includes("mr-desktop") ? val : mrHorizontalOffsetdesktop,
+        mrHorizontalOffsetlaptop: val !== undefined && val.includes("mr-laptop") ? val : mrHorizontalOffsetlaptop,
+        mrHorizontalOffsettablet: val !== undefined && val.includes("mr-tablet") ? val : mrHorizontalOffsettablet,
+        mrHorizontalOffsetphone: val !== undefined && val.includes("mr-phone") ? val : mrHorizontalOffsetphone
+      })
+    }))) : "", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.PanelBody, {
+      icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_25__["default"],
+      title: tab.name + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)(" Misc.", "mr-utils"),
+      initialOpen: false,
+      className: tab.name === "" ? "mr-backend-option mr-backend-option_utils_misc" : "mr-backend-option mr-backend-option_utils_" + tab.name + "_misc"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.SelectControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Scroll", "mr-utils"),
+      value: tab.name === "hover" ? mrScrollhover : tab.name === "desktop" ? mrScrolldesktop : tab.name === "laptop" ? mrScrolllaptop : tab.name === "tablet" ? mrScrolltablet : tab.name === "phone" ? mrScrollphone : mrScroll,
+      options: [{
+        value: "mr-" + tab.name,
+        label: "Default"
+      }, {
+        value: (" mr-" + tab.name + "-noscroll").replace("--", "-"),
+        label: "No scroll"
+      }, {
+        value: (" mr-" + tab.name + "-hidescroll").replace("--", "-"),
+        label: "Hide scroll"
+      }, {
+        value: (" mr-" + tab.name + "-scroll").replace("--", "-"),
+        label: "Scroll"
+      }, tab.name != "hover" ? {
+        value: (" mr-" + tab.name + "-horizontalscroll").replace("--", "-"),
+        label: "Horizontal scroll"
+      } : "", tab.name != "hover" ? {
+        value: (" mr-" + tab.name + "-horizontalscrollcontent").replace("--", "-"),
+        label: "Horizontal scroll content"
+      } : ""],
+      onChange: val => setAttributes({
+        mrScroll: val !== undefined && !val.includes("mr-hover") && !val.includes("mr-desktop") && !val.includes("mr-laptop") && !val.includes("mr-tablet") && !val.includes("mr-phone") ? val : mrScroll,
+        mrScrollhover: val !== undefined && val.includes("-hover-") ? val : mrScrollhover,
+        mrScrolldesktop: val !== undefined && val.includes("mr-desktop") ? val : mrScrolldesktop,
+        mrScrolllaptop: val !== undefined && val.includes("mr-laptop") ? val : mrScrolllaptop,
+        mrScrolltablet: val !== undefined && val.includes("mr-tablet") ? val : mrScrolltablet,
+        mrScrollphone: val !== undefined && val.includes("mr-phone") ? val : mrScrollphone
+      })
+    }))) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h4", null, "Other breakpoints"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null, "You also have the following device breakpoints available:"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", {
+      class: "mr-backend-other_breakpoints"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("b", null, "landscape, portrait")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null, "However you cannot select them with the interface. In alternative, you can use", " ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("a", {
+      href: "https://github.com/marcosrego-web/mr-utils/wiki/Utility-Classes",
+      target: "_blank"
+    }, "utility classes"), " ", "in ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("b", null, "Advanced - Additional CSS class(es)"), "."), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("a", {
+      href: "https://github.com/marcosrego-web/mr-utils/wiki/Utility-Classes",
+      target: "_blank"
+    }, "Know more")))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.PanelBody, {
+      icon: mrDevIcon,
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Need more features?", "mr-utils"),
+      initialOpen: false,
+      className: "mr-backend-more_features"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("b", null, "Then you need Mr.Dev.'s Framework!")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null, "The framework will give you an interface to optionally:"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("ul", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("li", null, "- Select classes/options on text fields besides writting them (for spacing, sizes, colors and more)."), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("li", null, "- Select only the device breakpoints that you want to use, avoiding the load of all styles and scripts."), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("li", null, "- Enable only the components and features that you want to use, avoiding unused CSS and JS."), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("li", null, "- Change the value of each variable (for margin, padding, transition-duration, size, font-size and more)."), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("li", null, "- Change the media query values of each device breakpoint."), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("li", null, "- Create custom breakpoints."), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("li", null, "- Create custom variables."), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("li", null, "- Create custom utility classes with CSS properties + variables and select them within the interface."), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("li", null, "- Toggle a offcanvas section with reusable blocks using a hamburger menu."), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("li", null, "- And more framework features...")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("a", {
+      href: "https://marcosrego.com/development/mrdev-framework/",
+      target: "_blank"
+    }, "Know more")))))))));
+  };
+}, "mrInspectorControls");
+/**
+ * Add classes to backend wrapper for styling porpuses.
+ *
+ * @param {function} BlockListBlock Block edit component.
+ *
+ * @return {function} BlockListBlock Modified block edit component.
+ *
+ */
+
+const mrBackendExtraClasses = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_5__.createHigherOrderComponent)(BlockListBlock => {
+  return props => {
+    const {
+      attributes,
+      blockType
+    } = props;
+    const {
+      mrAnimation,
+      mrAnimationhover,
+      mrTransition,
+      mrTransitionhover,
+      mrPerPage,
+      mrPaginationPosition,
+      mrComponent,
+      mrVerticalScrollNavigation,
+      mrHorizontalScrollNavigation,
+      mrActiveWhen,
+      mrNavPosition,
+      mrArrowPagination,
+      mrSelectPagination,
+      mrRadioPagination,
+      mrPerLine,
+      mrPerLinedesktop,
+      mrPerLinelaptop,
+      mrPerLinetablet,
+      mrPerLinephone,
+      mrColumns,
+      mrColumnsdesktop,
+      mrColumnslaptop,
+      mrColumnstablet,
+      mrColumnsphone,
+      mrOrder,
+      mrOrderdesktop,
+      mrOrderlaptop,
+      mrOrdertablet,
+      mrOrderphone,
+      mrDisplay,
+      mrDisplayhover,
+      mrDisplaydesktop,
+      mrDisplaylaptop,
+      mrDisplaytablet,
+      mrDisplayphone,
+      mrWrap,
+      mrWrapdesktop,
+      mrWraplaptop,
+      mrWraptablet,
+      mrWrapphone,
+      mrPaddingTop,
+      mrPaddingTophover,
+      mrPaddingTopdesktop,
+      mrPaddingToplaptop,
+      mrPaddingToptablet,
+      mrPaddingTopphone,
+      mrPaddingRight,
+      mrPaddingRighthover,
+      mrPaddingRightdesktop,
+      mrPaddingRightlaptop,
+      mrPaddingRighttablet,
+      mrPaddingRightphone,
+      mrPaddingBottom,
+      mrPaddingBottomhover,
+      mrPaddingBottomdesktop,
+      mrPaddingBottomlaptop,
+      mrPaddingBottomtablet,
+      mrPaddingBottomphone,
+      mrPaddingLeft,
+      mrPaddingLefthover,
+      mrPaddingLeftdesktop,
+      mrPaddingLeftlaptop,
+      mrPaddingLefttablet,
+      mrPaddingLeftphone,
+      mrMarginTop,
+      mrMarginTophover,
+      mrMarginTopdesktop,
+      mrMarginToplaptop,
+      mrMarginToptablet,
+      mrMarginTopphone,
+      mrMarginRight,
+      mrMarginRighthover,
+      mrMarginRightdesktop,
+      mrMarginRightlaptop,
+      mrMarginRighttablet,
+      mrMarginRightphone,
+      mrMarginBottom,
+      mrMarginBottomhover,
+      mrMarginBottomdesktop,
+      mrMarginBottomlaptop,
+      mrMarginBottomtablet,
+      mrMarginBottomphone,
+      mrMarginLeft,
+      mrMarginLefthover,
+      mrMarginLeftdesktop,
+      mrMarginLeftlaptop,
+      mrMarginLefttablet,
+      mrMarginLeftphone,
+      mrRowGap,
+      mrColumnGap,
+      mrPosition,
+      mrPositiondesktop,
+      mrPositionlaptop,
+      mrPositiontablet,
+      mrPositionphone,
+      mrPositionAlignment,
+      mrPositionAlignmentdesktop,
+      mrPositionAlignmentlaptop,
+      mrPositionAlignmenttablet,
+      mrPositionAlignmentphone,
+      mrPositionSides,
+      mrPositionSidesdesktop,
+      mrPositionSideslaptop,
+      mrPositionSidestablet,
+      mrPositionSidesphone,
+      mrContentAlignment,
+      mrContentAlignmentdesktop,
+      mrContentAlignmentlaptop,
+      mrContentAlignmenttablet,
+      mrContentAlignmentphone,
+      mrVerticalOffset,
+      mrVerticalOffsetdesktop,
+      mrVerticalOffsetlaptop,
+      mrVerticalOffsettablet,
+      mrVerticalOffsetphone,
+      mrHorizontalOffset,
+      mrHorizontalOffsetdesktop,
+      mrHorizontalOffsetlaptop,
+      mrHorizontalOffsettablet,
+      mrHorizontalOffsetphone,
+      mrSize,
+      mrSizehover,
+      mrSizedesktop,
+      mrSizelaptop,
+      mrSizetablet,
+      mrSizephone,
+      mrBackgroundColor,
+      mrColor,
+      mrFontFamily,
+      mrFontSize,
+      mrFontSizehover,
+      mrFontSizedesktop,
+      mrFontSizelaptop,
+      mrFontSizetablet,
+      mrFontSizephone,
+      mrTextAlignment,
+      mrTextAlignmentdesktop,
+      mrTextAlignmentlaptop,
+      mrTextAlignmenttablet,
+      mrTextAlignmentphone,
+      mrScroll,
+      mrScrollhover,
+      mrScrolldesktop,
+      mrScrolllaptop,
+      mrScrolltablet,
+      mrScrollphone
+    } = attributes;
+    let mrClassNames = "";
+    let mrAttr = "";
+    let mrAttrValue = "";
+    Object.keys(attributes).forEach(function (value) {
+      mrAttr = value;
+      mrAttrValue = attributes[value];
+
+      if (mrAttrValue !== "mr-" && mrAttrValue !== "mr-hover" && mrAttrValue !== "mr-desktop" && mrAttrValue !== "mr-laptop" && mrAttrValue !== "mr-tablet" && mrAttrValue !== "mr-phone" && !mrAttr.includes("mrCustom")) {
+        if (mrAttr == "mrPerPage" && mrAttrValue) {
+          if (mrAttrValue > 0) {
+            mrClassNames = mrClassNames + " mr-" + mrAttrValue + "perpage";
+          }
+        } else if (mrAttr == "mrArrowPagination" && mrAttrValue) {
+          mrClassNames = mrClassNames + " mr-arrowpagination";
+        } else if (mrAttr == "mrSelectPagination" && mrAttrValue) {
+          mrClassNames = mrClassNames + " mr-selectpagination";
+        } else if (mrAttr == "mrRadioPagination" && mrAttrValue) {
+          mrClassNames = mrClassNames + " mr-radiopagination";
+        } else if (mrAttr == "mrVerticalScrollNavigation" && mrAttrValue) {
+          mrClassNames = mrClassNames + " mr-verticalscrollnav";
+        } else if (mrAttr == "mrHorizontalScrollNavigation" && mrAttrValue) {
+          mrClassNames = mrClassNames + " mr-horizontalscrollnav";
+        } else if (mrAttr == "mrAnimation" && mrAttrValue) {
+          mrClassNames = mrClassNames + mrAttrValue + " mr-active";
+        } else if (mrAttr == "mrAnimationhover" && mrAttrValue) {
+          mrClassNames = mrClassNames + mrAttrValue + " mr-active";
+        } else if (mrAttr == "mrActiveWhen" && mrAttrValue) {
+          //mrClassNames = mrClassNames.replace(" mr-active", "");
+          mrClassNames = mrClassNames + mrAttrValue;
+        } else if (mrAttr.includes("mrPadding") && mrAttrValue && mrAttrValue.includes("-padding")) {
+          if (mrAttr == "mrPaddingTop" && mrPaddingTop) {
+            mrClassNames = mrClassNames + " " + mrPaddingTop;
+          } else if (mrAttr == "mrPaddingTophover" && mrPaddingTophover) {
+            mrClassNames = mrClassNames + " " + mrPaddingTophover;
+          } else if (mrAttr == "mrPaddingTopdesktop" && mrPaddingTopdesktop) {
+            mrClassNames = mrClassNames + " " + mrPaddingTopdesktop;
+          } else if (mrAttr == "mrPaddingToplaptop" && mrPaddingToplaptop) {
+            mrClassNames = mrClassNames + " " + mrPaddingToplaptop;
+          } else if (mrAttr == "mrPaddingToplaptablet" && mrPaddingToptablet) {
+            mrClassNames = mrClassNames + " " + mrPaddingToptablet;
+          } else if (mrAttr == "mrPaddingToplapphone" && mrPaddingTopphone) {
+            mrClassNames = mrClassNames + " " + mrPaddingTopphone;
+          } else if (mrAttr == "mrPaddingRight" && mrPaddingRight) {
+            mrClassNames = mrClassNames + " " + mrPaddingRight;
+          } else if (mrAttr == "mrPaddingRighthover" && mrPaddingRighthover) {
+            mrClassNames = mrClassNames + " " + mrPaddingRighthover;
+          } else if (mrAttr == "mrPaddingRightdesktop" && mrPaddingRightdesktop) {
+            mrClassNames = mrClassNames + " " + mrPaddingRightdesktop;
+          } else if (mrAttr == "mrPaddingRightlaptop" && mrPaddingRightlaptop) {
+            mrClassNames = mrClassNames + " " + mrPaddingRightlaptop;
+          } else if (mrAttr == "mrPaddingRightlaptablet" && mrPaddingRighttablet) {
+            mrClassNames = mrClassNames + " " + mrPaddingRighttablet;
+          } else if (mrAttr == "mrPaddingRightlapphone" && mrPaddingRightphone) {
+            mrClassNames = mrClassNames + " " + mrPaddingRightphone;
+          } else if (mrAttr == "mrPaddingBottom" && mrPaddingBottom) {
+            mrClassNames = mrClassNames + " " + mrPaddingBottom;
+          } else if (mrAttr == "mrPaddingBottomhover" && mrPaddingBottomhover) {
+            mrClassNames = mrClassNames + " " + mrPaddingBottomhover;
+          } else if (mrAttr == "mrPaddingBottomdesktop" && mrPaddingBottomdesktop) {
+            mrClassNames = mrClassNames + " " + mrPaddingBottomdesktop;
+          } else if (mrAttr == "mrPaddingBottomlaptop" && mrPaddingBottomlaptop) {
+            mrClassNames = mrClassNames + " " + mrPaddingBottomlaptop;
+          } else if (mrAttr == "mrPaddingBottomlaptablet" && mrPaddingBottomtablet) {
+            mrClassNames = mrClassNames + " " + mrPaddingBottomtablet;
+          } else if (mrAttr == "mrPaddingBottomlapphone" && mrPaddingBottomphone) {
+            mrClassNames = mrClassNames + " " + mrPaddingBottomphone;
+          } else if (mrAttr == "mrPaddingLeft" && mrPaddingLeft) {
+            mrClassNames = mrClassNames + " " + mrPaddingLeft;
+          } else if (mrAttr == "mrPaddingLefthover" && mrPaddingLefthover) {
+            mrClassNames = mrClassNames + " " + mrPaddingLefthover;
+          } else if (mrAttr == "mrPaddingLeftdesktop" && mrPaddingLeftdesktop) {
+            mrClassNames = mrClassNames + " " + mrPaddingLeftdesktop;
+          } else if (mrAttr == "mrPaddingLeftlaptop" && mrPaddingLeftlaptop) {
+            mrClassNames = mrClassNames + " " + mrPaddingLeftlaptop;
+          } else if (mrAttr == "mrPaddingLeftlaptablet" && mrPaddingLefttablet) {
+            mrClassNames = mrClassNames + " " + mrPaddingLefttablet;
+          } else if (mrAttr == "mrPaddingLeftlapphone" && mrPaddingLeftphone) {
+            mrClassNames = mrClassNames + " " + mrPaddingLeftphone;
+          } else {
+            mrClassNames = mrClassNames + mrAttrValue;
+          }
+        } else if (mrAttr.startsWith("mr") && mrAttrValue && mrAttrValue.startsWith("mr")) {
+          mrClassNames = mrClassNames + " " + mrAttrValue;
+        } else if (mrAttr.startsWith("mr") && mrAttrValue) {
+          mrClassNames = mrClassNames + mrAttrValue;
+        }
+      }
+    }); //}
+
+    /*let mrInlineStyles = "";
+    	  mrAttr = "";
+    	  mrAttrValue = "";
+    	  if (mrDisallowedBlocks.includes(blockType.name)) {
+    	  Object.keys(attributes).forEach(function (value) {
+    		  mrAttr = value;
+    		  mrAttrValue = attributes[value];
+    		  if (
+    			  mrAttrValue !== "mr-" &&
+    			  mrAttrValue !== "mr-desktop" &&
+    			  mrAttrValue !== "mr-laptop" &&
+    			  mrAttrValue !== "mr-tablet" &&
+    			  mrAttrValue !== "mr-phone" &&
+    			  mrAttr.includes("mrCustom")
+    		  ) {
+    			  if (
+    				  mrPaddingTop.includes("-custom") &&
+    				  mrAttr == "mrPaddingTop" &&
+    				  mrAttrValue
+    			  ) {
+    				  mrInlineStyles =
+    					  mrInlineStyles + "padding-top:" + mrAttrValue + ";";
+    			  }
+    		  }
+    	  });
+    	  }*/
+
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(BlockListBlock, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
+      className: mrClassNames
+      /*style={mrInlineStyles}*/
+
+    }));
+  };
+}, "mrBackendExtraClasses"); //Add filters
+
+(0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_4__.addFilter)("blocks.registerBlockType", "mr-utils/custom-attributes", mrAttributes);
+(0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_4__.addFilter)("editor.BlockEdit", "mr-utils/custom-control", mrInspectorControls);
+(0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_4__.addFilter)("editor.BlockListBlock", "mr-utils/mrBackendExtraClasses", mrBackendExtraClasses);
+}();
+/******/ })()
+;
+//# sourceMappingURL=index.js.map
