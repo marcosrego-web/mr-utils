@@ -5,7 +5,7 @@
  * Description:       Easily use Mr.Utils front-end toolkit with the block editor interface without knowing code, the classes or the functions.
  * Requires at least: 5.8
  * Requires PHP:      7.0
- * Version:           0.1.5
+ * Version:           0.2.0
  * Author:            Marcos Rego
  * Author uri:		 	https://marcosrego.com
  * License:           GPL-2.0-or-later
@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-$mrutils_version = '0.1.5';
+$mrutils_version = '0.2.0';
 
 if(!isset($mrdev_utils_blocks_url)) {
     $mrdev_utils_blocks_url = plugins_url( __FILE__ );
@@ -48,31 +48,5 @@ if (file_exists(dirname(__FILE__).'/../mrdev-framework_wp/mrdev-framework_wp.php
     }
     add_action( 'admin_notices', 'mrutils_plugin_notice' );
 } else {
-	function mrutils_hide_mrdev_dependencies() {
-		echo '<style>
-		.mr-backend-hascustomoption:not(.mr-backend-padding):not(.mr-backend-margin):not(.mr-backend-gap) option:last-child,
-		.mr-backend-itemsize .components-input-control__container,
-		.mr-backend-fontsize .components-input-control__container {
-			display: none !important;
-		}
-		.mr-backend-custominput {
-			position: relative;
-		}
-		.mr-backend-custominput:before {
-			content: "";
-			position: absolute;
-			z-index: 2;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-		}
-		.mr-backend-custominput input {
-		    all: unset !important;
-    		opacity: 0.5 !important;
-		}
-		</style>';
-	}
-	add_action( 'admin_head', 'mrutils_hide_mrdev_dependencies' );
-    include 'cms/wordpress/mr-utils.php';
+	include 'cms/wordpress/mr-utils.php';
 }

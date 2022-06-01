@@ -1,8 +1,8 @@
 === MR.Utils ===
 Contributors:      Marcos Rego
 Tags:              block, editor, utilities, frontend, toolkit, utils, dev, developer, bootstrap, tailwind, css, js, breakpoints, devices
-Tested up to:      5.9
-Stable tag:        0.1.5
+Tested up to:      6.0
+Stable tag:        0.2.0
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,10 +26,7 @@ You can also apply changes to specific devices/breakpoints: Show/hide blocks dep
 
 = Does the interface of Mr.Utils support all blocks? =
 
-The interface of Mr.Utils works on the vast majority of core blocks. But you have alternative ways to use them that work on any block:
-1. Do you actually need to apply the style directly on the element? Some styles (such as font-size) when applied on parent blocks, might also apply the style into child blocks. With that in mind, you can wrap/transform the unsupported block with a "Group" and then use the interface of Mr.Utils on that group.
-2. All options use [utility classes](https://github.com/marcosrego-web/mr-utils/wiki/Utility-Classes), so for unsupported blocks you can also go to "Advanced > Additional CSS class(es)" and form the classes there.
-3. Or wait for them to be supported. [Maybe you can help me on that](https://github.com/WordPress/gutenberg/issues/36127).
+Since version 0.2.0, that the interface of Mr.Utils works with all core blocks. For third-party blocks or if a specific block is not showing the "Utilities" section, you can still use the [utility classes](https://github.com/marcosrego-web/mr-utils/wiki/Utility-Classes) on the "Advanced" section > "Additional CSS class(es)". If a block is not working for you because of Mr.Utils, please [report the issue](https://github.com/marcosrego-web/mr-utils/issues) or [contact me](https://marcosrego.com/client-area/contact/), do let me know which block you are using. 
 
 = Where can I find more information about Mr.Utils? =
 
@@ -52,6 +49,13 @@ You can contact me at: [https://marcosrego.com/client-area/contact/](https://mar
 7. Mr.Dev.'s Framework allows to create custom utilities to select on the block editor.
 
 == Changelog ==
+
+= 0.2.0 =
+* **Attention:** If you are starting with this version you are ready to go. If you are updating from a previous version, spacing and size options might have to be reselected and classes on Advanced section might have to be cleared, due to some needed core changes. It is advised to test and make the needed changes on a staging/local environment, or to only update the plugin when you are ready to do so.
+* Dynamically add classes (instead of using *blocks.getSaveContent.extraProps*) for the interface to work with all core blocks, as suggested [here](https://github.com/WordPress/gutenberg/issues/36127#issuecomment-1106645202).
+* Improve explanation on the differences between "items per line" and "columns".
+* When using an automatic tabs navigation: Added fallback when the item does not contain child elements.
+* Fixed bug when changing number of columns or items per line on the 'Desktop' breakpoint.
 
 = 0.1.5 =
 * Added spacing options to remove or add Gaps.
