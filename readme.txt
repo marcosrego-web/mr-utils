@@ -2,7 +2,7 @@
 Contributors:      Marcos Rego
 Tags:              block, editor, utilities, frontend, toolkit, utils, dev, developer, bootstrap, tailwind, css, js, breakpoints, devices
 Tested up to:      6.0
-Stable tag:        0.2.0
+Stable tag:        0.2.1
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -49,6 +49,10 @@ You can contact me at: [https://marcosrego.com/client-area/contact/](https://mar
 7. Mr.Dev.'s Framework allows to create custom utilities to select on the block editor.
 
 == Changelog ==
+
+= 0.2.1 =
+* Removes gaps on blocks using pagination.
+* Reorder sections to be more friendly (Pagination closer to Layout).
 
 = 0.2.0 =
 * **Attention:** If you are starting with this version you are ready to go. If you are updating from a previous version, spacing and size options might have to be reselected and classes on Advanced section might have to be cleared, due to some needed core changes. It is advised to test and make the needed changes on a staging/local environment, or to only update the plugin when you are ready to do so.

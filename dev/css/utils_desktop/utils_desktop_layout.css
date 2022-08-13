@@ -18,6 +18,7 @@
   display: -webkit-flex;
   display: flex;
   width: 100%;
+  gap: 0 !important;
 }
 .mr-desktop-12perline,
 .mr-desktop-11perline,

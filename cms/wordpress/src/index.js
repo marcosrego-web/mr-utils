@@ -629,6 +629,14 @@ function mrAttributes(settings) {
 				type: "string",
 				default: "",
 			},
+			mrBackgroundColorhover: {
+				type: "string",
+				default: "",
+			},
+			mrColorhover: {
+				type: "string",
+				default: "",
+			},
 			mrFontFamily: {
 				type: "string",
 				default: "",
@@ -857,6 +865,8 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 			mrSizephone,
 			mrBackgroundColor,
 			mrColor,
+			mrBackgroundColorhover,
+			mrColorhover,
 			mrFontFamily,
 			mrFontSize,
 			mrFontSizehover,
@@ -932,277 +942,6 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 									{(tab) =>
 										tab.name !== "more" ? (
 											<>
-												{tab.name === "" ? (
-													<>
-														<PanelBody
-															icon={pages}
-															title={tab.name + __(" Pagination", "mr-utils")}
-															initialOpen={false}
-															className="mr-backend-option mr-backend-option_utils_pagination"
-														>
-															<TextControl
-																label={__("Items per page", "mr-utils")}
-																value={mrPerPage}
-																type="number"
-																className="mr-backend-perpage"
-																onChange={(val) =>
-																	setAttributes({
-																		mrPerPage: !val ? "" : val,
-																	})
-																}
-																help={
-																	mrPerPage > 0
-																		? __(
-																				"Pagination was applied but you need to preview the frontend to see the actual result.",
-																				"mr-utils"
-																		  )
-																		: __(
-																				"Apply into parent blocks (such as Columns and List blocks) to consider each direct child as a page's item.",
-																				"mr-utils"
-																		  )
-																}
-															/>
-
-															<SelectControl
-																label={__("Pagination position", "mr-utils")}
-																value={mrPaginationPosition}
-																options={[
-																	{
-																		value: "mr-" + tab.name,
-																		label: "Default",
-																	},
-																	{
-																		value: (
-																			" mr-" +
-																			tab.name +
-																			"-paginationtop"
-																		).replace("--", "-"),
-																		label: "Top",
-																	},
-																	{
-																		value: (
-																			" mr-" +
-																			tab.name +
-																			"-paginationbottom"
-																		).replace("--", "-"),
-																		label: "Bottom",
-																	},
-																]}
-																onChange={(val) =>
-																	setAttributes({
-																		mrPaginationPosition:
-																			!val || val === "mr-" + tab.name
-																				? ""
-																				: val.includes("mr-desktop") ||
-																				  val.includes("mr-laptop") ||
-																				  val.includes("mr-tablet") ||
-																				  val.includes("mr-phone") ||
-																				  val.includes("-hover-")
-																				? mrPaginationPosition
-																				: val.replace("--", "-"),
-																	})
-																}
-															/>
-															<ToggleControl
-																label="Arrows"
-																checked={mrArrowPagination}
-																className="mr-backend-perpage"
-																onChange={() =>
-																	setAttributes({
-																		mrArrowPagination: !mrArrowPagination,
-																	})
-																}
-															/>
-															<ToggleControl
-																label="Select dropdown"
-																checked={mrSelectPagination}
-																className="mr-backend-perpage"
-																onChange={() =>
-																	setAttributes({
-																		mrSelectPagination: !mrSelectPagination,
-																	})
-																}
-															/>
-															<ToggleControl
-																label="Radio buttons"
-																checked={mrRadioPagination}
-																className="mr-backend-perpage"
-																onChange={() =>
-																	setAttributes({
-																		mrRadioPagination: !mrRadioPagination,
-																	})
-																}
-															/>
-														</PanelBody>
-														<PanelBody
-															icon={blockDefault}
-															title={tab.name + __(" Components", "mr-utils")}
-															initialOpen={false}
-															className={
-																tab.name === ""
-																	? "mr-backend-option mr-backend-option_utils_components"
-																	: "mr-backend-option mr-backend-option_utils_" +
-																	  tab.name +
-																	  "_components"
-															}
-														>
-															<SelectControl
-																label={__("Component", "mr-utils")}
-																value={mrComponent}
-																options={[
-																	{ value: "mr-" + tab.name, label: "Default" },
-																	{
-																		value: (
-																			" mr-" +
-																			tab.name +
-																			"-tabs"
-																		).replace("--", "-"),
-																		label: "Tabs",
-																	},
-																	{
-																		value: (
-																			" mr-" +
-																			tab.name +
-																			"-tabsnav"
-																		).replace("--", "-"),
-																		label: "Tabs Navigation",
-																	},
-																	{
-																		value: (
-																			" mr-" +
-																			tab.name +
-																			"-swipe"
-																		).replace("--", "-"),
-																		label: "Swipe",
-																	},
-																	{
-																		value: (
-																			" mr-" +
-																			tab.name +
-																			"-swipecontent"
-																		).replace("--", "-"),
-																		label: "Swipe Content",
-																	},
-																]}
-																onChange={(val) =>
-																	setAttributes({
-																		mrComponent:
-																			!val || val === "mr-" + tab.name
-																				? ""
-																				: val.includes("mr-desktop") ||
-																				  val.includes("mr-laptop") ||
-																				  val.includes("mr-tablet") ||
-																				  val.includes("mr-phone") ||
-																				  val.includes("-hover-")
-																				? mrComponent
-																				: val.replace("--", "-"),
-																	})
-																}
-																help={
-																	!mrComponent || mrComponent === "mr-"
-																		? __(
-																				"Apply into parent blocks (such as Columns and List blocks) to consider each direct child as a component item.",
-																				"mr-utils"
-																		  )
-																		: mrComponent.includes("scrollnav")
-																		? __(
-																				"Tip: You can combine 'Scroll Navigation' with the scroll options found on the 'Misc.' section.",
-																				"mr-utils"
-																		  ) +
-																		  " " +
-																		  __(
-																				"The component was applied but you need to preview the frontend to see the actual result.",
-																				"mr-utils"
-																		  )
-																		: __(
-																				"The component was applied but you need to preview the frontend to see the actual result.",
-																				"mr-utils"
-																		  )
-																}
-															/>
-															{mrComponent.includes("tabs") ||
-															mrComponent.includes("swipe") ? (
-																<SelectControl
-																	label={__("Navigation position", "mr-utils")}
-																	value={mrNavPosition}
-																	options={[
-																		{
-																			value: "mr-" + tab.name,
-																			label: "Default",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-navtop"
-																			).replace("--", "-"),
-																			label: "Top",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-navbottom"
-																			).replace("--", "-"),
-																			label: "Bottom",
-																		},
-																	]}
-																	onChange={(val) =>
-																		setAttributes({
-																			mrNavPosition:
-																				!val || val === "mr-" + tab.name
-																					? ""
-																					: val.includes("mr-desktop") ||
-																					  val.includes("mr-laptop") ||
-																					  val.includes("mr-tablet") ||
-																					  val.includes("mr-phone") ||
-																					  val.includes("-hover-")
-																					? mrNavPosition
-																					: val.replace("--", "-"),
-																		})
-																	}
-																/>
-															) : (
-																""
-															)}
-															<p>{__("Scroll navigation", "mr-utils")}</p>
-															<ToggleControl
-																label="Vertical Arrows"
-																checked={mrVerticalScrollNavigation}
-																className="mr-backend-scrollnav"
-																onChange={() =>
-																	setAttributes({
-																		mrVerticalScrollNavigation: !mrVerticalScrollNavigation,
-																	})
-																}
-															/>
-															<ToggleControl
-																label="Horizontal Arrows"
-																checked={mrHorizontalScrollNavigation}
-																className="mr-backend-scrollnav"
-																onChange={() =>
-																	setAttributes({
-																		mrHorizontalScrollNavigation: !mrHorizontalScrollNavigation,
-																	})
-																}
-																help={
-																	mrHorizontalScrollNavigation ||
-																	mrVerticalScrollNavigation
-																		? __(
-																				"The navigation was applied but you need to preview the frontend to see the actual result.",
-																				"mr-utils"
-																		  )
-																		: __(
-																				"Add an alternative navigation to elements with scroll.",
-																				"mr-utils"
-																		  )
-																}
-															/>
-														</PanelBody>
-													</>
-												) : (
-													""
-												)}
 												{tab.name === "" || tab.name === "hover" ? (
 													<PanelBody
 														icon={symbol}
@@ -1427,7 +1166,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																label={__("Active when:", "mr-utils")}
 																value={mrActiveWhen}
 																options={[
-																	{ value: "mr-" + tab.name, label: "Default" },
+																	{ value: "mr-" + tab.name, label: " " },
 																	{
 																		value: (
 																			" mr-" +
@@ -1470,6 +1209,277 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																				"mr-utils",
 																				"mr-utils"
 																		  )
+																}
+															/>
+														</PanelBody>
+													</>
+												) : (
+													""
+												)}
+												{tab.name === "" ? (
+													<>
+														<PanelBody
+															icon={blockDefault}
+															title={tab.name + __(" Components", "mr-utils")}
+															initialOpen={false}
+															className={
+																tab.name === ""
+																	? "mr-backend-option mr-backend-option_utils_components"
+																	: "mr-backend-option mr-backend-option_utils_" +
+																	  tab.name +
+																	  "_components"
+															}
+														>
+															<SelectControl
+																label={__("Component", "mr-utils")}
+																value={mrComponent}
+																options={[
+																	{ value: "mr-" + tab.name, label: "Default" },
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-tabs"
+																		).replace("--", "-"),
+																		label: "Tabs",
+																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-tabsnav"
+																		).replace("--", "-"),
+																		label: "Tabs Navigation",
+																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-swipe"
+																		).replace("--", "-"),
+																		label: "Swipe",
+																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-swipecontent"
+																		).replace("--", "-"),
+																		label: "Swipe Content",
+																	},
+																]}
+																onChange={(val) =>
+																	setAttributes({
+																		mrComponent:
+																			!val || val === "mr-" + tab.name
+																				? ""
+																				: val.includes("mr-desktop") ||
+																				  val.includes("mr-laptop") ||
+																				  val.includes("mr-tablet") ||
+																				  val.includes("mr-phone") ||
+																				  val.includes("-hover-")
+																				? mrComponent
+																				: val.replace("--", "-"),
+																	})
+																}
+																help={
+																	!mrComponent || mrComponent === "mr-"
+																		? __(
+																				"Apply into parent blocks (such as Columns and List blocks) to consider each direct child as a component item.",
+																				"mr-utils"
+																		  )
+																		: mrComponent.includes("scrollnav")
+																		? __(
+																				"Tip: You can combine 'Scroll Navigation' with the scroll options found on the 'Misc.' section.",
+																				"mr-utils"
+																		  ) +
+																		  " " +
+																		  __(
+																				"The component was applied but you need to preview the frontend to see the actual result.",
+																				"mr-utils"
+																		  )
+																		: __(
+																				"The component was applied but you need to preview the frontend to see the actual result.",
+																				"mr-utils"
+																		  )
+																}
+															/>
+															{mrComponent.includes("tabs") ||
+															mrComponent.includes("swipe") ? (
+																<SelectControl
+																	label={__("Navigation position", "mr-utils")}
+																	value={mrNavPosition}
+																	options={[
+																		{
+																			value: "mr-" + tab.name,
+																			label: "Default",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-navtop"
+																			).replace("--", "-"),
+																			label: "Top",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-navbottom"
+																			).replace("--", "-"),
+																			label: "Bottom",
+																		},
+																	]}
+																	onChange={(val) =>
+																		setAttributes({
+																			mrNavPosition:
+																				!val || val === "mr-" + tab.name
+																					? ""
+																					: val.includes("mr-desktop") ||
+																					  val.includes("mr-laptop") ||
+																					  val.includes("mr-tablet") ||
+																					  val.includes("mr-phone") ||
+																					  val.includes("-hover-")
+																					? mrNavPosition
+																					: val.replace("--", "-"),
+																		})
+																	}
+																/>
+															) : (
+																""
+															)}
+															<p>{__("Scroll navigation", "mr-utils")}</p>
+															<ToggleControl
+																label="Vertical Arrows"
+																checked={mrVerticalScrollNavigation}
+																className="mr-backend-scrollnav"
+																onChange={() =>
+																	setAttributes({
+																		mrVerticalScrollNavigation: !mrVerticalScrollNavigation,
+																	})
+																}
+															/>
+															<ToggleControl
+																label="Horizontal Arrows"
+																checked={mrHorizontalScrollNavigation}
+																className="mr-backend-scrollnav"
+																onChange={() =>
+																	setAttributes({
+																		mrHorizontalScrollNavigation: !mrHorizontalScrollNavigation,
+																	})
+																}
+																help={
+																	mrHorizontalScrollNavigation ||
+																	mrVerticalScrollNavigation
+																		? __(
+																				"The navigation was applied but you need to preview the frontend to see the actual result.",
+																				"mr-utils"
+																		  )
+																		: __(
+																				"Add an alternative navigation to elements with scroll.",
+																				"mr-utils"
+																		  )
+																}
+															/>
+														</PanelBody>
+														<PanelBody
+															icon={pages}
+															title={tab.name + __(" Pagination", "mr-utils")}
+															initialOpen={false}
+															className="mr-backend-option mr-backend-option_utils_pagination"
+														>
+															<TextControl
+																label={__("Items per page", "mr-utils")}
+																value={mrPerPage}
+																type="number"
+																className="mr-backend-perpage"
+																onChange={(val) =>
+																	setAttributes({
+																		mrPerPage: !val ? "" : val,
+																	})
+																}
+																help={
+																	mrPerPage > 0
+																		? __(
+																				"Pagination was applied but you need to preview the frontend to see the actual result.",
+																				"mr-utils"
+																		  )
+																		: __(
+																				"Apply into parent blocks (such as Columns and List blocks) to consider each direct child as a page's item.",
+																				"mr-utils"
+																		  )
+																}
+															/>
+
+															<SelectControl
+																label={__("Pagination position", "mr-utils")}
+																value={mrPaginationPosition}
+																options={[
+																	{
+																		value: "mr-" + tab.name,
+																		label: "Default",
+																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-paginationtop"
+																		).replace("--", "-"),
+																		label: "Top",
+																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-paginationbottom"
+																		).replace("--", "-"),
+																		label: "Bottom",
+																	},
+																]}
+																onChange={(val) =>
+																	setAttributes({
+																		mrPaginationPosition:
+																			!val || val === "mr-" + tab.name
+																				? ""
+																				: val.includes("mr-desktop") ||
+																				  val.includes("mr-laptop") ||
+																				  val.includes("mr-tablet") ||
+																				  val.includes("mr-phone") ||
+																				  val.includes("-hover-")
+																				? mrPaginationPosition
+																				: val.replace("--", "-"),
+																	})
+																}
+															/>
+															<ToggleControl
+																label="Arrows"
+																checked={mrArrowPagination}
+																className="mr-backend-perpage"
+																onChange={() =>
+																	setAttributes({
+																		mrArrowPagination: !mrArrowPagination,
+																	})
+																}
+															/>
+															<ToggleControl
+																label="Select dropdown"
+																checked={mrSelectPagination}
+																className="mr-backend-perpage"
+																onChange={() =>
+																	setAttributes({
+																		mrSelectPagination: !mrSelectPagination,
+																	})
+																}
+															/>
+															<ToggleControl
+																label="Radio buttons"
+																checked={mrRadioPagination}
+																className="mr-backend-perpage"
+																onChange={() =>
+																	setAttributes({
+																		mrRadioPagination: !mrRadioPagination,
+																	})
 																}
 															/>
 														</PanelBody>
@@ -2315,30 +2325,49 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 														}
 													/>
 												</PanelBody>
-												{tab.name === "" ? (
+												{tab.name === "" || tab.name === "hover" ? (
 													<PanelBody
 														icon={brush}
 														title={tab.name + __(" Appearance", "mr-utils")}
 														initialOpen={false}
 														className="mr-backend-option mr-backend-option_utils_appearance"
 													>
-														{tab.name === "" ? (
+														{tab.name === "" || tab.name === "hover" ? (
 															<TextControl
 																label={__("Background Color", "mr-utils")}
-																value={mrBackgroundColor}
+																value={
+																	tab.name === "hover"
+																		? mrBackgroundColorhover
+																		: mrBackgroundColor
+																}
 																type="text"
 																className="mr-backend-custominput mr-backend-custombackgroundcolor"
-																placeHolder={"mr-backgroundcolor"}
-																list={"mrDevUtilsClasses_backgroundcolor".replace(
-																	"__",
-																	"_"
-																)}
+																placeHolder={(
+																	"mr-" +
+																	tab.name +
+																	"-backgroundcolor"
+																).replace("--", "-")}
+																list={(
+																	"mrDevUtilsClasses_" +
+																	tab.name +
+																	"_backgroundcolor"
+																).replace("__", "_")}
 																onChange={(val) =>
 																	setAttributes({
 																		mrBackgroundColor:
-																			val !== undefined
+																			val !== undefined &&
+																			!val.includes("mr-hover") &&
+																			!val.includes("mr-desktop") &&
+																			!val.includes("mr-laptop") &&
+																			!val.includes("mr-tablet") &&
+																			!val.includes("mr-phone")
 																				? val
 																				: mrBackgroundColor,
+																		mrBackgroundColorhover:
+																			val !== undefined &&
+																			val.includes("mr-hover")
+																				? val
+																				: mrBackgroundColorhover,
 																	})
 																}
 															/>
@@ -2346,20 +2375,40 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 															""
 														)}
 
-														{tab.name === "" ? (
+														{tab.name === "" || tab.name === "hover" ? (
 															<TextControl
 																label={__("Color", "mr-utils")}
-																value={mrColor}
+																value={
+																	tab.name === "hover" ? mrColorhover : mrColor
+																}
 																type="text"
 																className="mr-backend-custominput mr-backend-customcolor"
-																placeHolder={"mr-textcolor"}
-																list={"mrDevUtilsClasses_color".replace(
-																	"__",
-																	"_"
-																)}
+																placeHolder={(
+																	"mr-" +
+																	tab.name +
+																	"-color"
+																).replace("--", "-")}
+																list={(
+																	"mrDevUtilsClasses_" +
+																	tab.name +
+																	"_color"
+																).replace("__", "_")}
 																onChange={(val) =>
 																	setAttributes({
-																		mrColor: val !== undefined ? val : mrColor,
+																		mrColor:
+																			val !== undefined &&
+																			!val.includes("mr-hover") &&
+																			!val.includes("mr-desktop") &&
+																			!val.includes("mr-laptop") &&
+																			!val.includes("mr-tablet") &&
+																			!val.includes("mr-phone")
+																				? val
+																				: mrColor,
+																		mrColorhover:
+																			val !== undefined &&
+																			val.includes("mr-hover")
+																				? val
+																				: mrColorhover,
 																	})
 																}
 															/>
@@ -3261,7 +3310,7 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 															value={mrFontFamily}
 															type="text"
 															className="mr-backend-custominput mr-backend-customfontfamily"
-															placeHolder={"mr-font1"}
+															placeHolder={"mr-font{1/2}"}
 															list={"mrDevUtilsClasses_fontfamily".replace(
 																"__",
 																"_"
@@ -4300,6 +4349,8 @@ const mrBackendExtraClasses = createHigherOrderComponent((BlockListBlock) => {
 			mrSizephone,
 			mrBackgroundColor,
 			mrColor,
+			mrBackgroundColorhover,
+			mrColorhover,
 			mrFontFamily,
 			mrFontSize,
 			mrFontSizehover,

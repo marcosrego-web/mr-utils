@@ -796,10 +796,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/tablet.js");
 /* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/mobile.js");
 /* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/plus.js");
-/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/pages.js");
-/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/block-default.js");
-/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/symbol.js");
-/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/replace.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/symbol.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/replace.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/block-default.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/pages.js");
 /* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/layout.js");
 /* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/swatch.js");
 /* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/brush.js");
@@ -1398,6 +1398,14 @@ function mrAttributes(settings) {
         type: "string",
         default: ""
       },
+      mrBackgroundColorhover: {
+        type: "string",
+        default: ""
+      },
+      mrColorhover: {
+        type: "string",
+        default: ""
+      },
       mrFontFamily: {
         type: "string",
         default: ""
@@ -1631,6 +1639,8 @@ const mrInspectorControls = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_5__.c
       mrSizephone,
       mrBackgroundColor,
       mrColor,
+      mrBackgroundColorhover,
+      mrColorhover,
       mrFontFamily,
       mrFontSize,
       mrFontSizehover,
@@ -1690,118 +1700,8 @@ const mrInspectorControls = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_5__.c
         title: _wordpress_icons__WEBPACK_IMPORTED_MODULE_14__["default"],
         className: "mr-backend-tab mr-backend-tab_more"
       }]
-    }, tab => tab.name !== "more" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, tab.name === "" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.PanelBody, {
+    }, tab => tab.name !== "more" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, tab.name === "" || tab.name === "hover" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.PanelBody, {
       icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_15__["default"],
-      title: tab.name + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)(" Pagination", "mr-utils"),
-      initialOpen: false,
-      className: "mr-backend-option mr-backend-option_utils_pagination"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.TextControl, {
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Items per page", "mr-utils"),
-      value: mrPerPage,
-      type: "number",
-      className: "mr-backend-perpage",
-      onChange: val => setAttributes({
-        mrPerPage: !val ? "" : val
-      }),
-      help: mrPerPage > 0 ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Pagination was applied but you need to preview the frontend to see the actual result.", "mr-utils") : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Apply into parent blocks (such as Columns and List blocks) to consider each direct child as a page's item.", "mr-utils")
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.SelectControl, {
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Pagination position", "mr-utils"),
-      value: mrPaginationPosition,
-      options: [{
-        value: "mr-" + tab.name,
-        label: "Default"
-      }, {
-        value: (" mr-" + tab.name + "-paginationtop").replace("--", "-"),
-        label: "Top"
-      }, {
-        value: (" mr-" + tab.name + "-paginationbottom").replace("--", "-"),
-        label: "Bottom"
-      }],
-      onChange: val => setAttributes({
-        mrPaginationPosition: !val || val === "mr-" + tab.name ? "" : val.includes("mr-desktop") || val.includes("mr-laptop") || val.includes("mr-tablet") || val.includes("mr-phone") || val.includes("-hover-") ? mrPaginationPosition : val.replace("--", "-")
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.ToggleControl, {
-      label: "Arrows",
-      checked: mrArrowPagination,
-      className: "mr-backend-perpage",
-      onChange: () => setAttributes({
-        mrArrowPagination: !mrArrowPagination
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.ToggleControl, {
-      label: "Select dropdown",
-      checked: mrSelectPagination,
-      className: "mr-backend-perpage",
-      onChange: () => setAttributes({
-        mrSelectPagination: !mrSelectPagination
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.ToggleControl, {
-      label: "Radio buttons",
-      checked: mrRadioPagination,
-      className: "mr-backend-perpage",
-      onChange: () => setAttributes({
-        mrRadioPagination: !mrRadioPagination
-      })
-    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.PanelBody, {
-      icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_16__["default"],
-      title: tab.name + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)(" Components", "mr-utils"),
-      initialOpen: false,
-      className: tab.name === "" ? "mr-backend-option mr-backend-option_utils_components" : "mr-backend-option mr-backend-option_utils_" + tab.name + "_components"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.SelectControl, {
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Component", "mr-utils"),
-      value: mrComponent,
-      options: [{
-        value: "mr-" + tab.name,
-        label: "Default"
-      }, {
-        value: (" mr-" + tab.name + "-tabs").replace("--", "-"),
-        label: "Tabs"
-      }, {
-        value: (" mr-" + tab.name + "-tabsnav").replace("--", "-"),
-        label: "Tabs Navigation"
-      }, {
-        value: (" mr-" + tab.name + "-swipe").replace("--", "-"),
-        label: "Swipe"
-      }, {
-        value: (" mr-" + tab.name + "-swipecontent").replace("--", "-"),
-        label: "Swipe Content"
-      }],
-      onChange: val => setAttributes({
-        mrComponent: !val || val === "mr-" + tab.name ? "" : val.includes("mr-desktop") || val.includes("mr-laptop") || val.includes("mr-tablet") || val.includes("mr-phone") || val.includes("-hover-") ? mrComponent : val.replace("--", "-")
-      }),
-      help: !mrComponent || mrComponent === "mr-" ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Apply into parent blocks (such as Columns and List blocks) to consider each direct child as a component item.", "mr-utils") : mrComponent.includes("scrollnav") ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Tip: You can combine 'Scroll Navigation' with the scroll options found on the 'Misc.' section.", "mr-utils") + " " + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("The component was applied but you need to preview the frontend to see the actual result.", "mr-utils") : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("The component was applied but you need to preview the frontend to see the actual result.", "mr-utils")
-    }), mrComponent.includes("tabs") || mrComponent.includes("swipe") ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.SelectControl, {
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Navigation position", "mr-utils"),
-      value: mrNavPosition,
-      options: [{
-        value: "mr-" + tab.name,
-        label: "Default"
-      }, {
-        value: (" mr-" + tab.name + "-navtop").replace("--", "-"),
-        label: "Top"
-      }, {
-        value: (" mr-" + tab.name + "-navbottom").replace("--", "-"),
-        label: "Bottom"
-      }],
-      onChange: val => setAttributes({
-        mrNavPosition: !val || val === "mr-" + tab.name ? "" : val.includes("mr-desktop") || val.includes("mr-laptop") || val.includes("mr-tablet") || val.includes("mr-phone") || val.includes("-hover-") ? mrNavPosition : val.replace("--", "-")
-      })
-    }) : "", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Scroll navigation", "mr-utils")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.ToggleControl, {
-      label: "Vertical Arrows",
-      checked: mrVerticalScrollNavigation,
-      className: "mr-backend-scrollnav",
-      onChange: () => setAttributes({
-        mrVerticalScrollNavigation: !mrVerticalScrollNavigation
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.ToggleControl, {
-      label: "Horizontal Arrows",
-      checked: mrHorizontalScrollNavigation,
-      className: "mr-backend-scrollnav",
-      onChange: () => setAttributes({
-        mrHorizontalScrollNavigation: !mrHorizontalScrollNavigation
-      }),
-      help: mrHorizontalScrollNavigation || mrVerticalScrollNavigation ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("The navigation was applied but you need to preview the frontend to see the actual result.", "mr-utils") : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Add an alternative navigation to elements with scroll.", "mr-utils")
-    }))) : "", tab.name === "" || tab.name === "hover" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.PanelBody, {
-      icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_17__["default"],
       title: tab.name + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)(" Animations", "mr-utils"),
       initialOpen: false,
       className: tab.name === "" ? "mr-backend-option mr-backend-option_utils_animations" : "mr-backend-option mr-backend-option_utils_" + tab.name + "_animations"
@@ -1879,7 +1779,7 @@ const mrInspectorControls = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_5__.c
         mrTransitionhover: val !== undefined && val.includes("-hover-") ? val : mrTransitionhover
       })
     })) : "", tab.name === "" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.PanelBody, {
-      icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_18__["default"],
+      icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_16__["default"],
       title: tab.name + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)(" Dynamic", "mr-utils"),
       initialOpen: false,
       className: tab.name === "" ? "mr-backend-option mr-backend-option_utils_dynamic" : "mr-backend-option mr-backend-option_utils_" + tab.name + "_dynamic"
@@ -1888,7 +1788,7 @@ const mrInspectorControls = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_5__.c
       value: mrActiveWhen,
       options: [{
         value: "mr-" + tab.name,
-        label: "Default"
+        label: " "
       }, {
         value: (" mr-" + tab.name + "-activeinview").replace("--", "-"),
         label: "In view"
@@ -1900,6 +1800,116 @@ const mrInspectorControls = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_5__.c
         mrActiveWhen: !val || val === "mr-" + tab.name ? "" : val.includes("mr-desktop") || val.includes("mr-laptop") || val.includes("mr-tablet") || val.includes("mr-phone") || val.includes("-hover-") ? mrActiveWhen : val.replace("--", "-")
       }),
       help: !mrActiveWhen || mrActiveWhen === "mr-" ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Adds the class 'mr-active' depending of the selected situation. You can combine with animations to decide when the animation should start.", "mr-utils") : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("The task is ready but you need to preview the frontend to see the actual result.", "mr-utils", "mr-utils")
+    }))) : "", tab.name === "" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.PanelBody, {
+      icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_17__["default"],
+      title: tab.name + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)(" Components", "mr-utils"),
+      initialOpen: false,
+      className: tab.name === "" ? "mr-backend-option mr-backend-option_utils_components" : "mr-backend-option mr-backend-option_utils_" + tab.name + "_components"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.SelectControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Component", "mr-utils"),
+      value: mrComponent,
+      options: [{
+        value: "mr-" + tab.name,
+        label: "Default"
+      }, {
+        value: (" mr-" + tab.name + "-tabs").replace("--", "-"),
+        label: "Tabs"
+      }, {
+        value: (" mr-" + tab.name + "-tabsnav").replace("--", "-"),
+        label: "Tabs Navigation"
+      }, {
+        value: (" mr-" + tab.name + "-swipe").replace("--", "-"),
+        label: "Swipe"
+      }, {
+        value: (" mr-" + tab.name + "-swipecontent").replace("--", "-"),
+        label: "Swipe Content"
+      }],
+      onChange: val => setAttributes({
+        mrComponent: !val || val === "mr-" + tab.name ? "" : val.includes("mr-desktop") || val.includes("mr-laptop") || val.includes("mr-tablet") || val.includes("mr-phone") || val.includes("-hover-") ? mrComponent : val.replace("--", "-")
+      }),
+      help: !mrComponent || mrComponent === "mr-" ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Apply into parent blocks (such as Columns and List blocks) to consider each direct child as a component item.", "mr-utils") : mrComponent.includes("scrollnav") ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Tip: You can combine 'Scroll Navigation' with the scroll options found on the 'Misc.' section.", "mr-utils") + " " + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("The component was applied but you need to preview the frontend to see the actual result.", "mr-utils") : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("The component was applied but you need to preview the frontend to see the actual result.", "mr-utils")
+    }), mrComponent.includes("tabs") || mrComponent.includes("swipe") ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.SelectControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Navigation position", "mr-utils"),
+      value: mrNavPosition,
+      options: [{
+        value: "mr-" + tab.name,
+        label: "Default"
+      }, {
+        value: (" mr-" + tab.name + "-navtop").replace("--", "-"),
+        label: "Top"
+      }, {
+        value: (" mr-" + tab.name + "-navbottom").replace("--", "-"),
+        label: "Bottom"
+      }],
+      onChange: val => setAttributes({
+        mrNavPosition: !val || val === "mr-" + tab.name ? "" : val.includes("mr-desktop") || val.includes("mr-laptop") || val.includes("mr-tablet") || val.includes("mr-phone") || val.includes("-hover-") ? mrNavPosition : val.replace("--", "-")
+      })
+    }) : "", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Scroll navigation", "mr-utils")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.ToggleControl, {
+      label: "Vertical Arrows",
+      checked: mrVerticalScrollNavigation,
+      className: "mr-backend-scrollnav",
+      onChange: () => setAttributes({
+        mrVerticalScrollNavigation: !mrVerticalScrollNavigation
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.ToggleControl, {
+      label: "Horizontal Arrows",
+      checked: mrHorizontalScrollNavigation,
+      className: "mr-backend-scrollnav",
+      onChange: () => setAttributes({
+        mrHorizontalScrollNavigation: !mrHorizontalScrollNavigation
+      }),
+      help: mrHorizontalScrollNavigation || mrVerticalScrollNavigation ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("The navigation was applied but you need to preview the frontend to see the actual result.", "mr-utils") : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Add an alternative navigation to elements with scroll.", "mr-utils")
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.PanelBody, {
+      icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_18__["default"],
+      title: tab.name + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)(" Pagination", "mr-utils"),
+      initialOpen: false,
+      className: "mr-backend-option mr-backend-option_utils_pagination"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.TextControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Items per page", "mr-utils"),
+      value: mrPerPage,
+      type: "number",
+      className: "mr-backend-perpage",
+      onChange: val => setAttributes({
+        mrPerPage: !val ? "" : val
+      }),
+      help: mrPerPage > 0 ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Pagination was applied but you need to preview the frontend to see the actual result.", "mr-utils") : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Apply into parent blocks (such as Columns and List blocks) to consider each direct child as a page's item.", "mr-utils")
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.SelectControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Pagination position", "mr-utils"),
+      value: mrPaginationPosition,
+      options: [{
+        value: "mr-" + tab.name,
+        label: "Default"
+      }, {
+        value: (" mr-" + tab.name + "-paginationtop").replace("--", "-"),
+        label: "Top"
+      }, {
+        value: (" mr-" + tab.name + "-paginationbottom").replace("--", "-"),
+        label: "Bottom"
+      }],
+      onChange: val => setAttributes({
+        mrPaginationPosition: !val || val === "mr-" + tab.name ? "" : val.includes("mr-desktop") || val.includes("mr-laptop") || val.includes("mr-tablet") || val.includes("mr-phone") || val.includes("-hover-") ? mrPaginationPosition : val.replace("--", "-")
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.ToggleControl, {
+      label: "Arrows",
+      checked: mrArrowPagination,
+      className: "mr-backend-perpage",
+      onChange: () => setAttributes({
+        mrArrowPagination: !mrArrowPagination
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.ToggleControl, {
+      label: "Select dropdown",
+      checked: mrSelectPagination,
+      className: "mr-backend-perpage",
+      onChange: () => setAttributes({
+        mrSelectPagination: !mrSelectPagination
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.ToggleControl, {
+      label: "Radio buttons",
+      checked: mrRadioPagination,
+      className: "mr-backend-perpage",
+      onChange: () => setAttributes({
+        mrRadioPagination: !mrRadioPagination
+      })
     }))) : "", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.PanelBody, {
       icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_19__["default"],
       title: tab.name + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)(" Layout", "mr-utils"),
@@ -2158,30 +2168,32 @@ const mrInspectorControls = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_5__.c
         href: "https://github.com/marcosrego-web/mr-utils/wiki/Utility-Classes#display",
         target: "_blank"
       }, "Know the differences between visibilities")
-    })), tab.name === "" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.PanelBody, {
+    })), tab.name === "" || tab.name === "hover" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.PanelBody, {
       icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_21__["default"],
       title: tab.name + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)(" Appearance", "mr-utils"),
       initialOpen: false,
       className: "mr-backend-option mr-backend-option_utils_appearance"
-    }, tab.name === "" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.TextControl, {
+    }, tab.name === "" || tab.name === "hover" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.TextControl, {
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Background Color", "mr-utils"),
-      value: mrBackgroundColor,
+      value: tab.name === "hover" ? mrBackgroundColorhover : mrBackgroundColor,
       type: "text",
       className: "mr-backend-custominput mr-backend-custombackgroundcolor",
-      placeHolder: "mr-backgroundcolor",
-      list: "mrDevUtilsClasses_backgroundcolor".replace("__", "_"),
+      placeHolder: ("mr-" + tab.name + "-backgroundcolor").replace("--", "-"),
+      list: ("mrDevUtilsClasses_" + tab.name + "_backgroundcolor").replace("__", "_"),
       onChange: val => setAttributes({
-        mrBackgroundColor: val !== undefined ? val : mrBackgroundColor
+        mrBackgroundColor: val !== undefined && !val.includes("mr-hover") && !val.includes("mr-desktop") && !val.includes("mr-laptop") && !val.includes("mr-tablet") && !val.includes("mr-phone") ? val : mrBackgroundColor,
+        mrBackgroundColorhover: val !== undefined && val.includes("mr-hover") ? val : mrBackgroundColorhover
       })
-    }) : "", tab.name === "" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.TextControl, {
+    }) : "", tab.name === "" || tab.name === "hover" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.TextControl, {
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Color", "mr-utils"),
-      value: mrColor,
+      value: tab.name === "hover" ? mrColorhover : mrColor,
       type: "text",
       className: "mr-backend-custominput mr-backend-customcolor",
-      placeHolder: "mr-textcolor",
-      list: "mrDevUtilsClasses_color".replace("__", "_"),
+      placeHolder: ("mr-" + tab.name + "-color").replace("--", "-"),
+      list: ("mrDevUtilsClasses_" + tab.name + "_color").replace("__", "_"),
       onChange: val => setAttributes({
-        mrColor: val !== undefined ? val : mrColor
+        mrColor: val !== undefined && !val.includes("mr-hover") && !val.includes("mr-desktop") && !val.includes("mr-laptop") && !val.includes("mr-tablet") && !val.includes("mr-phone") ? val : mrColor,
+        mrColorhover: val !== undefined && val.includes("mr-hover") ? val : mrColorhover
       })
     }) : "") : "", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.PanelBody, {
       icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_22__["default"],
@@ -2354,7 +2366,7 @@ const mrInspectorControls = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_5__.c
       value: mrFontFamily,
       type: "text",
       className: "mr-backend-custominput mr-backend-customfontfamily",
-      placeHolder: "mr-font1",
+      placeHolder: "mr-font{1/2}",
       list: "mrDevUtilsClasses_fontfamily".replace("__", "_"),
       onChange: val => setAttributes({
         mrFontFamily: val !== undefined ? val : mrFontFamily
@@ -2747,6 +2759,8 @@ const mrBackendExtraClasses = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_5__
       mrSizephone,
       mrBackgroundColor,
       mrColor,
+      mrBackgroundColorhover,
+      mrColorhover,
       mrFontFamily,
       mrFontSize,
       mrFontSizehover,
