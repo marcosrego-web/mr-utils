@@ -52,6 +52,7 @@ You can contact me at: [https://marcosrego.com/client-area/contact/](https://mar
 
 = 0.2.1 =
 * Removes gaps on blocks using pagination.
+* Add exception to core/tag-cloud.
 * Reorder sections to be more friendly (Pagination closer to Layout).
 
 = 0.2.0 =

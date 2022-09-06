@@ -844,7 +844,7 @@ const mrDevIcon = wp.element.createElement("svg", {
 function mrAttributes(settings) {
   //check if object exists for old Gutenberg version compatibility
   //add mrDisallowedBlocks restriction
-  if (typeof settings.attributes !== "undefined" && settings.name.includes("core/") && settings.name !== "core/archives") {
+  if (typeof settings.attributes !== "undefined" && settings.name.includes("core/") && settings.name !== "core/archives" && settings.name !== "core/tag-cloud") {
     settings.attributes = Object.assign(settings.attributes, {
       mrAnimation: {
         type: "string",
@@ -1660,7 +1660,7 @@ const mrInspectorControls = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_5__.c
       mrScrolltablet,
       mrScrollphone
     } = attributes;
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(BlockEdit, props), isSelected && name.includes("core/") && name !== "core/archives" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__.InspectorControls, {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(BlockEdit, props), isSelected && name.includes("core/") && name !== "core/archives" && name !== "core/tag-cloud" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__.InspectorControls, {
       key: "setting"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.Panel, {
       header: ""
