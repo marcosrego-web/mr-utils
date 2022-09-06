@@ -37,6 +37,14 @@ function mrActiveInView(t, e, p) {
     }
   }
 }
+/*function mrInactiveOnMouseOut(t) {
+  if (!t) {
+    t = this;
+  }
+  if (t.classList.contains("mr-active")) {
+    t.classList.remove("mr-active");
+  }
+}*/
 function mrScrollTo(t, e, p) {
   t &&
     ((element = p || document.scrollingElement || document.documentElement),
@@ -169,9 +177,46 @@ document.addEventListener("click", function (t) {
   }
   t.stopPropagation();
 });
+
 window.addEventListener("scroll", function () {
   mrActiveInView();
 });
+
+/*document.addEventListener("mouseover", function (t) {
+  if (
+    t.target.matches(".mr-activeonhover") &&
+    !t.target.classList.contains("mr-active")
+  ) {
+    let mrActivesOnHover = document.querySelectorAll(
+      ".mr-activeonhover.mr-active"
+    );
+    for (let id = 0; id < mrActivesOnHover.length; id++) {
+      let mrActiveOnHover = mrActivesOnHover[id];
+      mrActiveOnHover.classList.remove("mr-active");
+    }
+    t.target.classList.add("mr-active");
+  }
+  t.stopPropagation();
+});
+
+document.addEventListener("touchmove", function (t) {
+  if (
+    t.target.matches(".mr-activeonhover") &&
+    !t.target.classList.contains("mr-active")
+  ) {
+    let mrActivesOnHover = document.querySelectorAll(
+      ".mr-activeonhover.mr-active"
+    );
+    for (let id = 0; id < mrActivesOnHover.length; id++) {
+      let mrActiveOnHover = mrActivesOnHover[id];
+      mrActiveOnHover.classList.remove("mr-active");
+    }
+
+    t.target.classList.add("mr-active");
+  }
+  t.stopPropagation();
+});*/
+
 document.addEventListener("DOMContentLoaded", function () {
   mrActiveInView();
 

@@ -1,0 +1,50 @@
+.mr-hover-backgroundcolor:hover {
+  background-color: var(
+    --background-color,
+    rgba(var(--red, 255), var(--green, 255), var(--blue, 255), var(--alpha, 1))
+  );
+}
+
+.mr-hover-textcolor:hover {
+  color: var(
+    --text-color,
+    rgba(var(--red, 0), var(--green, 0), var(--blue, 0), var(--alpha, 1))
+  );
+}
+
+.mr-hover-nobullets:hover {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mr-hover-coverimage:hover,
+.mr-hover-coverimage:hover > img {
+  max-width: inherit;
+  /*width: 100%;
+  height: 100%;*/
+}
+
+.mr-hover-cover:hover,
+.mr-hover-coverimage:hover,
+.mr-hover-coverimage:hover > img {
+  object-fit: cover;
+  background-size: cover;
+}
+
+.mr-hover-contain:hover,
+.mr-hover-containimage:hover,
+.mr-hover-containimage:hover > img {
+  object-fit: contain;
+  background-size: contain;
+}
+
+.mr-hover-nolines:hover,
+.mr-hover-nounderline:hover {
+  text-decoration: none !important;
+}
+
+.mr-hover-nolines:hover,
+.mr-hover-noborders:hover {
+  border: 0;
+}

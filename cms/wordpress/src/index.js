@@ -74,7 +74,8 @@ function mrAttributes(settings) {
 	if (
 		typeof settings.attributes !== "undefined" &&
 		settings.name.includes("core/") &&
-		settings.name !== "core/archives"
+		settings.name !== "core/archives" &&
+		settings.name !== "core/tag-cloud"
 	) {
 		settings.attributes = Object.assign(settings.attributes, {
 			mrAnimation: {
@@ -629,6 +630,14 @@ function mrAttributes(settings) {
 				type: "string",
 				default: "",
 			},
+			mrBackgroundColorhover: {
+				type: "string",
+				default: "",
+			},
+			mrColorhover: {
+				type: "string",
+				default: "",
+			},
 			mrFontFamily: {
 				type: "string",
 				default: "",
@@ -857,6 +866,8 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 			mrSizephone,
 			mrBackgroundColor,
 			mrColor,
+			mrBackgroundColorhover,
+			mrColorhover,
 			mrFontFamily,
 			mrFontSize,
 			mrFontSizehover,
@@ -880,213 +891,183 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 		return (
 			<Fragment>
 				<BlockEdit {...props} />
-				{isSelected && name.includes("core/") && name !== "core/archives" && (
-					<InspectorControls key="setting">
-						<Panel header="">
-							<PanelBody
-								title={__("Utilities", "mr-utils")}
-								initialOpen={false}
-								className="utilities_panelbody"
-							>
-								<TabPanel
-									className="mr-backend-tabs"
-									activeClass="is-active"
-									tabs={[
-										{
-											name: "",
-											title: settings,
-											className: "mr-backend-tab mr-backend-tab_all",
-										},
-										{
-											name: "hover",
-											title: moveTo,
-											className: "mr-backend-tab mr-backend-tab_hover",
-										},
-										{
-											name: "desktop",
-											title: aspectRatio,
-											className: "mr-backend-tab mr-backend-tab_desktop",
-										},
-										{
-											name: "laptop",
-											title: desktop,
-											className: "mr-backend-tab mr-backend-tab_laptop",
-										},
-										{
-											name: "tablet",
-											title: tablet,
-											className: "mr-backend-tab mr-backend-tab_tablet",
-										},
-										{
-											name: "phone",
-											title: mobile,
-											className: "mr-backend-tab mr-backend-tab_phone",
-										},
-										{
-											name: "more",
-											title: plus,
-											className: "mr-backend-tab mr-backend-tab_more",
-										},
-									]}
+				{isSelected &&
+					name.includes("core/") &&
+					name !== "core/archives" &&
+					name !== "core/tag-cloud" && (
+						<InspectorControls key="setting">
+							<Panel header="">
+								<PanelBody
+									title={__("Utilities", "mr-utils")}
+									initialOpen={false}
+									className="utilities_panelbody"
 								>
-									{(tab) =>
-										tab.name !== "more" ? (
-											<>
-												{tab.name === "" ? (
-													<>
+									<TabPanel
+										className="mr-backend-tabs"
+										activeClass="is-active"
+										tabs={[
+											{
+												name: "",
+												title: settings,
+												className: "mr-backend-tab mr-backend-tab_all",
+											},
+											{
+												name: "hover",
+												title: moveTo,
+												className: "mr-backend-tab mr-backend-tab_hover",
+											},
+											{
+												name: "desktop",
+												title: aspectRatio,
+												className: "mr-backend-tab mr-backend-tab_desktop",
+											},
+											{
+												name: "laptop",
+												title: desktop,
+												className: "mr-backend-tab mr-backend-tab_laptop",
+											},
+											{
+												name: "tablet",
+												title: tablet,
+												className: "mr-backend-tab mr-backend-tab_tablet",
+											},
+											{
+												name: "phone",
+												title: mobile,
+												className: "mr-backend-tab mr-backend-tab_phone",
+											},
+											{
+												name: "more",
+												title: plus,
+												className: "mr-backend-tab mr-backend-tab_more",
+											},
+										]}
+									>
+										{(tab) =>
+											tab.name !== "more" ? (
+												<>
+													{tab.name === "" || tab.name === "hover" ? (
 														<PanelBody
-															icon={pages}
-															title={tab.name + __(" Pagination", "mr-utils")}
-															initialOpen={false}
-															className="mr-backend-option mr-backend-option_utils_pagination"
-														>
-															<TextControl
-																label={__("Items per page", "mr-utils")}
-																value={mrPerPage}
-																type="number"
-																className="mr-backend-perpage"
-																onChange={(val) =>
-																	setAttributes({
-																		mrPerPage: !val ? "" : val,
-																	})
-																}
-																help={
-																	mrPerPage > 0
-																		? __(
-																				"Pagination was applied but you need to preview the frontend to see the actual result.",
-																				"mr-utils"
-																		  )
-																		: __(
-																				"Apply into parent blocks (such as Columns and List blocks) to consider each direct child as a page's item.",
-																				"mr-utils"
-																		  )
-																}
-															/>
-
-															<SelectControl
-																label={__("Pagination position", "mr-utils")}
-																value={mrPaginationPosition}
-																options={[
-																	{
-																		value: "mr-" + tab.name,
-																		label: "Default",
-																	},
-																	{
-																		value: (
-																			" mr-" +
-																			tab.name +
-																			"-paginationtop"
-																		).replace("--", "-"),
-																		label: "Top",
-																	},
-																	{
-																		value: (
-																			" mr-" +
-																			tab.name +
-																			"-paginationbottom"
-																		).replace("--", "-"),
-																		label: "Bottom",
-																	},
-																]}
-																onChange={(val) =>
-																	setAttributes({
-																		mrPaginationPosition:
-																			!val || val === "mr-" + tab.name
-																				? ""
-																				: val.includes("mr-desktop") ||
-																				  val.includes("mr-laptop") ||
-																				  val.includes("mr-tablet") ||
-																				  val.includes("mr-phone") ||
-																				  val.includes("-hover-")
-																				? mrPaginationPosition
-																				: val.replace("--", "-"),
-																	})
-																}
-															/>
-															<ToggleControl
-																label="Arrows"
-																checked={mrArrowPagination}
-																className="mr-backend-perpage"
-																onChange={() =>
-																	setAttributes({
-																		mrArrowPagination: !mrArrowPagination,
-																	})
-																}
-															/>
-															<ToggleControl
-																label="Select dropdown"
-																checked={mrSelectPagination}
-																className="mr-backend-perpage"
-																onChange={() =>
-																	setAttributes({
-																		mrSelectPagination: !mrSelectPagination,
-																	})
-																}
-															/>
-															<ToggleControl
-																label="Radio buttons"
-																checked={mrRadioPagination}
-																className="mr-backend-perpage"
-																onChange={() =>
-																	setAttributes({
-																		mrRadioPagination: !mrRadioPagination,
-																	})
-																}
-															/>
-														</PanelBody>
-														<PanelBody
-															icon={blockDefault}
-															title={tab.name + __(" Components", "mr-utils")}
+															icon={symbol}
+															title={tab.name + __(" Animations", "mr-utils")}
 															initialOpen={false}
 															className={
 																tab.name === ""
-																	? "mr-backend-option mr-backend-option_utils_components"
+																	? "mr-backend-option mr-backend-option_utils_animations"
 																	: "mr-backend-option mr-backend-option_utils_" +
 																	  tab.name +
-																	  "_components"
+																	  "_animations"
 															}
 														>
 															<SelectControl
-																label={__("Component", "mr-utils")}
-																value={mrComponent}
+																label={__("Animation", "mr-utils")}
+																value={
+																	tab.name === "hover"
+																		? mrAnimationhover
+																		: mrAnimation
+																}
 																options={[
 																	{ value: "mr-" + tab.name, label: "Default" },
 																	{
 																		value: (
 																			" mr-" +
 																			tab.name +
-																			"-tabs"
+																			"-fade"
 																		).replace("--", "-"),
-																		label: "Tabs",
+																		label: "Fade",
 																	},
 																	{
 																		value: (
 																			" mr-" +
 																			tab.name +
-																			"-tabsnav"
+																			"-slide"
 																		).replace("--", "-"),
-																		label: "Tabs Navigation",
+																		label: "Slide",
 																	},
 																	{
 																		value: (
 																			" mr-" +
 																			tab.name +
-																			"-swipe"
+																			"-slidetop"
 																		).replace("--", "-"),
-																		label: "Swipe",
+																		label: "Slide Top",
 																	},
 																	{
 																		value: (
 																			" mr-" +
 																			tab.name +
-																			"-swipecontent"
+																			"-slideright"
 																		).replace("--", "-"),
-																		label: "Swipe Content",
+																		label: "Slide Right",
+																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-slidebottom"
+																		).replace("--", "-"),
+																		label: "Slide Bottom",
+																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-slideleft"
+																		).replace("--", "-"),
+																		label: "Slide Left",
+																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-scale"
+																		).replace("--", "-"),
+																		label: "Scale",
+																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-scaleright"
+																		).replace("--", "-"),
+																		label: "Scale Right",
+																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-scaleleft"
+																		).replace("--", "-"),
+																		label: "Scale Left",
+																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-zoom"
+																		).replace("--", "-"),
+																		label: "Zoom",
+																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-zoomright"
+																		).replace("--", "-"),
+																		label: "Zoom Right",
+																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-zoomleft"
+																		).replace("--", "-"),
+																		label: "Zoom Left",
 																	},
 																]}
 																onChange={(val) =>
 																	setAttributes({
-																		mrComponent:
+																		mrAnimation:
 																			!val || val === "mr-" + tab.name
 																				? ""
 																				: val.includes("mr-desktop") ||
@@ -1094,37 +1075,174 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																				  val.includes("mr-tablet") ||
 																				  val.includes("mr-phone") ||
 																				  val.includes("-hover-")
-																				? mrComponent
+																				? mrAnimation
 																				: val.replace("--", "-"),
+																		mrAnimationhover:
+																			val !== undefined &&
+																			val.includes("-hover-")
+																				? val
+																				: mrAnimationhover,
 																	})
 																}
-																help={
-																	!mrComponent || mrComponent === "mr-"
-																		? __(
-																				"Apply into parent blocks (such as Columns and List blocks) to consider each direct child as a component item.",
-																				"mr-utils"
-																		  )
-																		: mrComponent.includes("scrollnav")
-																		? __(
-																				"Tip: You can combine 'Scroll Navigation' with the scroll options found on the 'Misc.' section.",
-																				"mr-utils"
-																		  ) +
-																		  " " +
-																		  __(
-																				"The component was applied but you need to preview the frontend to see the actual result.",
-																				"mr-utils"
-																		  )
-																		: __(
-																				"The component was applied but you need to preview the frontend to see the actual result.",
-																				"mr-utils"
-																		  )
+															/>
+															<SelectControl
+																label={__("Transition", "mr-utils")}
+																value={
+																	tab.name === "hover"
+																		? mrTransitionhover
+																		: mrTransition
+																}
+																options={[
+																	{ value: "mr-" + tab.name, label: "Default" },
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-transition"
+																		).replace("--", "-"),
+																		label: "Ease",
+																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-easeinout"
+																		).replace("--", "-"),
+																		label: "Ease In Out",
+																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-easein"
+																		).replace("--", "-"),
+																		label: "Ease In",
+																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-easeout"
+																		).replace("--", "-"),
+																		label: "Ease Out",
+																	},
+																	{
+																		value: (
+																			" mr-" +
+																			tab.name +
+																			"-linear"
+																		).replace("--", "-"),
+																		label: "Linear",
+																	},
+																]}
+																onChange={(val) =>
+																	setAttributes({
+																		mrTransition:
+																			val !== undefined &&
+																			!val.includes("mr-hover") &&
+																			!val.includes("mr-desktop") &&
+																			!val.includes("mr-laptop") &&
+																			!val.includes("mr-tablet") &&
+																			!val.includes("mr-phone")
+																				? val
+																				: mrTransition,
+																		mrTransitionhover:
+																			val !== undefined &&
+																			val.includes("-hover-")
+																				? val
+																				: mrTransitionhover,
+																	})
 																}
 															/>
-															{mrComponent.includes("tabs") ||
-															mrComponent.includes("swipe") ? (
+														</PanelBody>
+													) : (
+														""
+													)}
+													{tab.name === "" ? (
+														<>
+															<PanelBody
+																icon={replace}
+																title={tab.name + __(" Dynamic", "mr-utils")}
+																initialOpen={false}
+																className={
+																	tab.name === ""
+																		? "mr-backend-option mr-backend-option_utils_dynamic"
+																		: "mr-backend-option mr-backend-option_utils_" +
+																		  tab.name +
+																		  "_dynamic"
+																}
+															>
 																<SelectControl
-																	label={__("Navigation position", "mr-utils")}
-																	value={mrNavPosition}
+																	label={__("Active when:", "mr-utils")}
+																	value={mrActiveWhen}
+																	options={[
+																		{ value: "mr-" + tab.name, label: " " },
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-activeinview"
+																			).replace("--", "-"),
+																			label: "In view",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-activeonclick"
+																			).replace("--", "-"),
+																			label: "Clicked",
+																		},
+																	]}
+																	onChange={(val) =>
+																		setAttributes({
+																			mrActiveWhen:
+																				!val || val === "mr-" + tab.name
+																					? ""
+																					: val.includes("mr-desktop") ||
+																					  val.includes("mr-laptop") ||
+																					  val.includes("mr-tablet") ||
+																					  val.includes("mr-phone") ||
+																					  val.includes("-hover-")
+																					? mrActiveWhen
+																					: val.replace("--", "-"),
+																		})
+																	}
+																	help={
+																		!mrActiveWhen || mrActiveWhen === "mr-"
+																			? __(
+																					"Adds the class 'mr-active' depending of the selected situation. You can combine with animations to decide when the animation should start.",
+																					"mr-utils"
+																			  )
+																			: __(
+																					"The task is ready but you need to preview the frontend to see the actual result.",
+																					"mr-utils",
+																					"mr-utils"
+																			  )
+																	}
+																/>
+															</PanelBody>
+														</>
+													) : (
+														""
+													)}
+													{tab.name === "" ? (
+														<>
+															<PanelBody
+																icon={blockDefault}
+																title={tab.name + __(" Components", "mr-utils")}
+																initialOpen={false}
+																className={
+																	tab.name === ""
+																		? "mr-backend-option mr-backend-option_utils_components"
+																		: "mr-backend-option mr-backend-option_utils_" +
+																		  tab.name +
+																		  "_components"
+																}
+															>
+																<SelectControl
+																	label={__("Component", "mr-utils")}
+																	value={mrComponent}
 																	options={[
 																		{
 																			value: "mr-" + tab.name,
@@ -1134,22 +1252,38 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																			value: (
 																				" mr-" +
 																				tab.name +
-																				"-navtop"
+																				"-tabs"
 																			).replace("--", "-"),
-																			label: "Top",
+																			label: "Tabs",
 																		},
 																		{
 																			value: (
 																				" mr-" +
 																				tab.name +
-																				"-navbottom"
+																				"-tabsnav"
 																			).replace("--", "-"),
-																			label: "Bottom",
+																			label: "Tabs Navigation",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-swipe"
+																			).replace("--", "-"),
+																			label: "Swipe",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-swipecontent"
+																			).replace("--", "-"),
+																			label: "Swipe Content",
 																		},
 																	]}
 																	onChange={(val) =>
 																		setAttributes({
-																			mrNavPosition:
+																			mrComponent:
 																				!val || val === "mr-" + tab.name
 																					? ""
 																					: val.includes("mr-desktop") ||
@@ -1157,531 +1291,147 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																					  val.includes("mr-tablet") ||
 																					  val.includes("mr-phone") ||
 																					  val.includes("-hover-")
-																					? mrNavPosition
+																					? mrComponent
 																					: val.replace("--", "-"),
 																		})
 																	}
+																	help={
+																		!mrComponent || mrComponent === "mr-"
+																			? __(
+																					"Apply into parent blocks (such as Columns and List blocks) to consider each direct child as a component item.",
+																					"mr-utils"
+																			  )
+																			: mrComponent.includes("scrollnav")
+																			? __(
+																					"Tip: You can combine 'Scroll Navigation' with the scroll options found on the 'Misc.' section.",
+																					"mr-utils"
+																			  ) +
+																			  " " +
+																			  __(
+																					"The component was applied but you need to preview the frontend to see the actual result.",
+																					"mr-utils"
+																			  )
+																			: __(
+																					"The component was applied but you need to preview the frontend to see the actual result.",
+																					"mr-utils"
+																			  )
+																	}
 																/>
-															) : (
-																""
-															)}
-															<p>{__("Scroll navigation", "mr-utils")}</p>
-															<ToggleControl
-																label="Vertical Arrows"
-																checked={mrVerticalScrollNavigation}
-																className="mr-backend-scrollnav"
-																onChange={() =>
-																	setAttributes({
-																		mrVerticalScrollNavigation: !mrVerticalScrollNavigation,
-																	})
-																}
-															/>
-															<ToggleControl
-																label="Horizontal Arrows"
-																checked={mrHorizontalScrollNavigation}
-																className="mr-backend-scrollnav"
-																onChange={() =>
-																	setAttributes({
-																		mrHorizontalScrollNavigation: !mrHorizontalScrollNavigation,
-																	})
-																}
-																help={
-																	mrHorizontalScrollNavigation ||
-																	mrVerticalScrollNavigation
-																		? __(
-																				"The navigation was applied but you need to preview the frontend to see the actual result.",
-																				"mr-utils"
-																		  )
-																		: __(
-																				"Add an alternative navigation to elements with scroll.",
-																				"mr-utils"
-																		  )
-																}
-															/>
-														</PanelBody>
-													</>
-												) : (
-													""
-												)}
-												{tab.name === "" || tab.name === "hover" ? (
-													<PanelBody
-														icon={symbol}
-														title={tab.name + __(" Animations", "mr-utils")}
-														initialOpen={false}
-														className={
-															tab.name === ""
-																? "mr-backend-option mr-backend-option_utils_animations"
-																: "mr-backend-option mr-backend-option_utils_" +
-																  tab.name +
-																  "_animations"
-														}
-													>
-														<SelectControl
-															label={__("Animation", "mr-utils")}
-															value={
-																tab.name === "hover"
-																	? mrAnimationhover
-																	: mrAnimation
-															}
-															options={[
-																{ value: "mr-" + tab.name, label: "Default" },
-																{
-																	value: (" mr-" + tab.name + "-fade").replace(
-																		"--",
-																		"-"
-																	),
-																	label: "Fade",
-																},
-																{
-																	value: (" mr-" + tab.name + "-slide").replace(
-																		"--",
-																		"-"
-																	),
-																	label: "Slide",
-																},
-																{
-																	value: (
-																		" mr-" +
-																		tab.name +
-																		"-slidetop"
-																	).replace("--", "-"),
-																	label: "Slide Top",
-																},
-																{
-																	value: (
-																		" mr-" +
-																		tab.name +
-																		"-slideright"
-																	).replace("--", "-"),
-																	label: "Slide Right",
-																},
-																{
-																	value: (
-																		" mr-" +
-																		tab.name +
-																		"-slidebottom"
-																	).replace("--", "-"),
-																	label: "Slide Bottom",
-																},
-																{
-																	value: (
-																		" mr-" +
-																		tab.name +
-																		"-slideleft"
-																	).replace("--", "-"),
-																	label: "Slide Left",
-																},
-																{
-																	value: (" mr-" + tab.name + "-scale").replace(
-																		"--",
-																		"-"
-																	),
-																	label: "Scale",
-																},
-																{
-																	value: (
-																		" mr-" +
-																		tab.name +
-																		"-scaleright"
-																	).replace("--", "-"),
-																	label: "Scale Right",
-																},
-																{
-																	value: (
-																		" mr-" +
-																		tab.name +
-																		"-scaleleft"
-																	).replace("--", "-"),
-																	label: "Scale Left",
-																},
-																{
-																	value: (" mr-" + tab.name + "-zoom").replace(
-																		"--",
-																		"-"
-																	),
-																	label: "Zoom",
-																},
-																{
-																	value: (
-																		" mr-" +
-																		tab.name +
-																		"-zoomright"
-																	).replace("--", "-"),
-																	label: "Zoom Right",
-																},
-																{
-																	value: (
-																		" mr-" +
-																		tab.name +
-																		"-zoomleft"
-																	).replace("--", "-"),
-																	label: "Zoom Left",
-																},
-															]}
-															onChange={(val) =>
-																setAttributes({
-																	mrAnimation:
-																		!val || val === "mr-" + tab.name
-																			? ""
-																			: val.includes("mr-desktop") ||
-																			  val.includes("mr-laptop") ||
-																			  val.includes("mr-tablet") ||
-																			  val.includes("mr-phone") ||
-																			  val.includes("-hover-")
-																			? mrAnimation
-																			: val.replace("--", "-"),
-																	mrAnimationhover:
-																		val !== undefined && val.includes("-hover-")
-																			? val
-																			: mrAnimationhover,
-																})
-															}
-														/>
-														<SelectControl
-															label={__("Transition", "mr-utils")}
-															value={
-																tab.name === "hover"
-																	? mrTransitionhover
-																	: mrTransition
-															}
-															options={[
-																{ value: "mr-" + tab.name, label: "Default" },
-																{
-																	value: (
-																		" mr-" +
-																		tab.name +
-																		"-transition"
-																	).replace("--", "-"),
-																	label: "Ease",
-																},
-																{
-																	value: (
-																		" mr-" +
-																		tab.name +
-																		"-easeinout"
-																	).replace("--", "-"),
-																	label: "Ease In Out",
-																},
-																{
-																	value: (
-																		" mr-" +
-																		tab.name +
-																		"-easein"
-																	).replace("--", "-"),
-																	label: "Ease In",
-																},
-																{
-																	value: (
-																		" mr-" +
-																		tab.name +
-																		"-easeout"
-																	).replace("--", "-"),
-																	label: "Ease Out",
-																},
-																{
-																	value: (
-																		" mr-" +
-																		tab.name +
-																		"-linear"
-																	).replace("--", "-"),
-																	label: "Linear",
-																},
-															]}
-															onChange={(val) =>
-																setAttributes({
-																	mrTransition:
-																		val !== undefined &&
-																		!val.includes("mr-hover") &&
-																		!val.includes("mr-desktop") &&
-																		!val.includes("mr-laptop") &&
-																		!val.includes("mr-tablet") &&
-																		!val.includes("mr-phone")
-																			? val
-																			: mrTransition,
-																	mrTransitionhover:
-																		val !== undefined && val.includes("-hover-")
-																			? val
-																			: mrTransitionhover,
-																})
-															}
-														/>
-													</PanelBody>
-												) : (
-													""
-												)}
-												{tab.name === "" ? (
-													<>
-														<PanelBody
-															icon={replace}
-															title={tab.name + __(" Dynamic", "mr-utils")}
-															initialOpen={false}
-															className={
-																tab.name === ""
-																	? "mr-backend-option mr-backend-option_utils_dynamic"
-																	: "mr-backend-option mr-backend-option_utils_" +
-																	  tab.name +
-																	  "_dynamic"
-															}
-														>
-															<SelectControl
-																label={__("Active when:", "mr-utils")}
-																value={mrActiveWhen}
-																options={[
-																	{ value: "mr-" + tab.name, label: "Default" },
-																	{
-																		value: (
-																			" mr-" +
-																			tab.name +
-																			"-activeinview"
-																		).replace("--", "-"),
-																		label: "In view",
-																	},
-																	{
-																		value: (
-																			" mr-" +
-																			tab.name +
-																			"-activeonclick"
-																		).replace("--", "-"),
-																		label: "Clicked",
-																	},
-																]}
-																onChange={(val) =>
-																	setAttributes({
-																		mrActiveWhen:
-																			!val || val === "mr-" + tab.name
-																				? ""
-																				: val.includes("mr-desktop") ||
-																				  val.includes("mr-laptop") ||
-																				  val.includes("mr-tablet") ||
-																				  val.includes("mr-phone") ||
-																				  val.includes("-hover-")
-																				? mrActiveWhen
-																				: val.replace("--", "-"),
-																	})
-																}
-																help={
-																	!mrActiveWhen || mrActiveWhen === "mr-"
-																		? __(
-																				"Adds the class 'mr-active' depending of the selected situation. You can combine with animations to decide when the animation should start.",
-																				"mr-utils"
-																		  )
-																		: __(
-																				"The task is ready but you need to preview the frontend to see the actual result.",
-																				"mr-utils",
-																				"mr-utils"
-																		  )
-																}
-															/>
-														</PanelBody>
-													</>
-												) : (
-													""
-												)}
-												<PanelBody
-													icon={layout}
-													title={tab.name + __(" Layout", "mr-utils")}
-													initialOpen={false}
-													className={
-														tab.name === ""
-															? "mr-backend-option mr-backend-option_utils_layout"
-															: "mr-backend-option mr-backend-option_utils_" +
-															  tab.name +
-															  "_layout"
-													}
-												>
-													<SelectControl
-														label={__("Items per line", "mr-utils")}
-														value={
-															tab.name === "desktop"
-																? mrPerLinedesktop
-																: tab.name === "laptop"
-																? mrPerLinelaptop
-																: tab.name === "tablet"
-																? mrPerLinetablet
-																: tab.name === "phone"
-																? mrPerLinephone
-																: mrPerLine
-														}
-														options={
-															tab.name === "" ||
-															tab.name === "desktop" ||
-															tab.name === "laptop" ||
-															tab.name === "tablet" ||
-															tab.name === "phone"
-																? [
-																		{ value: "mr-" + tab.name, label: "" },
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-perline"
-																			).replace("--", "-"),
-																			label: "Global",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-1perline"
-																			).replace("--", "-"),
-																			label: "1",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-2perline"
-																			).replace("--", "-"),
-																			label: "2",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-3perline"
-																			).replace("--", "-"),
-																			label: "3",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-4perline"
-																			).replace("--", "-"),
-																			label: "4",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-5perline"
-																			).replace("--", "-"),
-																			label: "5",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-6perline"
-																			).replace("--", "-"),
-																			label: "6",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-7perline"
-																			).replace("--", "-"),
-																			label: "7",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-8perline"
-																			).replace("--", "-"),
-																			label: "8",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-9perline"
-																			).replace("--", "-"),
-																			label: "9",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-10perline"
-																			).replace("--", "-"),
-																			label: "10",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-11perline"
-																			).replace("--", "-"),
-																			label: "11",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-12perline"
-																			).replace("--", "-"),
-																			label: "12",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-0perline"
-																			).replace("--", "-"),
-																			label: "∞",
-																		},
-																  ]
-																: ""
-														}
-														onChange={(val) =>
-															setAttributes({
-																mrPerLine:
-																	val !== undefined &&
-																	!val.includes("mr-hover") &&
-																	!val.includes("mr-desktop") &&
-																	!val.includes("mr-laptop") &&
-																	!val.includes("mr-tablet") &&
-																	!val.includes("mr-phone")
-																		? val
-																		: mrPerLine,
-																mrPerLinedesktop:
-																	val !== undefined &&
-																	val.includes("mr-desktop")
-																		? val
-																		: mrPerLinedesktop,
-																mrPerLinelaptop:
-																	val !== undefined && val.includes("mr-laptop")
-																		? val
-																		: mrPerLinelaptop,
-																mrPerLinetablet:
-																	val !== undefined && val.includes("mr-tablet")
-																		? val
-																		: mrPerLinetablet,
-																mrPerLinephone:
-																	val !== undefined && val.includes("mr-phone")
-																		? val
-																		: mrPerLinephone,
-															})
-														}
-														help={
-															!mrPerLine || mrPerLine === "mr-"
-																? "Apply into parent blocks (such as Columns and List blocks) to organize the set number of direct childs on different lines."
-																: ""
-														}
-													/>
+																{mrComponent.includes("tabs") ||
+																mrComponent.includes("swipe") ? (
+																	<SelectControl
+																		label={__(
+																			"Navigation position",
+																			"mr-utils"
+																		)}
+																		value={mrNavPosition}
+																		options={[
+																			{
+																				value: "mr-" + tab.name,
+																				label: "Default",
+																			},
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-navtop"
+																				).replace("--", "-"),
+																				label: "Top",
+																			},
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-navbottom"
+																				).replace("--", "-"),
+																				label: "Bottom",
+																			},
+																		]}
+																		onChange={(val) =>
+																			setAttributes({
+																				mrNavPosition:
+																					!val || val === "mr-" + tab.name
+																						? ""
+																						: val.includes("mr-desktop") ||
+																						  val.includes("mr-laptop") ||
+																						  val.includes("mr-tablet") ||
+																						  val.includes("mr-phone") ||
+																						  val.includes("-hover-")
+																						? mrNavPosition
+																						: val.replace("--", "-"),
+																			})
+																		}
+																	/>
+																) : (
+																	""
+																)}
+																<p>{__("Scroll navigation", "mr-utils")}</p>
+																<ToggleControl
+																	label="Vertical Arrows"
+																	checked={mrVerticalScrollNavigation}
+																	className="mr-backend-scrollnav"
+																	onChange={() =>
+																		setAttributes({
+																			mrVerticalScrollNavigation: !mrVerticalScrollNavigation,
+																		})
+																	}
+																/>
+																<ToggleControl
+																	label="Horizontal Arrows"
+																	checked={mrHorizontalScrollNavigation}
+																	className="mr-backend-scrollnav"
+																	onChange={() =>
+																		setAttributes({
+																			mrHorizontalScrollNavigation: !mrHorizontalScrollNavigation,
+																		})
+																	}
+																	help={
+																		mrHorizontalScrollNavigation ||
+																		mrVerticalScrollNavigation
+																			? __(
+																					"The navigation was applied but you need to preview the frontend to see the actual result.",
+																					"mr-utils"
+																			  )
+																			: __(
+																					"Add an alternative navigation to elements with scroll.",
+																					"mr-utils"
+																			  )
+																	}
+																/>
+															</PanelBody>
+															<PanelBody
+																icon={pages}
+																title={tab.name + __(" Pagination", "mr-utils")}
+																initialOpen={false}
+																className="mr-backend-option mr-backend-option_utils_pagination"
+															>
+																<TextControl
+																	label={__("Items per page", "mr-utils")}
+																	value={mrPerPage}
+																	type="number"
+																	className="mr-backend-perpage"
+																	onChange={(val) =>
+																		setAttributes({
+																			mrPerPage: !val ? "" : val,
+																		})
+																	}
+																	help={
+																		mrPerPage > 0
+																			? __(
+																					"Pagination was applied but you need to preview the frontend to see the actual result.",
+																					"mr-utils"
+																			  )
+																			: __(
+																					"Apply into parent blocks (such as Columns and List blocks) to consider each direct child as a page's item.",
+																					"mr-utils"
+																			  )
+																	}
+																/>
 
-													<SelectControl
-														label={__("Wrap", "mr-utils")}
-														value={
-															tab.name === "desktop"
-																? mrWrapdesktop
-																: tab.name === "laptop"
-																? mrWraplaptop
-																: tab.name === "tablet"
-																? mrWraptablet
-																: tab.name === "phone"
-																? mrWrapphone
-																: mrWrap
-														}
-														options={
-															tab.name === "" ||
-															tab.name === "desktop" ||
-															tab.name === "laptop" ||
-															tab.name === "tablet" ||
-															tab.name === "phone"
-																? [
+																<SelectControl
+																	label={__("Pagination position", "mr-utils")}
+																	value={mrPaginationPosition}
+																	options={[
 																		{
 																			value: "mr-" + tab.name,
 																			label: "Default",
@@ -1690,2470 +1440,2833 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																			value: (
 																				" mr-" +
 																				tab.name +
-																				"-wrap"
+																				"-paginationtop"
 																			).replace("--", "-"),
-																			label: "Wrap",
+																			label: "Top",
 																		},
 																		{
 																			value: (
 																				" mr-" +
 																				tab.name +
-																				"-nowrap"
+																				"-paginationbottom"
 																			).replace("--", "-"),
-																			label: "No Wrap",
+																			label: "Bottom",
 																		},
-																  ]
-																: ""
-														}
-														onChange={(val) =>
-															setAttributes({
-																mrWrap:
-																	val !== undefined &&
-																	!val.includes("mr-hover") &&
-																	!val.includes("mr-desktop") &&
-																	!val.includes("mr-laptop") &&
-																	!val.includes("mr-tablet") &&
-																	!val.includes("mr-phone")
-																		? val
-																		: mrWrap,
-																mrWrapdesktop:
-																	val !== undefined &&
-																	val.includes("mr-desktop")
-																		? val
-																		: mrWrapdesktop,
-																mrWraplaptop:
-																	val !== undefined && val.includes("mr-laptop")
-																		? val
-																		: mrWraplaptop,
-																mrWraptablet:
-																	val !== undefined && val.includes("mr-tablet")
-																		? val
-																		: mrWraptablet,
-																mrWrapphone:
-																	val !== undefined && val.includes("mr-phone")
-																		? val
-																		: mrWrapphone,
-															})
-														}
-													/>
-
-													<SelectControl
-														label={__(
-															"Columns to create on this item",
-															"mr-utils"
-														)}
-														value={
-															tab.name === "desktop"
-																? mrColumnsdesktop
-																: tab.name === "laptop"
-																? mrColumnslaptop
-																: tab.name === "tablet"
-																? mrColumnstablet
-																: tab.name === "phone"
-																? mrColumnsphone
-																: mrColumns
-														}
-														help={
-															!mrColumns || mrColumns === "mr-"
-																? "Divide the current item into a set number of new columns automatically."
-																: ""
-														}
-														options={
-															tab.name === "" ||
-															tab.name === "desktop" ||
-															tab.name === "laptop" ||
-															tab.name === "tablet" ||
-															tab.name === "phone"
-																? [
-																		{ value: "mr-" + tab.name, label: "" },
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-columns"
-																			).replace("--", "-"),
-																			label: "Global",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-1column"
-																			).replace("--", "-"),
-																			label: "1",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-2columns"
-																			).replace("--", "-"),
-																			label: "2",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-3columns"
-																			).replace("--", "-"),
-																			label: "3",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-4columns"
-																			).replace("--", "-"),
-																			label: "4",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-5columns"
-																			).replace("--", "-"),
-																			label: "5",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-6columns"
-																			).replace("--", "-"),
-																			label: "6",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-7columns"
-																			).replace("--", "-"),
-																			label: "7",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-8columns"
-																			).replace("--", "-"),
-																			label: "8",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-9columns"
-																			).replace("--", "-"),
-																			label: "9",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-10columns"
-																			).replace("--", "-"),
-																			label: "10",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-11columns"
-																			).replace("--", "-"),
-																			label: "11",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-12columns"
-																			).replace("--", "-"),
-																			label: "12",
-																		},
-																  ]
-																: ""
-														}
-														onChange={(val) =>
-															setAttributes({
-																mrColumns:
-																	val !== undefined &&
-																	!val.includes("mr-hover") &&
-																	!val.includes("mr-desktop") &&
-																	!val.includes("mr-laptop") &&
-																	!val.includes("mr-tablet") &&
-																	!val.includes("mr-phone")
-																		? val
-																		: mrColumns,
-																mrColumnsdesktop:
-																	val !== undefined &&
-																	val.includes("mr-desktop")
-																		? val
-																		: mrColumnsdesktop,
-																mrColumnslaptop:
-																	val !== undefined && val.includes("mr-laptop")
-																		? val
-																		: mrColumnslaptop,
-																mrColumnstablet:
-																	val !== undefined && val.includes("mr-tablet")
-																		? val
-																		: mrColumnstablet,
-																mrColumnsphone:
-																	val !== undefined && val.includes("mr-phone")
-																		? val
-																		: mrColumnsphone,
-															})
-														}
-													/>
-
-													{tab.name === "" ||
-													tab.name === "hover" ||
-													tab.name === "desktop" ||
-													tab.name === "laptop" ||
-													tab.name === "tablet" ||
-													tab.name === "phone" ? (
-														<TextControl
-															label={__("Item Size", "mr-utils")}
-															value={
-																tab.name === "hover"
-																	? mrSizehover
-																	: tab.name === "desktop"
-																	? mrSizedesktop
-																	: tab.name === "laptop"
-																	? mrSizelaptop
-																	: tab.name === "tablet"
-																	? mrSizetablet
-																	: tab.name === "phone"
-																	? mrSizephone
-																	: mrSize
-															}
-															type="text"
-															className="mr-backend-custominput mr-backend-customptop"
-															placeHolder={(
-																"mr-" +
-																tab.name +
-																"-size{1/13}"
-															).replace("--", "-")}
-															list={(
-																"mrDevUtilsClasses_" +
-																tab.name +
-																"_size"
-															).replace("__", "_")}
-															onChange={(val) =>
-																setAttributes({
-																	mrSize:
-																		val !== undefined &&
-																		!val.includes("mr-hover") &&
-																		!val.includes("mr-desktop") &&
-																		!val.includes("mr-laptop") &&
-																		!val.includes("mr-tablet") &&
-																		!val.includes("mr-phone")
-																			? val
-																			: mrSize,
-																	mrSizehover:
-																		val !== undefined &&
-																		val.includes("mr-hover")
-																			? val
-																			: mrSizehover,
-																	mrSizedesktop:
-																		val !== undefined &&
-																		val.includes("mr-desktop")
-																			? val
-																			: mrSizedesktop,
-																	mrSizelaptop:
-																		val !== undefined &&
-																		val.includes("mr-laptop")
-																			? val
-																			: mrSizelaptop,
-																	mrSizetablet:
-																		val !== undefined &&
-																		val.includes("mr-tablet")
-																			? val
-																			: mrSizetablet,
-																	mrSizephone:
-																		val !== undefined &&
-																		val.includes("mr-phone")
-																			? val
-																			: mrSizephone,
-																})
-															}
-														/>
-													) : (
-														""
-													)}
-													<SelectControl
-														label={__("Item Order", "mr-utils")}
-														value={
-															tab.name === "desktop"
-																? mrOrderdesktop
-																: tab.name === "laptop"
-																? mrOrderlaptop
-																: tab.name === "tablet"
-																? mrOrdertablet
-																: tab.name === "phone"
-																? mrOrderphone
-																: mrOrder
-														}
-														options={
-															tab.name === "" ||
-															tab.name === "desktop" ||
-															tab.name === "laptop" ||
-															tab.name === "tablet" ||
-															tab.name === "phone"
-																? [
-																		{ value: "mr-" + tab.name, label: "" },
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-order-1"
-																			).replace("--", "-"),
-																			label: "-1",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-order1"
-																			).replace("--", "-"),
-																			label: "1",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-order2"
-																			).replace("--", "-"),
-																			label: "2",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-order3"
-																			).replace("--", "-"),
-																			label: "3",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-order4"
-																			).replace("--", "-"),
-																			label: "4",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-order5"
-																			).replace("--", "-"),
-																			label: "5",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-order6"
-																			).replace("--", "-"),
-																			label: "6",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-order7"
-																			).replace("--", "-"),
-																			label: "7",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-order8"
-																			).replace("--", "-"),
-																			label: "8",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-order9"
-																			).replace("--", "-"),
-																			label: "9",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-order10"
-																			).replace("--", "-"),
-																			label: "10",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-order11"
-																			).replace("--", "-"),
-																			label: "11",
-																		},
-																		{
-																			value: (
-																				" mr-" +
-																				tab.name +
-																				"-order12"
-																			).replace("--", "-"),
-																			label: "12",
-																		},
-																  ]
-																: ""
-														}
-														onChange={(val) =>
-															setAttributes({
-																mrOrder:
-																	val !== undefined &&
-																	!val.includes("mr-hover") &&
-																	!val.includes("mr-desktop") &&
-																	!val.includes("mr-laptop") &&
-																	!val.includes("mr-tablet") &&
-																	!val.includes("mr-phone")
-																		? val
-																		: mrOrder,
-																mrOrderdesktop:
-																	val !== undefined &&
-																	val.includes("mr-desktop")
-																		? val
-																		: mrOrderdesktop,
-																mrOrderlaptop:
-																	val !== undefined && val.includes("mr-laptop")
-																		? val
-																		: mrOrderlaptop,
-																mrOrdertablet:
-																	val !== undefined && val.includes("mr-tablet")
-																		? val
-																		: mrOrdertablet,
-																mrOrderphone:
-																	val !== undefined && val.includes("mr-phone")
-																		? val
-																		: mrOrderphone,
-															})
-														}
-													/>
-												</PanelBody>
-												<PanelBody
-													icon={swatch}
-													title={tab.name + __(" Display", "mr-utils")}
-													initialOpen={false}
-													className={
-														tab.name === ""
-															? "mr-backend-option mr-backend-option_utils_display"
-															: "mr-backend-option mr-backend-option_utils_" +
-															  tab.name +
-															  "_display"
-													}
-												>
-													<SelectControl
-														label={__("Visibility", "mr-utils")}
-														value={
-															tab.name === "hover"
-																? mrDisplayhover
-																: tab.name === "desktop"
-																? mrDisplaydesktop
-																: tab.name === "laptop"
-																? mrDisplaylaptop
-																: tab.name === "tablet"
-																? mrDisplaytablet
-																: tab.name === "phone"
-																? mrDisplayphone
-																: mrDisplay
-														}
-														options={[
-															{ value: "mr-" + tab.name, label: "Default" },
-															{
-																value: (" mr-" + tab.name + "-hide").replace(
-																	"--",
-																	"-"
-																),
-																label: "Hide",
-															},
-															{
-																value: (" mr-" + tab.name + "-show").replace(
-																	"--",
-																	"-"
-																),
-																label: "Show",
-															},
-															{
-																value: (" mr-" + tab.name + "-none").replace(
-																	"--",
-																	"-"
-																),
-																label: "None",
-															},
-															{
-																value: (" mr-" + tab.name + "-flex").replace(
-																	"--",
-																	"-"
-																),
-																label: "Flex",
-															},
-															{
-																value: (" mr-" + tab.name + "-block").replace(
-																	"--",
-																	"-"
-																),
-																label: "Block",
-															},
-															{
-																value: (" mr-" + tab.name + "-visible").replace(
-																	"--",
-																	"-"
-																),
-																label: "Visible",
-															},
-															{
-																value: (" mr-" + tab.name + "-hidden").replace(
-																	"--",
-																	"-"
-																),
-																label: "Hidden",
-															},
-															{
-																value: (
-																	" mr-" +
-																	tab.name +
-																	"-transparent"
-																).replace("--", "-"),
-																label: "Transparent",
-															},
-															{
-																value: (
-																	" mr-" +
-																	tab.name +
-																	"-semiopaque"
-																).replace("--", "-"),
-																label: "Semi-opaque",
-															},
-															{
-																value: (" mr-" + tab.name + "-opaque").replace(
-																	"--",
-																	"-"
-																),
-																label: "Opaque",
-															},
-														]}
-														onChange={(val) =>
-															setAttributes({
-																mrDisplay:
-																	val !== undefined &&
-																	!val.includes("mr-hover") &&
-																	!val.includes("mr-desktop") &&
-																	!val.includes("mr-laptop") &&
-																	!val.includes("mr-tablet") &&
-																	!val.includes("mr-phone")
-																		? val
-																		: mrDisplay,
-																mrDisplayhover:
-																	val !== undefined && val.includes("-hover-")
-																		? val
-																		: mrDisplayhover,
-																mrDisplaydesktop:
-																	val !== undefined &&
-																	val.includes("mr-desktop")
-																		? val
-																		: mrDisplaydesktop,
-																mrDisplaylaptop:
-																	val !== undefined && val.includes("mr-laptop")
-																		? val
-																		: mrDisplaylaptop,
-																mrDisplaytablet:
-																	val !== undefined && val.includes("mr-tablet")
-																		? val
-																		: mrDisplaytablet,
-																mrDisplayphone:
-																	val !== undefined && val.includes("mr-phone")
-																		? val
-																		: mrDisplayphone,
-															})
-														}
-														help={
-															mrDisplay === " mr-hidden" ||
-															mrDisplay === " mr-hide" ||
-															mrDisplay === " mr-none" ||
-															mrDisplay === " mr-transparent" ||
-															mrDisplayhover === " mr-hover-hidden" ||
-															mrDisplayhover === " mr-hover-hide" ||
-															mrDisplayhover === " mr-hover-none" ||
-															mrDisplaydesktop === " mr-desktop-hidden" ||
-															mrDisplaydesktop === " mr-desktop-hide" ||
-															mrDisplaydesktop === " mr-desktop-none" ||
-															mrDisplaydesktop === " mr-desktop-transparent" ||
-															mrDisplaylaptop === " mr-laptop-hidden" ||
-															mrDisplaylaptop === " mr-laptop-hide" ||
-															mrDisplaylaptop === " mr-laptop-none" ||
-															mrDisplaylaptop === " mr-laptop-transparent" ||
-															mrDisplaytablet === " mr-tablet-hidden" ||
-															mrDisplaytablet === " mr-tablet-hide" ||
-															mrDisplaytablet === " mr-tablet-none" ||
-															mrDisplaytablet === " mr-tablet-transparent" ||
-															mrDisplayphone === " mr-phone-hidden" ||
-															mrDisplayphone === " mr-phone-hide" ||
-															mrDisplayphone === " mr-phone-none" ||
-															mrDisplayphone === " mr-phone-transparent" ? (
-																__(
-																	"An opacity is applied to the block in the backend so you can still see and select it. Preview the frontend to see the actual result.",
-																	"mr-utils"
-																)
-															) : (
-																<a
-																	href="https://github.com/marcosrego-web/mr-utils/wiki/Utility-Classes#display"
-																	target="_blank"
-																>
-																	Know the differences between visibilities
-																</a>
-															)
-														}
-													/>
-												</PanelBody>
-												{tab.name === "" ? (
-													<PanelBody
-														icon={brush}
-														title={tab.name + __(" Appearance", "mr-utils")}
-														initialOpen={false}
-														className="mr-backend-option mr-backend-option_utils_appearance"
-													>
-														{tab.name === "" ? (
-															<TextControl
-																label={__("Background Color", "mr-utils")}
-																value={mrBackgroundColor}
-																type="text"
-																className="mr-backend-custominput mr-backend-custombackgroundcolor"
-																placeHolder={"mr-backgroundcolor"}
-																list={"mrDevUtilsClasses_backgroundcolor".replace(
-																	"__",
-																	"_"
-																)}
-																onChange={(val) =>
-																	setAttributes({
-																		mrBackgroundColor:
-																			val !== undefined
-																				? val
-																				: mrBackgroundColor,
-																	})
-																}
-															/>
-														) : (
-															""
-														)}
-
-														{tab.name === "" ? (
-															<TextControl
-																label={__("Color", "mr-utils")}
-																value={mrColor}
-																type="text"
-																className="mr-backend-custominput mr-backend-customcolor"
-																placeHolder={"mr-textcolor"}
-																list={"mrDevUtilsClasses_color".replace(
-																	"__",
-																	"_"
-																)}
-																onChange={(val) =>
-																	setAttributes({
-																		mrColor: val !== undefined ? val : mrColor,
-																	})
-																}
-															/>
-														) : (
-															""
-														)}
-													</PanelBody>
-												) : (
-													""
-												)}
-												<PanelBody
-													icon={resizeCornerNE}
-													title={tab.name + __(" Spacing", "mr-utils")}
-													initialOpen={false}
-													className={
-														tab.name === ""
-															? "mr-backend-option mr-backend-option_utils_spacing"
-															: "mr-backend-option mr-backend-option_utils_" +
-															  tab.name +
-															  "_spacing"
-													}
-												>
-													<PanelRow>
-														<TabPanel
-															className="mr-width100"
-															activeClass="is-active"
-															tabs={[
-																{
-																	name: "paddings",
-																	title: "Paddings",
-																	className:
-																		"mr-backend-tab_paddings mr-width100",
-																},
-																{
-																	name: "margins",
-																	title: "Margins",
-																	className:
-																		"mr-backend-tab_margins mr-width100",
-																},
-																{
-																	name: "gaps",
-																	title: "Gaps",
-																	className: "mr-backend-tab_gaps mr-width100",
-																},
-															]}
-														>
-															{(tab2) =>
-																tab2.name === "gaps" ? (
-																	<>
-																		<p></p>
-
-																		{tab.name === "" ||
-																		tab.name === "hover" ||
-																		tab.name === "desktop" ||
-																		tab.name === "laptop" ||
-																		tab.name === "tablet" ||
-																		tab.name === "phone" ? (
-																			<TextControl
-																				label={__("Row Gap", "mr-utils")}
-																				value={
-																					tab.name === "hover"
-																						? mrRowGaphover
-																						: tab.name === "desktop"
-																						? mrRowGapdesktop
-																						: tab.name === "laptop"
-																						? mrRowGaplaptop
-																						: tab.name === "tablet"
-																						? mrRowGaptablet
-																						: tab.name === "phone"
-																						? mrRowGapphone
-																						: mrRowGap
-																				}
-																				type="text"
-																				placeHolder={
-																					(
-																						"mr-" +
-																						tab.name +
-																						"-rowgap"
-																					).replace("--", "-") +
-																					(
-																						" | mr-" +
-																						tab.name +
-																						"-norowgap"
-																					).replace("--", "-")
-																				}
-																				list={(
-																					"mrDevUtilsClasses_" +
-																					tab.name +
-																					"_rowgap"
-																				).replace("__", "_")}
-																				onChange={(val) =>
-																					setAttributes({
-																						mrRowGap:
-																							val !== undefined &&
-																							!val.includes("mr-hover") &&
-																							!val.includes("mr-desktop") &&
-																							!val.includes("mr-laptop") &&
-																							!val.includes("mr-tablet") &&
-																							!val.includes("mr-phone")
-																								? val
-																								: mrRowGap,
-																						mrRowGaphover:
-																							val !== undefined &&
-																							val.includes("mr-hover")
-																								? val
-																								: mrRowGaphover,
-																						mrRowGapdesktop:
-																							val !== undefined &&
-																							val.includes("mr-desktop")
-																								? val
-																								: mrRowGapdesktop,
-																						mrRowGaplaptop:
-																							val !== undefined &&
-																							val.includes("mr-laptop")
-																								? val
-																								: mrRowGaplaptop,
-																						mrRowGaptablet:
-																							val !== undefined &&
-																							val.includes("mr-tablet")
-																								? val
-																								: mrRowGaptablet,
-																						mrRowGapphone:
-																							val !== undefined &&
-																							val.includes("mr-phone")
-																								? val
-																								: mrRowGapphone,
-																					})
-																				}
-																			/>
-																		) : (
-																			""
-																		)}
-
-																		{tab.name === "" ||
-																		tab.name === "hover" ||
-																		tab.name === "desktop" ||
-																		tab.name === "laptop" ||
-																		tab.name === "tablet" ||
-																		tab.name === "phone" ? (
-																			<TextControl
-																				label={__("Column Gap", "mr-utils")}
-																				value={
-																					tab.name === "hover"
-																						? mrColumnGaphover
-																						: tab.name === "desktop"
-																						? mrColumnGapdesktop
-																						: tab.name === "laptop"
-																						? mrColumnGaplaptop
-																						: tab.name === "tablet"
-																						? mrColumnGaptablet
-																						: tab.name === "phone"
-																						? mrColumnGapphone
-																						: mrColumnGap
-																				}
-																				type="text"
-																				placeHolder={
-																					(
-																						"mr-" +
-																						tab.name +
-																						"-columngap"
-																					).replace("--", "-") +
-																					(
-																						" | mr-" +
-																						tab.name +
-																						"-nocolumngap"
-																					).replace("--", "-")
-																				}
-																				list={(
-																					"mrDevUtilsClasses_" +
-																					tab.name +
-																					"_columngap"
-																				).replace("__", "_")}
-																				onChange={(val) =>
-																					setAttributes({
-																						mrColumnGap:
-																							val !== undefined &&
-																							!val.includes("mr-hover") &&
-																							!val.includes("mr-desktop") &&
-																							!val.includes("mr-laptop") &&
-																							!val.includes("mr-tablet") &&
-																							!val.includes("mr-phone")
-																								? val
-																								: mrColumnGap,
-																						mrColumnGaphover:
-																							val !== undefined &&
-																							val.includes("mr-hover")
-																								? val
-																								: mrColumnGaphover,
-																						mrColumnGapdesktop:
-																							val !== undefined &&
-																							val.includes("mr-desktop")
-																								? val
-																								: mrColumnGapdesktop,
-																						mrColumnGaplaptop:
-																							val !== undefined &&
-																							val.includes("mr-laptop")
-																								? val
-																								: mrColumnGaplaptop,
-																						mrColumnGaptablet:
-																							val !== undefined &&
-																							val.includes("mr-tablet")
-																								? val
-																								: mrColumnGaptablet,
-																						mrColumnGapphone:
-																							val !== undefined &&
-																							val.includes("mr-phone")
-																								? val
-																								: mrColumnGapphone,
-																					})
-																				}
-																			/>
-																		) : (
-																			""
-																		)}
-																	</>
-																) : tab2.name === "paddings" ? (
-																	<>
-																		<p></p>
-																		{tab.name === "" ||
-																		tab.name === "hover" ||
-																		tab.name === "desktop" ||
-																		tab.name === "laptop" ||
-																		tab.name === "tablet" ||
-																		tab.name === "phone" ? (
-																			<TextControl
-																				label={__("Padding Top", "mr-utils")}
-																				value={
-																					tab.name === "hover"
-																						? mrPaddingTophover
-																						: tab.name === "desktop"
-																						? mrPaddingTopdesktop
-																						: tab.name === "laptop"
-																						? mrPaddingToplaptop
-																						: tab.name === "tablet"
-																						? mrPaddingToptablet
-																						: tab.name === "phone"
-																						? mrPaddingTopphone
-																						: mrPaddingTop
-																				}
-																				type="text"
-																				placeHolder={
-																					(
-																						"mr-" +
-																						tab.name +
-																						"-paddingtop"
-																					).replace("--", "-") +
-																					(
-																						" | mr-" +
-																						tab.name +
-																						"-nopaddingtop"
-																					).replace("--", "-")
-																				}
-																				list={(
-																					"mrDevUtilsClasses_" +
-																					tab.name +
-																					"_paddingtop"
-																				).replace("__", "_")}
-																				onChange={(val) =>
-																					setAttributes({
-																						mrPaddingTop:
-																							val !== undefined &&
-																							!val.includes("mr-hover") &&
-																							!val.includes("mr-desktop") &&
-																							!val.includes("mr-laptop") &&
-																							!val.includes("mr-tablet") &&
-																							!val.includes("mr-phone")
-																								? val
-																								: mrPaddingTop,
-																						mrPaddingTophover:
-																							val !== undefined &&
-																							val.includes("mr-hover")
-																								? val
-																								: mrPaddingTophover,
-																						mrPaddingTopdesktop:
-																							val !== undefined &&
-																							val.includes("mr-desktop")
-																								? val
-																								: mrPaddingTopdesktop,
-																						mrPaddingToplaptop:
-																							val !== undefined &&
-																							val.includes("mr-laptop")
-																								? val
-																								: mrPaddingToplaptop,
-																						mrPaddingToptablet:
-																							val !== undefined &&
-																							val.includes("mr-tablet")
-																								? val
-																								: mrPaddingToptablet,
-																						mrPaddingTopphone:
-																							val !== undefined &&
-																							val.includes("mr-phone")
-																								? val
-																								: mrPaddingTopphone,
-																					})
-																				}
-																			/>
-																		) : (
-																			""
-																		)}
-
-																		{tab.name === "" ||
-																		tab.name === "hover" ||
-																		tab.name === "desktop" ||
-																		tab.name === "laptop" ||
-																		tab.name === "tablet" ||
-																		tab.name === "phone" ? (
-																			<TextControl
-																				label={__("Padding right", "mr-utils")}
-																				value={
-																					tab.name === "hover"
-																						? mrPaddingRighthover
-																						: tab.name === "desktop"
-																						? mrPaddingRightdesktop
-																						: tab.name === "laptop"
-																						? mrPaddingRightlaptop
-																						: tab.name === "tablet"
-																						? mrPaddingRighttablet
-																						: tab.name === "phone"
-																						? mrPaddingRightphone
-																						: mrPaddingRight
-																				}
-																				type="text"
-																				placeHolder={
-																					(
-																						"mr-" +
-																						tab.name +
-																						"-paddingright"
-																					).replace("--", "-") +
-																					(
-																						" | mr-" +
-																						tab.name +
-																						"-nopaddingright"
-																					).replace("--", "-")
-																				}
-																				list={(
-																					"mrDevUtilsClasses_" +
-																					tab.name +
-																					"_paddingright"
-																				).replace("__", "_")}
-																				onChange={(val) =>
-																					setAttributes({
-																						mrPaddingRight:
-																							val !== undefined &&
-																							!val.includes("mr-hover") &&
-																							!val.includes("mr-desktop") &&
-																							!val.includes("mr-laptop") &&
-																							!val.includes("mr-tablet") &&
-																							!val.includes("mr-phone")
-																								? val
-																								: mrPaddingRight,
-																						mrPaddingRighthover:
-																							val !== undefined &&
-																							val.includes("mr-hover")
-																								? val
-																								: mrPaddingRighthover,
-																						mrPaddingRightdesktop:
-																							val !== undefined &&
-																							val.includes("mr-desktop")
-																								? val
-																								: mrPaddingRightdesktop,
-																						mrPaddingRightlaptop:
-																							val !== undefined &&
-																							val.includes("mr-laptop")
-																								? val
-																								: mrPaddingRightlaptop,
-																						mrPaddingRighttablet:
-																							val !== undefined &&
-																							val.includes("mr-tablet")
-																								? val
-																								: mrPaddingRighttablet,
-																						mrPaddingRightphone:
-																							val !== undefined &&
-																							val.includes("mr-phone")
-																								? val
-																								: mrPaddingRightphone,
-																					})
-																				}
-																			/>
-																		) : (
-																			""
-																		)}
-
-																		{tab.name === "" ||
-																		tab.name === "hover" ||
-																		tab.name === "desktop" ||
-																		tab.name === "laptop" ||
-																		tab.name === "tablet" ||
-																		tab.name === "phone" ? (
-																			<TextControl
-																				label={__("Padding Bottom", "mr-utils")}
-																				value={
-																					tab.name === "hover"
-																						? mrPaddingBottomhover
-																						: tab.name === "desktop"
-																						? mrPaddingBottomdesktop
-																						: tab.name === "laptop"
-																						? mrPaddingBottomlaptop
-																						: tab.name === "tablet"
-																						? mrPaddingBottomtablet
-																						: tab.name === "phone"
-																						? mrPaddingBottomphone
-																						: mrPaddingBottom
-																				}
-																				type="text"
-																				placeHolder={
-																					(
-																						"mr-" +
-																						tab.name +
-																						"-paddingbottom"
-																					).replace("--", "-") +
-																					(
-																						" | mr-" +
-																						tab.name +
-																						"-nopaddingbottom"
-																					).replace("--", "-")
-																				}
-																				list={(
-																					"mrDevUtilsClasses_" +
-																					tab.name +
-																					"_paddingbottom"
-																				).replace("__", "_")}
-																				onChange={(val) =>
-																					setAttributes({
-																						mrPaddingBottom:
-																							val !== undefined &&
-																							!val.includes("mr-hover") &&
-																							!val.includes("mr-desktop") &&
-																							!val.includes("mr-laptop") &&
-																							!val.includes("mr-tablet") &&
-																							!val.includes("mr-phone")
-																								? val
-																								: mrPaddingBottom,
-																						mrPaddingBottomhover:
-																							val !== undefined &&
-																							val.includes("mr-hover")
-																								? val
-																								: mrPaddingBottomhover,
-																						mrPaddingBottomdesktop:
-																							val !== undefined &&
-																							val.includes("mr-desktop")
-																								? val
-																								: mrPaddingBottomdesktop,
-																						mrPaddingBottomlaptop:
-																							val !== undefined &&
-																							val.includes("mr-laptop")
-																								? val
-																								: mrPaddingBottomlaptop,
-																						mrPaddingBottomtablet:
-																							val !== undefined &&
-																							val.includes("mr-tablet")
-																								? val
-																								: mrPaddingBottomtablet,
-																						mrPaddingBottomphone:
-																							val !== undefined &&
-																							val.includes("mr-phone")
-																								? val
-																								: mrPaddingBottomphone,
-																					})
-																				}
-																			/>
-																		) : (
-																			""
-																		)}
-
-																		{tab.name === "" ||
-																		tab.name === "hover" ||
-																		tab.name === "desktop" ||
-																		tab.name === "laptop" ||
-																		tab.name === "tablet" ||
-																		tab.name === "phone" ? (
-																			<TextControl
-																				label={__("Padding Left", "mr-utils")}
-																				value={
-																					tab.name === "hover"
-																						? mrPaddingLefthover
-																						: tab.name === "desktop"
-																						? mrPaddingLeftdesktop
-																						: tab.name === "laptop"
-																						? mrPaddingLeftlaptop
-																						: tab.name === "tablet"
-																						? mrPaddingLefttablet
-																						: tab.name === "phone"
-																						? mrPaddingLeftphone
-																						: mrPaddingLeft
-																				}
-																				type="text"
-																				placeHolder={
-																					(
-																						"mr-" +
-																						tab.name +
-																						"-paddingleft"
-																					).replace("--", "-") +
-																					(
-																						" | mr-" +
-																						tab.name +
-																						"-nopaddingleft"
-																					).replace("--", "-")
-																				}
-																				list={(
-																					"mrDevUtilsClasses_" +
-																					tab.name +
-																					"_paddingleft"
-																				).replace("__", "_")}
-																				onChange={(val) =>
-																					setAttributes({
-																						mrPaddingLeft:
-																							val !== undefined &&
-																							!val.includes("mr-hover") &&
-																							!val.includes("mr-desktop") &&
-																							!val.includes("mr-laptop") &&
-																							!val.includes("mr-tablet") &&
-																							!val.includes("mr-phone")
-																								? val
-																								: mrPaddingLeft,
-																						mrPaddingLefthover:
-																							val !== undefined &&
-																							val.includes("mr-hover")
-																								? val
-																								: mrPaddingLefthover,
-																						mrPaddingLeftdesktop:
-																							val !== undefined &&
-																							val.includes("mr-desktop")
-																								? val
-																								: mrPaddingLeftdesktop,
-																						mrPaddingLeftlaptop:
-																							val !== undefined &&
-																							val.includes("mr-laptop")
-																								? val
-																								: mrPaddingLeftlaptop,
-																						mrPaddingLefttablet:
-																							val !== undefined &&
-																							val.includes("mr-tablet")
-																								? val
-																								: mrPaddingLefttablet,
-																						mrPaddingLeftphone:
-																							val !== undefined &&
-																							val.includes("mr-phone")
-																								? val
-																								: mrPaddingLeftphone,
-																					})
-																				}
-																			/>
-																		) : (
-																			""
-																		)}
-																	</>
-																) : (
-																	<>
-																		<p></p>
-
-																		{tab.name === "" ||
-																		tab.name === "hover" ||
-																		tab.name === "desktop" ||
-																		tab.name === "laptop" ||
-																		tab.name === "tablet" ||
-																		tab.name === "phone" ? (
-																			<TextControl
-																				label={__("Margin Top", "mr-utils")}
-																				value={
-																					tab.name === "hover"
-																						? mrMarginTophover
-																						: tab.name === "desktop"
-																						? mrMarginTopdesktop
-																						: tab.name === "laptop"
-																						? mrMarginToplaptop
-																						: tab.name === "tablet"
-																						? mrMarginToptablet
-																						: tab.name === "phone"
-																						? mrMarginTopphone
-																						: mrMarginTop
-																				}
-																				type="text"
-																				placeHolder={
-																					(
-																						"mr-" +
-																						tab.name +
-																						"-margintop"
-																					).replace("--", "-") +
-																					(
-																						" | mr-" +
-																						tab.name +
-																						"-nomargintop"
-																					).replace("--", "-")
-																				}
-																				list={(
-																					"mrDevUtilsClasses_" +
-																					tab.name +
-																					"_margintop"
-																				).replace("__", "_")}
-																				onChange={(val) =>
-																					setAttributes({
-																						mrMarginTop:
-																							val !== undefined &&
-																							!val.includes("mr-hover") &&
-																							!val.includes("mr-desktop") &&
-																							!val.includes("mr-laptop") &&
-																							!val.includes("mr-tablet") &&
-																							!val.includes("mr-phone")
-																								? val
-																								: mrMarginTop,
-																						mrMarginTophover:
-																							val !== undefined &&
-																							val.includes("mr-hover")
-																								? val
-																								: mrMarginTophover,
-																						mrMarginTopdesktop:
-																							val !== undefined &&
-																							val.includes("mr-desktop")
-																								? val
-																								: mrMarginTopdesktop,
-																						mrMarginToplaptop:
-																							val !== undefined &&
-																							val.includes("mr-laptop")
-																								? val
-																								: mrMarginToplaptop,
-																						mrMarginToptablet:
-																							val !== undefined &&
-																							val.includes("mr-tablet")
-																								? val
-																								: mrMarginToptablet,
-																						mrMarginTopphone:
-																							val !== undefined &&
-																							val.includes("mr-phone")
-																								? val
-																								: mrMarginTopphone,
-																					})
-																				}
-																			/>
-																		) : (
-																			""
-																		)}
-
-																		{tab.name === "" ||
-																		tab.name === "hover" ||
-																		tab.name === "desktop" ||
-																		tab.name === "laptop" ||
-																		tab.name === "tablet" ||
-																		tab.name === "phone" ? (
-																			<TextControl
-																				label={__("Margin Right", "mr-utils")}
-																				value={
-																					tab.name === "hover"
-																						? mrMarginRighthover
-																						: tab.name === "desktop"
-																						? mrMarginRightdesktop
-																						: tab.name === "laptop"
-																						? mrMarginRightlaptop
-																						: tab.name === "tablet"
-																						? mrMarginRighttablet
-																						: tab.name === "phone"
-																						? mrMarginRightphone
-																						: mrMarginRight
-																				}
-																				type="text"
-																				placeHolder={
-																					(
-																						"mr-" +
-																						tab.name +
-																						"-marginright"
-																					).replace("--", "-") +
-																					(
-																						" | mr-" +
-																						tab.name +
-																						"-nomarginright"
-																					).replace("--", "-")
-																				}
-																				list={(
-																					"mrDevUtilsClasses_" +
-																					tab.name +
-																					"_marginright"
-																				).replace("__", "_")}
-																				onChange={(val) =>
-																					setAttributes({
-																						mrMarginRight:
-																							val !== undefined &&
-																							!val.includes("mr-hover") &&
-																							!val.includes("mr-desktop") &&
-																							!val.includes("mr-laptop") &&
-																							!val.includes("mr-tablet") &&
-																							!val.includes("mr-phone")
-																								? val
-																								: mrMarginRight,
-																						mrMarginRighthover:
-																							val !== undefined &&
-																							val.includes("mr-hover")
-																								? val
-																								: mrMarginRighthover,
-																						mrMarginRightdesktop:
-																							val !== undefined &&
-																							val.includes("mr-desktop")
-																								? val
-																								: mrMarginRightdesktop,
-																						mrMarginRightlaptop:
-																							val !== undefined &&
-																							val.includes("mr-laptop")
-																								? val
-																								: mrMarginRightlaptop,
-																						mrMarginRighttablet:
-																							val !== undefined &&
-																							val.includes("mr-tablet")
-																								? val
-																								: mrMarginRighttablet,
-																						mrMarginRightphone:
-																							val !== undefined &&
-																							val.includes("mr-phone")
-																								? val
-																								: mrMarginRightphone,
-																					})
-																				}
-																			/>
-																		) : (
-																			""
-																		)}
-
-																		{tab.name === "" ||
-																		tab.name === "hover" ||
-																		tab.name === "desktop" ||
-																		tab.name === "laptop" ||
-																		tab.name === "tablet" ||
-																		tab.name === "phone" ? (
-																			<TextControl
-																				label={__("Margin Bottom", "mr-utils")}
-																				value={
-																					tab.name === "hover"
-																						? mrMarginBottomhover
-																						: tab.name === "desktop"
-																						? mrMarginBottomdesktop
-																						: tab.name === "laptop"
-																						? mrMarginBottomlaptop
-																						: tab.name === "tablet"
-																						? mrMarginBottomtablet
-																						: tab.name === "phone"
-																						? mrMarginBottomphone
-																						: mrMarginBottom
-																				}
-																				type="text"
-																				placeHolder={
-																					(
-																						"mr-" +
-																						tab.name +
-																						"-marginbottom"
-																					).replace("--", "-") +
-																					(
-																						" | mr-" +
-																						tab.name +
-																						"-nomarginbottom"
-																					).replace("--", "-")
-																				}
-																				list={(
-																					"mrDevUtilsClasses_" +
-																					tab.name +
-																					"_marginbottom"
-																				).replace("__", "_")}
-																				onChange={(val) =>
-																					setAttributes({
-																						mrMarginBottom:
-																							val !== undefined &&
-																							!val.includes("mr-hover") &&
-																							!val.includes("mr-desktop") &&
-																							!val.includes("mr-laptop") &&
-																							!val.includes("mr-tablet") &&
-																							!val.includes("mr-phone")
-																								? val
-																								: mrMarginBottom,
-																						mrMarginBottomhover:
-																							val !== undefined &&
-																							val.includes("mr-hover")
-																								? val
-																								: mrMarginBottomhover,
-																						mrMarginBottomdesktop:
-																							val !== undefined &&
-																							val.includes("mr-desktop")
-																								? val
-																								: mrMarginBottomdesktop,
-																						mrMarginBottomlaptop:
-																							val !== undefined &&
-																							val.includes("mr-laptop")
-																								? val
-																								: mrMarginBottomlaptop,
-																						mrMarginBottomtablet:
-																							val !== undefined &&
-																							val.includes("mr-tablet")
-																								? val
-																								: mrMarginBottomtablet,
-																						mrMarginBottomphone:
-																							val !== undefined &&
-																							val.includes("mr-phone")
-																								? val
-																								: mrMarginBottomphone,
-																					})
-																				}
-																			/>
-																		) : (
-																			""
-																		)}
-
-																		{tab.name === "" ||
-																		tab.name === "hover" ||
-																		tab.name === "desktop" ||
-																		tab.name === "laptop" ||
-																		tab.name === "tablet" ||
-																		tab.name === "phone" ? (
-																			<TextControl
-																				label={__("Margin Left", "mr-utils")}
-																				value={
-																					tab.name === "hover"
-																						? mrMarginLefthover
-																						: tab.name === "desktop"
-																						? mrMarginLeftdesktop
-																						: tab.name === "laptop"
-																						? mrMarginLeftlaptop
-																						: tab.name === "tablet"
-																						? mrMarginLefttablet
-																						: tab.name === "phone"
-																						? mrMarginLeftphone
-																						: mrMarginLeft
-																				}
-																				type="text"
-																				placeHolder={
-																					(
-																						"mr-" +
-																						tab.name +
-																						"-marginleft"
-																					).replace("--", "-") +
-																					(
-																						" | mr-" +
-																						tab.name +
-																						"-nomarginleft"
-																					).replace("--", "-")
-																				}
-																				list={(
-																					"mrDevUtilsClasses_" +
-																					tab.name +
-																					"_marginleft"
-																				).replace("__", "_")}
-																				onChange={(val) =>
-																					setAttributes({
-																						mrMarginLeft:
-																							val !== undefined &&
-																							!val.includes("mr-hover") &&
-																							!val.includes("mr-desktop") &&
-																							!val.includes("mr-laptop") &&
-																							!val.includes("mr-tablet") &&
-																							!val.includes("mr-phone")
-																								? val
-																								: mrMarginLeft,
-																						mrMarginLefthover:
-																							val !== undefined &&
-																							val.includes("mr-hover")
-																								? val
-																								: mrMarginLefthover,
-																						mrMarginLeftdesktop:
-																							val !== undefined &&
-																							val.includes("mr-desktop")
-																								? val
-																								: mrMarginLeftdesktop,
-																						mrMarginLeftlaptop:
-																							val !== undefined &&
-																							val.includes("mr-laptop")
-																								? val
-																								: mrMarginLeftlaptop,
-																						mrMarginLefttablet:
-																							val !== undefined &&
-																							val.includes("mr-tablet")
-																								? val
-																								: mrMarginLefttablet,
-																						mrMarginLeftphone:
-																							val !== undefined &&
-																							val.includes("mr-phone")
-																								? val
-																								: mrMarginLeftphone,
-																					})
-																				}
-																			/>
-																		) : (
-																			""
-																		)}
-																	</>
-																)
-															}
-														</TabPanel>
-													</PanelRow>
-												</PanelBody>
-												<PanelBody
-													icon={typography}
-													title={tab.name + __(" Text", "mr-utils")}
-													initialOpen={false}
-													className={
-														tab.name === ""
-															? "mr-backend-option mr-backend-option_utils_text"
-															: "mr-backend-option mr-backend-option_utils_" +
-															  tab.name +
-															  "_text"
-													}
-												>
-													{tab.name === "" ? (
-														<TextControl
-															label={__("Font Family", "mr-utils")}
-															value={mrFontFamily}
-															type="text"
-															className="mr-backend-custominput mr-backend-customfontfamily"
-															placeHolder={"mr-font1"}
-															list={"mrDevUtilsClasses_fontfamily".replace(
-																"__",
-																"_"
-															)}
-															onChange={(val) =>
-																setAttributes({
-																	mrFontFamily:
-																		val !== undefined ? val : mrFontFamily,
-																})
-															}
-														/>
-													) : (
-														""
-													)}
-
-													{tab.name === "" ||
-													tab.name === "hover" ||
-													tab.name === "desktop" ||
-													tab.name === "laptop" ||
-													tab.name === "tablet" ||
-													tab.name === "phone" ? (
-														<TextControl
-															label={__("Font Size", "mr-utils")}
-															value={
-																tab.name === "hover"
-																	? mrFontSizehover
-																	: tab.name === "desktop"
-																	? mrFontSizedesktop
-																	: tab.name === "laptop"
-																	? mrFontSizelaptop
-																	: tab.name === "tablet"
-																	? mrFontSizetablet
-																	: tab.name === "phone"
-																	? mrFontSizephone
-																	: mrFontSize
-															}
-															type="text"
-															className="mr-backend-custominput mr-backend-customptop"
-															placeHolder={(
-																"mr-" +
-																tab.name +
-																"-fontsize{1/7}"
-															).replace("--", "-")}
-															list={(
-																"mrDevUtilsClasses_" +
-																tab.name +
-																"_fontsize"
-															).replace("__", "_")}
-															onChange={(val) =>
-																setAttributes({
-																	mrFontSize:
-																		val !== undefined &&
-																		!val.includes("mr-hover") &&
-																		!val.includes("mr-desktop") &&
-																		!val.includes("mr-laptop") &&
-																		!val.includes("mr-tablet") &&
-																		!val.includes("mr-phone")
-																			? val
-																			: mrFontSize,
-																	mrFontSizehover:
-																		val !== undefined &&
-																		val.includes("mr-hover")
-																			? val
-																			: mrFontSizehover,
-																	mrFontSizedesktop:
-																		val !== undefined &&
-																		val.includes("mr-desktop")
-																			? val
-																			: mrFontSizedesktop,
-																	mrFontSizelaptop:
-																		val !== undefined &&
-																		val.includes("mr-laptop")
-																			? val
-																			: mrFontSizelaptop,
-																	mrFontSizetablet:
-																		val !== undefined &&
-																		val.includes("mr-tablet")
-																			? val
-																			: mrFontSizetablet,
-																	mrFontSizephone:
-																		val !== undefined &&
-																		val.includes("mr-phone")
-																			? val
-																			: mrFontSizephone,
-																})
-															}
-														/>
-													) : (
-														""
-													)}
-
-													{tab.name !== "hover" ? (
-														<>
-															<SelectControl
-																label={__("Text Alignment", "mr-utils")}
-																value={
-																	tab.name === "desktop"
-																		? mrTextAlignmentdesktop
-																		: tab.name === "laptop"
-																		? mrTextAlignmentlaptop
-																		: tab.name === "tablet"
-																		? mrTextAlignmenttablet
-																		: tab.name === "phone"
-																		? mrTextAlignmentphone
-																		: mrTextAlignment
-																}
-																options={__([
-																	{
-																		value: "mr-" + tab.name,
-																		label: "Default",
-																	},
-																	{
-																		value: (
-																			" mr-" +
-																			tab.name +
-																			"-alignleft"
-																		).replace("--", "-"),
-																		label: "Left",
-																	},
-																	{
-																		value: (
-																			" mr-" +
-																			tab.name +
-																			"-aligncenter"
-																		).replace("--", "-"),
-																		label: "Center",
-																	},
-																	{
-																		value: (
-																			" mr-" +
-																			tab.name +
-																			"-alignright"
-																		).replace("--", "-"),
-																		label: "Right",
-																	},
-																])}
-																onChange={(val) =>
-																	setAttributes({
-																		mrTextAlignment:
-																			val !== undefined &&
-																			!val.includes("mr-hover") &&
-																			!val.includes("mr-desktop") &&
-																			!val.includes("mr-laptop") &&
-																			!val.includes("mr-tablet") &&
-																			!val.includes("mr-phone")
-																				? val
-																				: mrTextAlignment,
-																		mrTextAlignmentdesktop:
-																			val !== undefined &&
-																			val.includes("mr-desktop")
-																				? val
-																				: mrTextAlignmentdesktop,
-																		mrTextAlignmentlaptop:
-																			val !== undefined &&
-																			val.includes("mr-laptop")
-																				? val
-																				: mrTextAlignmentlaptop,
-																		mrTextAlignmenttablet:
-																			val !== undefined &&
-																			val.includes("mr-tablet")
-																				? val
-																				: mrTextAlignmenttablet,
-																		mrTextAlignmentphone:
-																			val !== undefined &&
-																			val.includes("mr-phone")
-																				? val
-																				: mrTextAlignmentphone,
-																	})
-																}
-															/>
+																	]}
+																	onChange={(val) =>
+																		setAttributes({
+																			mrPaginationPosition:
+																				!val || val === "mr-" + tab.name
+																					? ""
+																					: val.includes("mr-desktop") ||
+																					  val.includes("mr-laptop") ||
+																					  val.includes("mr-tablet") ||
+																					  val.includes("mr-phone") ||
+																					  val.includes("-hover-")
+																					? mrPaginationPosition
+																					: val.replace("--", "-"),
+																		})
+																	}
+																/>
+																<ToggleControl
+																	label="Arrows"
+																	checked={mrArrowPagination}
+																	className="mr-backend-perpage"
+																	onChange={() =>
+																		setAttributes({
+																			mrArrowPagination: !mrArrowPagination,
+																		})
+																	}
+																/>
+																<ToggleControl
+																	label="Select dropdown"
+																	checked={mrSelectPagination}
+																	className="mr-backend-perpage"
+																	onChange={() =>
+																		setAttributes({
+																			mrSelectPagination: !mrSelectPagination,
+																		})
+																	}
+																/>
+																<ToggleControl
+																	label="Radio buttons"
+																	checked={mrRadioPagination}
+																	className="mr-backend-perpage"
+																	onChange={() =>
+																		setAttributes({
+																			mrRadioPagination: !mrRadioPagination,
+																		})
+																	}
+																/>
+															</PanelBody>
 														</>
 													) : (
 														""
 													)}
-												</PanelBody>
-												{tab.name !== "hover" ? (
-													<>
-														<PanelBody
-															icon={pullLeft}
-															title={tab.name + __(" Placement", "mr-utils")}
-															initialOpen={false}
-															className={
-																tab.name === ""
-																	? "mr-backend-option mr-backend-option_utils_placement"
-																	: "mr-backend-option mr-backend-option_utils_" +
-																	  tab.name +
-																	  "_placement"
+													<PanelBody
+														icon={layout}
+														title={tab.name + __(" Layout", "mr-utils")}
+														initialOpen={false}
+														className={
+															tab.name === ""
+																? "mr-backend-option mr-backend-option_utils_layout"
+																: "mr-backend-option mr-backend-option_utils_" +
+																  tab.name +
+																  "_layout"
+														}
+													>
+														<SelectControl
+															label={__("Items per line", "mr-utils")}
+															value={
+																tab.name === "desktop"
+																	? mrPerLinedesktop
+																	: tab.name === "laptop"
+																	? mrPerLinelaptop
+																	: tab.name === "tablet"
+																	? mrPerLinetablet
+																	: tab.name === "phone"
+																	? mrPerLinephone
+																	: mrPerLine
 															}
-														>
-															<SelectControl
-																label={__("Position Type", "mr-utils")}
+															options={
+																tab.name === "" ||
+																tab.name === "desktop" ||
+																tab.name === "laptop" ||
+																tab.name === "tablet" ||
+																tab.name === "phone"
+																	? [
+																			{ value: "mr-" + tab.name, label: "" },
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-perline"
+																				).replace("--", "-"),
+																				label: "Global",
+																			},
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-1perline"
+																				).replace("--", "-"),
+																				label: "1",
+																			},
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-2perline"
+																				).replace("--", "-"),
+																				label: "2",
+																			},
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-3perline"
+																				).replace("--", "-"),
+																				label: "3",
+																			},
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-4perline"
+																				).replace("--", "-"),
+																				label: "4",
+																			},
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-5perline"
+																				).replace("--", "-"),
+																				label: "5",
+																			},
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-6perline"
+																				).replace("--", "-"),
+																				label: "6",
+																			},
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-7perline"
+																				).replace("--", "-"),
+																				label: "7",
+																			},
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-8perline"
+																				).replace("--", "-"),
+																				label: "8",
+																			},
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-9perline"
+																				).replace("--", "-"),
+																				label: "9",
+																			},
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-10perline"
+																				).replace("--", "-"),
+																				label: "10",
+																			},
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-11perline"
+																				).replace("--", "-"),
+																				label: "11",
+																			},
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-12perline"
+																				).replace("--", "-"),
+																				label: "12",
+																			},
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-0perline"
+																				).replace("--", "-"),
+																				label: "∞",
+																			},
+																	  ]
+																	: ""
+															}
+															onChange={(val) =>
+																setAttributes({
+																	mrPerLine:
+																		val !== undefined &&
+																		!val.includes("mr-hover") &&
+																		!val.includes("mr-desktop") &&
+																		!val.includes("mr-laptop") &&
+																		!val.includes("mr-tablet") &&
+																		!val.includes("mr-phone")
+																			? val
+																			: mrPerLine,
+																	mrPerLinedesktop:
+																		val !== undefined &&
+																		val.includes("mr-desktop")
+																			? val
+																			: mrPerLinedesktop,
+																	mrPerLinelaptop:
+																		val !== undefined &&
+																		val.includes("mr-laptop")
+																			? val
+																			: mrPerLinelaptop,
+																	mrPerLinetablet:
+																		val !== undefined &&
+																		val.includes("mr-tablet")
+																			? val
+																			: mrPerLinetablet,
+																	mrPerLinephone:
+																		val !== undefined &&
+																		val.includes("mr-phone")
+																			? val
+																			: mrPerLinephone,
+																})
+															}
+															help={
+																!mrPerLine || mrPerLine === "mr-"
+																	? "Apply into parent blocks (such as Columns and List blocks) to organize the set number of direct childs on different lines."
+																	: ""
+															}
+														/>
+
+														<SelectControl
+															label={__("Wrap", "mr-utils")}
+															value={
+																tab.name === "desktop"
+																	? mrWrapdesktop
+																	: tab.name === "laptop"
+																	? mrWraplaptop
+																	: tab.name === "tablet"
+																	? mrWraptablet
+																	: tab.name === "phone"
+																	? mrWrapphone
+																	: mrWrap
+															}
+															options={
+																tab.name === "" ||
+																tab.name === "desktop" ||
+																tab.name === "laptop" ||
+																tab.name === "tablet" ||
+																tab.name === "phone"
+																	? [
+																			{
+																				value: "mr-" + tab.name,
+																				label: "Default",
+																			},
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-wrap"
+																				).replace("--", "-"),
+																				label: "Wrap",
+																			},
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-nowrap"
+																				).replace("--", "-"),
+																				label: "No Wrap",
+																			},
+																	  ]
+																	: ""
+															}
+															onChange={(val) =>
+																setAttributes({
+																	mrWrap:
+																		val !== undefined &&
+																		!val.includes("mr-hover") &&
+																		!val.includes("mr-desktop") &&
+																		!val.includes("mr-laptop") &&
+																		!val.includes("mr-tablet") &&
+																		!val.includes("mr-phone")
+																			? val
+																			: mrWrap,
+																	mrWrapdesktop:
+																		val !== undefined &&
+																		val.includes("mr-desktop")
+																			? val
+																			: mrWrapdesktop,
+																	mrWraplaptop:
+																		val !== undefined &&
+																		val.includes("mr-laptop")
+																			? val
+																			: mrWraplaptop,
+																	mrWraptablet:
+																		val !== undefined &&
+																		val.includes("mr-tablet")
+																			? val
+																			: mrWraptablet,
+																	mrWrapphone:
+																		val !== undefined &&
+																		val.includes("mr-phone")
+																			? val
+																			: mrWrapphone,
+																})
+															}
+														/>
+
+														<SelectControl
+															label={__(
+																"Columns to create on this item",
+																"mr-utils"
+															)}
+															value={
+																tab.name === "desktop"
+																	? mrColumnsdesktop
+																	: tab.name === "laptop"
+																	? mrColumnslaptop
+																	: tab.name === "tablet"
+																	? mrColumnstablet
+																	: tab.name === "phone"
+																	? mrColumnsphone
+																	: mrColumns
+															}
+															help={
+																!mrColumns || mrColumns === "mr-"
+																	? "Divide the current item into a set number of new columns automatically."
+																	: ""
+															}
+															options={
+																tab.name === "" ||
+																tab.name === "desktop" ||
+																tab.name === "laptop" ||
+																tab.name === "tablet" ||
+																tab.name === "phone"
+																	? [
+																			{ value: "mr-" + tab.name, label: "" },
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-columns"
+																				).replace("--", "-"),
+																				label: "Global",
+																			},
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-1column"
+																				).replace("--", "-"),
+																				label: "1",
+																			},
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-2columns"
+																				).replace("--", "-"),
+																				label: "2",
+																			},
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-3columns"
+																				).replace("--", "-"),
+																				label: "3",
+																			},
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-4columns"
+																				).replace("--", "-"),
+																				label: "4",
+																			},
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-5columns"
+																				).replace("--", "-"),
+																				label: "5",
+																			},
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-6columns"
+																				).replace("--", "-"),
+																				label: "6",
+																			},
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-7columns"
+																				).replace("--", "-"),
+																				label: "7",
+																			},
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-8columns"
+																				).replace("--", "-"),
+																				label: "8",
+																			},
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-9columns"
+																				).replace("--", "-"),
+																				label: "9",
+																			},
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-10columns"
+																				).replace("--", "-"),
+																				label: "10",
+																			},
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-11columns"
+																				).replace("--", "-"),
+																				label: "11",
+																			},
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-12columns"
+																				).replace("--", "-"),
+																				label: "12",
+																			},
+																	  ]
+																	: ""
+															}
+															onChange={(val) =>
+																setAttributes({
+																	mrColumns:
+																		val !== undefined &&
+																		!val.includes("mr-hover") &&
+																		!val.includes("mr-desktop") &&
+																		!val.includes("mr-laptop") &&
+																		!val.includes("mr-tablet") &&
+																		!val.includes("mr-phone")
+																			? val
+																			: mrColumns,
+																	mrColumnsdesktop:
+																		val !== undefined &&
+																		val.includes("mr-desktop")
+																			? val
+																			: mrColumnsdesktop,
+																	mrColumnslaptop:
+																		val !== undefined &&
+																		val.includes("mr-laptop")
+																			? val
+																			: mrColumnslaptop,
+																	mrColumnstablet:
+																		val !== undefined &&
+																		val.includes("mr-tablet")
+																			? val
+																			: mrColumnstablet,
+																	mrColumnsphone:
+																		val !== undefined &&
+																		val.includes("mr-phone")
+																			? val
+																			: mrColumnsphone,
+																})
+															}
+														/>
+
+														{tab.name === "" ||
+														tab.name === "hover" ||
+														tab.name === "desktop" ||
+														tab.name === "laptop" ||
+														tab.name === "tablet" ||
+														tab.name === "phone" ? (
+															<TextControl
+																label={__("Item Size", "mr-utils")}
 																value={
-																	tab.name === "desktop"
-																		? mrPositiondesktop
+																	tab.name === "hover"
+																		? mrSizehover
+																		: tab.name === "desktop"
+																		? mrSizedesktop
 																		: tab.name === "laptop"
-																		? mrPositionlaptop
+																		? mrSizelaptop
 																		: tab.name === "tablet"
-																		? mrPositiontablet
+																		? mrSizetablet
 																		: tab.name === "phone"
-																		? mrPositionphone
-																		: mrPosition
+																		? mrSizephone
+																		: mrSize
 																}
-																options={[
-																	{ value: "mr-" + tab.name, label: "Default" },
+																type="text"
+																className="mr-backend-custominput mr-backend-customptop"
+																placeHolder={(
+																	"mr-" +
+																	tab.name +
+																	"-size{1/13}"
+																).replace("--", "-")}
+																list={(
+																	"mrDevUtilsClasses_" +
+																	tab.name +
+																	"_size"
+																).replace("__", "_")}
+																onChange={(val) =>
+																	setAttributes({
+																		mrSize:
+																			val !== undefined &&
+																			!val.includes("mr-hover") &&
+																			!val.includes("mr-desktop") &&
+																			!val.includes("mr-laptop") &&
+																			!val.includes("mr-tablet") &&
+																			!val.includes("mr-phone")
+																				? val
+																				: mrSize,
+																		mrSizehover:
+																			val !== undefined &&
+																			val.includes("mr-hover")
+																				? val
+																				: mrSizehover,
+																		mrSizedesktop:
+																			val !== undefined &&
+																			val.includes("mr-desktop")
+																				? val
+																				: mrSizedesktop,
+																		mrSizelaptop:
+																			val !== undefined &&
+																			val.includes("mr-laptop")
+																				? val
+																				: mrSizelaptop,
+																		mrSizetablet:
+																			val !== undefined &&
+																			val.includes("mr-tablet")
+																				? val
+																				: mrSizetablet,
+																		mrSizephone:
+																			val !== undefined &&
+																			val.includes("mr-phone")
+																				? val
+																				: mrSizephone,
+																	})
+																}
+															/>
+														) : (
+															""
+														)}
+														<SelectControl
+															label={__("Item Order", "mr-utils")}
+															value={
+																tab.name === "desktop"
+																	? mrOrderdesktop
+																	: tab.name === "laptop"
+																	? mrOrderlaptop
+																	: tab.name === "tablet"
+																	? mrOrdertablet
+																	: tab.name === "phone"
+																	? mrOrderphone
+																	: mrOrder
+															}
+															options={
+																tab.name === "" ||
+																tab.name === "desktop" ||
+																tab.name === "laptop" ||
+																tab.name === "tablet" ||
+																tab.name === "phone"
+																	? [
+																			{ value: "mr-" + tab.name, label: "" },
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-order-1"
+																				).replace("--", "-"),
+																				label: "-1",
+																			},
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-order1"
+																				).replace("--", "-"),
+																				label: "1",
+																			},
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-order2"
+																				).replace("--", "-"),
+																				label: "2",
+																			},
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-order3"
+																				).replace("--", "-"),
+																				label: "3",
+																			},
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-order4"
+																				).replace("--", "-"),
+																				label: "4",
+																			},
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-order5"
+																				).replace("--", "-"),
+																				label: "5",
+																			},
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-order6"
+																				).replace("--", "-"),
+																				label: "6",
+																			},
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-order7"
+																				).replace("--", "-"),
+																				label: "7",
+																			},
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-order8"
+																				).replace("--", "-"),
+																				label: "8",
+																			},
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-order9"
+																				).replace("--", "-"),
+																				label: "9",
+																			},
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-order10"
+																				).replace("--", "-"),
+																				label: "10",
+																			},
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-order11"
+																				).replace("--", "-"),
+																				label: "11",
+																			},
+																			{
+																				value: (
+																					" mr-" +
+																					tab.name +
+																					"-order12"
+																				).replace("--", "-"),
+																				label: "12",
+																			},
+																	  ]
+																	: ""
+															}
+															onChange={(val) =>
+																setAttributes({
+																	mrOrder:
+																		val !== undefined &&
+																		!val.includes("mr-hover") &&
+																		!val.includes("mr-desktop") &&
+																		!val.includes("mr-laptop") &&
+																		!val.includes("mr-tablet") &&
+																		!val.includes("mr-phone")
+																			? val
+																			: mrOrder,
+																	mrOrderdesktop:
+																		val !== undefined &&
+																		val.includes("mr-desktop")
+																			? val
+																			: mrOrderdesktop,
+																	mrOrderlaptop:
+																		val !== undefined &&
+																		val.includes("mr-laptop")
+																			? val
+																			: mrOrderlaptop,
+																	mrOrdertablet:
+																		val !== undefined &&
+																		val.includes("mr-tablet")
+																			? val
+																			: mrOrdertablet,
+																	mrOrderphone:
+																		val !== undefined &&
+																		val.includes("mr-phone")
+																			? val
+																			: mrOrderphone,
+																})
+															}
+														/>
+													</PanelBody>
+													<PanelBody
+														icon={swatch}
+														title={tab.name + __(" Display", "mr-utils")}
+														initialOpen={false}
+														className={
+															tab.name === ""
+																? "mr-backend-option mr-backend-option_utils_display"
+																: "mr-backend-option mr-backend-option_utils_" +
+																  tab.name +
+																  "_display"
+														}
+													>
+														<SelectControl
+															label={__("Visibility", "mr-utils")}
+															value={
+																tab.name === "hover"
+																	? mrDisplayhover
+																	: tab.name === "desktop"
+																	? mrDisplaydesktop
+																	: tab.name === "laptop"
+																	? mrDisplaylaptop
+																	: tab.name === "tablet"
+																	? mrDisplaytablet
+																	: tab.name === "phone"
+																	? mrDisplayphone
+																	: mrDisplay
+															}
+															options={[
+																{ value: "mr-" + tab.name, label: "Default" },
+																{
+																	value: (" mr-" + tab.name + "-hide").replace(
+																		"--",
+																		"-"
+																	),
+																	label: "Hide",
+																},
+																{
+																	value: (" mr-" + tab.name + "-show").replace(
+																		"--",
+																		"-"
+																	),
+																	label: "Show",
+																},
+																{
+																	value: (" mr-" + tab.name + "-none").replace(
+																		"--",
+																		"-"
+																	),
+																	label: "None",
+																},
+																{
+																	value: (" mr-" + tab.name + "-flex").replace(
+																		"--",
+																		"-"
+																	),
+																	label: "Flex",
+																},
+																{
+																	value: (" mr-" + tab.name + "-block").replace(
+																		"--",
+																		"-"
+																	),
+																	label: "Block",
+																},
+																{
+																	value: (
+																		" mr-" +
+																		tab.name +
+																		"-visible"
+																	).replace("--", "-"),
+																	label: "Visible",
+																},
+																{
+																	value: (
+																		" mr-" +
+																		tab.name +
+																		"-hidden"
+																	).replace("--", "-"),
+																	label: "Hidden",
+																},
+																{
+																	value: (
+																		" mr-" +
+																		tab.name +
+																		"-transparent"
+																	).replace("--", "-"),
+																	label: "Transparent",
+																},
+																{
+																	value: (
+																		" mr-" +
+																		tab.name +
+																		"-semiopaque"
+																	).replace("--", "-"),
+																	label: "Semi-opaque",
+																},
+																{
+																	value: (
+																		" mr-" +
+																		tab.name +
+																		"-opaque"
+																	).replace("--", "-"),
+																	label: "Opaque",
+																},
+															]}
+															onChange={(val) =>
+																setAttributes({
+																	mrDisplay:
+																		val !== undefined &&
+																		!val.includes("mr-hover") &&
+																		!val.includes("mr-desktop") &&
+																		!val.includes("mr-laptop") &&
+																		!val.includes("mr-tablet") &&
+																		!val.includes("mr-phone")
+																			? val
+																			: mrDisplay,
+																	mrDisplayhover:
+																		val !== undefined && val.includes("-hover-")
+																			? val
+																			: mrDisplayhover,
+																	mrDisplaydesktop:
+																		val !== undefined &&
+																		val.includes("mr-desktop")
+																			? val
+																			: mrDisplaydesktop,
+																	mrDisplaylaptop:
+																		val !== undefined &&
+																		val.includes("mr-laptop")
+																			? val
+																			: mrDisplaylaptop,
+																	mrDisplaytablet:
+																		val !== undefined &&
+																		val.includes("mr-tablet")
+																			? val
+																			: mrDisplaytablet,
+																	mrDisplayphone:
+																		val !== undefined &&
+																		val.includes("mr-phone")
+																			? val
+																			: mrDisplayphone,
+																})
+															}
+															help={
+																mrDisplay === " mr-hidden" ||
+																mrDisplay === " mr-hide" ||
+																mrDisplay === " mr-none" ||
+																mrDisplay === " mr-transparent" ||
+																mrDisplayhover === " mr-hover-hidden" ||
+																mrDisplayhover === " mr-hover-hide" ||
+																mrDisplayhover === " mr-hover-none" ||
+																mrDisplaydesktop === " mr-desktop-hidden" ||
+																mrDisplaydesktop === " mr-desktop-hide" ||
+																mrDisplaydesktop === " mr-desktop-none" ||
+																mrDisplaydesktop ===
+																	" mr-desktop-transparent" ||
+																mrDisplaylaptop === " mr-laptop-hidden" ||
+																mrDisplaylaptop === " mr-laptop-hide" ||
+																mrDisplaylaptop === " mr-laptop-none" ||
+																mrDisplaylaptop === " mr-laptop-transparent" ||
+																mrDisplaytablet === " mr-tablet-hidden" ||
+																mrDisplaytablet === " mr-tablet-hide" ||
+																mrDisplaytablet === " mr-tablet-none" ||
+																mrDisplaytablet === " mr-tablet-transparent" ||
+																mrDisplayphone === " mr-phone-hidden" ||
+																mrDisplayphone === " mr-phone-hide" ||
+																mrDisplayphone === " mr-phone-none" ||
+																mrDisplayphone === " mr-phone-transparent" ? (
+																	__(
+																		"An opacity is applied to the block in the backend so you can still see and select it. Preview the frontend to see the actual result.",
+																		"mr-utils"
+																	)
+																) : (
+																	<a
+																		href="https://github.com/marcosrego-web/mr-utils/wiki/Utility-Classes#display"
+																		target="_blank"
+																	>
+																		Know the differences between visibilities
+																	</a>
+																)
+															}
+														/>
+													</PanelBody>
+													{tab.name === "" || tab.name === "hover" ? (
+														<PanelBody
+															icon={brush}
+															title={tab.name + __(" Appearance", "mr-utils")}
+															initialOpen={false}
+															className="mr-backend-option mr-backend-option_utils_appearance"
+														>
+															{tab.name === "" || tab.name === "hover" ? (
+																<TextControl
+																	label={__("Background Color", "mr-utils")}
+																	value={
+																		tab.name === "hover"
+																			? mrBackgroundColorhover
+																			: mrBackgroundColor
+																	}
+																	type="text"
+																	className="mr-backend-custominput mr-backend-custombackgroundcolor"
+																	placeHolder={(
+																		"mr-" +
+																		tab.name +
+																		"-backgroundcolor"
+																	).replace("--", "-")}
+																	list={(
+																		"mrDevUtilsClasses_" +
+																		tab.name +
+																		"_backgroundcolor"
+																	).replace("__", "_")}
+																	onChange={(val) =>
+																		setAttributes({
+																			mrBackgroundColor:
+																				val !== undefined &&
+																				!val.includes("mr-hover") &&
+																				!val.includes("mr-desktop") &&
+																				!val.includes("mr-laptop") &&
+																				!val.includes("mr-tablet") &&
+																				!val.includes("mr-phone")
+																					? val
+																					: mrBackgroundColor,
+																			mrBackgroundColorhover:
+																				val !== undefined &&
+																				val.includes("mr-hover")
+																					? val
+																					: mrBackgroundColorhover,
+																		})
+																	}
+																/>
+															) : (
+																""
+															)}
+
+															{tab.name === "" || tab.name === "hover" ? (
+																<TextControl
+																	label={__("Color", "mr-utils")}
+																	value={
+																		tab.name === "hover"
+																			? mrColorhover
+																			: mrColor
+																	}
+																	type="text"
+																	className="mr-backend-custominput mr-backend-customcolor"
+																	placeHolder={(
+																		"mr-" +
+																		tab.name +
+																		"-color"
+																	).replace("--", "-")}
+																	list={(
+																		"mrDevUtilsClasses_" +
+																		tab.name +
+																		"_color"
+																	).replace("__", "_")}
+																	onChange={(val) =>
+																		setAttributes({
+																			mrColor:
+																				val !== undefined &&
+																				!val.includes("mr-hover") &&
+																				!val.includes("mr-desktop") &&
+																				!val.includes("mr-laptop") &&
+																				!val.includes("mr-tablet") &&
+																				!val.includes("mr-phone")
+																					? val
+																					: mrColor,
+																			mrColorhover:
+																				val !== undefined &&
+																				val.includes("mr-hover")
+																					? val
+																					: mrColorhover,
+																		})
+																	}
+																/>
+															) : (
+																""
+															)}
+														</PanelBody>
+													) : (
+														""
+													)}
+													<PanelBody
+														icon={resizeCornerNE}
+														title={tab.name + __(" Spacing", "mr-utils")}
+														initialOpen={false}
+														className={
+															tab.name === ""
+																? "mr-backend-option mr-backend-option_utils_spacing"
+																: "mr-backend-option mr-backend-option_utils_" +
+																  tab.name +
+																  "_spacing"
+														}
+													>
+														<PanelRow>
+															<TabPanel
+																className="mr-width100"
+																activeClass="is-active"
+																tabs={[
 																	{
-																		value: (
-																			" mr-" +
-																			tab.name +
-																			"-relative"
-																		).replace("--", "-"),
-																		label: "Relative",
+																		name: "paddings",
+																		title: "Paddings",
+																		className:
+																			"mr-backend-tab_paddings mr-width100",
 																	},
 																	{
-																		value: (
-																			" mr-" +
-																			tab.name +
-																			"-absolute"
-																		).replace("--", "-"),
-																		label: "Absolute",
+																		name: "margins",
+																		title: "Margins",
+																		className:
+																			"mr-backend-tab_margins mr-width100",
 																	},
 																	{
-																		value: (
-																			" mr-" +
-																			tab.name +
-																			"-fixed"
-																		).replace("--", "-"),
-																		label: "Fixed",
-																	},
-																	{
-																		value: (
-																			" mr-" +
-																			tab.name +
-																			"-sticky"
-																		).replace("--", "-"),
-																		label: "Sticky",
+																		name: "gaps",
+																		title: "Gaps",
+																		className:
+																			"mr-backend-tab_gaps mr-width100",
 																	},
 																]}
-																onChange={(val) =>
-																	setAttributes({
-																		mrPosition:
-																			val !== undefined &&
-																			!val.includes("mr-hover") &&
-																			!val.includes("mr-desktop") &&
-																			!val.includes("mr-laptop") &&
-																			!val.includes("mr-tablet") &&
-																			!val.includes("mr-phone")
-																				? val
-																				: mrPosition,
-																		mrPositiondesktop:
-																			val !== undefined &&
-																			val.includes("mr-desktop")
-																				? val
-																				: mrPositiondesktop,
-																		mrPositionlaptop:
-																			val !== undefined &&
-																			val.includes("mr-laptop")
-																				? val
-																				: mrPositionlaptop,
-																		mrPositiontablet:
-																			val !== undefined &&
-																			val.includes("mr-tablet")
-																				? val
-																				: mrPositiontablet,
-																		mrPositionphone:
-																			val !== undefined &&
-																			val.includes("mr-phone")
-																				? val
-																				: mrPositionphone,
-																	})
-																}
-															/>
+															>
+																{(tab2) =>
+																	tab2.name === "gaps" ? (
+																		<>
+																			<p></p>
 
-															<SelectControl
-																label={__("Vertical Alignment", "mr-utils")}
-																value={
-																	tab.name === "desktop"
-																		? mrPositionAlignmentdesktop
-																		: tab.name === "laptop"
-																		? mrPositionAlignmentlaptop
-																		: tab.name === "tablet"
-																		? mrPositionAlignmenttablet
-																		: tab.name === "phone"
-																		? mrPositionAlignmentphone
-																		: mrPositionAlignment
-																}
-																options={
-																	(mrPosition + tab.name).includes(
-																		"absolute"
-																	) ||
-																	(mrPosition + tab.name).includes("fixed") ||
-																	(mrPosition + tab.name).includes("sticky")
-																		? __([
-																				{
-																					value: "mr-" + tab.name,
-																					label: "Default",
-																				},
-																				{
-																					value: (
-																						" mr-" +
+																			{tab.name === "" ||
+																			tab.name === "hover" ||
+																			tab.name === "desktop" ||
+																			tab.name === "laptop" ||
+																			tab.name === "tablet" ||
+																			tab.name === "phone" ? (
+																				<TextControl
+																					label={__("Row Gap", "mr-utils")}
+																					value={
+																						tab.name === "hover"
+																							? mrRowGaphover
+																							: tab.name === "desktop"
+																							? mrRowGapdesktop
+																							: tab.name === "laptop"
+																							? mrRowGaplaptop
+																							: tab.name === "tablet"
+																							? mrRowGaptablet
+																							: tab.name === "phone"
+																							? mrRowGapphone
+																							: mrRowGap
+																					}
+																					type="text"
+																					placeHolder={
+																						(
+																							"mr-" +
+																							tab.name +
+																							"-rowgap"
+																						).replace("--", "-") +
+																						(
+																							" | mr-" +
+																							tab.name +
+																							"-norowgap"
+																						).replace("--", "-")
+																					}
+																					list={(
+																						"mrDevUtilsClasses_" +
 																						tab.name +
-																						"-top"
-																					).replace("--", "-"),
-																					label: "Top",
-																				},
-																				{
-																					value: (
-																						" mr-" +
+																						"_rowgap"
+																					).replace("__", "_")}
+																					onChange={(val) =>
+																						setAttributes({
+																							mrRowGap:
+																								val !== undefined &&
+																								!val.includes("mr-hover") &&
+																								!val.includes("mr-desktop") &&
+																								!val.includes("mr-laptop") &&
+																								!val.includes("mr-tablet") &&
+																								!val.includes("mr-phone")
+																									? val
+																									: mrRowGap,
+																							mrRowGaphover:
+																								val !== undefined &&
+																								val.includes("mr-hover")
+																									? val
+																									: mrRowGaphover,
+																							mrRowGapdesktop:
+																								val !== undefined &&
+																								val.includes("mr-desktop")
+																									? val
+																									: mrRowGapdesktop,
+																							mrRowGaplaptop:
+																								val !== undefined &&
+																								val.includes("mr-laptop")
+																									? val
+																									: mrRowGaplaptop,
+																							mrRowGaptablet:
+																								val !== undefined &&
+																								val.includes("mr-tablet")
+																									? val
+																									: mrRowGaptablet,
+																							mrRowGapphone:
+																								val !== undefined &&
+																								val.includes("mr-phone")
+																									? val
+																									: mrRowGapphone,
+																						})
+																					}
+																				/>
+																			) : (
+																				""
+																			)}
+
+																			{tab.name === "" ||
+																			tab.name === "hover" ||
+																			tab.name === "desktop" ||
+																			tab.name === "laptop" ||
+																			tab.name === "tablet" ||
+																			tab.name === "phone" ? (
+																				<TextControl
+																					label={__("Column Gap", "mr-utils")}
+																					value={
+																						tab.name === "hover"
+																							? mrColumnGaphover
+																							: tab.name === "desktop"
+																							? mrColumnGapdesktop
+																							: tab.name === "laptop"
+																							? mrColumnGaplaptop
+																							: tab.name === "tablet"
+																							? mrColumnGaptablet
+																							: tab.name === "phone"
+																							? mrColumnGapphone
+																							: mrColumnGap
+																					}
+																					type="text"
+																					placeHolder={
+																						(
+																							"mr-" +
+																							tab.name +
+																							"-columngap"
+																						).replace("--", "-") +
+																						(
+																							" | mr-" +
+																							tab.name +
+																							"-nocolumngap"
+																						).replace("--", "-")
+																					}
+																					list={(
+																						"mrDevUtilsClasses_" +
 																						tab.name +
-																						"-bottom"
-																					).replace("--", "-"),
-																					label: "Bottom",
-																				},
-																		  ])
-																		: ""
-																}
-																onChange={(val) =>
-																	setAttributes({
-																		mrPositionAlignment:
-																			val !== undefined &&
-																			!val.includes("mr-hover") &&
-																			!val.includes("mr-desktop") &&
-																			!val.includes("mr-laptop") &&
-																			!val.includes("mr-tablet") &&
-																			!val.includes("mr-phone")
-																				? val
-																				: mrPositionAlignment,
-																		mrPositionAlignmentdesktop:
-																			val !== undefined &&
-																			val.includes("mr-desktop")
-																				? val
-																				: mrPositionAlignmentdesktop,
-																		mrPositionAlignmentlaptop:
-																			val !== undefined &&
-																			val.includes("mr-laptop")
-																				? val
-																				: mrPositionAlignmentlaptop,
-																		mrPositionAlignmenttablet:
-																			val !== undefined &&
-																			val.includes("mr-tablet")
-																				? val
-																				: mrPositionAlignmenttablet,
-																		mrPositionAlignmentphone:
-																			val !== undefined &&
-																			val.includes("mr-phone")
-																				? val
-																				: mrPositionAlignmentphone,
-																	})
-																}
-															/>
-															<SelectControl
-																label={__("Horizontal Alignment", "mr-utils")}
-																value={
-																	tab.name === "desktop"
-																		? mrPositionSidesdesktop
-																		: tab.name === "laptop"
-																		? mrPositionSideslaptop
-																		: tab.name === "tablet"
-																		? mrPositionSidestablet
-																		: tab.name === "phone"
-																		? mrPositionSidesphone
-																		: mrPositionSides
-																}
-																options={
-																	(mrPosition + tab.name).includes(
-																		"absolute"
-																	) ||
-																	(mrPosition + tab.name).includes("fixed") ||
-																	(mrPosition + tab.name).includes("sticky")
-																		? __([
-																				{
-																					value: "mr-" + tab.name,
-																					label: "Default",
-																				},
-																				{
-																					value: (
-																						" mr-" +
+																						"_columngap"
+																					).replace("__", "_")}
+																					onChange={(val) =>
+																						setAttributes({
+																							mrColumnGap:
+																								val !== undefined &&
+																								!val.includes("mr-hover") &&
+																								!val.includes("mr-desktop") &&
+																								!val.includes("mr-laptop") &&
+																								!val.includes("mr-tablet") &&
+																								!val.includes("mr-phone")
+																									? val
+																									: mrColumnGap,
+																							mrColumnGaphover:
+																								val !== undefined &&
+																								val.includes("mr-hover")
+																									? val
+																									: mrColumnGaphover,
+																							mrColumnGapdesktop:
+																								val !== undefined &&
+																								val.includes("mr-desktop")
+																									? val
+																									: mrColumnGapdesktop,
+																							mrColumnGaplaptop:
+																								val !== undefined &&
+																								val.includes("mr-laptop")
+																									? val
+																									: mrColumnGaplaptop,
+																							mrColumnGaptablet:
+																								val !== undefined &&
+																								val.includes("mr-tablet")
+																									? val
+																									: mrColumnGaptablet,
+																							mrColumnGapphone:
+																								val !== undefined &&
+																								val.includes("mr-phone")
+																									? val
+																									: mrColumnGapphone,
+																						})
+																					}
+																				/>
+																			) : (
+																				""
+																			)}
+																		</>
+																	) : tab2.name === "paddings" ? (
+																		<>
+																			<p></p>
+																			{tab.name === "" ||
+																			tab.name === "hover" ||
+																			tab.name === "desktop" ||
+																			tab.name === "laptop" ||
+																			tab.name === "tablet" ||
+																			tab.name === "phone" ? (
+																				<TextControl
+																					label={__("Padding Top", "mr-utils")}
+																					value={
+																						tab.name === "hover"
+																							? mrPaddingTophover
+																							: tab.name === "desktop"
+																							? mrPaddingTopdesktop
+																							: tab.name === "laptop"
+																							? mrPaddingToplaptop
+																							: tab.name === "tablet"
+																							? mrPaddingToptablet
+																							: tab.name === "phone"
+																							? mrPaddingTopphone
+																							: mrPaddingTop
+																					}
+																					type="text"
+																					placeHolder={
+																						(
+																							"mr-" +
+																							tab.name +
+																							"-paddingtop"
+																						).replace("--", "-") +
+																						(
+																							" | mr-" +
+																							tab.name +
+																							"-nopaddingtop"
+																						).replace("--", "-")
+																					}
+																					list={(
+																						"mrDevUtilsClasses_" +
 																						tab.name +
-																						"-right"
-																					).replace("--", "-"),
-																					label: "Right",
-																				},
-																				{
-																					value: (
-																						" mr-" +
+																						"_paddingtop"
+																					).replace("__", "_")}
+																					onChange={(val) =>
+																						setAttributes({
+																							mrPaddingTop:
+																								val !== undefined &&
+																								!val.includes("mr-hover") &&
+																								!val.includes("mr-desktop") &&
+																								!val.includes("mr-laptop") &&
+																								!val.includes("mr-tablet") &&
+																								!val.includes("mr-phone")
+																									? val
+																									: mrPaddingTop,
+																							mrPaddingTophover:
+																								val !== undefined &&
+																								val.includes("mr-hover")
+																									? val
+																									: mrPaddingTophover,
+																							mrPaddingTopdesktop:
+																								val !== undefined &&
+																								val.includes("mr-desktop")
+																									? val
+																									: mrPaddingTopdesktop,
+																							mrPaddingToplaptop:
+																								val !== undefined &&
+																								val.includes("mr-laptop")
+																									? val
+																									: mrPaddingToplaptop,
+																							mrPaddingToptablet:
+																								val !== undefined &&
+																								val.includes("mr-tablet")
+																									? val
+																									: mrPaddingToptablet,
+																							mrPaddingTopphone:
+																								val !== undefined &&
+																								val.includes("mr-phone")
+																									? val
+																									: mrPaddingTopphone,
+																						})
+																					}
+																				/>
+																			) : (
+																				""
+																			)}
+
+																			{tab.name === "" ||
+																			tab.name === "hover" ||
+																			tab.name === "desktop" ||
+																			tab.name === "laptop" ||
+																			tab.name === "tablet" ||
+																			tab.name === "phone" ? (
+																				<TextControl
+																					label={__(
+																						"Padding right",
+																						"mr-utils"
+																					)}
+																					value={
+																						tab.name === "hover"
+																							? mrPaddingRighthover
+																							: tab.name === "desktop"
+																							? mrPaddingRightdesktop
+																							: tab.name === "laptop"
+																							? mrPaddingRightlaptop
+																							: tab.name === "tablet"
+																							? mrPaddingRighttablet
+																							: tab.name === "phone"
+																							? mrPaddingRightphone
+																							: mrPaddingRight
+																					}
+																					type="text"
+																					placeHolder={
+																						(
+																							"mr-" +
+																							tab.name +
+																							"-paddingright"
+																						).replace("--", "-") +
+																						(
+																							" | mr-" +
+																							tab.name +
+																							"-nopaddingright"
+																						).replace("--", "-")
+																					}
+																					list={(
+																						"mrDevUtilsClasses_" +
 																						tab.name +
-																						"-left"
-																					).replace("--", "-"),
-																					label: "Left",
-																				},
-																		  ])
-																		: ""
+																						"_paddingright"
+																					).replace("__", "_")}
+																					onChange={(val) =>
+																						setAttributes({
+																							mrPaddingRight:
+																								val !== undefined &&
+																								!val.includes("mr-hover") &&
+																								!val.includes("mr-desktop") &&
+																								!val.includes("mr-laptop") &&
+																								!val.includes("mr-tablet") &&
+																								!val.includes("mr-phone")
+																									? val
+																									: mrPaddingRight,
+																							mrPaddingRighthover:
+																								val !== undefined &&
+																								val.includes("mr-hover")
+																									? val
+																									: mrPaddingRighthover,
+																							mrPaddingRightdesktop:
+																								val !== undefined &&
+																								val.includes("mr-desktop")
+																									? val
+																									: mrPaddingRightdesktop,
+																							mrPaddingRightlaptop:
+																								val !== undefined &&
+																								val.includes("mr-laptop")
+																									? val
+																									: mrPaddingRightlaptop,
+																							mrPaddingRighttablet:
+																								val !== undefined &&
+																								val.includes("mr-tablet")
+																									? val
+																									: mrPaddingRighttablet,
+																							mrPaddingRightphone:
+																								val !== undefined &&
+																								val.includes("mr-phone")
+																									? val
+																									: mrPaddingRightphone,
+																						})
+																					}
+																				/>
+																			) : (
+																				""
+																			)}
+
+																			{tab.name === "" ||
+																			tab.name === "hover" ||
+																			tab.name === "desktop" ||
+																			tab.name === "laptop" ||
+																			tab.name === "tablet" ||
+																			tab.name === "phone" ? (
+																				<TextControl
+																					label={__(
+																						"Padding Bottom",
+																						"mr-utils"
+																					)}
+																					value={
+																						tab.name === "hover"
+																							? mrPaddingBottomhover
+																							: tab.name === "desktop"
+																							? mrPaddingBottomdesktop
+																							: tab.name === "laptop"
+																							? mrPaddingBottomlaptop
+																							: tab.name === "tablet"
+																							? mrPaddingBottomtablet
+																							: tab.name === "phone"
+																							? mrPaddingBottomphone
+																							: mrPaddingBottom
+																					}
+																					type="text"
+																					placeHolder={
+																						(
+																							"mr-" +
+																							tab.name +
+																							"-paddingbottom"
+																						).replace("--", "-") +
+																						(
+																							" | mr-" +
+																							tab.name +
+																							"-nopaddingbottom"
+																						).replace("--", "-")
+																					}
+																					list={(
+																						"mrDevUtilsClasses_" +
+																						tab.name +
+																						"_paddingbottom"
+																					).replace("__", "_")}
+																					onChange={(val) =>
+																						setAttributes({
+																							mrPaddingBottom:
+																								val !== undefined &&
+																								!val.includes("mr-hover") &&
+																								!val.includes("mr-desktop") &&
+																								!val.includes("mr-laptop") &&
+																								!val.includes("mr-tablet") &&
+																								!val.includes("mr-phone")
+																									? val
+																									: mrPaddingBottom,
+																							mrPaddingBottomhover:
+																								val !== undefined &&
+																								val.includes("mr-hover")
+																									? val
+																									: mrPaddingBottomhover,
+																							mrPaddingBottomdesktop:
+																								val !== undefined &&
+																								val.includes("mr-desktop")
+																									? val
+																									: mrPaddingBottomdesktop,
+																							mrPaddingBottomlaptop:
+																								val !== undefined &&
+																								val.includes("mr-laptop")
+																									? val
+																									: mrPaddingBottomlaptop,
+																							mrPaddingBottomtablet:
+																								val !== undefined &&
+																								val.includes("mr-tablet")
+																									? val
+																									: mrPaddingBottomtablet,
+																							mrPaddingBottomphone:
+																								val !== undefined &&
+																								val.includes("mr-phone")
+																									? val
+																									: mrPaddingBottomphone,
+																						})
+																					}
+																				/>
+																			) : (
+																				""
+																			)}
+
+																			{tab.name === "" ||
+																			tab.name === "hover" ||
+																			tab.name === "desktop" ||
+																			tab.name === "laptop" ||
+																			tab.name === "tablet" ||
+																			tab.name === "phone" ? (
+																				<TextControl
+																					label={__("Padding Left", "mr-utils")}
+																					value={
+																						tab.name === "hover"
+																							? mrPaddingLefthover
+																							: tab.name === "desktop"
+																							? mrPaddingLeftdesktop
+																							: tab.name === "laptop"
+																							? mrPaddingLeftlaptop
+																							: tab.name === "tablet"
+																							? mrPaddingLefttablet
+																							: tab.name === "phone"
+																							? mrPaddingLeftphone
+																							: mrPaddingLeft
+																					}
+																					type="text"
+																					placeHolder={
+																						(
+																							"mr-" +
+																							tab.name +
+																							"-paddingleft"
+																						).replace("--", "-") +
+																						(
+																							" | mr-" +
+																							tab.name +
+																							"-nopaddingleft"
+																						).replace("--", "-")
+																					}
+																					list={(
+																						"mrDevUtilsClasses_" +
+																						tab.name +
+																						"_paddingleft"
+																					).replace("__", "_")}
+																					onChange={(val) =>
+																						setAttributes({
+																							mrPaddingLeft:
+																								val !== undefined &&
+																								!val.includes("mr-hover") &&
+																								!val.includes("mr-desktop") &&
+																								!val.includes("mr-laptop") &&
+																								!val.includes("mr-tablet") &&
+																								!val.includes("mr-phone")
+																									? val
+																									: mrPaddingLeft,
+																							mrPaddingLefthover:
+																								val !== undefined &&
+																								val.includes("mr-hover")
+																									? val
+																									: mrPaddingLefthover,
+																							mrPaddingLeftdesktop:
+																								val !== undefined &&
+																								val.includes("mr-desktop")
+																									? val
+																									: mrPaddingLeftdesktop,
+																							mrPaddingLeftlaptop:
+																								val !== undefined &&
+																								val.includes("mr-laptop")
+																									? val
+																									: mrPaddingLeftlaptop,
+																							mrPaddingLefttablet:
+																								val !== undefined &&
+																								val.includes("mr-tablet")
+																									? val
+																									: mrPaddingLefttablet,
+																							mrPaddingLeftphone:
+																								val !== undefined &&
+																								val.includes("mr-phone")
+																									? val
+																									: mrPaddingLeftphone,
+																						})
+																					}
+																				/>
+																			) : (
+																				""
+																			)}
+																		</>
+																	) : (
+																		<>
+																			<p></p>
+
+																			{tab.name === "" ||
+																			tab.name === "hover" ||
+																			tab.name === "desktop" ||
+																			tab.name === "laptop" ||
+																			tab.name === "tablet" ||
+																			tab.name === "phone" ? (
+																				<TextControl
+																					label={__("Margin Top", "mr-utils")}
+																					value={
+																						tab.name === "hover"
+																							? mrMarginTophover
+																							: tab.name === "desktop"
+																							? mrMarginTopdesktop
+																							: tab.name === "laptop"
+																							? mrMarginToplaptop
+																							: tab.name === "tablet"
+																							? mrMarginToptablet
+																							: tab.name === "phone"
+																							? mrMarginTopphone
+																							: mrMarginTop
+																					}
+																					type="text"
+																					placeHolder={
+																						(
+																							"mr-" +
+																							tab.name +
+																							"-margintop"
+																						).replace("--", "-") +
+																						(
+																							" | mr-" +
+																							tab.name +
+																							"-nomargintop"
+																						).replace("--", "-")
+																					}
+																					list={(
+																						"mrDevUtilsClasses_" +
+																						tab.name +
+																						"_margintop"
+																					).replace("__", "_")}
+																					onChange={(val) =>
+																						setAttributes({
+																							mrMarginTop:
+																								val !== undefined &&
+																								!val.includes("mr-hover") &&
+																								!val.includes("mr-desktop") &&
+																								!val.includes("mr-laptop") &&
+																								!val.includes("mr-tablet") &&
+																								!val.includes("mr-phone")
+																									? val
+																									: mrMarginTop,
+																							mrMarginTophover:
+																								val !== undefined &&
+																								val.includes("mr-hover")
+																									? val
+																									: mrMarginTophover,
+																							mrMarginTopdesktop:
+																								val !== undefined &&
+																								val.includes("mr-desktop")
+																									? val
+																									: mrMarginTopdesktop,
+																							mrMarginToplaptop:
+																								val !== undefined &&
+																								val.includes("mr-laptop")
+																									? val
+																									: mrMarginToplaptop,
+																							mrMarginToptablet:
+																								val !== undefined &&
+																								val.includes("mr-tablet")
+																									? val
+																									: mrMarginToptablet,
+																							mrMarginTopphone:
+																								val !== undefined &&
+																								val.includes("mr-phone")
+																									? val
+																									: mrMarginTopphone,
+																						})
+																					}
+																				/>
+																			) : (
+																				""
+																			)}
+
+																			{tab.name === "" ||
+																			tab.name === "hover" ||
+																			tab.name === "desktop" ||
+																			tab.name === "laptop" ||
+																			tab.name === "tablet" ||
+																			tab.name === "phone" ? (
+																				<TextControl
+																					label={__("Margin Right", "mr-utils")}
+																					value={
+																						tab.name === "hover"
+																							? mrMarginRighthover
+																							: tab.name === "desktop"
+																							? mrMarginRightdesktop
+																							: tab.name === "laptop"
+																							? mrMarginRightlaptop
+																							: tab.name === "tablet"
+																							? mrMarginRighttablet
+																							: tab.name === "phone"
+																							? mrMarginRightphone
+																							: mrMarginRight
+																					}
+																					type="text"
+																					placeHolder={
+																						(
+																							"mr-" +
+																							tab.name +
+																							"-marginright"
+																						).replace("--", "-") +
+																						(
+																							" | mr-" +
+																							tab.name +
+																							"-nomarginright"
+																						).replace("--", "-")
+																					}
+																					list={(
+																						"mrDevUtilsClasses_" +
+																						tab.name +
+																						"_marginright"
+																					).replace("__", "_")}
+																					onChange={(val) =>
+																						setAttributes({
+																							mrMarginRight:
+																								val !== undefined &&
+																								!val.includes("mr-hover") &&
+																								!val.includes("mr-desktop") &&
+																								!val.includes("mr-laptop") &&
+																								!val.includes("mr-tablet") &&
+																								!val.includes("mr-phone")
+																									? val
+																									: mrMarginRight,
+																							mrMarginRighthover:
+																								val !== undefined &&
+																								val.includes("mr-hover")
+																									? val
+																									: mrMarginRighthover,
+																							mrMarginRightdesktop:
+																								val !== undefined &&
+																								val.includes("mr-desktop")
+																									? val
+																									: mrMarginRightdesktop,
+																							mrMarginRightlaptop:
+																								val !== undefined &&
+																								val.includes("mr-laptop")
+																									? val
+																									: mrMarginRightlaptop,
+																							mrMarginRighttablet:
+																								val !== undefined &&
+																								val.includes("mr-tablet")
+																									? val
+																									: mrMarginRighttablet,
+																							mrMarginRightphone:
+																								val !== undefined &&
+																								val.includes("mr-phone")
+																									? val
+																									: mrMarginRightphone,
+																						})
+																					}
+																				/>
+																			) : (
+																				""
+																			)}
+
+																			{tab.name === "" ||
+																			tab.name === "hover" ||
+																			tab.name === "desktop" ||
+																			tab.name === "laptop" ||
+																			tab.name === "tablet" ||
+																			tab.name === "phone" ? (
+																				<TextControl
+																					label={__(
+																						"Margin Bottom",
+																						"mr-utils"
+																					)}
+																					value={
+																						tab.name === "hover"
+																							? mrMarginBottomhover
+																							: tab.name === "desktop"
+																							? mrMarginBottomdesktop
+																							: tab.name === "laptop"
+																							? mrMarginBottomlaptop
+																							: tab.name === "tablet"
+																							? mrMarginBottomtablet
+																							: tab.name === "phone"
+																							? mrMarginBottomphone
+																							: mrMarginBottom
+																					}
+																					type="text"
+																					placeHolder={
+																						(
+																							"mr-" +
+																							tab.name +
+																							"-marginbottom"
+																						).replace("--", "-") +
+																						(
+																							" | mr-" +
+																							tab.name +
+																							"-nomarginbottom"
+																						).replace("--", "-")
+																					}
+																					list={(
+																						"mrDevUtilsClasses_" +
+																						tab.name +
+																						"_marginbottom"
+																					).replace("__", "_")}
+																					onChange={(val) =>
+																						setAttributes({
+																							mrMarginBottom:
+																								val !== undefined &&
+																								!val.includes("mr-hover") &&
+																								!val.includes("mr-desktop") &&
+																								!val.includes("mr-laptop") &&
+																								!val.includes("mr-tablet") &&
+																								!val.includes("mr-phone")
+																									? val
+																									: mrMarginBottom,
+																							mrMarginBottomhover:
+																								val !== undefined &&
+																								val.includes("mr-hover")
+																									? val
+																									: mrMarginBottomhover,
+																							mrMarginBottomdesktop:
+																								val !== undefined &&
+																								val.includes("mr-desktop")
+																									? val
+																									: mrMarginBottomdesktop,
+																							mrMarginBottomlaptop:
+																								val !== undefined &&
+																								val.includes("mr-laptop")
+																									? val
+																									: mrMarginBottomlaptop,
+																							mrMarginBottomtablet:
+																								val !== undefined &&
+																								val.includes("mr-tablet")
+																									? val
+																									: mrMarginBottomtablet,
+																							mrMarginBottomphone:
+																								val !== undefined &&
+																								val.includes("mr-phone")
+																									? val
+																									: mrMarginBottomphone,
+																						})
+																					}
+																				/>
+																			) : (
+																				""
+																			)}
+
+																			{tab.name === "" ||
+																			tab.name === "hover" ||
+																			tab.name === "desktop" ||
+																			tab.name === "laptop" ||
+																			tab.name === "tablet" ||
+																			tab.name === "phone" ? (
+																				<TextControl
+																					label={__("Margin Left", "mr-utils")}
+																					value={
+																						tab.name === "hover"
+																							? mrMarginLefthover
+																							: tab.name === "desktop"
+																							? mrMarginLeftdesktop
+																							: tab.name === "laptop"
+																							? mrMarginLeftlaptop
+																							: tab.name === "tablet"
+																							? mrMarginLefttablet
+																							: tab.name === "phone"
+																							? mrMarginLeftphone
+																							: mrMarginLeft
+																					}
+																					type="text"
+																					placeHolder={
+																						(
+																							"mr-" +
+																							tab.name +
+																							"-marginleft"
+																						).replace("--", "-") +
+																						(
+																							" | mr-" +
+																							tab.name +
+																							"-nomarginleft"
+																						).replace("--", "-")
+																					}
+																					list={(
+																						"mrDevUtilsClasses_" +
+																						tab.name +
+																						"_marginleft"
+																					).replace("__", "_")}
+																					onChange={(val) =>
+																						setAttributes({
+																							mrMarginLeft:
+																								val !== undefined &&
+																								!val.includes("mr-hover") &&
+																								!val.includes("mr-desktop") &&
+																								!val.includes("mr-laptop") &&
+																								!val.includes("mr-tablet") &&
+																								!val.includes("mr-phone")
+																									? val
+																									: mrMarginLeft,
+																							mrMarginLefthover:
+																								val !== undefined &&
+																								val.includes("mr-hover")
+																									? val
+																									: mrMarginLefthover,
+																							mrMarginLeftdesktop:
+																								val !== undefined &&
+																								val.includes("mr-desktop")
+																									? val
+																									: mrMarginLeftdesktop,
+																							mrMarginLeftlaptop:
+																								val !== undefined &&
+																								val.includes("mr-laptop")
+																									? val
+																									: mrMarginLeftlaptop,
+																							mrMarginLefttablet:
+																								val !== undefined &&
+																								val.includes("mr-tablet")
+																									? val
+																									: mrMarginLefttablet,
+																							mrMarginLeftphone:
+																								val !== undefined &&
+																								val.includes("mr-phone")
+																									? val
+																									: mrMarginLeftphone,
+																						})
+																					}
+																				/>
+																			) : (
+																				""
+																			)}
+																		</>
+																	)
 																}
-																onChange={(val) =>
-																	setAttributes({
-																		mrPositionSides:
-																			val !== undefined &&
-																			!val.includes("mr-hover") &&
-																			!val.includes("mr-desktop") &&
-																			!val.includes("mr-laptop") &&
-																			!val.includes("mr-tablet") &&
-																			!val.includes("mr-phone")
-																				? val
-																				: mrPositionSides,
-																		mrPositionSidesdesktop:
-																			val !== undefined &&
-																			val.includes("mr-desktop")
-																				? val
-																				: mrPositionSidesdesktop,
-																		mrPositionSideslaptop:
-																			val !== undefined &&
-																			val.includes("mr-laptop")
-																				? val
-																				: mrPositionSideslaptop,
-																		mrPositionSidestablet:
-																			val !== undefined &&
-																			val.includes("mr-tablet")
-																				? val
-																				: mrPositionSidestablet,
-																		mrPositionSidesphone:
-																			val !== undefined &&
-																			val.includes("mr-phone")
-																				? val
-																				: mrPositionSidesphone,
-																	})
-																}
-															/>
-															<SelectControl
-																label={__("Content Alignment", "mr-utils")}
-																value={
-																	tab.name === "desktop"
-																		? mrContentAlignmentdesktop
-																		: tab.name === "laptop"
-																		? mrContentAlignmentlaptop
-																		: tab.name === "tablet"
-																		? mrContentAlignmenttablet
-																		: tab.name === "phone"
-																		? mrContentAlignmentphone
-																		: mrContentAlignment
-																}
-																options={__([
-																	{ value: "mr-" + tab.name, label: "Default" },
-																	{
-																		value: (
-																			" mr-" +
-																			tab.name +
-																			"-aligntop"
-																		).replace("--", "-"),
-																		label: "Top",
-																	},
-																	{
-																		value: (
-																			" mr-" +
-																			tab.name +
-																			"-floatright"
-																		).replace("--", "-"),
-																		label: "Right",
-																	},
-																	{
-																		value: (
-																			" mr-" +
-																			tab.name +
-																			"-alignbottom"
-																		).replace("--", "-"),
-																		label: "Bottom",
-																	},
-																	{
-																		value: (
-																			" mr-" +
-																			tab.name +
-																			"-floatleft"
-																		).replace("--", "-"),
-																		label: "Left",
-																	},
-																	{
-																		value: (
-																			" mr-" +
-																			tab.name +
-																			"-middle"
-																		).replace("--", "-"),
-																		label: "Middle",
-																	},
-																])}
-																onChange={(val) =>
-																	setAttributes({
-																		mrContentAlignment:
-																			val !== undefined &&
-																			!val.includes("mr-hover") &&
-																			!val.includes("mr-desktop") &&
-																			!val.includes("mr-laptop") &&
-																			!val.includes("mr-tablet") &&
-																			!val.includes("mr-phone")
-																				? val
-																				: mrContentAlignment,
-																		mrContentAlignmentdesktop:
-																			val !== undefined &&
-																			val.includes("mr-desktop")
-																				? val
-																				: mrContentAlignmentdesktop,
-																		mrContentAlignmentlaptop:
-																			val !== undefined &&
-																			val.includes("mr-laptop")
-																				? val
-																				: mrContentAlignmentlaptop,
-																		mrContentAlignmenttablet:
-																			val !== undefined &&
-																			val.includes("mr-tablet")
-																				? val
-																				: mrContentAlignmenttablet,
-																		mrContentAlignmentphone:
-																			val !== undefined &&
-																			val.includes("mr-phone")
-																				? val
-																				: mrContentAlignmentphone,
-																	})
-																}
-															/>
-															<SelectControl
-																label={__("Vertical Offset", "mr-utils")}
-																value={
-																	tab.name === "desktop"
-																		? mrVerticalOffsetdesktop
-																		: tab.name === "laptop"
-																		? mrVerticalOffsetlaptop
-																		: tab.name === "tablet"
-																		? mrVerticalOffsettablet
-																		: tab.name === "phone"
-																		? mrVerticalOffsetphone
-																		: mrVerticalOffset
-																}
-																options={__([
-																	{ value: "mr-" + tab.name, label: "Default" },
-																	{
-																		value: (
-																			" mr-" +
-																			tab.name +
-																			"-offsettop"
-																		).replace("--", "-"),
-																		label: "Top",
-																	},
-																	{
-																		value: (
-																			" mr-" +
-																			tab.name +
-																			"-offsetelementtop"
-																		).replace("--", "-"),
-																		label: "Element Top",
-																	},
-																	{
-																		value: (
-																			" mr-" +
-																			tab.name +
-																			"-offsetelementbottom"
-																		).replace("--", "-"),
-																		label: "Element Bottom",
-																	},
-																	{
-																		value: (
-																			" mr-" +
-																			tab.name +
-																			"-offsetbottom"
-																		).replace("--", "-"),
-																		label: "Bottom",
-																	},
-																])}
-																onChange={(val) =>
-																	setAttributes({
-																		mrVerticalOffset:
-																			val !== undefined &&
-																			!val.includes("mr-hover") &&
-																			!val.includes("mr-desktop") &&
-																			!val.includes("mr-laptop") &&
-																			!val.includes("mr-tablet") &&
-																			!val.includes("mr-phone")
-																				? val
-																				: mrVerticalOffset,
-																		mrVerticalOffsetdesktop:
-																			val !== undefined &&
-																			val.includes("mr-desktop")
-																				? val
-																				: mrVerticalOffsetdesktop,
-																		mrVerticalOffsetlaptop:
-																			val !== undefined &&
-																			val.includes("mr-laptop")
-																				? val
-																				: mrVerticalOffsetlaptop,
-																		mrVerticalOffsettablet:
-																			val !== undefined &&
-																			val.includes("mr-tablet")
-																				? val
-																				: mrVerticalOffsettablet,
-																		mrVerticalOffsetphone:
-																			val !== undefined &&
-																			val.includes("mr-phone")
-																				? val
-																				: mrVerticalOffsetphone,
-																	})
-																}
-															/>
-															<SelectControl
-																label={__("Horizontal Offset", "mr-utils")}
-																value={
-																	tab.name === "desktop"
-																		? mrHorizontalOffsetdesktop
-																		: tab.name === "laptop"
-																		? mrHorizontalOffsetlaptop
-																		: tab.name === "tablet"
-																		? mrHorizontalOffsettablet
-																		: tab.name === "phone"
-																		? mrHorizontalOffsetphone
-																		: mrHorizontalOffset
-																}
-																options={__([
-																	{ value: "mr-" + tab.name, label: "Default" },
-																	{
-																		value: (
-																			" mr-" +
-																			tab.name +
-																			"-offsetleft"
-																		).replace("--", "-"),
-																		label: "Left",
-																	},
-																	{
-																		value: (
-																			" mr-" +
-																			tab.name +
-																			"-offsetelementleft"
-																		).replace("--", "-"),
-																		label: "Element Left",
-																	},
-																	{
-																		value: (
-																			" mr-" +
-																			tab.name +
-																			"-offsetelementright"
-																		).replace("--", "-"),
-																		label: "Element Right",
-																	},
-																	{
-																		value: (
-																			" mr-" +
-																			tab.name +
-																			"-offsetright"
-																		).replace("--", "-"),
-																		label: "Right",
-																	},
-																])}
-																onChange={(val) =>
-																	setAttributes({
-																		mrHorizontalOffset:
-																			val !== undefined &&
-																			!val.includes("mr-hover") &&
-																			!val.includes("mr-desktop") &&
-																			!val.includes("mr-laptop") &&
-																			!val.includes("mr-tablet") &&
-																			!val.includes("mr-phone")
-																				? val
-																				: mrHorizontalOffset,
-																		mrHorizontalOffsetdesktop:
-																			val !== undefined &&
-																			val.includes("mr-desktop")
-																				? val
-																				: mrHorizontalOffsetdesktop,
-																		mrHorizontalOffsetlaptop:
-																			val !== undefined &&
-																			val.includes("mr-laptop")
-																				? val
-																				: mrHorizontalOffsetlaptop,
-																		mrHorizontalOffsettablet:
-																			val !== undefined &&
-																			val.includes("mr-tablet")
-																				? val
-																				: mrHorizontalOffsettablet,
-																		mrHorizontalOffsetphone:
-																			val !== undefined &&
-																			val.includes("mr-phone")
-																				? val
-																				: mrHorizontalOffsetphone,
-																	})
-																}
-															/>
-														</PanelBody>
-													</>
-												) : (
-													""
-												)}
-												<PanelBody
-													icon={plusCircle}
-													title={tab.name + __(" Misc.", "mr-utils")}
-													initialOpen={false}
-													className={
-														tab.name === ""
-															? "mr-backend-option mr-backend-option_utils_misc"
-															: "mr-backend-option mr-backend-option_utils_" +
-															  tab.name +
-															  "_misc"
-													}
-												>
-													<SelectControl
-														label={__("Scroll", "mr-utils")}
-														value={
-															tab.name === "hover"
-																? mrScrollhover
-																: tab.name === "desktop"
-																? mrScrolldesktop
-																: tab.name === "laptop"
-																? mrScrolllaptop
-																: tab.name === "tablet"
-																? mrScrolltablet
-																: tab.name === "phone"
-																? mrScrollphone
-																: mrScroll
+															</TabPanel>
+														</PanelRow>
+													</PanelBody>
+													<PanelBody
+														icon={typography}
+														title={tab.name + __(" Text", "mr-utils")}
+														initialOpen={false}
+														className={
+															tab.name === ""
+																? "mr-backend-option mr-backend-option_utils_text"
+																: "mr-backend-option mr-backend-option_utils_" +
+																  tab.name +
+																  "_text"
 														}
-														options={[
-															{ value: "mr-" + tab.name, label: "Default" },
-															{
-																value: (
-																	" mr-" +
-																	tab.name +
-																	"-noscroll"
-																).replace("--", "-"),
-																label: "No scroll",
-															},
-															{
-																value: (
-																	" mr-" +
-																	tab.name +
-																	"-hidescroll"
-																).replace("--", "-"),
-																label: "Hide scroll",
-															},
-															{
-																value: (" mr-" + tab.name + "-scroll").replace(
-																	"--",
-																	"-"
-																),
-																label: "Scroll",
-															},
-															tab.name != "hover"
-																? {
-																		value: (
-																			" mr-" +
-																			tab.name +
-																			"-horizontalscroll"
-																		).replace("--", "-"),
-																		label: "Horizontal scroll",
-																  }
-																: "",
-															tab.name != "hover"
-																? {
-																		value: (
-																			" mr-" +
-																			tab.name +
-																			"-horizontalscrollcontent"
-																		).replace("--", "-"),
-																		label: "Horizontal scroll content",
-																  }
-																: "",
-														]}
-														onChange={(val) =>
-															setAttributes({
-																mrScroll:
-																	val !== undefined &&
-																	!val.includes("mr-hover") &&
-																	!val.includes("mr-desktop") &&
-																	!val.includes("mr-laptop") &&
-																	!val.includes("mr-tablet") &&
-																	!val.includes("mr-phone")
-																		? val
-																		: mrScroll,
-																mrScrollhover:
-																	val !== undefined && val.includes("-hover-")
-																		? val
-																		: mrScrollhover,
-																mrScrolldesktop:
-																	val !== undefined &&
-																	val.includes("mr-desktop")
-																		? val
-																		: mrScrolldesktop,
-																mrScrolllaptop:
-																	val !== undefined && val.includes("mr-laptop")
-																		? val
-																		: mrScrolllaptop,
-																mrScrolltablet:
-																	val !== undefined && val.includes("mr-tablet")
-																		? val
-																		: mrScrolltablet,
-																mrScrollphone:
-																	val !== undefined && val.includes("mr-phone")
-																		? val
-																		: mrScrollphone,
-															})
-														}
-													/>
-												</PanelBody>
-											</>
-										) : (
-											<>
-												<h4>Other breakpoints</h4>
-												<p>
-													You also have the following device breakpoints
-													available:
-												</p>
-												<p class="mr-backend-other_breakpoints">
-													<b>landscape, portrait</b>
-												</p>
-												<p>
-													However you cannot select them with the interface. In
-													alternative, you can use{" "}
-													<a
-														href="https://github.com/marcosrego-web/mr-utils/wiki/Utility-Classes"
-														target="_blank"
 													>
-														utility classes
-													</a>{" "}
-													in <b>Advanced - Additional CSS class(es)</b>.
+														{tab.name === "" ? (
+															<TextControl
+																label={__("Font Family", "mr-utils")}
+																value={mrFontFamily}
+																type="text"
+																className="mr-backend-custominput mr-backend-customfontfamily"
+																placeHolder={"mr-font{1/2}"}
+																list={"mrDevUtilsClasses_fontfamily".replace(
+																	"__",
+																	"_"
+																)}
+																onChange={(val) =>
+																	setAttributes({
+																		mrFontFamily:
+																			val !== undefined ? val : mrFontFamily,
+																	})
+																}
+															/>
+														) : (
+															""
+														)}
+
+														{tab.name === "" ||
+														tab.name === "hover" ||
+														tab.name === "desktop" ||
+														tab.name === "laptop" ||
+														tab.name === "tablet" ||
+														tab.name === "phone" ? (
+															<TextControl
+																label={__("Font Size", "mr-utils")}
+																value={
+																	tab.name === "hover"
+																		? mrFontSizehover
+																		: tab.name === "desktop"
+																		? mrFontSizedesktop
+																		: tab.name === "laptop"
+																		? mrFontSizelaptop
+																		: tab.name === "tablet"
+																		? mrFontSizetablet
+																		: tab.name === "phone"
+																		? mrFontSizephone
+																		: mrFontSize
+																}
+																type="text"
+																className="mr-backend-custominput mr-backend-customptop"
+																placeHolder={(
+																	"mr-" +
+																	tab.name +
+																	"-fontsize{1/7}"
+																).replace("--", "-")}
+																list={(
+																	"mrDevUtilsClasses_" +
+																	tab.name +
+																	"_fontsize"
+																).replace("__", "_")}
+																onChange={(val) =>
+																	setAttributes({
+																		mrFontSize:
+																			val !== undefined &&
+																			!val.includes("mr-hover") &&
+																			!val.includes("mr-desktop") &&
+																			!val.includes("mr-laptop") &&
+																			!val.includes("mr-tablet") &&
+																			!val.includes("mr-phone")
+																				? val
+																				: mrFontSize,
+																		mrFontSizehover:
+																			val !== undefined &&
+																			val.includes("mr-hover")
+																				? val
+																				: mrFontSizehover,
+																		mrFontSizedesktop:
+																			val !== undefined &&
+																			val.includes("mr-desktop")
+																				? val
+																				: mrFontSizedesktop,
+																		mrFontSizelaptop:
+																			val !== undefined &&
+																			val.includes("mr-laptop")
+																				? val
+																				: mrFontSizelaptop,
+																		mrFontSizetablet:
+																			val !== undefined &&
+																			val.includes("mr-tablet")
+																				? val
+																				: mrFontSizetablet,
+																		mrFontSizephone:
+																			val !== undefined &&
+																			val.includes("mr-phone")
+																				? val
+																				: mrFontSizephone,
+																	})
+																}
+															/>
+														) : (
+															""
+														)}
+
+														{tab.name !== "hover" ? (
+															<>
+																<SelectControl
+																	label={__("Text Alignment", "mr-utils")}
+																	value={
+																		tab.name === "desktop"
+																			? mrTextAlignmentdesktop
+																			: tab.name === "laptop"
+																			? mrTextAlignmentlaptop
+																			: tab.name === "tablet"
+																			? mrTextAlignmenttablet
+																			: tab.name === "phone"
+																			? mrTextAlignmentphone
+																			: mrTextAlignment
+																	}
+																	options={__([
+																		{
+																			value: "mr-" + tab.name,
+																			label: "Default",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-alignleft"
+																			).replace("--", "-"),
+																			label: "Left",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-aligncenter"
+																			).replace("--", "-"),
+																			label: "Center",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-alignright"
+																			).replace("--", "-"),
+																			label: "Right",
+																		},
+																	])}
+																	onChange={(val) =>
+																		setAttributes({
+																			mrTextAlignment:
+																				val !== undefined &&
+																				!val.includes("mr-hover") &&
+																				!val.includes("mr-desktop") &&
+																				!val.includes("mr-laptop") &&
+																				!val.includes("mr-tablet") &&
+																				!val.includes("mr-phone")
+																					? val
+																					: mrTextAlignment,
+																			mrTextAlignmentdesktop:
+																				val !== undefined &&
+																				val.includes("mr-desktop")
+																					? val
+																					: mrTextAlignmentdesktop,
+																			mrTextAlignmentlaptop:
+																				val !== undefined &&
+																				val.includes("mr-laptop")
+																					? val
+																					: mrTextAlignmentlaptop,
+																			mrTextAlignmenttablet:
+																				val !== undefined &&
+																				val.includes("mr-tablet")
+																					? val
+																					: mrTextAlignmenttablet,
+																			mrTextAlignmentphone:
+																				val !== undefined &&
+																				val.includes("mr-phone")
+																					? val
+																					: mrTextAlignmentphone,
+																		})
+																	}
+																/>
+															</>
+														) : (
+															""
+														)}
+													</PanelBody>
+													{tab.name !== "hover" ? (
+														<>
+															<PanelBody
+																icon={pullLeft}
+																title={tab.name + __(" Placement", "mr-utils")}
+																initialOpen={false}
+																className={
+																	tab.name === ""
+																		? "mr-backend-option mr-backend-option_utils_placement"
+																		: "mr-backend-option mr-backend-option_utils_" +
+																		  tab.name +
+																		  "_placement"
+																}
+															>
+																<SelectControl
+																	label={__("Position Type", "mr-utils")}
+																	value={
+																		tab.name === "desktop"
+																			? mrPositiondesktop
+																			: tab.name === "laptop"
+																			? mrPositionlaptop
+																			: tab.name === "tablet"
+																			? mrPositiontablet
+																			: tab.name === "phone"
+																			? mrPositionphone
+																			: mrPosition
+																	}
+																	options={[
+																		{
+																			value: "mr-" + tab.name,
+																			label: "Default",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-relative"
+																			).replace("--", "-"),
+																			label: "Relative",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-absolute"
+																			).replace("--", "-"),
+																			label: "Absolute",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-fixed"
+																			).replace("--", "-"),
+																			label: "Fixed",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-sticky"
+																			).replace("--", "-"),
+																			label: "Sticky",
+																		},
+																	]}
+																	onChange={(val) =>
+																		setAttributes({
+																			mrPosition:
+																				val !== undefined &&
+																				!val.includes("mr-hover") &&
+																				!val.includes("mr-desktop") &&
+																				!val.includes("mr-laptop") &&
+																				!val.includes("mr-tablet") &&
+																				!val.includes("mr-phone")
+																					? val
+																					: mrPosition,
+																			mrPositiondesktop:
+																				val !== undefined &&
+																				val.includes("mr-desktop")
+																					? val
+																					: mrPositiondesktop,
+																			mrPositionlaptop:
+																				val !== undefined &&
+																				val.includes("mr-laptop")
+																					? val
+																					: mrPositionlaptop,
+																			mrPositiontablet:
+																				val !== undefined &&
+																				val.includes("mr-tablet")
+																					? val
+																					: mrPositiontablet,
+																			mrPositionphone:
+																				val !== undefined &&
+																				val.includes("mr-phone")
+																					? val
+																					: mrPositionphone,
+																		})
+																	}
+																/>
+
+																<SelectControl
+																	label={__("Vertical Alignment", "mr-utils")}
+																	value={
+																		tab.name === "desktop"
+																			? mrPositionAlignmentdesktop
+																			: tab.name === "laptop"
+																			? mrPositionAlignmentlaptop
+																			: tab.name === "tablet"
+																			? mrPositionAlignmenttablet
+																			: tab.name === "phone"
+																			? mrPositionAlignmentphone
+																			: mrPositionAlignment
+																	}
+																	options={
+																		(mrPosition + tab.name).includes(
+																			"absolute"
+																		) ||
+																		(mrPosition + tab.name).includes("fixed") ||
+																		(mrPosition + tab.name).includes("sticky")
+																			? __([
+																					{
+																						value: "mr-" + tab.name,
+																						label: "Default",
+																					},
+																					{
+																						value: (
+																							" mr-" +
+																							tab.name +
+																							"-top"
+																						).replace("--", "-"),
+																						label: "Top",
+																					},
+																					{
+																						value: (
+																							" mr-" +
+																							tab.name +
+																							"-bottom"
+																						).replace("--", "-"),
+																						label: "Bottom",
+																					},
+																			  ])
+																			: ""
+																	}
+																	onChange={(val) =>
+																		setAttributes({
+																			mrPositionAlignment:
+																				val !== undefined &&
+																				!val.includes("mr-hover") &&
+																				!val.includes("mr-desktop") &&
+																				!val.includes("mr-laptop") &&
+																				!val.includes("mr-tablet") &&
+																				!val.includes("mr-phone")
+																					? val
+																					: mrPositionAlignment,
+																			mrPositionAlignmentdesktop:
+																				val !== undefined &&
+																				val.includes("mr-desktop")
+																					? val
+																					: mrPositionAlignmentdesktop,
+																			mrPositionAlignmentlaptop:
+																				val !== undefined &&
+																				val.includes("mr-laptop")
+																					? val
+																					: mrPositionAlignmentlaptop,
+																			mrPositionAlignmenttablet:
+																				val !== undefined &&
+																				val.includes("mr-tablet")
+																					? val
+																					: mrPositionAlignmenttablet,
+																			mrPositionAlignmentphone:
+																				val !== undefined &&
+																				val.includes("mr-phone")
+																					? val
+																					: mrPositionAlignmentphone,
+																		})
+																	}
+																/>
+																<SelectControl
+																	label={__("Horizontal Alignment", "mr-utils")}
+																	value={
+																		tab.name === "desktop"
+																			? mrPositionSidesdesktop
+																			: tab.name === "laptop"
+																			? mrPositionSideslaptop
+																			: tab.name === "tablet"
+																			? mrPositionSidestablet
+																			: tab.name === "phone"
+																			? mrPositionSidesphone
+																			: mrPositionSides
+																	}
+																	options={
+																		(mrPosition + tab.name).includes(
+																			"absolute"
+																		) ||
+																		(mrPosition + tab.name).includes("fixed") ||
+																		(mrPosition + tab.name).includes("sticky")
+																			? __([
+																					{
+																						value: "mr-" + tab.name,
+																						label: "Default",
+																					},
+																					{
+																						value: (
+																							" mr-" +
+																							tab.name +
+																							"-right"
+																						).replace("--", "-"),
+																						label: "Right",
+																					},
+																					{
+																						value: (
+																							" mr-" +
+																							tab.name +
+																							"-left"
+																						).replace("--", "-"),
+																						label: "Left",
+																					},
+																			  ])
+																			: ""
+																	}
+																	onChange={(val) =>
+																		setAttributes({
+																			mrPositionSides:
+																				val !== undefined &&
+																				!val.includes("mr-hover") &&
+																				!val.includes("mr-desktop") &&
+																				!val.includes("mr-laptop") &&
+																				!val.includes("mr-tablet") &&
+																				!val.includes("mr-phone")
+																					? val
+																					: mrPositionSides,
+																			mrPositionSidesdesktop:
+																				val !== undefined &&
+																				val.includes("mr-desktop")
+																					? val
+																					: mrPositionSidesdesktop,
+																			mrPositionSideslaptop:
+																				val !== undefined &&
+																				val.includes("mr-laptop")
+																					? val
+																					: mrPositionSideslaptop,
+																			mrPositionSidestablet:
+																				val !== undefined &&
+																				val.includes("mr-tablet")
+																					? val
+																					: mrPositionSidestablet,
+																			mrPositionSidesphone:
+																				val !== undefined &&
+																				val.includes("mr-phone")
+																					? val
+																					: mrPositionSidesphone,
+																		})
+																	}
+																/>
+																<SelectControl
+																	label={__("Content Alignment", "mr-utils")}
+																	value={
+																		tab.name === "desktop"
+																			? mrContentAlignmentdesktop
+																			: tab.name === "laptop"
+																			? mrContentAlignmentlaptop
+																			: tab.name === "tablet"
+																			? mrContentAlignmenttablet
+																			: tab.name === "phone"
+																			? mrContentAlignmentphone
+																			: mrContentAlignment
+																	}
+																	options={__([
+																		{
+																			value: "mr-" + tab.name,
+																			label: "Default",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-aligntop"
+																			).replace("--", "-"),
+																			label: "Top",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-floatright"
+																			).replace("--", "-"),
+																			label: "Right",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-alignbottom"
+																			).replace("--", "-"),
+																			label: "Bottom",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-floatleft"
+																			).replace("--", "-"),
+																			label: "Left",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-middle"
+																			).replace("--", "-"),
+																			label: "Middle",
+																		},
+																	])}
+																	onChange={(val) =>
+																		setAttributes({
+																			mrContentAlignment:
+																				val !== undefined &&
+																				!val.includes("mr-hover") &&
+																				!val.includes("mr-desktop") &&
+																				!val.includes("mr-laptop") &&
+																				!val.includes("mr-tablet") &&
+																				!val.includes("mr-phone")
+																					? val
+																					: mrContentAlignment,
+																			mrContentAlignmentdesktop:
+																				val !== undefined &&
+																				val.includes("mr-desktop")
+																					? val
+																					: mrContentAlignmentdesktop,
+																			mrContentAlignmentlaptop:
+																				val !== undefined &&
+																				val.includes("mr-laptop")
+																					? val
+																					: mrContentAlignmentlaptop,
+																			mrContentAlignmenttablet:
+																				val !== undefined &&
+																				val.includes("mr-tablet")
+																					? val
+																					: mrContentAlignmenttablet,
+																			mrContentAlignmentphone:
+																				val !== undefined &&
+																				val.includes("mr-phone")
+																					? val
+																					: mrContentAlignmentphone,
+																		})
+																	}
+																/>
+																<SelectControl
+																	label={__("Vertical Offset", "mr-utils")}
+																	value={
+																		tab.name === "desktop"
+																			? mrVerticalOffsetdesktop
+																			: tab.name === "laptop"
+																			? mrVerticalOffsetlaptop
+																			: tab.name === "tablet"
+																			? mrVerticalOffsettablet
+																			: tab.name === "phone"
+																			? mrVerticalOffsetphone
+																			: mrVerticalOffset
+																	}
+																	options={__([
+																		{
+																			value: "mr-" + tab.name,
+																			label: "Default",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-offsettop"
+																			).replace("--", "-"),
+																			label: "Top",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-offsetelementtop"
+																			).replace("--", "-"),
+																			label: "Element Top",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-offsetelementbottom"
+																			).replace("--", "-"),
+																			label: "Element Bottom",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-offsetbottom"
+																			).replace("--", "-"),
+																			label: "Bottom",
+																		},
+																	])}
+																	onChange={(val) =>
+																		setAttributes({
+																			mrVerticalOffset:
+																				val !== undefined &&
+																				!val.includes("mr-hover") &&
+																				!val.includes("mr-desktop") &&
+																				!val.includes("mr-laptop") &&
+																				!val.includes("mr-tablet") &&
+																				!val.includes("mr-phone")
+																					? val
+																					: mrVerticalOffset,
+																			mrVerticalOffsetdesktop:
+																				val !== undefined &&
+																				val.includes("mr-desktop")
+																					? val
+																					: mrVerticalOffsetdesktop,
+																			mrVerticalOffsetlaptop:
+																				val !== undefined &&
+																				val.includes("mr-laptop")
+																					? val
+																					: mrVerticalOffsetlaptop,
+																			mrVerticalOffsettablet:
+																				val !== undefined &&
+																				val.includes("mr-tablet")
+																					? val
+																					: mrVerticalOffsettablet,
+																			mrVerticalOffsetphone:
+																				val !== undefined &&
+																				val.includes("mr-phone")
+																					? val
+																					: mrVerticalOffsetphone,
+																		})
+																	}
+																/>
+																<SelectControl
+																	label={__("Horizontal Offset", "mr-utils")}
+																	value={
+																		tab.name === "desktop"
+																			? mrHorizontalOffsetdesktop
+																			: tab.name === "laptop"
+																			? mrHorizontalOffsetlaptop
+																			: tab.name === "tablet"
+																			? mrHorizontalOffsettablet
+																			: tab.name === "phone"
+																			? mrHorizontalOffsetphone
+																			: mrHorizontalOffset
+																	}
+																	options={__([
+																		{
+																			value: "mr-" + tab.name,
+																			label: "Default",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-offsetleft"
+																			).replace("--", "-"),
+																			label: "Left",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-offsetelementleft"
+																			).replace("--", "-"),
+																			label: "Element Left",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-offsetelementright"
+																			).replace("--", "-"),
+																			label: "Element Right",
+																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-offsetright"
+																			).replace("--", "-"),
+																			label: "Right",
+																		},
+																	])}
+																	onChange={(val) =>
+																		setAttributes({
+																			mrHorizontalOffset:
+																				val !== undefined &&
+																				!val.includes("mr-hover") &&
+																				!val.includes("mr-desktop") &&
+																				!val.includes("mr-laptop") &&
+																				!val.includes("mr-tablet") &&
+																				!val.includes("mr-phone")
+																					? val
+																					: mrHorizontalOffset,
+																			mrHorizontalOffsetdesktop:
+																				val !== undefined &&
+																				val.includes("mr-desktop")
+																					? val
+																					: mrHorizontalOffsetdesktop,
+																			mrHorizontalOffsetlaptop:
+																				val !== undefined &&
+																				val.includes("mr-laptop")
+																					? val
+																					: mrHorizontalOffsetlaptop,
+																			mrHorizontalOffsettablet:
+																				val !== undefined &&
+																				val.includes("mr-tablet")
+																					? val
+																					: mrHorizontalOffsettablet,
+																			mrHorizontalOffsetphone:
+																				val !== undefined &&
+																				val.includes("mr-phone")
+																					? val
+																					: mrHorizontalOffsetphone,
+																		})
+																	}
+																/>
+															</PanelBody>
+														</>
+													) : (
+														""
+													)}
+													<PanelBody
+														icon={plusCircle}
+														title={tab.name + __(" Misc.", "mr-utils")}
+														initialOpen={false}
+														className={
+															tab.name === ""
+																? "mr-backend-option mr-backend-option_utils_misc"
+																: "mr-backend-option mr-backend-option_utils_" +
+																  tab.name +
+																  "_misc"
+														}
+													>
+														<SelectControl
+															label={__("Scroll", "mr-utils")}
+															value={
+																tab.name === "hover"
+																	? mrScrollhover
+																	: tab.name === "desktop"
+																	? mrScrolldesktop
+																	: tab.name === "laptop"
+																	? mrScrolllaptop
+																	: tab.name === "tablet"
+																	? mrScrolltablet
+																	: tab.name === "phone"
+																	? mrScrollphone
+																	: mrScroll
+															}
+															options={[
+																{ value: "mr-" + tab.name, label: "Default" },
+																{
+																	value: (
+																		" mr-" +
+																		tab.name +
+																		"-noscroll"
+																	).replace("--", "-"),
+																	label: "No scroll",
+																},
+																{
+																	value: (
+																		" mr-" +
+																		tab.name +
+																		"-hidescroll"
+																	).replace("--", "-"),
+																	label: "Hide scroll",
+																},
+																{
+																	value: (
+																		" mr-" +
+																		tab.name +
+																		"-scroll"
+																	).replace("--", "-"),
+																	label: "Scroll",
+																},
+																tab.name != "hover"
+																	? {
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-horizontalscroll"
+																			).replace("--", "-"),
+																			label: "Horizontal scroll",
+																	  }
+																	: "",
+																tab.name != "hover"
+																	? {
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-horizontalscrollcontent"
+																			).replace("--", "-"),
+																			label: "Horizontal scroll content",
+																	  }
+																	: "",
+															]}
+															onChange={(val) =>
+																setAttributes({
+																	mrScroll:
+																		val !== undefined &&
+																		!val.includes("mr-hover") &&
+																		!val.includes("mr-desktop") &&
+																		!val.includes("mr-laptop") &&
+																		!val.includes("mr-tablet") &&
+																		!val.includes("mr-phone")
+																			? val
+																			: mrScroll,
+																	mrScrollhover:
+																		val !== undefined && val.includes("-hover-")
+																			? val
+																			: mrScrollhover,
+																	mrScrolldesktop:
+																		val !== undefined &&
+																		val.includes("mr-desktop")
+																			? val
+																			: mrScrolldesktop,
+																	mrScrolllaptop:
+																		val !== undefined &&
+																		val.includes("mr-laptop")
+																			? val
+																			: mrScrolllaptop,
+																	mrScrolltablet:
+																		val !== undefined &&
+																		val.includes("mr-tablet")
+																			? val
+																			: mrScrolltablet,
+																	mrScrollphone:
+																		val !== undefined &&
+																		val.includes("mr-phone")
+																			? val
+																			: mrScrollphone,
+																})
+															}
+														/>
+													</PanelBody>
+												</>
+											) : (
+												<>
+													<h4>Other breakpoints</h4>
+													<p>
+														You also have the following device breakpoints
+														available:
+													</p>
+													<p class="mr-backend-other_breakpoints">
+														<b>landscape, portrait</b>
+													</p>
+													<p>
+														However you cannot select them with the interface.
+														In alternative, you can use{" "}
+														<a
+															href="https://github.com/marcosrego-web/mr-utils/wiki/Utility-Classes"
+															target="_blank"
+														>
+															utility classes
+														</a>{" "}
+														in <b>Advanced - Additional CSS class(es)</b>.
+													</p>
+													<p>
+														<a
+															href="https://github.com/marcosrego-web/mr-utils/wiki/Utility-Classes"
+															target="_blank"
+														>
+															Know more
+														</a>
+													</p>
+												</>
+											)
+										}
+									</TabPanel>
+
+									<PanelBody
+										icon={mrDevIcon}
+										title={__("Need more features?", "mr-utils")}
+										initialOpen={false}
+										className="mr-backend-more_features"
+									>
+										<PanelRow>
+											<div>
+												<p>
+													<b>Then you need Mr.Dev.'s Framework!</b>
 												</p>
 												<p>
+													The framework will give you an interface to
+													optionally:
+												</p>
+												<ul>
+													<li>
+														- Select classes/options on text fields besides
+														writting them (for spacing, sizes, colors and more).
+													</li>
+													<li>
+														- Select only the device breakpoints that you want
+														to use, avoiding the load of all styles and scripts.
+													</li>
+													<li>
+														- Enable only the components and features that you
+														want to use, avoiding unused CSS and JS.
+													</li>
+													<li>
+														- Change the value of each variable (for margin,
+														padding, transition-duration, size, font-size and
+														more).
+													</li>
+													<li>
+														- Change the media query values of each device
+														breakpoint.
+													</li>
+													<li>- Create custom breakpoints.</li>
+													<li>- Create custom variables.</li>
+													<li>
+														- Create custom utility classes with CSS properties
+														+ variables and select them within the interface.
+													</li>
+													<li>
+														- Toggle a offcanvas section with reusable blocks
+														using a hamburger menu.
+													</li>
+													<li>- And more framework features...</li>
+												</ul>
+												<p>
 													<a
-														href="https://github.com/marcosrego-web/mr-utils/wiki/Utility-Classes"
+														href="https://marcosrego.com/development/mrdev-framework/"
 														target="_blank"
 													>
 														Know more
 													</a>
 												</p>
-											</>
-										)
-									}
-								</TabPanel>
-
-								<PanelBody
-									icon={mrDevIcon}
-									title={__("Need more features?", "mr-utils")}
-									initialOpen={false}
-									className="mr-backend-more_features"
-								>
-									<PanelRow>
-										<div>
-											<p>
-												<b>Then you need Mr.Dev.'s Framework!</b>
-											</p>
-											<p>
-												The framework will give you an interface to optionally:
-											</p>
-											<ul>
-												<li>
-													- Select classes/options on text fields besides
-													writting them (for spacing, sizes, colors and more).
-												</li>
-												<li>
-													- Select only the device breakpoints that you want to
-													use, avoiding the load of all styles and scripts.
-												</li>
-												<li>
-													- Enable only the components and features that you
-													want to use, avoiding unused CSS and JS.
-												</li>
-												<li>
-													- Change the value of each variable (for margin,
-													padding, transition-duration, size, font-size and
-													more).
-												</li>
-												<li>
-													- Change the media query values of each device
-													breakpoint.
-												</li>
-												<li>- Create custom breakpoints.</li>
-												<li>- Create custom variables.</li>
-												<li>
-													- Create custom utility classes with CSS properties +
-													variables and select them within the interface.
-												</li>
-												<li>
-													- Toggle a offcanvas section with reusable blocks
-													using a hamburger menu.
-												</li>
-												<li>- And more framework features...</li>
-											</ul>
-											<p>
-												<a
-													href="https://marcosrego.com/development/mrdev-framework/"
-													target="_blank"
-												>
-													Know more
-												</a>
-											</p>
-										</div>
-									</PanelRow>
+											</div>
+										</PanelRow>
+									</PanelBody>
 								</PanelBody>
-							</PanelBody>
-						</Panel>
-					</InspectorControls>
-				)}
+							</Panel>
+						</InspectorControls>
+					)}
 			</Fragment>
 		);
 	};
@@ -4300,6 +4413,8 @@ const mrBackendExtraClasses = createHigherOrderComponent((BlockListBlock) => {
 			mrSizephone,
 			mrBackgroundColor,
 			mrColor,
+			mrBackgroundColorhover,
+			mrColorhover,
 			mrFontFamily,
 			mrFontSize,
 			mrFontSizehover,
