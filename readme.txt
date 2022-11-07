@@ -1,8 +1,8 @@
 === MR.Utils ===
 Contributors:      Marcos Rego
 Tags:              block, editor, utilities, frontend, toolkit, utils, dev, developer, bootstrap, tailwind, css, js, breakpoints, devices
-Tested up to:      6.0
-Stable tag:        0.2.1
+Tested up to:      6.1
+Stable tag:        0.2.2
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -49,6 +49,10 @@ You can contact me at: [https://marcosrego.com/client-area/contact/](https://mar
 7. Mr.Dev.'s Framework allows to create custom utilities to select on the block editor.
 
 == Changelog ==
+
+= 0.2.2 =
+* Fixed method of getting a class from elements with "mr-activeonlick", when adding it to the body.
+* Tested on WP 6.1.
 
 = 0.2.1 =
 * Removes gaps on blocks using pagination.
