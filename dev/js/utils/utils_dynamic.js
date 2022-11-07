@@ -169,11 +169,21 @@ document.addEventListener("click", function (t) {
   } else if (t.target.matches(".mr-togglecolors")) {
     mrToggleColors();
   } else if (t.target.closest(".mr-activeonclick")) {
-    t.target.closest(".mr-activeonclick").classList.toggle("mr-active");
     document.body.classList.toggle("mr-hasactive");
+    let mrClassListCount =
+      t.target.closest(".mr-activeonclick").classList.length - 1;
+    if (
+      t.target.closest(".mr-activeonclick").classList[mrClassListCount] ==
+      "mr-active"
+    ) {
+      mrClassListCount =
+        t.target.closest(".mr-activeonclick").classList.length - 2;
+    }
     document.body.classList.toggle(
-      "mr-hasactive_" + t.target.closest(".mr-activeonclick").classList[0]
+      "mr-hasactive_" +
+        t.target.closest(".mr-activeonclick").classList[mrClassListCount]
     );
+    t.target.closest(".mr-activeonclick").classList.toggle("mr-active");
   }
   t.stopPropagation();
 });
