@@ -1280,6 +1280,14 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																			).replace("--", "-"),
 																			label: "Swipe Content",
 																		},
+																		{
+																			value: (
+																				" mr-" +
+																				tab.name +
+																				"-search"
+																			).replace("--", "-"),
+																			label: "Search",
+																		},
 																	]}
 																	onChange={(val) =>
 																		setAttributes({
@@ -1318,7 +1326,8 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																	}
 																/>
 																{mrComponent.includes("tabs") ||
-																mrComponent.includes("swipe") ? (
+																mrComponent.includes("swipe") ||
+																mrComponent.includes("search") ? (
 																	<SelectControl
 																		label={__(
 																			"Navigation position",

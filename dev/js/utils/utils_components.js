@@ -353,6 +353,163 @@ function mrSwipeContent(t) {
   }
 }
 
+function mrSearch(t, e, m, v) {
+  let mrSearchChildren = t.children;
+  let mrSearchValue = "";
+  if (!m || m < 4) {
+    m = 4;
+  }
+  if (!v) {
+    v = true;
+  }
+  if (mrSearchChildren) {
+    if (e !== "") {
+      t.classList.add("mr-active");
+      t.style.removeProperty('display');
+      for (let id = 0; id < mrSearchChildren.length; id++) {
+        let mrSearchChild = mrSearchChildren[id];
+        mrSearchChild.style.display = "none";
+        mrSearchChild.classList.remove("mr-active");
+        if (e.replaceAll(" ", "").length >= m) {
+          if (
+            !mrSearchChild.classList.contains("mr-search_noresults") &&
+            !mrSearchChild.classList.contains("mr-search_minchars") &&
+            !mrSearchChild.classList.contains("mr-search_nomatch")
+          ) {
+            if (
+              mrSearchChild
+                .outerHTML
+                .toLowerCase()
+                .replace(/[^a-zA-Z0-9 ]/g, "")
+                .includes(e.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, ""))
+            ) {
+              mrSearchChild.style.removeProperty('display');
+              mrSearchChild.style.order = 0;
+              mrSearchChild.classList.add("mr-active");
+            }
+          }
+        } else if (
+          mrSearchChild.classList.contains("mr-search_minchars")
+        ) {
+          mrSearchChild.style.removeProperty('display');
+          mrSearchChild.classList.add("mr-active");
+        }
+      }
+      if (v === true) {
+        if (
+          !t.querySelector(
+            ".mr-active:not(.mr-search_noresults):not(.mr-search_nomatch)"
+          )
+        ) {
+          if(t.querySelector(
+            ".mr-search_nomatch"
+          )) {
+            t.querySelector(
+              ".mr-search_nomatch"
+            ).classList.add('mr-active');
+            t.querySelector(
+              ".mr-search_nomatch"
+            ).style.removeProperty('display');
+            t.querySelector(
+              ".mr-search_nomatch"
+            ).style.order = '-9999';
+          }
+          for (let id = 0; id < mrSearchChildren.length; id++) {
+            let mrSearchChild = mrSearchChildren[id];
+            if (!mrSearchChild.classList.contains("mr-search_nomatch")) {
+              mrSearchChild.style.display = "none";
+              mrSearchChild.classList.remove("mr-active");
+              if (e.replaceAll(" ", "").length >= m) {
+                if (
+                  !mrSearchChild.classList.contains(
+                    "mr-search_noresults"
+                  ) &&
+                  !mrSearchChild.classList.contains(
+                    "mr-search_minchars"
+                  ) &&
+                  !mrSearchChild.classList.contains("mr-search_nomatch")
+                ) {
+                  let mrSearchValues = e.split(" ");
+                  let resultOrder = 0;
+                  for (let vid = 0; vid < mrSearchValues.length; vid++) {
+                    mrSearchValue = mrSearchValues[vid];
+                    if (mrSearchValue.replaceAll(" ", "").length >= m) {
+                      if (
+                        mrSearchChild
+                          .outerHTML
+                          .toLowerCase()
+                          .replace(/[^a-zA-Z0-9 ]/g, "")
+                          .includes(
+                            mrSearchValue
+                              .toLowerCase()
+                              .replace(/[^a-zA-Z0-9 ]/g, "")
+                          )
+                      ) {
+                        mrSearchChild.style.display = "block";
+                        resultOrder = resultOrder + 1;
+                        mrSearchChild.style.order = "-" + resultOrder;
+                        mrSearchChild.classList.add("mr-active");
+                      }
+                    }
+                  }
+                }
+              } else if (
+                mrSearchChild.classList.contains("mr-search_minchars")
+              ) {
+                mrSearchChild.style.removeProperty('display');
+                mrSearchChild.classList.add("mr-active");
+              }
+            }
+          }
+        }
+      }
+      if (
+        !t.querySelector(
+          ".mr-active:not(.mr-search_noresults):not(.mr-search_nomatch)"
+        )
+      ) {
+        if(t.querySelector(
+          ".mr-search_nomatch.mr-active"
+        )) {
+          t.querySelector(
+            ".mr-search_nomatch.mr-active"
+          ).style.display = "none";
+        }
+        
+        if(t.querySelector(
+          ".mr-search_noresults"
+        )) {
+          t.querySelector(
+            ".mr-search_noresults"
+          ).style.removeProperty('display');
+        }
+        
+        if (mrSearchValue && mrSearchValue.replaceAll(" ", "").length < m) {
+          if(t.querySelector(
+            ".mr-search_minchars"
+          )) {
+            t.querySelector(
+            ".mr-search_minchars"
+          ).style.removeProperty('display');
+          }
+          
+          if(t.querySelector(
+            ".mr-search_minchars"
+          )) {
+            t.querySelector(
+            ".mr-search_minchars"
+          ).classList.add("mr-active");
+          }
+          
+        }
+      }
+    } else {
+      t.classList.remove("mr-active");
+      t.style.display = 'none';
+    }
+  }
+}
+
 document.addEventListener("click", function (t) {
   if (t.target.matches(".mr-tabsnav *")) {
     mrTab(t.target);
@@ -368,7 +525,41 @@ document.addEventListener("click", function (t) {
   t.stopPropagation();
 });
 
+document.addEventListener("keyup", function (t) {
+  if (t.target.matches(".mr-searchinput")) {
+    if (t.target.previousElementSibling && t.target.previousElementSibling.classList.contains("mr-navbottom") && t.target.value) {
+      mrSearch(t.target.previousElementSibling,t.target.value);
+    } else if (t.target.nextElementSibling && t.target.value) {
+      mrSearch(t.target.nextElementSibling,t.target.value);
+    }
+  }
+  t.stopPropagation();
+});
+
 document.addEventListener("DOMContentLoaded", function () {
+  const mrSearches = document.querySelectorAll(".mr-search");
+  for (let id = 0; id < mrSearches.length; id++) {
+    mrSearches[id].style.display = 'none';
+    if (
+      mrSearches[id].classList.contains("mr-navbottom") &&
+      !mrSearches[id].nextElementSibling || mrSearches[id].classList.contains("mr-navbottom") &&
+      mrSearches[id].nextElementSibling &&
+      !mrSearches[id].nextElementSibling.classList.contains(
+        "mr-searchinput"
+      )
+    ) {
+      mrSearches[id].outerHTML =
+        mrSearches[id].outerHTML +
+        '<input type="text" class="mr-searchinput" name="mr-searchinput" placeholder="Search here...">';
+    } else if (
+      !mrSearches[id].previousElementSibling || mrSearches[id].previousElementSibling &&
+      !mrSearches[id].previousElementSibling.classList.contains("mr-searchinput")
+    ) {
+      mrSearches[id].outerHTML =
+        '<input type="text" class="mr-searchinput" name="mr-searchinput" placeholder="Search here...">' + mrSearches[id].outerHTML;
+    }
+  }
+  
   const mrTabsNavs = document.querySelectorAll(".mr-tabsnav");
   for (let id = 0; id < mrTabsNavs.length; id++) {
     mrTabsNav(mrTabsNavs[id]);
