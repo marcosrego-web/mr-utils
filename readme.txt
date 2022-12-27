@@ -12,7 +12,7 @@ Add a front-end toolkit to the block editor that allows to change device visibil
 
 Easily use [Mr.Utils](https://marcosrego.com/development/mr-utils/) front-end toolkit with the block editor interface without knowing code, the classes or the functions.
 
-You can transform parent blocks (such as Columns or Groups) into components such as Tabs, Swiper or Sliders (with pagination).
+You can transform parent blocks (such as Columns or Groups) into components such as Search, Tabs, Swiper or Sliders (with pagination).
 
 You can select what to do when mouse hovering a block (e.g. animations or a semi-opacity).
 
