@@ -356,7 +356,7 @@ function mrSwipeContent(t) {
 function mrSearch(t, e, m, v) {
   let mrSearchChildren = t.children;
   let mrSearchValue = "";
-  if (!m || m < 4) {
+  if (!m) {
     m = 4;
   }
   if (!v) {
@@ -368,6 +368,28 @@ function mrSearch(t, e, m, v) {
       t.style.removeProperty("display");
       for (let id = 0; id < mrSearchChildren.length; id++) {
         let mrSearchChild = mrSearchChildren[id];
+        let mrSearchInput = "";
+        if (mrSearchChild.hasAttribute("value")) {
+          if (!mrSearchChild.innerText) {
+            mrSearchChild.innerText = mrSearchChild.getAttribute("value");
+          }
+          if (
+            t.classList.contains("mr-navbottom") &&
+            t.nextElementSibling &&
+            t.nextElementSibling.classList.contains("mr-searchinput")
+          ) {
+            mrSearchInput = t.nextElementSibling;
+          } else if (
+            t.previousElementSibling &&
+            t.previousElementSibling.classList.contains("mr-searchinput")
+          ) {
+            mrSearchInput = t.previousElementSibling;
+          }
+
+          mrSearchChild.addEventListener("click", function () {
+            mrSearchInput.value = mrSearchChild.getAttribute("value");
+          });
+        }
         mrSearchChild.style.display = "none";
         mrSearchChild.classList.remove("mr-active");
         if (e.replaceAll(" ", "").length >= m) {
@@ -500,6 +522,33 @@ document.addEventListener("keyup", function (t) {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
+  const mrDataLists = document.querySelectorAll(".mr-datalist");
+  for (let id = 0; id < mrDataLists.length; id++) {
+    let mrDataList = mrDataLists[id];
+    let mrDataListUL = "";
+    let mrDataListClone = "";
+
+    mrDataListClone =
+      '<li class="mr-nomatch"></li>' +
+      mrDataList
+        .cloneNode(true)
+        .innerHTML.replaceAll("<option", "<li")
+        .replaceAll("</option>", "</li>") +
+      '<li class="mr-noresults"></li>' +
+      '<li class="mr-minchars"></li>';
+    mrDataListUL = document.createElement("ul");
+    mrDataListUL.id = mrDataList.id;
+    mrDataListUL.className = mrDataList.className + " mr-search";
+    mrDataListUL.innerHTML = mrDataListClone;
+
+    if (document.querySelector('input[list="' + mrDataList.id + '"]')) {
+      document.querySelector('input[list="' + mrDataList.id + '"]').outerHTML =
+        "";
+    }
+
+    mrDataList.replaceWith(mrDataListUL);
+  }
+
   const mrSearches = document.querySelectorAll(".mr-search");
   for (let id = 0; id < mrSearches.length; id++) {
     mrSearches[id].style.display = "none";

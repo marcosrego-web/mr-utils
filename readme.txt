@@ -52,6 +52,7 @@ You can contact me at: [https://marcosrego.com/client-area/contact/](https://mar
 
 = 0.2.3 =
 * Added "Search" component.
+* Toolkit: "mr-datalist" class converts a HTML datalist into a search component, allowing styling.
 
 = 0.2.2 =
 * Fixed method of getting a class from elements with "mr-activeonlick", when adding it to the body.
