@@ -373,9 +373,9 @@ function mrSearch(t, e, m, v) {
         mrSearchChild.classList.remove("mr-active");
         if (e.replaceAll(" ", "").length >= m) {
           if (
-            !mrSearchChild.classList.contains("mr-search_noresults") &&
-            !mrSearchChild.classList.contains("mr-search_minchars") &&
-            !mrSearchChild.classList.contains("mr-search_nomatch")
+            !mrSearchChild.classList.contains("mr-noresults") &&
+            !mrSearchChild.classList.contains("mr-minchars") &&
+            !mrSearchChild.classList.contains("mr-nomatch")
           ) {
             if (
               mrSearchChild.outerHTML
@@ -388,34 +388,30 @@ function mrSearch(t, e, m, v) {
               mrSearchChild.classList.add("mr-active");
             }
           }
-        } else if (mrSearchChild.classList.contains("mr-search_minchars")) {
+        } else if (mrSearchChild.classList.contains("mr-minchars")) {
           mrSearchChild.style.removeProperty("display");
           mrSearchChild.classList.add("mr-active");
         }
       }
       if (v === true) {
         if (
-          !t.querySelector(
-            ".mr-active:not(.mr-search_noresults):not(.mr-search_nomatch)"
-          )
+          !t.querySelector(".mr-active:not(.mr-noresults):not(.mr-nomatch)")
         ) {
-          if (t.querySelector(".mr-search_nomatch")) {
-            t.querySelector(".mr-search_nomatch").classList.add("mr-active");
-            t.querySelector(".mr-search_nomatch").style.removeProperty(
-              "display"
-            );
-            t.querySelector(".mr-search_nomatch").style.order = "-9999";
+          if (t.querySelector(".mr-nomatch")) {
+            t.querySelector(".mr-nomatch").classList.add("mr-active");
+            t.querySelector(".mr-nomatch").style.removeProperty("display");
+            t.querySelector(".mr-nomatch").style.order = "-9999";
           }
           for (let id = 0; id < mrSearchChildren.length; id++) {
             let mrSearchChild = mrSearchChildren[id];
-            if (!mrSearchChild.classList.contains("mr-search_nomatch")) {
+            if (!mrSearchChild.classList.contains("mr-nomatch")) {
               mrSearchChild.style.display = "none";
               mrSearchChild.classList.remove("mr-active");
               if (e.replaceAll(" ", "").length >= m) {
                 if (
-                  !mrSearchChild.classList.contains("mr-search_noresults") &&
-                  !mrSearchChild.classList.contains("mr-search_minchars") &&
-                  !mrSearchChild.classList.contains("mr-search_nomatch")
+                  !mrSearchChild.classList.contains("mr-noresults") &&
+                  !mrSearchChild.classList.contains("mr-minchars") &&
+                  !mrSearchChild.classList.contains("mr-nomatch")
                 ) {
                   let mrSearchValues = e.split(" ");
                   let resultOrder = 0;
@@ -440,9 +436,7 @@ function mrSearch(t, e, m, v) {
                     }
                   }
                 }
-              } else if (
-                mrSearchChild.classList.contains("mr-search_minchars")
-              ) {
+              } else if (mrSearchChild.classList.contains("mr-minchars")) {
                 mrSearchChild.style.removeProperty("display");
                 mrSearchChild.classList.add("mr-active");
               }
@@ -450,31 +444,22 @@ function mrSearch(t, e, m, v) {
           }
         }
       }
-      if (
-        !t.querySelector(
-          ".mr-active:not(.mr-search_noresults):not(.mr-search_nomatch)"
-        )
-      ) {
-        if (t.querySelector(".mr-search_nomatch.mr-active")) {
-          t.querySelector(".mr-search_nomatch.mr-active").style.display =
-            "none";
+      if (!t.querySelector(".mr-active:not(.mr-noresults):not(.mr-nomatch)")) {
+        if (t.querySelector(".mr-nomatch.mr-active")) {
+          t.querySelector(".mr-nomatch.mr-active").style.display = "none";
         }
 
-        if (t.querySelector(".mr-search_noresults")) {
-          t.querySelector(".mr-search_noresults").style.removeProperty(
-            "display"
-          );
+        if (t.querySelector(".mr-noresults")) {
+          t.querySelector(".mr-noresults").style.removeProperty("display");
         }
 
         if (mrSearchValue && mrSearchValue.replaceAll(" ", "").length < m) {
-          if (t.querySelector(".mr-search_minchars")) {
-            t.querySelector(".mr-search_minchars").style.removeProperty(
-              "display"
-            );
+          if (t.querySelector(".mr-minchars")) {
+            t.querySelector(".mr-minchars").style.removeProperty("display");
           }
 
-          if (t.querySelector(".mr-search_minchars")) {
-            t.querySelector(".mr-search_minchars").classList.add("mr-active");
+          if (t.querySelector(".mr-minchars")) {
+            t.querySelector(".mr-minchars").classList.add("mr-active");
           }
         }
       }
