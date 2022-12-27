@@ -353,6 +353,144 @@ function mrSwipeContent(t) {
   }
 }
 
+function mrSearch(t, e, m, v) {
+  let mrSearchChildren = t.children;
+  let mrSearchValue = "";
+  if (!m) {
+    m = 4;
+  }
+  if (!v) {
+    v = true;
+  }
+  if (mrSearchChildren) {
+    if (e !== "") {
+      t.classList.add("mr-active");
+      t.style.removeProperty("display");
+      for (let id = 0; id < mrSearchChildren.length; id++) {
+        let mrSearchChild = mrSearchChildren[id];
+        let mrSearchInput = "";
+        if (mrSearchChild.hasAttribute("value")) {
+          if (!mrSearchChild.innerText) {
+            mrSearchChild.innerText = mrSearchChild.getAttribute("value");
+          }
+          if (
+            t.classList.contains("mr-navbottom") &&
+            t.nextElementSibling &&
+            t.nextElementSibling.classList.contains("mr-searchinput")
+          ) {
+            mrSearchInput = t.nextElementSibling;
+          } else if (
+            t.previousElementSibling &&
+            t.previousElementSibling.classList.contains("mr-searchinput")
+          ) {
+            mrSearchInput = t.previousElementSibling;
+          }
+
+          mrSearchChild.addEventListener("click", function () {
+            mrSearchInput.value = mrSearchChild.getAttribute("value");
+          });
+        }
+        mrSearchChild.style.display = "none";
+        mrSearchChild.classList.remove("mr-active");
+        if (e.replaceAll(" ", "").length >= m) {
+          if (
+            !mrSearchChild.classList.contains("mr-noresults") &&
+            !mrSearchChild.classList.contains("mr-minchars") &&
+            !mrSearchChild.classList.contains("mr-nomatch")
+          ) {
+            if (
+              mrSearchChild.outerHTML
+                .toLowerCase()
+                .replace(/[^a-zA-Z0-9 ]/g, "")
+                .includes(e.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, ""))
+            ) {
+              mrSearchChild.style.removeProperty("display");
+              mrSearchChild.style.order = 0;
+              mrSearchChild.classList.add("mr-active");
+            }
+          }
+        } else if (mrSearchChild.classList.contains("mr-minchars")) {
+          mrSearchChild.style.removeProperty("display");
+          mrSearchChild.classList.add("mr-active");
+        }
+      }
+      if (v === true) {
+        if (
+          !t.querySelector(".mr-active:not(.mr-noresults):not(.mr-nomatch)")
+        ) {
+          if (t.querySelector(".mr-nomatch")) {
+            t.querySelector(".mr-nomatch").classList.add("mr-active");
+            t.querySelector(".mr-nomatch").style.removeProperty("display");
+            t.querySelector(".mr-nomatch").style.order = "-9999";
+          }
+          for (let id = 0; id < mrSearchChildren.length; id++) {
+            let mrSearchChild = mrSearchChildren[id];
+            if (!mrSearchChild.classList.contains("mr-nomatch")) {
+              mrSearchChild.style.display = "none";
+              mrSearchChild.classList.remove("mr-active");
+              if (e.replaceAll(" ", "").length >= m) {
+                if (
+                  !mrSearchChild.classList.contains("mr-noresults") &&
+                  !mrSearchChild.classList.contains("mr-minchars") &&
+                  !mrSearchChild.classList.contains("mr-nomatch")
+                ) {
+                  let mrSearchValues = e.split(" ");
+                  let resultOrder = 0;
+                  for (let vid = 0; vid < mrSearchValues.length; vid++) {
+                    mrSearchValue = mrSearchValues[vid];
+                    if (mrSearchValue.replaceAll(" ", "").length >= m) {
+                      if (
+                        mrSearchChild.outerHTML
+                          .toLowerCase()
+                          .replace(/[^a-zA-Z0-9 ]/g, "")
+                          .includes(
+                            mrSearchValue
+                              .toLowerCase()
+                              .replace(/[^a-zA-Z0-9 ]/g, "")
+                          )
+                      ) {
+                        mrSearchChild.style.display = "block";
+                        resultOrder = resultOrder + 1;
+                        mrSearchChild.style.order = "-" + resultOrder;
+                        mrSearchChild.classList.add("mr-active");
+                      }
+                    }
+                  }
+                }
+              } else if (mrSearchChild.classList.contains("mr-minchars")) {
+                mrSearchChild.style.removeProperty("display");
+                mrSearchChild.classList.add("mr-active");
+              }
+            }
+          }
+        }
+      }
+      if (!t.querySelector(".mr-active:not(.mr-noresults):not(.mr-nomatch)")) {
+        if (t.querySelector(".mr-nomatch.mr-active")) {
+          t.querySelector(".mr-nomatch.mr-active").style.display = "none";
+        }
+
+        if (t.querySelector(".mr-noresults")) {
+          t.querySelector(".mr-noresults").style.removeProperty("display");
+        }
+
+        if (mrSearchValue && mrSearchValue.replaceAll(" ", "").length < m) {
+          if (t.querySelector(".mr-minchars")) {
+            t.querySelector(".mr-minchars").style.removeProperty("display");
+          }
+
+          if (t.querySelector(".mr-minchars")) {
+            t.querySelector(".mr-minchars").classList.add("mr-active");
+          }
+        }
+      }
+    } else {
+      t.classList.remove("mr-active");
+      t.style.display = "none";
+    }
+  }
+}
+
 document.addEventListener("click", function (t) {
   if (t.target.matches(".mr-tabsnav *")) {
     mrTab(t.target);
@@ -368,7 +506,75 @@ document.addEventListener("click", function (t) {
   t.stopPropagation();
 });
 
+document.addEventListener("keyup", function (t) {
+  if (t.target.matches(".mr-searchinput")) {
+    if (
+      t.target.previousElementSibling &&
+      t.target.previousElementSibling.classList.contains("mr-navbottom") &&
+      t.target.value
+    ) {
+      mrSearch(t.target.previousElementSibling, t.target.value);
+    } else if (t.target.nextElementSibling && t.target.value) {
+      mrSearch(t.target.nextElementSibling, t.target.value);
+    }
+  }
+  t.stopPropagation();
+});
+
 document.addEventListener("DOMContentLoaded", function () {
+  const mrDataLists = document.querySelectorAll(".mr-datalist");
+  for (let id = 0; id < mrDataLists.length; id++) {
+    let mrDataList = mrDataLists[id];
+    let mrDataListUL = "";
+    let mrDataListClone = "";
+
+    mrDataListClone =
+      '<li class="mr-nomatch"></li>' +
+      mrDataList
+        .cloneNode(true)
+        .innerHTML.replaceAll("<option", "<li")
+        .replaceAll("</option>", "</li>") +
+      '<li class="mr-noresults"></li>' +
+      '<li class="mr-minchars"></li>';
+    mrDataListUL = document.createElement("ul");
+    mrDataListUL.id = mrDataList.id;
+    mrDataListUL.className = mrDataList.className + " mr-search";
+    mrDataListUL.innerHTML = mrDataListClone;
+
+    if (document.querySelector('input[list="' + mrDataList.id + '"]')) {
+      document.querySelector('input[list="' + mrDataList.id + '"]').outerHTML =
+        "";
+    }
+
+    mrDataList.replaceWith(mrDataListUL);
+  }
+
+  const mrSearches = document.querySelectorAll(".mr-search");
+  for (let id = 0; id < mrSearches.length; id++) {
+    mrSearches[id].style.display = "none";
+    if (
+      (mrSearches[id].classList.contains("mr-navbottom") &&
+        !mrSearches[id].nextElementSibling) ||
+      (mrSearches[id].classList.contains("mr-navbottom") &&
+        mrSearches[id].nextElementSibling &&
+        !mrSearches[id].nextElementSibling.classList.contains("mr-searchinput"))
+    ) {
+      mrSearches[id].outerHTML =
+        mrSearches[id].outerHTML +
+        '<input type="text" class="mr-searchinput" name="mr-searchinput" placeholder="Search here...">';
+    } else if (
+      !mrSearches[id].previousElementSibling ||
+      (mrSearches[id].previousElementSibling &&
+        !mrSearches[id].previousElementSibling.classList.contains(
+          "mr-searchinput"
+        ))
+    ) {
+      mrSearches[id].outerHTML =
+        '<input type="text" class="mr-searchinput" name="mr-searchinput" placeholder="Search here...">' +
+        mrSearches[id].outerHTML;
+    }
+  }
+
   const mrTabsNavs = document.querySelectorAll(".mr-tabsnav");
   for (let id = 0; id < mrTabsNavs.length; id++) {
     mrTabsNav(mrTabsNavs[id]);

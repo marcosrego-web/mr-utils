@@ -1823,12 +1823,15 @@ const mrInspectorControls = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_5__.c
       }, {
         value: (" mr-" + tab.name + "-swipecontent").replace("--", "-"),
         label: "Swipe Content"
+      }, {
+        value: (" mr-" + tab.name + "-search").replace("--", "-"),
+        label: "Search"
       }],
       onChange: val => setAttributes({
         mrComponent: !val || val === "mr-" + tab.name ? "" : val.includes("mr-desktop") || val.includes("mr-laptop") || val.includes("mr-tablet") || val.includes("mr-phone") || val.includes("-hover-") ? mrComponent : val.replace("--", "-")
       }),
       help: !mrComponent || mrComponent === "mr-" ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Apply into parent blocks (such as Columns and List blocks) to consider each direct child as a component item.", "mr-utils") : mrComponent.includes("scrollnav") ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Tip: You can combine 'Scroll Navigation' with the scroll options found on the 'Misc.' section.", "mr-utils") + " " + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("The component was applied but you need to preview the frontend to see the actual result.", "mr-utils") : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("The component was applied but you need to preview the frontend to see the actual result.", "mr-utils")
-    }), mrComponent.includes("tabs") || mrComponent.includes("swipe") ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.SelectControl, {
+    }), mrComponent.includes("tabs") || mrComponent.includes("swipe") || mrComponent.includes("search") ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.SelectControl, {
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Navigation position", "mr-utils"),
       value: mrNavPosition,
       options: [{

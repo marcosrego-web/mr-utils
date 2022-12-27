@@ -98,6 +98,7 @@ function mrPagination(t) {
     t.nextElementSibling &&
     !t.nextElementSibling.querySelector(".mr-pagination")
   ) {*/
+  let mrPerPage = 0;
   let mrChildCount = t.children;
   for (let id = 0; id < mrChildCount.length; id++) {
     if (t.classList.contains("mr-" + id + "perpage")) {
