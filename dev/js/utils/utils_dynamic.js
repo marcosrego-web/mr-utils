@@ -112,9 +112,8 @@ function mrAfter(el, content) {
   }
 }
 function mrWrap(el, before, after) {
-  if (el) {
-    mrBefore(el, before);
-    mrAfter(el, after);
+  if (el && before && after) {
+    el.outerHTML = before + el.outerHTML + after;
   }
 }
 function mrParallax(t) {
