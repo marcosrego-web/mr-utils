@@ -101,15 +101,20 @@ function mrScrollTo(t, e, p) {
     animateScroll();
   });
   }*/
+function mrBefore(el, content) {
+  if (el && content) {
+    el.outerHTML = content + el.outerHTML;
+  }
+}
+function mrAfter(el, content) {
+  if (el && content) {
+    el.outerHTML = el.outerHTML + content;
+  }
+}
 function mrWrap(el, before, after) {
-  if (el && before) {
-    if (after) {
-      el.outerHTML = before + el.outerHTML + after;
-    } else {
-      console.log(
-        "mrWrap error: You need to add content after the element, such as closing the HTML tags."
-      );
-    }
+  if (el) {
+    mrBefore(el, before);
+    mrAfter(el, after);
   }
 }
 function mrParallax(t) {
