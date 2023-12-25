@@ -18,6 +18,14 @@ function mrIsInView(t, e, p) {
     if (r < 0 && n > 0) return !0;
   }
 }
+/*function mrIsInView(t, e, p) {
+  if (t) {
+    void 0 === e && (e = 0), void 0 === p && (p = 0);
+    let r = t.getBoundingClientRect().top - (window.screen.height - e),
+      n = t.getBoundingClientRect().top + t.offsetHeight - p;
+    if (r < 0 && n > 0) return !0;
+  }
+}*/
 function mrActiveInView(t, e, p) {
   if (!t) {
     t = document.querySelectorAll(".mr-activeinview");
@@ -93,6 +101,17 @@ function mrScrollTo(t, e, p) {
     animateScroll();
   });
   }*/
+function mrWrap(el, before, after) {
+  if (el && before) {
+    if (after) {
+      el.outerHTML = before + el.outerHTML + after;
+    } else {
+      console.log(
+        "mrWrap error: You need to add content after the element, such as closing the HTML tags."
+      );
+    }
+  }
+}
 function mrParallax(t) {
   if (
     t &&

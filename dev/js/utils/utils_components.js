@@ -541,12 +541,12 @@ document.addEventListener("DOMContentLoaded", function () {
     mrDataListUL.className = mrDataList.className + " mr-search";
     mrDataListUL.innerHTML = mrDataListClone;
 
+    mrDataList.replaceWith(mrDataListUL);
+
     if (document.querySelector('input[list="' + mrDataList.id + '"]')) {
       document.querySelector('input[list="' + mrDataList.id + '"]').outerHTML =
         "";
     }
-
-    mrDataList.replaceWith(mrDataListUL);
   }
 
   const mrSearches = document.querySelectorAll(".mr-search");
