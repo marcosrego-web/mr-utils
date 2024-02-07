@@ -48,3 +48,56 @@
 .mr-hover-noborders:hover {
   border: 0;
 }
+
+.mr-borderradius:hover {
+  border-radius: 1rem;
+  border-radius: var(--border-radius, 1rem);
+}
+
+.mr-borderradiustop:hover,
+.mr-bordertopleftradius:hover {
+  border-top-left-radius: 1rem;
+  border-top-left-radius: var(--border-radius, 1rem);
+}
+
+.mr-borderradiusright:hover,
+.mr-bordertoprightradius:hover {
+  border-top-right-radius: 1rem;
+  border-top-right-radius: var(--border-radius, 1rem);
+}
+
+.mr-borderradiusbottom:hover,
+.mr-borderbottomrightradius:hover {
+  border-bottom-right-radius: 1rem;
+  border-bottom-right-radius: var(--border-radius, 1rem);
+}
+
+.mr-borderradiusleft:hover,
+.mr-borderbottomleftradius:hover {
+  border-bottom-left-radius: 1rem;
+  border-bottom-left-radius: var(--border-radius, 1rem);
+}
+
+.mr-noborderradius:hover {
+  border-radius: 0 !important;
+}
+
+.mr-noborderradiustop:hover,
+.mr-nobordertopleftradius:hover {
+  border-top-left-radius: 0 !important;
+}
+
+.mr-noborderradiusright:hover,
+.mr-nobordertoprightradius:hover {
+  border-top-right-radius: 0 !important;
+}
+
+.mr-noborderradiusbottom:hover,
+.mr-noborderbottomrightradius:hover {
+  border-bottom-right-radius: 0 !important;
+}
+
+.mr-noborderradiusleft:hover,
+.mr-noborderbottomleftradius:hover {
+  border-bottom-left-radius: 0 !important;
+}

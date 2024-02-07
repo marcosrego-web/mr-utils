@@ -72,6 +72,59 @@
   border: 0;
 }
 
+.mr-borderradius {
+  border-radius: 1rem;
+  border-radius: var(--border-radius, 1rem);
+}
+
+.mr-borderradiustop,
+.mr-bordertopleftradius {
+  border-top-left-radius: 1rem;
+  border-top-left-radius: var(--border-radius, 1rem);
+}
+
+.mr-borderradiusright,
+.mr-bordertoprightradius {
+  border-top-right-radius: 1rem;
+  border-top-right-radius: var(--border-radius, 1rem);
+}
+
+.mr-borderradiusbottom,
+.mr-borderbottomrightradius {
+  border-bottom-right-radius: 1rem;
+  border-bottom-right-radius: var(--border-radius, 1rem);
+}
+
+.mr-borderradiusleft,
+.mr-borderbottomleftradius {
+  border-bottom-left-radius: 1rem;
+  border-bottom-left-radius: var(--border-radius, 1rem);
+}
+
+.mr-noborderradius {
+  border-radius: 0 !important;
+}
+
+.mr-noborderradiustop,
+.mr-nobordertopleftradius {
+  border-top-left-radius: 0 !important;
+}
+
+.mr-noborderradiusright,
+.mr-nobordertoprightradius {
+  border-top-right-radius: 0 !important;
+}
+
+.mr-noborderradiusbottom,
+.mr-noborderbottomrightradius {
+  border-bottom-right-radius: 0 !important;
+}
+
+.mr-noborderradiusleft,
+.mr-noborderbottomleftradius {
+  border-bottom-left-radius: 0 !important;
+}
+
 .mr-overlay {
   position: fixed;
   top: 0;
