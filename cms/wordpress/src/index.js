@@ -2519,7 +2519,10 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																	placeHolder={(
 																		"mr-" +
 																		tab.name +
-																		"-bordertopleftradius"
+																		"-bordertopleftradius | " +
+																		"mr-" +
+																		tab.name +
+																		"-nobordertopleftradius"
 																	).replace("--", "-")}
 																	list={(
 																		"mrDevUtilsClasses_" +
@@ -2565,7 +2568,10 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																	placeHolder={(
 																		"mr-" +
 																		tab.name +
-																		"-bordertoprightradius"
+																		"-bordertoprightradius | " +
+																		"mr-" +
+																		tab.name +
+																		"-nobordertoprightradius"
 																	).replace("--", "-")}
 																	list={(
 																		"mrDevUtilsClasses_" +
@@ -2611,7 +2617,10 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																	placeHolder={(
 																		"mr-" +
 																		tab.name +
-																		"-borderbottomrightradius"
+																		"-borderbottomrightradius | " +
+																		"mr-" +
+																		tab.name +
+																		"-noborderbottomrightradius"
 																	).replace("--", "-")}
 																	list={(
 																		"mrDevUtilsClasses_" +
@@ -2657,7 +2666,10 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																	placeHolder={(
 																		"mr-" +
 																		tab.name +
-																		"-borderbottomleftradius"
+																		"-borderbottomleftradius | " +
+																		"mr-" +
+																		tab.name +
+																		"-noborderbottomleftradius"
 																	).replace("--", "-")}
 																	list={(
 																		"mrDevUtilsClasses_" +

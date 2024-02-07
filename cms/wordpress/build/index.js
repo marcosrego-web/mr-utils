@@ -2293,7 +2293,7 @@ const mrInspectorControls = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_5__.c
       value: tab.name === "hover" ? mrBorderTopLeftRadiushover : mrBorderTopLeftRadius,
       type: "text",
       className: "mr-backend-custominput mr-backend-custombordertopleftradius",
-      placeHolder: ("mr-" + tab.name + "-bordertopleftradius").replace("--", "-"),
+      placeHolder: ("mr-" + tab.name + "-bordertopleftradius | " + "mr-" + tab.name + "-nobordertopleftradius").replace("--", "-"),
       list: ("mrDevUtilsClasses_" + tab.name + "_bordertopleftradius").replace("__", "_"),
       onChange: val => setAttributes({
         mrBorderTopLeftRadius: val !== undefined && !val.includes("mr-hover") && !val.includes("mr-desktop") && !val.includes("mr-laptop") && !val.includes("mr-tablet") && !val.includes("mr-phone") ? val : mrBorderTopLeftRadius,
@@ -2304,7 +2304,7 @@ const mrInspectorControls = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_5__.c
       value: tab.name === "hover" ? mrBorderTopRightRadiushover : mrBorderTopRightRadius,
       type: "text",
       className: "mr-backend-custominput mr-backend-custombordertoprightradius",
-      placeHolder: ("mr-" + tab.name + "-bordertoprightradius").replace("--", "-"),
+      placeHolder: ("mr-" + tab.name + "-bordertoprightradius | " + "mr-" + tab.name + "-nobordertoprightradius").replace("--", "-"),
       list: ("mrDevUtilsClasses_" + tab.name + "_bordertoprightradius").replace("__", "_"),
       onChange: val => setAttributes({
         mrBorderTopRightRadius: val !== undefined && !val.includes("mr-hover") && !val.includes("mr-desktop") && !val.includes("mr-laptop") && !val.includes("mr-tablet") && !val.includes("mr-phone") ? val : mrBorderTopRightRadius,
@@ -2315,7 +2315,7 @@ const mrInspectorControls = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_5__.c
       value: tab.name === "hover" ? mrBorderBottomRightRadiushover : mrBorderBottomRightRadius,
       type: "text",
       className: "mr-backend-custominput mr-backend-customborderbottomrightradius",
-      placeHolder: ("mr-" + tab.name + "-borderbottomrightradius").replace("--", "-"),
+      placeHolder: ("mr-" + tab.name + "-borderbottomrightradius | " + "mr-" + tab.name + "-noborderbottomrightradius").replace("--", "-"),
       list: ("mrDevUtilsClasses_" + tab.name + "_borderbottomrightradius").replace("__", "_"),
       onChange: val => setAttributes({
         mrBorderBottomRightRadius: val !== undefined && !val.includes("mr-hover") && !val.includes("mr-desktop") && !val.includes("mr-laptop") && !val.includes("mr-tablet") && !val.includes("mr-phone") ? val : mrBorderBottomRightRadius,
@@ -2326,7 +2326,7 @@ const mrInspectorControls = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_5__.c
       value: tab.name === "hover" ? mrBorderBottomLeftRadiushover : mrBorderBottomLeftRadius,
       type: "text",
       className: "mr-backend-custominput mr-backend-customborderbottomleftradius",
-      placeHolder: ("mr-" + tab.name + "-borderbottomleftradius").replace("--", "-"),
+      placeHolder: ("mr-" + tab.name + "-borderbottomleftradius | " + "mr-" + tab.name + "-noborderbottomleftradius").replace("--", "-"),
       list: ("mrDevUtilsClasses_" + tab.name + "_borderbottomleftradius").replace("__", "_"),
       onChange: val => setAttributes({
         mrBorderBottomLeftRadius: val !== undefined && !val.includes("mr-hover") && !val.includes("mr-desktop") && !val.includes("mr-laptop") && !val.includes("mr-tablet") && !val.includes("mr-phone") ? val : mrBorderBottomLeftRadius,
