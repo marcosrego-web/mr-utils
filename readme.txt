@@ -1,8 +1,8 @@
 === MR.Utils ===
 Contributors:      Marcos Rego
 Tags:              block, editor, utilities, frontend, toolkit, utils, dev, developer, bootstrap, tailwind, css, js, breakpoints, devices
-Tested up to:      6.4.2
-Stable tag:        0.2.4
+Tested up to:      6.4.3
+Stable tag:        0.2.5
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -49,6 +49,10 @@ You can contact me at: [https://marcosrego.com/client-area/contact/](https://mar
 7. Mr.Dev.'s Framework allows to create custom utilities to select on the block editor.
 
 == Changelog ==
+
+= 0.2.5 =
+* Added "Border radius" options on the "Appearance" tab.
+* Tested on WP 6.4.3.
 
 = 0.2.4 =
 * Update Mr.Utils adding mrBefore, mrAfter and mrWrap functions (not available on the block editor for now).

@@ -58,8 +58,7 @@ const mrDevIcon = wp.element.createElement(
 		height: 20,
 	},
 	wp.element.createElement("path", {
-		d:
-			"M11.361,13.455c0,0.252-0.51,0.456-1.141,0.456s-1.141-0.204-1.141-0.456c0-0.252,0.51-0.457,1.141-0.457   S11.361,13.203,11.361,13.455z M20.029,12.448c0,1.34-0.843,2.479-2.002,2.859c-1.487,2.854-4.476,4.697-7.792,4.697   c-3.313,0-6.299-1.837-7.786-4.686c-1.177-0.368-2.037-1.515-2.037-2.87c0-0.828,0.325-1.577,0.844-2.12   C0.89,9.954,0.612,9.477,0.451,8.916C0.177,7.969,0.26,6.904,0.686,5.918C1.194,4.739,2.13,3.852,3.18,3.485   c0.237-2.627,4.676-3.569,7.611-3.478c4.147,0.13,5.12,2.016,5.292,3.322c1.331,0.148,2.594,1.146,3.215,2.589   c0.424,0.986,0.509,2.051,0.236,2.998c-0.129,0.449-0.334,0.845-0.597,1.177C19.6,10.639,20.029,11.493,20.029,12.448z    M11.434,17.606l-0.216-0.967H9.236l-0.222,0.964c0.304-0.136,0.73-0.223,1.207-0.223C10.7,17.38,11.129,17.468,11.434,17.606z    M18.203,12.448c0-0.646-0.454-1.169-1.021-1.169c0,0-0.001,0-0.002,0c-0.155,0.25-0.333,0.489-0.534,0.718   c0.126-0.409,0.21-0.826,0.256-1.244c0-0.006-0.001-0.012-0.001-0.018c-0.595-0.317-1.205-1-1.625-1.901   c-0.438-0.939-0.562-1.886-0.395-2.549c-1.687,1.07-4.545,0.562-4.545,0.562c-1.71,0.114-2.167,2.281-2.167,2.281   C7.374,8.952,6.549,8.401,5.831,7.79C5.754,8.129,5.635,8.482,5.47,8.834c-0.489,1.05-1.237,1.805-1.917,2.026   c0.047,0.382,0.127,0.762,0.242,1.135c-0.202-0.229-0.379-0.468-0.534-0.718c-0.001,0-0.001-0.001-0.002-0.001   c-0.568,0-1.022,0.523-1.022,1.17c0,0.646,0.455,1.168,1.022,1.168c0.142,0,0.276-0.032,0.399-0.091   c0.124,0.361,0.279,0.708,0.459,1.038c1.016,0.359,2.496,1.069,3.199,2.279l0.304-1.321c0.095-0.414,0.464-0.708,0.889-0.708h3.44   c0.428,0,0.799,0.296,0.891,0.714l0.291,1.301c0.713-1.216,2.214-1.925,3.227-2.279c0.177-0.324,0.329-0.663,0.449-1.016   c0.115,0.051,0.241,0.083,0.373,0.083C17.749,13.616,18.203,13.092,18.203,12.448z M7.121,9.929c-0.566,0-1.027,0.46-1.027,1.026   s0.461,1.026,1.027,1.026s1.026-0.461,1.026-1.026S7.687,9.929,7.121,9.929z M13.32,9.929c-0.566,0-1.027,0.46-1.027,1.026   s0.461,1.026,1.027,1.026c0.565,0,1.026-0.461,1.026-1.026S13.885,9.929,13.32,9.929z",
+		d: "M11.361,13.455c0,0.252-0.51,0.456-1.141,0.456s-1.141-0.204-1.141-0.456c0-0.252,0.51-0.457,1.141-0.457   S11.361,13.203,11.361,13.455z M20.029,12.448c0,1.34-0.843,2.479-2.002,2.859c-1.487,2.854-4.476,4.697-7.792,4.697   c-3.313,0-6.299-1.837-7.786-4.686c-1.177-0.368-2.037-1.515-2.037-2.87c0-0.828,0.325-1.577,0.844-2.12   C0.89,9.954,0.612,9.477,0.451,8.916C0.177,7.969,0.26,6.904,0.686,5.918C1.194,4.739,2.13,3.852,3.18,3.485   c0.237-2.627,4.676-3.569,7.611-3.478c4.147,0.13,5.12,2.016,5.292,3.322c1.331,0.148,2.594,1.146,3.215,2.589   c0.424,0.986,0.509,2.051,0.236,2.998c-0.129,0.449-0.334,0.845-0.597,1.177C19.6,10.639,20.029,11.493,20.029,12.448z    M11.434,17.606l-0.216-0.967H9.236l-0.222,0.964c0.304-0.136,0.73-0.223,1.207-0.223C10.7,17.38,11.129,17.468,11.434,17.606z    M18.203,12.448c0-0.646-0.454-1.169-1.021-1.169c0,0-0.001,0-0.002,0c-0.155,0.25-0.333,0.489-0.534,0.718   c0.126-0.409,0.21-0.826,0.256-1.244c0-0.006-0.001-0.012-0.001-0.018c-0.595-0.317-1.205-1-1.625-1.901   c-0.438-0.939-0.562-1.886-0.395-2.549c-1.687,1.07-4.545,0.562-4.545,0.562c-1.71,0.114-2.167,2.281-2.167,2.281   C7.374,8.952,6.549,8.401,5.831,7.79C5.754,8.129,5.635,8.482,5.47,8.834c-0.489,1.05-1.237,1.805-1.917,2.026   c0.047,0.382,0.127,0.762,0.242,1.135c-0.202-0.229-0.379-0.468-0.534-0.718c-0.001,0-0.001-0.001-0.002-0.001   c-0.568,0-1.022,0.523-1.022,1.17c0,0.646,0.455,1.168,1.022,1.168c0.142,0,0.276-0.032,0.399-0.091   c0.124,0.361,0.279,0.708,0.459,1.038c1.016,0.359,2.496,1.069,3.199,2.279l0.304-1.321c0.095-0.414,0.464-0.708,0.889-0.708h3.44   c0.428,0,0.799,0.296,0.891,0.714l0.291,1.301c0.713-1.216,2.214-1.925,3.227-2.279c0.177-0.324,0.329-0.663,0.449-1.016   c0.115,0.051,0.241,0.083,0.373,0.083C17.749,13.616,18.203,13.092,18.203,12.448z M7.121,9.929c-0.566,0-1.027,0.46-1.027,1.026   s0.461,1.026,1.027,1.026s1.026-0.461,1.026-1.026S7.687,9.929,7.121,9.929z M13.32,9.929c-0.566,0-1.027,0.46-1.027,1.026   s0.461,1.026,1.027,1.026c0.565,0,1.026-0.461,1.026-1.026S13.885,9.929,13.32,9.929z",
 	})
 );
 
@@ -630,11 +629,43 @@ function mrAttributes(settings) {
 				type: "string",
 				default: "",
 			},
+			mrBorderTopLeftRadius: {
+				type: "string",
+				default: "",
+			},
+			mrBorderTopRightRadius: {
+				type: "string",
+				default: "",
+			},
+			mrBorderBottomRightRadius: {
+				type: "string",
+				default: "",
+			},
+			mrBorderBottomLeftRadius: {
+				type: "string",
+				default: "",
+			},
 			mrBackgroundColorhover: {
 				type: "string",
 				default: "",
 			},
 			mrColorhover: {
+				type: "string",
+				default: "",
+			},
+			mrBorderTopLeftRadiushover: {
+				type: "string",
+				default: "",
+			},
+			mrBorderTopRightRadiushover: {
+				type: "string",
+				default: "",
+			},
+			mrBorderBottomRightRadiushover: {
+				type: "string",
+				default: "",
+			},
+			mrBorderBottomLeftRadiushover: {
 				type: "string",
 				default: "",
 			},
@@ -866,8 +897,16 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 			mrSizephone,
 			mrBackgroundColor,
 			mrColor,
+			mrBorderTopLeftRadius,
+			mrBorderTopRightRadius,
+			mrBorderBottomRightRadius,
+			mrBorderBottomLeftRadius,
 			mrBackgroundColorhover,
 			mrColorhover,
+			mrBorderTopLeftRadiushover,
+			mrBorderTopRightRadiushover,
+			mrBorderBottomRightRadiushover,
+			mrBorderBottomLeftRadiushover,
 			mrFontFamily,
 			mrFontSize,
 			mrFontSizehover,
@@ -1381,7 +1420,8 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																	className="mr-backend-scrollnav"
 																	onChange={() =>
 																		setAttributes({
-																			mrVerticalScrollNavigation: !mrVerticalScrollNavigation,
+																			mrVerticalScrollNavigation:
+																				!mrVerticalScrollNavigation,
 																		})
 																	}
 																/>
@@ -1391,7 +1431,8 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																	className="mr-backend-scrollnav"
 																	onChange={() =>
 																		setAttributes({
-																			mrHorizontalScrollNavigation: !mrHorizontalScrollNavigation,
+																			mrHorizontalScrollNavigation:
+																				!mrHorizontalScrollNavigation,
 																		})
 																	}
 																	help={
@@ -2455,6 +2496,202 @@ const mrInspectorControls = createHigherOrderComponent((BlockEdit) => {
 																				val.includes("mr-hover")
 																					? val
 																					: mrColorhover,
+																		})
+																	}
+																/>
+															) : (
+																""
+															)}
+
+															{tab.name === "" || tab.name === "hover" ? (
+																<TextControl
+																	label={__(
+																		"Border Top Left Radius",
+																		"mr-utils"
+																	)}
+																	value={
+																		tab.name === "hover"
+																			? mrBorderTopLeftRadiushover
+																			: mrBorderTopLeftRadius
+																	}
+																	type="text"
+																	className="mr-backend-custominput mr-backend-custombordertopleftradius"
+																	placeHolder={(
+																		"mr-" +
+																		tab.name +
+																		"-bordertopleftradius | " +
+																		"mr-" +
+																		tab.name +
+																		"-nobordertopleftradius"
+																	).replace("--", "-")}
+																	list={(
+																		"mrDevUtilsClasses_" +
+																		tab.name +
+																		"_bordertopleftradius"
+																	).replace("__", "_")}
+																	onChange={(val) =>
+																		setAttributes({
+																			mrBorderTopLeftRadius:
+																				val !== undefined &&
+																				!val.includes("mr-hover") &&
+																				!val.includes("mr-desktop") &&
+																				!val.includes("mr-laptop") &&
+																				!val.includes("mr-tablet") &&
+																				!val.includes("mr-phone")
+																					? val
+																					: mrBorderTopLeftRadius,
+																			mrBorderTopLeftRadiushover:
+																				val !== undefined &&
+																				val.includes("mr-hover")
+																					? val
+																					: mrBorderTopLeftRadiushover,
+																		})
+																	}
+																/>
+															) : (
+																""
+															)}
+
+															{tab.name === "" || tab.name === "hover" ? (
+																<TextControl
+																	label={__(
+																		"Border Top Right Radius",
+																		"mr-utils"
+																	)}
+																	value={
+																		tab.name === "hover"
+																			? mrBorderTopRightRadiushover
+																			: mrBorderTopRightRadius
+																	}
+																	type="text"
+																	className="mr-backend-custominput mr-backend-custombordertoprightradius"
+																	placeHolder={(
+																		"mr-" +
+																		tab.name +
+																		"-bordertoprightradius | " +
+																		"mr-" +
+																		tab.name +
+																		"-nobordertoprightradius"
+																	).replace("--", "-")}
+																	list={(
+																		"mrDevUtilsClasses_" +
+																		tab.name +
+																		"_bordertoprightradius"
+																	).replace("__", "_")}
+																	onChange={(val) =>
+																		setAttributes({
+																			mrBorderTopRightRadius:
+																				val !== undefined &&
+																				!val.includes("mr-hover") &&
+																				!val.includes("mr-desktop") &&
+																				!val.includes("mr-laptop") &&
+																				!val.includes("mr-tablet") &&
+																				!val.includes("mr-phone")
+																					? val
+																					: mrBorderTopRightRadius,
+																			mrBorderTopRightRadiushover:
+																				val !== undefined &&
+																				val.includes("mr-hover")
+																					? val
+																					: mrBorderTopRightRadiushover,
+																		})
+																	}
+																/>
+															) : (
+																""
+															)}
+
+															{tab.name === "" || tab.name === "hover" ? (
+																<TextControl
+																	label={__(
+																		"Border Bottom Right Radius",
+																		"mr-utils"
+																	)}
+																	value={
+																		tab.name === "hover"
+																			? mrBorderBottomRightRadiushover
+																			: mrBorderBottomRightRadius
+																	}
+																	type="text"
+																	className="mr-backend-custominput mr-backend-customborderbottomrightradius"
+																	placeHolder={(
+																		"mr-" +
+																		tab.name +
+																		"-borderbottomrightradius | " +
+																		"mr-" +
+																		tab.name +
+																		"-noborderbottomrightradius"
+																	).replace("--", "-")}
+																	list={(
+																		"mrDevUtilsClasses_" +
+																		tab.name +
+																		"_borderbottomrightradius"
+																	).replace("__", "_")}
+																	onChange={(val) =>
+																		setAttributes({
+																			mrBorderBottomRightRadius:
+																				val !== undefined &&
+																				!val.includes("mr-hover") &&
+																				!val.includes("mr-desktop") &&
+																				!val.includes("mr-laptop") &&
+																				!val.includes("mr-tablet") &&
+																				!val.includes("mr-phone")
+																					? val
+																					: mrBorderBottomRightRadius,
+																			mrBorderBottomRightRadiushover:
+																				val !== undefined &&
+																				val.includes("mr-hover")
+																					? val
+																					: mrBorderBottomRightRadiushover,
+																		})
+																	}
+																/>
+															) : (
+																""
+															)}
+
+															{tab.name === "" || tab.name === "hover" ? (
+																<TextControl
+																	label={__(
+																		"Border Bottom Left Radius",
+																		"mr-utils"
+																	)}
+																	value={
+																		tab.name === "hover"
+																			? mrBorderBottomLeftRadiushover
+																			: mrBorderBottomLeftRadius
+																	}
+																	type="text"
+																	className="mr-backend-custominput mr-backend-customborderbottomleftradius"
+																	placeHolder={(
+																		"mr-" +
+																		tab.name +
+																		"-borderbottomleftradius | " +
+																		"mr-" +
+																		tab.name +
+																		"-noborderbottomleftradius"
+																	).replace("--", "-")}
+																	list={(
+																		"mrDevUtilsClasses_" +
+																		tab.name +
+																		"_borderbottomleftradius"
+																	).replace("__", "_")}
+																	onChange={(val) =>
+																		setAttributes({
+																			mrBorderBottomLeftRadius:
+																				val !== undefined &&
+																				!val.includes("mr-hover") &&
+																				!val.includes("mr-desktop") &&
+																				!val.includes("mr-laptop") &&
+																				!val.includes("mr-tablet") &&
+																				!val.includes("mr-phone")
+																					? val
+																					: mrBorderBottomLeftRadius,
+																			mrBorderBottomLeftRadiushover:
+																				val !== undefined &&
+																				val.includes("mr-hover")
+																					? val
+																					: mrBorderBottomLeftRadiushover,
 																		})
 																	}
 																/>
@@ -4422,8 +4659,16 @@ const mrBackendExtraClasses = createHigherOrderComponent((BlockListBlock) => {
 			mrSizephone,
 			mrBackgroundColor,
 			mrColor,
+			mrBorderTopLeftRadius,
+			mrBorderTopRightRadius,
+			mrBorderBottomRightRadius,
+			mrBorderBottomLeftRadius,
 			mrBackgroundColorhover,
 			mrColorhover,
+			mrBorderTopLeftRadiushover,
+			mrBorderTopRightRadiushover,
+			mrBorderBottomRightRadiushover,
+			mrBorderBottomLeftRadiushover,
 			mrFontFamily,
 			mrFontSize,
 			mrFontSizehover,
