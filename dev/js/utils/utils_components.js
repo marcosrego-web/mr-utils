@@ -398,11 +398,17 @@ function mrSearch(t, e, m, v) {
             !mrSearchChild.classList.contains("mr-minchars") &&
             !mrSearchChild.classList.contains("mr-nomatch")
           ) {
+            let mrSearchChildContent = mrSearchChild.outerHTML
+              .replace(/ style="[^"]*"/i, "")
+              .replace(/ class="[^"]*"/i, "")
+              .replace(/\s*([\w-]+)="([^"]*)"/g, " $2")
+              .replace(/^<[^>]+>|<\/[^>]+>$/g, "")
+              .trim()
+              .toLowerCase();
             if (
-              mrSearchChild.outerHTML
-                .toLowerCase()
-                .replace(/[^a-zA-Z0-9 ]/g, "")
-                .includes(e.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, ""))
+              mrSearchChildContent.includes(
+                e.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, "")
+              )
             ) {
               mrSearchChild.style.removeProperty("display");
               mrSearchChild.style.order = 0;
@@ -608,7 +614,7 @@ document.addEventListener("DOMContentLoaded", function () {
   for (let id = 0; id < mrDragEles.length; id++) {
     const mrDragEle = mrDragEles[id];
     mrDragEle.classList.remove("mr-dragging");
-    let pos = { top: 0, left: 0, x: 0, y: 0 };
+    let pos = {top: 0, left: 0, x: 0, y: 0};
     const mouseDownHandler = function (e) {
       setTimeout(function () {
         mrDragEle.classList.add("mr-dragging");
