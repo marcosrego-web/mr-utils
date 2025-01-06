@@ -358,7 +358,7 @@ function mrSearch(t, e, m, v) {
   let mrSearchChildren = t.children;
   let mrSearchValue = "";
   if (!m) {
-    m = 4;
+    m = 0;
   }
   if (!v) {
     v = true;
@@ -393,7 +393,7 @@ function mrSearch(t, e, m, v) {
         }
         mrSearchChild.style.display = "none";
         mrSearchChild.classList.remove("mr-active");
-        if (e.replaceAll(" ", "").length >= m) {
+        if (m === 0 || e.replaceAll(" ", "").length >= m) {
           if (
             !mrSearchChild.classList.contains("mr-noresults") &&
             !mrSearchChild.classList.contains("mr-minchars") &&
@@ -509,6 +509,16 @@ document.addEventListener("click", function (t) {
     mrScrollLeft(t.target);
   } else if (t.target.matches(".mr-scrollbottom")) {
     mrScrollBottom(t.target);
+  } else if (t.target.matches(".mr-searchinput")) {
+    if (
+      t.target.previousElementSibling &&
+      t.target.previousElementSibling.classList.contains("mr-navbottom") &&
+      t.target.value
+    ) {
+      mrSearch(t.target.previousElementSibling, t.target.value);
+    } else if (t.target.nextElementSibling && t.target.value) {
+      mrSearch(t.target.nextElementSibling, t.target.value);
+    }
   }
   t.stopPropagation();
 });
@@ -548,11 +558,15 @@ document.addEventListener("DOMContentLoaded", function () {
     mrDataListUL.className = mrDataList.className + " mr-search";
     mrDataListUL.innerHTML = mrDataListClone;
 
-    mrDataList.replaceWith(mrDataListUL);
-
-    if (document.querySelector('input[list="' + mrDataList.id + '"]')) {
-      document.querySelector('input[list="' + mrDataList.id + '"]').outerHTML =
-        "";
+    let mrDataListInput = document.querySelector(
+      'input[list="' + mrDataList.id + '"]'
+    );
+    if (mrDataListInput) {
+      mrDataListInput.classList.add("mr-searchinput");
+      mrDataListInput.after(mrDataListUL);
+      mrDataList.outerHTML = "";
+    } else {
+      mrDataList.replaceWith(mrDataListUL);
     }
   }
 
