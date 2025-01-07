@@ -363,7 +363,7 @@ function mrSearch(t, e, m, v) {
     v = true;
   }
   if (mrSearchChildren) {
-    if (e !== "") {
+    if (e !== "" || t.classList.contains("mr-showall")) {
       t.classList.add("mr-active");
       t.style.removeProperty("display");
       for (let id = 0; id < mrSearchChildren.length; id++) {
@@ -509,14 +509,14 @@ document.addEventListener("click", function (t) {
   } else if (t.target.matches(".mr-scrollbottom")) {
     mrScrollBottom(t.target);
   } else if (t.target.matches(".mr-searchinput")) {
+    let searchValue = t.target.value ? t.target.value : "";
     if (
       t.target.previousElementSibling &&
-      t.target.previousElementSibling.classList.contains("mr-navbottom") &&
-      t.target.value
+      t.target.previousElementSibling.classList.contains("mr-navbottom")
     ) {
-      mrSearch(t.target.previousElementSibling, t.target.value);
-    } else if (t.target.nextElementSibling && t.target.value) {
-      mrSearch(t.target.nextElementSibling, t.target.value);
+      mrSearch(t.target.previousElementSibling, searchValue);
+    } else if (t.target.nextElementSibling) {
+      mrSearch(t.target.nextElementSibling, searchValue);
     }
   }
   t.stopPropagation();
@@ -524,14 +524,14 @@ document.addEventListener("click", function (t) {
 
 document.addEventListener("keyup", function (t) {
   if (t.target.matches(".mr-searchinput")) {
+    let searchValue = t.target.value ? t.target.value : "";
     if (
       t.target.previousElementSibling &&
-      t.target.previousElementSibling.classList.contains("mr-navbottom") &&
-      t.target.value
+      t.target.previousElementSibling.classList.contains("mr-navbottom")
     ) {
-      mrSearch(t.target.previousElementSibling, t.target.value);
-    } else if (t.target.nextElementSibling && t.target.value) {
-      mrSearch(t.target.nextElementSibling, t.target.value);
+      mrSearch(t.target.previousElementSibling, searchValue);
+    } else if (t.target.nextElementSibling) {
+      mrSearch(t.target.nextElementSibling, searchValue);
     }
   }
   t.stopPropagation();
