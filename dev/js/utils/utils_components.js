@@ -545,13 +545,13 @@ document.addEventListener("DOMContentLoaded", function () {
     let mrDataListClone = "";
 
     mrDataListClone =
-      '<li class="mr-nomatch"></li>' +
+      '<li class="mr-nomatch" style="display: none;"></li>' +
       mrDataList
         .cloneNode(true)
         .innerHTML.replaceAll("<option", "<li")
         .replaceAll("</option>", "</li>") +
-      '<li class="mr-noresults"></li>' +
-      '<li class="mr-minchars"></li>';
+      '<li class="mr-noresults" style="display: none;"></li>' +
+      '<li class="mr-minchars" style="display: none;"></li>';
     mrDataListUL = document.createElement("ul");
     mrDataListUL.id = mrDataList.id;
     mrDataListUL.className = mrDataList.className + " mr-search";
@@ -571,7 +571,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const mrSearches = document.querySelectorAll(".mr-search");
   for (let id = 0; id < mrSearches.length; id++) {
-    mrSearches[id].style.display = "none";
+    if (!mrSearches[id].classList.contains("mr-showall")) {
+      mrSearches[id].style.display = "none";
+    }
     if (
       (mrSearches[id].classList.contains("mr-navbottom") &&
         !mrSearches[id].nextElementSibling) ||
