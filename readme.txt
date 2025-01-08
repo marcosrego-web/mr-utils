@@ -1,8 +1,8 @@
 === MR.Utils ===
 Contributors:      marcosrego
 Tags:              block editor, utilities, tools, bootstrap, tailwind
-Tested up to:      6.6.2
-Stable tag:        0.2.6
+Tested up to:      6.7.1
+Stable tag:        0.2.7
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -49,6 +49,10 @@ You can contact me at: [https://marcosrego.com/client-area/contact/](https://mar
 7. Mr.Dev.'s Framework allows to create custom utilities to select on the block editor.
 
 == Changelog ==
+
+= 0.2.7 =
+* (toolkit) Improvements to "mr-search" and "mr-datalist": Improved the search to not need min-chars by default. Added a class "mr-showall", to show all results when clicking on the empty "mr-searchinput".
+* Tested on WP 6.7.1.
 
 = 0.2.6 =
 * Tested on WP 6.6.2.

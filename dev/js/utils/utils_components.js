@@ -509,14 +509,23 @@ document.addEventListener("click", function (t) {
   } else if (t.target.matches(".mr-scrollbottom")) {
     mrScrollBottom(t.target);
   } else if (t.target.matches(".mr-searchinput")) {
-    let searchValue = t.target.value ? t.target.value : "";
+	let mrSearchAll = document.querySelectorAll('.mr-search.mr-showall');
+    for (let id = 0; id < mrSearchAll.length; id++) {
+      mrSearchAll[id].style.display = "none";
+    }
+    let mrSearchValue = t.target.value ? t.target.value : "";
     if (
       t.target.previousElementSibling &&
       t.target.previousElementSibling.classList.contains("mr-navbottom")
     ) {
-      mrSearch(t.target.previousElementSibling, searchValue);
+      mrSearch(t.target.previousElementSibling, mrSearchValue);
     } else if (t.target.nextElementSibling) {
-      mrSearch(t.target.nextElementSibling, searchValue);
+      mrSearch(t.target.nextElementSibling, mrSearchValue);
+    }
+  } else if(document.querySelector('.mr-search')) {
+	let mrSearchAll = document.querySelectorAll('.mr-search');
+    for (let id = 0; id < mrSearchAll.length; id++) {
+      mrSearchAll[id].style.display = "none";
     }
   }
   t.stopPropagation();
@@ -571,9 +580,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const mrSearches = document.querySelectorAll(".mr-search");
   for (let id = 0; id < mrSearches.length; id++) {
-    if (!mrSearches[id].classList.contains("mr-showall")) {
-      mrSearches[id].style.display = "none";
-    }
+    mrSearches[id].style.display = "none";
     if (
       (mrSearches[id].classList.contains("mr-navbottom") &&
         !mrSearches[id].nextElementSibling) ||
