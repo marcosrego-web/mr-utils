@@ -1,12 +1,12 @@
 === MR.Utils ===
-Contributors:      Marcos Rego
-Tags:              block, editor, utilities, frontend, toolkit, utils, dev, developer, bootstrap, tailwind, css, js, breakpoints, devices
-Tested up to:      6.4.3
-Stable tag:        0.2.5
+Contributors:      marcosrego
+Tags:              block editor, utilities, tools, bootstrap, tailwind
+Tested up to:      6.7.1
+Stable tag:        0.2.7
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
-Add a front-end toolkit to the block editor that allows to change device visibility, mouse hover options, animations, convert into components and more...
+Add a front-end toolkit to the block editor to change device visibility, get mouse hover options, animations, convert into components and more...
 
 == Description ==
 
@@ -49,6 +49,13 @@ You can contact me at: [https://marcosrego.com/client-area/contact/](https://mar
 7. Mr.Dev.'s Framework allows to create custom utilities to select on the block editor.
 
 == Changelog ==
+
+= 0.2.7 =
+* Improvements to "mr-search" and "mr-datalist": Improved the search to not need min-chars by default. The class "mr-showall" can be used to show all results when clicking on the "mr-searchinput". Use "mr-show" to always show results regardless of input state.
+* Tested on WP 6.7.1.
+
+= 0.2.6 =
+* Tested on WP 6.6.2.
 
 = 0.2.5 =
 * Added "Border radius" options on the "Appearance" tab.

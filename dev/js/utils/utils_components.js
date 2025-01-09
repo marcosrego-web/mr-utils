@@ -357,13 +357,13 @@ function mrSearch(t, e, m, v) {
   let mrSearchChildren = t.children;
   let mrSearchValue = "";
   if (!m) {
-    m = 4;
+    m = 0;
   }
   if (!v) {
     v = true;
   }
   if (mrSearchChildren) {
-    if (e !== "") {
+    if (e !== "" || t.classList.contains("mr-showall")) {
       t.classList.add("mr-active");
       t.style.removeProperty("display");
       for (let id = 0; id < mrSearchChildren.length; id++) {
@@ -392,17 +392,23 @@ function mrSearch(t, e, m, v) {
         }
         mrSearchChild.style.display = "none";
         mrSearchChild.classList.remove("mr-active");
-        if (e.replaceAll(" ", "").length >= m) {
+        if (m === 0 || e.replaceAll(" ", "").length >= m) {
           if (
             !mrSearchChild.classList.contains("mr-noresults") &&
             !mrSearchChild.classList.contains("mr-minchars") &&
             !mrSearchChild.classList.contains("mr-nomatch")
           ) {
+            let mrSearchChildContent = mrSearchChild.outerHTML
+              .replace(/ style="[^"]*"/i, "")
+              .replace(/ class="[^"]*"/i, "")
+              .replace(/\s*([\w-]+)="([^"]*)"/g, " $2")
+              .replace(/^<[^>]+>|<\/[^>]+>$/g, "")
+              .trim()
+              .toLowerCase();
             if (
-              mrSearchChild.outerHTML
-                .toLowerCase()
-                .replace(/[^a-zA-Z0-9 ]/g, "")
-                .includes(e.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, ""))
+              mrSearchChildContent.includes(
+                e.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, "")
+              )
             ) {
               mrSearchChild.style.removeProperty("display");
               mrSearchChild.style.order = 0;
@@ -492,6 +498,11 @@ function mrSearch(t, e, m, v) {
 }
 
 document.addEventListener("click", function (t) {
+  let mrSearchAll = document.querySelectorAll(".mr-search");
+  for (let id = 0; id < mrSearchAll.length; id++) {
+    mrSearchAll[id].style.display = "none";
+  }
+
   if (t.target.matches(".mr-tabsnav *")) {
     mrTab(t.target);
   } else if (t.target.matches(".mr-scrolltop")) {
@@ -502,20 +513,30 @@ document.addEventListener("click", function (t) {
     mrScrollLeft(t.target);
   } else if (t.target.matches(".mr-scrollbottom")) {
     mrScrollBottom(t.target);
+  } else if (t.target.matches(".mr-searchinput")) {
+    t.target.value = "";
+    if (
+      t.target.previousElementSibling &&
+      t.target.previousElementSibling.classList.contains("mr-navbottom")
+    ) {
+      mrSearch(t.target.previousElementSibling, "");
+    } else if (t.target.nextElementSibling) {
+      mrSearch(t.target.nextElementSibling, "");
+    }
   }
   t.stopPropagation();
 });
 
 document.addEventListener("keyup", function (t) {
   if (t.target.matches(".mr-searchinput")) {
+    let searchValue = t.target.value ? t.target.value : "";
     if (
       t.target.previousElementSibling &&
-      t.target.previousElementSibling.classList.contains("mr-navbottom") &&
-      t.target.value
+      t.target.previousElementSibling.classList.contains("mr-navbottom")
     ) {
-      mrSearch(t.target.previousElementSibling, t.target.value);
-    } else if (t.target.nextElementSibling && t.target.value) {
-      mrSearch(t.target.nextElementSibling, t.target.value);
+      mrSearch(t.target.previousElementSibling, searchValue);
+    } else if (t.target.nextElementSibling) {
+      mrSearch(t.target.nextElementSibling, searchValue);
     }
   }
   t.stopPropagation();
@@ -529,23 +550,27 @@ document.addEventListener("DOMContentLoaded", function () {
     let mrDataListClone = "";
 
     mrDataListClone =
-      '<li class="mr-nomatch"></li>' +
+      '<li class="mr-nomatch" style="display: none;"></li>' +
       mrDataList
         .cloneNode(true)
         .innerHTML.replaceAll("<option", "<li")
         .replaceAll("</option>", "</li>") +
-      '<li class="mr-noresults"></li>' +
-      '<li class="mr-minchars"></li>';
+      '<li class="mr-noresults" style="display: none;"></li>' +
+      '<li class="mr-minchars" style="display: none;"></li>';
     mrDataListUL = document.createElement("ul");
     mrDataListUL.id = mrDataList.id;
     mrDataListUL.className = mrDataList.className + " mr-search";
     mrDataListUL.innerHTML = mrDataListClone;
 
-    mrDataList.replaceWith(mrDataListUL);
-
-    if (document.querySelector('input[list="' + mrDataList.id + '"]')) {
-      document.querySelector('input[list="' + mrDataList.id + '"]').outerHTML =
-        "";
+    let mrDataListInput = document.querySelector(
+      'input[list="' + mrDataList.id + '"]'
+    );
+    if (mrDataListInput) {
+      mrDataListInput.classList.add("mr-searchinput");
+      mrDataListInput.after(mrDataListUL);
+      mrDataList.outerHTML = "";
+    } else {
+      mrDataList.replaceWith(mrDataListUL);
     }
   }
 
@@ -608,7 +633,7 @@ document.addEventListener("DOMContentLoaded", function () {
   for (let id = 0; id < mrDragEles.length; id++) {
     const mrDragEle = mrDragEles[id];
     mrDragEle.classList.remove("mr-dragging");
-    let pos = { top: 0, left: 0, x: 0, y: 0 };
+    let pos = {top: 0, left: 0, x: 0, y: 0};
     const mouseDownHandler = function (e) {
       setTimeout(function () {
         mrDragEle.classList.add("mr-dragging");
