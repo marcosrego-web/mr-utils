@@ -51,7 +51,7 @@ You can contact me at: [https://marcosrego.com/client-area/contact/](https://mar
 == Changelog ==
 
 = 0.2.7 =
-* (toolkit) Improvements to "mr-search" and "mr-datalist": Improved the search to not need min-chars by default. Added a class "mr-showall", to show all results when clicking on the empty "mr-searchinput".
+* Improvements to "mr-search" and "mr-datalist": Improved the search to not need min-chars by default. The class "mr-showall" can be used to show all results when clicking on the "mr-searchinput". Use "mr-show" to always show results regardless of input state.
 * Tested on WP 6.7.1.
 
 = 0.2.6 =

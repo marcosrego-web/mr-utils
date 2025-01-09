@@ -498,6 +498,11 @@ function mrSearch(t, e, m, v) {
 }
 
 document.addEventListener("click", function (t) {
+  let mrSearchAll = document.querySelectorAll(".mr-search");
+  for (let id = 0; id < mrSearchAll.length; id++) {
+    mrSearchAll[id].style.display = "none";
+  }
+
   if (t.target.matches(".mr-tabsnav *")) {
     mrTab(t.target);
   } else if (t.target.matches(".mr-scrolltop")) {
@@ -509,23 +514,14 @@ document.addEventListener("click", function (t) {
   } else if (t.target.matches(".mr-scrollbottom")) {
     mrScrollBottom(t.target);
   } else if (t.target.matches(".mr-searchinput")) {
-	let mrSearchAll = document.querySelectorAll('.mr-search.mr-showall');
-    for (let id = 0; id < mrSearchAll.length; id++) {
-      mrSearchAll[id].style.display = "none";
-    }
-    let mrSearchValue = t.target.value ? t.target.value : "";
+    t.target.value = "";
     if (
       t.target.previousElementSibling &&
       t.target.previousElementSibling.classList.contains("mr-navbottom")
     ) {
-      mrSearch(t.target.previousElementSibling, mrSearchValue);
+      mrSearch(t.target.previousElementSibling, "");
     } else if (t.target.nextElementSibling) {
-      mrSearch(t.target.nextElementSibling, mrSearchValue);
-    }
-  } else if(document.querySelector('.mr-search')) {
-	let mrSearchAll = document.querySelectorAll('.mr-search');
-    for (let id = 0; id < mrSearchAll.length; id++) {
-      mrSearchAll[id].style.display = "none";
+      mrSearch(t.target.nextElementSibling, "");
     }
   }
   t.stopPropagation();
