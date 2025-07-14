@@ -2,7 +2,7 @@
 Contributors:      marcosrego
 Tags:              block editor, utilities, tools, bootstrap, tailwind
 Tested up to:      6.7.1
-Stable tag:        0.2.7
+Stable tag:        0.2.8
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -49,6 +49,10 @@ You can contact me at: [https://marcosrego.com/client-area/contact/](https://mar
 7. Mr.Dev.'s Framework allows to create custom utilities to select on the block editor.
 
 == Changelog ==
+
+= 0.2.8 =
+* Fixed a bug with tabs component, that could sometimes affect the load of other components too.
+* Added auto margin classes to the toolkit (not available on the block editor yet).
 
 = 0.2.7 =
 * Improvements to "mr-search" and "mr-datalist": Improved the search to not need min-chars by default. The class "mr-showall" can be used to show all results when clicking on the "mr-searchinput". Use "mr-show" to always show results regardless of input state.

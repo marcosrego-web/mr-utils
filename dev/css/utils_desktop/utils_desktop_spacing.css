@@ -39,6 +39,21 @@
   margin-left: 0.75rem;
   margin-left: var(--margin, 0.75rem);
 }
+.mr-desktop-automargin {
+  margin: auto !important;
+}
+.mr-desktop-automargintop {
+  margin-top: auto !important;
+}
+.mr-desktop-automarginright {
+  margin-right: auto !important;
+}
+.mr-desktop-automarginbottom {
+  margin-bottom: auto !important;
+}
+.mr-desktop-automarginleft {
+  margin-left: auto !important;
+}
 .mr-desktop-nomargin {
   margin: 0 !important;
 }

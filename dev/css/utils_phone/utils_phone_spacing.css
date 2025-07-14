@@ -39,6 +39,21 @@
   margin-left: 0.75rem;
   margin-left: var(--margin, 0.75rem);
 }
+.mr-phone-automargin {
+  margin: auto !important;
+}
+.mr-phone-automargintop {
+  margin-top: auto !important;
+}
+.mr-phone-automarginright {
+  margin-right: auto !important;
+}
+.mr-phone-automarginbottom {
+  margin-bottom: auto !important;
+}
+.mr-phone-automarginleft {
+  margin-left: auto !important;
+}
 .mr-phone-nomargin {
   margin: 0 !important;
 }

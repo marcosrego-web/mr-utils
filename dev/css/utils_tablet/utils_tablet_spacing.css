@@ -39,6 +39,21 @@
   margin-left: 0.75rem;
   margin-left: var(--margin, 0.75rem);
 }
+.mr-tablet-automargin {
+  margin: auto !important;
+}
+.mr-tablet-automargintop {
+  margin-top: auto !important;
+}
+.mr-tablet-automarginright {
+  margin-right: auto !important;
+}
+.mr-tablet-automarginbottom {
+  margin-bottom: auto !important;
+}
+.mr-tablet-automarginleft {
+  margin-left: auto !important;
+}
 .mr-tablet-nomargin {
   margin: 0 !important;
 }

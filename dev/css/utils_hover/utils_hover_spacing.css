@@ -39,6 +39,21 @@
   margin-left: 0.75rem;
   margin-left: var(--margin, 0.75rem);
 }
+.mr-hover-automargin:hover {
+  margin: auto !important;
+}
+.mr-hover-automargintop:hover {
+  margin-top: auto !important;
+}
+.mr-hover-automarginright:hover {
+  margin-right: auto !important;
+}
+.mr-hover-automarginbottom:hover {
+  margin-bottom: auto !important;
+}
+.mr-hover-automarginleft:hover {
+  margin-left: auto !important;
+}
 .mr-hover-nomargin:hover {
   margin: 0 !important;
 }

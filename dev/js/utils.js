@@ -113,7 +113,8 @@ function mrTabs(t) {
     !t.previousElementSibling ||
     (!t.previousElementSibling.classList.contains("mr-tabsnav") &&
       !t.nextElementSibling) ||
-    !t.nextElementSibling.classList.contains("mr-tabsnav")
+    (t.nextElementSibling &&
+      !t.nextElementSibling.classList.contains("mr-tabsnav"))
   ) {
     let mrtab = "";
     for (let id = 0; id < mrChildCount.length; id++) {

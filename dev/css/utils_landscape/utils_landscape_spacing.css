@@ -39,6 +39,21 @@
   margin-left: 0.75rem;
   margin-left: var(--margin, 0.75rem);
 }
+.mr-landscape-automargin {
+  margin: auto !important;
+}
+.mr-landscape-automargintop {
+  margin-top: auto !important;
+}
+.mr-landscape-automarginright {
+  margin-right: auto !important;
+}
+.mr-landscape-automarginbottom {
+  margin-bottom: auto !important;
+}
+.mr-landscape-automarginleft {
+  margin-left: auto !important;
+}
 .mr-landscape-nomargin {
   margin: 0 !important;
 }
