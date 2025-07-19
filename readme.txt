@@ -2,7 +2,7 @@
 Contributors:      marcosrego
 Tags:              block editor, utilities, tools, bootstrap, tailwind
 Tested up to:      6.7.1
-Stable tag:        0.2.8
+Stable tag:        0.2.9
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -49,6 +49,9 @@ You can contact me at: [https://marcosrego.com/client-area/contact/](https://mar
 7. Mr.Dev.'s Framework allows to create custom utilities to select on the block editor.
 
 == Changelog ==
+
+= 0.2.9 =
+* Changed mr-arrows style.
 
 = 0.2.8 =
 * Fixed a bug with tabs component, that could sometimes affect the load of other components too.

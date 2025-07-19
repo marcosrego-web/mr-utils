@@ -162,7 +162,7 @@ function mrScrollNav(t) {
     t.classList.contains("mr-verticalscrollnav")
   ) {
     mrVerticalScrollNav =
-      '<button class="mr-arrows mr-scrolltop">⇧</button><button class="mr-arrows mr-scrollbottom">⇩</button>';
+      '<button class="mr-arrows mr-scrolltop">⏶</button><button class="mr-arrows mr-scrollbottom">⏷</button>';
   }
   let mrHorizontalScrollNav = "";
   if (
@@ -170,7 +170,7 @@ function mrScrollNav(t) {
     t.classList.contains("mr-horizontalscrollnav")
   ) {
     mrHorizontalScrollNav =
-      '<button class="mr-arrows mr-scrollright">⇨</button><button class="mr-arrows mr-scrollleft">⇦</button>';
+      '<button class="mr-arrows mr-scrollright">⏵</button><button class="mr-arrows mr-scrollleft">⏴</button>';
   }
   if (t.classList.contains("mr-navtop")) {
     t.outerHTML =
